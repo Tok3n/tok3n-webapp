@@ -1,0 +1,15 @@
+{
+  "name": "tok3n-webapp",
+  "version": "0.0.1",
+  "description": "Front-end for Tok3n Webapp",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tok3n/tok3n-webapp.git"
+  },
+  "author": "Victor Gonzalez",
+  "license": "./LICENSE"
+}
