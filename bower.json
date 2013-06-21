@@ -5,5 +5,17 @@
     "**/.*",
     "node_modules",
     "components"
-  ]
+  ],
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "zeptojs": "~0.1.1",
+    "normalize-css": "~2.1.2",
+    "pure": "~0.2.0",
+    "yepnope": "~1.5.4",
+    "Chart.js": "latest",
+    "parsleyjs": "~1.1.16",
+    "magnific-popup": "~0.8.9",
+    "chosen": "~0.10.0",
+    "selectize": "~0.4.2"
+  }
 }

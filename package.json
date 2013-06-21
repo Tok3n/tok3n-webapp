@@ -11,5 +11,19 @@
     "url": "https://github.com/Tok3n/tok3n-webapp.git"
   },
   "author": "Victor Gonzalez",
-  "license": "./LICENSE"
+  "license": "./LICENSE",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-coffee-redux": "~0.2.3",
+    "grunt-curl": "~1.1.1",
+    "grunt-contrib-compass": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-csslint": "~0.1.2",
+    "grunt-contrib-jshint": "~0.6.0"
+  },
+  "dependencies": {
+    "blade": "~3.2.6",
+    "express": "~3.2.6"
+  }
 }
