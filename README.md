@@ -34,16 +34,16 @@ Building dependencies and minified assets
 -
 If you are not sure about this, SKIP.
 ```bash
-# Download http assets with curl, bower install everything and license unlicensed scripts:
+# Download http assets with curl, bower install and license missing scripts:
 grunt build
 
 # Build without bower install
 grunt light-build
 
-# After building, compile once for production, cat files but don't minify
+# After building, compile once for development, cat files but don't minify
 grunt
 
-# The same as above, but uglify and minify too.
+# The same as above, but uglify and minify too for production.
 grunt server
 ```
 
