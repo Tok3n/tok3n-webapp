@@ -21,6 +21,8 @@ bundle install
 npm install -g grunt-cli
 npm install -g bower
 npm install
+grunt build
+grunt
 ```
 
 Using locally
@@ -32,18 +34,14 @@ foreman start -f Procfile.dev
 
 Building dependencies and minified assets
 -
-If you are not sure about this, SKIP.
 ```bash
 # Download http assets with curl, bower install and license missing scripts:
 grunt build
 
-# Build without bower install
-grunt light-build
-
-# After building, compile once for development, cat files but don't minify
+# After building, Compile css and coffee, concat js for development.
 grunt
 
-# The same as above, but uglify and minify too for production.
+# Compile css and coffee, concat js, uglify and gzip for production.
 grunt server
 ```
 
@@ -55,6 +53,9 @@ heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-nodej
 heroku ps:scale web=1
 heroku config:set NODE_ENV=production
 ```
+
+Always ```grunt server``` before ```git push heroku master```.
+
 
 To-do
 -

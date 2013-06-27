@@ -260,6 +260,5 @@ module.exports = (grunt) ->
 
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
 	@registerTask 'server',  ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify']
-	@registerTask 'light-build',	 ['shell', 'copy', 'license']
 	@registerTask 'build', ['bower-install', 'shell', 'copy', 'license']
 	
