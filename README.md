@@ -1,4 +1,4 @@
-Tok3n Page Validation
+Tok3n Web App
 ===============
 
 Requirements
