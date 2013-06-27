@@ -21,7 +21,7 @@ module.exports = (grunt) ->
 	
 	unlicend = [
 		'<%= copy.yepnope.dest %>'
-		'<%= copy.parsleyjs.dest %>'
+		'<%= copy.parsley.dest %>'
 		'<%= copy.underscore.dest %>'
 		# Zepto also here, called directly
 	]
