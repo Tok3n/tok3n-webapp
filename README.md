@@ -25,9 +25,26 @@ npm install
 
 Using locally
 -
-This will run the app on localhost:5000 and watch all compass files.
+This will run the app on localhost:5000 and grunt watch the project.
 ```
 foreman start -f Procfile.dev
+```
+
+Building dependencies and minified assets
+-
+If you are not sure about this, SKIP.
+```bash
+# Download http assets with curl, bower install everything and license unlicensed scripts:
+grunt build
+
+# Build without bower install
+grunt light-build
+
+# After building, compile once for production, cat files but don't minify
+grunt
+
+# The same as above, but uglify and minify too.
+grunt server
 ```
 
 Deploying
