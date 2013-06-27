@@ -18,8 +18,6 @@ Installation
 git clone http://github.com/Tok3n/tok3n-webapp && cd tok3n-webapp
 echo "RACK_ENV=development" >> .env
 bundle install
-npm install -g grunt-cli
-npm install -g bower
 npm install
 grunt build
 grunt
