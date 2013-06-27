@@ -15,7 +15,7 @@ Requirements
 Installation
 -
 ```bash
-git clone http://github.com/Tok3n/landing && cd tok3n
+git clone http://github.com/Tok3n/tok3n-webapp && cd tok3n-webapp
 echo "RACK_ENV=development" >> .env
 bundle install
 npm install -g grunt-cli
