@@ -14,12 +14,24 @@ module.exports = (grunt) ->
 	# Bower js files
 	misc = [
 		comp + 'modernizr/modernizr.js'
-		comp + 'yepnope/yepnope.js'
 		comp + 'Chart.js/Chart.js'
 		comp + 'magnific-popup/dist/jquery.magnific-popup.js'
 		comp + 'selectize/selectize.js'
-		comp + 'parsleyjs/parsley.js'
-		comp + 'underscore/underscore.js']
+	]
+	
+	unlicend = [
+		'<%= copy.yepnope.dest %>'
+		'<%= copy.parsleyjs.dest %>'
+		'<%= copy.underscore.dest %>'
+		# Zepto also here, called directly
+	]
+	
+	http_files = [
+		{ url: ladda + 'ladda-themeless.min.css', file: sass + '_ladda-themeless-min.scss' }
+		{ url: ladda + 'ladda.min.css', file: sass + '_ladda-mis.scss' }
+		{ url: ladda + 'ladda.min.js', file: js + 'ladda.min.js' }
+		{ url: ladda + 'spin.min.js', file: js + 'spin.min.js' }
+	]
 		
 	# Regex
 	css_file = /([^\/]+)\.css$/
@@ -36,23 +48,22 @@ module.exports = (grunt) ->
 		
 		# Versions, names for licenses
 		pkg: grunt.file.readJSON 'package.json'
-		normalize: grunt.file.readJSON comp + 'normalize/bower.json'
 		pure: grunt.file.readJSON comp + 'pure/package.json'
+		parsleyjs: grunt.file.readJSON comp + 'parsleyjs/component.json'
+		underscore: grunt.file.readJSON comp + 'underscore/package.json'
+		yepnope: grunt.file.readJSON comp + 'yepnope/bower.json'
+		zeptojs: grunt.file.readJSON comp + 'zeptojs/bower.json'
+		
 
 		# TODO: Get from Bower if avaliable
 		shell:
 			pure:
-				command:
-					curlSave pure_http + 'pure-min.css', sass + 'pure/_pure.scss'
+				command: curlSave pure_http + 'pure-min.css', sass + 'pure/_pure.scss'
 			ladda: 
-				command: curlArray [
-						{ url: ladda + 'ladda-themeless.min.css', file: sass + '_ladda-themeless-min.scss' }
-						{ url: ladda + 'ladda.min.css', file: sass + '_ladda-mis.scss' }
-						{ url: ladda + 'ladda.min.js', file: js + 'ladda.min.js' }
-						{ url: ladda + 'spin.min.js', file: js + 'spin.min.js' }
-					]
+				command: curlArray http_files
 		
 		copy:
+			# CSS
 			normalize:
 				src: comp + 'normalize-css/normalize.css'
 				dest: sass + '_normalize.scss'
@@ -61,7 +72,7 @@ module.exports = (grunt) ->
 					{
 						expand: true
 						filter: 'isFile'
-						src: [pure + '**/css/*.css']
+						src: [comp + 'pure/src/**/css/*.css']
 						dest: sass + 'pure'
 						rename: (dest, src) ->
 							dest + '/_' + src.match(css_file)[1] + '.scss'
@@ -70,14 +81,96 @@ module.exports = (grunt) ->
 			popup:
 				src: comp + 'pure/src/magnific-popup/dist/magnific-popup.css'
 				dest: sass + '_magnific-popup.scss'
+			
+			# Unlicensed Js
+			yepnope:
+				src: comp + 'yepnope/yepnope.js'
+				dest: js + 'yepnope.js'
+			parsley:
+				src: comp + 'parsleyjs/parsley.js'
+				dest: js + 'parsley.js'
+			underscore:
+				src: comp + 'underscore/underscore.js'
+				dest: js + 'underscore.js'
+			zepto:
+				src: comp + 'zeptojs/src/zepto.js'
+				dest: js + 'zepto.js'
+		
+		license:
+			parsley:
+				options:
+					banner: [
+						'/*!'
+						'Parsley.js v<%= parsleyjs.version %> | MIT License | https://github.com/guillaumepotier/Parsley.js/blob/master/LICENCE.md'
+						'Copyright (c) 2013 Guillaume Potier - @guillaumepotier'
+						'*/\n'
+					].join '\n'
+				expand: true
+				src   : ['<%= copy.parsley.dest %>']
+				
+			underscore:
+				options:
+					banner: [
+						'/*!'
+						'Underscore.js v<%= underscore.version %>'
+						'http://underscorejs.org'
+						'(c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.'
+						'Underscore may be freely distributed under the MIT license.'
+						'*/\n'
+					].join '\n'
+				expand: true
+				src   : ['<%= copy.underscore.dest %>']
+				
+			yepnope:
+				options:
+					banner: [
+						'/*!'
+						'yepnope.js'
+						'Version - <%= yepnope.version %>'
+						'Alex Sexton - @SlexAxton - AlexSexton[at]gmail.com'
+						'Ralph Holzmann - @ralphholzmann - ralphholzmann[at]gmail.com'
+						'http://yepnopejs.com/'
+						'https://github.com/SlexAxton/yepnope.js/'
+						'Tri-license - WTFPL | MIT | BSD'
+						'*/\n'
+					].join '\n'
+				expand: true
+				src   : ['<%= copy.yepnope.dest %>']				
+			
+			zepto:
+				options:
+					banner: [
+						'/*!'
+						'Zepto.js v<%= zeptojs.version %> | MIT License | https://github.com/madrobby/zepto/blob/master/MIT-LICENSE'
+						'Copyright (c) 2008-2013 Thomas Fuchs'
+						'http://zeptojs.com/'
+						'*/\n'
+					].join '\n'
+				expand: true
+				src   : ['<%= copy.zepto.dest %>']
+				
+			pure:
+				options:
+					banner: [
+						'/*!'
+						'Pure v<%= pure.version %>'
+						'Copyright 2013 Yahoo! Inc. All rights reserved.'
+						'Licensed under the BSD License.'
+						'https://github.com/yui/pure/blob/master/LICENSE.md'
+						'*/\n'
+					].join '\n'
+				expand: true
+				cwd   : sass + '/pure/'
+				src   : [
+					'*.scss'
+					'!_pure.scss'
+				]
 
 		coffeeredux: 
 			options:
 				bare: true
-			src:
-				coffee + 'main.coffee'
-			dest:
-				js + 'main.js'
+			src: coffee + 'main.coffee'
+			dest: js + 'main.js'
 
 		compass:
 			dev:
@@ -101,20 +194,22 @@ module.exports = (grunt) ->
 				separator: '\n'
 			zepto:
 				src: [
-					comp + 'zeptojs/src/zepto.js'
+					# Zepto was copied and licensed first
+					js + 'zepto.js'
 					misc...
+					unlicend...
 					'<%= coffeeredux.dest %>'
 				]
-				dest:
-					js + 'zepto-pack.js'
+				dest: js + 'zepto-pack.js'
 			jquery:
 				src: [
 					comp + 'jquery/jquery.js'
 					misc...
-					'<%= coffeeredux.dest %>']
-				dest:
-					js + 'jquery-pack.js'
-		
+					unlicend...
+					'<%= coffeeredux.dest %>'
+				]
+				dest: js + 'jquery-pack.js'
+
 		uglify:
 			options:
 				mangle: true
@@ -128,54 +223,30 @@ module.exports = (grunt) ->
 			jquery:
 				src: '<%= concat.jquery.dest %>'
 				dest: js + 'jquery-pack-min.js'
-		
-		license:
-			normalize:
-				options:
-					banner: [
-						'/*!'
-						'normalize.css v<%= normalize.version %> | MIT License | git.io/normalize'
-						'Copyright (c) Nicolas Gallagher and Jonathan Neal'
-						'*/\n'
-					].join '\n'
-				expand: true,
-				cwd   : '',
-				src   : ['base*.css', 'forms*.css', 'tables*.css', '<%= pkg.name %>*.css']
-				
-			pure:
-				options:
-					banner: [
-						'/*!',
-						'Pure v<%= pure.version %>',
-						'Copyright 2013 Yahoo! Inc. All rights reserved.',
-						'Licensed under the BSD License.',
-						'https://github.com/yui/pure/blob/master/LICENSE.md',
-						'*/\n'
-					].join '\n'
-				expand: true,
-				cwd   : '',
-				src   : ['base*.css', 'forms*.css', 'tables*.css', '<%= pkg.name %>*.css']
 				
 		
-		grunt.registerMultiTask "license", "Stamps license banners on files.", ->
-			options = @options(banner: "")
-			banner = grunt.template.process(options.banner)
-			tally = 0
-			
-			@files.forEach (filePair) ->
-				filePair.src.forEach (file) ->
-					grunt.file.write file, banner + grunt.file.read(file)
-					tally += 1
-					
-			grunt.log.writeln "Stamped license on " + String(tally).cyan + " files."
-		
-		grunt.registerTask 'bower-install', 'Installs Bower dependencies.', ->
-			bower = require 'bower'
-			done = this.async()
-			
-			bower.commands.install()
-				.on 'data', (data) -> grunt.log.write data
-				.on 'end', done
+	@registerMultiTask "license", "Stamps license banners on files.", ->
+		options = @options(banner: "")
+		banner = grunt.template.process(options.banner)
+		tally = 0
+		@files.forEach (filePair) ->
+			filePair.src.forEach (file) ->
+				grunt.file.write file, banner + grunt.file.read(file)
+				tally += 1
+				return
+			return
+		grunt.log.writeln "Stamped license on " + String(tally).cyan + " files."
+		return
+	
+	@registerTask 'bower-install', 'Installs Bower dependencies.', ->
+		bower = require 'bower'
+		done = this.async()
+		bower.commands.install()
+			.on 'data', (data) ->
+				grunt.log.write data
+				return
+			.on 'end', done
+		return
 
 
 	@loadNpmTasks 'grunt-contrib-concat'
@@ -189,4 +260,5 @@ module.exports = (grunt) ->
 
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
 	@registerTask 'server',  ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify']
-	@registerTask 'build',	 ['shell', 'copy']
+	@registerTask 'build',	 ['shell', 'copy', 'license']
+	@registerTask 'deep-build', ['bower-install', 'shell', 'copy', 'license']
