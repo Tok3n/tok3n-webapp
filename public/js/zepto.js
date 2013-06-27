@@ -1,3 +1,8 @@
+/*!
+Zepto.js v0.1.1 | MIT License | https://github.com/madrobby/zepto/blob/master/MIT-LICENSE
+Copyright (c) 2008-2013 Thomas Fuchs
+http://zeptojs.com/
+*/
 var Zepto = (function() {
   var slice=[].slice, d=document,
     ADJ_OPS={append: 'beforeEnd', prepend: 'afterBegin', before: 'beforeBegin', after: 'afterEnd'},

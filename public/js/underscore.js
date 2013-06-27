@@ -1,3 +1,9 @@
+/*!
+Underscore.js v1.4.4
+http://underscorejs.org
+(c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.
+Underscore may be freely distributed under the MIT license.
+*/
 //     Underscore.js 1.4.4
 //     http://underscorejs.org
 //     (c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.

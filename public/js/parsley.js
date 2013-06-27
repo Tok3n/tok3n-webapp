@@ -1,3 +1,7 @@
+/*!
+Parsley.js v1.1.16 | MIT License | https://github.com/guillaumepotier/Parsley.js/blob/master/LICENCE.md
+Copyright (c) 2013 Guillaume Potier - @guillaumepotier
+*/
 /*
  * Parsley.js allows you to verify your form inputs frontend side, without writing a line of javascript. Or so..
  *
