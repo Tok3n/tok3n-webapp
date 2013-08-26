@@ -49,10 +49,10 @@ module.exports = (grunt) ->
 		# Versions, names for licenses
 		pkg: grunt.file.readJSON 'package.json'
 		pure: grunt.file.readJSON comp + 'pure/package.json'
-		parsleyjs: grunt.file.readJSON comp + 'parsleyjs/component.json'
+		parsleyjs: grunt.file.readJSON comp + 'parsleyjs/bower.json'
 		underscore: grunt.file.readJSON comp + 'underscore/package.json'
-		yepnope: grunt.file.readJSON comp + 'yepnope/bower.json'
-		zeptojs: grunt.file.readJSON comp + 'zeptojs/bower.json'
+		yepnope: grunt.file.readJSON comp + 'yepnope/.bower.json'
+		zeptojs: grunt.file.readJSON comp + 'zeptojs/.bower.json'
 		
 
 		# TODO: Get from Bower if avaliable
@@ -223,6 +223,17 @@ module.exports = (grunt) ->
 			jquery:
 				src: '<%= concat.jquery.dest %>'
 				dest: js + 'jquery-pack-min.js'
+
+		watch:
+			options:
+				livereload: true
+				files: [css, '<%= concat.zepto.dest %>', '<%= concat.jquery.dest %>']
+			coffee:
+				files: '<%= coffeeredux.src %>'
+				tasks: ['coffeeredux', 'concat']
+			sass:
+				files: sass
+				tasks: ['compass:dev', 'csslint']
 				
 		
 	@registerMultiTask "license", "Stamps license banners on files.", ->
@@ -254,6 +265,7 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-contrib-csslint'
 	@loadNpmTasks 'grunt-contrib-copy'
 	@loadNpmTasks 'grunt-contrib-uglify'
+	@loadNpmTasks 'grunt-contrib-watch'
 	
 	@loadNpmTasks 'grunt-coffee-redux'
 	@loadNpmTasks 'grunt-shell'

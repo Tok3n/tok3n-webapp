@@ -1,2 +1,2 @@
 web: nodemon server.js
-worker: compass watch public
+worker: grunt watch --verbose
