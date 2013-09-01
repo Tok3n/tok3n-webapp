@@ -9,7 +9,7 @@ module.exports = (grunt) ->
 
 	# Raw from github or cdn
 	ladda = 'https://raw.github.com/hakimel/Ladda/master/dist/'
-	pure_http = 'http://yui.yahooapis.com/pure/0.2.0/'
+	pure_http = 'http://yui.yahooapis.com/pure/<%= pure.version %>/'
 
 	# Bower js files
 	misc = [
@@ -58,7 +58,7 @@ module.exports = (grunt) ->
 		# TODO: Get from Bower if avaliable
 		shell:
 			pure:
-				command: curlSave pure_http + 'pure-min.css', sass + 'pure/_pure.scss'
+				command: curlSave pure_http + 'pure-min.css', sass + '_pure.scss'
 			ladda: 
 				command: curlArray http_files
 		
@@ -67,17 +67,17 @@ module.exports = (grunt) ->
 			normalize:
 				src: comp + 'normalize-css/normalize.css'
 				dest: sass + '_normalize.scss'
-			pure:
-				files: [
-					{
-						expand: true
-						filter: 'isFile'
-						src: [comp + 'pure/src/**/css/*.css']
-						dest: sass + 'pure'
-						rename: (dest, src) ->
-							dest + '/_' + src.match(css_file)[1] + '.scss'
-					}
-				]
+			# pure:
+			# 	files: [
+			# 		{
+			# 			expand: true
+			# 			filter: 'isFile'
+			# 			src: [comp + 'pure/src/**/css/*.css']
+			# 			dest: sass + 'pure'
+			# 			rename: (dest, src) ->
+			# 				dest + '/_' + src.match(css_file)[1] + '.scss'
+			# 		}
+			# 	]
 			popup:
 				src: comp + 'pure/src/magnific-popup/dist/magnific-popup.css'
 				dest: sass + '_magnific-popup.scss'
@@ -100,10 +100,10 @@ module.exports = (grunt) ->
 			parsley:
 				options:
 					banner: [
-						'/*!'
-						'Parsley.js v<%= parsleyjs.version %> | MIT License | https://github.com/guillaumepotier/Parsley.js/blob/master/LICENCE.md'
-						'Copyright (c) 2013 Guillaume Potier - @guillaumepotier'
-						'*/\n'
+						'\n/*!'
+						' * Parsley.js v<%= parsleyjs.version %> | MIT License | https://github.com/guillaumepotier/Parsley.js/blob/master/LICENCE.md'
+						' * Copyright (c) 2013 Guillaume Potier - @guillaumepotier'
+						' */\n'
 					].join '\n'
 				expand: true
 				src   : ['<%= copy.parsley.dest %>']
@@ -111,12 +111,12 @@ module.exports = (grunt) ->
 			underscore:
 				options:
 					banner: [
-						'/*!'
-						'Underscore.js v<%= underscore.version %>'
-						'http://underscorejs.org'
-						'(c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.'
-						'Underscore may be freely distributed under the MIT license.'
-						'*/\n'
+						'\n/*!'
+						' * Underscore.js v<%= underscore.version %>'
+						' * http://underscorejs.org'
+						' * (c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.'
+						' * Underscore may be freely distributed under the MIT license.'
+						' * */\n'
 					].join '\n'
 				expand: true
 				src   : ['<%= copy.underscore.dest %>']
@@ -124,15 +124,15 @@ module.exports = (grunt) ->
 			yepnope:
 				options:
 					banner: [
-						'/*!'
-						'yepnope.js'
-						'Version - <%= yepnope.version %>'
-						'Alex Sexton - @SlexAxton - AlexSexton[at]gmail.com'
-						'Ralph Holzmann - @ralphholzmann - ralphholzmann[at]gmail.com'
-						'http://yepnopejs.com/'
-						'https://github.com/SlexAxton/yepnope.js/'
-						'Tri-license - WTFPL | MIT | BSD'
-						'*/\n'
+						'\n/*!'
+						' * yepnope.js'
+						' * Version - <%= yepnope.version %>'
+						' * Alex Sexton - @SlexAxton - AlexSexton[at]gmail.com'
+						' * Ralph Holzmann - @ralphholzmann - ralphholzmann[at]gmail.com'
+						' * http://yepnopejs.com/'
+						' * https://github.com/SlexAxton/yepnope.js/'
+						' * Tri-license - WTFPL | MIT | BSD'
+						' */\n'
 					].join '\n'
 				expand: true
 				src   : ['<%= copy.yepnope.dest %>']				
@@ -140,11 +140,11 @@ module.exports = (grunt) ->
 			zepto:
 				options:
 					banner: [
-						'/*!'
-						'Zepto.js v<%= zeptojs.version %> | MIT License | https://github.com/madrobby/zepto/blob/master/MIT-LICENSE'
-						'Copyright (c) 2008-2013 Thomas Fuchs'
-						'http://zeptojs.com/'
-						'*/\n'
+						'\n/*!'
+						' * Zepto.js v<%= zeptojs.version %> | MIT License | https://github.com/madrobby/zepto/blob/master/MIT-LICENSE'
+						' * Copyright (c) 2008-2013 Thomas Fuchs'
+						' * http://zeptojs.com/'
+						' */\n'
 					].join '\n'
 				expand: true
 				src   : ['<%= copy.zepto.dest %>']
@@ -152,12 +152,12 @@ module.exports = (grunt) ->
 			pure:
 				options:
 					banner: [
-						'/*!'
-						'Pure v<%= pure.version %>'
-						'Copyright 2013 Yahoo! Inc. All rights reserved.'
-						'Licensed under the BSD License.'
-						'https://github.com/yui/pure/blob/master/LICENSE.md'
-						'*/\n'
+						'\n/*!'
+						' * Pure v<%= pure.version %>'
+						' * Copyright 2013 Yahoo! Inc. All rights reserved.'
+						' * Licensed under the BSD License.'
+						' * https://github.com/yui/pure/blob/master/LICENSE.md'
+						' */\n'
 					].join '\n'
 				expand: true
 				cwd   : sass + '/pure/'
@@ -232,7 +232,7 @@ module.exports = (grunt) ->
 				files: '<%= coffeeredux.src %>'
 				tasks: ['coffeeredux', 'concat']
 			sass:
-				files: sass
+				files: sass + '*'
 				tasks: ['compass:dev', 'csslint']
 				
 		

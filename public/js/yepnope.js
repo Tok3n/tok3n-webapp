@@ -1,12 +1,13 @@
+
 /*!
-yepnope.js
-Version - 1.5.4
-Alex Sexton - @SlexAxton - AlexSexton[at]gmail.com
-Ralph Holzmann - @ralphholzmann - ralphholzmann[at]gmail.com
-http://yepnopejs.com/
-https://github.com/SlexAxton/yepnope.js/
-Tri-license - WTFPL | MIT | BSD
-*/
+ * yepnope.js
+ * Version - 1.5.4
+ * Alex Sexton - @SlexAxton - AlexSexton[at]gmail.com
+ * Ralph Holzmann - @ralphholzmann - ralphholzmann[at]gmail.com
+ * http://yepnopejs.com/
+ * https://github.com/SlexAxton/yepnope.js/
+ * Tri-license - WTFPL | MIT | BSD
+ */
 // yepnope.js
 // Version - 1.5.4pre
 //

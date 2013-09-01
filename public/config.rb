@@ -10,11 +10,11 @@ Sass::Script::Number.precision = 2
 Sass::Plugin.options[:never_update] = Sass
 
 # true Paths
-http_path = '/'
-http_javascripts_path = http_path + 'js/'
-http_stylesheets_path = http_path + 'css/'
-http_images_path = http_stylesheets_path + 'img/'
-http_fonts_path = http_stylesheets_path + 'font/'
+# http_path = '/'
+# http_javascripts_path = http_path + 'js/'
+# http_stylesheets_path = http_path + 'css/'
+# http_images_path = http_stylesheets_path + 'img/'
+# http_fonts_path = http_stylesheets_path + 'font/'
  
 # Sass Directories
 javascripts_dir = 'js/'

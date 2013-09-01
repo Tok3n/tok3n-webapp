@@ -15710,15 +15710,16 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 }));
 
+
 /*!
-yepnope.js
-Version - 1.5.4
-Alex Sexton - @SlexAxton - AlexSexton[at]gmail.com
-Ralph Holzmann - @ralphholzmann - ralphholzmann[at]gmail.com
-http://yepnopejs.com/
-https://github.com/SlexAxton/yepnope.js/
-Tri-license - WTFPL | MIT | BSD
-*/
+ * yepnope.js
+ * Version - 1.5.4
+ * Alex Sexton - @SlexAxton - AlexSexton[at]gmail.com
+ * Ralph Holzmann - @ralphholzmann - ralphholzmann[at]gmail.com
+ * http://yepnopejs.com/
+ * https://github.com/SlexAxton/yepnope.js/
+ * Tri-license - WTFPL | MIT | BSD
+ */
 // yepnope.js
 // Version - 1.5.4pre
 //
@@ -16282,10 +16283,11 @@ var docElement            = doc.documentElement,
 
 })( this, document );
 
+
 /*!
-Parsley.js v1.1.17 | MIT License | https://github.com/guillaumepotier/Parsley.js/blob/master/LICENCE.md
-Copyright (c) 2013 Guillaume Potier - @guillaumepotier
-*/
+ * Parsley.js v1.1.17 | MIT License | https://github.com/guillaumepotier/Parsley.js/blob/master/LICENCE.md
+ * Copyright (c) 2013 Guillaume Potier - @guillaumepotier
+ */
 /*
  * Parsley.js allows you to verify your form inputs frontend side, without writing a line of javascript. Or so..
  *
@@ -17622,12 +17624,13 @@ Copyright (c) 2013 Guillaume Potier - @guillaumepotier
 // This plugin works with jQuery or Zepto (with data extension built for Zepto.)
 }(window.jQuery || window.Zepto);
 
+
 /*!
-Underscore.js v1.4.4
-http://underscorejs.org
-(c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.
-Underscore may be freely distributed under the MIT license.
-*/
+ * Underscore.js v1.4.4
+ * http://underscorejs.org
+ * (c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.
+ * Underscore may be freely distributed under the MIT license.
+ * */
 //     Underscore.js 1.4.4
 //     http://underscorejs.org
 //     (c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.

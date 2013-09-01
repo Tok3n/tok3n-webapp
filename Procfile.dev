@@ -1,2 +1,2 @@
 web: nodemon server.js
-worker: grunt watch --verbose
+worker: grunt watch
