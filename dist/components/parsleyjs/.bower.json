@@ -1,0 +1,18 @@
+{
+  "name": "parsleyjs",
+  "version": "1.1.17",
+  "main": "parsley.js",
+  "dependencies": {
+    "jquery": ">=1.8"
+  },
+  "homepage": "https://github.com/guillaumepotier/Parsley.js",
+  "_release": "1.1.17",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.17",
+    "commit": "d2a239732579fe30bbecd83bf1df70d7d2b01e10"
+  },
+  "_source": "git://github.com/guillaumepotier/Parsley.js.git",
+  "_target": "~1.1.16",
+  "_originalSource": "parsleyjs"
+}

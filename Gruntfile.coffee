@@ -6,6 +6,7 @@ module.exports = (grunt) ->
 	sass = 'public/sass/'
 	js = 'public/js/'
 	coffee = 'public/coffee/'
+	dist = 'dist/'
 
 	# Raw from github or cdn
 	ladda = 'https://raw.github.com/hakimel/Ladda/master/dist/'
@@ -15,13 +16,14 @@ module.exports = (grunt) ->
 	misc = [
 		comp + 'modernizr/modernizr.js'
 		# comp + 'Chart.js/Chart.js'
-		comp + 'magnific-popup/dist/jquery.magnific-popup.js'
 		comp + 'selectize/selectize.js'
+		# comp + 'magnific-popup/dist/jquery.magnific-popup.js'
 	]
 	
 	unlicend = [
 		# '<%= copy.yepnope.dest %>'
 		'<%= copy.parsley.dest %>'
+		'<%= copy.popupjs.dest %>'
 		# '<%= copy.underscore.dest %>'
 		# Zepto also here, called directly
 	]
@@ -34,13 +36,6 @@ module.exports = (grunt) ->
 		{ url: ladda + 'spin.min.js', file: js + 'spin.min.js' }
 		{ url: pure_http + 'pure-min.css', file: sass + '_pure.scss' }
 	]
-
-	# Replace variables
-	x = {}
-	replacePrefix = '@@'
-	replaceKey = 'devel'
-	replaceStr = replacePrefix + replaceKey
-	distHtml = 'dist/index.html'
 		
 	# Regex
 	css_file = /([^\/]+)\.css$/
@@ -62,6 +57,7 @@ module.exports = (grunt) ->
 		underscore: grunt.file.readJSON comp + 'underscore/package.json'
 		yepnope: grunt.file.readJSON comp + 'yepnope/.bower.json'
 		zeptojs: grunt.file.readJSON comp + 'zeptojs/.bower.json'
+		popup: grunt.file.readJSON comp + 'magnific-popup/bower.json'
 		
 
 		# TODO: Get from Bower if avaliable
@@ -70,7 +66,9 @@ module.exports = (grunt) ->
 				command: curlArray http_files
 			index:
 				# Remember to have a server running!
-				command: curlSave 'http://localhost:5000', distHtml
+				command: curlSave 'http://localhost:5000', dist + 'index.html'
+			dist:
+				command: 'cp -rf public/* ' + dist
 
 
 		
@@ -79,24 +77,26 @@ module.exports = (grunt) ->
 			normalize:
 				src: comp + 'normalize-css/normalize.css'
 				dest: sass + '_normalize.scss'
-			# pure:
-			# 	files: [
-			# 		{
-			# 			expand: true
-			# 			filter: 'isFile'
-			# 			src: [comp + 'pure/src/**/css/*.css']
-			# 			dest: sass + 'pure'
-			# 			rename: (dest, src) ->
-			# 				dest + '/_' + src.match(css_file)[1] + '.scss'
-			# 		}
-			# 	]
+			pure:
+				files: [
+					{
+						expand: true
+						filter: 'isFile'
+						src: [comp + 'pure/src/**/css/*.css']
+						dest: sass + 'pure'
+						rename: (dest, src) ->
+							dest + '/_' + src.match(css_file)[1] + '.scss'
+					}
+				]
 			toggleSwitch:
 				src: comp + 'css-toggle-switch/src/toggle-switch.scss'
 				dest: sass + '_toggle-switch.scss'
-			popup:
-				src: comp + 'pure/src/magnific-popup/dist/magnific-popup.css'
+			popupcss:
+				src: comp + 'magnific-popup/dist/magnific-popup.css'
 				dest: sass + '_magnific-popup.scss'
-			
+			popupjs:
+				src: comp + 'magnific-popup/dist/jquery.magnific-popup.js'
+				dest: js + 'magnific-popup.js'
 			# Unlicensed Js
 			yepnope:
 				src: comp + 'yepnope/yepnope.js'
@@ -110,6 +110,16 @@ module.exports = (grunt) ->
 			zepto:
 				src: comp + 'zeptojs/src/zepto.js'
 				dest: js + 'zepto.js'
+			jquery:
+				src: comp + 'jquery/jquery.js'
+				dest: js + 'jquery.js'
+			# Distr files
+			distzepto:
+				src: '<%= uglify.zepto.dest %>'
+				dest: dist + 'zepto-pack-min.js'
+			distjquery:
+				src: '<%= uglify.jquery.dest %>'
+				dest: dist + 'jquery-pack-min.js'
 		
 		license:
 			parsley:
@@ -163,6 +173,18 @@ module.exports = (grunt) ->
 					].join '\n'
 				expand: true
 				src   : ['<%= copy.zepto.dest %>']
+
+			popup:
+				options:
+					banner: [
+						'\n/*!'
+						' * Magnific Popup - v<%= popup.version %>'
+						' * http://dimsemenov.com/plugins/magnific-popup/'
+						' * Copyright (c) 2013 Dmitry Semenov'
+						' */\n'
+					].join '\n'
+				expand: true
+				src   : ['<%= copy.popupjs.dest %>']
 				
 			pure:
 				options:
@@ -210,20 +232,20 @@ module.exports = (grunt) ->
 			zepto:
 				src: [
 					# Zepto was copied and licensed first
-					js + 'zepto.js'
+					'<%= copy.zepto.dest %>'
 					misc...
 					unlicend...
 					'<%= coffeeredux.compile.dest %>'
 				]
-				dest: js + 'zepto-pack' + replaceStr + '.js'
+				dest: js + 'zepto-pack.js'
 			jquery:
 				src: [
-					comp + 'jquery/jquery.js'
+					'<%= copy.jquery.dest %>'
 					misc...
 					unlicend...
 					'<%= coffeeredux.compile.dest %>'
 				]
-				dest: js + 'jquery-pack' + replaceStr + '.js'
+				dest: js + 'jquery-pack.js'
 
 		uglify:
 			options:
@@ -246,8 +268,38 @@ module.exports = (grunt) ->
 		# 				'devel': '-min'
 		# 			prefix: replacePrefix
 		# 		files:
-		# 			src: distHtml
-		# 			dest: distHtml
+		# 			src: dist + 'index.html'
+		# 			dest: dist + 'index.html'
+		
+		# Replace js loader text
+		replace:
+			dist:
+				src: dist + 'index.html'
+				overwrite: true
+				replacements: [
+					{
+						from: '-pack.js'
+						to: '-pack-min.js'
+					}
+					{
+						from: '<script src="http://localhost:35729/livereload.js"></script>'
+						to: "<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>"
+					}
+				]
+			jquery:
+				src: '<%= uglify.jquery.dest %>'
+				dest: dist + 'js/jquery-pack-min.js'
+				replacements: [
+					from: ',/*!'
+					to: ',\n/*!'
+				]
+			zepto:
+				src: '<%= uglify.zepto.dest %>'
+				dest: dist + 'js/zepto-pack-min.js'
+				replacements: [
+					from: ',/*!'
+					to: ',\n/*!'
+				]
 
 		watch:
 			options:
@@ -299,5 +351,4 @@ module.exports = (grunt) ->
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
 	@registerTask 'server',  ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify']
-	@registerTask 'dist', ['shell:index', 'replace:dist']
-	
+	@registerTask 'dist', ['shell:index', 'shell:dist', 'replace:dist', 'replace:zepto', 'replace:jquery']

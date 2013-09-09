@@ -1,0 +1,101 @@
+body
+  color: #333
+
+a
+  text-decoration: none
+  color: #1b98f8
+
+// LAYOUT CSS
+$top-nav-height: 60px //- hardcoded!!!!!!
+$logo-width: 100px
+$logo-proportion: .36
+$nav-separation: 2.1em
+$button-separation: .5em
+
+.nav-wrap
+  position: relative
+  z-index: 2
+
+.top-nav
+  +single-box-shadow(hsla(264,50,10,.15),0,-12px,30px,0,true)
+  background: #fff
+  width: 100%
+  letter-spacing: normal
+  position: fixed
+  border-bottom: 1px solid hsla(264,74,30,.3)
+  
+  .nav-content-wrap
+    padding: 0 1.9em
+  
+  header
+    .logo
+      +hMargin(1)
+      height: 40px
+      width: 111px
+      +hr-image("logo.png", "logo_hd.png")
+  
+  nav
+    margin-top: 12px
+    .menu
+      text-align: right
+      ul
+        +inline-list
+        li
+          margin: 0 $nav-separation/2
+          a
+            +link-colors(#171947, #434cd3, #ba7f29)
+            +hover-link
+            +letterpress(white(.7))
+            // font-weight: bolder
+          &:first-child
+            margin: 0 $nav-separation/2 0 0
+          &:last-child
+            margin: 0 0 0 $nav-separation/2
+          &:only-child
+            margin: 0
+          .settings
+            background: hsla(236, 62%, 40%, 0.68)
+            color: #fff
+            padding: .5em 1.2em
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2)
+            border-radius: 4px
+            +single-transition(background, .3s, ease-out, 0)
+            &:hover
+              background: hsla(236, 62%, 50%, 0.9)
+            &:active
+              background: hsla(236, 62%, 80%, 0.9)
+            .icon-cog
+              font-size: 16px
+            .text
+              margin-left: .6em
+              font-family: 'ff-dagny-web-pro'
+            .icon-caret-down
+              margin-left: .8em
+
+$menu-width: 220px
+$apps-width: 252px
+$left-width: $menu-width + $apps-width
+
+#layout
+  padding-left: $left-width
+  position: relative
+  padding-top: $top-nav-height
+  z-index: 1
+
+#nav, #list
+  position: fixed
+  top: $top-nav-height
+  bottom: 0
+  overflow: auto
+
+#nav
+  margin-left: $left-width * -1
+  width: $menu-width
+  background: rgb(37, 42, 58)
+  text-align: center
+  padding: 2em 0
+
+#list
+  margin-left: $apps-width * -1
+  width: $apps-width
+  border-right: 1px solid #ddd
