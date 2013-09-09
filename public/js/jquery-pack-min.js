@@ -1,4 +1,10 @@
-/*! tok3n-webapp 2013-09-09 */
+/*!
+ * tok3n-webapp v0.0.1 - 2013-09-09
+ * Front-end for Tok3n Webapp
+ * Copyright 2013 Tok3n, LLC. All rights reserved.
+ * Licensed under the MIT License
+ * https://github.com/Tok3n/tok3n-webapp/blob/master/LICENSE
+ */
 /*!
  * jQuery JavaScript Library v2.0.3
  * http://jquery.com/

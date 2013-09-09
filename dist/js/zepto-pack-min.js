@@ -1,4 +1,10 @@
-/*! tok3n-webapp 2013-09-09 */
+/*!
+ * tok3n-webapp v0.0.1 - 2013-09-09
+ * Front-end for Tok3n Webapp
+ * Copyright 2013 Tok3n, LLC. All rights reserved.
+ * Licensed under the MIT License
+ * https://github.com/Tok3n/tok3n-webapp/blob/master/LICENSE
+ */
 /*!
  * Zepto.js v0.1.1 | MIT License | https://github.com/madrobby/zepto/blob/master/MIT-LICENSE
  * Copyright (c) 2008-2013 Thomas Fuchs
