@@ -68,8 +68,9 @@ module.exports = (grunt) ->
 				# Remember to have a server running!
 				command: curlSave 'http://localhost:5000', dist + 'index.html'
 			dist:
-				command: 'cp -rf public/* ' + dist
-
+				options:
+					stdout: true
+				command: 'rsync -ax --del --exclude components public/* ' + dist
 
 		
 		copy:
@@ -253,7 +254,15 @@ module.exports = (grunt) ->
 				compress: true
 				report: 'gzip'
 				preserveComments: 'some'
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+				banner: [
+						'/*!'
+						' * <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>'
+						' * <%= pkg.description %>'
+						' * Copyright <%= grunt.template.today("yyyy") %> Tok3n, LLC. All rights reserved.'
+						' * Licensed under the MIT License'
+						' * https://github.com/Tok3n/tok3n-webapp/blob/master/LICENSE'
+						' */\n'
+					].join '\n'
 			zepto:
 				src: '<%= concat.zepto.dest %>'
 				dest: js + 'zepto-pack-min.js'
