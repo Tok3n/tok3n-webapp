@@ -14,24 +14,33 @@ module.exports = (grunt) ->
 	# Bower js files
 	misc = [
 		comp + 'modernizr/modernizr.js'
-		comp + 'Chart.js/Chart.js'
+		# comp + 'Chart.js/Chart.js'
 		comp + 'magnific-popup/dist/jquery.magnific-popup.js'
 		comp + 'selectize/selectize.js'
 	]
 	
 	unlicend = [
-		'<%= copy.yepnope.dest %>'
+		# '<%= copy.yepnope.dest %>'
 		'<%= copy.parsley.dest %>'
-		'<%= copy.underscore.dest %>'
+		# '<%= copy.underscore.dest %>'
 		# Zepto also here, called directly
 	]
 	
+	# Files to download with curl
 	http_files = [
 		{ url: ladda + 'ladda-themeless.min.css', file: sass + '_ladda-themeless-min.scss' }
 		{ url: ladda + 'ladda.min.css', file: sass + '_ladda-mis.scss' }
 		{ url: ladda + 'ladda.min.js', file: js + 'ladda.min.js' }
 		{ url: ladda + 'spin.min.js', file: js + 'spin.min.js' }
+		{ url: pure_http + 'pure-min.css', file: sass + '_pure.scss' }
 	]
+
+	# Replace variables
+	x = {}
+	replacePrefix = '@@'
+	replaceKey = 'devel'
+	replaceStr = replacePrefix + replaceKey
+	distHtml = 'dist/index.html'
 		
 	# Regex
 	css_file = /([^\/]+)\.css$/
@@ -57,10 +66,13 @@ module.exports = (grunt) ->
 
 		# TODO: Get from Bower if avaliable
 		shell:
-			pure:
-				command: curlSave pure_http + 'pure-min.css', sass + '_pure.scss'
-			ladda: 
+			files: 
 				command: curlArray http_files
+			index:
+				# Remember to have a server running!
+				command: curlSave 'http://localhost:5000', distHtml
+
+
 		
 		copy:
 			# CSS
@@ -172,9 +184,9 @@ module.exports = (grunt) ->
 		coffeeredux: 
 			options:
 				bare: true
-			src: coffee + 'main.coffee'
-			dest: js + 'main.js'
-
+			compile:
+				src: coffee + 'main.coffee'
+				dest: js + 'main.js'
 		compass:
 			dev:
 				options:
@@ -201,17 +213,17 @@ module.exports = (grunt) ->
 					js + 'zepto.js'
 					misc...
 					unlicend...
-					'<%= coffeeredux.dest %>'
+					'<%= coffeeredux.compile.dest %>'
 				]
-				dest: js + 'zepto-pack.js'
+				dest: js + 'zepto-pack' + replaceStr + '.js'
 			jquery:
 				src: [
 					comp + 'jquery/jquery.js'
 					misc...
 					unlicend...
-					'<%= coffeeredux.dest %>'
+					'<%= coffeeredux.compile.dest %>'
 				]
-				dest: js + 'jquery-pack.js'
+				dest: js + 'jquery-pack' + replaceStr + '.js'
 
 		uglify:
 			options:
@@ -227,12 +239,22 @@ module.exports = (grunt) ->
 				src: '<%= concat.jquery.dest %>'
 				dest: js + 'jquery-pack-min.js'
 
+		# replace:
+		# 	dist:
+		# 		options:
+		# 			variables:
+		# 				'devel': '-min'
+		# 			prefix: replacePrefix
+		# 		files:
+		# 			src: distHtml
+		# 			dest: distHtml
+
 		watch:
 			options:
 				livereload: true
 				files: [css, '<%= concat.zepto.dest %>', '<%= concat.jquery.dest %>']
 			coffee:
-				files: '<%= coffeeredux.src %>'
+				files: coffee + '*'
 				tasks: ['coffeeredux', 'concat']
 			sass:
 				files: sass + '*'
@@ -269,11 +291,13 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-contrib-copy'
 	@loadNpmTasks 'grunt-contrib-uglify'
 	@loadNpmTasks 'grunt-contrib-watch'
-	
+	# @loadNpmTasks 'grunt-replace'
 	@loadNpmTasks 'grunt-coffee-redux'
 	@loadNpmTasks 'grunt-shell'
+	@loadNpmTasks 'grunt-text-replace'
 
+	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
 	@registerTask 'server',  ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify']
-	@registerTask 'build', ['bower-install', 'shell', 'copy', 'license']
+	@registerTask 'dist', ['shell:index', 'replace:dist']
 	

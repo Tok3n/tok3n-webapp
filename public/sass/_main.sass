@@ -1,5 +1,3 @@
-// Vertical Navigation Styles
-
 #nav
   .pure-menu
     background: transparent
@@ -9,19 +7,20 @@
       &:hover, &:focus
         background: rgb(55, 60, 90)
       color: #fff
-      margin-left: 0.5em
-  .pure-menu-heading
-    border-bottom: none
-    font-size: 110%
-    color: rgb(75, 113, 151)
-  .nav-menu-button
-    display: none
+      margin-left: 0
+      .title
+        color: white(.7)
+        margin-left: .5em
+      .icon
+        font-size: 120%
+        text-align: center
 
-// devel Item Styles
 #list
   .item
     padding: 0.9em 1.4em 0.9em 1.2em
     border-bottom: 1px solid #ddd
+    &:hover
+      background: hsla(209, 84%, 62%, 0.3)
     .info
       overflow: hidden
       text-overflow: ellipsis
@@ -44,6 +43,7 @@
 
   .item-selected
     background: #eee
+
 
 #main
   .devel-content-header, .devel-content-body, .devel-content-footer
