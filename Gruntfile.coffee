@@ -78,6 +78,9 @@ module.exports = (grunt) ->
 			# 				dest + '/_' + src.match(css_file)[1] + '.scss'
 			# 		}
 			# 	]
+			toggleSwitch:
+				src: comp + 'css-toggle-switch/src/toggle-switch.scss'
+				dest: sass + '_toggle-switch.scss'
 			popup:
 				src: comp + 'pure/src/magnific-popup/dist/magnific-popup.css'
 				dest: sass + '_magnific-popup.scss'

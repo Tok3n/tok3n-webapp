@@ -1,55 +1,3 @@
-body
-  color: #333
-
-a
-  text-decoration: none
-  color: #1b98f8
-
-// LAYOUT CSS
-
-#layout
-  padding-left: 500px
-  // "left col (nav + list)" width
-  position: relative
-
-#nav, #list
-  position: fixed
-  top: 0
-  bottom: 0
-  overflow: auto
-
-#nav
-  margin-left: -500px
-  // "left col (nav + list)" width
-  width: 150px
-  background: rgb(37, 42, 58)
-  text-align: center
-  padding: 2em 0
-
-#list
-  margin-left: -350px
-  width: 350px
-  border-right: 1px solid #ddd
-
-// HELPER CLASSES
-
-.primary-button, .secondary-button
-  -webkit-box-shadow: none
-  -moz-box-shadow: none
-  box-shadow: none
-
-.primary-button
-  color: #fff
-  background: #1b98f8
-  margin: 1em 0
-
-.secondary-button
-  background: #fff
-  border: 1px solid #ddd
-  color: #666
-  padding: 0.5em 2em
-  font-size: 80%
-
 // Vertical Navigation Styles
 
 #nav
@@ -69,76 +17,69 @@ a
   .nav-menu-button
     display: none
 
-.email-count
-  color: rgb(75, 113, 151)
+// devel Item Styles
+#list
+  .item
+    padding: 0.9em 1.4em 0.9em 1.2em
+    border-bottom: 1px solid #ddd
+    .info
+      overflow: hidden
+      text-overflow: ellipsis
+      color: #999
 
-.email-label-personal, .email-label-work, .email-label-travel
-  width: 15px
-  height: 15px
-  display: inline-block
-  margin-right: 0.5em
-  border-radius: 3px
+  .avatar
+    margin-top: 0.2em
 
-.email-label-personal
-  background: #ffc94c
+  .title, .url
+    margin: 0
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
 
-.email-label-work
-  background: #41ccb4
+  .title
+    color: #555
 
-.email-label-travel
-  background: #40c365
-
-// Email Item Styles
-
-.email-item
-  padding: 0.9em 1em
-  border-bottom: 1px solid #ddd
-  border-left: 6px solid transparent
-
-.email-avatar
-  border-radius: 3px
-  margin-right: 0.5em
-
-.email-name, .email-subject
-  margin: 0
-
-.email-name
-  text-transform: uppercase
-  color: #999
-
-.email-desc
-  font-size: 80%
-  margin: 0.4em 0
-
-.email-item-selected
-  background: #eee
-
-.email-item-unread
-  border-left: 6px solid #02a3c6
-
-// Email Content Styles
-
-.email-content-header, .email-content-body, .email-content-footer
-  padding: 1em 2em
-
-.email-content-header
-  border-bottom: 1px solid #ddd
-
-.email-content-title
-  margin: 0.5em 0 0
-
-.email-content-subtitle
-  font-size: 1em
-  margin: 0
-  font-weight: normal
-  span
+  .url
     color: #999
 
-.email-content-controls
-  margin-top: 2em
-  text-align: right
-  .secondary-button
-    margin-bottom: 0.3em
+  .item-selected
+    background: #eee
+
+#main
+  .devel-content-header, .devel-content-body, .devel-content-footer
+    padding: 1em 2em
+  
+  .devel-content-header
+    border-bottom: 1px solid #ddd
+    // .switch
+    //   margin: 0
+    //   width: 120px
+    //   background: #888
+    //   span
+    //     color: #fff
+    //     font-weight: normal
+    .title
+      margin: 0.5em 0 0
+    .specs
+      margin-top: 1em
+      td
+        padding-right: 1.5em
+        padding-bottom: .5em
+      td.name
+        font-weight: bolder
+      a.action
+        text-decoration: underline
+        color: hsla(29, 84%, 48%, 1)
+      button
+        $button-separation: 1em
+        margin: 0 $button-separation/2
+        &:first-child
+          margin: 0 $button-separation/2 0 0
+        &:last-child
+          margin: 0 0 0 $button-separation/2
+        &:only-child
+          margin: 0
+
 
 @media (max-width: 867px)
   #list, #main
@@ -179,6 +120,6 @@ a
     display: none
   #nav.active .nav-inner
     display: block
-  .email-avatar
+  .devel-avatar
     width: 40px
     height: 40px
