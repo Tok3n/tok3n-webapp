@@ -114,13 +114,6 @@ module.exports = (grunt) ->
 			jquery:
 				src: comp + 'jquery/jquery.js'
 				dest: js + 'jquery.js'
-			# Distr files
-			distzepto:
-				src: '<%= uglify.zepto.dest %>'
-				dest: dist + 'zepto-pack-min.js'
-			distjquery:
-				src: '<%= uglify.jquery.dest %>'
-				dest: dist + 'jquery-pack-min.js'
 		
 		license:
 			parsley:
