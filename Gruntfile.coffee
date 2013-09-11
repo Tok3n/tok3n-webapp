@@ -60,7 +60,8 @@ module.exports = (grunt) ->
 		popup: grunt.file.readJSON comp + 'magnific-popup/bower.json'
 		
 
-		# TODO: Get from Bower if avaliable
+		# There must be fancier ways, which I'll be glad to learn :D
+		# Please fork
 		shell:
 			files: 
 				command: curlArray http_files
@@ -71,6 +72,10 @@ module.exports = (grunt) ->
 				options:
 					stdout: true
 				command: 'rsync -ax --del --exclude components public/* ' + dist
+			rmcss:
+				command: 'rm -f ' + dist + 'css/base.css ' + dist + 'css/main.css ' + dist + 'config.rb'
+			rmjs:
+				command: 'find ' + dist + "js -maxdepth 1 -type f ! -iname '*-pack-min.js' -delete"
 
 		
 		copy:
@@ -311,6 +316,37 @@ module.exports = (grunt) ->
 				]
 		cssmin:
 			dist:
+				options:
+					banner: [
+						'/*!'
+						' *  TTTTTTTTTTTTTTTTTTTTTTT              kkkkkkkk           333333333333333'
+						' *  T:::::::::::::::::::::T              k::::::k          3:::::::::::::::33'
+						' *  T:::::::::::::::::::::T              k::::::k          3::::::33333::::::3'
+						' *  T:::::TT:::::::TT:::::T              k::::::k          3333333     3:::::3'
+						' *  TTTTTT  T:::::T  TTTTTTooooooooooo    k:::::k    kkkkkkk           3:::::3nnnn  nnnnnnnn'
+						' *          T:::::T      oo:::::::::::oo  k:::::k   k:::::k            3:::::3n:::nn::::::::nn'
+						' *          T:::::T     o:::::::::::::::o k:::::k  k:::::k     33333333:::::3 n::::::::::::::nn'
+						' *          T:::::T     o:::::ooooo:::::o k:::::k k:::::k      3:::::::::::3  nn:::::::::::::::n'
+						' *          T:::::T     o::::o     o::::o k::::::k:::::k       33333333:::::3   n:::::nnnn:::::n'
+						' *          T:::::T     o::::o     o::::o k:::::::::::k                3:::::3  n::::n    n::::n'
+						' *          T:::::T     o::::o     o::::o k:::::::::::k                3:::::3  n::::n    n::::n'
+						' *          T:::::T     o::::o     o::::o k::::::k:::::k               3:::::3  n::::n    n::::n'
+						' *        TT:::::::TT   o:::::ooooo:::::ok::::::k k:::::k  3333333     3:::::3  n::::n    n::::n'
+						' *        T:::::::::T   o:::::::::::::::ok::::::k  k:::::k 3::::::33333::::::3  n::::n    n::::n'
+						' *        T:::::::::T    oo:::::::::::oo k::::::k   k:::::k3:::::::::::::::33   n::::n    n::::n'
+						' *        TTTTTTTTTTT      ooooooooooo   kkkkkkkk    kkkkkkk333333333333333     nnnnnn    nnnnnn'
+						' *'
+						' * <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>'
+						' * <%= pkg.description %>'
+						' * Copyright <%= grunt.template.today("yyyy") %> Tok3n, LLC. All rights reserved.'
+						' * Licensed under the MIT License'
+						' * https://github.com/Tok3n/tok3n-webapp/blob/master/LICENSE'
+						' *'
+						' * Thanks for stopping by!'
+						' * please refer to the full SASS in (../sass/style.sass) for complete code and licenses'
+						' *'
+						' */'
+					].join '\n'
 				expand: true,
 				cwd: 'dist/css/'
 				src: ['*.css', '!*-min.css']
@@ -367,5 +403,4 @@ module.exports = (grunt) ->
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'server',  ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify']
-	@registerTask 'dist', ['shell:index', 'shell:dist', 'cssmin:dist', 'replace:dist', 'replace:zepto', 'replace:jquery']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'shell:index', 'shell:dist', 'shell:rmcss', 'shell:rmjs', 'cssmin:dist', 'replace:dist', 'replace:zepto', 'replace:jquery']
