@@ -1435,7 +1435,7 @@ a {
 }
 
 /* line 15, ../sass/_base.sass */
-.nav-wrap {
+#top {
   position: relative;
   z-index: 2;
 }
@@ -1452,7 +1452,7 @@ a {
   border-bottom: 1px solid rgba(65, 20, 133, 0.3);
 }
 /* line 27, ../sass/_base.sass */
-.top-nav .nav-content-wrap {
+.top-nav .nav-wrap {
   padding: 0 1.9em;
 }
 /* line 31, ../sass/_base.sass */
