@@ -1,5 +1,10 @@
 {
-    "box-sizing"               : false,
-    "display-property-grouping": false,
-    "star-property-hack"       : false
+    "ids"                       : false,
+    "overqualified-elements"    : false,
+    "box-model"                 : false,
+    "zero-units": false,
+    "display-property-grouping" : false,
+    "fallback-colors"           : false,
+    "compatible-vendor-prefixes": false
+
 }

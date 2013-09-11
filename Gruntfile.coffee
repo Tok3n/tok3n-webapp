@@ -218,7 +218,10 @@ module.exports = (grunt) ->
 			options:
 				csslintrc: '.csslintrc'
 			files:
-				src: [css + 'main.css']
+				src: [
+					css + 'base.css'
+					css + 'main.css'
+				]
 				
 		concat:
 			options:
@@ -287,6 +290,10 @@ module.exports = (grunt) ->
 						from: '<script src="http://localhost:35729/livereload.js"></script>'
 						to: "<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>"
 					}
+					{
+						from: 'css/style.css'
+						to: 'css/style-min.css'
+					}
 				]
 			jquery:
 				src: '<%= uglify.jquery.dest %>'
@@ -302,6 +309,13 @@ module.exports = (grunt) ->
 					from: ',/*!'
 					to: ',\n/*!'
 				]
+		cssmin:
+			dist:
+				expand: true,
+				cwd: 'dist/css/'
+				src: ['*.css', '!*-min.css']
+				dest: 'dist/css/'
+				ext: '-min.css'
 
 		watch:
 			options:
@@ -345,6 +359,7 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-contrib-copy'
 	@loadNpmTasks 'grunt-contrib-uglify'
 	@loadNpmTasks 'grunt-contrib-watch'
+	@loadNpmTasks 'grunt-contrib-cssmin'
 	# @loadNpmTasks 'grunt-replace'
 	@loadNpmTasks 'grunt-coffee-redux'
 	@loadNpmTasks 'grunt-shell'
@@ -353,4 +368,4 @@ module.exports = (grunt) ->
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
 	@registerTask 'server',  ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify']
-	@registerTask 'dist', ['shell:index', 'shell:dist', 'replace:dist', 'replace:zepto', 'replace:jquery']
+	@registerTask 'dist', ['shell:index', 'shell:dist', 'cssmin:dist', 'replace:dist', 'replace:zepto', 'replace:jquery']

@@ -1,5 +1,12 @@
+@import 'compass/css3'
+@import 'compass/typography'
+@import 'helpers', 'type'
+
 body
+  font-family: "ff-dagny-web-pro"
   color: #333
+  a
+    +link-colors(#434cd3, #636bd4, #ba7f29)
 
 a
   text-decoration: none
@@ -22,6 +29,7 @@ $button-separation: .5em
   width: 100%
   letter-spacing: normal
   position: fixed
+  border-bottom: 1px solid #411485
   border-bottom: 1px solid hsla(264,74,30,.3)
   
   .nav-wrap

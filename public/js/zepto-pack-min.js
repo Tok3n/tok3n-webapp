@@ -1,5 +1,5 @@
 /*!
- * tok3n-webapp v0.0.1 - 2013-09-09
+ * tok3n-webapp v0.0.1 - 2013-09-10
  * Front-end for Tok3n Webapp
  * Copyright 2013 Tok3n, LLC. All rights reserved.
  * Licensed under the MIT License

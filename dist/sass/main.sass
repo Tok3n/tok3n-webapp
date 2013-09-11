@@ -1,3 +1,7 @@
+@import 'compass/css3'
+@import 'compass/typography'
+@import 'helpers', 'type'
+
 #nav
   .pure-menu
     background: transparent
@@ -5,10 +9,11 @@
     text-align: left
     a
       &:hover, &:focus
-        background: rgb(55, 60, 90)
+        background: #373c5a
       color: #fff
       margin-left: 0
       .title
+        color: #fff
         color: white(.7)
         margin-left: .5em
       .icon
@@ -20,6 +25,7 @@
     padding: 0.9em 1.4em 0.9em 1.2em
     border-bottom: 1px solid #ddd
     &:hover
+      background: #4da1ef
       background: hsla(209, 84%, 62%, 0.3)
     .info
       overflow: hidden
