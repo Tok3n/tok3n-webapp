@@ -6,7 +6,7 @@ module.exports = (grunt) ->
 	sass = 'public/sass/'
 	js = 'public/js/'
 	coffee = 'public/coffee/'
-	dist = 'dist/'
+	dist = '../tok3n-static/public/'
 
 	# Raw from github or cdn
 	ladda = 'https://raw.github.com/hakimel/Ladda/master/dist/'
