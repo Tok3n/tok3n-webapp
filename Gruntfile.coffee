@@ -420,7 +420,6 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-shell'
 	@loadNpmTasks 'grunt-text-replace'
 	@loadNpmTasks 'grunt-s3-sync'
-	@loadNpmTasks 'grunt-cdn'
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
