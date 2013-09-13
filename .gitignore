@@ -16,6 +16,7 @@ node_modules/
 public/components
 .env
 .sass-cache
+.leveldb
 
 # OS generated files #
 ######################

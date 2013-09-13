@@ -30,10 +30,12 @@
     "bower": "~1.2.4",
     "uglify-js": "~2.4.0",
     "grunt-replace": "~0.4.4",
-    "grunt-text-replace": "~0.3.7"
+    "grunt-text-replace": "~0.3.7",
+    "grunt-s3-sync": "~0.3.1"
   },
   "dependencies": {
     "blade": "~3.2.6",
-    "express": "~3.2.6"
+    "express": "~3.2.6",
+    "grunt-azure-cdn-deploy": "~0.1.0"
   }
 }

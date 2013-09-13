@@ -6,18 +6,19 @@ module.exports = (grunt) ->
 	sass = 'public/sass/'
 	js = 'public/js/'
 	coffee = 'public/coffee/'
-	dist = '../tok3n-static/public/'
+	dist = 'dist/'
 
 	# Raw from github or cdn
 	ladda = 'https://raw.github.com/hakimel/Ladda/master/dist/'
 	pure_http = 'http://yui.yahooapis.com/pure/<%= pure.version %>/'
+	cdn_url = 'http://tok3n-static.s3-website-us-east-1.amazonaws.com/<%= pkg.version %>/'
 
 	# Bower js files
 	misc = [
 		comp + 'modernizr/modernizr.js'
 		# comp + 'Chart.js/Chart.js'
 		# comp + 'selectize/selectize.js'
-		# comp + 'magnific-popup/dist/jquery.magnific-popup.js'
+		comp + 'magnific-popup/dist/jquery.magnific-popup.js'
 	]
 	
 	# All unlicensed not added directly (main.js & zepto)
@@ -45,7 +46,6 @@ module.exports = (grunt) ->
 		"curl " + url + " > '" + file + "'"
 	curlArray = (arr) ->
 		(curlSave elem.url, elem.file for elem in arr).join '&&'
-		
 
 
 	@initConfig
@@ -58,6 +58,7 @@ module.exports = (grunt) ->
 		yepnope: grunt.file.readJSON comp + 'yepnope/.bower.json'
 		zeptojs: grunt.file.readJSON comp + 'zeptojs/.bower.json'
 		popup: grunt.file.readJSON comp + 'magnific-popup/bower.json'
+		aws: grunt.file.readJSON '/Users/aficio/Dropbox/Development/Amazon/tok3n-aficio.json'
 		
 
 		# There must be fancier ways, which I'll be glad to learn :D
@@ -71,7 +72,7 @@ module.exports = (grunt) ->
 			dist:
 				options:
 					stdout: true
-				command: 'rsync -ax --del --exclude components public/* ' + dist
+				command: 'rsync -ax --exclude components public/* ' + dist
 			rmcss:
 				command: 'rm -f ' + dist + 'css/base.css ' + dist + 'css/main.css ' + dist + 'config.rb'
 			rmjs:
@@ -254,7 +255,7 @@ module.exports = (grunt) ->
 			options:
 				mangle: true
 				compress: true
-				report: 'gzip'
+				# report: 'gzip'
 				preserveComments: 'some'
 				banner: [
 					'/*!'
@@ -296,7 +297,11 @@ module.exports = (grunt) ->
 					}
 					{
 						from: 'css/style.css'
-						to: 'css/style-min.css'
+						to: cdn_url + 'css/style-min.css'
+					}
+					{
+						from: 'e.src="js/"'
+						to: 'e.src="' + cdn_url + 'js/"'
 					}
 				]
 			jquery:
@@ -313,6 +318,7 @@ module.exports = (grunt) ->
 					from: ',/*!'
 					to: ',\n/*!'
 				]
+
 		cssmin:
 			dist:
 				options:
@@ -362,7 +368,21 @@ module.exports = (grunt) ->
 			sass:
 				files: sass + '*'
 				tasks: ['compass:dev', 'csslint']
-				
+
+		"s3-sync":
+			options:
+				key: '<%= aws.key %>'
+				secret: '<%= aws.secret %>'
+				bucket: '<%= aws.bucket %>'
+			dist:
+				files: [
+					{
+						root: dist
+						src: dist + '**'
+						dest: '/<%= pkg.version %>/'
+					}
+				]
+
 		
 	@registerMultiTask "license", "Stamps license banners on files.", ->
 		options = @options(banner: "")
@@ -399,7 +419,9 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-coffee-redux'
 	@loadNpmTasks 'grunt-shell'
 	@loadNpmTasks 'grunt-text-replace'
+	@loadNpmTasks 'grunt-s3-sync'
+	@loadNpmTasks 'grunt-cdn'
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'shell:index', 'shell:dist', 'shell:rmcss', 'shell:rmjs', 'cssmin:dist', 'replace:dist', 'replace:zepto', 'replace:jquery']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'shell:index', 'shell:dist', 'shell:rmcss', 'shell:rmjs', 'cssmin:dist', 'replace:dist', 'replace:zepto', 'replace:jquery', 's3-sync:dist']

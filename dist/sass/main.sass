@@ -1,0 +1,89 @@
+@import 'compass/css3'
+@import 'compass/typography'
+@import 'helpers', 'type'
+
+#nav
+  .pure-menu
+    background: transparent
+    border: none
+    text-align: left
+    a
+      &:hover, &:focus
+        background: #373c5a
+      color: #fff
+      margin-left: 0
+      .title
+        color: #fff
+        color: white(.7)
+        margin-left: .5em
+      .icon
+        font-size: 120%
+        text-align: center
+
+#list
+  .item
+    padding: 0.9em 1.4em 0.9em 1.2em
+    border-bottom: 1px solid #ddd
+    &:hover
+      background: #4da1ef
+      background: hsla(209, 84%, 62%, 0.3)
+    .info
+      overflow: hidden
+      text-overflow: ellipsis
+      color: #999
+  .new-item
+    height: 40px
+
+  .avatar
+    margin-top: 0.2em
+
+  .title, .url
+    margin: 0
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+  .title
+    color: #555
+
+  .url
+    color: #999
+
+  .item-selected
+    background: #eee
+
+
+#main
+  .devel-content-header, .devel-content-body, .devel-content-footer
+    padding: 1em 2em
+  
+  .devel-content-header
+    border-bottom: 1px solid #ddd
+    // .switch
+    //   margin: 0
+    //   width: 120px
+    //   background: #888
+    //   span
+    //     color: #fff
+    //     font-weight: normal
+    .title
+      margin: 0.5em 0 0
+    .specs
+      margin-top: 1em
+      td
+        padding-right: 1.5em
+        padding-bottom: .5em
+      td.name
+        font-weight: bolder
+      a.action
+        text-decoration: underline
+        color: hsla(29, 84%, 48%, 1)
+      button
+        $button-separation: 1em
+        margin: 0 $button-separation/2
+        &:first-child
+          margin: 0 $button-separation/2 0 0
+        &:last-child
+          margin: 0 0 0 $button-separation/2
+        &:only-child
+          margin: 0
