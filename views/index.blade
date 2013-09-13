@@ -30,89 +30,102 @@ replace block body
           ul
             li
               a(href='#')
-                .icon.pure-u-1-5
-                  i.icon-lock
-                .title.pure-u-4-5 Authorized apps
+                .pure-g-r
+                  .icon.pure-u-1-5
+                    i.icon-lock
+                  .title.pure-u-4-5 Authorized apps
             li
               a(href='#')
-                .icon.pure-u-1-5
-                  i.icon-mobile-phone
-                .title.pure-u-4-5 My devices
+                .pure-g-r
+                  .icon.pure-u-1-5
+                    i.icon-mobile-phone
+                  .title.pure-u-4-5 My devices
             li
               a(href='#')
-                .icon.pure-u-1-5
-                  i.icon-phone
-                .title.pure-u-4-5 My phones
+                .pure-g-r
+                  .icon.pure-u-1-5
+                    i.icon-phone
+                  .title.pure-u-4-5 My phones
             li
               a(href='#')
-                .icon.pure-u-1-5
-                  i.icon-code
-                .title.pure-u-4-5 My integrations
+                .pure-g-r
+                  .icon.pure-u-1-5
+                    i.icon-code
+                  .title.pure-u-4-5 My integrations
             li
               a(href='#')
-                .icon.pure-u-1-5
-                  i.icon-cogs
-                .title.pure-u-4-5 Settings
+                .pure-g-r
+                  .icon.pure-u-1-5
+                    i.icon-cogs
+                  .title.pure-u-4-5 Settings
             
-    #list.pure-u-1
-      .item.item-selected.pure-g
-        .avatar.pure-u-1-4
-          img(alt='ttamayo\'s avatar', src='/img/common/tilo-avatar.png', height='32', width='32')
-        .info.pure-u-3-4
-          h4.title ttamayo.com
-          small.url http://ttamayo.com
-      .item.pure-g
-        .avatar.pure-u-1-4
-          img(alt='Offertame\'s avatar', src='/img/common/ericf-avatar.png', height='32', width='32')
-        .info.pure-u-3-4
-          h4.title Offertame
-          small.url http://offerta.me/a/very/long/url/is/good/for/css/testing
-      
-    #main.pure-u-1
-      .devel-content-header.pure-g
+    #list.pure-g-r
+      .pure-u-1
+        .item.item-selected.pure-g
+          .avatar.pure-u-1-4
+            img(alt='ttamayo\'s avatar', src='/img/common/tilo-avatar.png', height='32', width='32')
+          .info.pure-u-3-4
+            h4.title ttamayo.com
+            small.url http://ttamayo.com
+        .item.pure-g
+          .avatar.pure-u-1-4
+            img(alt='Offertame\'s avatar', src='/img/common/ericf-avatar.png', height='32', width='32')
+          .info.pure-u-3-4
+            h4.title Offertame
+            small.url http://offerta.me/a/very/long/url/is/good/for/css/testing
+        .item.pure-g.new
+          .pure-u-1-4
+            h4 +
+          .pure-u-3-4
+            h4.title New integration
+
+    #main.pure-g-r
+      .pure-u-1
+        .devel-content-header.pure-g
+          .pure-u-1
+            h1.title ttamayo.com
+            //- p.devel-content-subtitle
+            //-   | Status: 
+            //-   a(href='#') Active
+            //- p.devel-content-subtitle
+            //-   | Plan: 
+            //-   a(href='#') Early adopter 
+            table.specs
+              tr
+                td.name Status:
+                td
+                  button.pure-button.pure-button-success.pure-button-small(href='#') Active
+                  button.pure-button.pure-button-error.pure-button-small(href='#') Halted
+                  button.pure-button.pure-button-warning.pure-button-small(href='#') Running out of users
+              tr
+                td.name Plan:
+                td
+                  a(href='#') Early Adopter
+                  |  &mdash;  
+                  a.action(href='#') upgrade
+              tr
+                td.name Public key:
+                td sjMYqglQkAY3gkN
+              tr
+                td.name Secret:
+                td
+                  a.action(href='#') show
+              tr
+                td.name URL:
+                td
+                  a(href='#') http://ttamayo.com/app
+              tr
+                td.name Callback:
+                td
+                  a(href='#') http://ttamayo.com/callback
+
+            //- label.switch.checkbox.toggle.candy(onclick='')
+            //-   input(type='checkbox')
+            //-   span
+            //-     span Off
+            //-     span On
+            //-   a.slide-button
+
+      .devel-content-body.pure-g
         .pure-u-1
-          h1.title ttamayo.com
-          //- p.devel-content-subtitle
-          //-   | Status: 
-          //-   a(href='#') Active
-          //- p.devel-content-subtitle
-          //-   | Plan: 
-          //-   a(href='#') Early adopter 
-          table.specs
-            tr
-              td.name Status:
-              td
-                button.pure-button.pure-button-success.pure-button-small(href='#') Active
-                button.pure-button.pure-button-error.pure-button-small(href='#') Halted
-                button.pure-button.pure-button-warning.pure-button-small(href='#') Running out of users
-            tr
-              td.name Plan:
-              td
-                a(href='#') Early Adopter
-                |  &mdash;  
-                a.action(href='#') upgrade
-            tr
-              td.name Public key:
-              td sjMYqglQkAY3gkN
-            tr
-              td.name Secret:
-              td
-                a.action(href='#') show
-            tr
-              td.name URL:
-              td
-                a(href='#') http://ttamayo.com/app
-            tr
-              td.name Callback:
-              td
-                a(href='#') http://ttamayo.com/callback
-
-          //- label.switch.checkbox.toggle.candy(onclick='')
-          //-   input(type='checkbox')
-          //-   span
-          //-     span Off
-          //-     span On
-          //-   a.slide-button
-
-      .devel-content-body
-        h3 32 Active users
+          h3 32 Active users

@@ -1,32 +1,40 @@
+/* line 13, ../sass/_type.sass */
 h1, h2, h3 {
   font-family: "adelle";
   color: #3d418f;
 }
 
+/* line 5, ../sass/base.sass */
 body {
   font-family: "ff-dagny-web-pro";
   color: #333333;
 }
+/* line 8, ../sass/base.sass */
 body a {
   color: #434cd3;
 }
+/* line 24, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
 body a:hover {
   color: #636bd4;
 }
+/* line 27, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
 body a:active {
   color: #ba7f29;
 }
 
+/* line 11, ../sass/base.sass */
 a {
   text-decoration: none;
   color: #1b98f8;
 }
 
+/* line 23, ../sass/base.sass */
 #top {
   position: relative;
   z-index: 2;
 }
 
+/* line 27, ../sass/base.sass */
 .top-nav {
   -webkit-box-shadow: inset 0 -12px 30px 0 rgba(23, 13, 38, 0.15);
   -moz-box-shadow: inset 0 -12px 30px 0 rgba(23, 13, 38, 0.15);
@@ -38,9 +46,11 @@ a {
   border-bottom: 1px solid #411485;
   border-bottom: 1px solid rgba(65, 20, 133, 0.3);
 }
+/* line 36, ../sass/base.sass */
 .top-nav .nav-wrap {
   padding: 0 1.9em;
 }
+/* line 40, ../sass/base.sass */
 .top-nav header .logo {
   margin-top: 0.61em;
   margin-bottom: 0.61em;
@@ -49,51 +59,65 @@ a {
   background-image: url('../img/logo.png?1376272590');
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
+  /* line 40, ../sass/base.sass */
   .top-nav header .logo {
     background-image: url('../img/logo_hd.png?1376272590');
     background-size: 111px 40px;
   }
 }
+/* line 46, ../sass/base.sass */
 .top-nav nav {
   margin-top: 12px;
 }
+/* line 48, ../sass/base.sass */
 .top-nav nav .menu {
   text-align: right;
 }
+/* line 50, ../sass/base.sass */
 .top-nav nav .menu ul {
   list-style-type: none;
 }
+/* line 5, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/lists/_inline-list.scss */
 .top-nav nav .menu ul, .top-nav nav .menu ul li {
   margin: 0px;
   padding: 0px;
   display: inline;
 }
+/* line 52, ../sass/base.sass */
 .top-nav nav .menu ul li {
   margin: 0 1.05em;
 }
+/* line 54, ../sass/base.sass */
 .top-nav nav .menu ul li a {
   color: #171947;
   text-decoration: none;
   text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
 }
+/* line 24, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
 .top-nav nav .menu ul li a:hover {
   color: #434cd3;
 }
+/* line 27, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
 .top-nav nav .menu ul li a:active {
   color: #ba7f29;
 }
+/* line 4, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_hover-link.scss */
 .top-nav nav .menu ul li a:hover {
   text-decoration: underline;
 }
+/* line 59, ../sass/base.sass */
 .top-nav nav .menu ul li:first-child {
   margin: 0 1.05em 0 0;
 }
+/* line 61, ../sass/base.sass */
 .top-nav nav .menu ul li:last-child {
   margin: 0 0 0 1.05em;
 }
+/* line 63, ../sass/base.sass */
 .top-nav nav .menu ul li:only-child {
   margin: 0;
 }
+/* line 65, ../sass/base.sass */
 .top-nav nav .menu ul li .settings {
   background: rgba(39, 47, 165, 0.68);
   color: white;
@@ -106,23 +130,29 @@ a {
   -o-transition: background 0.3s ease-out 0;
   transition: background 0.3s ease-out 0;
 }
+/* line 72, ../sass/base.sass */
 .top-nav nav .menu ul li .settings:hover {
   background: rgba(48, 59, 207, 0.9);
 }
+/* line 74, ../sass/base.sass */
 .top-nav nav .menu ul li .settings:active {
   background: rgba(172, 177, 236, 0.9);
 }
+/* line 76, ../sass/base.sass */
 .top-nav nav .menu ul li .settings .icon-cog {
   font-size: 16px;
 }
+/* line 78, ../sass/base.sass */
 .top-nav nav .menu ul li .settings .text {
   margin-left: 0.6em;
   font-family: "ff-dagny-web-pro";
 }
+/* line 81, ../sass/base.sass */
 .top-nav nav .menu ul li .settings .icon-caret-down {
   margin-left: 0.8em;
 }
 
+/* line 88, ../sass/base.sass */
 #layout {
   padding-left: 472px;
   position: relative;
@@ -130,6 +160,7 @@ a {
   z-index: 1;
 }
 
+/* line 94, ../sass/base.sass */
 #nav, #list {
   position: fixed;
   top: 60px;
@@ -137,6 +168,7 @@ a {
   overflow: auto;
 }
 
+/* line 100, ../sass/base.sass */
 #nav {
   margin-left: -472px;
   width: 220px;
@@ -145,8 +177,14 @@ a {
   padding: 2em 0;
 }
 
+/* line 107, ../sass/base.sass */
 #list {
   margin-left: -252px;
   width: 252px;
   border-right: 1px solid #dddddd;
+}
+
+/* line 112, ../sass/base.sass */
+#main {
+  margin-top: 8px;
 }
