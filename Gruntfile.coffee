@@ -357,6 +357,7 @@ module.exports = (grunt) ->
 						replace: true
 						cwd: dist + 'css'
 						src: '*.css'
+						dest: dist + 'css'
 						ext: '-min.css'
 					}
 				]
