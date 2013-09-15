@@ -263,7 +263,7 @@ module.exports = (grunt) ->
 			options:
 				mangle: true
 				compress: true
-				# report: 'gzip'
+				report: 'gzip'
 				preserveComments: 'some'
 				banner: [
 					'/*!'
@@ -320,6 +320,7 @@ module.exports = (grunt) ->
 		cssmin:
 			dist:
 				options:
+					report: 'gzip'
 					banner: [
 						'/*!'
 						' *  TTTTTTTTTTTTTTTTTTTTTTT              kkkkkkkk           333333333333333'
@@ -346,22 +347,26 @@ module.exports = (grunt) ->
 						' * https://github.com/Tok3n/tok3n-webapp/blob/master/LICENSE'
 						' *'
 						' * Thanks for stopping by!'
-						' * please refer to the full SASS in (../sass/style.sass) for complete code and licenses'
+						' * please refer to the full SASS in (../sass/<filename>.sass) for complete code.'
 						' *'
 						' */'
 					].join '\n'
-				expand: true,
-				cwd: dist + 'css'
-				src: ['*.css', '!*-min.css']
-				dest: dist + 'css'
-				ext: '-min.css'
+				files: [
+					{
+						expand: true
+						replace: true
+						cwd: dist + 'css'
+						src: '*.css'
+						ext: '-min.css'
+					}
+				]
 
 		sync:
 			dist:
 				files:[
 					{
 						cwd: 'public'
-						src: ['css/style-min.css', 'sass/**', 'js/*-pack-min.js', 'svg/**', 'index.html']
+						src: ['css/style.css', 'sass/**', 'js/*-pack-min.js', 'svg/**', 'index.html']
 						dest: dist
 					}
 				]
@@ -390,27 +395,38 @@ module.exports = (grunt) ->
 				files: sass + '*'
 				tasks: ['compass:watch', 'csslint']
 
-		"s3-sync":
+		's3-sync':
 			options:
 				key: '<%= aws.key %>'
 				secret: '<%= aws.secret %>'
 				bucket: 'tok3n-static'
-			dist:
+			gzipHeader:
+				headers:
+					'Content-Encoding': 'gzip'
 				files: [
 					{
 						root: dist
-						src: [dist + '**', '!' + dist + 'img/**']
-						dest: '/<%= pkg.version %>/'
-						gzip: true
-						compressionLevel: 9
-					}
-					{
-						root: dist
-						src: dist + 'img/**'
+						src: [dist + 'js/**', dist + 'css/**']
 						dest: '/<%= pkg.version %>/'
 					}
 				]
-
+			nogzip:
+				files: [
+					{
+						root: dist
+						src: [dist + 'img/**', dist + 'svg/**']
+						dest: '/<%= pkg.version %>/'
+					}
+				]
+			gzip:
+				gzip: true
+				files: [
+					{
+						root: dist
+						src: [dist + 'sass/**', dist + 'index.html']
+						dest: '/<%= pkg.version %>/'
+					}
+				]
 		
 	@registerMultiTask "license", "Stamps license banners on files.", ->
 		options = @options(banner: "")
@@ -452,4 +468,4 @@ module.exports = (grunt) ->
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'shell:index', 'sync:dist', 'cssmin:dist', 'replace:dist', 'replace:zepto', 'replace:jquery', 'imagemin:dist', 's3-sync:dist']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'shell:index', 'sync:dist', 'cssmin:dist', 'replace:dist', 'replace:zepto', 'replace:jquery', 'imagemin:dist', 's3-sync']
