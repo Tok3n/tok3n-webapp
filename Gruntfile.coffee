@@ -5,13 +5,15 @@ module.exports = (grunt) ->
 	css = 'public/css/'
 	sass = 'public/sass/'
 	js = 'public/js/'
+	img = 'public/img/'
+	font = 'public/font/'
 	coffee = 'public/coffee/'
 	dist = 'dist/'
 
 	# Raw from github or cdn
 	ladda = 'https://raw.github.com/hakimel/Ladda/master/dist/'
-	pure_http = 'http://yui.yahooapis.com/pure/<%= pure.version %>/'
-	cdn_url = 'http://tok3n-static.s3-website-us-east-1.amazonaws.com/<%= pkg.version %>/'
+	pureHttp = 'http://yui.yahooapis.com/pure/<%= pure.version %>/'
+	cdnUrl = 'http://tok3n-static.s3-website-us-east-1.amazonaws.com/<%= pkg.version %>/'
 
 	# Bower js files
 	misc = [
@@ -35,7 +37,7 @@ module.exports = (grunt) ->
 		{ url: ladda + 'ladda.min.css', file: sass + '_ladda-mis.scss' }
 		{ url: ladda + 'ladda.min.js', file: js + 'ladda.min.js' }
 		{ url: ladda + 'spin.min.js', file: js + 'spin.min.js' }
-		{ url: pure_http + 'pure-min.css', file: sass + '_pure.scss' }
+		{ url: pureHttp + 'pure-min.css', file: sass + '_pure.scss' }
 	]
 		
 	# Regex
@@ -69,15 +71,6 @@ module.exports = (grunt) ->
 			index:
 				# Remember to have a server running!
 				command: curlSave 'http://localhost:5000', dist + 'index.html'
-			dist:
-				options:
-					stdout: true
-				command: 'rsync -ax --exclude components public/* ' + dist
-			rmcss:
-				command: 'rm -f ' + dist + 'css/base.css ' + dist + 'css/main.css ' + dist + 'config.rb'
-			rmjs:
-				command: 'find ' + dist + "js -maxdepth 1 -type f ! -iname '*-pack-min.js' -delete"
-
 		
 		copy:
 			# CSS
@@ -89,7 +82,8 @@ module.exports = (grunt) ->
 					{
 						expand: true
 						filter: 'isFile'
-						src: [comp + 'pure/src/**/css/*.css']
+						cwd: comp
+						src: 'pure/src/**/css/*.css'
 						dest: sass + 'pure'
 						rename: (dest, src) ->
 							dest + '/_' + src.match(css_file)[1] + '.scss'
@@ -211,15 +205,29 @@ module.exports = (grunt) ->
 				dest: js + 'main.js'
 		
 		compass:
+			options:
+				outputStyle: 'expanded'
+				raw: 'preferred_syntax = :sass\nSass::Script::Number.precision = 2\n'
+				cssDir: css
+				sassDir: sass
+				imagesDir: img
+				fontsDir: font
+				javascriptsDir: js
 			dev:
 				options:
-					config: 'public/config.rb'
-					basePath: 'public'
+					relativeAssets: true
+					force: true
+			watch:
+				options:
+					relativeAssets: true
 			production:
 				options:
-					config: 'public/config.rb'
-					basePath: 'public'
-					environment: 'production'
+					relativeAssets: false
+					httpPath: cdnUrl
+					httpJavascriptsPath: cdnUrl + 'js'
+					httpStylesheetsPath: cdnUrl + 'css'
+					httpImagesPath: cdnUrl + 'img'
+					httpFontsPath: cdnUrl + 'font'
 		
 		csslint:
 			options:
@@ -270,16 +278,6 @@ module.exports = (grunt) ->
 			jquery:
 				src: '<%= concat.jquery.dest %>'
 				dest: js + 'jquery-pack-min.js'
-
-		# replace:
-		# 	dist:
-		# 		options:
-		# 			variables:
-		# 				'devel': '-min'
-		# 			prefix: replacePrefix
-		# 		files:
-		# 			src: dist + 'index.html'
-		# 			dest: dist + 'index.html'
 		
 		# Replace js loader text
 		replace:
@@ -297,11 +295,11 @@ module.exports = (grunt) ->
 					}
 					{
 						from: 'css/style.css'
-						to: cdn_url + 'css/style-min.css'
+						to: cdnUrl + 'css/style-min.css'
 					}
 					{
 						from: 'e.src="js/"'
-						to: 'e.src="' + cdn_url + 'js/"'
+						to: 'e.src="' + cdnUrl + 'js/"'
 					}
 				]
 			jquery:
@@ -353,10 +351,33 @@ module.exports = (grunt) ->
 						' */'
 					].join '\n'
 				expand: true,
-				cwd: 'dist/css/'
+				cwd: dist + 'css'
 				src: ['*.css', '!*-min.css']
-				dest: 'dist/css/'
+				dest: dist + 'css'
 				ext: '-min.css'
+
+		sync:
+			dist:
+				files:[
+					{
+						cwd: 'public'
+						src: ['css/style-min.css', 'sass/**', 'js/*-pack-min.js', 'svg/**', 'index.html']
+						dest: dist
+					}
+				]
+
+		imagemin:
+			dist:
+				options:
+					optimizationLevel: 3
+				files: [
+					{
+						expand: true
+						cwd: img
+						src: '{,*/}*.{png,jpg,jpeg}'
+						dest: dist + 'img'
+					}
+				]
 
 		watch:
 			options:
@@ -367,18 +388,25 @@ module.exports = (grunt) ->
 				tasks: ['coffeeredux', 'concat']
 			sass:
 				files: sass + '*'
-				tasks: ['compass:dev', 'csslint']
+				tasks: ['compass:watch', 'csslint']
 
 		"s3-sync":
 			options:
 				key: '<%= aws.key %>'
 				secret: '<%= aws.secret %>'
-				bucket: '<%= aws.bucket %>'
+				bucket: 'tok3n-static'
 			dist:
 				files: [
 					{
 						root: dist
-						src: dist + '**'
+						src: [dist + '**', '!' + dist + 'img/**']
+						dest: '/<%= pkg.version %>/'
+						gzip: true
+						compressionLevel: 9
+					}
+					{
+						root: dist
+						src: dist + 'img/**'
 						dest: '/<%= pkg.version %>/'
 					}
 				]
@@ -415,12 +443,13 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-contrib-uglify'
 	@loadNpmTasks 'grunt-contrib-watch'
 	@loadNpmTasks 'grunt-contrib-cssmin'
-	# @loadNpmTasks 'grunt-replace'
+	@loadNpmTasks 'grunt-contrib-imagemin'
 	@loadNpmTasks 'grunt-coffee-redux'
 	@loadNpmTasks 'grunt-shell'
 	@loadNpmTasks 'grunt-text-replace'
 	@loadNpmTasks 'grunt-s3-sync'
+	@loadNpmTasks 'grunt-sync'
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'shell:index', 'shell:dist', 'shell:rmcss', 'shell:rmjs', 'cssmin:dist', 'replace:dist', 'replace:zepto', 'replace:jquery', 's3-sync:dist']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'shell:index', 'sync:dist', 'cssmin:dist', 'replace:dist', 'replace:zepto', 'replace:jquery', 'imagemin:dist', 's3-sync:dist']
