@@ -18,6 +18,8 @@ module.exports = (grunt) ->
 	# Bower js files
 	misc = [
 		comp + 'modernizr/modernizr.js'
+		comp + 'underscore/underscore.js'
+		comp + 'backbone/backbone.js'
 		comp + 'eventEmitter/EventEmitter.js'
 		# comp + 'Chart.js/Chart.js'
 		# comp + 'selectize/selectize.js'
@@ -33,7 +35,6 @@ module.exports = (grunt) ->
 		# '<%= copy.yepnope.dest %>'
 		'<%= copy.parsley.dest %>'
 		'<%= copy.popupjs.dest %>'
-		# '<%= copy.underscore.dest %>'
 	]
 	
 	# Files to download with curl
@@ -236,6 +237,7 @@ module.exports = (grunt) ->
 					relativeAssets: true
 			production:
 				options:
+					force: true
 					relativeAssets: false
 					httpPath: cdnUrl
 					httpJavascriptsPath: cdnUrl + 'js'
@@ -300,8 +302,8 @@ module.exports = (grunt) ->
 				overwrite: true
 				replacements: [
 					{
-						from: '-pack.js'
-						to: '-pack-min.js'
+						from: 'js/jquery-pack.js'
+						to: cdnUrl + 'js/jquery-pack-min.js'
 					}
 					{
 						from: '<script src="http://localhost:35729/livereload.js"></script>'
@@ -310,10 +312,6 @@ module.exports = (grunt) ->
 					{
 						from: 'css/style.css'
 						to: cdnUrl + 'css/style-min.css'
-					}
-					{
-						from: 'e.src="js/"'
-						to: 'e.src="' + cdnUrl + 'js/"'
 					}
 				]
 			# Sometimes compass does not compile correctly with the change to absolute refs, this is a hackish and temporal solution
@@ -380,7 +378,7 @@ module.exports = (grunt) ->
 						expand: true
 						replace: true
 						cwd: dist + 'css'
-						src: ['.css', '!*-min.css']
+						src: ['*.css', '!*-min.css']
 						dest: dist + 'css'
 						ext: '-min.css'
 					}
