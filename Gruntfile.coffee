@@ -13,14 +13,19 @@ module.exports = (grunt) ->
 	# Raw from github or cdn
 	ladda = 'https://raw.github.com/hakimel/Ladda/master/dist/'
 	pureHttp = 'http://yui.yahooapis.com/pure/<%= pure.version %>/'
-	cdnUrl = 'http://tok3n-static.s3-website-us-east-1.amazonaws.com/<%= pkg.version %>/'
+	cdnUrl = '//tok3n-static.s3-website-us-east-1.amazonaws.com/<%= pkg.version %>/'
 
 	# Bower js files
 	misc = [
 		comp + 'modernizr/modernizr.js'
+		comp + 'eventEmitter/EventEmitter.js'
 		# comp + 'Chart.js/Chart.js'
 		# comp + 'selectize/selectize.js'
 		comp + 'magnific-popup/dist/jquery.magnific-popup.js'
+		comp + 'jquery-mousewheel/jquery.mousewheel.js'
+		comp + 'Tourist.js/tourist.js'
+		# comp + 'chardin.js/chardinjs.js'
+		# comp + 'intro.js/intro.js'
 	]
 	
 	# All unlicensed not added directly (main.js & zepto)
@@ -95,6 +100,15 @@ module.exports = (grunt) ->
 			popupcss:
 				src: comp + 'magnific-popup/dist/magnific-popup.css'
 				dest: sass + '_magnific-popup.scss'
+			# chardincss:
+			# 	src: comp + 'chardin.js/chardinjs.scss'
+			# 	dest: sass + '_chardinjs.scss'
+			# introjscss:
+			# 	src: comp + 'intro.js/introjs.css'
+			# 	dest: sass + '_introjs.scss'
+			touristcss:
+				src: comp + 'Tourist.js/tourist.css'
+				dest: sass + '_tourist.scss'
 			popupjs:
 				src: comp + 'magnific-popup/dist/jquery.magnific-popup.js'
 				dest: js + 'magnific-popup.js'
@@ -291,7 +305,7 @@ module.exports = (grunt) ->
 					}
 					{
 						from: '<script src="http://localhost:35729/livereload.js"></script>'
-						to: "<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>"
+						to: '<script type="application/dart" src="/code/Dashboard.dart"></script>'+'<script src="/packages/browser/dart.js"></script>'+"<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>"
 					}
 					{
 						from: 'css/style.css'
@@ -300,6 +314,16 @@ module.exports = (grunt) ->
 					{
 						from: 'e.src="js/"'
 						to: 'e.src="' + cdnUrl + 'js/"'
+					}
+				]
+			# Sometimes compass does not compile correctly with the change to absolute refs, this is a hackish and temporal solution
+			css:
+				src: dist + 'css/style.css'
+				overwrite: true
+				replacements: [
+					{
+						from: '../img/'
+						to: cdnUrl + 'img/'
 					}
 				]
 			jquery:
@@ -356,7 +380,7 @@ module.exports = (grunt) ->
 						expand: true
 						replace: true
 						cwd: dist + 'css'
-						src: '*.css'
+						src: ['.css', '!*-min.css']
 						dest: dist + 'css'
 						ext: '-min.css'
 					}
@@ -469,4 +493,4 @@ module.exports = (grunt) ->
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'shell:index', 'sync:dist', 'cssmin:dist', 'replace:dist', 'replace:zepto', 'replace:jquery', 'imagemin:dist', 's3-sync']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'shell:index', 'sync:dist', 'replace', 'cssmin:dist', 'imagemin:dist', 's3-sync']

@@ -5,6 +5,6 @@
     "zero-units": false,
     "display-property-grouping" : false,
     "fallback-colors"           : false,
-    "compatible-vendor-prefixes": false
-
+    "compatible-vendor-prefixes": false,
+    "duplicate-properties"      : false
 }

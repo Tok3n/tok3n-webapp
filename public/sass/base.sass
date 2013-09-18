@@ -1,19 +1,52 @@
 @import 'compass/css3'
+@import "compass/css3/user-interface"
 @import 'compass/typography'
-@import 'helpers', 'type'
+@import 'helpers'
+$experimental-support-for-svg: true
 
 body
   font-family: "ff-dagny-web-pro"
   color: #333
+  font-size: 145%
+
   a
     +link-colors(#434cd3, #636bd4, #ba7f29)
+
+h1, h2, h3, h4, h5, h6
+  font-family: "adelle"
+  color: hsla(237,40,40,1)
+
+// input, input[type="text"], input[type="radio"], isindex, .uneditable-input
+//   padding: 4px
+//   border-bottom-width: 1px
+//   border-bottom-style: solid
+//   border-bottom-color: #CCC
+//   border-left-width: 1px
+//   border-left-style: solid
+//   border-left-color: #CCC
+//   border-right-width: 1px
+//   border-right-style: solid
+//   border-right-color: #CCC
+//   border-top-width: 1px
+//   border-top-style: solid
+//   border-top-color: #CCC
+//   border-top-left-radius: 3px
+//   border-top-right-radius: 3px
+//   border-bottom-left-radius: 3px
+//   border-bottom-right-radius: 3px
+
+// .input-append .add-on, .input-append .btn
+//   margin-left: -6px
+
+// input[type=checkbox]
+//   -webkit-appearance: checkbox
 
 a
   text-decoration: none
   color: #1b98f8
 
 // LAYOUT CSS
-$top-nav-height: 60px //- hardcoded!!!!!!
+$top-nav-height: 58px //- hardcoded!!!!!!
 $logo-width: 100px
 $logo-proportion: .36
 $nav-separation: 2.1em
@@ -38,7 +71,7 @@ $nav-margin-top: 11px
   
   header
     .logo
-      +hMargin(1)
+      margin: 0.61em 0
       height: 40px
       width: 111px
       +hr-image("logo.png", "logo_hd.png")
@@ -105,12 +138,33 @@ $left-width: $menu-width + $apps-width
   padding: 2em 0
 
 #list
-  margin-left: $apps-width * -1
   width: $apps-width
   border-right: 1px solid #ddd
 
+#content
+  margin-left: $apps-width * -1
+
 #main
-  margin-top: $nav-margin-top - 4px // Adjusted manually
+  margin-left: $apps-width
+
+.white-popup
+  position: relative
+  background: #FFF
+  padding: 20px
+  width: auto
+  max-width: 500px
+  margin: 20px auto
+  .create-button
+    margin-bottom: 0
+  .title
+    margin-top: .5em
+    text-align: center
+  label.align-top
+    margin-top: .4em
+  .web-toggle
+    display: none
+
+
 
 // @media (max-width: 867px)
 //   #list, #main

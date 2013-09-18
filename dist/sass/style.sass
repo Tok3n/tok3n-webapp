@@ -1,8 +1,21 @@
-@import 'pure'
-@import 'compass/css3'
-@import 'compass/typography'
-@import 'helpers', 'type'
+// Global variables
+$experimental-support-for-svg: true
 
-@import 'extensions'
+// Required #1
+@import 'compass/css3'
+@import "compass/css3/user-interface"
+@import 'compass/typography'
+
+// Frameworks
+@import '../components/bootstrap-sass/lib/bootstrap'
+
+// Required #2
+@import 'helpers'
+
+// Plugins and extensions
+@import 'tourist'
+@import 'magnific-popup'
+
+// Application partials
 @import 'base'
 @import 'main'

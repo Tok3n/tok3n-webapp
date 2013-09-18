@@ -19,7 +19,21 @@ html.no-js(lang='en')
 
   body
     block upper
-
+      #top
+        .top-nav
+          .nav-wrap.row
+            header.col-md-4
+              .logo(alt='Tok3n')
+            nav.col-md-8
+              .menu
+                ul
+                  li
+                    a(href='#') Developers
+                  li
+                    button.settings.btn(data-intro='Click here to add your first integration.', data-position='bottom')
+                      i.icon-user
+                      span.text V&iacute;ctor Gonz&aacute;lez
+                      i.icon-caret-down
     block body
     
     block footer
@@ -28,8 +42,9 @@ html.no-js(lang='en')
       //-     p
       //-       | © 2013 Tok3n, LLC. All rights reserved.
       
+      //- :js
+      //-   function downloadJSAtOnload(){var a=document.createElement("script");a.src='js/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '-pack.js',document.body.appendChild(a)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
       :js
-        function downloadJSAtOnload(){var a=document.createElement("script");a.src='js/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '-pack.js',document.body.appendChild(a)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
         (function() {
           var config = {
             kitId: 'nls8ikc',
@@ -37,13 +52,8 @@ html.no-js(lang='en')
           };
           var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
         })();
-      script(src="http://localhost:35729/livereload.js")
       script(src="//www.google.com/jsapi")
-
-      //- :js
-      //-   (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      //-   function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      //-   e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      //-   e.src='//www.google-analytics.com/analytics.js';
-      //-   r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      //-   ga('create','UA-39917560-2');ga('send','pageview');
+      script(src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js")
+      script(src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js")
+      script(src="js/jquery-pack.js")
+      script(src="http://localhost:35729/livereload.js")

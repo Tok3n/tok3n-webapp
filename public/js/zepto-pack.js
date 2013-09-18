@@ -1524,6 +1524,462 @@ window.Modernizr = (function( window, document, undefined ) {
 
 })(this, this.document);
 
+/*!
+ * EventEmitter v4.2.3 - git.io/ee
+ * Oliver Caldwell
+ * MIT license
+ * @preserve
+ */
+
+(function () {
+	'use strict';
+
+	/**
+	 * Class for managing events.
+	 * Can be extended to provide event functionality in other classes.
+	 *
+	 * @class EventEmitter Manages event registering and emitting.
+	 */
+	function EventEmitter() {}
+
+	// Shortcuts to improve speed and size
+
+	// Easy access to the prototype
+	var proto = EventEmitter.prototype;
+
+	/**
+	 * Finds the index of the listener for the event in it's storage array.
+	 *
+	 * @param {Function[]} listeners Array of listeners to search through.
+	 * @param {Function} listener Method to look for.
+	 * @return {Number} Index of the specified listener, -1 if not found
+	 * @api private
+	 */
+	function indexOfListener(listeners, listener) {
+		var i = listeners.length;
+		while (i--) {
+			if (listeners[i].listener === listener) {
+				return i;
+			}
+		}
+
+		return -1;
+	}
+
+	/**
+	 * Alias a method while keeping the context correct, to allow for overwriting of target method.
+	 *
+	 * @param {String} name The name of the target method.
+	 * @return {Function} The aliased method
+	 * @api private
+	 */
+	function alias(name) {
+		return function aliasClosure() {
+			return this[name].apply(this, arguments);
+		};
+	}
+
+	/**
+	 * Returns the listener array for the specified event.
+	 * Will initialise the event object and listener arrays if required.
+	 * Will return an object if you use a regex search. The object contains keys for each matched event. So /ba[rz]/ might return an object containing bar and baz. But only if you have either defined them with defineEvent or added some listeners to them.
+	 * Each property in the object response is an array of listener functions.
+	 *
+	 * @param {String|RegExp} evt Name of the event to return the listeners from.
+	 * @return {Function[]|Object} All listener functions for the event.
+	 */
+	proto.getListeners = function getListeners(evt) {
+		var events = this._getEvents();
+		var response;
+		var key;
+
+		// Return a concatenated array of all matching events if
+		// the selector is a regular expression.
+		if (typeof evt === 'object') {
+			response = {};
+			for (key in events) {
+				if (events.hasOwnProperty(key) && evt.test(key)) {
+					response[key] = events[key];
+				}
+			}
+		}
+		else {
+			response = events[evt] || (events[evt] = []);
+		}
+
+		return response;
+	};
+
+	/**
+	 * Takes a list of listener objects and flattens it into a list of listener functions.
+	 *
+	 * @param {Object[]} listeners Raw listener objects.
+	 * @return {Function[]} Just the listener functions.
+	 */
+	proto.flattenListeners = function flattenListeners(listeners) {
+		var flatListeners = [];
+		var i;
+
+		for (i = 0; i < listeners.length; i += 1) {
+			flatListeners.push(listeners[i].listener);
+		}
+
+		return flatListeners;
+	};
+
+	/**
+	 * Fetches the requested listeners via getListeners but will always return the results inside an object. This is mainly for internal use but others may find it useful.
+	 *
+	 * @param {String|RegExp} evt Name of the event to return the listeners from.
+	 * @return {Object} All listener functions for an event in an object.
+	 */
+	proto.getListenersAsObject = function getListenersAsObject(evt) {
+		var listeners = this.getListeners(evt);
+		var response;
+
+		if (listeners instanceof Array) {
+			response = {};
+			response[evt] = listeners;
+		}
+
+		return response || listeners;
+	};
+
+	/**
+	 * Adds a listener function to the specified event.
+	 * The listener will not be added if it is a duplicate.
+	 * If the listener returns true then it will be removed after it is called.
+	 * If you pass a regular expression as the event name then the listener will be added to all events that match it.
+	 *
+	 * @param {String|RegExp} evt Name of the event to attach the listener to.
+	 * @param {Function} listener Method to be called when the event is emitted. If the function returns true then it will be removed after calling.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.addListener = function addListener(evt, listener) {
+		var listeners = this.getListenersAsObject(evt);
+		var listenerIsWrapped = typeof listener === 'object';
+		var key;
+
+		for (key in listeners) {
+			if (listeners.hasOwnProperty(key) && indexOfListener(listeners[key], listener) === -1) {
+				listeners[key].push(listenerIsWrapped ? listener : {
+					listener: listener,
+					once: false
+				});
+			}
+		}
+
+		return this;
+	};
+
+	/**
+	 * Alias of addListener
+	 */
+	proto.on = alias('addListener');
+
+	/**
+	 * Semi-alias of addListener. It will add a listener that will be
+	 * automatically removed after it's first execution.
+	 *
+	 * @param {String|RegExp} evt Name of the event to attach the listener to.
+	 * @param {Function} listener Method to be called when the event is emitted. If the function returns true then it will be removed after calling.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.addOnceListener = function addOnceListener(evt, listener) {
+		return this.addListener(evt, {
+			listener: listener,
+			once: true
+		});
+	};
+
+	/**
+	 * Alias of addOnceListener.
+	 */
+	proto.once = alias('addOnceListener');
+
+	/**
+	 * Defines an event name. This is required if you want to use a regex to add a listener to multiple events at once. If you don't do this then how do you expect it to know what event to add to? Should it just add to every possible match for a regex? No. That is scary and bad.
+	 * You need to tell it what event names should be matched by a regex.
+	 *
+	 * @param {String} evt Name of the event to create.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.defineEvent = function defineEvent(evt) {
+		this.getListeners(evt);
+		return this;
+	};
+
+	/**
+	 * Uses defineEvent to define multiple events.
+	 *
+	 * @param {String[]} evts An array of event names to define.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.defineEvents = function defineEvents(evts) {
+		for (var i = 0; i < evts.length; i += 1) {
+			this.defineEvent(evts[i]);
+		}
+		return this;
+	};
+
+	/**
+	 * Removes a listener function from the specified event.
+	 * When passed a regular expression as the event name, it will remove the listener from all events that match it.
+	 *
+	 * @param {String|RegExp} evt Name of the event to remove the listener from.
+	 * @param {Function} listener Method to remove from the event.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.removeListener = function removeListener(evt, listener) {
+		var listeners = this.getListenersAsObject(evt);
+		var index;
+		var key;
+
+		for (key in listeners) {
+			if (listeners.hasOwnProperty(key)) {
+				index = indexOfListener(listeners[key], listener);
+
+				if (index !== -1) {
+					listeners[key].splice(index, 1);
+				}
+			}
+		}
+
+		return this;
+	};
+
+	/**
+	 * Alias of removeListener
+	 */
+	proto.off = alias('removeListener');
+
+	/**
+	 * Adds listeners in bulk using the manipulateListeners method.
+	 * If you pass an object as the second argument you can add to multiple events at once. The object should contain key value pairs of events and listeners or listener arrays. You can also pass it an event name and an array of listeners to be added.
+	 * You can also pass it a regular expression to add the array of listeners to all events that match it.
+	 * Yeah, this function does quite a bit. That's probably a bad thing.
+	 *
+	 * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to add to multiple events at once.
+	 * @param {Function[]} [listeners] An optional array of listener functions to add.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.addListeners = function addListeners(evt, listeners) {
+		// Pass through to manipulateListeners
+		return this.manipulateListeners(false, evt, listeners);
+	};
+
+	/**
+	 * Removes listeners in bulk using the manipulateListeners method.
+	 * If you pass an object as the second argument you can remove from multiple events at once. The object should contain key value pairs of events and listeners or listener arrays.
+	 * You can also pass it an event name and an array of listeners to be removed.
+	 * You can also pass it a regular expression to remove the listeners from all events that match it.
+	 *
+	 * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to remove from multiple events at once.
+	 * @param {Function[]} [listeners] An optional array of listener functions to remove.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.removeListeners = function removeListeners(evt, listeners) {
+		// Pass through to manipulateListeners
+		return this.manipulateListeners(true, evt, listeners);
+	};
+
+	/**
+	 * Edits listeners in bulk. The addListeners and removeListeners methods both use this to do their job. You should really use those instead, this is a little lower level.
+	 * The first argument will determine if the listeners are removed (true) or added (false).
+	 * If you pass an object as the second argument you can add/remove from multiple events at once. The object should contain key value pairs of events and listeners or listener arrays.
+	 * You can also pass it an event name and an array of listeners to be added/removed.
+	 * You can also pass it a regular expression to manipulate the listeners of all events that match it.
+	 *
+	 * @param {Boolean} remove True if you want to remove listeners, false if you want to add.
+	 * @param {String|Object|RegExp} evt An event name if you will pass an array of listeners next. An object if you wish to add/remove from multiple events at once.
+	 * @param {Function[]} [listeners] An optional array of listener functions to add/remove.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.manipulateListeners = function manipulateListeners(remove, evt, listeners) {
+		var i;
+		var value;
+		var single = remove ? this.removeListener : this.addListener;
+		var multiple = remove ? this.removeListeners : this.addListeners;
+
+		// If evt is an object then pass each of it's properties to this method
+		if (typeof evt === 'object' && !(evt instanceof RegExp)) {
+			for (i in evt) {
+				if (evt.hasOwnProperty(i) && (value = evt[i])) {
+					// Pass the single listener straight through to the singular method
+					if (typeof value === 'function') {
+						single.call(this, i, value);
+					}
+					else {
+						// Otherwise pass back to the multiple function
+						multiple.call(this, i, value);
+					}
+				}
+			}
+		}
+		else {
+			// So evt must be a string
+			// And listeners must be an array of listeners
+			// Loop over it and pass each one to the multiple method
+			i = listeners.length;
+			while (i--) {
+				single.call(this, evt, listeners[i]);
+			}
+		}
+
+		return this;
+	};
+
+	/**
+	 * Removes all listeners from a specified event.
+	 * If you do not specify an event then all listeners will be removed.
+	 * That means every event will be emptied.
+	 * You can also pass a regex to remove all events that match it.
+	 *
+	 * @param {String|RegExp} [evt] Optional name of the event to remove all listeners for. Will remove from every event if not passed.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.removeEvent = function removeEvent(evt) {
+		var type = typeof evt;
+		var events = this._getEvents();
+		var key;
+
+		// Remove different things depending on the state of evt
+		if (type === 'string') {
+			// Remove all listeners for the specified event
+			delete events[evt];
+		}
+		else if (type === 'object') {
+			// Remove all events matching the regex.
+			for (key in events) {
+				if (events.hasOwnProperty(key) && evt.test(key)) {
+					delete events[key];
+				}
+			}
+		}
+		else {
+			// Remove all listeners in all events
+			delete this._events;
+		}
+
+		return this;
+	};
+
+	/**
+	 * Emits an event of your choice.
+	 * When emitted, every listener attached to that event will be executed.
+	 * If you pass the optional argument array then those arguments will be passed to every listener upon execution.
+	 * Because it uses `apply`, your array of arguments will be passed as if you wrote them out separately.
+	 * So they will not arrive within the array on the other side, they will be separate.
+	 * You can also pass a regular expression to emit to all events that match it.
+	 *
+	 * @param {String|RegExp} evt Name of the event to emit and execute listeners for.
+	 * @param {Array} [args] Optional array of arguments to be passed to each listener.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.emitEvent = function emitEvent(evt, args) {
+		var listeners = this.getListenersAsObject(evt);
+		var listener;
+		var i;
+		var key;
+		var response;
+
+		for (key in listeners) {
+			if (listeners.hasOwnProperty(key)) {
+				i = listeners[key].length;
+
+				while (i--) {
+					// If the listener returns true then it shall be removed from the event
+					// The function is executed either with a basic call or an apply if there is an args array
+					listener = listeners[key][i];
+
+					if (listener.once === true) {
+						this.removeListener(evt, listener.listener);
+					}
+
+					response = listener.listener.apply(this, args || []);
+
+					if (response === this._getOnceReturnValue()) {
+						this.removeListener(evt, listener.listener);
+					}
+				}
+			}
+		}
+
+		return this;
+	};
+
+	/**
+	 * Alias of emitEvent
+	 */
+	proto.trigger = alias('emitEvent');
+
+	/**
+	 * Subtly different from emitEvent in that it will pass its arguments on to the listeners, as opposed to taking a single array of arguments to pass on.
+	 * As with emitEvent, you can pass a regex in place of the event name to emit to all events that match it.
+	 *
+	 * @param {String|RegExp} evt Name of the event to emit and execute listeners for.
+	 * @param {...*} Optional additional arguments to be passed to each listener.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.emit = function emit(evt) {
+		var args = Array.prototype.slice.call(arguments, 1);
+		return this.emitEvent(evt, args);
+	};
+
+	/**
+	 * Sets the current value to check against when executing listeners. If a
+	 * listeners return value matches the one set here then it will be removed
+	 * after execution. This value defaults to true.
+	 *
+	 * @param {*} value The new value to check for when executing listeners.
+	 * @return {Object} Current instance of EventEmitter for chaining.
+	 */
+	proto.setOnceReturnValue = function setOnceReturnValue(value) {
+		this._onceReturnValue = value;
+		return this;
+	};
+
+	/**
+	 * Fetches the current value to check against when executing listeners. If
+	 * the listeners return value matches this one then it should be removed
+	 * automatically. It will return true by default.
+	 *
+	 * @return {*|Boolean} The current value to check for or the default, true.
+	 * @api private
+	 */
+	proto._getOnceReturnValue = function _getOnceReturnValue() {
+		if (this.hasOwnProperty('_onceReturnValue')) {
+			return this._onceReturnValue;
+		}
+		else {
+			return true;
+		}
+	};
+
+	/**
+	 * Fetches the events object and creates one if required.
+	 *
+	 * @return {Object} The events storage object.
+	 * @api private
+	 */
+	proto._getEvents = function _getEvents() {
+		return this._events || (this._events = {});
+	};
+
+	// Expose the class either via AMD, CommonJS or the global object
+	if (typeof define === 'function' && define.amd) {
+		define(function () {
+			return EventEmitter;
+		});
+	}
+	else if (typeof module === 'object' && module.exports){
+		module.exports = EventEmitter;
+	}
+	else {
+		this.EventEmitter = EventEmitter;
+	}
+}.call(this));
+
 /*! Magnific Popup - v0.8.9 - 2013-06-04
 * http://dimsemenov.com/plugins/magnific-popup/
 * Copyright (c) 2013 Dmitry Semenov; */
@@ -3307,6 +3763,1155 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 /*>>fastclick*/
 })(window.jQuery || window.Zepto);
+/*! Copyright (c) 2013 Brandon Aaron (http://brandonaaron.net)
+ * Licensed under the MIT License (LICENSE.txt).
+ *
+ * Thanks to: http://adomas.org/javascript-mouse-wheel/ for some pointers.
+ * Thanks to: Mathias Bank(http://www.mathias-bank.de) for a scope bug fix.
+ * Thanks to: Seamus Leahy for adding deltaX and deltaY
+ *
+ * Version: 3.1.3
+ *
+ * Requires: 1.2.2+
+ */
+
+(function (factory) {
+    if ( typeof define === 'function' && define.amd ) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        // Node/CommonJS style for Browserify
+        module.exports = factory;
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
+
+    var toFix = ['wheel', 'mousewheel', 'DOMMouseScroll', 'MozMousePixelScroll'];
+    var toBind = 'onwheel' in document || document.documentMode >= 9 ? ['wheel'] : ['mousewheel', 'DomMouseScroll', 'MozMousePixelScroll'];
+    var lowestDelta, lowestDeltaXY;
+
+    if ( $.event.fixHooks ) {
+        for ( var i = toFix.length; i; ) {
+            $.event.fixHooks[ toFix[--i] ] = $.event.mouseHooks;
+        }
+    }
+
+    $.event.special.mousewheel = {
+        setup: function() {
+            if ( this.addEventListener ) {
+                for ( var i = toBind.length; i; ) {
+                    this.addEventListener( toBind[--i], handler, false );
+                }
+            } else {
+                this.onmousewheel = handler;
+            }
+        },
+
+        teardown: function() {
+            if ( this.removeEventListener ) {
+                for ( var i = toBind.length; i; ) {
+                    this.removeEventListener( toBind[--i], handler, false );
+                }
+            } else {
+                this.onmousewheel = null;
+            }
+        }
+    };
+
+    $.fn.extend({
+        mousewheel: function(fn) {
+            return fn ? this.bind("mousewheel", fn) : this.trigger("mousewheel");
+        },
+
+        unmousewheel: function(fn) {
+            return this.unbind("mousewheel", fn);
+        }
+    });
+
+
+    function handler(event) {
+        var orgEvent = event || window.event,
+            args = [].slice.call(arguments, 1),
+            delta = 0,
+            deltaX = 0,
+            deltaY = 0,
+            absDelta = 0,
+            absDeltaXY = 0,
+            fn;
+        event = $.event.fix(orgEvent);
+        event.type = "mousewheel";
+
+        // Old school scrollwheel delta
+        if ( orgEvent.wheelDelta ) { delta = orgEvent.wheelDelta; }
+        if ( orgEvent.detail )     { delta = orgEvent.detail * -1; }
+
+        // New school wheel delta (wheel event)
+        if ( orgEvent.deltaY ) {
+            deltaY = orgEvent.deltaY * -1;
+            delta  = deltaY;
+        }
+        if ( orgEvent.deltaX ) {
+            deltaX = orgEvent.deltaX;
+            delta  = deltaX * -1;
+        }
+
+        // Webkit
+        if ( orgEvent.wheelDeltaY !== undefined ) { deltaY = orgEvent.wheelDeltaY; }
+        if ( orgEvent.wheelDeltaX !== undefined ) { deltaX = orgEvent.wheelDeltaX * -1; }
+
+        // Look for lowest delta to normalize the delta values
+        absDelta = Math.abs(delta);
+        if ( !lowestDelta || absDelta < lowestDelta ) { lowestDelta = absDelta; }
+        absDeltaXY = Math.max(Math.abs(deltaY), Math.abs(deltaX));
+        if ( !lowestDeltaXY || absDeltaXY < lowestDeltaXY ) { lowestDeltaXY = absDeltaXY; }
+
+        // Get a whole value for the deltas
+        fn = delta > 0 ? 'floor' : 'ceil';
+        delta  = Math[fn](delta / lowestDelta);
+        deltaX = Math[fn](deltaX / lowestDeltaXY);
+        deltaY = Math[fn](deltaY / lowestDeltaXY);
+
+        // Add event and delta to the front of the arguments
+        args.unshift(event, delta, deltaX, deltaY);
+
+        return ($.event.dispatch || $.event.handle).apply(this, args);
+    }
+
+}));
+
+(function() {
+  var _ref, _ref1, _ref2, _ref3,
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  window.Tourist = window.Tourist || {};
+
+  /*
+  A model for the Tour. We'll only use the 'current_step' property.
+  */
+
+
+  Tourist.Model = (function(_super) {
+    __extends(Model, _super);
+
+    function Model() {
+      _ref = Model.__super__.constructor.apply(this, arguments);
+      return _ref;
+    }
+
+    Model.prototype._module = 'Tourist';
+
+    return Model;
+
+  })(Backbone.Model);
+
+  window.Tourist.Tip = window.Tourist.Tip || {};
+
+  /*
+  The flyout showing the content of each step.
+  
+  This is the base class containing most of the logic. Can extend for different
+  tooltip implementations.
+  */
+
+
+  Tourist.Tip.Base = (function() {
+    Base.prototype._module = 'Tourist';
+
+    _.extend(Base.prototype, Backbone.Events);
+
+    Base.prototype.skipButtonTemplate = '<button class="btn btn-xs pull-right tour-next">Skip this step →</button>';
+
+    Base.prototype.nextButtonTemplate = '<button class="btn btn-primary btn-xs pull-right tour-next">Next step →</button>';
+
+    Base.prototype.finalButtonTemplate = '<button class="btn btn-primary btn-xs pull-right tour-next">Finish up</button>';
+
+    Base.prototype.closeButtonTemplate = '<a class="btn btn-close tour-close" href="#"><i class="icon icon-remove"></i></a>';
+
+    Base.prototype.okButtonTemplate = '<button class="btn btn-xs tour-close btn-primary">Okay</button>';
+
+    Base.prototype.actionLabelTemplate = _.template('<h4 class="action-label"><%= label %></h4>');
+
+    Base.prototype.actionLabels = ['Do this:', 'Then this:', 'Next this:'];
+
+    Base.prototype.highlightClass = 'tour-highlight';
+
+    Base.prototype.template = _.template('<div>\n  <div class="tour-container">\n    <%= close_button %>\n    <%= content %>\n    <p class="tour-counter <%= counter_class %>"><%= counter%></p>\n  </div>\n  <div class="tour-buttons">\n    <%= buttons %>\n  </div>\n</div>');
+
+    function Base(options) {
+      this.options = options != null ? options : {};
+      this.onClickNext = __bind(this.onClickNext, this);
+      this.onClickClose = __bind(this.onClickClose, this);
+      this.el = $('<div/>');
+      this.initialize(options);
+      this._bindClickEvents();
+      Tourist.Tip.Base._cacheTip(this);
+    }
+
+    Base.prototype.destroy = function() {
+      return this.el.remove();
+    };
+
+    Base.prototype.render = function(step) {
+      this.hide();
+      if (step) {
+        this._setTarget(step.target || false, step);
+        this._setZIndex('');
+        this._renderContent(step, this._buildContentElement(step));
+        if (step.target) {
+          this.show();
+        }
+        if (step.zIndex) {
+          this._setZIndex(step.zIndex, step);
+        }
+      }
+      return this;
+    };
+
+    Base.prototype.show = function() {};
+
+    Base.prototype.hide = function() {};
+
+    Base.prototype.setTarget = function(targetElement, step) {
+      return this._setTarget(targetElement, step);
+    };
+
+    Base.prototype.cleanupCurrentTarget = function() {
+      if (this.target && this.target.removeClass) {
+        this.target.removeClass(this.highlightClass);
+      }
+      return this.target = null;
+    };
+
+    /*
+    Event Handlers
+    */
+
+
+    Base.prototype.onClickClose = function(event) {
+      this.trigger('click:close', this, event);
+      return false;
+    };
+
+    Base.prototype.onClickNext = function(event) {
+      this.trigger('click:next', this, event);
+      return false;
+    };
+
+    /*
+    Private
+    */
+
+
+    Base.prototype._getTipElement = function() {};
+
+    Base.prototype._renderContent = function(step, contentElement) {};
+
+    Base.prototype._bindClickEvents = function() {
+      var el;
+      el = this._getTipElement();
+      el.delegate('.tour-close', 'click', this.onClickClose);
+      return el.delegate('.tour-next', 'click', this.onClickNext);
+    };
+
+    Base.prototype._setTarget = function(target, step) {
+      this.cleanupCurrentTarget();
+      if (target && step && step.highlightTarget) {
+        target.addClass(this.highlightClass);
+      }
+      return this.target = target;
+    };
+
+    Base.prototype._setZIndex = function(zIndex) {
+      var el;
+      el = this._getTipElement();
+      return el.css('z-index', zIndex || '');
+    };
+
+    Base.prototype._buildContentElement = function(step) {
+      var buttons, content;
+      buttons = this._buildButtons(step);
+      content = $($.parseHTML(this.template({
+        content: step.content,
+        buttons: buttons,
+        close_button: this._buildCloseButton(step),
+        counter: step.final ? '' : "step " + (step.index + 1) + " of " + step.total,
+        counter_class: step.final ? 'final' : ''
+      })));
+      if (!buttons) {
+        content.find('.tour-buttons').addClass('no-buttons');
+      }
+      this._renderActionLabels(content);
+      return content;
+    };
+
+    Base.prototype._buildButtons = function(step) {
+      var buttons;
+      buttons = '';
+      if (step.okButton) {
+        buttons += this.okButtonTemplate;
+      }
+      if (step.skipButton) {
+        buttons += this.skipButtonTemplate;
+      }
+      if (step.nextButton) {
+        buttons += step.final ? this.finalButtonTemplate : this.nextButtonTemplate;
+      }
+      return buttons;
+    };
+
+    Base.prototype._buildCloseButton = function(step) {
+      if (step.closeButton) {
+        return this.closeButtonTemplate;
+      } else {
+        return '';
+      }
+    };
+
+    Base.prototype._renderActionLabels = function(el) {
+      var action, actionIndex, actions, label, _i, _len, _results;
+      actions = el.find('.action');
+      actionIndex = 0;
+      _results = [];
+      for (_i = 0, _len = actions.length; _i < _len; _i++) {
+        action = actions[_i];
+        label = $($.parseHTML(this.actionLabelTemplate({
+          label: this.actionLabels[actionIndex]
+        })));
+        label.insertBefore(action);
+        _results.push(actionIndex++);
+      }
+      return _results;
+    };
+
+    Base._cacheTip = function(tip) {
+      if (!Tourist.Tip.Base._cachedTips) {
+        Tourist.Tip.Base._cachedTips = [];
+      }
+      return Tourist.Tip.Base._cachedTips.push(tip);
+    };
+
+    Base.destroy = function() {
+      var tip, _i, _len, _ref1;
+      if (!Tourist.Tip.Base._cachedTips) {
+        return;
+      }
+      _ref1 = Tourist.Tip.Base._cachedTips;
+      for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+        tip = _ref1[_i];
+        tip.destroy();
+      }
+      return Tourist.Tip.Base._cachedTips = null;
+    };
+
+    return Base;
+
+  })();
+
+  /*
+  Bootstrap based tip implementation
+  */
+
+
+  Tourist.Tip.Bootstrap = (function(_super) {
+    __extends(Bootstrap, _super);
+
+    function Bootstrap() {
+      _ref1 = Bootstrap.__super__.constructor.apply(this, arguments);
+      return _ref1;
+    }
+
+    Bootstrap.prototype.initialize = function(options) {
+      var defs;
+      defs = {
+        showEffect: null,
+        hideEffect: null
+      };
+      this.options = _.extend(defs, options);
+      return this.tip = new Tourist.Tip.BootstrapTip();
+    };
+
+    Bootstrap.prototype.destroy = function() {
+      this.tip.destroy();
+      return Bootstrap.__super__.destroy.call(this);
+    };
+
+    Bootstrap.prototype.show = function() {
+      var fn;
+      if (this.options.showEffect) {
+        fn = Tourist.Tip.Bootstrap.effects[this.options.showEffect];
+        return fn.call(this, this.tip, this.tip.el);
+      } else {
+        return this.tip.show();
+      }
+    };
+
+    Bootstrap.prototype.hide = function() {
+      var fn;
+      if (this.options.hideEffect) {
+        fn = Tourist.Tip.Bootstrap.effects[this.options.hideEffect];
+        return fn.call(this, this.tip, this.tip.el);
+      } else {
+        return this.tip.hide();
+      }
+    };
+
+    /*
+    Private
+    */
+
+
+    Bootstrap.prototype._getTipElement = function() {
+      return this.tip.el;
+    };
+
+    Bootstrap.prototype._setTarget = function(target, step) {
+      Bootstrap.__super__._setTarget.call(this, target, step);
+      return this.tip.setTarget(target);
+    };
+
+    Bootstrap.prototype._renderContent = function(step, contentElement) {
+      var at, my;
+      my = step.my || 'left center';
+      at = step.at || 'right center';
+      this.tip.setContainer(step.container || $('body'));
+      this.tip.setContent(contentElement);
+      return this.tip.setPosition(step.target || false, my, at);
+    };
+
+    return Bootstrap;
+
+  })(Tourist.Tip.Base);
+
+  Tourist.Tip.Bootstrap.effects = {
+    slidein: function(tip, element) {
+      var OFFSETS, css, easing, easings, offset, side, value, _i, _len;
+      OFFSETS = {
+        top: 80,
+        left: 80,
+        right: -80,
+        bottom: -80
+      };
+      side = tip.my.split(' ')[0];
+      side = side || 'top';
+      offset = OFFSETS[side];
+      if (side === 'bottom') {
+        side = 'top';
+      }
+      if (side === 'right') {
+        side = 'left';
+      }
+      value = parseInt(element.css(side));
+      element.stop();
+      css = {};
+      css[side] = value + offset;
+      element.css(css);
+      element.show();
+      css[side] = value;
+      easings = ['easeOutCubic', 'swing', 'linear'];
+      for (_i = 0, _len = easings.length; _i < _len; _i++) {
+        easing = easings[_i];
+        if ($.easing[easing]) {
+          break;
+        }
+      }
+      element.animate(css, 300, easing);
+      return null;
+    }
+  };
+
+  /*
+  Simple implementation of tooltip with bootstrap markup.
+  
+  Almost entirely deals with positioning. Uses the similar method for
+  positioning as qtip2:
+  
+    my: 'top center'
+    at: 'bottom center'
+  */
+
+
+  Tourist.Tip.BootstrapTip = (function() {
+    BootstrapTip.prototype.template = '<div class="popover">\n  <div class="arrow"></div>\n  <div class="popover-content"></div>\n</div>';
+
+    BootstrapTip.prototype.FLIP_POSITION = {
+      bottom: 'top',
+      top: 'bottom',
+      left: 'right',
+      right: 'left'
+    };
+
+    function BootstrapTip(options) {
+      var defs;
+      defs = {
+        offset: 10,
+        tipOffset: 10
+      };
+      this.options = _.extend(defs, options);
+      this.el = $($.parseHTML(this.template));
+      this.hide();
+    }
+
+    BootstrapTip.prototype.destroy = function() {
+      return this.el.remove();
+    };
+
+    BootstrapTip.prototype.show = function() {
+      return this.el.show().addClass('visible');
+    };
+
+    BootstrapTip.prototype.hide = function() {
+      return this.el.hide().removeClass('visible');
+    };
+
+    BootstrapTip.prototype.setTarget = function(target) {
+      this.target = target;
+      return this._setPosition(this.target, this.my, this.at);
+    };
+
+    BootstrapTip.prototype.setPosition = function(target, my, at) {
+      this.target = target;
+      this.my = my;
+      this.at = at;
+      return this._setPosition(this.target, this.my, this.at);
+    };
+
+    BootstrapTip.prototype.setContainer = function(container) {
+      return container.append(this.el);
+    };
+
+    BootstrapTip.prototype.setContent = function(content) {
+      return this._getContentElement().html(content);
+    };
+
+    /*
+    Private
+    */
+
+
+    BootstrapTip.prototype._getContentElement = function() {
+      return this.el.find('.popover-content');
+    };
+
+    BootstrapTip.prototype._getTipElement = function() {
+      return this.el.find('.arrow');
+    };
+
+    BootstrapTip.prototype._setPosition = function(target, my, at) {
+      var clas, css, originalDisplay, position, shift, targetPosition, tip, tipOffset, tipPosition, _ref2;
+      if (my == null) {
+        my = 'left center';
+      }
+      if (at == null) {
+        at = 'right center';
+      }
+      if (!target) {
+        return;
+      }
+      _ref2 = my.split(' '), clas = _ref2[0], shift = _ref2[1];
+      originalDisplay = this.el.css('display');
+      this.el.css({
+        top: 0,
+        left: 0,
+        margin: 0,
+        display: 'block'
+      }).removeClass('top').removeClass('bottom').removeClass('left').removeClass('right').addClass(this.FLIP_POSITION[clas]);
+      if (!target) {
+        return;
+      }
+      tip = this._getTipElement().css({
+        left: '',
+        right: '',
+        top: '',
+        bottom: ''
+      });
+      if (shift !== 'center') {
+        tipOffset = {
+          left: tip[0].offsetWidth / 2,
+          right: 0,
+          top: tip[0].offsetHeight / 2,
+          bottom: 0
+        };
+        css = {};
+        css[shift] = tipOffset[shift] + this.options.tipOffset;
+        css[this.FLIP_POSITION[shift]] = 'auto';
+        tip.css(css);
+      }
+      targetPosition = this._caculateTargetPosition(at, target);
+      tipPosition = this._caculateTipPosition(my, targetPosition);
+      position = this._adjustForArrow(my, tipPosition);
+      this.el.css(position);
+      return this.el.css({
+        display: originalDisplay
+      });
+    };
+
+    BootstrapTip.prototype._caculateTargetPosition = function(atPosition, target) {
+      var bounds, pos;
+      if (Object.prototype.toString.call(target) === '[object Array]') {
+        return {
+          left: target[0],
+          top: target[1]
+        };
+      }
+      bounds = this._getTargetBounds(target);
+      pos = this._lookupPosition(atPosition, bounds.width, bounds.height);
+      return {
+        left: bounds.left + pos[0],
+        top: bounds.top + pos[1]
+      };
+    };
+
+    BootstrapTip.prototype._caculateTipPosition = function(myPosition, targetPosition) {
+      var height, pos, width;
+      width = this.el[0].offsetWidth;
+      height = this.el[0].offsetHeight;
+      pos = this._lookupPosition(myPosition, width, height);
+      return {
+        left: targetPosition.left - pos[0],
+        top: targetPosition.top - pos[1]
+      };
+    };
+
+    BootstrapTip.prototype._adjustForArrow = function(myPosition, tipPosition) {
+      var clas, height, position, shift, tip, width, _ref2;
+      _ref2 = myPosition.split(' '), clas = _ref2[0], shift = _ref2[1];
+      tip = this._getTipElement();
+      width = tip[0].offsetWidth;
+      height = tip[0].offsetHeight;
+      position = {
+        top: tipPosition.top,
+        left: tipPosition.left
+      };
+      switch (clas) {
+        case 'top':
+          position.top += height + this.options.offset;
+          break;
+        case 'bottom':
+          position.top -= height + this.options.offset;
+          break;
+        case 'left':
+          position.left += width + this.options.offset;
+          break;
+        case 'right':
+          position.left -= width + this.options.offset;
+      }
+      switch (shift) {
+        case 'left':
+          position.left -= width / 2 + this.options.tipOffset;
+          break;
+        case 'right':
+          position.left += width / 2 + this.options.tipOffset;
+          break;
+        case 'top':
+          position.top -= height / 2 + this.options.tipOffset;
+          break;
+        case 'bottom':
+          position.top += height / 2 + this.options.tipOffset;
+      }
+      return position;
+    };
+
+    BootstrapTip.prototype._lookupPosition = function(position, width, height) {
+      var height2, posLookup, width2;
+      width2 = width / 2;
+      height2 = height / 2;
+      posLookup = {
+        'top left': [0, 0],
+        'left top': [0, 0],
+        'top right': [width, 0],
+        'right top': [width, 0],
+        'bottom left': [0, height],
+        'left bottom': [0, height],
+        'bottom right': [width, height],
+        'right bottom': [width, height],
+        'top center': [width2, 0],
+        'left center': [0, height2],
+        'right center': [width, height2],
+        'bottom center': [width2, height]
+      };
+      return posLookup[position];
+    };
+
+    BootstrapTip.prototype._getTargetBounds = function(target) {
+      var el, size;
+      el = target[0];
+      if (typeof el.getBoundingClientRect === 'function') {
+        size = el.getBoundingClientRect();
+      } else {
+        size = {
+          width: el.offsetWidth,
+          height: el.offsetHeight
+        };
+      }
+      return $.extend({}, size, target.offset());
+    };
+
+    return BootstrapTip;
+
+  })();
+
+  /*
+  Qtip based tip implementation
+  */
+
+
+  Tourist.Tip.QTip = (function(_super) {
+    var ADJUST, OFFSETS, TIP_HEIGHT, TIP_WIDTH;
+
+    __extends(QTip, _super);
+
+    function QTip() {
+      this._renderTipBackground = __bind(this._renderTipBackground, this);
+      _ref2 = QTip.__super__.constructor.apply(this, arguments);
+      return _ref2;
+    }
+
+    TIP_WIDTH = 6;
+
+    TIP_HEIGHT = 14;
+
+    ADJUST = 10;
+
+    OFFSETS = {
+      top: 80,
+      left: 80,
+      right: -80,
+      bottom: -80
+    };
+
+    QTip.prototype.QTIP_DEFAULTS = {
+      content: {
+        text: '..'
+      },
+      show: {
+        ready: false,
+        delay: 0,
+        effect: function(qtip) {
+          var css, el, offset, side, value;
+          el = $(this);
+          side = qtip.options.position.my;
+          if (side) {
+            side = side[side.precedance];
+          }
+          side = side || 'top';
+          offset = OFFSETS[side];
+          if (side === 'bottom') {
+            side = 'top';
+          }
+          if (side === 'right') {
+            side = 'left';
+          }
+          value = parseInt(el.css(side));
+          css = {};
+          css[side] = value + offset;
+          el.css(css);
+          el.show();
+          css[side] = value;
+          el.animate(css, 300, 'easeOutCubic');
+          return null;
+        },
+        autofocus: false
+      },
+      hide: {
+        event: null,
+        delay: 0,
+        effect: false
+      },
+      position: {
+        adjust: {
+          method: 'shift shift',
+          scroll: false
+        }
+      },
+      style: {
+        classes: 'ui-tour-tip',
+        tip: {
+          height: TIP_WIDTH,
+          width: TIP_HEIGHT
+        }
+      },
+      events: {},
+      zindex: 2000
+    };
+
+    QTip.prototype.initialize = function(options) {
+      options = $.extend(true, {}, this.QTIP_DEFAULTS, options);
+      this.el.qtip(options);
+      this.qtip = this.el.qtip('api');
+      return this.qtip.render();
+    };
+
+    QTip.prototype.destroy = function() {
+      if (this.qtip) {
+        this.qtip.destroy();
+      }
+      return QTip.__super__.destroy.call(this);
+    };
+
+    QTip.prototype.show = function() {
+      return this.qtip.show();
+    };
+
+    QTip.prototype.hide = function() {
+      return this.qtip.hide();
+    };
+
+    /*
+    Private
+    */
+
+
+    QTip.prototype._getTipElement = function() {
+      return $('#qtip-' + this.qtip.id);
+    };
+
+    QTip.prototype._setTarget = function(targetElement, step) {
+      QTip.__super__._setTarget.call(this, targetElement, step);
+      return this.qtip.set('position.target', targetElement || false);
+    };
+
+    QTip.prototype._renderContent = function(step, contentElement) {
+      var at, my,
+        _this = this;
+      my = step.my || 'left center';
+      at = step.at || 'right center';
+      this._adjustPlacement(my, at);
+      this.qtip.set('content.text', contentElement);
+      this.qtip.set('position.container', step.container || $('body'));
+      this.qtip.set('position.my', my);
+      this.qtip.set('position.at', at);
+      this.qtip.set('position.viewport', step.viewport || false);
+      this.qtip.set('position.target', step.target || false);
+      return setTimeout(function() {
+        return _this._renderTipBackground(my.split(' ')[0]);
+      }, 10);
+    };
+
+    QTip.prototype._adjustPlacement = function(my, at) {
+      if (my.indexOf('top') === 0) {
+        return this._adjust(0, ADJUST);
+      } else if (my.indexOf('bottom') === 0) {
+        return this._adjust(0, -ADJUST);
+      } else if (my.indexOf('right') === 0) {
+        return this._adjust(-ADJUST, 0);
+      } else {
+        return this._adjust(ADJUST, 0);
+      }
+    };
+
+    QTip.prototype._adjust = function(adjustX, adjusty) {
+      this.qtip.set('position.adjust.x', adjustX);
+      return this.qtip.set('position.adjust.y', adjusty);
+    };
+
+    QTip.prototype._renderTipBackground = function(direction) {
+      var bg, el;
+      el = $('#qtip-' + this.qtip.id + ' .qtip-tip');
+      bg = el.find('.qtip-tip-bg');
+      if (!bg.length) {
+        bg = $('<div/>', {
+          'class': 'icon icon-tip qtip-tip-bg'
+        });
+        el.append(bg);
+      }
+      bg.removeClass('top left right bottom');
+      return bg.addClass(direction);
+    };
+
+    return QTip;
+
+  })(Tourist.Tip.Base);
+
+  /*
+  Simplest implementation of a tooltip. Used in the tests. Useful as an example
+  as well.
+  */
+
+
+  Tourist.Tip.Simple = (function(_super) {
+    __extends(Simple, _super);
+
+    function Simple() {
+      _ref3 = Simple.__super__.constructor.apply(this, arguments);
+      return _ref3;
+    }
+
+    Simple.prototype.initialize = function(options) {
+      return $('body').append(this.el);
+    };
+
+    Simple.prototype.show = function() {
+      return this.el.show();
+    };
+
+    Simple.prototype.hide = function() {
+      return this.el.hide();
+    };
+
+    Simple.prototype._getTipElement = function() {
+      return this.el;
+    };
+
+    Simple.prototype._renderContent = function(step, contentElement) {
+      return this.el.html(contentElement);
+    };
+
+    return Simple;
+
+  })(Tourist.Tip.Base);
+
+  /*
+  
+  A way to make a tour. Basically, you specify a series of steps which explain
+  elements to point at and what to say. This class manages moving between those
+  steps.
+  
+  The 'step object' is a simple js obj that specifies how the step will behave.
+  
+  A simple Example of a step object:
+    {
+      content: '<p>Welcome to my step</p>'
+      target: $('#something-to-point-at')
+      closeButton: true
+      highlightTarget: true
+      setup: (tour, options) ->
+        # do stuff in the interface/bind
+      teardown: (tour, options) ->
+        # remove stuff/unbind
+    }
+  
+  Basic Step object options:
+  
+    content - a string of html to put into the step.
+    target - jquery object or absolute point: [10, 30]
+    highlightTarget - optional bool, true will outline the target with a bright color.
+    container - optional jquery element that should contain the step flyout.
+                default: $('body')
+    viewport - optional jquery element that the step flyout should stay within.
+               $(window) is commonly used. default: false
+  
+    my - string position of the pointer on the tip. default: 'left center'
+    at - string position on the element the tip points to. default: 'right center'
+    see http://craigsworks.com/projects/qtip2/docs/position/#basics
+  
+  Step object button options:
+  
+    okButton - optional bool, true will show a red ok button
+    closeButton - optional bool, true will show a grey close button
+    skipButton - optional bool, true will show a grey skip button
+    nextButton - optional bool, true will show a red next button
+  
+  Step object function options:
+  
+    All functions on the step will have the signature '(tour, options) ->'
+  
+      tour - the Draw.Tour object. Handy to call tour.next()
+      options - the step options. An object passed into the tour when created.
+                It has the environment that the fns can use to manipulate the
+                interface, bind to events, etc. The same object is passed to all
+                of a step object's functions, so it is handy for passing data
+                between steps.
+  
+    setup - called before step is shown. Use to scroll to your target, hide/show things, ...
+  
+      'this' is the step object itself.
+  
+      MUST return an object. Properties in the returned object will override
+      properties in the step object.
+  
+      i.e. the target might be dynamic so you would specify:
+  
+      setup: (tour, options) ->
+        return { target: $('#point-to-me') }
+  
+    teardown - function called right before hiding the step. Use to unbind from
+      things you bound to in setup().
+  
+      'this' is the step object itself.
+  
+      Return nothing.
+  
+    bind - an array of function names to bind. Use this for event handlers you use in setup().
+  
+      Will bind functions to the step object as this, and the first 2 args as tour and options.
+  
+      i.e.
+  
+      bind: ['onChangeSomething']
+      setup: (tour, options) ->
+        options.document.bind('change:something', @onChangeSomething)
+      onChangeSomething: (tour, options, model, value) ->
+        tour.next()
+      teardown: (tour, options) ->
+        options.document.unbind('change:something', @onChangeSomething)
+  */
+
+
+  Tourist.Tour = (function() {
+    _.extend(Tour.prototype, Backbone.Events);
+
+    function Tour(options) {
+      var defs, tipOptions;
+      this.options = options != null ? options : {};
+      this.onChangeCurrentStep = __bind(this.onChangeCurrentStep, this);
+      this.next = __bind(this.next, this);
+      defs = {
+        tipClass: 'Bootstrap'
+      };
+      this.options = _.extend(defs, this.options);
+      this.model = new Tourist.Model({
+        current_step: null
+      });
+      tipOptions = _.extend({
+        model: this.model
+      }, this.options.tipOptions);
+      this.view = new Tourist.Tip[this.options.tipClass](tipOptions);
+      this.view.bind('click:close', _.bind(this.stop, this, true));
+      this.view.bind('click:next', this.next);
+      this.model.bind('change:current_step', this.onChangeCurrentStep);
+    }
+
+    /*
+    Public
+    */
+
+
+    Tour.prototype.start = function() {
+      this.trigger('start', this);
+      return this.next();
+    };
+
+    Tour.prototype.stop = function(doFinalStep) {
+      if (doFinalStep) {
+        return this._showCancelFinalStep();
+      } else {
+        return this._stop();
+      }
+    };
+
+    Tour.prototype.next = function() {
+      var currentStep, index;
+      currentStep = this._teardownCurrentStep();
+      index = 0;
+      if (currentStep) {
+        index = currentStep.index + 1;
+      }
+      if (index < this.options.steps.length) {
+        return this._showStep(this.options.steps[index], index);
+      } else if (index === this.options.steps.length) {
+        return this._showSuccessFinalStep();
+      } else {
+        return this._stop();
+      }
+    };
+
+    Tour.prototype.setStepOptions = function(stepOptions) {
+      return this.options.stepOptions = stepOptions;
+    };
+
+    /*
+    Handlers
+    */
+
+
+    Tour.prototype.onChangeCurrentStep = function(model, step) {
+      return this.view.render(step);
+    };
+
+    /*
+    Private
+    */
+
+
+    Tour.prototype._showCancelFinalStep = function() {
+      return this._showFinalStep(false);
+    };
+
+    Tour.prototype._showSuccessFinalStep = function() {
+      return this._showFinalStep(true);
+    };
+
+    Tour.prototype._teardownCurrentStep = function() {
+      var currentStep;
+      currentStep = this.model.get('current_step');
+      this._teardownStep(currentStep);
+      return currentStep;
+    };
+
+    Tour.prototype._stop = function() {
+      this._teardownCurrentStep();
+      this.model.set({
+        current_step: null
+      });
+      return this.trigger('stop', this);
+    };
+
+    Tour.prototype._showFinalStep = function(success) {
+      var currentStep, finalStep;
+      currentStep = this._teardownCurrentStep();
+      finalStep = success ? this.options.successStep : this.options.cancelStep;
+      if (_.isFunction(finalStep)) {
+        finalStep.call(this, this, this.options.stepOptions);
+        finalStep = null;
+      }
+      if (!finalStep) {
+        return this._stop();
+      }
+      if (currentStep && currentStep.final) {
+        return this._stop();
+      }
+      finalStep.final = true;
+      return this._showStep(finalStep, this.options.steps.length);
+    };
+
+    Tour.prototype._showStep = function(step, index) {
+      if (!step) {
+        return;
+      }
+      step = _.clone(step);
+      step.index = index;
+      step.total = this.options.steps.length;
+      if (!step.final) {
+        step.final = this.options.steps.length === index + 1 && !this.options.successStep;
+      }
+      step = _.extend(step, this._setupStep(step));
+      return this.model.set({
+        current_step: step
+      });
+    };
+
+    Tour.prototype._setupStep = function(step) {
+      var fn, _i, _len, _ref4;
+      if (!(step && step.setup)) {
+        return {};
+      }
+      if (step.bind) {
+        _ref4 = step.bind;
+        for (_i = 0, _len = _ref4.length; _i < _len; _i++) {
+          fn = _ref4[_i];
+          step[fn] = _.bind(step[fn], step, this, this.options.stepOptions);
+        }
+      }
+      return step.setup.call(step, this, this.options.stepOptions) || {};
+    };
+
+    Tour.prototype._teardownStep = function(step) {
+      if (step && step.teardown) {
+        step.teardown.call(step, this, this.options.stepOptions);
+      }
+      return this.view.cleanupCurrentTarget();
+    };
+
+    return Tour;
+
+  })();
+
+}).call(this);
+
 
 /*!
  * Parsley.js v1.1.17 | MIT License | https://github.com/guillaumepotier/Parsley.js/blob/master/LICENCE.md
@@ -6438,7 +8043,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
 /*>>fastclick*/
 })(window.jQuery || window.Zepto);
 // Generated by CoffeeScript 2.0.0-beta4
-var drawChartDataDonut, drawChartDataRequestHistory, drawChartDataUsersHistory;
+var delay, displayedFirstTour, drawChartDataDonut, drawChartDataRequestHistory, drawChartDataUsersHistory, ee, isFirstIntegration, submitOnFirstTour;
 drawChartDataDonut = function (e) {
   var chart, data, options;
   data = google.visualization.arrayToDataTable([
@@ -6486,3 +8091,158 @@ google.load('visualization', '1', { packages: ['corechart'] });
 window.addEventListener('drawChartDataDonut', drawChartDataDonut, false);
 window.addEventListener('drawChartDataRequestHistory', drawChartDataRequestHistory, false);
 window.addEventListener('drawChartDataUsersHistory', drawChartDataUsersHistory, false);
+$(document).on('DOMMouseScroll mousewheel', '#list', function (ev) {
+  var $this, delta, height, prevent, scrollHeight, scrollTop, up;
+  $this = $(this);
+  scrollTop = this.scrollTop;
+  scrollHeight = this.scrollHeight;
+  height = $this.height();
+  delta = ev.type === 'DOMMouseScroll' ? ev.originalEvent.detail * -40 : ev.originalEvent.wheelDelta;
+  up = delta > 0;
+  prevent = function () {
+    ev.stopPropagation();
+    ev.preventDefault();
+    ev.returnValue = false;
+    return false;
+  };
+  if (!up && -delta > scrollHeight - height - scrollTop) {
+    $this.scrollTop(scrollHeight);
+    return prevent();
+  } else if (up && delta > scrollTop) {
+    $this.scrollTop(0);
+    return prevent();
+  }
+});
+ee = new EventEmitter;
+delay = function (ms, func) {
+  return setTimeout(func, ms);
+};
+isFirstIntegration = false;
+displayedFirstTour = false;
+submitOnFirstTour = false;
+$(function () {
+  var STEPS, SUCCESS, TOUR;
+  STEPS = [
+    {
+      content: '<h4 class="title">Create your first integration</h4></div>' + '<p class="action">' + 'Click the <i>New integration</i> button in the left menu.' + '</p>',
+      highlightTarget: true,
+      my: 'left center',
+      at: 'right center',
+      target: $('#new-integration'),
+      bind: ['onClick'],
+      onClick: function (tour) {
+        ee.once('addedIntegration', function () {
+          tour.next();
+          return true;
+        });
+        return false;
+      },
+      setup: function (tour, options) {
+        $('#new-integration').on('click', this.onClick);
+        return false;
+      },
+      teardown: function (tour, options) {
+        $('#new-integration').off('click', this.onClick);
+        return false;
+      }
+    },
+    {
+      content: '<h4 class="title">Hi there</h4>' + '<p class="action">' + 'Click the <i>New integration</i> button in the left menu.' + '</p>',
+      highlightTarget: true,
+      my: 'left bottom',
+      at: 'right center',
+      target: $('#popup-new-integration'),
+      setup: function (tour, options) {
+        ee.addListener('closedIntegrationWindow', function () {
+          displayedFirstTour = true;
+          tour.stop(false);
+          return true;
+        });
+        ee.once('submitNewIntegration', function () {
+          tour.next();
+          return true;
+        });
+        return false;
+      }
+    }
+  ];
+  SUCCESS = {
+    content: '<p>If you need to change something you can do it here.</p>',
+    closeButton: true,
+    nextButton: true,
+    highlightTarget: true,
+    my: 'left center',
+    at: 'right center',
+    target: $('#main .specs'),
+    teardown: function (tour) {
+      return displayedFirstTour = true;
+    }
+  };
+  TOUR = new Tourist.Tour({
+    tipClass: 'Bootstrap',
+    steps: STEPS,
+    successStep: SUCCESS,
+    tipOptions: { showEffect: 'slidein' }
+  });
+  if (isFirstIntegration)
+    return TOUR.start();
+});
+$(document).ready(function () {
+  var radiobutton, secret, webtoggle;
+  secret = $('.toggle-secret');
+  secret.click(function () {
+    $('.secret').toggle();
+    if (secret.html() === 'show') {
+      return secret.html('hide');
+    } else {
+      return secret.html('show');
+    }
+  });
+  webtoggle = $('#popup-new-integration .web-toggle');
+  radiobutton = $('#popup-new-integration input[type=radio]');
+  radiobutton.click(function (e) {
+    var value;
+    value = $(e.currentTarget).val();
+    if (value === 'web') {
+      return webtoggle.slideDown();
+    } else {
+      return webtoggle.slideUp();
+    }
+  });
+  $('.popup-trigger').magnificPopup({
+    type: 'inline',
+    callbacks: {
+      open: function () {
+        var self;
+        self = this;
+        if (!displayedFirstTour)
+          ee.emitEvent('addedIntegration');
+        $('.popover').hide();
+        $('#popup-new-integration').submit(function (e) {
+          submitOnFirstTour = true;
+          e.preventDefault();
+          return self.close();
+        });
+        return false;
+      },
+      beforeClose: function () {
+        $('.popover').show();
+        return false;
+      },
+      close: function () {
+        if (submitOnFirstTour) {
+          ee.emitEvent('submitNewIntegration');
+        } else if (!displayedFirstTour) {
+          ee.emitEvent('closedIntegrationWindow');
+        }
+        $('#popup-new-integration').unbind('submit');
+        return false;
+      }
+    }
+  });
+  return $('#newImplementationAvatar').change(function () {
+    var label;
+    label = $(this).val().replace(/(\\)/g, '/').replace(/.*\//, '');
+    return $('.avatar-path').attr('placeholder', label);
+  });
+});

@@ -1,131 +1,168 @@
 include 'layout.blade'
 render title('Tok3n | Developer')
-
 prepend block style
   // [if lte IE 8]> <link rel="stylesheet" type="text/css" href="css/ie8-and-down.css" /> <![endif]
-
 replace block body
 
-  #top
-    .top-nav
-      .nav-wrap.pure-g-r
-        header.pure-u-1-6
-          .logo(alt='Tok3n')
-        nav.pure-u-5-6
-          .menu
-            ul
-              li
-                a(href='#') Developers
-              li
-                button.settings.pure-button
-                  i.icon-user
-                  span.text V&iacute;ctor Gonz&aacute;lez
-                  i.icon-caret-down
-
-
-  #layout.pure-g-r
-    #nav.pure-u
+  #layout
+    #nav
       .nav-inner
-        .pure-menu.pure-menu-open
-          ul
-            li
-              a(href='#')
-                .pure-g-r
-                  .icon.pure-u-1-5
-                    i.icon-lock
-                  .title.pure-u-4-5 Authorized apps
-            li
-              a(href='#')
-                .pure-g-r
-                  .icon.pure-u-1-5
-                    i.icon-mobile-phone
-                  .title.pure-u-4-5 My devices
-            li
-              a(href='#')
-                .pure-g-r
-                  .icon.pure-u-1-5
-                    i.icon-phone
-                  .title.pure-u-4-5 My phones
-            li
-              a(href='#')
-                .pure-g-r
-                  .icon.pure-u-1-5
-                    i.icon-code
-                  .title.pure-u-4-5 My integrations
-            li
-              a(href='#')
-                .pure-g-r
-                  .icon.pure-u-1-5
-                    i.icon-cogs
-                  .title.pure-u-4-5 Settings
-            
-    #list.pure-g-r
-      .pure-u-1
-        .item.item-selected.pure-g
-          .avatar.pure-u-1-4
-            img(alt='ttamayo\'s avatar', src='/img/common/tilo-avatar.png', height='32', width='32')
-          .info.pure-u-3-4
-            h4.title ttamayo.com
-            small.url http://ttamayo.com
-        .item.pure-g
-          .avatar.pure-u-1-4
-            img(alt='Offertame\'s avatar', src='/img/common/ericf-avatar.png', height='32', width='32')
-          .info.pure-u-3-4
-            h4.title Offertame
-            small.url http://offerta.me/a/very/long/url/is/good/for/css/testing
-        .item.pure-g.new
-          .pure-u-1-4
-            h4 +
-          .pure-u-3-4
-            h4.title New integration
+        ul.menu
+          li#devicesTrigger.col-md-12
+            .row
+              .icon.col-md-3.col-md-offset-1
+                i.icon-mobile-phone
+              .title.col-md-7 My devices
+          li.col-md-12
+            .row
+              .icon.col-md-3.col-md-offset-1
+                i.icon-phone
+              .title.col-md-7 My phones
+          li#myDomainsTrigger.col-md-12
+            .row
+              .icon.col-md-3.col-md-offset-1
+                i.icon-lock
+              .title.col-md-7 Authorized apps
+          li#integrationsTrigger.col-md-12
+            .row
+              .icon.col-md-3.col-md-offset-1
+                i.icon-code
+              .title.col-md-7 My integrations
+          li.col-md-12
+            .row
+              .icon.col-md-3.col-md-offset-1
+                i.icon-cogs
+              .title.col-md-7 Settings
 
-    #main.pure-g-r
-      .pure-u-1
-        .devel-content-header.pure-g
-          .pure-u-1
-            h1.title ttamayo.com
-            //- p.devel-content-subtitle
-            //-   | Status: 
-            //-   a(href='#') Active
-            //- p.devel-content-subtitle
-            //-   | Plan: 
-            //-   a(href='#') Early adopter 
+    #content
+      #list.col-md-12
+        .item.item-selected.row
+          .avatar.col-md-2
+            img(alt='ttamayo\'s avatar', src='/img/common/tilo-avatar.png', height='32', width='32')
+          .info.col-md-10
+            h5.title ttamayo.com
+            small.url http://ttamayo.com
+        .item.row
+          .avatar.col-md-2
+            img(alt='Offertame\'s avatar', src='/img/common/ericf-avatar.png', height='32', width='32')
+          .info.col-md-10
+            h5.title Offertame
+            small.url http://offerta.me/a/very/long/url/is/good/for/css/testing
+        a#new-integration.popup-trigger(href='#popup-new-integration')
+          .item.row
+            .col-md-2
+              i.icon-plus-sign
+            .col-md-10
+              h5.title New integration
+      #main
+        .devel-content-header
+          .col-md-12
+            h2.title ttamayo.com
             table.specs
               tr
                 td.name Status:
                 td
-                  button.pure-button.pure-button-success.pure-button-small(href='#') Active
-                  button.pure-button.pure-button-error.pure-button-small(href='#') Halted
-                  button.pure-button.pure-button-warning.pure-button-small(href='#') Running out of users
+                  span.label.label-success Active
+                  span.label.label-warning Halted
+                  span.label.label-danger Running out of users
               tr
                 td.name Plan:
                 td
                   a(href='#') Early Adopter
                   |  &mdash;  
-                  a.action(href='#') upgrade
+                  a.action.popup-trigger(href='#popup-upgrade') upgrade
               tr
-                td.name Public key:
-                td sjMYqglQkAY3gkN
+                td.name API key:
+                td e871df97-29c9-497b-87ae-040369737501
               tr
                 td.name Secret:
                 td
-                  a.action(href='#') show
+                  span.secret 8869c644-62a5-4a27-95f5-a44af2aaf03f
+                    |  &mdash;  
+                  a.action.toggle-secret(href='#') show
               tr
                 td.name URL:
                 td
-                  a(href='#') http://ttamayo.com/app
+                  a(href='#') http://ttamayo.com/app  
+                  |  &mdash;  
+                  a.action(href='#') change
               tr
                 td.name Callback:
                 td
-                  a(href='#') http://ttamayo.com/callback
+                  a(href='#') http://ttamayo.com/callback  
+                  |  &mdash;  
+                  a.action(href='#') change
+              tr
+                td.name Actions
+                td
+                  button.btn.btn-xs.btn-danger.action-button
+                    i.icon-trash.popup-trigger(href='#popup-delete')
+                    span Delete
+                  button.btn.btn-xs.btn-warning.action-button.popup-trigger(href='#popup-integration-status')
+                    i.icon-stop
+                    span Stop
 
-            //- label.switch.checkbox.toggle.candy(onclick='')
-            //-   input(type='checkbox')
-            //-   span
-            //-     span Off
-            //-     span On
-            //-   a.slide-button
+          //- label.switch.checkbox.toggle.candy(onclick='')
+          //-   input(type='checkbox')
+          //-   span
+          //-     span Off
+          //-     span On
+          //-   a.slide-button
 
-      .devel-content-body.pure-g
-        .pure-u-1
-          h3 32 Active users
+        .devel-content-body
+
+#popup-integration-status.white-popup.mfp-hide
+  p Some content
+
+#popup-new-integration.white-popup.mfp-hide
+  form.form-horizontal(role='form')
+    .form-group
+      .col-md-12
+        h3.title New integration
+    .form-group
+      label.align-top.col-md-2(for='newImplementationNameField') Name
+      .col-md-10
+        input.form-control#newImplementationNameField(type='text')
+    .form-group
+      label.align-top.col-md-2(for='newImplementationKind') Kind
+      .col-md-10
+        label.radio-inline
+          input#newImplementationKindGeneral(type='radio', name='kind', value='general')
+          | General
+        label.radio-inline
+          input#newImplementationKindWeb(type='radio', name='kind', value='web')
+          | Web
+        span.help-block Web integrations have a URL and a callback which is called on certain user actions. 
+          a Learn more
+    .form-group.web-toggle
+      label.align-top.col-md-2(for='newImplementationURL') URL
+      .col-md-10
+        input.form-control#newImplementationURL(type='url', placeholder='e.g. https://my.tok3n.com')
+    .form-group.web-toggle
+      label.align-top.col-md-4(for='newImplementationCallbackPath') Callback Path
+      .col-md-8
+        input.form-control#newImplementationCallbackPath(type='url', placeholder='e.g. /path/to/myhandler')
+    .form-group
+      label.align-top.col-md-2(for='newImplementationAvatar') Avatar
+      .input-group.col-md-10
+        span.input-group-btn
+          span.btn.btn-primary.btn-file
+            | Browse…
+            input#newImplementationAvatar(type='file', multiple='')
+        input.avatar-path.form-control(type='text', readonly='')
+      span.help-block.col-md-10.col-md-offset-2
+        | In order for the users to recognize your app, you must supply an image (png, jpg). Max file size: 5 mb
+    .form-group
+      .checkbox
+        .col-md-10.col-md-offset-1
+          label
+            input(type='checkbox', value='agreetos')
+            | I have read, understood and agreed to the 
+            a(href='#') terms and conditions of service
+            | .
+    .form-group.create-button
+      .col-md-12
+        button.btn.btn-primary.btn-block Create integration
+
+#popup-upgrade.white-popup.mfp-hide
+  p Popup content
