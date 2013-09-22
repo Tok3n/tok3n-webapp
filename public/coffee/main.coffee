@@ -29,8 +29,8 @@ window.addEventListener "drawChartDataDonut", drawChartDataDonut, false
 window.addEventListener "drawChartDataRequestHistory", drawChartDataRequestHistory, false
 window.addEventListener "drawChartDataUsersHistory", drawChartDataUsersHistory, false
 
-###################################################################################################
-###################################################################################################
+######################################################################################
+######################################################################################
 
 ee = new EventEmitter()
 window.addEventListener "ee", ee, false
@@ -62,7 +62,6 @@ $(document).ready ->
 
   webtoggle = $('#popup-new-integration .web-toggle')
   radiobutton = $('#popup-new-integration input[type=radio]')
-
   radiobutton.click (e) ->
     value = $(e.currentTarget).val()
     if value is 'web' then webtoggle.slideDown() else webtoggle.slideUp()

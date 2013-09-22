@@ -167,86 +167,65 @@
   margin: 0.5em 0 0;
 }
 /* line 94, ../sass/main.sass */
+#main .devel-content-header .title span {
+  display: inline-block;
+}
+/* line 96, ../sass/main.sass */
+#main .devel-content-header .settings-menu {
+  margin-top: -0.8em;
+}
+/* line 98, ../sass/main.sass */
 #main .devel-content-header .specs {
   margin-top: 2.5em;
 }
-/* line 96, ../sass/main.sass */
+/* line 100, ../sass/main.sass */
 #main .devel-content-header .specs td {
   padding-right: 1.5em;
   padding-bottom: 0.5em;
 }
-/* line 99, ../sass/main.sass */
+/* line 103, ../sass/main.sass */
 #main .devel-content-header .specs td.name {
   font-weight: bolder;
 }
-/* line 101, ../sass/main.sass */
+/* line 105, ../sass/main.sass */
 #main .devel-content-header .specs a.action {
   text-decoration: underline;
   color: #e17714;
 }
-/* line 104, ../sass/main.sass */
+/* line 108, ../sass/main.sass */
 #main .devel-content-header .specs a.action:hover, #main .devel-content-header .specs a.action:focus {
   color: #ff9633;
 }
-/* line 106, ../sass/main.sass */
+/* line 110, ../sass/main.sass */
 #main .devel-content-header .specs a.action:active {
   color: #ffca99;
 }
-/* line 108, ../sass/main.sass */
-#main .devel-content-header .specs span.label, #main .devel-content-header .specs .action-button {
-  margin: 0 0.5em;
-}
-/* line 111, ../sass/main.sass */
-#main .devel-content-header .specs span.label:first-child, #main .devel-content-header .specs .action-button:first-child {
-  margin: 0 0.5em 0 0;
-}
-/* line 113, ../sass/main.sass */
-#main .devel-content-header .specs span.label:last-child, #main .devel-content-header .specs .action-button:last-child {
-  margin: 0 0 0 0.5em;
-}
-/* line 115, ../sass/main.sass */
-#main .devel-content-header .specs span.label:only-child, #main .devel-content-header .specs .action-button:only-child {
-  margin: 0;
-}
-/* line 117, ../sass/main.sass */
-#main .devel-content-header .specs span.label i, #main .devel-content-header .specs .action-button i {
-  margin-right: 1em;
-}
-/* line 119, ../sass/main.sass */
-#main .devel-content-header .specs span.label {
-  font-size: 1em;
-}
-/* line 121, ../sass/main.sass */
+/* line 112, ../sass/main.sass */
 #main .devel-content-header .specs .secret {
   display: none;
 }
-
-/* line 125, ../sass/main.sass */
-#popup-new-integration .btn-file {
-  position: relative;
-  overflow: hidden;
+/* line 115, ../sass/main.sass */
+#main .devel-content-header .specs .status span.label, #main .devel-content-header .specs .status .action-button {
+  margin: 0 0.5em;
 }
+/* line 118, ../sass/main.sass */
+#main .devel-content-header .specs .status span.label:first-child, #main .devel-content-header .specs .status .action-button:first-child {
+  margin: 0 0.5em 0 0;
+}
+/* line 120, ../sass/main.sass */
+#main .devel-content-header .specs .status span.label:last-child, #main .devel-content-header .specs .status .action-button:last-child {
+  margin: 0 0 0 0.5em;
+}
+/* line 122, ../sass/main.sass */
+#main .devel-content-header .specs .status span.label:only-child, #main .devel-content-header .specs .status .action-button:only-child {
+  margin: 0;
+}
+/* line 124, ../sass/main.sass */
+#main .devel-content-header .specs .status span.label {
+  font-size: 0.9em;
+}
+
 /* line 128, ../sass/main.sass */
-#popup-new-integration .btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 999px;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  background: red;
-  cursor: inherit;
-  display: block;
-}
-/* line 141, ../sass/main.sass */
-#popup-new-integration .form-control {
-  cursor: default;
-}
-
-/* line 145, ../sass/main.sass */
 .popover-content .title {
   text-align: center;
 }

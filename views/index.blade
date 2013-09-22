@@ -57,9 +57,23 @@ replace block body
       #main
         .devel-content-header
           .col-md-12
-            h2.title ttamayo.com
+            .title
+              span
+                h2 ttamayo.com
+              span.space
+              span.btn-group.settings-menu
+                button.btn.btn-default.action-button
+                  i.icon-gear
+                  | Settings
+                button.btn.btn-default.dropdown-toggle(data-toggle='dropdown')
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  li.hidden
+                    a(href='#') Stop
+                  li
+                    a(href='#') Delete
             table.specs
-              tr
+              tr.status
                 td.name Status:
                 td
                   span.label.label-success Active
@@ -83,29 +97,44 @@ replace block body
               tr
                 td.name URL:
                 td
-                  a(href='#') http://ttamayo.com/app  
-                  |  &mdash;  
-                  a.action(href='#') change
+                  a(href='#') http://ttamayo.com/app
               tr
                 td.name Callback:
                 td
-                  a(href='#') http://ttamayo.com/callback  
-                  |  &mdash;  
-                  a.action(href='#') change
-              tr.actions
-                td.name Actions:
-                td
-                  button.btn.btn-default.btn-xs.action-button
-                    i.icon-trash.trigger-delete
-                    span Delete
-                  button.hidden.btn.btn-default.btn-xs.action-button.trigger-status
-                    i.icon-stop
-                    span Stop
+                  a(href='#') http://ttamayo.com/callback
 
         .devel-content-body
 
-  #popup-integration-status.white-popup.mfp-hide
-    p Some content
+  #popup-integration-settings.white-popup.mfp-hide
+    form.form-horizontal(role='form')
+      .form-group
+        .col-md-12
+          h3.title Change settings
+      .form-group
+        label.align-top.col-md-2(for='implementationSettingsNameField') Name
+        .col-md-10
+          input.form-control#implementationSettingsNameField(type='text', value='ttamayo.com')
+      .form-group
+        label.align-top.col-md-2(for='implementationSettingsURL') URL
+        .col-md-10
+          input.form-control#implementationSettingsURL(type='url', value='https://my.tok3n.com')
+      .form-group
+        label.align-top.col-md-4(for='implementationSettingsCallbackPath') Callback Path
+        .col-md-8
+          input.form-control#implementationSettingsCallbackPath(type='url', value='/path/to/myhandler')
+      .form-group
+        label.align-top.col-md-2(for='implementationSettingsAvatar') Avatar
+        .input-group.col-md-10
+          span.input-group-btn
+            span.btn.btn-primary.btn-file
+              | Change avatar
+              input#implementationSettingsAvatar(type='file', multiple='')
+          input.avatar-path.form-control(type='text', readonly='')
+        span.help-block.col-md-10.col-md-offset-2
+          | Leave unchanged if you don't want to change your avatar. Max file size: 5 mb (png, jpg)
+      .form-group.create-button
+        .col-md-12
+          button.btn.btn-primary.btn-block Save settings
 
   #popup-new-integration.white-popup.mfp-hide
     form.form-horizontal(role='form')

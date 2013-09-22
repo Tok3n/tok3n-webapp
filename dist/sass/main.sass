@@ -91,6 +91,10 @@ $experimental-support-for-svg: true
     border-bottom: 1px solid #ddd
     .title
       margin: 0.5em 0 0
+      span
+        display: inline-block
+    .settings-menu
+      margin-top: -.8em
     .specs
       margin-top: 2.5em
       td
@@ -105,41 +109,20 @@ $experimental-support-for-svg: true
           color: hsla(29, 100%, 60%, 1)
         &:active
           color: hsla(29, 100%, 80%, 1)
-      span.label, .action-button
-        $button-separation: 1em
-        margin: 0 $button-separation/2
-        &:first-child
-          margin: 0 $button-separation/2 0 0
-        &:last-child
-          margin: 0 0 0 $button-separation/2
-        &:only-child
-          margin: 0
-        i
-          margin-right: 1em
-      span.label
-        font-size: 1em
       .secret
         display: none
-
-#popup-new-integration
-  .btn-file
-    position: relative
-    overflow: hidden
-    input[type=file]
-      position: absolute
-      top: 0
-      right: 0
-      min-width: 100%
-      min-height: 100%
-      font-size: 999px
-      text-align: right
-      filter: alpha(opacity = 0)
-      opacity: 0
-      background: red
-      cursor: inherit
-      display: block
-  .form-control
-    cursor: default
+      .status
+        span.label, .action-button
+          $button-separation: 1em
+          margin: 0 $button-separation/2
+          &:first-child
+            margin: 0 $button-separation/2 0 0
+          &:last-child
+            margin: 0 0 0 $button-separation/2
+          &:only-child
+            margin: 0
+        span.label
+          font-size: .9em
 
 .popover-content
   .title

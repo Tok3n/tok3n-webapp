@@ -110,9 +110,26 @@
         <div id="main">
           <div class="devel-content-header">
             <div class="col-md-12">
-              <h2 class="title">ttamayo.com</h2>
+              <div class="title">
+                <span>
+                  <h2>ttamayo.com</h2>
+                </span>
+                <span class="space"></span>
+                <span class="btn-group settings-menu">
+                  <button class="btn btn-default action-button"><i class="icon-gear"></i>Settings</button>
+                  <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+                    <span class="caret"></span>
+                  </button>
+                  <ul role="menu" class="dropdown-menu">
+                    <li class="hidden"><a href="#">Stop</a>
+                    </li>
+                    <li><a href="#">Delete</a>
+                    </li>
+                  </ul>
+                </span>
+              </div>
               <table class="specs">
-                <tr>
+                <tr class="status">
                   <td class="name">Status:</td>
                   <td>
                     <span class="label label-success">Active</span>
@@ -137,23 +154,12 @@
                 </tr>
                 <tr>
                   <td class="name">URL:</td>
-                  <td><a href="#">http://ttamayo.com/app  </a> &mdash; <a href="#" class="action">change</a>
+                  <td><a href="#">http://ttamayo.com/app</a>
                   </td>
                 </tr>
                 <tr>
                   <td class="name">Callback:</td>
-                  <td><a href="#">http://ttamayo.com/callback  </a> &mdash; <a href="#" class="action">change</a>
-                  </td>
-                </tr>
-                <tr class="actions">
-                  <td class="name">Actions:</td>
-                  <td>
-                    <button class="btn btn-default btn-xs action-button"><i class="icon-trash trigger-delete"></i>
-                      <span>Delete</span>
-                    </button>
-                    <button class="hidden btn btn-default btn-xs action-button trigger-status"><i class="icon-stop"></i>
-                      <span>Stop</span>
-                    </button>
+                  <td><a href="#">http://ttamayo.com/callback</a>
                   </td>
                 </tr>
               </table>
@@ -163,8 +169,49 @@
         </div>
       </div>
     </div>
-    <div id="popup-integration-status" class="white-popup mfp-hide">
-      <p>Some content</p>
+    <div id="popup-integration-settings" class="white-popup mfp-hide">
+      <form role="form" class="form-horizontal">
+        <div class="form-group">
+          <div class="col-md-12">
+            <h3 class="title">Change settings</h3>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="implementationSettingsNameField" class="align-top col-md-2">Name</label>
+          <div class="col-md-10">
+            <input type="text" value="ttamayo.com" id="implementationSettingsNameField" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="implementationSettingsURL" class="align-top col-md-2">URL</label>
+          <div class="col-md-10">
+            <input type="url" value="https://my.tok3n.com" id="implementationSettingsURL" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="implementationSettingsCallbackPath" class="align-top col-md-4">Callback Path</label>
+          <div class="col-md-8">
+            <input type="url" value="/path/to/myhandler" id="implementationSettingsCallbackPath" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="implementationSettingsAvatar" class="align-top col-md-2">Avatar</label>
+          <div class="input-group col-md-10">
+            <span class="input-group-btn">
+              <span class="btn btn-primary btn-file">Change avatar
+                <input type="file" multiple="" id="implementationSettingsAvatar" />
+              </span>
+            </span>
+            <input type="text" readonly="" class="avatar-path form-control" />
+          </div>
+          <span class="help-block col-md-10 col-md-offset-2">Leave unchanged if you don't want to change your avatar. Max file size: 5 mb (png, jpg)</span>
+        </div>
+        <div class="form-group create-button">
+          <div class="col-md-12">
+            <button class="btn btn-primary btn-block">Save settings</button>
+          </div>
+        </div>
+      </form>
     </div>
     <div id="popup-new-integration" class="white-popup mfp-hide">
       <form role="form" class="form-horizontal">

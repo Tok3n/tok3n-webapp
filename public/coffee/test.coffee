@@ -1,6 +1,6 @@
 $(document).ready ->
   $.magnificPopup.open
     items:
-      src: '#popup-new-integration'
+      src: '#popup-integration-settings'
       type: 'inline'
   false

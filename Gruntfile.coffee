@@ -20,10 +20,11 @@ module.exports = (grunt) ->
 		comp + 'modernizr/modernizr.js'
 		comp + 'underscore/underscore.js'
 		comp + 'backbone/backbone.js'
-		comp + 'Tourist.js/tourist.js'
+		# comp + 'Tourist.js/tourist.js'
 		comp + 'eventEmitter/EventEmitter.js'
 		# comp + 'Chart.js/Chart.js'
 		# comp + 'selectize/selectize.js'
+		comp + 'bootstrap-sass/js/dropdown.js'
 		comp + 'magnific-popup/dist/jquery.magnific-popup.js'
 		comp + 'jquery-mousewheel/jquery.mousewheel.js'
 	]

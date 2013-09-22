@@ -219,3 +219,27 @@ a {
 .white-popup .web-toggle {
   display: none;
 }
+/* line 166, ../sass/base.sass */
+.white-popup .btn-file {
+  position: relative;
+  overflow: hidden;
+}
+/* line 169, ../sass/base.sass */
+.white-popup .btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 999px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+/* line 182, ../sass/base.sass */
+.white-popup .form-control {
+  cursor: default;
+}
