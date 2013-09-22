@@ -8486,13 +8486,13 @@ a {
   background-image: linear-gradient(top, #d2bfe8 0%, #d0a3ff 100%);
 }
 /* line 77, ../sass/main.sass */
-#list #new-integration .title {
+#list #triggerNewIntegration .title {
   font-style: italic;
   font-weight: normal;
   margin-top: 3px;
 }
 /* line 81, ../sass/main.sass */
-#list #new-integration i {
+#list #triggerNewIntegration i {
   font-size: 130%;
   margin-left: -7px;
   color: #0052a3;
