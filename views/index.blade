@@ -48,7 +48,7 @@ replace block body
           .info.col-md-10
             h5.title Offertame
             small.url http://offerta.me/a/very/long/url/is/good/for/css/testing
-        a#new-integration.popup-trigger(href='#popup-new-integration')
+        #triggerNewIntegration
           .item.row
             .col-md-2
               i.icon-plus-sign
@@ -70,7 +70,7 @@ replace block body
                 td
                   a(href='#') Early Adopter
                   |  &mdash;  
-                  a.action.popup-trigger(href='#popup-upgrade') upgrade
+                  a.action.trigger-upgrade upgrade
               tr
                 td.name API key:
                 td e871df97-29c9-497b-87ae-040369737501
@@ -92,22 +92,15 @@ replace block body
                   a(href='#') http://ttamayo.com/callback  
                   |  &mdash;  
                   a.action(href='#') change
-              tr
-                td.name Actions
+              tr.actions
+                td.name Actions:
                 td
-                  button.btn.btn-xs.btn-danger.action-button
-                    i.icon-trash.popup-trigger(href='#popup-delete')
+                  button.btn.btn-default.btn-xs.action-button
+                    i.icon-trash.trigger-delete
                     span Delete
-                  button.btn.btn-xs.btn-warning.action-button.popup-trigger(href='#popup-integration-status')
+                  button.hidden.btn.btn-default.btn-xs.action-button.trigger-status
                     i.icon-stop
                     span Stop
-
-          //- label.switch.checkbox.toggle.candy(onclick='')
-          //-   input(type='checkbox')
-          //-   span
-          //-     span Off
-          //-     span On
-          //-   a.slide-button
 
         .devel-content-body
 

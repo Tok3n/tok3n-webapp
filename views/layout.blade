@@ -30,10 +30,7 @@ html.no-js(lang='en')
                   li
                     a(href='#') Developers
                   li
-                    button.settings.btn(data-intro='Click here to add your first integration.', data-position='bottom')
-                      i.icon-user
-                      span.text V&iacute;ctor Gonz&aacute;lez
-                      i.icon-caret-down
+                    button.btn.btn-default(href='#') Log out
     block body
     
     block footer
@@ -44,14 +41,10 @@ html.no-js(lang='en')
       
       //- :js
       //-   function downloadJSAtOnload(){var a=document.createElement("script");a.src='js/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '-pack.js',document.body.appendChild(a)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
+      script(src="//use.typekit.net/nls8ikc.js")
       :js
-        (function() {
-          var config = {
-            kitId: 'nls8ikc',
-            scriptTimeout: 3000
-          };
-          var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
-        })();
+        try{Typekit.load();}catch(e){}
       script(src="//www.google.com/jsapi")
       script(src="js/jquery-pack.js")
+      script(src='js/test.js')
       script(src="http://localhost:35729/livereload.js")

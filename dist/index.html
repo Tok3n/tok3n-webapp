@@ -1,4 +1,243 @@
-<!DOCTYPE html><!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]--><!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]--><!--[if IE 8]><html class="no-js lt-ie9"><![endif]--><!--[if gt IE 8]><!--><html lang="en" class="no-js"><!--<![endif]--><head><meta charset="utf-8"/><title>Tok3n | Developer</title><meta name="description" content=""/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><!--[if lte IE 8]> <link rel="stylesheet" type="text/css" href="css/ie8-and-down.css" /> <![endif]--><link rel="stylesheet" href="//tok3n-static.s3-website-us-east-1.amazonaws.com/0.0.1/css/style-min.css"/><link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"/></head><body><div id="top"><div class="top-nav"><div class="nav-wrap row"><header class="col-md-4"><div alt="Tok3n" class="logo"></div></header><nav class="col-md-8"><div class="menu"><ul><li><a href="#">Developers</a></li><li><button data-intro="Click here to add your first integration." data-position="bottom" class="settings btn"><i class="icon-user"></i><span class="text">V&iacute;ctor Gonz&aacute;lez</span><i class="icon-caret-down"></i></button></li></ul></div></nav></div></div></div><div id="layout"><div id="nav"><div class="nav-inner"><ul class="menu"><li id="devicesTrigger" class="col-md-12"><div class="row"><div class="icon col-md-3 col-md-offset-1"><i class="icon-mobile-phone"></i></div><div class="title col-md-7">My devices</div></div></li><li class="col-md-12"><div class="row"><div class="icon col-md-3 col-md-offset-1"><i class="icon-phone"></i></div><div class="title col-md-7">My phones</div></div></li><li id="myDomainsTrigger" class="col-md-12"><div class="row"><div class="icon col-md-3 col-md-offset-1"><i class="icon-lock"></i></div><div class="title col-md-7">Authorized apps</div></div></li><li id="integrationsTrigger" class="col-md-12"><div class="row"><div class="icon col-md-3 col-md-offset-1"><i class="icon-code"></i></div><div class="title col-md-7">My integrations</div></div></li><li class="col-md-12"><div class="row"><div class="icon col-md-3 col-md-offset-1"><i class="icon-cogs"></i></div><div class="title col-md-7">Settings</div></div></li></ul></div></div><div id="content"><div id="list" class="col-md-12"><div class="item item-selected row"><div class="avatar col-md-2"><img alt="ttamayo's avatar" src="/img/common/tilo-avatar.png" height="32" width="32"/></div><div class="info col-md-10"><h5 class="title">ttamayo.com</h5><small class="url">http://ttamayo.com</small></div></div><div class="item row"><div class="avatar col-md-2"><img alt="Offertame's avatar" src="/img/common/ericf-avatar.png" height="32" width="32"/></div><div class="info col-md-10"><h5 class="title">Offertame</h5><small class="url">http://offerta.me/a/very/long/url/is/good/for/css/testing</small></div></div><a href="#popup-new-integration" id="new-integration" class="popup-trigger"><div class="item row"><div class="col-md-2"><i class="icon-plus-sign"></i></div><div class="col-md-10"><h5 class="title">New integration</h5></div></div></a></div><div id="main"><div class="devel-content-header"><div class="col-md-12"><h2 class="title">ttamayo.com</h2><table class="specs"><tr><td class="name">Status:</td><td><span class="label label-success">Active</span><span class="label label-warning">Halted</span><span class="label label-danger">Running out of users</span></td></tr><tr><td class="name">Plan:</td><td><a href="#">Early Adopter</a> &mdash;  <a href="#popup-upgrade" class="action popup-trigger">upgrade</a></td></tr><tr><td class="name">API key:</td><td>e871df97-29c9-497b-87ae-040369737501</td></tr><tr><td class="name">Secret:</td><td><span class="secret">8869c644-62a5-4a27-95f5-a44af2aaf03f
- &mdash;  </span><a href="#" class="action toggle-secret">show</a></td></tr><tr><td class="name">URL:</td><td><a href="#">http://ttamayo.com/app  </a> &mdash;  <a href="#" class="action">change</a></td></tr><tr><td class="name">Callback:</td><td><a href="#">http://ttamayo.com/callback  </a> &mdash;  <a href="#" class="action">change</a></td></tr><tr><td class="name">Actions</td><td><button class="btn btn-xs btn-danger action-button"><i href="#popup-delete" class="icon-trash popup-trigger"></i><span>Delete</span></button><button href="#popup-integration-status" class="btn btn-xs btn-warning action-button popup-trigger"><i class="icon-stop"></i><span>Stop</span></button></td></tr></table></div></div><div class="devel-content-body"></div></div></div></div><div id="popup-integration-status" class="white-popup mfp-hide"><p>Some content</p></div><div id="popup-new-integration" class="white-popup mfp-hide"><form role="form" class="form-horizontal"><div class="form-group"><div class="col-md-12"><h3 class="title">New integration</h3></div></div><div class="form-group"><label for="newImplementationNameField" class="align-top col-md-2">Name</label><div class="col-md-10"><input type="text" id="newImplementationNameField" class="form-control"/></div></div><div class="form-group"><label for="newImplementationKind" class="align-top col-md-2">Kind</label><div class="col-md-10"><label class="radio-inline"><input type="radio" name="kind" value="general" id="newImplementationKindGeneral"/>General</label><label class="radio-inline"><input type="radio" name="kind" value="web" id="newImplementationKindWeb"/>Web</label><span class="help-block">Web integrations have a URL and a callback which is called on certain user actions. <a>Learn more</a></span></div></div><div class="form-group web-toggle"><label for="newImplementationURL" class="align-top col-md-2">URL</label><div class="col-md-10"><input type="url" placeholder="e.g. https://my.tok3n.com" id="newImplementationURL" class="form-control"/></div></div><div class="form-group web-toggle"><label for="newImplementationCallbackPath" class="align-top col-md-4">Callback Path</label><div class="col-md-8"><input type="url" placeholder="e.g. /path/to/myhandler" id="newImplementationCallbackPath" class="form-control"/></div></div><div class="form-group"><label for="newImplementationAvatar" class="align-top col-md-2">Avatar</label><div class="input-group col-md-10"><span class="input-group-btn"><span class="btn btn-primary btn-file">Browse…<input type="file" multiple="" id="newImplementationAvatar"/></span></span><input type="text" readonly="" class="avatar-path form-control"/></div><span class="help-block col-md-10 col-md-offset-2">In order for the users to recognize your app, you must supply an image (png, jpg). Max file size: 5 mb</span></div><div class="form-group"><div class="checkbox"><div class="col-md-10 col-md-offset-1"><label><input type="checkbox" value="agreetos"/>I have read, understood and agreed to the <a href="#">terms and conditions of service</a>.</label></div></div></div><div class="form-group create-button"><div class="col-md-12"><button class="btn btn-primary btn-block">Create integration</button></div></div></form></div><div id="popup-upgrade" class="white-popup mfp-hide"><p>Popup content</p></div><script type="text/javascript">
-!function(){var e={kitId:"nls8ikc",scriptTimeout:3e3},t=document.getElementsByTagName("html")[0];t.className+=" wf-loading";var a=setTimeout(function(){t.className=t.className.replace(/(\s|^)wf-loading(\s|$)/g," "),t.className+=" wf-inactive"},e.scriptTimeout),c=document.createElement("script"),s=!1;c.src="//use.typekit.net/"+e.kitId+".js",c.type="text/javascript",c.async="true",c.onload=c.onreadystatechange=function(){var t=this.readyState;if(!(s||t&&"complete"!=t&&"loaded"!=t)){s=!0,clearTimeout(a);try{Typekit.load(e)}catch(c){}}};var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(c,i)}();
-</script><script src="//www.google.com/jsapi"></script><script src="//tok3n-static.s3-website-us-east-1.amazonaws.com/0.0.1/js/jquery-pack-min.js"></script><script type="application/dart" src="/code/Dashboard.dart"></script><script src="/packages/browser/dart.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script></body></html>
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title>Tok3n | Developer</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--[if lte IE 8]> <link rel="stylesheet" type="text/css" href="css/ie8-and-down.css" /> <![endif]-->
+    <link rel="stylesheet" href="//static.tok3n.com/0.0.1/css/style-min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" />
+  </head>
+  <body>
+    <div id="top">
+      <div class="top-nav">
+        <div class="nav-wrap row">
+          <header class="col-md-4">
+            <div alt="Tok3n" class="logo"></div>
+          </header>
+          <nav class="col-md-8">
+            <div class="menu">
+              <ul>
+                <li><a href="#">Developers</a>
+                </li>
+                <li>
+                  <button href="#" class="btn btn-default">Log out</button>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="layout">
+      <div id="nav">
+        <div class="nav-inner">
+          <ul class="menu">
+            <li id="devicesTrigger" class="col-md-12">
+              <div class="row">
+                <div class="icon col-md-3 col-md-offset-1"><i class="icon-mobile-phone"></i>
+                </div>
+                <div class="title col-md-7">My devices</div>
+              </div>
+            </li>
+            <li class="col-md-12">
+              <div class="row">
+                <div class="icon col-md-3 col-md-offset-1"><i class="icon-phone"></i>
+                </div>
+                <div class="title col-md-7">My phones</div>
+              </div>
+            </li>
+            <li id="myDomainsTrigger" class="col-md-12">
+              <div class="row">
+                <div class="icon col-md-3 col-md-offset-1"><i class="icon-lock"></i>
+                </div>
+                <div class="title col-md-7">Authorized apps</div>
+              </div>
+            </li>
+            <li id="integrationsTrigger" class="col-md-12">
+              <div class="row">
+                <div class="icon col-md-3 col-md-offset-1"><i class="icon-code"></i>
+                </div>
+                <div class="title col-md-7">My integrations</div>
+              </div>
+            </li>
+            <li class="col-md-12">
+              <div class="row">
+                <div class="icon col-md-3 col-md-offset-1"><i class="icon-cogs"></i>
+                </div>
+                <div class="title col-md-7">Settings</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="content">
+        <div id="list" class="col-md-12">
+          <div class="item item-selected row">
+            <div class="avatar col-md-2">
+              <img alt="ttamayo's avatar" src="/img/common/tilo-avatar.png" height="32" width="32" />
+            </div>
+            <div class="info col-md-10">
+              <h5 class="title">ttamayo.com</h5>
+              <small class="url">http://ttamayo.com</small>
+            </div>
+          </div>
+          <div class="item row">
+            <div class="avatar col-md-2">
+              <img alt="Offertame's avatar" src="/img/common/ericf-avatar.png" height="32" width="32" />
+            </div>
+            <div class="info col-md-10">
+              <h5 class="title">Offertame</h5>
+              <small class="url">http://offerta.me/a/very/long/url/is/good/for/css/testing</small>
+            </div>
+          </div>
+          <a href="#popup-new-integration" id="new-integration" class="popup-trigger">
+            <div class="item row">
+              <div class="col-md-2"><i class="icon-plus-sign"></i>
+              </div>
+              <div class="col-md-10">
+                <h5 class="title">New integration</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div id="main">
+          <div class="devel-content-header">
+            <div class="col-md-12">
+              <h2 class="title">ttamayo.com</h2>
+              <table class="specs">
+                <tr>
+                  <td class="name">Status:</td>
+                  <td>
+                    <span class="label label-success">Active</span>
+                    <span class="label label-warning">Halted</span>
+                    <span class="label label-danger">Running out of users</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name">Plan:</td>
+                  <td><a href="#">Early Adopter</a> &mdash; <a href="#popup-upgrade" class="action popup-trigger">upgrade</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name">API key:</td>
+                  <td>e871df97-29c9-497b-87ae-040369737501</td>
+                </tr>
+                <tr>
+                  <td class="name">Secret:</td>
+                  <td>
+                    <span class="secret">8869c644-62a5-4a27-95f5-a44af2aaf03f &mdash;</span><a href="#" class="action toggle-secret">show</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name">URL:</td>
+                  <td><a href="#">http://ttamayo.com/app  </a> &mdash; <a href="#" class="action">change</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="name">Callback:</td>
+                  <td><a href="#">http://ttamayo.com/callback  </a> &mdash; <a href="#" class="action">change</a>
+                  </td>
+                </tr>
+                <tr class="actions">
+                  <td class="name">Actions:</td>
+                  <td>
+                    <button class="btn btn-default btn-xs action-button"><i href="#popup-delete" class="icon-trash popup-trigger"></i>
+                      <span>Delete</span>
+                    </button>
+                    <button href="#popup-integration-status" class="hidden btn btn-default btn-xs action-button popup-trigger"><i class="icon-stop"></i>
+                      <span>Stop</span>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="devel-content-body"></div>
+        </div>
+      </div>
+    </div>
+    <div id="popup-integration-status" class="white-popup mfp-hide">
+      <p>Some content</p>
+    </div>
+    <div id="popup-new-integration" class="white-popup mfp-hide">
+      <form role="form" class="form-horizontal">
+        <div class="form-group">
+          <div class="col-md-12">
+            <h3 class="title">New integration</h3>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="newImplementationNameField" class="align-top col-md-2">Name</label>
+          <div class="col-md-10">
+            <input type="text" id="newImplementationNameField" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="newImplementationKind" class="align-top col-md-2">Kind</label>
+          <div class="col-md-10">
+            <label class="radio-inline">
+              <input type="radio" name="kind" value="general" id="newImplementationKindGeneral" />General</label>
+            <label class="radio-inline">
+              <input type="radio" name="kind" value="web" id="newImplementationKindWeb" />Web</label>
+            <span class="help-block">Web integrations have a URL and a callback which is called on certain user actions. <a>Learn more</a>
+            </span>
+          </div>
+        </div>
+        <div class="form-group web-toggle">
+          <label for="newImplementationURL" class="align-top col-md-2">URL</label>
+          <div class="col-md-10">
+            <input type="url" placeholder="e.g. https://my.tok3n.com" id="newImplementationURL" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group web-toggle">
+          <label for="newImplementationCallbackPath" class="align-top col-md-4">Callback Path</label>
+          <div class="col-md-8">
+            <input type="url" placeholder="e.g. /path/to/myhandler" id="newImplementationCallbackPath" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="newImplementationAvatar" class="align-top col-md-2">Avatar</label>
+          <div class="input-group col-md-10">
+            <span class="input-group-btn">
+              <span class="btn btn-primary btn-file">Browse…
+                <input type="file" multiple="" id="newImplementationAvatar" />
+              </span>
+            </span>
+            <input type="text" readonly="" class="avatar-path form-control" />
+          </div>
+          <span class="help-block col-md-10 col-md-offset-2">In order for the users to recognize your app, you must supply an image (png, jpg). Max file size: 5 mb</span>
+        </div>
+        <div class="form-group">
+          <div class="checkbox">
+            <div class="col-md-10 col-md-offset-1">
+              <label>
+                <input type="checkbox" value="agreetos" />I have read, understood and agreed to the <a href="#">terms and conditions of service</a>.</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group create-button">
+          <div class="col-md-12">
+            <button class="btn btn-primary btn-block">Create integration</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="popup-upgrade" class="white-popup mfp-hide">
+      <p>Popup content</p>
+    </div>
+    <script src="//use.typekit.net/nls8ikc.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script src="//www.google.com/jsapi"></script>
+    <script src="//static.tok3n.com/0.0.1/js/jquery-pack-min.js"></script>
+    <script type="application/dart" src="/code/Dashboard.dart"></script>
+    <script src="/packages/browser/dart.js"></script>
+    <script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>
+  </body>
+</html>

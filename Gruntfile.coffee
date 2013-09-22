@@ -13,21 +13,19 @@ module.exports = (grunt) ->
 	# Raw from github or cdn
 	ladda = 'https://raw.github.com/hakimel/Ladda/master/dist/'
 	pureHttp = 'http://yui.yahooapis.com/pure/<%= pure.version %>/'
-	cdnUrl = '//tok3n-static.s3-website-us-east-1.amazonaws.com/<%= pkg.version %>/'
+	cdnUrl = '//static.tok3n.com/<%= pkg.version %>/'
 
 	# Bower js files
 	misc = [
 		comp + 'modernizr/modernizr.js'
 		comp + 'underscore/underscore.js'
 		comp + 'backbone/backbone.js'
+		comp + 'Tourist.js/tourist.js'
 		comp + 'eventEmitter/EventEmitter.js'
 		# comp + 'Chart.js/Chart.js'
 		# comp + 'selectize/selectize.js'
 		comp + 'magnific-popup/dist/jquery.magnific-popup.js'
 		comp + 'jquery-mousewheel/jquery.mousewheel.js'
-		comp + 'Tourist.js/tourist.js'
-		# comp + 'chardin.js/chardinjs.js'
-		# comp + 'intro.js/intro.js'
 	]
 	
 	# All unlicensed not added directly (main.js & zepto)
@@ -215,9 +213,12 @@ module.exports = (grunt) ->
 		coffeeredux: 
 			options:
 				bare: true
-			compile:
+			main:
 				src: coffee + 'main.coffee'
 				dest: js + 'main.js'
+			test:
+				src: coffee + 'test.coffee'
+				dest: js + 'test.js'
 		
 		compass:
 			options:
@@ -263,7 +264,7 @@ module.exports = (grunt) ->
 					'<%= copy.zepto.dest %>'
 					misc...
 					unlicend...
-					'<%= coffeeredux.compile.dest %>'
+					'<%= coffeeredux.main.dest %>'
 				]
 				dest: js + 'zepto-pack.js'
 			jquery:
@@ -271,7 +272,7 @@ module.exports = (grunt) ->
 					'<%= copy.jquery.dest %>'
 					misc...
 					unlicend...
-					'<%= coffeeredux.compile.dest %>'
+					'<%= coffeeredux.main.dest %>'
 				]
 				dest: js + 'jquery-pack.js'
 
@@ -307,11 +308,19 @@ module.exports = (grunt) ->
 					}
 					{
 						from: '<script src="http://localhost:35729/livereload.js"></script>'
-						to: '<script type="application/dart" src="/code/Dashboard.dart"></script>'+'<script src="/packages/browser/dart.js"></script>'+"<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>"
+						to: '<script type="application/dart" src="/code/Dashboard.dart"></script>\n    '+'<script src="/packages/browser/dart.js"></script>\n    '+"<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>"
 					}
 					{
 						from: 'css/style.css'
 						to: cdnUrl + 'css/style-min.css'
+					}
+					{
+						from: '\n    <script src="js/test.js"></script>'
+						to: ''
+					}
+					{
+						from: '\n    try\n    {\n      Typekit.load()\n    }\n    catch (e)\n    {}\n    '
+						to: 'try{Typekit.load();}catch(e){}'
 					}
 				]
 			# Sometimes compass does not compile correctly with the change to absolute refs, this is a hackish and temporal solution
@@ -338,6 +347,13 @@ module.exports = (grunt) ->
 					from: ',/*!'
 					to: ',\n/*!'
 				]
+
+		prettify:
+			html:
+				options:
+					unformatted: ['a', 'sub', 'sup', 'b', 'i', 'u', 'script']
+				src: dist + 'index.html'
+				dest: dist + 'index.html'
 
 		cssmin:
 			dist:
@@ -389,7 +405,7 @@ module.exports = (grunt) ->
 				files:[
 					{
 						cwd: 'public'
-						src: ['css/style.css', 'sass/**', 'js/*-pack-min.js', 'svg/**', 'index.html']
+						src: ['css/style.css', 'sass/**', 'js/*-pack-min.js', 'svg/**']
 						dest: dist
 					}
 				]
@@ -422,7 +438,7 @@ module.exports = (grunt) ->
 			options:
 				key: '<%= aws.key %>'
 				secret: '<%= aws.secret %>'
-				bucket: 'tok3n-static'
+				bucket: 'static.tok3n.com'
 			gzipHeader:
 				headers:
 					'Content-Encoding': 'gzip'
@@ -488,7 +504,9 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-text-replace'
 	@loadNpmTasks 'grunt-s3-sync'
 	@loadNpmTasks 'grunt-sync'
+	# @loadNpmTasks 'grunt-html-prettyprinter'
+	@loadNpmTasks 'grunt-prettify'
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'shell:index', 'sync:dist', 'replace', 'cssmin:dist', 'imagemin:dist', 's3-sync']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'sync:dist', 'shell:index', 'prettify', 'replace', 'cssmin:dist', 'imagemin:dist', 's3-sync']
