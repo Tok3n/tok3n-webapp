@@ -323,7 +323,7 @@ span.space {
   transform-style: preserve-3d;
   position: relative;
 }
-/* line 123, ../sass/main.sass */
+/* line 124, ../sass/main.sass */
 #applications #cards-container .front, #applications #cards-container .back {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -334,7 +334,7 @@ span.space {
   top: 0;
   left: 0;
 }
-/* line 128, ../sass/main.sass */
+/* line 129, ../sass/main.sass */
 #applications #cards-container .card, #applications #cards-container .front, #applications #cards-container .back {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -342,12 +342,12 @@ span.space {
   -o-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 130, ../sass/main.sass */
+/* line 131, ../sass/main.sass */
 #applications #cards-container .front {
   z-index: 2;
   background: #dddddd;
 }
-/* line 134, ../sass/main.sass */
+/* line 135, ../sass/main.sass */
 #applications #cards-container .back {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
@@ -356,7 +356,7 @@ span.space {
   transform: rotateY(180deg);
   background: #555555;
 }
-/* line 138, ../sass/main.sass */
+/* line 139, ../sass/main.sass */
 #applications #cards-container .flipped {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
@@ -364,7 +364,7 @@ span.space {
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-/* line 140, ../sass/main.sass */
+/* line 141, ../sass/main.sass */
 #applications #cards-container .card-content {
   padding: 1em;
   position: absolute;

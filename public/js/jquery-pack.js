@@ -13448,7 +13448,7 @@ $(document).ready(function () {
 openPopup = function (e) {
   $.magnificPopup.open({
     items: {
-      src: e.content,
+      src: e.detail.content,
       type: 'inline'
     }
   });

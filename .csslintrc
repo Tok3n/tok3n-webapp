@@ -6,5 +6,6 @@
     "display-property-grouping" : false,
     "fallback-colors"           : false,
     "compatible-vendor-prefixes": false,
-    "duplicate-properties"      : false
+    "duplicate-properties"      : false,
+    "star-property-hack"        : false
 }

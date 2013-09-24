@@ -104,7 +104,7 @@ $(document).ready ->
 openPopup = (e) ->
   $.magnificPopup.open
     items:
-      src: e.content # Content or css selector of container
+      src: e.detail.content # Content or css selector of container
       type: 'inline'
   false
 closePopup = ->
