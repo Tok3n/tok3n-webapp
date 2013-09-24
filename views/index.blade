@@ -1,190 +1,80 @@
 include 'layout.blade'
 render title('Tok3n | Developer')
+
 prepend block style
   // [if lte IE 8]> <link rel="stylesheet" type="text/css" href="css/ie8-and-down.css" /> <![endif]
-replace block body
 
-  #layout
-    #nav
-      .nav-inner
-        ul.menu
-          li#devicesTrigger.col-md-12
-            .row
-              .icon.col-md-3.col-md-offset-1
-                i.icon-mobile-phone
-              .title.col-md-7 My devices
-          li.col-md-12
-            .row
-              .icon.col-md-3.col-md-offset-1
-                i.icon-phone
-              .title.col-md-7 My phones
-          li#myDomainsTrigger.col-md-12
-            .row
-              .icon.col-md-3.col-md-offset-1
-                i.icon-lock
-              .title.col-md-7 Authorized apps
-          li#integrationsTrigger.col-md-12
-            .row
-              .icon.col-md-3.col-md-offset-1
-                i.icon-code
-              .title.col-md-7 My integrations
-          li.col-md-12
-            .row
-              .icon.col-md-3.col-md-offset-1
-                i.icon-cogs
-              .title.col-md-7 Settings
-
-    #content
-      #list.col-md-12
-        .item.item-selected.row
-          .avatar.col-md-2
-            img(alt='ttamayo\'s avatar', src='/img/common/tilo-avatar.png', height='32', width='32')
-          .info.col-md-10
-            h5.title ttamayo.com
-            small.url http://ttamayo.com
+append block body
+  #content
+    #list.col-md-12
+      .item.item-selected.row
+        .avatar.col-md-2
+          img(alt='ttamayo\'s avatar', src='/img/common/tilo-avatar.png', height='32', width='32')
+        .info.col-md-10
+          h5.title ttamayo.com
+          small.url http://ttamayo.com
+      .item.row
+        .avatar.col-md-2
+          img(alt='Offertame\'s avatar', src='/img/common/ericf-avatar.png', height='32', width='32')
+        .info.col-md-10
+          h5.title Offertame
+          small.url http://offerta.me/a/very/long/url/is/good/for/css/testing
+      #triggerNewIntegration
         .item.row
-          .avatar.col-md-2
-            img(alt='Offertame\'s avatar', src='/img/common/ericf-avatar.png', height='32', width='32')
-          .info.col-md-10
-            h5.title Offertame
-            small.url http://offerta.me/a/very/long/url/is/good/for/css/testing
-        #triggerNewIntegration
-          .item.row
-            .col-md-2
-              i.icon-plus-sign
-            .col-md-10
-              h5.title New integration
-      #main
-        .devel-content-header
-          .col-md-12
-            .title
-              span
-                h2 ttamayo.com
-              span.space
-              span.btn-group.settings-menu
-                button.btn.btn-sm.btn-default.action-button
-                  i.icon-gear
-                  | Settings
-                button.btn.btn-sm.btn-default.dropdown-toggle(data-toggle='dropdown')
-                  span.caret
-                ul.dropdown-menu(role='menu')
-                  li.hidden
-                    a(href='#') Stop
-                  li
-                    a(href='#') Delete
-            table.specs
-              tr.status
-                td.name Status:
-                td
-                  span.label.label-success Active
-                  span.label.label-warning Halted
-                  span.label.label-danger Running out of users
-              tr
-                td.name Plan:
-                td
-                  a(href='#') Early Adopter
+          .col-md-2
+            i.icon-plus-sign
+          .col-md-10
+            h5.title New integration
+    #main
+      .devel-content-header
+        .col-md-12
+          .title
+            span
+              h2 ttamayo.com
+            span.space
+            span.btn-group.settings-menu
+              button.btn.btn-sm.btn-default.action-button
+                i.icon-gear
+                | Settings
+              button.btn.btn-sm.btn-default.dropdown-toggle(data-toggle='dropdown')
+                span.caret
+              ul.dropdown-menu(role='menu')
+                li.hidden
+                  a(href='#') Stop
+                li
+                  a(href='#') Delete
+          table.specs
+            tr.status
+              td.name Status:
+              td
+                span.label.label-success Active
+                span.label.label-warning Halted
+                span.label.label-danger Running out of users
+            tr
+              td.name Plan:
+              td
+                a(href='#') Early Adopter
+                |  &mdash;  
+                a.action.trigger-upgrade upgrade
+            tr
+              td.name API key:
+              td e871df97-29c9-497b-87ae-040369737501
+            tr
+              td.name Secret:
+              td
+                span.secret 8869c644-62a5-4a27-95f5-a44af2aaf03f
                   |  &mdash;  
-                  a.action.trigger-upgrade upgrade
-              tr
-                td.name API key:
-                td e871df97-29c9-497b-87ae-040369737501
-              tr
-                td.name Secret:
-                td
-                  span.secret 8869c644-62a5-4a27-95f5-a44af2aaf03f
-                    |  &mdash;  
-                  a.action.toggle-secret(href='#') show
-              tr
-                td.name URL:
-                td
-                  span http://ttamayo.com/app
-              tr
-                td.name Callback:
-                td
-                  span http://ttamayo.com/callback
+                a.action.toggle-secret(href='#') show
+            tr
+              td.name URL:
+              td
+                span http://ttamayo.com/app
+            tr
+              td.name Callback:
+              td
+                span http://ttamayo.com/callback
 
-        .devel-content-body
+      .devel-content-body
 
-  #popup-integration-settings.white-popup.mfp-hide
-    form.form-horizontal(role='form')
-      .form-group
-        .col-md-12
-          h3.title Change settings
-      .form-group
-        label.align-top.col-md-2(for='implementationSettingsNameField') Name
-        .col-md-10
-          input.form-control#implementationSettingsNameField(type='text', value='ttamayo.com')
-      .form-group
-        label.align-top.col-md-2(for='implementationSettingsURL') URL
-        .col-md-10
-          input.form-control#implementationSettingsURL(type='url', value='https://my.tok3n.com')
-      .form-group
-        label.align-top.col-md-4(for='implementationSettingsCallbackPath') Callback Path
-        .col-md-8
-          input.form-control#implementationSettingsCallbackPath(type='url', value='/path/to/myhandler')
-      .form-group
-        label.align-top.col-md-2(for='implementationSettingsAvatar') Avatar
-        .input-group.col-md-10
-          span.input-group-btn
-            span.btn.btn-primary.btn-file
-              | Change avatar
-              input#implementationSettingsAvatar(type='file', multiple='')
-          input.avatar-path.form-control(type='text', readonly='')
-        span.help-block.col-md-10.col-md-offset-2
-          | Leave unchanged if you don't want to change your avatar. Max file size: 5 mb (png, jpg)
-      .form-group.create-button
-        .col-md-12
-          button.btn.btn-primary.btn-block Save settings
-
-  #popup-new-integration.white-popup.mfp-hide
-    form.form-horizontal(role='form')
-      .form-group
-        .col-md-12
-          h3.title New integration
-      .form-group
-        label.align-top.col-md-2(for='newImplementationNameField') Name
-        .col-md-10
-          input.form-control#newImplementationNameField(type='text')
-      .form-group
-        label.align-top.col-md-2(for='newImplementationKind') Kind
-        .col-md-10
-          label.radio-inline
-            input#newImplementationKindGeneral(type='radio', name='kind', value='general')
-            | General
-          label.radio-inline
-            input#newImplementationKindWeb(type='radio', name='kind', value='web')
-            | Web
-          span.help-block Web integrations have a URL and a callback which is called on certain user actions. 
-            a Learn more
-      .form-group.web-toggle
-        label.align-top.col-md-2(for='newImplementationURL') URL
-        .col-md-10
-          input.form-control#newImplementationURL(type='url', placeholder='e.g. https://my.tok3n.com')
-      .form-group.web-toggle
-        label.align-top.col-md-4(for='newImplementationCallbackPath') Callback Path
-        .col-md-8
-          input.form-control#newImplementationCallbackPath(type='url', placeholder='e.g. /path/to/myhandler')
-      .form-group
-        label.align-top.col-md-2(for='newImplementationAvatar') Avatar
-        .input-group.col-md-10
-          span.input-group-btn
-            span.btn.btn-primary.btn-file
-              | Browse…
-              input#newImplementationAvatar(type='file', multiple='')
-          input.avatar-path.form-control(type='text', readonly='')
-        span.help-block.col-md-10.col-md-offset-2
-          | In order for the users to recognize your app, you must supply an image (png, jpg). Max file size: 5 mb
-      .form-group
-        .checkbox
-          .col-md-10.col-md-offset-1
-            label
-              input(type='checkbox', value='agreetos')
-              | I have read, understood and agreed to the 
-              a(href='#') terms and conditions of service
-              | .
-      .form-group.create-button
-        .col-md-12
-          button.btn.btn-primary.btn-block Create integration
-
-  #popup-upgrade.white-popup.mfp-hide
-    p Popup content
+prepend block footer
+  include 'popups.blade'

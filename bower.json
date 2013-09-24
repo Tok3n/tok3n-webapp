@@ -24,6 +24,10 @@
     "intro.js": "~0.5.0",
     "bootstrap-sass": "~3.0.0",
     "eventEmitter": "~4.2.3",
-    "backbone": "~1.0.0"
+    "backbone": "~1.0.0",
+    "masonry": "~3.1.2",
+    "resizeend": "~1.1.2",
+    "jquery.breakpoints": "*",
+    "enquire": "~2.1.0"
   }
 }

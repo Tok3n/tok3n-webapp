@@ -1,0 +1,71 @@
+include 'layout.blade'
+render title('Tok3n | Apps')
+
+prepend block style
+  // [if lte IE 8]> <link rel="stylesheet" type="text/css" href="css/ie8-and-down.css" /> <![endif]
+
+append block body
+  #content
+    .col-md-12
+      #applications
+        h2 Authorized applications
+        #cards-container
+          .grid-column
+          .grid-gutter
+          .card
+            .flipper
+              .front
+                .card-content
+                  p Offerta.me
+              .back
+                .card-content
+                  .revoke
+                    a(href='#') revoke
+          .card
+            .flipper
+              .front
+                .card-content
+                  p Front
+              .back
+                .card-content
+                  p Back
+          .card
+            .flipper
+              .front
+                .card-content
+                  p Front
+              .back
+                .card-content
+                  p Back
+          .card
+            .flipper
+              .front
+                .card-content
+                  p Front
+              .back
+                .card-content
+                  p Back
+          .card
+            .flipper
+              .front
+                .card-content
+                  p Front
+              .back
+                .card-content
+                  p Back
+          .card
+            .flipper
+              .front
+                .card-content
+                  p Front
+              .back
+                .card-content
+                  p Back
+          .card
+            .flipper
+              .front
+                .card-content
+                  p Front
+              .back
+                .card-content
+                  p Back

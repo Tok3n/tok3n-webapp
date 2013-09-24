@@ -1,0 +1,83 @@
+#popup-integration-settings.white-popup.mfp-hide
+  form.form-horizontal(role='form')
+    .form-group
+      .col-md-12
+        h3.title Change settings
+    .form-group
+      label.align-top.col-md-2(for='implementationSettingsNameField') Name
+      .col-md-10
+        input.form-control#implementationSettingsNameField(type='text', value='ttamayo.com')
+    .form-group
+      label.align-top.col-md-2(for='implementationSettingsURL') URL
+      .col-md-10
+        input.form-control#implementationSettingsURL(type='url', value='https://my.tok3n.com')
+    .form-group
+      label.align-top.col-md-4(for='implementationSettingsCallbackPath') Callback Path
+      .col-md-8
+        input.form-control#implementationSettingsCallbackPath(type='text', value='/path/to/myhandler')
+    .form-group
+      label.align-top.col-md-2(for='implementationSettingsAvatar') Avatar
+      .input-group.col-md-10
+        span.input-group-btn
+          span.btn.btn-primary.btn-file
+            | Change avatar
+            input#implementationSettingsAvatar(type='file', multiple='')
+        input.avatar-path.form-control(type='text', readonly='')
+      span.help-block.col-md-10.col-md-offset-2
+        | Leave unchanged if you don't want to change your avatar. Max file size: 5 mb (png, jpg)
+    .form-group.create-button
+      .col-md-12
+        button.btn.btn-primary.btn-block Save settings
+
+#popup-new-integration.white-popup.mfp-hide
+  form.form-horizontal(role='form')
+    .form-group
+      .col-md-12
+        h3.title New integration
+    .form-group
+      label.align-top.col-md-2(for='newImplementationNameField') Name
+      .col-md-10
+        input.form-control#newImplementationNameField(type='text')
+    .form-group
+      label.align-top.col-md-2(for='newImplementationKind') Kind
+      .col-md-10
+        label.radio-inline
+          input#newImplementationKindGeneral(type='radio', name='kind', value='general')
+          | General
+        label.radio-inline
+          input#newImplementationKindWeb(type='radio', name='kind', value='web')
+          | Web
+        span.help-block Web integrations have a URL and a callback which is called on certain user actions. 
+          a Learn more
+    .form-group.web-toggle
+      label.align-top.col-md-2(for='newImplementationURL') URL
+      .col-md-10
+        input.form-control#newImplementationURL(type='url', placeholder='e.g. https://my.tok3n.com')
+    .form-group.web-toggle
+      label.align-top.col-md-4(for='newImplementationCallbackPath') Callback Path
+      .col-md-8
+        input.form-control#newImplementationCallbackPath(type='text', placeholder='e.g. /path/to/myhandler')
+    .form-group
+      label.align-top.col-md-2(for='newImplementationAvatar') Avatar
+      .input-group.col-md-10
+        span.input-group-btn
+          span.btn.btn-primary.btn-file
+            | Browse…
+            input#newImplementationAvatar(type='file', multiple='')
+        input.avatar-path.form-control(type='text', readonly='')
+      span.help-block.col-md-10.col-md-offset-2
+        | In order for the users to recognize your app, you must supply an image (png, jpg). Max file size: 5 mb
+    .form-group
+      .checkbox
+        .col-md-10.col-md-offset-1
+          label
+            input(type='checkbox', value='agreetos')
+            | I have read, understood and agreed to the 
+            a(href='#') terms and conditions of service
+            | .
+    .form-group.create-button
+      .col-md-12
+        button.btn.btn-primary.btn-block Create integration
+
+#popup-upgrade.white-popup.mfp-hide
+  p Popup content

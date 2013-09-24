@@ -54,17 +54,52 @@ $(document).on "DOMMouseScroll mousewheel", "#list", (ev) ->
     $this.scrollTop 0
     prevent()
 
+masonryResize = (e) ->
+  eachCard = $('#cards-container .card')
+  eachCardFlippingContent = $('#cards-container .card .front, #cards-container .card .back, #cards-container .card')
+  eachCardFrontBack = $('#cards-container .card .front, #cards-container .card .back')
+  cardWidth = eachCard.width()
+  eachCardFlippingContent.height(cardWidth)
+  eachCardFrontBack.width(cardWidth)
+window.addEventListener "resizeend", masonryResize, false
+
 $(document).ready ->
+  # Integration page api secret toggle
   secret = $('.toggle-secret')
   secret.click ->
     $('.secret').toggle()
     if secret.html() is 'show' then secret.html('hide') else secret.html('show')
-
+  # New integration web options toggle
   webtoggle = $('#popup-new-integration .web-toggle')
   radiobutton = $('#popup-new-integration input[type=radio]')
   radiobutton.click (e) ->
     value = $(e.currentTarget).val()
     if value is 'web' then webtoggle.slideDown() else webtoggle.slideUp()
+  # Masonry resize before calling for the first time
+  masonryResize()
+  $('#cards-container').masonry
+    itemSelector: '.card'
+    columnWidth: '.grid-column'
+    gutter: '.grid-gutter'
+  # Card flip
+  $('#cards-container .card').click ->
+    $('.flipper', this).toggleClass('flipped')
+  # Sidebar collapse responsive
+  enquire.register "(min-width: 769px)", {
+    match: ->
+      $('#sidebar .menu').collapse 'show'
+      false
+    unmatch: ->
+      $('#sidebar .menu').collapse 'hide'
+      false
+
+  },true
+  # enquire.register "(max-width: 768px)"
+  #   match: ->
+  #     $('#sidebar .menu').collapse 'hide'
+  #     false
+
+    
 
 openPopup = (e) ->
   $.magnificPopup.open
@@ -75,6 +110,5 @@ openPopup = (e) ->
 closePopup = ->
   $.magnificPopup.close()
   false
-
 window.addEventListener "openPopup", openPopup, false
 window.addEventListener "closePopup", closePopup, false

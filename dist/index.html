@@ -18,16 +18,20 @@
     <div id="top">
       <div class="top-nav">
         <div class="nav-wrap row">
-          <header class="col-md-4">
+          <header class="col-md-4 col-sm-4 col-xs-4">
             <div alt="Tok3n" class="logo"></div>
           </header>
-          <nav class="col-md-8">
+          <nav class="col-md-8 col-sm-8 col-xs-8">
             <div class="menu">
               <ul>
-                <li><a href="#">Developers</a>
+                <li class="developers"><a href="#">Developers</a>
                 </li>
                 <li>
                   <button href="#" class="btn btn-default">Log out</button>
+                </li>
+                <li class="toggle-sidebar">
+                  <button type="button" data-toggle="collapse" data-target="#sidebar .menu" class="btn btn-default"><i class="icon-reorder"></i>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -36,42 +40,42 @@
       </div>
     </div>
     <div id="layout">
-      <div id="nav">
+      <div id="sidebar">
         <div class="nav-inner">
-          <ul class="menu">
-            <li id="devicesTrigger" class="col-md-12">
+          <ul class="menu collapse">
+            <li id="devicesTrigger" class="col-xs-12 col-sm-12 col-md-12">
               <div class="row">
-                <div class="icon col-md-3 col-md-offset-1"><i class="icon-mobile-phone"></i>
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-mobile-phone"></i>
                 </div>
-                <div class="title col-md-7">My devices</div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">My devices</div>
               </div>
             </li>
-            <li class="col-md-12">
+            <li class="col-xs-12 col-sm-12 col-md-12">
               <div class="row">
-                <div class="icon col-md-3 col-md-offset-1"><i class="icon-phone"></i>
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-phone"></i>
                 </div>
-                <div class="title col-md-7">My phones</div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">My phones</div>
               </div>
             </li>
-            <li id="myDomainsTrigger" class="col-md-12">
+            <li id="myDomainsTrigger" class="col-xs-12 col-sm-12 col-md-12">
               <div class="row">
-                <div class="icon col-md-3 col-md-offset-1"><i class="icon-lock"></i>
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-lock"></i>
                 </div>
-                <div class="title col-md-7">Authorized apps</div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">Authorized apps</div>
               </div>
             </li>
-            <li id="integrationsTrigger" class="col-md-12">
+            <li id="integrationsTrigger" class="col-xs-12 col-sm-12 col-md-12">
               <div class="row">
-                <div class="icon col-md-3 col-md-offset-1"><i class="icon-code"></i>
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-code"></i>
                 </div>
-                <div class="title col-md-7">My integrations</div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">My integrations</div>
               </div>
             </li>
-            <li class="col-md-12">
+            <li class="col-xs-12 col-sm-12 col-md-12">
               <div class="row">
-                <div class="icon col-md-3 col-md-offset-1"><i class="icon-cogs"></i>
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-cogs"></i>
                 </div>
-                <div class="title col-md-7">Settings</div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">Settings</div>
               </div>
             </li>
           </ul>
@@ -193,7 +197,7 @@
         <div class="form-group">
           <label for="implementationSettingsCallbackPath" class="align-top col-md-4">Callback Path</label>
           <div class="col-md-8">
-            <input type="url" value="/path/to/myhandler" id="implementationSettingsCallbackPath" class="form-control" />
+            <input type="text" value="/path/to/myhandler" id="implementationSettingsCallbackPath" class="form-control" />
           </div>
         </div>
         <div class="form-group">
@@ -248,7 +252,7 @@
         <div class="form-group web-toggle">
           <label for="newImplementationCallbackPath" class="align-top col-md-4">Callback Path</label>
           <div class="col-md-8">
-            <input type="url" placeholder="e.g. /path/to/myhandler" id="newImplementationCallbackPath" class="form-control" />
+            <input type="text" placeholder="e.g. /path/to/myhandler" id="newImplementationCallbackPath" class="form-control" />
           </div>
         </div>
         <div class="form-group">

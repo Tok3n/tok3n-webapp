@@ -1,38 +1,5 @@
-@import 'compass/css3'
-@import "compass/css3/user-interface"
-@import 'compass/typography'
-@import 'helpers'
-$experimental-support-for-svg: true
+@import 'imports'
 
-#nav
-  .menu
-    background: transparent
-    border: none
-    text-align: left
-    list-style-type: none
-    padding-left: 0
-    +user-select(none)
-    // Hack to align to logo left
-    margin-left: -10px
-    li
-      cursor: pointer
-      padding-top: .7em
-      padding-bottom: .2em
-      color: #fff
-      color: white(.7)
-      &:hover, &:focus
-        background: #373c5a
-        color: #fff
-      &:active
-        background: #3e4465
-      .title
-        text-align: left
-        padding-left: 0
-      .icon
-        color: white(.8)
-        color: #fff
-        font-size: 130%
-        text-align: center
 #list
   .item
     padding: 0.9em 1.4em 0.9em 1.2em
@@ -124,7 +91,53 @@ $experimental-support-for-svg: true
         span.label
           font-size: .9em
 
-.popover-content
-  .title
-    // margin: 20px 8px 10px 8px
-    text-align: center
+#applications
+  margin: 3em 2em 2em
+  #cards-container
+    perspective: 1000
+    margin-top: 2em
+    +breakpoint(max-width 624px)
+      +application-columns(2, 4%)
+      .card
+        margin-bottom: 1em
+    +breakpoint(625px 768px)
+      +application-columns(3, 5%)
+    +breakpoint(769px 844px)
+      +application-columns(2, 5%)
+    +breakpoint(845px 1159px)
+      +application-columns(3, 5%)
+    +breakpoint(1160px 1459px)
+      +application-columns(4, 4%)
+    +breakpoint(1500px 1764px)
+      +application-columns(5, 3%)
+    +breakpoint(1765px)
+      +application-columns(6, 2%)
+    .card
+      overflow: hidden
+      cursor: pointer
+      margin-bottom: 2em
+    .flipper
+      +single-transition(all, 0.7s)
+      +transform-style(preserve-3d)
+      position: relative
+    .front, .back
+      +backface-visibility(hidden)
+      position: absolute
+      top: 0
+      left: 0
+    .card, .front, .back
+      +border-radius(4px)
+    .front
+      z-index: 2
+      background: #ddd
+      // +box-shadow(0 0 1px black(.8) inset)
+    .back
+      +rotateY(180deg)
+      background: #555
+      // +box-shadow(0 0 1px red inset)
+    .flipped
+      +rotateY(180deg)
+    .card-content
+      padding: 1em
+      position: absolute
+      bottom: 0

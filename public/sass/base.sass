@@ -1,8 +1,8 @@
-@import 'compass/css3'
-@import "compass/css3/user-interface"
-@import 'compass/typography'
-@import 'helpers'
-$experimental-support-for-svg: true
+@import 'imports'
+
+////////////////////
+// Sitewide
+////////////////////
 
 body
   font-family: "ff-dagny-web-pro"
@@ -16,37 +16,15 @@ h1, h2, h3, h4, h5, h6
   font-family: "adelle"
   color: hsla(237,40,40,1)
 
-// input, input[type="text"], input[type="radio"], isindex, .uneditable-input
-//   padding: 4px
-//   border-bottom-width: 1px
-//   border-bottom-style: solid
-//   border-bottom-color: #CCC
-//   border-left-width: 1px
-//   border-left-style: solid
-//   border-left-color: #CCC
-//   border-right-width: 1px
-//   border-right-style: solid
-//   border-right-color: #CCC
-//   border-top-width: 1px
-//   border-top-style: solid
-//   border-top-color: #CCC
-//   border-top-left-radius: 3px
-//   border-top-right-radius: 3px
-//   border-bottom-left-radius: 3px
-//   border-bottom-right-radius: 3px
-
-// .input-append .add-on, .input-append .btn
-//   margin-left: -6px
-
-// input[type=checkbox]
-//   -webkit-appearance: checkbox
-
 a
   text-decoration: none
   color: #1b98f8
 
-// LAYOUT CSS
-$top-nav-height: 58px //- hardcoded!!!!!!
+//////////////////////
+// Top nav proportions
+//////////////////////
+
+$top-nav-height: 58px //- hardcoded!!
 $logo-width: 100px
 $logo-proportion: .36
 $nav-separation: 2.1em
@@ -80,10 +58,18 @@ $nav-margin-top: 13px
     margin-top: $nav-margin-top
     .menu
       text-align: right
+      margin-right: 1em
       ul
         +inline-list
         li
           margin: 0 $nav-separation/2
+          +at(1)
+            &.developers
+              display: none
+          +from(3)
+            &.toggle-sidebar
+              display: none
+            margin: 0 0 0 $nav-separation/2
           a
             +link-colors(#171947, #434cd3, #ba7f29)
             +hover-link
@@ -100,7 +86,7 @@ $nav-margin-top: 13px
             color: #fff
             padding: .5em 1.2em
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2)
-            border-radius: 4px
+            +border-radius(4px)
             +single-transition(background, .3s, ease-out, 0)
             &:hover
               background: hsla(236, 62%, 50%, 0.9)
@@ -114,38 +100,97 @@ $nav-margin-top: 13px
             .icon-caret-down
               margin-left: .8em
 
-$menu-width: 220px
-$apps-width: 252px
-$left-width: $menu-width + $apps-width
+/////////////////////////////
+// Three column propoportions
+/////////////////////////////
 
-#layout
-  padding-left: $left-width
-  position: relative
-  padding-top: $top-nav-height
-  z-index: 1
++from(3)
+  $menu-width: 220px
+  $apps-width: 252px
+  $left-width: $menu-width + $apps-width
 
-#nav, #list
-  position: fixed
-  top: $top-nav-height
-  bottom: 0
-  overflow: auto
+  #layout
+    padding-left: $left-width
+    position: relative
+    padding-top: $top-nav-height
+    z-index: 1
 
-#nav
-  margin-left: $left-width * -1
-  width: $menu-width
+  #sidebar, #list
+    position: fixed
+    top: $top-nav-height
+    bottom: 0
+    overflow: auto
+
+  #sidebar
+    margin-left: $left-width * -1
+    width: $menu-width
+    text-align: center
+    padding: 2em 0
+
+  #list
+    width: $apps-width
+    border-right: 1px solid #ddd
+
+  #content
+    margin-left: $apps-width * -1
+
+  #main
+    margin-left: $apps-width
+
+////////////////////
+// Sidebar
+////////////////////
+
+#sidebar
   background: rgb(37, 42, 58)
-  text-align: center
-  padding: 2em 0
+  .nav-inner
+    +to(2)
+      padding-top: $top-nav-height
+  .menu
+    background: transparent
+    border: none
+    text-align: left
+    list-style-type: none
+    padding-left: 0
+    +user-select(none)
+    +from(3)
+      // Hack to align to logo left
+      margin-left: -10px
+    li
+      cursor: pointer
+      +to(2)
+        padding: .8em 2em
+      +from(3)
+        padding-top: .7em
+        padding-bottom: .2em
+      color: #fff
+      color: white(.7)
+      &:hover, &:focus
+        background: #373c5a
+        color: #fff
+      &:active
+        background: #3e4465
+      .title, .icon
+        +to(2)
+          display: inline-block
+      .title
+        text-align: left
+        padding-left: 0
+        +to(2)
+          font-size: 120%
+          margin-top: 0.2em
+      .icon
+        color: white(.8)
+        color: #fff
+        text-align: center
+        +to(2)
+          font-size: 150%
+        +from(3)
+          font-size: 130%
 
-#list
-  width: $apps-width
-  border-right: 1px solid #ddd
-
-#content
-  margin-left: $apps-width * -1
-
-#main
-  margin-left: $apps-width
+////////////////////
+// Popups and extras
+////////////////////
 
 .white-popup
   position: relative
@@ -182,9 +227,11 @@ $left-width: $menu-width + $apps-width
   .form-control
     cursor: default
 
+.popover-content
+  .title
+    text-align: center
 
-
-// @media (max-width: 867px)
+// +at(2)
 //   #list, #main
 //     width: 100%
 //   #layout
@@ -203,12 +250,12 @@ $left-width: $menu-width + $apps-width
 //     width: auto
 //     // so that it's not 100%
 
-// @media (max-width: 480px)
-//   #layout, #nav, #list, #main
+// +at(1)
+//   #layout, #sidebar, #list, #main
 //     position: static
 //     margin: 0
 //     padding: 0
-//   #nav
+//   #sidebar
 //     width: 100%
 //     height: 40px
 //     position: relative
@@ -221,7 +268,7 @@ $left-width: $menu-width + $apps-width
 //       height: 80%
 //   .nav-inner
 //     display: none
-//   #nav.active .nav-inner
+//   #sidebar.active .nav-inner
 //     display: block
 //   .devel-avatar
 //     width: 40px
