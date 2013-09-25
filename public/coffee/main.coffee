@@ -83,10 +83,11 @@ $(document).ready ->
     gutter: '.grid-gutter'
     transitionDuration: 0
   # Card flip
-  $('#cards-container .flipper:not(.flipped)').parent().click ->
-    $('.flipper', this).toggleClass('flipped')
-  $('#cards-container .flip').click ->
+  $('#cards-container .front').click ->
     $(this).parent('.flipper').toggleClass('flipped')
+    $(this).siblings('.back').css('z-index', '3')
+  $('#cards-container .flip').click ->
+    $(this).closest('.flipper').toggleClass('flipped')
   # Sidebar collapse responsive
   enquire.register "(min-width: 769px)", {
     match: ->
@@ -95,15 +96,12 @@ $(document).ready ->
     unmatch: ->
       $('#sidebar .menu').collapse 'hide'
       false
-
   },true
-
+  # On submit disable its submit button
   $(".white-popup .popup-form").submit ->
-    # On submit disable its submit button
     $("input[type=submit]", this).attr "disabled", "disabled"
     false
     
-
 openPopup = (e) ->
   $.magnificPopup.open
     items:

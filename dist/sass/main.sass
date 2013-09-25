@@ -11,12 +11,13 @@
   .item, #new-integration
     +user-select(none)
     cursor: pointer
-    &:hover, &:focus
-      +background-image(linear-gradient(top, hsla(204, 100%, 89%, 1) 0%,hsla(205, 100%, 90%, 1) 100%))
-      .title
-        color: #444
-      .url
-        color: #000
+    .no-touch &
+      &:hover, &:focus
+        +background-image(linear-gradient(top, hsla(204, 100%, 89%, 1) 0%,hsla(205, 100%, 90%, 1) 100%))
+        .title
+          color: #444
+        .url
+          color: #000
     &:active
       +background-image(linear-gradient(top, hsla(202, 100%, 79%, 1) 0%,hsla(203, 100%, 80%, 1) 100%))
   .new-item
@@ -36,8 +37,9 @@
     color: #999
   .item-selected
     +background-image(linear-gradient(top, hsla(264, 29%, 93%, 1) 0%,hsla(265, 100%, 92%, 1) 100%))
-    &:hover, &:focus
-      +background-image(linear-gradient(top, hsla(266, 48%, 90%, 1) 0%,hsla(267, 100%, 89%, 1) 100%))
+    .no-touch &
+      &:hover, &:focus
+        +background-image(linear-gradient(top, hsla(266, 48%, 90%, 1) 0%,hsla(267, 100%, 89%, 1) 100%))
     &:active
       +background-image(linear-gradient(top, hsla(268, 48%, 83%, 1) 0%,hsla(269, 100%, 82%, 1) 100%))
   #triggerNewIntegration
@@ -72,8 +74,9 @@
       a.action
         text-decoration: underline
         color: hsla(29, 84%, 48%, 1)
-        &:hover, &:focus
-          color: hsla(29, 100%, 60%, 1)
+        .no-touch &
+          &:hover, &:focus
+            color: hsla(29, 100%, 60%, 1)
         &:active
           color: hsla(29, 100%, 80%, 1)
       .secret
@@ -116,13 +119,13 @@
       +application-columns(6, 2%)
     .card
       overflow: hidden
-      cursor: pointer
       margin-bottom: 2em
     .flipper
       +single-transition(all, 0.7s)
       +transform-style(preserve-3d)
       // +rotateY(180deg) // Remove to test back
       position: relative
+      height: 100%
     .front, .back
       +backface-visibility(hidden)
       position: absolute
@@ -130,10 +133,12 @@
       left: 0
     .card, .front, .back
       +border-radius(4px)
+    .front, .flip, .revoke
+      cursor: pointer
     .front
       z-index: 2
-      background: #ddd
-      // +box-shadow(0 0 1px black(.8) inset)
+      background: #fff
+      +single-transition(all, .3s)
     .back
       +rotateY(180deg)
       background: hsla(265, 100%, 92%, .2)
@@ -165,9 +170,9 @@
       padding: 0 1em
     .info
       padding: 0 4em 0 1em
-      margin: -15px 0 1em 0
+      margin: -20px 0 1em 0
     .flip
-      height: 15px
+      height: 20px
       text-align: right
       font-size: 130%
     .text-container, .revoke
@@ -176,10 +181,14 @@
     .text-container
       padding: 1em
       background: white(.9)
-      // visibility: hidden
+      .no-touch &
+        visibility: hidden
       font-weight: bold
       +border-bottom-left-radius(3px)
       +border-bottom-right-radius(3px)
       +box-shadow(0 -15px 15px -15px black(.8), 0 0 1px black(.8) inset)
-    .front:hover .text-container
-      visibility: visible
+    .front:hover
+      .no-touch &
+        +box-shadow(0 0 1px black(.8) inset)
+        .text-container
+          visibility: visible

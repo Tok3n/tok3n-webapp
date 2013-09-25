@@ -110,11 +110,12 @@ $(document).ready(function () {
     gutter: '.grid-gutter',
     transitionDuration: 0
   });
-  $('#cards-container .flipper:not(.flipped)').parent().click(function () {
-    return $('.flipper', this).toggleClass('flipped');
+  $('#cards-container .front').click(function () {
+    $(this).parent('.flipper').toggleClass('flipped');
+    return $(this).siblings('.back').css('z-index', '3');
   });
   $('#cards-container .flip').click(function () {
-    return $(this).parent('.flipper').toggleClass('flipped');
+    return $(this).closest('.flipper').toggleClass('flipped');
   });
   enquire.register('(min-width: 769px)', {
     match: function () {

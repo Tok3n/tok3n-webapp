@@ -71,8 +71,10 @@ $nav-margin-top: 13px
               display: none
             margin: 0 0 0 $nav-separation/2
           a
-            +link-colors(#171947, #434cd3, #ba7f29)
-            +hover-link
+            .touch &
+              +link-colors($normal: #171947, $active: #ba7f29)
+            .no-touch &
+              +link-colors(#171947, #434cd3, #ba7f29)
             +letterpress(white(.7))
             // font-weight: bolder
           &:first-child
@@ -88,8 +90,9 @@ $nav-margin-top: 13px
             text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2)
             +border-radius(4px)
             +single-transition(background, .3s, ease-out, 0)
-            &:hover
-              background: hsla(236, 62%, 50%, 0.9)
+            .no-touch &
+              &:hover
+                background: hsla(236, 62%, 50%, 0.9)
             &:active
               background: hsla(236, 62%, 80%, 0.9)
             .icon-cog
@@ -165,9 +168,10 @@ $nav-margin-top: 13px
         padding-bottom: .2em
       color: #fff
       color: white(.7)
-      &:hover, &:focus
-        background: #373c5a
-        color: #fff
+      .no-touch &
+        &:hover, &:focus
+          background: #373c5a
+          color: #fff
       &:active
         background: #3e4465
       .title, .icon
