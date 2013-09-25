@@ -8198,12 +8198,12 @@ a {
   margin: 0.61em 0;
   height: 40px;
   width: 111px;
-  background-image: url('../img/logo.png?1376272590');
+  background-image: url('//static.tok3n.com/0.0.1/img/logo.png?1376272590');
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
   /* line 51, ../sass/base.sass */
   .top-nav header .logo {
-    background-image: url('../img/logo_hd.png?1376272590');
+    background-image: url('//static.tok3n.com/0.0.1/img/logo_hd.png?1376272590');
     background-size: 111px 40px;
   }
 }
