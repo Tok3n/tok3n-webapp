@@ -73,10 +73,11 @@ html.no-js(lang='en')
       
       //- :js
       //-   function downloadJSAtOnload(){var a=document.createElement("script");a.src='js/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '-pack.js',document.body.appendChild(a)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
-      script(src="//use.typekit.net/nls8ikc.js")
-      :js
-        try{Typekit.load();}catch(e){}
+
       script(src="//www.google.com/jsapi")
       script(src="js/jquery-pack.js")
       script(src='js/test.js')
       script(src="http://localhost:35729/livereload.js")
+      script(src="//use.typekit.net/nls8ikc.js")
+      :js
+        try{Typekit.load();}catch(e){}

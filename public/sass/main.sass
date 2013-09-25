@@ -96,7 +96,9 @@
   #cards-container
     perspective: 1000
     margin-top: 2em
-    +breakpoint(max-width 624px)
+    +breakpoint(max-width 344px)
+      +application-columns(1, 0)
+    +breakpoint(344px 624px)
       +application-columns(2, 4%)
       .card
         margin-bottom: 1em
@@ -119,7 +121,7 @@
     .flipper
       +single-transition(all, 0.7s)
       +transform-style(preserve-3d)
-      
+      // +rotateY(180deg) // Remove to test back
       position: relative
     .front, .back
       +backface-visibility(hidden)
@@ -134,11 +136,50 @@
       // +box-shadow(0 0 1px black(.8) inset)
     .back
       +rotateY(180deg)
-      background: #555
-      // +box-shadow(0 0 1px red inset)
+      background: hsla(265, 100%, 92%, .2)
+      +box-shadow(0 0 1px black(.8) inset)
     .flipped
       +rotateY(180deg)
-    .card-content
-      padding: 1em
+    .img-wrap
+      +border-radius(4px)
+      width: 100%
+      display: inline-block
+      vertical-align: middle
+      font: 0/0 serif
+      text-shadow: none
+      color: transparent
+      background-size: 100%
+      background-position: 50% 50%
+      background-repeat: no-repeat
+    .inner
+      padding-top: 100%
+      display: block
+      height: 0
+    .revoke, .flip, .text-container, .info
+      width: inherit
+    .flip
+      margin: .8em 0 0
+      padding: 0 1em
+    .revoke
+      margin: 1em 0
+      padding: 0 1em
+    .info
+      padding: 0 4em 0 1em
+      margin: -15px 0 1em 0
+    .flip
+      height: 15px
+      text-align: right
+      font-size: 130%
+    .text-container, .revoke
       position: absolute
       bottom: 0
+    .text-container
+      padding: 1em
+      background: white(.9)
+      // visibility: hidden
+      font-weight: bold
+      +border-bottom-left-radius(3px)
+      +border-bottom-right-radius(3px)
+      +box-shadow(0 -15px 15px -15px black(.8), 0 0 1px black(.8) inset)
+    .front:hover .text-container
+      visibility: visible

@@ -13429,12 +13429,16 @@ $(document).ready(function () {
   $('#cards-container').masonry({
     itemSelector: '.card',
     columnWidth: '.grid-column',
-    gutter: '.grid-gutter'
+    gutter: '.grid-gutter',
+    transitionDuration: 0
   });
-  $('#cards-container .card').click(function () {
+  $('#cards-container .flipper:not(.flipped)').parent().click(function () {
     return $('.flipper', this).toggleClass('flipped');
   });
-  return enquire.register('(min-width: 769px)', {
+  $('#cards-container .flip').click(function () {
+    return $(this).parent('.flipper').toggleClass('flipped');
+  });
+  enquire.register('(min-width: 769px)', {
     match: function () {
       $('#sidebar .menu').collapse('show');
       return false;
@@ -13444,6 +13448,10 @@ $(document).ready(function () {
       return false;
     }
   }, true);
+  return $('.white-popup .popup-form').submit(function () {
+    $('input[type=submit]', this).attr('disabled', 'disabled');
+    return false;
+  });
 });
 openPopup = function (e) {
   $.magnificPopup.open({

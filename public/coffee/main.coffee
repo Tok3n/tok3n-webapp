@@ -29,8 +29,8 @@ window.addEventListener "drawChartDataDonut", drawChartDataDonut, false
 window.addEventListener "drawChartDataRequestHistory", drawChartDataRequestHistory, false
 window.addEventListener "drawChartDataUsersHistory", drawChartDataUsersHistory, false
 
-######################################################################################
-######################################################################################
+#####################################################################################
+#####################################################################################
 
 ee = new EventEmitter()
 window.addEventListener "ee", ee, false
@@ -81,9 +81,12 @@ $(document).ready ->
     itemSelector: '.card'
     columnWidth: '.grid-column'
     gutter: '.grid-gutter'
+    transitionDuration: 0
   # Card flip
-  $('#cards-container .card').click ->
+  $('#cards-container .flipper:not(.flipped)').parent().click ->
     $('.flipper', this).toggleClass('flipped')
+  $('#cards-container .flip').click ->
+    $(this).parent('.flipper').toggleClass('flipped')
   # Sidebar collapse responsive
   enquire.register "(min-width: 769px)", {
     match: ->
@@ -94,11 +97,11 @@ $(document).ready ->
       false
 
   },true
-  # enquire.register "(max-width: 768px)"
-  #   match: ->
-  #     $('#sidebar .menu').collapse 'hide'
-  #     false
 
+  $(".white-popup .popup-form").submit ->
+    # On submit disable its submit button
+    $("input[type=submit]", this).attr "disabled", "disabled"
+    false
     
 
 openPopup = (e) ->

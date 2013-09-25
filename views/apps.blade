@@ -15,12 +15,18 @@ append block body
           .card
             .flipper
               .front
-                .card-content
-                  p Offerta.me
+                span.img-wrap(style="background-image: url('../img/About.me_icon.jpg')", aria-label="Application name", role="img")
+                  span.inner
+                .text-container
+                  span About.me
               .back
-                .card-content
-                  .revoke
-                    a(href='#') revoke
+                .flip
+                  i.icon-refresh
+                .info
+                  h4 Date added
+                  p 04/31/2013
+                .revoke
+                  button.btn.btn-danger.btn-block Revoke
           .card
             .flipper
               .front
