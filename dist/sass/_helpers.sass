@@ -23,3 +23,22 @@
     width: $column-gutter
   .card
     width: $column-width
+
+@mixin nr-app-size($w, $h, $gutter)
+  $card-w: $w
+  $card-h: $h
+  $card-proportion: ($card-h / $card-w) * 100%
+  $card-width: $card-w * 1px
+  $card-height: $card-h * 1px
+  .grid-gutter
+    width: $gutter
+  .card
+    width: $card-width
+  .card, .front, .back
+    height: $card-height
+  .front
+    width: $card-width
+  .back
+    width: $card-width
+  .inner
+    padding-top: $card-proportion

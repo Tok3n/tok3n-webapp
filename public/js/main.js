@@ -103,12 +103,9 @@ $(document).ready(function () {
       return webtoggle.slideUp();
     }
   });
-  masonryResize();
   $('#cards-container').masonry({
     itemSelector: '.card',
-    columnWidth: '.grid-column',
-    gutter: '.grid-gutter',
-    transitionDuration: 0
+    gutter: '.grid-gutter'
   });
   $('#cards-container .front').click(function () {
     $(this).parent('.flipper').toggleClass('flipped');

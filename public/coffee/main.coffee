@@ -76,12 +76,10 @@ $(document).ready ->
     value = $(e.currentTarget).val()
     if value is 'web' then webtoggle.slideDown() else webtoggle.slideUp()
   # Masonry resize before calling for the first time
-  masonryResize()
   $('#cards-container').masonry
     itemSelector: '.card'
-    columnWidth: '.grid-column'
+    # transitionDuration: 0
     gutter: '.grid-gutter'
-    transitionDuration: 0
   # Card flip
   $('#cards-container .front').click ->
     $(this).parent('.flipper').toggleClass('flipped')

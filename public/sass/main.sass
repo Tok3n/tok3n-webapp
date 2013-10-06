@@ -99,33 +99,34 @@
   #cards-container
     perspective: 1000
     margin-top: 2em
-    +breakpoint(max-width 344px)
-      +application-columns(1, 0)
-    +breakpoint(344px 624px)
-      +application-columns(2, 4%)
-      .card
-        margin-bottom: 1em
-    +breakpoint(625px 768px)
-      +application-columns(3, 5%)
-    +breakpoint(769px 844px)
-      +application-columns(2, 5%)
-    +breakpoint(845px 1159px)
-      +application-columns(3, 5%)
-    +breakpoint(1160px 1459px)
-      +application-columns(4, 4%)
-    +breakpoint(1500px 1764px)
-      +application-columns(5, 3%)
-    +breakpoint(1765px)
-      +application-columns(6, 2%)
+    // +breakpoint(max-width 344px)
+    //   +application-columns(1, 0)
+    // +breakpoint(344px 624px)
+    //   +application-columns(2, 4%)
+    //   .card
+    //     margin-bottom: 1em
+    // +breakpoint(625px 768px)
+    //   +application-columns(3, 5%)
+    // +breakpoint(769px 844px)
+    //   +application-columns(2, 5%)
+    // +breakpoint(845px 1159px)
+    //   +application-columns(3, 5%)
+    // +breakpoint(1160px 1459px)
+    //   +application-columns(4, 4%)
+    // +breakpoint(1500px 1764px)
+    //   +application-columns(5, 3%)
+    // +breakpoint(1765px)
+    //   +application-columns(6, 2%)
+    +nr-app-size(150,150, 15px)
+
     .card
       overflow: hidden
       margin-bottom: 2em
     .flipper
       +single-transition(all, 0.7s)
       +transform-style(preserve-3d)
-      // +rotateY(180deg) // Remove to test back
       position: relative
-      height: 100%
+      height: 100%      
     .front, .back
       +backface-visibility(hidden)
       position: absolute
@@ -157,7 +158,6 @@
       background-position: 50% 50%
       background-repeat: no-repeat
     .inner
-      padding-top: 100%
       display: block
       height: 0
     .revoke, .flip, .text-container, .info

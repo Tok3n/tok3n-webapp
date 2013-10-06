@@ -332,6 +332,10 @@ module.exports = (grunt) ->
 						from: '\n    try\n    {\n      Typekit.load()\n    }\n    catch (e)\n    {}\n    '
 						to: 'try{Typekit.load();}catch(e){}'
 					}
+					{
+						from: "background-image: url('../img/"
+						to: "background-image: url('" + cdnUrl + "img/"
+					}
 				]
 			# Sometimes compass does not compile correctly with the change to absolute refs, this is a hackish and temporal solution
 			css:

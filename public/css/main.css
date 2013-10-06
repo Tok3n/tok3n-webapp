@@ -202,128 +202,36 @@ span.space {
   perspective: 1000;
   margin-top: 2em;
 }
-@media (max-width: 344px) {
-  /* line 20, ../sass/_helpers.sass */
-  #applications #cards-container .grid-column {
-    width: 99.99%;
-  }
-  /* line 22, ../sass/_helpers.sass */
-  #applications #cards-container .grid-gutter {
-    width: 0;
-  }
-  /* line 24, ../sass/_helpers.sass */
-  #applications #cards-container .card {
-    width: 99.99%;
-  }
+/* line 33, ../sass/_helpers.sass */
+#applications #cards-container .grid-gutter {
+  width: 15px;
 }
-@media (min-width: 344px) and (max-width: 624px) {
-  /* line 20, ../sass/_helpers.sass */
-  #applications #cards-container .grid-column {
-    width: 47.99%;
-  }
-  /* line 22, ../sass/_helpers.sass */
-  #applications #cards-container .grid-gutter {
-    width: 4%;
-  }
-  /* line 24, ../sass/_helpers.sass */
-  #applications #cards-container .card {
-    width: 47.99%;
-  }
-  /* line 106, ../sass/main.sass */
-  #applications #cards-container .card {
-    margin-bottom: 1em;
-  }
+/* line 35, ../sass/_helpers.sass */
+#applications #cards-container .card {
+  width: 150px;
 }
-@media (min-width: 625px) and (max-width: 768px) {
-  /* line 20, ../sass/_helpers.sass */
-  #applications #cards-container .grid-column {
-    width: 29.99%;
-  }
-  /* line 22, ../sass/_helpers.sass */
-  #applications #cards-container .grid-gutter {
-    width: 5%;
-  }
-  /* line 24, ../sass/_helpers.sass */
-  #applications #cards-container .card {
-    width: 29.99%;
-  }
+/* line 37, ../sass/_helpers.sass */
+#applications #cards-container .card, #applications #cards-container .front, #applications #cards-container .back {
+  height: 150px;
 }
-@media (min-width: 769px) and (max-width: 844px) {
-  /* line 20, ../sass/_helpers.sass */
-  #applications #cards-container .grid-column {
-    width: 47.49%;
-  }
-  /* line 22, ../sass/_helpers.sass */
-  #applications #cards-container .grid-gutter {
-    width: 5%;
-  }
-  /* line 24, ../sass/_helpers.sass */
-  #applications #cards-container .card {
-    width: 47.49%;
-  }
+/* line 39, ../sass/_helpers.sass */
+#applications #cards-container .front {
+  width: 150px;
 }
-@media (min-width: 845px) and (max-width: 1159px) {
-  /* line 20, ../sass/_helpers.sass */
-  #applications #cards-container .grid-column {
-    width: 29.99%;
-  }
-  /* line 22, ../sass/_helpers.sass */
-  #applications #cards-container .grid-gutter {
-    width: 5%;
-  }
-  /* line 24, ../sass/_helpers.sass */
-  #applications #cards-container .card {
-    width: 29.99%;
-  }
+/* line 41, ../sass/_helpers.sass */
+#applications #cards-container .back {
+  width: 150px;
 }
-@media (min-width: 1160px) and (max-width: 1459px) {
-  /* line 20, ../sass/_helpers.sass */
-  #applications #cards-container .grid-column {
-    width: 21.99%;
-  }
-  /* line 22, ../sass/_helpers.sass */
-  #applications #cards-container .grid-gutter {
-    width: 4%;
-  }
-  /* line 24, ../sass/_helpers.sass */
-  #applications #cards-container .card {
-    width: 21.99%;
-  }
+/* line 43, ../sass/_helpers.sass */
+#applications #cards-container .inner {
+  padding-top: 100%;
 }
-@media (min-width: 1500px) and (max-width: 1764px) {
-  /* line 20, ../sass/_helpers.sass */
-  #applications #cards-container .grid-column {
-    width: 17.59%;
-  }
-  /* line 22, ../sass/_helpers.sass */
-  #applications #cards-container .grid-gutter {
-    width: 3%;
-  }
-  /* line 24, ../sass/_helpers.sass */
-  #applications #cards-container .card {
-    width: 17.59%;
-  }
-}
-@media (min-width: 1765px) {
-  /* line 20, ../sass/_helpers.sass */
-  #applications #cards-container .grid-column {
-    width: 14.99%;
-  }
-  /* line 22, ../sass/_helpers.sass */
-  #applications #cards-container .grid-gutter {
-    width: 2%;
-  }
-  /* line 24, ../sass/_helpers.sass */
-  #applications #cards-container .card {
-    width: 14.99%;
-  }
-}
-/* line 120, ../sass/main.sass */
+/* line 122, ../sass/main.sass */
 #applications #cards-container .card {
   overflow: hidden;
   margin-bottom: 2em;
 }
-/* line 123, ../sass/main.sass */
+/* line 125, ../sass/main.sass */
 #applications #cards-container .flipper {
   -webkit-transition: all 0.7s;
   -moz-transition: all 0.7s;
@@ -337,7 +245,7 @@ span.space {
   position: relative;
   height: 100%;
 }
-/* line 129, ../sass/main.sass */
+/* line 130, ../sass/main.sass */
 #applications #cards-container .front, #applications #cards-container .back {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -348,7 +256,7 @@ span.space {
   top: 0;
   left: 0;
 }
-/* line 134, ../sass/main.sass */
+/* line 135, ../sass/main.sass */
 #applications #cards-container .card, #applications #cards-container .front, #applications #cards-container .back {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -356,11 +264,11 @@ span.space {
   -o-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 136, ../sass/main.sass */
+/* line 137, ../sass/main.sass */
 #applications #cards-container .front, #applications #cards-container .flip, #applications #cards-container .revoke {
   cursor: pointer;
 }
-/* line 138, ../sass/main.sass */
+/* line 139, ../sass/main.sass */
 #applications #cards-container .front {
   z-index: 2;
   background: white;
@@ -369,7 +277,7 @@ span.space {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-/* line 142, ../sass/main.sass */
+/* line 143, ../sass/main.sass */
 #applications #cards-container .back {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
@@ -381,7 +289,7 @@ span.space {
   -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.8) inset;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.8) inset;
 }
-/* line 146, ../sass/main.sass */
+/* line 147, ../sass/main.sass */
 #applications #cards-container .flipped {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
@@ -389,7 +297,7 @@ span.space {
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-/* line 148, ../sass/main.sass */
+/* line 149, ../sass/main.sass */
 #applications #cards-container .img-wrap {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -406,9 +314,8 @@ span.space {
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
-/* line 159, ../sass/main.sass */
+/* line 160, ../sass/main.sass */
 #applications #cards-container .inner {
-  padding-top: 100%;
   display: block;
   height: 0;
 }
