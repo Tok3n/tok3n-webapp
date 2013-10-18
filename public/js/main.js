@@ -114,16 +114,17 @@ $(document).ready(function () {
   $('#cards-container .flip').click(function () {
     return $(this).closest('.flipper').toggleClass('flipped');
   });
-  enquire.register('(min-width: 769px)', {
-    match: function () {
-      $('#sidebar .menu').collapse('show');
-      return false;
-    },
-    unmatch: function () {
-      $('#sidebar .menu').collapse('hide');
-      return false;
-    }
-  }, true);
+  if ($('#sidebar .menu').length)
+    enquire.register('(min-width: 769px)', {
+      match: function () {
+        $('#sidebar .menu').collapse('show');
+        return false;
+      },
+      unmatch: function () {
+        $('#sidebar .menu').collapse('hide');
+        return false;
+      }
+    }, true);
   return $('.white-popup .popup-form').submit(function () {
     $('input[type=submit]', this).attr('disabled', 'disabled');
     return false;

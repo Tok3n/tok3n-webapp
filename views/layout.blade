@@ -26,45 +26,47 @@ html.no-js(lang='en')
               .logo(alt='Tok3n')
             nav.col-md-8.col-sm-8.col-xs-8
               .menu
-                ul
-                  li.developers
-                    a(href='#') Developers
-                  li
-                    button.btn.btn-default(href='#') Log out
-                  li.toggle-sidebar
-                    button.btn.btn-default(type='button' data-toggle='collapse' data-target='#sidebar .menu')
-                      i.icon-reorder
-    #layout
-      block body
-        block nav
-          #sidebar
-            .nav-inner
-              ul.menu.collapse
-                li#devicesTrigger.col-xs-12.col-sm-12.col-md-12
-                  .row
-                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
-                      i.icon-mobile-phone
-                    .title.col-xs-10.col-sm-7.col-md-7 My devices
-                li.col-xs-12.col-sm-12.col-md-12
-                  .row
-                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
-                      i.icon-phone
-                    .title.col-xs-10.col-sm-7.col-md-7 My phones
-                li#myDomainsTrigger.col-xs-12.col-sm-12.col-md-12
-                  .row
-                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
-                      i.icon-lock
-                    .title.col-xs-10.col-sm-7.col-md-7 Authorized apps
-                li#integrationsTrigger.col-xs-12.col-sm-12.col-md-12
-                  .row
-                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
-                      i.icon-code
-                    .title.col-xs-10.col-sm-7.col-md-7 My integrations
-                li.col-xs-12.col-sm-12.col-md-12
-                  .row
-                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
-                      i.icon-cogs
-                    .title.col-xs-10.col-sm-7.col-md-7 Settings
+                block navlist
+                  ul
+                    li.developers
+                      a(href='#') Developers
+                    li
+                      button.btn.btn-default(href='#') Log out
+                    li.toggle-sidebar
+                      button.btn.btn-default(type='button' data-toggle='collapse' data-target='#sidebar .menu')
+                        i.icon-reorder
+    block layout
+      #layout
+        block body
+          block nav
+            #sidebar
+              .nav-inner
+                ul.menu.collapse
+                  li#devicesTrigger.col-xs-12.col-sm-12.col-md-12
+                    .row
+                      .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                        i.icon-mobile-phone
+                      .title.col-xs-10.col-sm-7.col-md-7 My devices
+                  li.col-xs-12.col-sm-12.col-md-12
+                    .row
+                      .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                        i.icon-phone
+                      .title.col-xs-10.col-sm-7.col-md-7 My phones
+                  li#myDomainsTrigger.col-xs-12.col-sm-12.col-md-12
+                    .row
+                      .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                        i.icon-lock
+                      .title.col-xs-10.col-sm-7.col-md-7 Authorized apps
+                  li#integrationsTrigger.col-xs-12.col-sm-12.col-md-12
+                    .row
+                      .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                        i.icon-code
+                      .title.col-xs-10.col-sm-7.col-md-7 My integrations
+                  li.col-xs-12.col-sm-12.col-md-12
+                    .row
+                      .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                        i.icon-cogs
+                      .title.col-xs-10.col-sm-7.col-md-7 Settings
     block footer
       //- footer
       //-   .foot-wrap

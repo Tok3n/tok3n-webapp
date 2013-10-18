@@ -39,6 +39,10 @@ app.get('/apps', function(req, res){
 	res.render("apps");
 });
 
+app.get('/login', function(req, res){
+	res.render("login");
+});
+
 // Heroku
 var port = process.env.PORT || 5000;
 app.listen(port, function() {

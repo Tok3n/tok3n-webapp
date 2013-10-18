@@ -59,7 +59,8 @@ module.exports = (grunt) ->
 		"curl " + url + " > '" + file + "'"
 	curlArray = (arr) ->
 		(curlSave elem.url, elem.file for elem in arr).join '&&'
-
+	curlLocal = (dir) ->
+		curlSave('http://localhost:5000', dist + dir + '.html')
 
 	@initConfig
 		
@@ -79,11 +80,12 @@ module.exports = (grunt) ->
 		shell:
 			files: 
 				command: curlArray http_files
-			index:
-				# Remember to have a server running!
-				command: curlSave 'http://localhost:5000', dist + 'index.html'
 			apps:
-				command: curlSave 'http://localhost:5000/apps', dist + 'apps.html'
+				command: curlArray([
+					{url: 'http://localhost:5000', file: dist + 'index.html'}
+					{url: 'http://localhost:5000/apps', file: dist + 'apps.html'}
+					{url: 'http://localhost:5000/login', file: dist + 'login.html'}
+				])
 		
 		copy:
 			# CSS
@@ -529,4 +531,4 @@ module.exports = (grunt) ->
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat:jquery', 'uglify:jquery', 'sync:dist', 'shell:index', 'shell:apps', 'prettify', 'replace', 'cssmin:dist', 'imagemin:dist', 's3-sync']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat:jquery', 'uglify:jquery', 'sync:dist', 'shell:apps', 'prettify', 'replace', 'cssmin:dist', 'imagemin:dist', 's3-sync']
