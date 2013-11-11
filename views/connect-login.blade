@@ -1,0 +1,26 @@
+include 'connect-layout.blade'
+render title('Connect with Tok3n')
+
+prepend block style
+  // [if lte IE 8]> <link rel="stylesheet" type="text/css" href="css/ie8-and-down.css" /> <![endif]
+
+append block body
+  .col-md-12
+    #login
+      form#form-signin(method='post', action='', role='form')
+        .form-group
+          h2.form-signin-heading Log in
+        .form-group
+          input.form-control(size='50', name='login', value='', type='text', placeholder='Username')
+        .form-group
+          input.form-control(size='50', name='password', value='', type='password', placeholder='Password')
+        .form-group
+          input.form-control(size='50', name='password', value='', type='password', placeholder='Tok3n')
+        //- label.checkbox
+        //-   input(type='checkbox', name='save', value='')
+        //-   | Remember me
+        button#submit.btn.btn-large.btn-primary.btn-block(name='submit', value='', type='submit') Sign in
+      .create-account
+        p You don't have an account? 
+          a Create one now
+          | .

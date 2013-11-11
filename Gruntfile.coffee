@@ -12,21 +12,16 @@ module.exports = (grunt) ->
 
 	# Raw from github or cdn
 	ladda = 'https://raw.github.com/hakimel/Ladda/master/dist/'
-	pureHttp = 'http://yui.yahooapis.com/pure/<%= pure.version %>/'
 	masonry = 'http://masonry.desandro.com/'
-	cdnUrl = '//static.tok3n.com/<%= pkg.version %>/'
+	cdnUrl = '//s3.amazonaws.com/static.tok3n.com/<%= pkg.version %>/'
 
 	# Bower js files
 	misc = [
 		js + 'masonry.pkgd.min.js'
 		comp + 'enquire/dist/enquire.js'
 		comp + 'modernizr/modernizr.js'
-		# comp + 'underscore/underscore.js'
-		# comp + 'backbone/backbone.js'
-		# comp + 'Tourist.js/tourist.js'
 		comp + 'eventEmitter/EventEmitter.js'
 		# comp + 'Chart.js/Chart.js'
-		# comp + 'selectize/selectize.js'
 		comp + 'bootstrap-sass/js/transition.js'
 		comp + 'bootstrap-sass/js/collapse.js'
 		comp + 'bootstrap-sass/js/dropdown.js'
@@ -34,10 +29,8 @@ module.exports = (grunt) ->
 		comp + 'jquery-mousewheel/jquery.mousewheel.js'
 	]
 	
-	# All unlicensed not added directly (main.js & zepto)
+	# All unlicensed not added directly (main.js)
 	unlicend = [
-		# '<%= copy.yepnope.dest %>'
-		# '<%= copy.parsley.dest %>'
 		'<%= copy.popupjs.dest %>'
 	]
 	
@@ -47,7 +40,6 @@ module.exports = (grunt) ->
 		{ url: ladda + 'ladda.min.css', file: sass + '_ladda-mis.scss' }
 		{ url: ladda + 'ladda.min.js', file: js + 'ladda.min.js' }
 		{ url: ladda + 'spin.min.js', file: js + 'spin.min.js' }
-		{ url: pureHttp + 'pure-min.css', file: sass + '_pure.scss' }
 		{ url: masonry + 'masonry.pkgd.min.js', file: js + 'masonry.pkgd.min.js' }
 	]
 		
@@ -66,11 +58,7 @@ module.exports = (grunt) ->
 		
 		# Versions, names for licenses
 		pkg: grunt.file.readJSON 'package.json'
-		pure: grunt.file.readJSON comp + 'pure/package.json'
 		parsleyjs: grunt.file.readJSON comp + 'parsleyjs/bower.json'
-		# underscore: grunt.file.readJSON comp + 'underscore/package.json'
-		# yepnope: grunt.file.readJSON comp + 'yepnope/.bower.json'
-		# zeptojs: grunt.file.readJSON comp + 'zeptojs/.bower.json'
 		popup: grunt.file.readJSON comp + 'magnific-popup/bower.json'
 		aws: grunt.file.readJSON '/Users/aficio/Dropbox/Development/Amazon/tok3n-aficio.json'
 		
@@ -85,56 +73,20 @@ module.exports = (grunt) ->
 					{url: 'http://localhost:5000', file: dist + 'index.html'}
 					{url: 'http://localhost:5000/apps', file: dist + 'apps.html'}
 					{url: 'http://localhost:5000/login', file: dist + 'login.html'}
+					{url: 'http://localhost:5000/connect-login', file: dist + 'connect-login.html'}
+					{url: 'http://localhost:5000/connect-create', file: dist + 'connect-create.html'}
 				])
 		
 		copy:
-			# CSS
-			# normalize:
-			# 	src: comp + 'normalize-css/normalize.css'
-			# 	dest: sass + '_normalize.scss'
-			# pure:
-			# 	files: [
-			# 		{
-			# 			expand: true
-			# 			filter: 'isFile'
-			# 			cwd: comp
-			# 			src: 'pure/src/**/css/*.css'
-			# 			dest: sass + 'pure'
-			# 			rename: (dest, src) ->
-			# 				dest + '/_' + src.match(css_file)[1] + '.scss'
-			# 		}
-			# 	]
-			# toggleSwitch:
-			# 	src: comp + 'css-toggle-switch/src/toggle-switch.scss'
-			# 	dest: sass + '_toggle-switch.scss'
 			popupcss:
 				src: comp + 'magnific-popup/dist/magnific-popup.css'
 				dest: sass + '_magnific-popup.scss'
-			# chardincss:
-			# 	src: comp + 'chardin.js/chardinjs.scss'
-			# 	dest: sass + '_chardinjs.scss'
-			# introjscss:
-			# 	src: comp + 'intro.js/introjs.css'
-			# 	dest: sass + '_introjs.scss'
-			# touristcss:
-			# 	src: comp + 'Tourist.js/tourist.css'
-			# 	dest: sass + '_tourist.scss'
 			popupjs:
 				src: comp + 'magnific-popup/dist/jquery.magnific-popup.js'
 				dest: js + 'magnific-popup.js'
-			# Unlicensed Js
-			# yepnope:
-			# 	src: comp + 'yepnope/yepnope.js'
-			# 	dest: js + 'yepnope.js'
 			parsley:
 				src: comp + 'parsleyjs/parsley.js'
 				dest: js + 'parsley.js'
-			# underscore:
-			# 	src: comp + 'underscore/underscore.js'
-			# 	dest: js + 'underscore.js'
-			# zepto:
-			# 	src: comp + 'zeptojs/src/zepto.js'
-			# 	dest: js + 'zepto.js'
 			jquery:
 				src: comp + 'jquery/jquery.js'
 				dest: js + 'jquery.js'
@@ -149,48 +101,7 @@ module.exports = (grunt) ->
 						' */\n'
 					].join '\n'
 				expand: true
-				src   : ['<%= copy.parsley.dest %>']
-				
-			# underscore:
-			# 	options:
-			# 		banner: [
-			# 			'\n/*!'
-			# 			' * Underscore.js v<%= underscore.version %>'
-			# 			' * http://underscorejs.org'
-			# 			' * (c) 2009-2013 Jeremy Ashkenas, DocumentCloud Inc.'
-			# 			' * Underscore may be freely distributed under the MIT license.'
-			# 			' * */\n'
-			# 		].join '\n'
-			# 	expand: true
-			# 	src   : ['<%= copy.underscore.dest %>']
-				
-			# yepnope:
-			# 	options:
-			# 		banner: [
-			# 			'\n/*!'
-			# 			' * yepnope.js'
-			# 			' * Version - <%= yepnope.version %>'
-			# 			' * Alex Sexton - @SlexAxton - AlexSexton[at]gmail.com'
-			# 			' * Ralph Holzmann - @ralphholzmann - ralphholzmann[at]gmail.com'
-			# 			' * http://yepnopejs.com/'
-			# 			' * https://github.com/SlexAxton/yepnope.js/'
-			# 			' * Tri-license - WTFPL | MIT | BSD'
-			# 			' */\n'
-			# 		].join '\n'
-			# 	expand: true
-			# 	src   : ['<%= copy.yepnope.dest %>']				
-			
-			# zepto:
-			# 	options:
-			# 		banner: [
-			# 			'\n/*!'
-			# 			' * Zepto.js v<%= zeptojs.version %> | MIT License | https://github.com/madrobby/zepto/blob/master/MIT-LICENSE'
-			# 			' * Copyright (c) 2008-2013 Thomas Fuchs'
-			# 			' * http://zeptojs.com/'
-			# 			' */\n'
-			# 		].join '\n'
-			# 	expand: true
-			# 	src   : ['<%= copy.zepto.dest %>']
+				src   : ['<%= copy.parsley.dest %>']			
 
 			popup:
 				options:
@@ -203,23 +114,6 @@ module.exports = (grunt) ->
 					].join '\n'
 				expand: true
 				src   : ['<%= copy.popupjs.dest %>']
-				
-			# pure:
-			# 	options:
-			# 		banner: [
-			# 			'\n/*!'
-			# 			' * Pure v<%= pure.version %>'
-			# 			' * Copyright 2013 Yahoo! Inc. All rights reserved.'
-			# 			' * Licensed under the BSD License.'
-			# 			' * https://github.com/yui/pure/blob/master/LICENSE.md'
-			# 			' */\n'
-			# 		].join '\n'
-			# 	expand: true
-			# 	cwd   : sass + '/pure/'
-			# 	src   : [
-			# 		'*.scss'
-			# 		'!_pure.scss'
-			# 	]
 
 		coffeeredux: 
 			options:
@@ -230,6 +124,9 @@ module.exports = (grunt) ->
 			test:
 				src: coffee + 'test.coffee'
 				dest: js + 'test.js'
+			connect:
+				src: coffee + 'connect.coffee'
+				dest: js + 'connect.js'
 		
 		compass:
 			options:
@@ -270,15 +167,7 @@ module.exports = (grunt) ->
 		concat:
 			options:
 				separator: '\n'
-			# zepto:
-			# 	src: [
-			# 		# Zepto was copied and licensed first
-			# 		'<%= copy.zepto.dest %>'
-			# 		misc...
-			# 		unlicend...
-			# 		'<%= coffeeredux.main.dest %>'
-			# 	]
-			# 	dest: js + 'zepto-pack.js'
+
 			jquery:
 				src: [
 					'<%= copy.jquery.dest %>'
@@ -301,9 +190,6 @@ module.exports = (grunt) ->
 					' * Automatically generated by Grunt.js'
 					' */\n'
 				].join '\n'
-			# zepto:
-			# 	src: '<%= concat.zepto.dest %>'
-			# 	dest: js + 'zepto-pack-min.js'
 			jquery:
 				src: '<%= concat.jquery.dest %>'
 				dest: js + 'jquery-pack-min.js'
@@ -319,12 +205,20 @@ module.exports = (grunt) ->
 						to: cdnUrl + 'js/jquery-pack-min.js'
 					}
 					{
+						from: 'js/connect.js'
+						to: cdnUrl + 'js/connect-min.js'
+					}
+					{
 						from: '<script src="http://localhost:35729/livereload.js"></script>'
 						to: '<script type="application/dart" src="/code/Dashboard.dart"></script>\n    '+'<script src="/packages/browser/dart.js"></script>\n    '+"<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>"
 					}
 					{
 						from: 'css/style.css'
 						to: cdnUrl + 'css/style-min.css'
+					}
+					{
+						from: 'css/connect.css'
+						to: cdnUrl + 'css/connect-min.css'
 					}
 					{
 						from: '\n    <script src="js/test.js"></script>'
@@ -339,6 +233,7 @@ module.exports = (grunt) ->
 						to: "background-image: url('" + cdnUrl + "img/"
 					}
 				]
+
 			# Sometimes compass does not compile correctly with the change to absolute refs, this is a hackish and temporal solution
 			css:
 				src: dist + 'css/style.css'
@@ -356,13 +251,6 @@ module.exports = (grunt) ->
 					from: ',/*!'
 					to: ',\n/*!'
 				]
-			# zepto:
-			# 	src: '<%= uglify.zepto.dest %>'
-			# 	dest: dist + 'js/zepto-pack-min.js'
-			# 	replacements: [
-			# 		from: ',/*!'
-			# 		to: ',\n/*!'
-			# 	]
 
 		prettify:
 			html:
@@ -424,7 +312,7 @@ module.exports = (grunt) ->
 				files:[
 					{
 						cwd: 'public'
-						src: ['css/style.css', 'sass/**', 'js/*-pack-min.js', 'svg/**']
+						src: ['css/style.css', 'css/connect.css', 'sass/**', 'js/*-pack-min.js', 'svg/**']
 						dest: dist
 					}
 				]
@@ -447,7 +335,6 @@ module.exports = (grunt) ->
 				livereload: true
 				files: [
 					css
-					# '<%= concat.zepto.dest %>'
 					'<%= concat.jquery.dest %>'
 				]
 			coffee:
@@ -531,4 +418,4 @@ module.exports = (grunt) ->
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat:jquery', 'uglify:jquery', 'sync:dist', 'shell:apps', 'prettify', 'replace', 'cssmin:dist', 'imagemin:dist', 's3-sync']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat:jquery', 'uglify:jquery', 'sync:dist', 'shell:apps', 'prettify', 'replace:dist', 'cssmin:dist', 'imagemin:dist', 's3-sync']

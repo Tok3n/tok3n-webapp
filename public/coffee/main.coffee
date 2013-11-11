@@ -97,8 +97,8 @@ $(document).ready ->
         false
     },true
   # On submit disable its submit button
-  $(".white-popup .popup-form").submit ->
-    $("input[type=submit]", this).attr "disabled", "disabled"
+  $(".white-popup .popup-form, #login").submit ->
+    $("input[type=submit], button[type=submit]", this).attr "disabled", "disabled"
     false
     
 openPopup = (e) ->

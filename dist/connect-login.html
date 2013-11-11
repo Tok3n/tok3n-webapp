@@ -7,12 +7,12 @@
   <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
-    <title>Tok3n | Login</title>
+    <title>Connect with Tok3n</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--[if lte IE 8]> <link rel="stylesheet" type="text/css" href="css/ie8-and-down.css" /> <![endif]-->
-    <link rel="stylesheet" href="//s3.amazonaws.com/static.tok3n.com/0.0.1/css/style-min.css" />
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" />
+    <link rel="stylesheet" href="//s3.amazonaws.com/static.tok3n.com/0.0.1/css/connect-min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
   </head>
   <body>
     <div id="top">
@@ -21,9 +21,7 @@
           <header class="col-md-4 col-sm-4 col-xs-4">
             <div alt="Tok3n" class="logo"></div>
           </header>
-          <nav class="col-md-8 col-sm-8 col-xs-8">
-            <div class="menu"></div>
-          </nav>
+          <nav class="col-md-8 col-sm-8 col-xs-8"></nav>
         </div>
       </div>
     </div>
@@ -35,7 +33,7 @@
               <h2 class="form-signin-heading">Log in</h2>
             </div>
             <div class="form-group">
-              <input size="50" name="login" value="" type="text" placeholder="User name" class="form-control" />
+              <input size="50" name="login" value="" type="text" placeholder="Username" class="form-control" />
             </div>
             <div class="form-group">
               <input size="50" name="password" value="" type="password" placeholder="Password" class="form-control" />
@@ -45,11 +43,13 @@
             </div>
             <button name="submit" value="" type="submit" id="submit" class="btn btn-large btn-primary btn-block">Sign in</button>
           </form>
+          <div class="create-account">
+            <p>You don't have an account? <a>Create one now</a>.</p>
+          </div>
         </div>
       </div>
     </div>
-    <script src="//www.google.com/jsapi"></script>
-    <script src="//s3.amazonaws.com/static.tok3n.com/0.0.1/js/jquery-pack-min.js"></script>
+    <script src="//s3.amazonaws.com/static.tok3n.com/0.0.1/js/connect-min.js"></script>
     <script type="application/dart" src="/code/Dashboard.dart"></script>
     <script src="/packages/browser/dart.js"></script>
     <script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>

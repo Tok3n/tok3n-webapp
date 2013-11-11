@@ -1,0 +1,39 @@
+!!! 5
+// [if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]
+// [if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]
+// [if IE 8]><html class="no-js lt-ie9"><![endif]
+// [if gt IE 8]><!
+html.no-js(lang='en')
+  // <![endif]
+  
+  head
+    meta(charset='utf-8')
+    block title(pageTitle)
+      title=pageTitle
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    
+    block style
+    link(rel='stylesheet', href='css/connect.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
+
+  body
+    block upper
+      #top
+        .top-nav
+          .nav-wrap.row
+            header.col-md-4.col-sm-4.col-xs-4
+              .logo(alt='Tok3n')
+            nav.col-md-8.col-sm-8.col-xs-8
+
+    block layout
+      #full-layout
+        block body
+
+    block footer
+      script(src='js/test.js')
+      script(src='js/connect.js')
+      script(src="http://localhost:35729/livereload.js")
+      script(src="//use.typekit.net/nls8ikc.js")
+      :js
+        try{Typekit.load();}catch(e){}

@@ -1,0 +1,133 @@
+// Define variables
+$points: 4
+$track_h: 3px
+$check-top-padding: 3px
+$track_h05: ($track_h / 2)
+$duration: 1s
+
+$_r: 29px
+$_r05: ($_r / 2)
+$_r025: ($_r05 / 2)
+$_b: $_r / 8
+$_tot_h: $track_h - $_r - $check-top-padding
+$_mt: $_tot_h * 0.5 - $track_h
+
+$tint-track: hsla(134, 0%, 84%, 1)
+$tint-complete: hsla(134, 60%, 60%, 1)
+$tint-progress: lighten(desaturate($tint-complete, 10%), 15%)
+$tint-incomplete: lighten($tint-track, 5%)
+$tint-incomplete-label: #888
+
+@mixin progress-bar-resp($m-top, $m-bottom, $progress-width, $screen-percent, $p-side: 0, $p-top: 45px, $p-bottom: 17px)
+  .progress-meter
+    margin: $m-top auto $m-bottom
+    padding: $p-top $p-side $p-bottom
+  .inlined
+    width: $screen-percent
+  .progress-point
+    $_w: $progress-width
+    $_ml: $_w / -2
+    width: $_w
+    margin-left: $_ml
+
+@mixin progress-gutter-resp($points, $pregutter: 0%)
+  $gutter: (100% - $pregutter) / ($points - 1)
+  .progress-meter
+    .progress-point
+      @for $i from 1 through $points
+        &:nth-child(#{$i})
+          left: (($i - 1) * $gutter) + ($pregutter / 2)
+  @for $i from 1 through $points
+    .progress-meter .progress.step-#{$i}
+      width: ($pregutter / 2) + ($gutter * ($i - 1))
+
++at(1)
+  +progress-bar-resp(20px, 10px, 80px, 95%, 10px, $p-top: 17px)
+  +progress-gutter-resp($points, 30%)
++at(2)
+  +progress-bar-resp(20px, 15px, 100px, 85%, 20px)
++from(2)
+  +progress-gutter-resp($points, 20%)
++from(3)
+  +progress-bar-resp(20px, 30px, 120px, 630px, 30px)
+
+.progress-track
+  font-size: 14px
+  text-align: center
+  +user-select(none)
+
+// Utility styles
+.inliner
+  height: 100%
+
+.inliner,
+.inliner + .inlined
+  display: inline-block
+  vertical-align: middle
+
+.progress-meter
+  counter-reset: point
+  %check
+    +transition
+    +border-radius($_r)
+    +box-shadow(0 0 0 2px white)
+    content: "\2713"
+    display: block
+    width: $_r
+    margin: 0 auto (-1 * $_r05) + $_tot_h + $_mt
+    padding-top: $check-top-padding
+    border: $_b solid $tint-incomplete
+    text-align: center
+    background-color: white
+    color: white
+  .track
+    position: relative
+    height: $track_h
+    background: $tint-track
+  .progress
+    +transition(width 1s)
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 0
+    height: $track_h
+    background: $tint-progress
+  .progress-points
+    position: relative
+    margin: $_mt 0 0
+    padding: 0
+    list-style: none
+  .progress-point
+    +transition(color $duration)
+    position: absolute
+    display: block
+    text-align: center
+    color: $tint-incomplete-label
+    +at(1)
+      @for $i from 1 through $points
+        &:nth-child(#{$i}):before
+          content: "#{$i}"
+    &:before
+      @extend %check
+    &.completed,
+    &.active
+      color: $tint-complete
+    &.completed:before
+      border-color: $tint-complete
+      background-color: $tint-complete
+    &.active:before
+      +transition-delay($duration)
+      border-color: $tint-complete
+      +at(1)
+        background-color: $tint-complete
+    .progress-label
+      +at(2)
+        font-size: 85%
+      +at(1)
+        display: none
+    .progress-label:before
+      counter-increment: point
+      content: counter(point) ". "
+      +at(1)
+        display: none

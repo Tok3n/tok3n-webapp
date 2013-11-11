@@ -125,8 +125,8 @@ $(document).ready(function () {
         return false;
       }
     }, true);
-  return $('.white-popup .popup-form').submit(function () {
-    $('input[type=submit]', this).attr('disabled', 'disabled');
+  return $('.white-popup .popup-form, #login').submit(function () {
+    $('input[type=submit], button[type=submit]', this).attr('disabled', 'disabled');
     return false;
   });
 });
