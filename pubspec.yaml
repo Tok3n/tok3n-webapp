@@ -1,0 +1,4 @@
+name: tok3nWebapp
+description: Tok3n Web Interface
+dependencies:
+  browser: any

@@ -8,6 +8,7 @@ module.exports = (grunt) ->
 	img = 'public/img/'
 	font = 'public/font/'
 	coffee = 'public/coffee/'
+	dart = 'public/dart'
 	dist = 'dist/'
 
 	# Raw from github or cdn
@@ -90,6 +91,9 @@ module.exports = (grunt) ->
 			jquery:
 				src: comp + 'jquery/jquery.js'
 				dest: js + 'jquery.js'
+			dart:
+				src: 'packages/browser/dart.js'
+				dest: dist + 'dart/dart.js'
 		
 		license:
 			parsley:
@@ -131,7 +135,8 @@ module.exports = (grunt) ->
 		compass:
 			options:
 				outputStyle: 'expanded'
-				raw: 'preferred_syntax = :sass\nSass::Script::Number.precision = 2\n'
+				raw: 'preferred_syntax = :sass\nSass::Script::Number.precision = 2\n
+					sass_options = {:quiet => true}\n'
 				require: ['breakpoint-slicer']
 				cssDir: css
 				sassDir: sass
@@ -201,6 +206,10 @@ module.exports = (grunt) ->
 				overwrite: true
 				replacements: [
 					{
+						from: '\n    <script src="js/test.js"></script>'
+						to: ''
+					}
+					{
 						from: 'js/jquery-pack.js'
 						to: cdnUrl + 'js/jquery-pack-min.js'
 					}
@@ -209,20 +218,16 @@ module.exports = (grunt) ->
 						to: cdnUrl + 'js/connect-min.js'
 					}
 					{
-						from: '<script src="http://localhost:35729/livereload.js"></script>'
-						to: '<script type="application/dart" src="/code/Dashboard.dart"></script>\n    '+'<script src="/packages/browser/dart.js"></script>\n    '+"<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>"
+						from: '../packages/browser/dart.js'
+						to: cdnUrl + 'dart/dart.js'
 					}
 					{
-						from: 'css/style.css'
-						to: cdnUrl + 'css/style-min.css'
+						from: 'dart/connect.dart'
+						to: cdnUrl + 'dart/connect.dart'
 					}
 					{
-						from: 'css/connect.css'
-						to: cdnUrl + 'css/connect-min.css'
-					}
-					{
-						from: '\n    <script src="js/test.js"></script>'
-						to: ''
+						from: /(['"])css\/([^\/\n"']*)\.css(['"])/g
+						to: '$1' + cdnUrl + '$2-min.css$3'
 					}
 					{
 						from: '\n    try\n    {\n      Typekit.load()\n    }\n    catch (e)\n    {}\n    '
@@ -231,6 +236,10 @@ module.exports = (grunt) ->
 					{
 						from: "background-image: url('../img/"
 						to: "background-image: url('" + cdnUrl + "img/"
+					}
+					{
+						from: '<script src="http://localhost:35729/livereload.js"></script>'
+						to: "<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>"
 					}
 				]
 
@@ -300,9 +309,9 @@ module.exports = (grunt) ->
 					{
 						expand: true
 						replace: true
-						cwd: dist + 'css'
+						cwd: css
 						src: ['*.css', '!*-min.css']
-						dest: dist + 'css'
+						dest: css
 						ext: '-min.css'
 					}
 				]
@@ -312,7 +321,7 @@ module.exports = (grunt) ->
 				files:[
 					{
 						cwd: 'public'
-						src: ['css/style.css', 'css/connect.css', 'sass/**', 'js/*-pack-min.js', 'svg/**']
+						src: ['css/*-min.css', 'sass/**', 'js/*-pack-min.js', 'svg/**', 'dart/**']
 						dest: dist
 					}
 				]
@@ -342,7 +351,8 @@ module.exports = (grunt) ->
 				tasks: ['coffeeredux', 'concat']
 			sass:
 				files: sass + '*'
-				tasks: ['compass:watch', 'csslint']
+				tasks: ['compass:watch']
+				# tasks: ['compass:watch', 'csslint']
 
 		's3-sync':
 			options:
@@ -418,4 +428,4 @@ module.exports = (grunt) ->
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat:jquery', 'uglify:jquery', 'sync:dist', 'shell:apps', 'prettify', 'replace:dist', 'cssmin:dist', 'imagemin:dist', 's3-sync']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat:jquery', 'uglify:jquery', 'cssmin:dist', 'sync:dist', 'copy:dart', 'shell:apps', 'prettify', 'replace:dist', 'imagemin:dist', 's3-sync']

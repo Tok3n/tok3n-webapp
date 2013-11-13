@@ -51,6 +51,10 @@ app.get('/connect-create', function(req, res){
 	res.render("connect-create");
 });
 
+app.get('/connect-install', function(req, res){
+	res.render("connect-install");
+});
+
 // Heroku
 var port = process.env.PORT || 5000;
 app.listen(port, function() {

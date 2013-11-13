@@ -8,11 +8,11 @@ append block body
       .inlined
         .progress-meter
           .track
-            span.progress.step-1
+            span.progress.step-2
           ol.progress-points
-            li.progress-point.active
+            li.progress-point.completed
               span.progress-label Create
-            li.progress-point
+            li.progress-point.active
               span.progress-label Link device
             li.progress-point
               span.progress-label Recovery options
@@ -22,7 +22,7 @@ append block body
       form.form-horizontal
         fieldset
           .form-group
-            h3 Create your account
+            h3 Link your device
           .form-group.required-control
             label.col-sm-4.control-label(for='username') Username
             .create-input.col-sm-6
@@ -40,7 +40,6 @@ append block body
             .create-input.col-sm-6
               input#confirmemail.form-control(name='confirmemail', type='text', placeholder='', required='')
     .state-buttons
-      .col-sm-10
-        .form-group
-          a#cancel.btn.btn-default(type="button") Cancel
-          a#next.btn.btn-primary(type="button") Next
+      .form-group
+        a#cancel.btn.btn-default(type="button") Cancel
+        a#next.btn.btn-primary(type="button") Next

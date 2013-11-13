@@ -8,5 +8,6 @@
     "compatible-vendor-prefixes": false,
     "duplicate-properties"      : false,
     "star-property-hack"        : false,
-    "adjoining-classes"         : false
+    "adjoining-classes"         : false,
+    "gradients"                 : false
 }

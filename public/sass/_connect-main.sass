@@ -1,37 +1,40 @@
-.create-account
+.create-container
 	margin: 0 auto
-	h3
-		text-align: center
-	label
-		text-align: right
 	+at(1)
 		width: 90%
 	+at(2)
 		width: 80%
+	+at(3)
+		width: 700px
+	+from(4)
+		width: 800px
+
+.create-account
+	h3
+		text-align: center
+	label
+		text-align: right
+	+at(2)
 		.control-label, .create-input
 			+grid-template
 		.control-label
 			width: 25%
 		.create-input
 			width: 66.67%
-	+at(3)
-		width: 700px
-	+from(4)
-		width: 800px			
 
-	.state-buttons
-		text-align: right
-		+at(1)
-			margin-top: 30px
-			margin-bottom: 30px
-		+from(2)
-			margin-top: 40px
-			margin-bottom: 40px
-		+to(2)
-			text-align: center
-			.btn
-				font-size: 120%
-		.btn:first-child
-			margin-right: 1em
+.state-buttons
+	text-align: right
+	+at(1)
+		margin-top: 30px
+		margin-bottom: 30px
+	+from(2)
+		margin-top: 40px
+		margin-bottom: 40px
+	+to(2)
+		text-align: center
 		.btn
-			width: 120px
+			font-size: 120%
+	.btn:first-child
+		margin-right: 1em
+	.btn
+		width: 120px
