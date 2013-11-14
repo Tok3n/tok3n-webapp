@@ -3,6 +3,7 @@ render title('Connect with Tok3n')
 
 append block body
   .create-container
+    
     .progress-track
       .inliner
       .inlined
@@ -18,29 +19,24 @@ append block body
               span.progress-label Recovery options
             li.progress-point
               span.progress-label Connect
+
     .create-account
-      form.form-horizontal
-        fieldset
-          .form-group
-            h3 Create your account
-          .form-group.required-control
-            label.col-sm-4.control-label(for='username') Username
-            .create-input.col-sm-6
-              input#username.form-control(name='username', type='text', placeholder='', required='')
-          .form-group.required-control
-            label.col-sm-4.control-label(for='password') Password
-            .create-input.col-sm-6
-              input#password.form-control(name='password', type='password', placeholder='', required='')
-          .form-group.required-control
-            label.col-sm-4.control-label(for='email') Email
-            .create-input.col-sm-6
-              input#email.form-control(name='email', type='text', placeholder='', required='')
-          .form-group.required-control
-            label.col-sm-4.control-label(for='confirmemail') Confirm Email
-            .create-input.col-sm-6
-              input#confirmemail.form-control(name='confirmemail', type='text', placeholder='', required='')
+      h3 Create your account
+      form
+        ol
+          li
+            input#username(name='username')
+            label(for='username') Username
+          li
+            input#password(name='password', type='password')
+            label(for='password') Password
+          li
+            input#email(name='email')
+            label(for='email') Email
+          li
+            input#confirm(name='confirm')
+            label(for='confirm') Confirm Email
+
     .state-buttons
-      .col-sm-10
-        .form-group
-          a#cancel.btn.btn-default(type="button") Cancel
-          a#next.btn.btn-primary(type="button") Next
+      a#cancel.btn.btn-default(type="button") Cancel
+      a#next.btn.btn-primary(type="button") Next

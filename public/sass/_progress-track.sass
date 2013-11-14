@@ -42,14 +42,11 @@ $tint-incomplete-label: #888
       width: ($pregutter / 2) + ($gutter * ($i - 1))
 
 +at(1)
-  +progress-bar-resp(20px, 10px, 80px, 95%, 10px, $p-top: 17px)
+  +progress-bar-resp(20px, 10px, 80px, 100%, 0, $p-top: 17px)
   +progress-gutter-resp($points, 30%)
-+at(2)
-  +progress-bar-resp(20px, 15px, 100px, 85%, 20px)
 +from(2)
+  +progress-bar-resp(20px, 15px, 100px, 100%, 0)
   +progress-gutter-resp($points, 20%)
-+from(3)
-  +progress-bar-resp(20px, 30px, 120px, 630px, 30px)
 
 .progress-track
   font-size: 14px
@@ -122,10 +119,9 @@ $tint-incomplete-label: #888
       +at(1)
         background-color: $tint-complete
     .progress-label
-      +at(2)
-        font-size: 85%
       +at(1)
         display: none
+      font-size: 85%
     .progress-label:before
       counter-increment: point
       content: counter(point) ". "

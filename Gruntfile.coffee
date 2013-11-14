@@ -218,16 +218,12 @@ module.exports = (grunt) ->
 						to: cdnUrl + 'js/connect-min.js'
 					}
 					{
-						from: '../packages/browser/dart.js'
-						to: cdnUrl + 'dart/dart.js'
-					}
-					{
-						from: 'dart/connect.dart'
-						to: cdnUrl + 'dart/connect.dart'
+						from: '<script src="dart/connect.dart.js"></script>'
+						to: '<script type="application/dart" src="' + cdnUrl + 'dart/connect.dart"></script>\n    <script src="' + cdnUrl + 'dart/dart.js"></script>'
 					}
 					{
 						from: /(['"])css\/([^\/\n"']*)\.css(['"])/g
-						to: '$1' + cdnUrl + '$2-min.css$3'
+						to: '$1' + cdnUrl + 'css/$2-min.css$3'
 					}
 					{
 						from: '\n    try\n    {\n      Typekit.load()\n    }\n    catch (e)\n    {}\n    '
@@ -382,7 +378,7 @@ module.exports = (grunt) ->
 				files: [
 					{
 						root: dist
-						src: [dist + 'sass/**', dist + '*.html']
+						src: [dist + 'sass/**', dist + '*.html', dist + 'dart/*.dart', dist + 'dart/*.js']
 						dest: '/<%= pkg.version %>/'
 					}
 				]

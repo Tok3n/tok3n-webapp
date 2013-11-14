@@ -1,25 +1,32 @@
 // At first just some design
-@import url(http://fonts.googleapis.com/css?family=Share+Tech)
+
+$input-size: 1.2em
 
 input, label
-  font-size: 1.5em
-  font-family: "Share Tech", sans
+  font-size: $input-size
 
 form > ol
   list-style: none
   padding: 0px
   > li
     position: relative
-    margin: 1.2em
+    margin: 1.2em 0
+
+form
+  margin-top: 2.5em
 
 input
   padding: 0.1em 0em
   border: none
   border-radius: 0px
-  border-bottom: 1px solid #555
+  border-bottom: 1px solid #ccc
   outline: none
   margin: 0px
   background: none
+  width: 100%
+
+label
+  font-weight: normal
 
 // HERE THE MAGIC STARTS
 // Original label position: top left and small
@@ -31,9 +38,9 @@ input
     opacity: 1
     color: #aaa
     top: 0.1em
-    font-size: 1.5em
+    font-size: $input-size
   20%
-    font-size: 1.5em
+    font-size: $input-size
     opacity: 0
   30%
     top: 0.1em
@@ -62,7 +69,7 @@ input
     color: #0099ff
   &.empty + label
     top: 0.1em
-    font-size: 1.5em
+    font-size: $input-size
     +animation(none)
 
 // In JS Browsers the .empty class is assigned to empty inputs -> label is rendered like a placeholder in the input field
