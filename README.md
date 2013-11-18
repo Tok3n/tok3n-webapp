@@ -43,7 +43,9 @@ grunt build
 # After building, Compile css and coffee, concat js for development.
 grunt
 
-# Compile css and coffee, concat js, uglify and gzip for production. In order to work, you NEED to run `foreman start -f Procfile.dev` or `nodemon server.js` simultaneously in another terminal window.
+# Compile css and coffee, concat js, uglify and gzip for production. In order to work,
+you NEED to run `foreman start -f Procfile.dev` or `nodemon server.js` simultaneously in
+another terminal window.
 grunt dist
 ```
 
