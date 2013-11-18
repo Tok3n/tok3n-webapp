@@ -2,9 +2,9 @@ include 'connect-layout.blade'
 render title('Connect with Tok3n')
 
 append block body
-  #login.login
+  #login
+    h3 Log in
     .connect-form
-      h3 Log in
       form
         ol
           li
@@ -21,4 +21,4 @@ append block body
         a Create one now
         | .
     .state-buttons
-      a.signin(type='button') Sign in
+      a#signin.signin(type='button') Sign in

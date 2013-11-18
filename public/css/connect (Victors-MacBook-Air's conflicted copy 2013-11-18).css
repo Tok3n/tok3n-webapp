@@ -2462,65 +2462,65 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 }
 
 /* line 57, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn-default, .state-buttons .cancel {
+.btn-default, .state-buttons #cancel {
   color: #333333;
   background-color: white;
   border-color: #cccccc;
 }
 /* line 411, ../components/bootstrap-sass/lib/_mixins.scss */
-.btn-default:hover, .state-buttons .cancel:hover, .btn-default:focus, .state-buttons .cancel:focus, .btn-default:active, .state-buttons .cancel:active, .btn-default.active, .state-buttons .active.cancel {
+.btn-default:hover, .state-buttons #cancel:hover, .btn-default:focus, .state-buttons #cancel:focus, .btn-default:active, .state-buttons #cancel:active, .btn-default.active, .state-buttons .active#cancel {
   color: #333333;
   background-color: #ebebeb;
   border-color: #adadad;
 }
 /* line 419, ../components/bootstrap-sass/lib/_mixins.scss */
-.open .btn-default.dropdown-toggle, .open .state-buttons .dropdown-toggle.cancel, .state-buttons .open .dropdown-toggle.cancel {
+.open .btn-default.dropdown-toggle, .open .state-buttons .dropdown-toggle#cancel, .state-buttons .open .dropdown-toggle#cancel {
   color: #333333;
   background-color: #ebebeb;
   border-color: #adadad;
 }
 /* line 424, ../components/bootstrap-sass/lib/_mixins.scss */
-.btn-default:active, .state-buttons .cancel:active, .btn-default.active, .state-buttons .active.cancel {
+.btn-default:active, .state-buttons #cancel:active, .btn-default.active, .state-buttons .active#cancel {
   background-image: none;
 }
 /* line 428, ../components/bootstrap-sass/lib/_mixins.scss */
-.open .btn-default.dropdown-toggle, .open .state-buttons .dropdown-toggle.cancel, .state-buttons .open .dropdown-toggle.cancel {
+.open .btn-default.dropdown-toggle, .open .state-buttons .dropdown-toggle#cancel, .state-buttons .open .dropdown-toggle#cancel {
   background-image: none;
 }
 /* line 434, ../components/bootstrap-sass/lib/_mixins.scss */
-.btn-default.disabled, .state-buttons .disabled.cancel, .btn-default.disabled:hover, .state-buttons .disabled.cancel:hover, .btn-default.disabled:focus, .state-buttons .disabled.cancel:focus, .btn-default.disabled:active, .state-buttons .disabled.cancel:active, .btn-default.disabled.active, .state-buttons .disabled.active.cancel, .btn-default[disabled], .state-buttons [disabled].cancel, .btn-default[disabled]:hover, .state-buttons [disabled].cancel:hover, .btn-default[disabled]:focus, .state-buttons [disabled].cancel:focus, .btn-default[disabled]:active, .state-buttons [disabled].cancel:active, .btn-default[disabled].active, .state-buttons [disabled].active.cancel, fieldset[disabled] .btn-default, fieldset[disabled] .state-buttons .cancel, .state-buttons fieldset[disabled] .cancel, fieldset[disabled] .btn-default:hover, fieldset[disabled] .state-buttons .cancel:hover, .state-buttons fieldset[disabled] .cancel:hover, fieldset[disabled] .btn-default:focus, fieldset[disabled] .state-buttons .cancel:focus, .state-buttons fieldset[disabled] .cancel:focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .state-buttons .cancel:active, .state-buttons fieldset[disabled] .cancel:active, fieldset[disabled] .btn-default.active, fieldset[disabled] .state-buttons .active.cancel, .state-buttons fieldset[disabled] .active.cancel {
+.btn-default.disabled, .state-buttons .disabled#cancel, .btn-default.disabled:hover, .state-buttons .disabled#cancel:hover, .btn-default.disabled:focus, .state-buttons .disabled#cancel:focus, .btn-default.disabled:active, .state-buttons .disabled#cancel:active, .btn-default.disabled.active, .state-buttons .disabled.active#cancel, .btn-default[disabled], .state-buttons [disabled]#cancel, .btn-default[disabled]:hover, .state-buttons [disabled]#cancel:hover, .btn-default[disabled]:focus, .state-buttons [disabled]#cancel:focus, .btn-default[disabled]:active, .state-buttons [disabled]#cancel:active, .btn-default[disabled].active, .state-buttons [disabled].active#cancel, fieldset[disabled] .btn-default, fieldset[disabled] .state-buttons #cancel, .state-buttons fieldset[disabled] #cancel, fieldset[disabled] .btn-default:hover, fieldset[disabled] .state-buttons #cancel:hover, .state-buttons fieldset[disabled] #cancel:hover, fieldset[disabled] .btn-default:focus, fieldset[disabled] .state-buttons #cancel:focus, .state-buttons fieldset[disabled] #cancel:focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .state-buttons #cancel:active, .state-buttons fieldset[disabled] #cancel:active, fieldset[disabled] .btn-default.active, fieldset[disabled] .state-buttons .active#cancel, .state-buttons fieldset[disabled] .active#cancel {
   background-color: white;
   border-color: #cccccc;
 }
 
 /* line 60, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn-primary, .state-buttons .signin, .state-buttons .next {
+.btn-primary, .state-buttons .signin, .state-buttons #next {
   color: white;
   background-color: #428bca;
   border-color: #357ebd;
 }
 /* line 411, ../components/bootstrap-sass/lib/_mixins.scss */
-.btn-primary:hover, .state-buttons .signin:hover, .state-buttons .next:hover, .btn-primary:focus, .state-buttons .signin:focus, .state-buttons .next:focus, .btn-primary:active, .state-buttons .signin:active, .state-buttons .next:active, .btn-primary.active, .state-buttons .active.signin, .state-buttons .active.next {
+.btn-primary:hover, .state-buttons .signin:hover, .state-buttons #next:hover, .btn-primary:focus, .state-buttons .signin:focus, .state-buttons #next:focus, .btn-primary:active, .state-buttons .signin:active, .state-buttons #next:active, .btn-primary.active, .state-buttons .active.signin, .state-buttons .active#next {
   color: white;
   background-color: #3276b1;
   border-color: #285e8e;
 }
 /* line 419, ../components/bootstrap-sass/lib/_mixins.scss */
-.open .btn-primary.dropdown-toggle, .open .state-buttons .dropdown-toggle.signin, .state-buttons .open .dropdown-toggle.signin, .open .state-buttons .dropdown-toggle.next, .state-buttons .open .dropdown-toggle.next {
+.open .btn-primary.dropdown-toggle, .open .state-buttons .dropdown-toggle.signin, .state-buttons .open .dropdown-toggle.signin, .open .state-buttons .dropdown-toggle#next, .state-buttons .open .dropdown-toggle#next {
   color: white;
   background-color: #3276b1;
   border-color: #285e8e;
 }
 /* line 424, ../components/bootstrap-sass/lib/_mixins.scss */
-.btn-primary:active, .state-buttons .signin:active, .state-buttons .next:active, .btn-primary.active, .state-buttons .active.signin, .state-buttons .active.next {
+.btn-primary:active, .state-buttons .signin:active, .state-buttons #next:active, .btn-primary.active, .state-buttons .active.signin, .state-buttons .active#next {
   background-image: none;
 }
 /* line 428, ../components/bootstrap-sass/lib/_mixins.scss */
-.open .btn-primary.dropdown-toggle, .open .state-buttons .dropdown-toggle.signin, .state-buttons .open .dropdown-toggle.signin, .open .state-buttons .dropdown-toggle.next, .state-buttons .open .dropdown-toggle.next {
+.open .btn-primary.dropdown-toggle, .open .state-buttons .dropdown-toggle.signin, .state-buttons .open .dropdown-toggle.signin, .open .state-buttons .dropdown-toggle#next, .state-buttons .open .dropdown-toggle#next {
   background-image: none;
 }
 /* line 434, ../components/bootstrap-sass/lib/_mixins.scss */
-.btn-primary.disabled, .state-buttons .disabled.signin, .state-buttons .disabled.next, .btn-primary.disabled:hover, .state-buttons .disabled.signin:hover, .state-buttons .disabled.next:hover, .btn-primary.disabled:focus, .state-buttons .disabled.signin:focus, .state-buttons .disabled.next:focus, .btn-primary.disabled:active, .state-buttons .disabled.signin:active, .state-buttons .disabled.next:active, .btn-primary.disabled.active, .state-buttons .disabled.active.signin, .state-buttons .disabled.active.next, .btn-primary[disabled], .state-buttons [disabled].signin, .state-buttons [disabled].next, .btn-primary[disabled]:hover, .state-buttons [disabled].signin:hover, .state-buttons [disabled].next:hover, .btn-primary[disabled]:focus, .state-buttons [disabled].signin:focus, .state-buttons [disabled].next:focus, .btn-primary[disabled]:active, .state-buttons [disabled].signin:active, .state-buttons [disabled].next:active, .btn-primary[disabled].active, .state-buttons [disabled].active.signin, .state-buttons [disabled].active.next, fieldset[disabled] .btn-primary, fieldset[disabled] .state-buttons .signin, .state-buttons fieldset[disabled] .signin, fieldset[disabled] .state-buttons .next, .state-buttons fieldset[disabled] .next, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .state-buttons .signin:hover, .state-buttons fieldset[disabled] .signin:hover, fieldset[disabled] .state-buttons .next:hover, .state-buttons fieldset[disabled] .next:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .state-buttons .signin:focus, .state-buttons fieldset[disabled] .signin:focus, fieldset[disabled] .state-buttons .next:focus, .state-buttons fieldset[disabled] .next:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .state-buttons .signin:active, .state-buttons fieldset[disabled] .signin:active, fieldset[disabled] .state-buttons .next:active, .state-buttons fieldset[disabled] .next:active, fieldset[disabled] .btn-primary.active, fieldset[disabled] .state-buttons .active.signin, .state-buttons fieldset[disabled] .active.signin, fieldset[disabled] .state-buttons .active.next, .state-buttons fieldset[disabled] .active.next {
+.btn-primary.disabled, .state-buttons .disabled.signin, .state-buttons .disabled#next, .btn-primary.disabled:hover, .state-buttons .disabled.signin:hover, .state-buttons .disabled#next:hover, .btn-primary.disabled:focus, .state-buttons .disabled.signin:focus, .state-buttons .disabled#next:focus, .btn-primary.disabled:active, .state-buttons .disabled.signin:active, .state-buttons .disabled#next:active, .btn-primary.disabled.active, .state-buttons .disabled.active.signin, .state-buttons .disabled.active#next, .btn-primary[disabled], .state-buttons [disabled].signin, .state-buttons [disabled]#next, .btn-primary[disabled]:hover, .state-buttons [disabled].signin:hover, .state-buttons [disabled]#next:hover, .btn-primary[disabled]:focus, .state-buttons [disabled].signin:focus, .state-buttons [disabled]#next:focus, .btn-primary[disabled]:active, .state-buttons [disabled].signin:active, .state-buttons [disabled]#next:active, .btn-primary[disabled].active, .state-buttons [disabled].active.signin, .state-buttons [disabled].active#next, fieldset[disabled] .btn-primary, fieldset[disabled] .state-buttons .signin, .state-buttons fieldset[disabled] .signin, fieldset[disabled] .state-buttons #next, .state-buttons fieldset[disabled] #next, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .state-buttons .signin:hover, .state-buttons fieldset[disabled] .signin:hover, fieldset[disabled] .state-buttons #next:hover, .state-buttons fieldset[disabled] #next:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .state-buttons .signin:focus, .state-buttons fieldset[disabled] .signin:focus, fieldset[disabled] .state-buttons #next:focus, .state-buttons fieldset[disabled] #next:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .state-buttons .signin:active, .state-buttons fieldset[disabled] .signin:active, fieldset[disabled] .state-buttons #next:active, .state-buttons fieldset[disabled] #next:active, fieldset[disabled] .btn-primary.active, fieldset[disabled] .state-buttons .active.signin, .state-buttons fieldset[disabled] .active.signin, fieldset[disabled] .state-buttons .active#next, .state-buttons fieldset[disabled] .active#next {
   background-color: #428bca;
   border-color: #357ebd;
 }
@@ -3928,20 +3928,20 @@ input[type="button"].btn-block,
   }
 }
 /* line 10, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-default .caret, .state-buttons .cancel .caret {
+.btn-default .caret, .state-buttons #cancel .caret {
   border-top-color: #333333;
 }
 /* line 13, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-primary .caret, .state-buttons .signin .caret, .state-buttons .next .caret, .btn-success .caret, .btn-warning .caret, .btn-danger .caret, .btn-info .caret {
+.btn-primary .caret, .state-buttons .signin .caret, .state-buttons #next .caret, .btn-success .caret, .btn-warning .caret, .btn-danger .caret, .btn-info .caret {
   border-top-color: #fff;
 }
 
 /* line 22, ../components/bootstrap-sass/lib/_button-groups.scss */
-.dropup .btn-default .caret, .dropup .state-buttons .cancel .caret, .state-buttons .dropup .cancel .caret {
+.dropup .btn-default .caret, .dropup .state-buttons #cancel .caret, .state-buttons .dropup #cancel .caret {
   border-bottom-color: #333333;
 }
 /* line 30, ../components/bootstrap-sass/lib/_button-groups.scss */
-.dropup .btn-primary .caret, .dropup .state-buttons .signin .caret, .state-buttons .dropup .signin .caret, .dropup .state-buttons .next .caret, .state-buttons .dropup .next .caret,
+.dropup .btn-primary .caret, .dropup .state-buttons .signin .caret, .state-buttons .dropup .signin .caret, .dropup .state-buttons #next .caret, .state-buttons .dropup #next .caret,
 .dropup .btn-success .caret,
 .dropup .btn-warning .caret,
 .dropup .btn-danger .caret,
@@ -10066,24 +10066,24 @@ a {
 }
 
 /* line 6, ../sass/_connect-main.sass */
-.create-container, header, .login {
+.create-container, header, #login {
   margin: 0 auto;
 }
 @media (max-width: 481px) {
   /* line 6, ../sass/_connect-main.sass */
-  .create-container, header, .login {
+  .create-container, header, #login {
     width: 90%;
   }
 }
 @media (min-width: 482px) {
   /* line 6, ../sass/_connect-main.sass */
-  .create-container, header, .login {
+  .create-container, header, #login {
     width: 390px;
   }
 }
 
 /* line 13, ../sass/_connect-main.sass */
-.create-container, .login {
+.create-container, #login {
   margin-top: 2em;
 }
 
@@ -10335,7 +10335,7 @@ ol.progress-meter li.todo:before {
 
 @media (min-width: 482px) {
   /* line 102, ../sass/_connect-main.sass */
-  .login {
+  #login {
     width: 300px;
     margin: 0 auto;
   }

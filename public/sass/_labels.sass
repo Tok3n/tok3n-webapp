@@ -53,3 +53,34 @@
   &.empty + label
     top: 0.1em
     +animation(none)
+
+///////////////////
+// Example usage //
+///////////////////
+
+// $float-label-size: 1.2em
+// +float-label-animation($float-label-size)
+
+// .connect-form
+//   margin-bottom: 3em
+//   +float-label-size($float-label-size)
+//   @extend %float-label
+//   form > ol
+//     list-style: none
+//     padding: 0px
+//     > li
+//       position: relative
+//       margin: 1.2em 0
+//   form
+//     margin-top: 2.5em
+//   input
+//     padding: 0.1em 0em
+//     border: none
+//     border-radius: 0px
+//     border-bottom: 1px solid #ccc
+//     outline: none
+//     margin: 0px
+//     background: none
+//     width: 100%
+//   label
+//     font-weight: normal
