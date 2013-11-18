@@ -10,9 +10,6 @@
   +from(2)
     width: 390px
 
-.create-container, .login
-  margin-top: 2em
-
 ////////////
 // Progress meter
 ////////////
@@ -83,7 +80,7 @@ $float-label-size: 1.2em
   .signin
     @extend .btn-primary
     @extend .btn-block
-  .cancel
+  .cancel, .previous
     @extend .btn-default
   .next
     @extend .btn-primary
@@ -100,9 +97,7 @@ $float-label-size: 1.2em
 ////////////
 
 .login
-  +from(2)
-    width: 300px
-    margin: 0 auto
+  margin-top: 3em
 
 .create-account
   margin-top: 2em

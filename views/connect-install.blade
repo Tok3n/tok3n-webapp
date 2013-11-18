@@ -4,26 +4,16 @@ render title('Connect with Tok3n')
 append block body
   .create-container
     
-    .progress-track
-      .inliner
-      .inlined
-        .progress-meter
-          .track
-            span.progress.step-2
-          ol.progress-points
-            li.progress-point.completed
-              span.progress-label Create
-            li.progress-point.active
-              span.progress-label Download
-            li.progress-point
-              span.progress-label Link
-            li.progress-point
-              span.progress-label Connect
+    ol.progress-meter
+      li.progress-point.done Create
+      li.progress-point.done Download
+      li.progress-point.todo Link
+      li.progress-point.todo Connect
 
     .connect-form
       h3 Download our mobile app
 
 
     .state-buttons
-      a#cancel.btn.btn-default(type="button") Previous
-      a#next.btn.btn-primary(type="button") Next
+      a#previous.previous(type="button") Previous
+      a#next.next(type="button") Next

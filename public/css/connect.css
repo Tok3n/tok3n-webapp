@@ -2462,33 +2462,33 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 }
 
 /* line 57, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn-default, .state-buttons .cancel {
+.btn-default, .state-buttons .cancel, .state-buttons .previous {
   color: #333333;
   background-color: white;
   border-color: #cccccc;
 }
 /* line 411, ../components/bootstrap-sass/lib/_mixins.scss */
-.btn-default:hover, .state-buttons .cancel:hover, .btn-default:focus, .state-buttons .cancel:focus, .btn-default:active, .state-buttons .cancel:active, .btn-default.active, .state-buttons .active.cancel {
+.btn-default:hover, .state-buttons .cancel:hover, .state-buttons .previous:hover, .btn-default:focus, .state-buttons .cancel:focus, .state-buttons .previous:focus, .btn-default:active, .state-buttons .cancel:active, .state-buttons .previous:active, .btn-default.active, .state-buttons .active.cancel, .state-buttons .active.previous {
   color: #333333;
   background-color: #ebebeb;
   border-color: #adadad;
 }
 /* line 419, ../components/bootstrap-sass/lib/_mixins.scss */
-.open .btn-default.dropdown-toggle, .open .state-buttons .dropdown-toggle.cancel, .state-buttons .open .dropdown-toggle.cancel {
+.open .btn-default.dropdown-toggle, .open .state-buttons .dropdown-toggle.cancel, .state-buttons .open .dropdown-toggle.cancel, .open .state-buttons .dropdown-toggle.previous, .state-buttons .open .dropdown-toggle.previous {
   color: #333333;
   background-color: #ebebeb;
   border-color: #adadad;
 }
 /* line 424, ../components/bootstrap-sass/lib/_mixins.scss */
-.btn-default:active, .state-buttons .cancel:active, .btn-default.active, .state-buttons .active.cancel {
+.btn-default:active, .state-buttons .cancel:active, .state-buttons .previous:active, .btn-default.active, .state-buttons .active.cancel, .state-buttons .active.previous {
   background-image: none;
 }
 /* line 428, ../components/bootstrap-sass/lib/_mixins.scss */
-.open .btn-default.dropdown-toggle, .open .state-buttons .dropdown-toggle.cancel, .state-buttons .open .dropdown-toggle.cancel {
+.open .btn-default.dropdown-toggle, .open .state-buttons .dropdown-toggle.cancel, .state-buttons .open .dropdown-toggle.cancel, .open .state-buttons .dropdown-toggle.previous, .state-buttons .open .dropdown-toggle.previous {
   background-image: none;
 }
 /* line 434, ../components/bootstrap-sass/lib/_mixins.scss */
-.btn-default.disabled, .state-buttons .disabled.cancel, .btn-default.disabled:hover, .state-buttons .disabled.cancel:hover, .btn-default.disabled:focus, .state-buttons .disabled.cancel:focus, .btn-default.disabled:active, .state-buttons .disabled.cancel:active, .btn-default.disabled.active, .state-buttons .disabled.active.cancel, .btn-default[disabled], .state-buttons [disabled].cancel, .btn-default[disabled]:hover, .state-buttons [disabled].cancel:hover, .btn-default[disabled]:focus, .state-buttons [disabled].cancel:focus, .btn-default[disabled]:active, .state-buttons [disabled].cancel:active, .btn-default[disabled].active, .state-buttons [disabled].active.cancel, fieldset[disabled] .btn-default, fieldset[disabled] .state-buttons .cancel, .state-buttons fieldset[disabled] .cancel, fieldset[disabled] .btn-default:hover, fieldset[disabled] .state-buttons .cancel:hover, .state-buttons fieldset[disabled] .cancel:hover, fieldset[disabled] .btn-default:focus, fieldset[disabled] .state-buttons .cancel:focus, .state-buttons fieldset[disabled] .cancel:focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .state-buttons .cancel:active, .state-buttons fieldset[disabled] .cancel:active, fieldset[disabled] .btn-default.active, fieldset[disabled] .state-buttons .active.cancel, .state-buttons fieldset[disabled] .active.cancel {
+.btn-default.disabled, .state-buttons .disabled.cancel, .state-buttons .disabled.previous, .btn-default.disabled:hover, .state-buttons .disabled.cancel:hover, .state-buttons .disabled.previous:hover, .btn-default.disabled:focus, .state-buttons .disabled.cancel:focus, .state-buttons .disabled.previous:focus, .btn-default.disabled:active, .state-buttons .disabled.cancel:active, .state-buttons .disabled.previous:active, .btn-default.disabled.active, .state-buttons .disabled.active.cancel, .state-buttons .disabled.active.previous, .btn-default[disabled], .state-buttons [disabled].cancel, .state-buttons [disabled].previous, .btn-default[disabled]:hover, .state-buttons [disabled].cancel:hover, .state-buttons [disabled].previous:hover, .btn-default[disabled]:focus, .state-buttons [disabled].cancel:focus, .state-buttons [disabled].previous:focus, .btn-default[disabled]:active, .state-buttons [disabled].cancel:active, .state-buttons [disabled].previous:active, .btn-default[disabled].active, .state-buttons [disabled].active.cancel, .state-buttons [disabled].active.previous, fieldset[disabled] .btn-default, fieldset[disabled] .state-buttons .cancel, .state-buttons fieldset[disabled] .cancel, fieldset[disabled] .state-buttons .previous, .state-buttons fieldset[disabled] .previous, fieldset[disabled] .btn-default:hover, fieldset[disabled] .state-buttons .cancel:hover, .state-buttons fieldset[disabled] .cancel:hover, fieldset[disabled] .state-buttons .previous:hover, .state-buttons fieldset[disabled] .previous:hover, fieldset[disabled] .btn-default:focus, fieldset[disabled] .state-buttons .cancel:focus, .state-buttons fieldset[disabled] .cancel:focus, fieldset[disabled] .state-buttons .previous:focus, .state-buttons fieldset[disabled] .previous:focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .state-buttons .cancel:active, .state-buttons fieldset[disabled] .cancel:active, fieldset[disabled] .state-buttons .previous:active, .state-buttons fieldset[disabled] .previous:active, fieldset[disabled] .btn-default.active, fieldset[disabled] .state-buttons .active.cancel, .state-buttons fieldset[disabled] .active.cancel, fieldset[disabled] .state-buttons .active.previous, .state-buttons fieldset[disabled] .active.previous {
   background-color: white;
   border-color: #cccccc;
 }
@@ -3928,7 +3928,7 @@ input[type="button"].btn-block,
   }
 }
 /* line 10, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-default .caret, .state-buttons .cancel .caret {
+.btn-default .caret, .state-buttons .cancel .caret, .state-buttons .previous .caret {
   border-top-color: #333333;
 }
 /* line 13, ../components/bootstrap-sass/lib/_button-groups.scss */
@@ -3937,7 +3937,7 @@ input[type="button"].btn-block,
 }
 
 /* line 22, ../components/bootstrap-sass/lib/_button-groups.scss */
-.dropup .btn-default .caret, .dropup .state-buttons .cancel .caret, .state-buttons .dropup .cancel .caret {
+.dropup .btn-default .caret, .dropup .state-buttons .cancel .caret, .state-buttons .dropup .cancel .caret, .dropup .state-buttons .previous .caret, .state-buttons .dropup .previous .caret {
   border-bottom-color: #333333;
 }
 /* line 30, ../components/bootstrap-sass/lib/_button-groups.scss */
@@ -10082,12 +10082,7 @@ a {
   }
 }
 
-/* line 13, ../sass/_connect-main.sass */
-.create-container, .login {
-  margin-top: 2em;
-}
-
-/* line 20, ../sass/_connect-main.sass */
+/* line 17, ../sass/_connect-main.sass */
 ol.progress-meter {
   padding-bottom: 9.5px;
   list-style-type: none;
@@ -10147,22 +10142,22 @@ ol.progress-meter li.todo:before {
   bottom: -25.73px;
   line-height: 18.05px;
 }
-/* line 28, ../sass/_connect-main.sass */
+/* line 25, ../sass/_connect-main.sass */
 ol.progress-meter li.done {
   color: black;
   border-bottom-color: yellowgreen;
 }
-/* line 31, ../sass/_connect-main.sass */
+/* line 28, ../sass/_connect-main.sass */
 ol.progress-meter li.done:before {
   color: white;
   background-color: yellowgreen;
 }
-/* line 34, ../sass/_connect-main.sass */
+/* line 31, ../sass/_connect-main.sass */
 ol.progress-meter li.todo {
   color: silver;
   border-bottom-color: silver;
 }
-/* line 37, ../sass/_connect-main.sass */
+/* line 34, ../sass/_connect-main.sass */
 ol.progress-meter li.todo:before {
   color: silver;
 }
@@ -10271,21 +10266,21 @@ ol.progress-meter li.todo:before {
 .connect-form input.empty + label {
   font-size: 1.2em;
 }
-/* line 50, ../sass/_connect-main.sass */
+/* line 47, ../sass/_connect-main.sass */
 .connect-form form > ol {
   list-style: none;
   padding: 0px;
 }
-/* line 53, ../sass/_connect-main.sass */
+/* line 50, ../sass/_connect-main.sass */
 .connect-form form > ol > li {
   position: relative;
   margin: 1.2em 0;
 }
-/* line 56, ../sass/_connect-main.sass */
+/* line 53, ../sass/_connect-main.sass */
 .connect-form form {
   margin-top: 2.5em;
 }
-/* line 58, ../sass/_connect-main.sass */
+/* line 55, ../sass/_connect-main.sass */
 .connect-form input {
   padding: 0.1em 0em;
   border: none;
@@ -10296,52 +10291,49 @@ ol.progress-meter li.todo:before {
   background: none;
   width: 100%;
 }
-/* line 67, ../sass/_connect-main.sass */
+/* line 64, ../sass/_connect-main.sass */
 .connect-form label {
   font-weight: normal;
 }
 @media (max-width: 481px) {
-  /* line 47, ../sass/_connect-main.sass */
+  /* line 44, ../sass/_connect-main.sass */
   .connect-form {
     margin-bottom: 30px;
   }
 }
 @media (min-width: 482px) {
-  /* line 47, ../sass/_connect-main.sass */
+  /* line 44, ../sass/_connect-main.sass */
   .connect-form {
     margin-bottom: 40px;
   }
 }
 
-/* line 78, ../sass/_connect-main.sass */
+/* line 75, ../sass/_connect-main.sass */
 .state-buttons {
   margin-bottom: 1em;
   text-align: right;
 }
 @media (max-width: 768px) {
-  /* line 91, ../sass/_connect-main.sass */
+  /* line 88, ../sass/_connect-main.sass */
   .state-buttons .btn, .state-buttons a {
     font-size: 110%;
   }
 }
-/* line 93, ../sass/_connect-main.sass */
+/* line 90, ../sass/_connect-main.sass */
 .state-buttons .btn:first-child, .state-buttons a:first-child {
   margin-right: 1em;
 }
-/* line 95, ../sass/_connect-main.sass */
+/* line 92, ../sass/_connect-main.sass */
 .state-buttons .btn, .state-buttons a {
   width: 120px;
 }
 
-@media (min-width: 482px) {
-  /* line 102, ../sass/_connect-main.sass */
-  .login {
-    width: 300px;
-    margin: 0 auto;
-  }
+/* line 99, ../sass/_connect-main.sass */
+.login {
+  margin-top: 3em;
 }
 
-/* line 107, ../sass/_connect-main.sass */
+/* line 102, ../sass/_connect-main.sass */
 .create-account {
   margin-top: 2em;
 }
