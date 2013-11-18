@@ -1,26 +1,63 @@
-.create-container
-	margin: 0 auto
-	+at(1)
-		width: 90%
-	+from(2)
-		width: 390px
+.create-container, header
+  margin: 0 auto
+  +at(1)
+    width: 90%
+  +from(2)
+    width: 390px
 
-.create-account
-	margin-bottom: 3em
+ol.progress-meter
+  @extend %progress-meter
+  margin: 1em 0 2em
+  padding-top: 0
+  padding-left: 0
+  padding-right: 0
+
+$float-label-size: 1.2em
++float-label-animation($float-label-size)
+
+.connect-form
+  margin-bottom: 3em
+  +float-label-size($float-label-size)
+  @extend %float-label
+  form > ol
+    list-style: none
+    padding: 0px
+    > li
+      position: relative
+      margin: 1.2em 0
+  form
+    margin-top: 2.5em
+  input
+    padding: 0.1em 0em
+    border: none
+    border-radius: 0px
+    border-bottom: 1px solid #ccc
+    outline: none
+    margin: 0px
+    background: none
+    width: 100%
+  label
+    font-weight: normal
 
 .state-buttons
-	margin-bottom: 1em
-	text-align: right
-	+at(1)
-		margin-top: 30px
-		margin-bottom: 30px
-	+from(2)
-		margin-top: 40px
-		margin-bottom: 40px
-	+to(2)
-		.btn
-			font-size: 120%
-	.btn:first-child
-		margin-right: 1em
-	.btn
-		width: 120px
+  margin-bottom: 1em
+  text-align: right
+  a
+    @extend .btn
+  #cancel
+    @extend .btn-default
+  #next
+    @extend .btn-primary
+  +at(1)
+    margin-top: 30px
+    margin-bottom: 30px
+  +from(2)
+    margin-top: 40px
+    margin-bottom: 40px
+  +to(2)
+    .btn
+      font-size: 110%
+  .btn:first-child
+    margin-right: 1em
+  .btn
+    width: 120px

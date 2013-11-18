@@ -4,23 +4,13 @@ render title('Connect with Tok3n')
 append block body
   .create-container
     
-    .progress-track
-      .inliner
-      .inlined
-        .progress-meter
-          .track
-            span.progress.step-1
-          ol.progress-points
-            li.progress-point.active
-              span.progress-label Create
-            li.progress-point
-              span.progress-label Link device
-            li.progress-point
-              span.progress-label Recovery options
-            li.progress-point
-              span.progress-label Connect
+    ol.progress-meter
+      li.progress-point.done Create
+      li.progress-point.todo Download
+      li.progress-point.todo Link
+      li.progress-point.todo Connect
 
-    .create-account
+    .connect-form
       h3 Create your account
       form
         ol
@@ -38,5 +28,5 @@ append block body
             label(for='confirm') Confirm Email
 
     .state-buttons
-      a#cancel.btn.btn-default(type="button") Cancel
-      a#next.btn.btn-primary(type="button") Next
+      a#cancel(type="button") Cancel
+      a#next(type="button") Next

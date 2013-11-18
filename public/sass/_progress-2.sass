@@ -1,0 +1,51 @@
+//- Parameters to adjust
+$points: 4
+$ball-size: 19px
+$text-size: 12px
+$border: 4px
+$line-height: 3 * $text-size
+
+//- Pure magic, don't edit!
+$line-height-done: 1.15
+$line-height-todo: .95
+$todo-size: $ball-size * 2.2
+
+%progress-meter
+  padding-bottom: $ball-size/2
+  list-style-type: none
+  li
+    display: inline-block
+    text-align: center
+    text-indent: $ball-size * -1
+    height: $line-height
+    width: (100% / $points) - 0.01%
+    font-size: $text-size
+    &:before
+      position: relative
+      float: left
+      text-indent: 0
+      +experimental-value(left, calc(50% - #{($ball-size/2)}))
+    &.done
+      color: black
+      border-bottom: $border solid yellowgreen
+      font-size: $text-size
+      &:before
+        content: "\2713"
+        color: white
+        background-color: yellowgreen
+        height: $ball-size
+        width: $ball-size
+        line-height: $ball-size * $line-height-done
+        bottom: ($line-height - (($border + $ball-size)/2)) * -1
+        border: none
+        border-radius: $ball-size
+    &.todo
+      color: silver
+      border-bottom: $border solid silver
+      font-size: $text-size
+      &:before
+        content: "●"
+        color: silver
+        font-size: $todo-size
+        bottom: ($line-height - (($border + $ball-size)/2)) * -1
+        line-height: $ball-size * $line-height-todo
