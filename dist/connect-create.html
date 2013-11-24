@@ -11,56 +11,30 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="//s3.amazonaws.com/static.tok3n.com/0.0.1/css/connect-min.css" />
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
   </head>
   <body>
     <div id="top">
       <div class="top-nav">
-        <div class="nav-wrap row">
-          <header class="col-md-4 col-sm-4 col-xs-4">
-            <div alt="Tok3n" class="logo"></div>
-          </header>
-          <nav class="col-md-8 col-sm-8 col-xs-8"></nav>
-        </div>
+        <header>
+          <div alt="Tok3n" class="logo"></div>
+        </header>
       </div>
     </div>
     <div id="full-layout">
       <div class="create-container">
-        <div class="progress-track">
-          <div class="inliner"></div>
-          <div class="inlined">
-            <div class="progress-meter">
-              <div class="track">
-                <span class="progress step-1"></span>
-              </div>
-              <ol class="progress-points">
-                <li class="progress-point active">
-                  <span class="progress-label">Create</span>
-                </li>
-                <li class="progress-point">
-                  <span class="progress-label">Link device</span>
-                </li>
-                <li class="progress-point">
-                  <span class="progress-label">Recovery options</span>
-                </li>
-                <li class="progress-point">
-                  <span class="progress-label">Connect</span>
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        <div class="create-account">
+        <ol class="progress-meter">
+          <li class="progress-point done">Create</li>
+          <li class="progress-point todo">Download</li>
+          <li class="progress-point todo">Link</li>
+          <li class="progress-point todo">Connect</li>
+        </ol>
+        <div class="connect-form">
           <h3>Create your account</h3>
           <form>
             <ol>
               <li>
-                <input name="username" id="username" />
-                <label for="username">Username</label>
-              </li>
-              <li>
-                <input name="password" type="password" id="password" />
-                <label for="password">Password</label>
+                <input name="name" id="name" />
+                <label for="name">Full name</label>
               </li>
               <li>
                 <input name="email" id="email" />
@@ -70,10 +44,14 @@
                 <input name="confirm" id="confirm" />
                 <label for="confirm">Confirm Email</label>
               </li>
+              <li>
+                <input name="password" type="password" id="password" />
+                <label for="password">Password</label>
+              </li>
             </ol>
           </form>
         </div>
-        <div class="state-buttons"><a type="button" id="cancel" class="btn btn-default">Cancel</a><a type="button" id="next" class="btn btn-primary">Next</a>
+        <div class="state-buttons"><a type="button" id="previous" class="previous">Cancel</a><a type="button" id="next" class="next">Next</a>
         </div>
       </div>
     </div>

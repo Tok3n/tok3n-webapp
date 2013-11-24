@@ -11,40 +11,40 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="//s3.amazonaws.com/static.tok3n.com/0.0.1/css/connect-min.css" />
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
   </head>
   <body>
     <div id="top">
       <div class="top-nav">
-        <div class="nav-wrap row">
-          <header class="col-md-4 col-sm-4 col-xs-4">
-            <div alt="Tok3n" class="logo"></div>
-          </header>
-          <nav class="col-md-8 col-sm-8 col-xs-8"></nav>
-        </div>
+        <header>
+          <div alt="Tok3n" class="logo"></div>
+        </header>
       </div>
     </div>
     <div id="full-layout">
-      <div class="col-md-12">
-        <div id="login">
-          <form method="post" action="" role="form" id="form-signin">
-            <div class="form-group">
-              <h2 class="form-signin-heading">Log in</h2>
-            </div>
-            <div class="form-group">
-              <input size="50" name="login" value="" type="text" placeholder="Username" class="form-control" />
-            </div>
-            <div class="form-group">
-              <input size="50" name="password" value="" type="password" placeholder="Password" class="form-control" />
-            </div>
-            <div class="form-group">
-              <input size="50" name="password" value="" type="password" placeholder="Tok3n" class="form-control" />
-            </div>
-            <button name="submit" value="" type="submit" id="submit" class="btn btn-large btn-primary btn-block">Sign in</button>
+      <div id="login" class="login">
+        <div class="connect-form">
+          <h3>Log in</h3>
+          <form>
+            <ol>
+              <li>
+                <input name="email" id="email" />
+                <label for="email">Email</label>
+              </li>
+              <li>
+                <input name="password" type="password" id="password" />
+                <label for="password">Password</label>
+              </li>
+              <li>
+                <input name="tok3n" id="tok3n" />
+                <label for="tok3n">Tok3n</label>
+              </li>
+            </ol>
           </form>
-          <div class="create-account">
-            <p>You don't have an account? <a>Create one now</a>.</p>
-          </div>
+        </div>
+        <div class="create-account">
+          <p>Don't have an account? <a>Create one now</a>.</p>
+        </div>
+        <div class="state-buttons"><a type="button" class="signin">Sign in</a>
         </div>
       </div>
     </div>

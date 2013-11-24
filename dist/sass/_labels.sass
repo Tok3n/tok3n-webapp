@@ -1,57 +1,41 @@
-// At first just some design
+// In JS Browsers the .empty class is assigned to empty inputs -> label is rendered like a placeholder in the input field
 
-$input-size: 1.2em
+@mixin float-label-size($input-size)
+  input
+    font-size: $input-size
+    &:not(.empty):focus + label
+    &.empty + label
+      font-size: $input-size
 
-input, label
-  font-size: $input-size
+@mixin float-label-animation($input-size)
+  +keyframes(float-labels)
+    0%
+      opacity: 1
+      color: #aaa
+      top: 0.1em
+      font-size: $input-size
+    20%
+      font-size: $input-size
+      opacity: 0
+    30%
+      top: 0.1em
+    50%
+      opacity: 0
+      font-size: 0.85em
+    100%
+      top: -1em
+      opacity: 1
 
-form > ol
-  list-style: none
-  padding: 0px
-  > li
-    position: relative
-    margin: 1.2em 0
-
-form
-  margin-top: 2.5em
-
-input
-  padding: 0.1em 0em
-  border: none
-  border-radius: 0px
-  border-bottom: 1px solid #ccc
-  outline: none
-  margin: 0px
-  background: none
-  width: 100%
-
-label
-  font-weight: normal
-
-// HERE THE MAGIC STARTS
 // Original label position: top left and small
 
 // The animation is a bit more complex than what is achievable with simple transitions, because I do not want the label to fly over my input. The place-holder label should fade out first and then appear again above the input text
 
-+keyframes(float-labels)
-  0%
-    opacity: 1
-    color: #aaa
-    top: 0.1em
-    font-size: $input-size
-  20%
-    font-size: $input-size
-    opacity: 0
-  30%
-    top: 0.1em
-  50%
-    opacity: 0
-    font-size: 0.85em
-  100%
-    top: -1em
-    opacity: 1
+%float-label form > ol
+  list-style: none
+  > li
+    position: relative
 
-label
+%float-label label
   position: absolute
   top: -1em
   left: 0.08em
@@ -63,13 +47,40 @@ label
   +animation-play-state(running !important)
 
 // Label highlight effect also for non-JS browsers
-
-input
+%float-label input
   &:not(.empty):focus + label
     color: #0099ff
   &.empty + label
     top: 0.1em
-    font-size: $input-size
     +animation(none)
 
-// In JS Browsers the .empty class is assigned to empty inputs -> label is rendered like a placeholder in the input field
+///////////////////
+// Example usage //
+///////////////////
+
+// $float-label-size: 1.2em
+// +float-label-animation($float-label-size)
+
+// .connect-form
+//   margin-bottom: 3em
+//   +float-label-size($float-label-size)
+//   @extend %float-label
+//   form > ol
+//     list-style: none
+//     padding: 0px
+//     > li
+//       position: relative
+//       margin: 1.2em 0
+//   form
+//     margin-top: 2.5em
+//   input
+//     padding: 0.1em 0em
+//     border: none
+//     border-radius: 0px
+//     border-bottom: 1px solid #ccc
+//     outline: none
+//     margin: 0px
+//     background: none
+//     width: 100%
+//   label
+//     font-weight: normal
