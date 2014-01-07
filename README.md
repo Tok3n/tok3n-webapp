@@ -5,11 +5,9 @@ Requirements
 -
 * [Git][1]
 * [Node.js][2]
-* [Ruby][3] and [rubygems][4]
-* [Bundler][5]
-* [nvm][6]
-+ [rvm][7] with version 1.9
-
+* [Bundler][3]
+* [nvm][4] with Node version >= 0.10.24
+* [rvm][5] with Ruby version >= 2.1
 
 
 Installation
@@ -18,10 +16,10 @@ Installation
 git clone http://github.com/Tok3n/tok3n-webapp && cd tok3n-webapp
 echo "RACK_ENV=development" >> .env
 nvm use 0.10
-rvm use 1.9
+rvm use 2.1
 rvm gemset create tok3n-webapp
 rvm gemset use tok3n-webapp
-npm install -g bower grunt-cli foreman
+npm install -g bower grunt-cli foreman nodemon
 npm install
 bundle install
 bower install
@@ -65,8 +63,6 @@ Current milestones
 
 [1]: http://git-scm.com/downloads
 [2]: http://nodejs.org/download/
-[3]: http://www.ruby-lang.org/en/downloads/
-[4]: http://rubygems.org/pages/download
-[5]: http://gembundler.com/
-[6]: https://github.com/creationix/nvm
-[7]: https://rvm.io/
+[3]: http://gembundler.com/
+[4]: https://github.com/creationix/nvm
+[5]: https://rvm.io/
