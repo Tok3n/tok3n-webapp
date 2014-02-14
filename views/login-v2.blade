@@ -1,0 +1,26 @@
+include 'login-layout.blade'
+render title('Connect with Tok3n')
+
+append block body
+  
+  #login.login
+    
+    .tok3n-container
+      
+      header
+      
+      .lower-wrapper
+        .enter
+          input.otp#tok3n_otp(name='tok3n_otp', type='tel', autocomplete='off', dir='ltr', pattern='[0-9 ]*', autofocus, placeholder='• • • • • •')
+          .placeholder &#128241;
+          input#tok3n_session(type='hidden', name='tok3n_session')
+
+        .dont-have-phone
+          small
+            a(href='#') Don't have your phone?
+        
+        .submit
+          button.ladda-button#tok3n_otp(data-style='zoom-in')
+            .ladda-label
+              .stripe 3 
+              .text Verify with Tok3n

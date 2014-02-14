@@ -1,0 +1,1 @@
+Ladda.bind 'button#tok3n_otp', {timeout: 5000}

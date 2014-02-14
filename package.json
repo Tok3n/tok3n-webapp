@@ -28,8 +28,9 @@
     "uglify-js": "~2.4.0",
     "grunt-text-replace": "~0.3.7",
     "grunt-contrib-imagemin": "~0.3.0",
-    "grunt-sync": "0.0.4",
-    "grunt-prettify": "~0.3.4"
+    "grunt-sync": "0.0.5",
+    "grunt-prettify": "~0.3.4",
+    "grunt-s3-sync": "~0.4.1"
   },
   "dependencies": {
     "blade": "~3.2.6",

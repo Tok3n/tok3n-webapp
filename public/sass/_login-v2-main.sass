@@ -1,0 +1,101 @@
+$tok3n-blue: #31B3D4
+$tok3n-purple: #2b3087
+
+.tok3n-container
+	font-family: $font-family-sans-serif
+	position: absolute
+	width: 339px
+	padding: 0 30px
+	-webkit-tap-highlight-color: transparent
+	-webkit-touch-callout: none
+	+user-select(none)
+	+box-shadow(rgba(0,0,0,0.2) 0 0 1px 1px, rgba(0,0,0,0.7) 0 10px 27px, inset 0 -1px 2px rgba(82,93,112,0.4))
+	background-color: #fafafa
+	background-image: linear-gradient(color-stops(adjust-lightness($tok3n-purple, 12) 10%, adjust-lightness($tok3n-purple, 25) 100%))
+	background-position: top
+	background-repeat: repeat-x
+	+background-size(80px auto)
+	+border-radius(10px)
+
+	// form
+	// 	text-align: center
+	// 	padding: 0
+
+	header
+		height: 80px
+		background-image: image-url('logo.svg')
+		+background-size(115px auto)
+		color: white(.8)
+		background-repeat: no-repeat
+		background-position: center
+
+	.lower-wrapper
+		margin: 25px 0 30px
+
+	.headline
+		color: #fafafa
+		font-weight: bold
+		+letterpress(black(.3))
+		overflow: hidden
+		
+	.placeholder, .stripe
+		font-family: 'tok3n-icons'
+		
+	.enter
+		margin: 10px auto 50px
+
+		.otp
+			@extend .form-control
+			height: 75px
+			padding-left: 20px
+			width: 100%
+			font-size: 36px
+			
+		.placeholder
+			font-size: 2.9em
+			display: inline-block
+			position: absolute
+			margin-left: 225px
+			margin-top: -68px
+			color: #bbb
+			+single-transition(color, .3s, ease-in)
+			&:hover
+				color: adjust-lightness($tok3n-blue, 20)
+			&:after, &:before
+				white-space: pre
+			
+	.submit
+		margin: 0 auto
+		button
+			margin: 0 auto
+			@extend .btn
+			@extend .btn-lg
+			@extend .btn-block
+			//+sassy-button("simple", 5px, 1.3em, #3d44be, $tok3n-purple)
+			+button-variant(hsla(0, 0, 100%, .95), adjust-lightness($tok3n-purple, 25), black(.1))
+
+			.stripe
+				font-size: 2.42em
+				position: absolute
+				margin-top: -.39em
+				margin-left: -.6em
+				color: hsl(358, 70%, 60%)
+				+letterpress(black(.4))
+			&:hover .stripe,
+			&:focus .stripe,
+			&:active .stripe
+				color: hsl(358, 70%, 50%)
+
+			.text
+				margin-left: 2em
+	
+	.dont-have-phone, .error, .what-is-this
+		width: 265px
+		margin: 0 0 10px
+		text-align: left
+		// text-decoration: underline
+		small
+			opacity: .6
+			// +single-transition(opacity, .1s, ease)
+			&:hover
+				opacity: 1

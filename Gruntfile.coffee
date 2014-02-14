@@ -8,11 +8,10 @@ module.exports = (grunt) ->
 	img = 'public/img/'
 	font = 'public/font/'
 	coffee = 'public/coffee/'
-	dart = 'public/dart'
+	dart = 'public/dart/'
 	dist = 'dist/'
 
 	# Raw from github or cdn
-	ladda = 'https://raw.github.com/hakimel/Ladda/master/dist/'
 	masonry = 'http://masonry.desandro.com/'
 	cdnUrl = '//s3.amazonaws.com/static.tok3n.com/<%= pkg.version %>/'
 
@@ -22,7 +21,6 @@ module.exports = (grunt) ->
 		comp + 'enquire/dist/enquire.js'
 		comp + 'modernizr/modernizr.js'
 		comp + 'eventEmitter/EventEmitter.js'
-		# comp + 'Chart.js/Chart.js'
 		comp + 'bootstrap-sass/js/transition.js'
 		comp + 'bootstrap-sass/js/collapse.js'
 		comp + 'bootstrap-sass/js/dropdown.js'
@@ -32,15 +30,16 @@ module.exports = (grunt) ->
 	
 	# All unlicensed not added directly (main.js)
 	unlicend = [
-		'<%= copy.popupjs.dest %>'
+		# '<%= copy.popupjs.dest %>'
+	]
+
+	connect = [
+		comp + 'ladda/js/spin.js'
+		comp + 'ladda/js/ladda.js'
 	]
 	
 	# Files to download with curl
 	http_files = [
-		{ url: ladda + 'ladda-themeless.min.css', file: sass + '_ladda-themeless-min.scss' }
-		{ url: ladda + 'ladda.min.css', file: sass + '_ladda-mis.scss' }
-		{ url: ladda + 'ladda.min.js', file: js + 'ladda.min.js' }
-		{ url: ladda + 'spin.min.js', file: js + 'spin.min.js' }
 		{ url: masonry + 'masonry.pkgd.min.js', file: js + 'masonry.pkgd.min.js' }
 	]
 		
@@ -76,6 +75,8 @@ module.exports = (grunt) ->
 					{url: 'http://localhost:5000/login', file: dist + 'login.html'}
 					{url: 'http://localhost:5000/connect-login', file: dist + 'connect-login.html'}
 					{url: 'http://localhost:5000/connect-create', file: dist + 'connect-create.html'}
+					{url: 'http://localhost:5000/login-v2', file: dist + 'login-v2.html'}
+
 				])
 		
 		copy:
@@ -172,7 +173,6 @@ module.exports = (grunt) ->
 		concat:
 			options:
 				separator: '\n'
-
 			jquery:
 				src: [
 					'<%= copy.jquery.dest %>'
@@ -181,6 +181,13 @@ module.exports = (grunt) ->
 					'<%= coffeeredux.main.dest %>'
 				]
 				dest: js + 'jquery-pack.js'
+			connect:
+				src: [
+					connect...
+					'<%= coffeeredux.connect.dest %>'
+				]
+				dest: js + 'connect.js'
+
 
 		uglify:
 			options:
@@ -198,6 +205,9 @@ module.exports = (grunt) ->
 			jquery:
 				src: '<%= concat.jquery.dest %>'
 				dest: js + 'jquery-pack-min.js'
+			connect:
+				src: '<%= concat.connect.dest %>'
+				dest: js + 'connect-min.js'
 		
 		# Replace js loader text
 		replace:

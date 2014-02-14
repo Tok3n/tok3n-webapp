@@ -18,11 +18,11 @@ body {
 body a {
   color: #434cd3;
 }
-/* line 24, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-0.13.alpha.10/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
 body a:hover {
   color: #636bd4;
 }
-/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-0.13.alpha.10/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
 body a:active {
   color: #ba7f29;
 }
@@ -66,12 +66,12 @@ a {
   margin: 0.61em 0;
   height: 40px;
   width: 111px;
-  background-image: url('//s3.amazonaws.com/static.tok3n.com/0.0.1/img/logo.png?1376272590');
+  background-image: url('../img/logo.png?1376272590');
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
   /* line 51, ../sass/base.sass */
   .top-nav header .logo {
-    background-image: url('//s3.amazonaws.com/static.tok3n.com/0.0.1/img/logo_hd.png?1376272590');
+    background-image: url('../img/logo_hd.png?1376272590');
     background-size: 111px 40px;
   }
 }
@@ -88,10 +88,10 @@ a {
 .top-nav nav .menu ul {
   list-style-type: none;
 }
-/* line 6, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-0.13.alpha.10/frameworks/compass/stylesheets/compass/typography/lists/_inline-list.scss */
+/* line 6, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/lists/_inline-list.scss */
 .top-nav nav .menu ul, .top-nav nav .menu ul li {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   display: inline;
 }
 /* line 64, ../sass/base.sass */
@@ -122,7 +122,7 @@ a {
 .touch .top-nav nav .menu ul li a {
   color: #171947;
 }
-/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-0.13.alpha.10/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
 .touch .top-nav nav .menu ul li a:active {
   color: #ba7f29;
 }
@@ -130,11 +130,11 @@ a {
 .no-touch .top-nav nav .menu ul li a {
   color: #171947;
 }
-/* line 24, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-0.13.alpha.10/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
 .no-touch .top-nav nav .menu ul li a:hover {
   color: #434cd3;
 }
-/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-0.13.alpha.10/frameworks/compass/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
 .no-touch .top-nav nav .menu ul li a:active {
   color: #ba7f29;
 }

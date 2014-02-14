@@ -4,6 +4,12 @@
  * http://dimsemenov.com/plugins/magnific-popup/
  * Copyright (c) 2013 Dmitry Semenov
  */
+
+/*!
+ * Magnific Popup - v0.8.9
+ * http://dimsemenov.com/plugins/magnific-popup/
+ * Copyright (c) 2013 Dmitry Semenov
+ */
 /*! Magnific Popup - v0.8.9 - 2013-06-04
 * http://dimsemenov.com/plugins/magnific-popup/
 * Copyright (c) 2013 Dmitry Semenov; */
