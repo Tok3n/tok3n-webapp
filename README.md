@@ -28,7 +28,7 @@ bower install
 Using locally
 -
 This will run the app on localhost:5000 and `grunt watch` the project.
-```
+```bash
 foreman start -f Procfile.dev
 ```
 

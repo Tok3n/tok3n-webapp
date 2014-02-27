@@ -138,7 +138,7 @@ module.exports = (grunt) ->
 				outputStyle: 'expanded'
 				raw: 'preferred_syntax = :sass\nSass::Script::Number.precision = 2\n
 					sass_options = {:quiet => true}\n'
-				require: ['breakpoint-slicer']
+				require: ['breakpoint-slicer', 'animate']
 				cssDir: css
 				sassDir: sass
 				imagesDir: img
@@ -209,7 +209,7 @@ module.exports = (grunt) ->
 				src: '<%= concat.connect.dest %>'
 				dest: js + 'connect-min.js'
 		
-		# Replace js loader text
+		# Replace js loader text, extremely hackish
 		replace:
 			dist:
 				src: dist + '*.html'
@@ -217,6 +217,10 @@ module.exports = (grunt) ->
 				replacements: [
 					{
 						from: '\n    <script src="js/test.js"></script>'
+						to: ''
+					}
+					{
+						from: '\n    <script src="js/loader.js"></script>'
 						to: ''
 					}
 					{
@@ -327,7 +331,7 @@ module.exports = (grunt) ->
 				files:[
 					{
 						cwd: 'public'
-						src: ['css/*-min.css', 'sass/**', 'js/*-pack-min.js', 'svg/**', 'dart/**']
+						src: ['css/*-min.css', 'sass/**', 'js/*-min.js', 'svg/**', 'dart/**', 'img/*.svg']
 						dest: dist
 					}
 				]
@@ -434,4 +438,4 @@ module.exports = (grunt) ->
 
 	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat:jquery', 'uglify:jquery', 'cssmin:dist', 'sync:dist', 'copy:dart', 'shell:apps', 'prettify', 'replace:dist', 'imagemin:dist', 's3-sync']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'cssmin:dist', 'sync:dist', 'copy:dart', 'shell:apps', 'prettify', 'replace:dist', 'imagemin:dist', 's3-sync']

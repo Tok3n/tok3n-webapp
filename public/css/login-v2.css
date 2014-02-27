@@ -342,9 +342,9 @@ table {
   }
 
   /* line 82, ../components/bootstrap-sass/lib/_print.scss */
-  .btn > .caret, .tok3n-container .submit button > .caret,
+  .btn > .caret, .tok3n-submit button > .caret,
   .dropup > .btn > .caret,
-  .tok3n-container .submit .dropup > button > .caret {
+  .tok3n-submit .dropup > button > .caret {
     border-top-color: #000 !important;
   }
 
@@ -2087,24 +2087,24 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 }
 
 /* line 57, ../components/bootstrap-sass/lib/_mixins.scss */
-.form-control:-moz-placeholder, .tok3n-container .enter .otp:-moz-placeholder {
+.form-control:-moz-placeholder, .tok3n-enter .tok3n-otp:-moz-placeholder {
   color: #999999;
 }
 /* line 58, ../components/bootstrap-sass/lib/_mixins.scss */
-.form-control::-moz-placeholder, .tok3n-container .enter .otp::-moz-placeholder {
+.form-control::-moz-placeholder, .tok3n-enter .tok3n-otp::-moz-placeholder {
   color: #999999;
 }
 /* line 59, ../components/bootstrap-sass/lib/_mixins.scss */
-.form-control:-ms-input-placeholder, .tok3n-container .enter .otp:-ms-input-placeholder {
+.form-control:-ms-input-placeholder, .tok3n-enter .tok3n-otp:-ms-input-placeholder {
   color: #999999;
 }
 /* line 60, ../components/bootstrap-sass/lib/_mixins.scss */
-.form-control::-webkit-input-placeholder, .tok3n-container .enter .otp::-webkit-input-placeholder {
+.form-control::-webkit-input-placeholder, .tok3n-enter .tok3n-otp::-webkit-input-placeholder {
   color: #999999;
 }
 
 /* line 117, ../components/bootstrap-sass/lib/_forms.scss */
-.form-control, .tok3n-container .enter .otp {
+.form-control, .tok3n-enter .tok3n-otp {
   display: block;
   width: 100%;
   height: 34px;
@@ -2122,20 +2122,20 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 /* line 701, ../components/bootstrap-sass/lib/_mixins.scss */
-.form-control:focus, .tok3n-container .enter .otp:focus {
+.form-control:focus, .tok3n-enter .tok3n-otp:focus {
   border-color: #66afe9;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 /* line 139, ../components/bootstrap-sass/lib/_forms.scss */
-.form-control[disabled], .tok3n-container .enter [disabled].otp, .form-control[readonly], .tok3n-container .enter [readonly].otp, fieldset[disabled] .form-control, fieldset[disabled] .tok3n-container .enter .otp, .tok3n-container .enter fieldset[disabled] .otp {
+.form-control[disabled], .tok3n-enter [disabled].tok3n-otp, .form-control[readonly], .tok3n-enter [readonly].tok3n-otp, fieldset[disabled] .form-control, fieldset[disabled] .tok3n-enter .tok3n-otp, .tok3n-enter fieldset[disabled] .tok3n-otp {
   cursor: not-allowed;
   background-color: #eeeeee;
 }
 
 /* line 148, ../components/bootstrap-sass/lib/_forms.scss */
-textarea.form-control, .tok3n-container .enter textarea.otp {
+textarea.form-control, .tok3n-enter textarea.tok3n-otp {
   height: auto;
 }
 
@@ -2212,10 +2212,10 @@ input[type="checkbox"],
 }
 
 /* line 715, ../components/bootstrap-sass/lib/_mixins.scss */
-.input-sm, .input-group-sm > .form-control, .tok3n-container .enter .input-group-sm > .otp,
+.input-sm, .input-group-sm > .form-control, .tok3n-enter .input-group-sm > .tok3n-otp,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn,
-.tok3n-container .submit .input-group-sm > .input-group-btn > button {
+.tok3n-submit .input-group-sm > .input-group-btn > button {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -2224,7 +2224,7 @@ input[type="checkbox"],
 }
 
 /* line 720, ../components/bootstrap-sass/lib/_mixins.scss */
-select.input-sm, .input-group-sm > select.form-control, .tok3n-container .enter .input-group-sm > select.otp,
+select.input-sm, .input-group-sm > select.form-control, .tok3n-enter .input-group-sm > select.tok3n-otp,
 .input-group-sm > select.input-group-addon,
 .input-group-sm > .input-group-btn > select.btn {
   height: 30px;
@@ -2232,17 +2232,17 @@ select.input-sm, .input-group-sm > select.form-control, .tok3n-container .enter 
 }
 
 /* line 725, ../components/bootstrap-sass/lib/_mixins.scss */
-textarea.input-sm, .input-group-sm > textarea.form-control, .tok3n-container .enter .input-group-sm > textarea.otp,
+textarea.input-sm, .input-group-sm > textarea.form-control, .tok3n-enter .input-group-sm > textarea.tok3n-otp,
 .input-group-sm > textarea.input-group-addon,
 .input-group-sm > .input-group-btn > textarea.btn {
   height: auto;
 }
 
 /* line 715, ../components/bootstrap-sass/lib/_mixins.scss */
-.input-lg, .input-group-lg > .form-control, .tok3n-container .enter .input-group-lg > .otp,
+.input-lg, .input-group-lg > .form-control, .tok3n-enter .input-group-lg > .tok3n-otp,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn,
-.tok3n-container .submit .input-group-lg > .input-group-btn > button {
+.tok3n-submit .input-group-lg > .input-group-btn > button {
   height: 45px;
   padding: 10px 16px;
   font-size: 18px;
@@ -2251,7 +2251,7 @@ textarea.input-sm, .input-group-sm > textarea.form-control, .tok3n-container .en
 }
 
 /* line 720, ../components/bootstrap-sass/lib/_mixins.scss */
-select.input-lg, .input-group-lg > select.form-control, .tok3n-container .enter .input-group-lg > select.otp,
+select.input-lg, .input-group-lg > select.form-control, .tok3n-enter .input-group-lg > select.tok3n-otp,
 .input-group-lg > select.input-group-addon,
 .input-group-lg > .input-group-btn > select.btn {
   height: 45px;
@@ -2259,7 +2259,7 @@ select.input-lg, .input-group-lg > select.form-control, .tok3n-container .enter 
 }
 
 /* line 725, ../components/bootstrap-sass/lib/_mixins.scss */
-textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .enter .input-group-lg > textarea.otp,
+textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-enter .input-group-lg > textarea.tok3n-otp,
 .input-group-lg > textarea.input-group-addon,
 .input-group-lg > .input-group-btn > textarea.btn {
   height: auto;
@@ -2271,13 +2271,13 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .en
   color: #c09853;
 }
 /* line 669, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-warning .form-control, .has-warning .tok3n-container .enter .otp, .tok3n-container .enter .has-warning .otp {
+.has-warning .form-control, .has-warning .tok3n-enter .tok3n-otp, .tok3n-enter .has-warning .tok3n-otp {
   border-color: #c09853;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
 }
 /* line 672, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-warning .form-control:focus, .has-warning .tok3n-container .enter .otp:focus, .tok3n-container .enter .has-warning .otp:focus {
+.has-warning .form-control:focus, .has-warning .tok3n-enter .tok3n-otp:focus, .tok3n-enter .has-warning .tok3n-otp:focus {
   border-color: #a47e3c;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #dbc59e;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #dbc59e;
@@ -2295,13 +2295,13 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .en
   color: #b94a48;
 }
 /* line 669, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-error .form-control, .has-error .tok3n-container .enter .otp, .tok3n-container .enter .has-error .otp {
+.has-error .form-control, .has-error .tok3n-enter .tok3n-otp, .tok3n-enter .has-error .tok3n-otp {
   border-color: #b94a48;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
 }
 /* line 672, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-error .form-control:focus, .has-error .tok3n-container .enter .otp:focus, .tok3n-container .enter .has-error .otp:focus {
+.has-error .form-control:focus, .has-error .tok3n-enter .tok3n-otp:focus, .tok3n-enter .has-error .tok3n-otp:focus {
   border-color: #953b39;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #d59392;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #d59392;
@@ -2319,13 +2319,13 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .en
   color: #468847;
 }
 /* line 669, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-success .form-control, .has-success .tok3n-container .enter .otp, .tok3n-container .enter .has-success .otp {
+.has-success .form-control, .has-success .tok3n-enter .tok3n-otp, .tok3n-enter .has-success .tok3n-otp {
   border-color: #468847;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
 }
 /* line 672, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-success .form-control:focus, .has-success .tok3n-container .enter .otp:focus, .tok3n-container .enter .has-success .otp:focus {
+.has-success .form-control:focus, .has-success .tok3n-enter .tok3n-otp:focus, .tok3n-enter .has-success .tok3n-otp:focus {
   border-color: #356635;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #7aba7b;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #7aba7b;
@@ -2359,7 +2359,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .en
     vertical-align: middle;
   }
   /* line 298, ../components/bootstrap-sass/lib/_forms.scss */
-  .form-inline .form-control, .navbar-form .form-control, .form-inline .tok3n-container .enter .otp, .tok3n-container .enter .form-inline .otp, .navbar-form .tok3n-container .enter .otp, .tok3n-container .enter .navbar-form .otp {
+  .form-inline .form-control, .navbar-form .form-control, .form-inline .tok3n-enter .tok3n-otp, .tok3n-enter .form-inline .tok3n-otp, .navbar-form .tok3n-enter .tok3n-otp, .tok3n-enter .navbar-form .tok3n-otp {
     display: inline-block;
   }
   /* line 305, ../components/bootstrap-sass/lib/_forms.scss */
@@ -2414,7 +2414,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .en
 }
 
 /* line 10, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn, .tok3n-container .submit button {
+.btn, .tok3n-submit button {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
@@ -2434,25 +2434,25 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .en
   user-select: none;
 }
 /* line 25, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn:focus, .tok3n-container .submit button:focus {
+.btn:focus, .tok3n-submit button:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 /* line 29, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn:hover, .tok3n-container .submit button:hover, .btn:focus, .tok3n-container .submit button:focus {
+.btn:hover, .tok3n-submit button:hover, .btn:focus, .tok3n-submit button:focus {
   color: #333333;
   text-decoration: none;
 }
 /* line 35, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn:active, .tok3n-container .submit button:active, .btn.active, .tok3n-container .submit button.active {
+.btn:active, .tok3n-submit button:active, .btn.active, .tok3n-submit button.active {
   outline: 0;
   background-image: none;
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.13);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.13);
 }
 /* line 42, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn.disabled, .tok3n-container .submit button.disabled, .btn[disabled], .tok3n-container .submit button[disabled], fieldset[disabled] .btn, fieldset[disabled] .tok3n-container .submit button, .tok3n-container .submit fieldset[disabled] button {
+.btn.disabled, .tok3n-submit button.disabled, .btn[disabled], .tok3n-submit button[disabled], fieldset[disabled] .btn, fieldset[disabled] .tok3n-submit button, .tok3n-submit fieldset[disabled] button {
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.65;
@@ -2683,7 +2683,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .en
 }
 
 /* line 124, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn-lg, .btn-group-lg > .btn, .tok3n-container .submit button {
+.btn-lg, .btn-group-lg > .btn, .tok3n-submit .btn-group-lg > button, .tok3n-submit button {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
@@ -2691,10 +2691,10 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .en
 }
 
 /* line 128, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn-sm, .btn-group-sm > .btn, .tok3n-container .submit .btn-group-sm > button,
+.btn-sm, .btn-group-sm > .btn, .tok3n-submit .btn-group-sm > button,
 .btn-xs,
 .btn-group-xs > .btn,
-.tok3n-container .submit .btn-group-xs > button {
+.tok3n-submit .btn-group-xs > button {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
@@ -2702,12 +2702,12 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .en
 }
 
 /* line 133, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn-xs, .btn-group-xs > .btn, .tok3n-container .submit .btn-group-xs > button {
+.btn-xs, .btn-group-xs > .btn, .tok3n-submit .btn-group-xs > button {
   padding: 1px 5px;
 }
 
 /* line 141, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn-block, .tok3n-container .submit button {
+.btn-block, .tok3n-submit button {
   display: block;
   width: 100%;
   padding-left: 0;
@@ -2715,7 +2715,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-container .en
 }
 
 /* line 149, ../components/bootstrap-sass/lib/_buttons.scss */
-.btn-block + .btn-block, .tok3n-container .submit button + .btn-block, .tok3n-container .submit .btn-block + button, .tok3n-container .submit button + button {
+.btn-block + .btn-block, .tok3n-submit button + .btn-block, .tok3n-submit .btn-block + button, .tok3n-submit button + button {
   margin-top: 5px;
 }
 
@@ -3955,39 +3955,39 @@ input[type="button"].btn-block {
   vertical-align: middle;
 }
 /* line 42, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn, .tok3n-container .submit .btn-group > button,
+.btn-group > .btn, .tok3n-submit .btn-group > button,
 .btn-group-vertical > .btn,
-.tok3n-container .submit .btn-group-vertical > button {
+.tok3n-submit .btn-group-vertical > button {
   position: relative;
   float: left;
 }
 /* line 46, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn:hover, .tok3n-container .submit .btn-group > button:hover, .btn-group > .btn:focus, .tok3n-container .submit .btn-group > button:focus, .btn-group > .btn:active, .tok3n-container .submit .btn-group > button:active, .btn-group > .btn.active, .tok3n-container .submit .btn-group > button.active,
+.btn-group > .btn:hover, .tok3n-submit .btn-group > button:hover, .btn-group > .btn:focus, .tok3n-submit .btn-group > button:focus, .btn-group > .btn:active, .tok3n-submit .btn-group > button:active, .btn-group > .btn.active, .tok3n-submit .btn-group > button.active,
 .btn-group-vertical > .btn:hover,
-.tok3n-container .submit .btn-group-vertical > button:hover,
+.tok3n-submit .btn-group-vertical > button:hover,
 .btn-group-vertical > .btn:focus,
-.tok3n-container .submit .btn-group-vertical > button:focus,
+.tok3n-submit .btn-group-vertical > button:focus,
 .btn-group-vertical > .btn:active,
-.tok3n-container .submit .btn-group-vertical > button:active,
+.tok3n-submit .btn-group-vertical > button:active,
 .btn-group-vertical > .btn.active,
-.tok3n-container .submit .btn-group-vertical > button.active {
+.tok3n-submit .btn-group-vertical > button.active {
   z-index: 2;
 }
 /* line 52, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn:focus, .tok3n-container .submit .btn-group > button:focus,
+.btn-group > .btn:focus, .tok3n-submit .btn-group > button:focus,
 .btn-group-vertical > .btn:focus,
-.tok3n-container .submit .btn-group-vertical > button:focus {
+.tok3n-submit .btn-group-vertical > button:focus {
   outline: none;
 }
 
 /* line 61, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group .btn + .btn, .btn-group .tok3n-container .submit button + .btn, .tok3n-container .submit .btn-group button + .btn, .btn-group .tok3n-container .submit .btn + button, .tok3n-container .submit .btn-group .btn + button, .btn-group .tok3n-container .submit button + button, .tok3n-container .submit .btn-group button + button,
+.btn-group .btn + .btn, .btn-group .tok3n-submit button + .btn, .tok3n-submit .btn-group button + .btn, .btn-group .tok3n-submit .btn + button, .tok3n-submit .btn-group .btn + button, .btn-group .tok3n-submit button + button, .tok3n-submit .btn-group button + button,
 .btn-group .btn + .btn-group,
-.btn-group .tok3n-container .submit button + .btn-group,
-.tok3n-container .submit .btn-group button + .btn-group,
+.btn-group .tok3n-submit button + .btn-group,
+.tok3n-submit .btn-group button + .btn-group,
 .btn-group .btn-group + .btn,
-.btn-group .tok3n-container .submit .btn-group + button,
-.tok3n-container .submit .btn-group .btn-group + button,
+.btn-group .tok3n-submit .btn-group + button,
+.tok3n-submit .btn-group .btn-group + button,
 .btn-group .btn-group + .btn-group {
   margin-left: -1px;
 }
@@ -4008,32 +4008,32 @@ input[type="button"].btn-block {
   float: left;
 }
 /* line 79, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-toolbar > .btn + .btn, .tok3n-container .submit .btn-toolbar > button + .btn, .tok3n-container .submit .btn-toolbar > .btn + button, .tok3n-container .submit .btn-toolbar > button + button,
+.btn-toolbar > .btn + .btn, .tok3n-submit .btn-toolbar > button + .btn, .tok3n-submit .btn-toolbar > .btn + button, .tok3n-submit .btn-toolbar > button + button,
 .btn-toolbar > .btn + .btn-group,
-.tok3n-container .submit .btn-toolbar > button + .btn-group,
+.tok3n-submit .btn-toolbar > button + .btn-group,
 .btn-toolbar > .btn-group + .btn,
-.tok3n-container .submit .btn-toolbar > .btn-group + button,
+.tok3n-submit .btn-toolbar > .btn-group + button,
 .btn-toolbar > .btn-group + .btn-group {
   margin-left: 5px;
 }
 
 /* line 86, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle), .tok3n-container .submit .btn-group > button:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle), .tok3n-submit .btn-group > button:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
 }
 
 /* line 91, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn:first-child, .tok3n-container .submit .btn-group > button:first-child {
+.btn-group > .btn:first-child, .tok3n-submit .btn-group > button:first-child {
   margin-left: 0;
 }
 /* line 93, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle), .tok3n-container .submit .btn-group > button:first-child:not(:last-child):not(.dropdown-toggle) {
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle), .tok3n-submit .btn-group > button:first-child:not(:last-child):not(.dropdown-toggle) {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
 
 /* line 98, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn:last-child:not(:first-child), .tok3n-container .submit .btn-group > button:last-child:not(:first-child),
+.btn-group > .btn:last-child:not(:first-child), .tok3n-submit .btn-group > button:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
@@ -4045,19 +4045,19 @@ input[type="button"].btn-block {
 }
 
 /* line 107, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn, .tok3n-container .submit .btn-group > .btn-group:not(:first-child):not(:last-child) > button {
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn, .tok3n-submit .btn-group > .btn-group:not(:first-child):not(:last-child) > button {
   border-radius: 0;
 }
 
 /* line 111, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn-group:first-child > .btn:last-child, .tok3n-container .submit .btn-group > .btn-group:first-child > button:last-child,
+.btn-group > .btn-group:first-child > .btn:last-child, .tok3n-submit .btn-group > .btn-group:first-child > button:last-child,
 .btn-group > .btn-group:first-child > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
 
 /* line 116, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn-group:last-child > .btn:first-child, .tok3n-container .submit .btn-group > .btn-group:last-child > button:first-child {
+.btn-group > .btn-group:last-child > .btn:first-child, .tok3n-submit .btn-group > .btn-group:last-child > button:first-child {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
@@ -4069,13 +4069,13 @@ input[type="button"].btn-block {
 }
 
 /* line 140, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn + .dropdown-toggle, .tok3n-container .submit .btn-group > button + .dropdown-toggle {
+.btn-group > .btn + .dropdown-toggle, .tok3n-submit .btn-group > button + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px;
 }
 
 /* line 144, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle, .tok3n-container .submit .btn-group > button + .dropdown-toggle {
+.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle, .tok3n-submit .btn-group > button + .dropdown-toggle {
   padding-left: 12px;
   padding-right: 12px;
 }
@@ -4087,23 +4087,23 @@ input[type="button"].btn-block {
 }
 
 /* line 157, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn .caret, .tok3n-container .submit button .caret {
+.btn .caret, .tok3n-submit button .caret {
   margin-left: 0;
 }
 
 /* line 161, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-lg .caret, .btn-group-lg > .btn .caret, .tok3n-container .submit button .caret {
+.btn-lg .caret, .btn-group-lg > .btn .caret, .tok3n-submit button .caret {
   border-width: 5px 5px 0;
   border-bottom-width: 0;
 }
 
 /* line 166, ../components/bootstrap-sass/lib/_button-groups.scss */
-.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret, .dropup .tok3n-container .submit button .caret, .tok3n-container .submit .dropup button .caret {
+.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret, .dropup .tok3n-submit button .caret, .tok3n-submit .dropup button .caret {
   border-width: 0 5px 5px;
 }
 
 /* line 175, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group-vertical > .btn, .tok3n-container .submit .btn-group-vertical > button,
+.btn-group-vertical > .btn, .tok3n-submit .btn-group-vertical > button,
 .btn-group-vertical > .btn-group {
   display: block;
   float: none;
@@ -4122,51 +4122,51 @@ input[type="button"].btn-block {
   clear: both;
 }
 /* line 186, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group-vertical > .btn-group > .btn, .tok3n-container .submit .btn-group-vertical > .btn-group > button {
+.btn-group-vertical > .btn-group > .btn, .tok3n-submit .btn-group-vertical > .btn-group > button {
   float: none;
 }
 /* line 191, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group-vertical > .btn + .btn, .tok3n-container .submit .btn-group-vertical > button + .btn, .tok3n-container .submit .btn-group-vertical > .btn + button, .tok3n-container .submit .btn-group-vertical > button + button,
+.btn-group-vertical > .btn + .btn, .tok3n-submit .btn-group-vertical > button + .btn, .tok3n-submit .btn-group-vertical > .btn + button, .tok3n-submit .btn-group-vertical > button + button,
 .btn-group-vertical > .btn + .btn-group,
-.tok3n-container .submit .btn-group-vertical > button + .btn-group,
+.tok3n-submit .btn-group-vertical > button + .btn-group,
 .btn-group-vertical > .btn-group + .btn,
-.tok3n-container .submit .btn-group-vertical > .btn-group + button,
+.tok3n-submit .btn-group-vertical > .btn-group + button,
 .btn-group-vertical > .btn-group + .btn-group {
   margin-top: -1px;
   margin-left: 0;
 }
 
 /* line 201, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group-vertical > .btn:not(:first-child):not(:last-child), .tok3n-container .submit .btn-group-vertical > button:not(:first-child):not(:last-child) {
+.btn-group-vertical > .btn:not(:first-child):not(:last-child), .tok3n-submit .btn-group-vertical > button:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
 /* line 204, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group-vertical > .btn:first-child:not(:last-child), .tok3n-container .submit .btn-group-vertical > button:first-child:not(:last-child) {
+.btn-group-vertical > .btn:first-child:not(:last-child), .tok3n-submit .btn-group-vertical > button:first-child:not(:last-child) {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 /* line 208, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group-vertical > .btn:last-child:not(:first-child), .tok3n-container .submit .btn-group-vertical > button:last-child:not(:first-child) {
+.btn-group-vertical > .btn:last-child:not(:first-child), .tok3n-submit .btn-group-vertical > button:last-child:not(:first-child) {
   border-bottom-left-radius: 4px;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
 
 /* line 213, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn, .tok3n-container .submit .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > button {
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn, .tok3n-submit .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > button {
   border-radius: 0;
 }
 
 /* line 217, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group-vertical > .btn-group:first-child > .btn:last-child, .tok3n-container .submit .btn-group-vertical > .btn-group:first-child > button:last-child,
+.btn-group-vertical > .btn-group:first-child > .btn:last-child, .tok3n-submit .btn-group-vertical > .btn-group:first-child > button:last-child,
 .btn-group-vertical > .btn-group:first-child > .dropdown-toggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
 /* line 222, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group-vertical > .btn-group:last-child > .btn:first-child, .tok3n-container .submit .btn-group-vertical > .btn-group:last-child > button:first-child {
+.btn-group-vertical > .btn-group:last-child > .btn:first-child, .tok3n-submit .btn-group-vertical > .btn-group:last-child > button:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
@@ -4179,16 +4179,16 @@ input[type="button"].btn-block {
   border-collapse: separate;
 }
 /* line 236, ../components/bootstrap-sass/lib/_button-groups.scss */
-.btn-group-justified .btn, .btn-group-justified .tok3n-container .submit button, .tok3n-container .submit .btn-group-justified button {
+.btn-group-justified .btn, .btn-group-justified .tok3n-submit button, .tok3n-submit .btn-group-justified button {
   float: none;
   display: table-cell;
   width: 1%;
 }
 
 /* line 245, ../components/bootstrap-sass/lib/_button-groups.scss */
-[data-toggle="buttons"] > .btn > input[type="radio"], .tok3n-container .submit [data-toggle="buttons"] > button > input[type="radio"],
+[data-toggle="buttons"] > .btn > input[type="radio"], .tok3n-submit [data-toggle="buttons"] > button > input[type="radio"],
 [data-toggle="buttons"] > .btn > input[type="checkbox"],
-.tok3n-container .submit [data-toggle="buttons"] > button > input[type="checkbox"] {
+.tok3n-submit [data-toggle="buttons"] > button > input[type="checkbox"] {
   display: none;
 }
 
@@ -4205,7 +4205,7 @@ input[type="button"].btn-block {
   padding-right: 0;
 }
 /* line 19, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group .form-control, .input-group .tok3n-container .enter .otp, .tok3n-container .enter .input-group .otp {
+.input-group .form-control, .input-group .tok3n-enter .tok3n-otp, .tok3n-enter .input-group .tok3n-otp {
   width: 100%;
   margin-bottom: 0;
 }
@@ -4214,16 +4214,16 @@ input[type="button"].btn-block {
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control,
-.input-group .tok3n-container .enter .otp,
-.tok3n-container .enter .input-group .otp {
+.input-group .tok3n-enter .tok3n-otp,
+.tok3n-enter .input-group .tok3n-otp {
   display: table-cell;
 }
 /* line 45, ../components/bootstrap-sass/lib/_input-groups.scss */
 .input-group-addon:not(:first-child):not(:last-child),
 .input-group-btn:not(:first-child):not(:last-child),
 .input-group .form-control:not(:first-child):not(:last-child),
-.input-group .tok3n-container .enter .otp:not(:first-child):not(:last-child),
-.tok3n-container .enter .input-group .otp:not(:first-child):not(:last-child) {
+.input-group .tok3n-enter .tok3n-otp:not(:first-child):not(:last-child),
+.tok3n-enter .input-group .tok3n-otp:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
 
@@ -4247,19 +4247,19 @@ input[type="button"].btn-block {
   border-radius: 4px;
 }
 /* line 70, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group-addon.input-sm, .tok3n-container .enter .input-group-sm > .input-group-addon.otp,
+.input-group-addon.input-sm,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .input-group-addon.btn,
-.tok3n-container .submit .input-group-sm > .input-group-btn > button.input-group-addon {
+.tok3n-submit .input-group-sm > .input-group-btn > button.input-group-addon {
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px;
 }
 /* line 75, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group-addon.input-lg, .tok3n-container .enter .input-group-lg > .input-group-addon.otp,
+.input-group-addon.input-lg,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.btn,
-.tok3n-container .submit .input-group-lg > .input-group-btn > button.input-group-addon {
+.tok3n-submit .input-group-lg > .input-group-btn > button.input-group-addon {
   padding: 10px 16px;
   font-size: 18px;
   border-radius: 6px;
@@ -4271,13 +4271,13 @@ input[type="button"].btn-block {
 }
 
 /* line 89, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group .form-control:first-child, .input-group .tok3n-container .enter .otp:first-child, .tok3n-container .enter .input-group .otp:first-child,
+.input-group .form-control:first-child, .input-group .tok3n-enter .tok3n-otp:first-child, .tok3n-enter .input-group .tok3n-otp:first-child,
 .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
-.tok3n-container .submit .input-group-btn:first-child > button,
+.tok3n-submit .input-group-btn:first-child > button,
 .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.tok3n-container .submit .input-group-btn:last-child > button:not(:last-child):not(.dropdown-toggle) {
+.tok3n-submit .input-group-btn:last-child > button:not(:last-child):not(.dropdown-toggle) {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
@@ -4288,13 +4288,13 @@ input[type="button"].btn-block {
 }
 
 /* line 99, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group .form-control:last-child, .input-group .tok3n-container .enter .otp:last-child, .tok3n-container .enter .input-group .otp:last-child,
+.input-group .form-control:last-child, .input-group .tok3n-enter .tok3n-otp:last-child, .tok3n-enter .input-group .tok3n-otp:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
-.tok3n-container .submit .input-group-btn:last-child > button,
+.tok3n-submit .input-group-btn:last-child > button,
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child),
-.tok3n-container .submit .input-group-btn:first-child > button:not(:first-child) {
+.tok3n-submit .input-group-btn:first-child > button:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
@@ -4311,15 +4311,15 @@ input[type="button"].btn-block {
 }
 
 /* line 116, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group-btn > .btn, .tok3n-container .submit .input-group-btn > button {
+.input-group-btn > .btn, .tok3n-submit .input-group-btn > button {
   position: relative;
 }
 /* line 119, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group-btn > .btn + .btn, .tok3n-container .submit .input-group-btn > button + .btn, .tok3n-container .submit .input-group-btn > .btn + button, .tok3n-container .submit .input-group-btn > button + button {
+.input-group-btn > .btn + .btn, .tok3n-submit .input-group-btn > button + .btn, .tok3n-submit .input-group-btn > .btn + button, .tok3n-submit .input-group-btn > button + button {
   margin-left: -4px;
 }
 /* line 123, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group-btn > .btn:hover, .tok3n-container .submit .input-group-btn > button:hover, .input-group-btn > .btn:active, .tok3n-container .submit .input-group-btn > button:active {
+.input-group-btn > .btn:hover, .tok3n-submit .input-group-btn > button:hover, .input-group-btn > .btn:active, .tok3n-submit .input-group-btn > button:active {
   z-index: 2;
 }
 
@@ -5357,7 +5357,7 @@ a.badge:hover, a.badge:focus {
 }
 
 /* line 38, ../components/bootstrap-sass/lib/_badges.scss */
-.btn .badge, .tok3n-container .submit button .badge {
+.btn .badge, .tok3n-submit button .badge {
   position: relative;
   top: -1px;
 }
@@ -5444,28 +5444,29 @@ a.thumbnail:focus {
 }
 
 /* line 9, ../components/bootstrap-sass/lib/_alerts.scss */
-.alert {
+.alert, .tok3n-login-alert {
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
 }
 /* line 16, ../components/bootstrap-sass/lib/_alerts.scss */
-.alert h4 {
+.alert h4, .tok3n-login-alert h4 {
   margin-top: 0;
   color: inherit;
 }
 /* line 22, ../components/bootstrap-sass/lib/_alerts.scss */
-.alert .alert-link {
+.alert .alert-link, .tok3n-login-alert .alert-link {
   font-weight: bold;
 }
 /* line 27, ../components/bootstrap-sass/lib/_alerts.scss */
-.alert > p,
-.alert > ul {
+.alert > p, .tok3n-login-alert > p,
+.alert > ul,
+.tok3n-login-alert > ul {
   margin-bottom: 0;
 }
 /* line 31, ../components/bootstrap-sass/lib/_alerts.scss */
-.alert > p + p {
+.alert > p + p, .tok3n-login-alert > p + p {
   margin-top: 5px;
 }
 
@@ -5527,17 +5528,17 @@ a.thumbnail:focus {
 }
 
 /* line 65, ../components/bootstrap-sass/lib/_alerts.scss */
-.alert-danger {
+.alert-danger, .tok3n-login-alert {
   background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
 }
 /* line 365, ../components/bootstrap-sass/lib/_mixins.scss */
-.alert-danger hr {
+.alert-danger hr, .tok3n-login-alert hr {
   border-top-color: #e6c1c7;
 }
 /* line 368, ../components/bootstrap-sass/lib/_mixins.scss */
-.alert-danger .alert-link {
+.alert-danger .alert-link, .tok3n-login-alert .alert-link {
   color: #953b39;
 }
 
@@ -6211,16 +6212,16 @@ body.modal-open {
   clear: both;
 }
 /* line 117, ../components/bootstrap-sass/lib/_modals.scss */
-.modal-footer .btn + .btn, .modal-footer .tok3n-container .submit button + .btn, .tok3n-container .submit .modal-footer button + .btn, .modal-footer .tok3n-container .submit .btn + button, .tok3n-container .submit .modal-footer .btn + button, .modal-footer .tok3n-container .submit button + button, .tok3n-container .submit .modal-footer button + button {
+.modal-footer .btn + .btn, .modal-footer .tok3n-submit button + .btn, .tok3n-submit .modal-footer button + .btn, .modal-footer .tok3n-submit .btn + button, .tok3n-submit .modal-footer .btn + button, .modal-footer .tok3n-submit button + button, .tok3n-submit .modal-footer button + button {
   margin-left: 5px;
   margin-bottom: 0;
 }
 /* line 122, ../components/bootstrap-sass/lib/_modals.scss */
-.modal-footer .btn-group .btn + .btn, .modal-footer .btn-group .tok3n-container .submit button + .btn, .tok3n-container .submit .modal-footer .btn-group button + .btn, .modal-footer .btn-group .tok3n-container .submit .btn + button, .tok3n-container .submit .modal-footer .btn-group .btn + button, .modal-footer .btn-group .tok3n-container .submit button + button, .tok3n-container .submit .modal-footer .btn-group button + button {
+.modal-footer .btn-group .btn + .btn, .modal-footer .btn-group .tok3n-submit button + .btn, .tok3n-submit .modal-footer .btn-group button + .btn, .modal-footer .btn-group .tok3n-submit .btn + button, .tok3n-submit .modal-footer .btn-group .btn + button, .modal-footer .btn-group .tok3n-submit button + button, .tok3n-submit .modal-footer .btn-group button + button {
   margin-left: -1px;
 }
 /* line 126, ../components/bootstrap-sass/lib/_modals.scss */
-.modal-footer .btn-block + .btn-block, .modal-footer .tok3n-container .submit button + .btn-block, .tok3n-container .submit .modal-footer button + .btn-block, .modal-footer .tok3n-container .submit .btn-block + button, .tok3n-container .submit .modal-footer .btn-block + button, .modal-footer .tok3n-container .submit button + button, .tok3n-container .submit .modal-footer button + button {
+.modal-footer .btn-block + .btn-block, .modal-footer .tok3n-submit button + .btn-block, .tok3n-submit .modal-footer button + .btn-block, .modal-footer .tok3n-submit .btn-block + button, .tok3n-submit .modal-footer .btn-block + button, .modal-footer .tok3n-submit button + button, .tok3n-submit .modal-footer button + button {
   margin-left: 0;
 }
 
@@ -6681,7 +6682,7 @@ body.modal-open {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 /* line 179, ../components/bootstrap-sass/lib/_carousel.scss */
-.carousel-caption .btn, .carousel-caption .tok3n-container .submit button, .tok3n-container .submit .carousel-caption button {
+.carousel-caption .btn, .carousel-caption .tok3n-submit button, .tok3n-submit .carousel-caption button {
   text-shadow: none;
 }
 
@@ -9652,13 +9653,13 @@ td.visible-print {
  * BUTTON BASE
  */
 /* line 60, ../components/ladda/css/ladda.scss */
-.ladda-button {
+.ladda-button, .tok3n-submit button {
   position: relative;
 }
 
 /* Spinner animation */
 /* line 66, ../components/ladda/css/ladda.scss */
-.ladda-button .ladda-spinner {
+.ladda-button .ladda-spinner, .tok3n-submit button .ladda-spinner {
   position: absolute;
   z-index: 2;
   display: inline-block;
@@ -9672,14 +9673,14 @@ td.visible-print {
 
 /* Button label */
 /* line 79, ../components/ladda/css/ladda.scss */
-.ladda-button .ladda-label {
+.ladda-button .ladda-label, .tok3n-submit button .ladda-label {
   position: relative;
   z-index: 3;
 }
 
 /* Progress bar */
 /* line 85, ../components/ladda/css/ladda.scss */
-.ladda-button .ladda-progress {
+.ladda-button .ladda-progress, .tok3n-submit button .ladda-progress {
   position: absolute;
   width: 0;
   height: 100%;
@@ -9696,7 +9697,7 @@ td.visible-print {
 }
 
 /* line 98, ../components/ladda/css/ladda.scss */
-.ladda-button[data-loading] .ladda-progress {
+.ladda-button[data-loading] .ladda-progress, .tok3n-submit button[data-loading] .ladda-progress {
   opacity: 1;
   visibility: visible;
 }
@@ -9705,9 +9706,11 @@ td.visible-print {
  * EASING
  */
 /* line 108, ../components/ladda/css/ladda.scss */
-.ladda-button,
+.ladda-button, .tok3n-submit button,
 .ladda-button .ladda-spinner,
-.ladda-button .ladda-label {
+.tok3n-submit button .ladda-spinner,
+.ladda-button .ladda-label,
+.tok3n-submit button .ladda-label {
   -webkit-transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.27) all !important;
   -moz-transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.27) all !important;
   -ms-transition: 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.27) all !important;
@@ -9716,12 +9719,17 @@ td.visible-print {
 }
 
 /* line 114, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-in],
+.ladda-button[data-style=zoom-in], .tok3n-submit button,
 .ladda-button[data-style=zoom-in] .ladda-spinner,
+.tok3n-submit button .ladda-spinner,
 .ladda-button[data-style=zoom-in] .ladda-label,
+.tok3n-submit button .ladda-label,
 .ladda-button[data-style=zoom-out],
+.tok3n-submit button[data-style=zoom-out],
 .ladda-button[data-style=zoom-out] .ladda-spinner,
-.ladda-button[data-style=zoom-out] .ladda-label {
+.tok3n-submit button[data-style=zoom-out] .ladda-spinner,
+.ladda-button[data-style=zoom-out] .ladda-label,
+.tok3n-submit button[data-style=zoom-out] .ladda-label {
   -webkit-transition: 0.3s ease all !important;
   -moz-transition: 0.3s ease all !important;
   -ms-transition: 0.3s ease all !important;
@@ -9733,23 +9741,23 @@ td.visible-print {
  * EXPAND LEFT
  */
 /* line 129, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-right] .ladda-spinner {
+.ladda-button[data-style=expand-right] .ladda-spinner, .tok3n-submit button[data-style=expand-right] .ladda-spinner {
   right: 14px;
 }
 /* line 133, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-right][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-right][data-size="xs"] .ladda-spinner {
+.ladda-button[data-style=expand-right][data-size="s"] .ladda-spinner, .tok3n-submit button[data-style=expand-right][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-right][data-size="xs"] .ladda-spinner, .tok3n-submit button[data-style=expand-right][data-size="xs"] .ladda-spinner {
   right: 4px;
 }
 /* line 138, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-right][data-loading] {
+.ladda-button[data-style=expand-right][data-loading], .tok3n-submit button[data-style=expand-right][data-loading] {
   padding-right: 56px;
 }
 /* line 141, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-right][data-loading] .ladda-spinner {
+.ladda-button[data-style=expand-right][data-loading] .ladda-spinner, .tok3n-submit button[data-style=expand-right][data-loading] .ladda-spinner {
   opacity: 1;
 }
 /* line 145, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-right][data-loading][data-size="s"], .ladda-button[data-style=expand-right][data-loading][data-size="xs"] {
+.ladda-button[data-style=expand-right][data-loading][data-size="s"], .tok3n-submit button[data-style=expand-right][data-loading][data-size="s"], .ladda-button[data-style=expand-right][data-loading][data-size="xs"], .tok3n-submit button[data-style=expand-right][data-loading][data-size="xs"] {
   padding-right: 40px;
 }
 
@@ -9757,23 +9765,23 @@ td.visible-print {
  * EXPAND RIGHT
  */
 /* line 158, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-left] .ladda-spinner {
+.ladda-button[data-style=expand-left] .ladda-spinner, .tok3n-submit button[data-style=expand-left] .ladda-spinner {
   left: 14px;
 }
 /* line 162, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-left][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-left][data-size="xs"] .ladda-spinner {
+.ladda-button[data-style=expand-left][data-size="s"] .ladda-spinner, .tok3n-submit button[data-style=expand-left][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-left][data-size="xs"] .ladda-spinner, .tok3n-submit button[data-style=expand-left][data-size="xs"] .ladda-spinner {
   left: 4px;
 }
 /* line 167, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-left][data-loading] {
+.ladda-button[data-style=expand-left][data-loading], .tok3n-submit button[data-style=expand-left][data-loading] {
   padding-left: 56px;
 }
 /* line 170, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-left][data-loading] .ladda-spinner {
+.ladda-button[data-style=expand-left][data-loading] .ladda-spinner, .tok3n-submit button[data-style=expand-left][data-loading] .ladda-spinner {
   opacity: 1;
 }
 /* line 174, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-left][data-loading][data-size="s"], .ladda-button[data-style=expand-left][data-loading][data-size="xs"] {
+.ladda-button[data-style=expand-left][data-loading][data-size="s"], .tok3n-submit button[data-style=expand-left][data-loading][data-size="s"], .ladda-button[data-style=expand-left][data-loading][data-size="xs"], .tok3n-submit button[data-style=expand-left][data-loading][data-size="xs"] {
   padding-left: 40px;
 }
 
@@ -9781,31 +9789,31 @@ td.visible-print {
  * EXPAND UP
  */
 /* line 186, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-up] {
+.ladda-button[data-style=expand-up], .tok3n-submit button[data-style=expand-up] {
   overflow: hidden;
 }
 /* line 189, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-up] .ladda-spinner {
+.ladda-button[data-style=expand-up] .ladda-spinner, .tok3n-submit button[data-style=expand-up] .ladda-spinner {
   top: -32px;
   left: 50%;
   margin-left: -16px;
 }
 /* line 195, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-up][data-loading] {
+.ladda-button[data-style=expand-up][data-loading], .tok3n-submit button[data-style=expand-up][data-loading] {
   padding-top: 54px;
 }
 /* line 198, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-up][data-loading] .ladda-spinner {
+.ladda-button[data-style=expand-up][data-loading] .ladda-spinner, .tok3n-submit button[data-style=expand-up][data-loading] .ladda-spinner {
   opacity: 1;
   top: 14px;
   margin-top: 0;
 }
 /* line 204, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-up][data-loading][data-size="s"], .ladda-button[data-style=expand-up][data-loading][data-size="xs"] {
+.ladda-button[data-style=expand-up][data-loading][data-size="s"], .tok3n-submit button[data-style=expand-up][data-loading][data-size="s"], .ladda-button[data-style=expand-up][data-loading][data-size="xs"], .tok3n-submit button[data-style=expand-up][data-loading][data-size="xs"] {
   padding-top: 32px;
 }
 /* line 208, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-up][data-loading][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-up][data-loading][data-size="xs"] .ladda-spinner {
+.ladda-button[data-style=expand-up][data-loading][data-size="s"] .ladda-spinner, .tok3n-submit button[data-style=expand-up][data-loading][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-up][data-loading][data-size="xs"] .ladda-spinner, .tok3n-submit button[data-style=expand-up][data-loading][data-size="xs"] .ladda-spinner {
   top: 4px;
 }
 
@@ -9813,29 +9821,29 @@ td.visible-print {
  * EXPAND DOWN
  */
 /* line 220, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-down] {
+.ladda-button[data-style=expand-down], .tok3n-submit button[data-style=expand-down] {
   overflow: hidden;
 }
 /* line 223, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-down] .ladda-spinner {
+.ladda-button[data-style=expand-down] .ladda-spinner, .tok3n-submit button[data-style=expand-down] .ladda-spinner {
   top: 62px;
   left: 50%;
   margin-left: -16px;
 }
 /* line 229, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-down][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-down][data-size="xs"] .ladda-spinner {
+.ladda-button[data-style=expand-down][data-size="s"] .ladda-spinner, .tok3n-submit button[data-style=expand-down][data-size="s"] .ladda-spinner, .ladda-button[data-style=expand-down][data-size="xs"] .ladda-spinner, .tok3n-submit button[data-style=expand-down][data-size="xs"] .ladda-spinner {
   top: 40px;
 }
 /* line 234, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-down][data-loading] {
+.ladda-button[data-style=expand-down][data-loading], .tok3n-submit button[data-style=expand-down][data-loading] {
   padding-bottom: 54px;
 }
 /* line 237, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-down][data-loading] .ladda-spinner {
+.ladda-button[data-style=expand-down][data-loading] .ladda-spinner, .tok3n-submit button[data-style=expand-down][data-loading] .ladda-spinner {
   opacity: 1;
 }
 /* line 241, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=expand-down][data-loading][data-size="s"], .ladda-button[data-style=expand-down][data-loading][data-size="xs"] {
+.ladda-button[data-style=expand-down][data-loading][data-size="s"], .tok3n-submit button[data-style=expand-down][data-loading][data-size="s"], .ladda-button[data-style=expand-down][data-loading][data-size="xs"], .tok3n-submit button[data-style=expand-down][data-loading][data-size="xs"] {
   padding-bottom: 32px;
 }
 
@@ -9843,25 +9851,25 @@ td.visible-print {
  * SLIDE LEFT
  */
 /* line 252, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-left] {
+.ladda-button[data-style=slide-left], .tok3n-submit button[data-style=slide-left] {
   overflow: hidden;
 }
 /* line 255, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-left] .ladda-label {
+.ladda-button[data-style=slide-left] .ladda-label, .tok3n-submit button[data-style=slide-left] .ladda-label {
   position: relative;
 }
 /* line 258, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-left] .ladda-spinner {
+.ladda-button[data-style=slide-left] .ladda-spinner, .tok3n-submit button[data-style=slide-left] .ladda-spinner {
   left: 100%;
   margin-left: -16px;
 }
 /* line 264, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-left][data-loading] .ladda-label {
+.ladda-button[data-style=slide-left][data-loading] .ladda-label, .tok3n-submit button[data-style=slide-left][data-loading] .ladda-label {
   opacity: 0;
   left: -100%;
 }
 /* line 268, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-left][data-loading] .ladda-spinner {
+.ladda-button[data-style=slide-left][data-loading] .ladda-spinner, .tok3n-submit button[data-style=slide-left][data-loading] .ladda-spinner {
   opacity: 1;
   left: 50%;
 }
@@ -9870,25 +9878,25 @@ td.visible-print {
  * SLIDE RIGHT
  */
 /* line 279, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-right] {
+.ladda-button[data-style=slide-right], .tok3n-submit button[data-style=slide-right] {
   overflow: hidden;
 }
 /* line 282, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-right] .ladda-label {
+.ladda-button[data-style=slide-right] .ladda-label, .tok3n-submit button[data-style=slide-right] .ladda-label {
   position: relative;
 }
 /* line 285, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-right] .ladda-spinner {
+.ladda-button[data-style=slide-right] .ladda-spinner, .tok3n-submit button[data-style=slide-right] .ladda-spinner {
   right: 100%;
   margin-left: -16px;
 }
 /* line 291, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-right][data-loading] .ladda-label {
+.ladda-button[data-style=slide-right][data-loading] .ladda-label, .tok3n-submit button[data-style=slide-right][data-loading] .ladda-label {
   opacity: 0;
   left: 100%;
 }
 /* line 295, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-right][data-loading] .ladda-spinner {
+.ladda-button[data-style=slide-right][data-loading] .ladda-spinner, .tok3n-submit button[data-style=slide-right][data-loading] .ladda-spinner {
   opacity: 1;
   left: 50%;
 }
@@ -9897,26 +9905,26 @@ td.visible-print {
  * SLIDE UP
  */
 /* line 306, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-up] {
+.ladda-button[data-style=slide-up], .tok3n-submit button[data-style=slide-up] {
   overflow: hidden;
 }
 /* line 309, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-up] .ladda-label {
+.ladda-button[data-style=slide-up] .ladda-label, .tok3n-submit button[data-style=slide-up] .ladda-label {
   position: relative;
 }
 /* line 312, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-up] .ladda-spinner {
+.ladda-button[data-style=slide-up] .ladda-spinner, .tok3n-submit button[data-style=slide-up] .ladda-spinner {
   left: 50%;
   margin-left: -16px;
   margin-top: 1em;
 }
 /* line 319, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-up][data-loading] .ladda-label {
+.ladda-button[data-style=slide-up][data-loading] .ladda-label, .tok3n-submit button[data-style=slide-up][data-loading] .ladda-label {
   opacity: 0;
   top: -1em;
 }
 /* line 323, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-up][data-loading] .ladda-spinner {
+.ladda-button[data-style=slide-up][data-loading] .ladda-spinner, .tok3n-submit button[data-style=slide-up][data-loading] .ladda-spinner {
   opacity: 1;
   margin-top: -16px;
 }
@@ -9925,26 +9933,26 @@ td.visible-print {
  * SLIDE DOWN
  */
 /* line 334, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-down] {
+.ladda-button[data-style=slide-down], .tok3n-submit button[data-style=slide-down] {
   overflow: hidden;
 }
 /* line 337, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-down] .ladda-label {
+.ladda-button[data-style=slide-down] .ladda-label, .tok3n-submit button[data-style=slide-down] .ladda-label {
   position: relative;
 }
 /* line 340, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-down] .ladda-spinner {
+.ladda-button[data-style=slide-down] .ladda-spinner, .tok3n-submit button[data-style=slide-down] .ladda-spinner {
   left: 50%;
   margin-left: -16px;
   margin-top: -2em;
 }
 /* line 347, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-down][data-loading] .ladda-label {
+.ladda-button[data-style=slide-down][data-loading] .ladda-label, .tok3n-submit button[data-style=slide-down][data-loading] .ladda-label {
   opacity: 0;
   top: 1em;
 }
 /* line 351, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=slide-down][data-loading] .ladda-spinner {
+.ladda-button[data-style=slide-down][data-loading] .ladda-spinner, .tok3n-submit button[data-style=slide-down][data-loading] .ladda-spinner {
   opacity: 1;
   margin-top: -16px;
 }
@@ -9953,12 +9961,12 @@ td.visible-print {
  * ZOOM-OUT
  */
 /* line 363, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-out] {
+.ladda-button[data-style=zoom-out], .tok3n-submit button[data-style=zoom-out] {
   overflow: hidden;
 }
 
 /* line 366, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-out] .ladda-spinner {
+.ladda-button[data-style=zoom-out] .ladda-spinner, .tok3n-submit button[data-style=zoom-out] .ladda-spinner {
   left: 50%;
   margin-left: -16px;
   -webkit-transform: scale(2.5);
@@ -9969,13 +9977,13 @@ td.visible-print {
 }
 
 /* line 372, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-out] .ladda-label {
+.ladda-button[data-style=zoom-out] .ladda-label, .tok3n-submit button[data-style=zoom-out] .ladda-label {
   position: relative;
   display: inline-block;
 }
 
 /* line 377, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-out][data-loading] .ladda-label {
+.ladda-button[data-style=zoom-out][data-loading] .ladda-label, .tok3n-submit button[data-style=zoom-out][data-loading] .ladda-label {
   opacity: 0;
   -webkit-transform: scale(0.5);
   -moz-transform: scale(0.5);
@@ -9985,7 +9993,7 @@ td.visible-print {
 }
 
 /* line 382, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-out][data-loading] .ladda-spinner {
+.ladda-button[data-style=zoom-out][data-loading] .ladda-spinner, .tok3n-submit button[data-style=zoom-out][data-loading] .ladda-spinner {
   opacity: 1;
   -webkit-transform: none;
   -moz-transform: none;
@@ -9998,12 +10006,12 @@ td.visible-print {
  * ZOOM-IN
  */
 /* line 393, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-in] {
+.ladda-button[data-style=zoom-in], .tok3n-submit button {
   overflow: hidden;
 }
 
 /* line 396, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-in] .ladda-spinner {
+.ladda-button[data-style=zoom-in] .ladda-spinner, .tok3n-submit button .ladda-spinner {
   left: 50%;
   margin-left: -16px;
   -webkit-transform: scale(0.2);
@@ -10014,13 +10022,13 @@ td.visible-print {
 }
 
 /* line 402, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-in] .ladda-label {
+.ladda-button[data-style=zoom-in] .ladda-label, .tok3n-submit button .ladda-label {
   position: relative;
   display: inline-block;
 }
 
 /* line 407, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-in][data-loading] .ladda-label {
+.ladda-button[data-style=zoom-in][data-loading] .ladda-label, .tok3n-submit button[data-loading] .ladda-label {
   opacity: 0;
   -webkit-transform: scale(2.2);
   -moz-transform: scale(2.2);
@@ -10030,7 +10038,7 @@ td.visible-print {
 }
 
 /* line 412, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=zoom-in][data-loading] .ladda-spinner {
+.ladda-button[data-style=zoom-in][data-loading] .ladda-spinner, .tok3n-submit button[data-loading] .ladda-spinner {
   opacity: 1;
   -webkit-transform: none;
   -moz-transform: none;
@@ -10043,30 +10051,30 @@ td.visible-print {
  * CONTRACT
  */
 /* line 423, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=contract] {
+.ladda-button[data-style=contract], .tok3n-submit button[data-style=contract] {
   overflow: hidden;
   width: 100px;
 }
 
 /* line 427, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=contract] .ladda-spinner {
+.ladda-button[data-style=contract] .ladda-spinner, .tok3n-submit button[data-style=contract] .ladda-spinner {
   left: 50%;
   margin-left: -16px;
 }
 
 /* line 432, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=contract][data-loading] {
+.ladda-button[data-style=contract][data-loading], .tok3n-submit button[data-style=contract][data-loading] {
   border-radius: 50%;
   width: 52px;
 }
 
 /* line 436, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=contract][data-loading] .ladda-label {
+.ladda-button[data-style=contract][data-loading] .ladda-label, .tok3n-submit button[data-style=contract][data-loading] .ladda-label {
   opacity: 0;
 }
 
 /* line 439, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=contract][data-loading] .ladda-spinner {
+.ladda-button[data-style=contract][data-loading] .ladda-spinner, .tok3n-submit button[data-style=contract][data-loading] .ladda-spinner {
   opacity: 1;
 }
 
@@ -10074,20 +10082,20 @@ td.visible-print {
  * OVERLAY
  */
 /* line 449, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=contract-overlay] {
+.ladda-button[data-style=contract-overlay], .tok3n-submit button[data-style=contract-overlay] {
   overflow: hidden;
   width: 100px;
   box-shadow: 0px 0px 0px 3000px transparent;
 }
 
 /* line 455, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=contract-overlay] .ladda-spinner {
+.ladda-button[data-style=contract-overlay] .ladda-spinner, .tok3n-submit button[data-style=contract-overlay] .ladda-spinner {
   left: 50%;
   margin-left: -16px;
 }
 
 /* line 460, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=contract-overlay][data-loading] {
+.ladda-button[data-style=contract-overlay][data-loading], .tok3n-submit button[data-style=contract-overlay][data-loading] {
   border-radius: 50%;
   width: 52px;
   /*outline: 10000px solid rgba( 0, 0, 0, 0.5 );*/
@@ -10095,667 +10103,13 @@ td.visible-print {
 }
 
 /* line 467, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=contract-overlay][data-loading] .ladda-label {
+.ladda-button[data-style=contract-overlay][data-loading] .ladda-label, .tok3n-submit button[data-style=contract-overlay][data-loading] .ladda-label {
   opacity: 0;
 }
 
 /* line 470, ../components/ladda/css/ladda.scss */
-.ladda-button[data-style=contract-overlay][data-loading] .ladda-spinner {
+.ladda-button[data-style=contract-overlay][data-loading] .ladda-spinner, .tok3n-submit button[data-style=contract-overlay][data-loading] .ladda-spinner {
   opacity: 1;
-}
-
-/* line 1, ../sass/_extensions.sass */
-span.space {
-  margin: 0 0.5em;
-}
-
-/* line 4, ../sass/_extensions.sass */
-.action-button i {
-  margin-right: 0.5em;
-}
-
-/* line 7, ../sass/base.sass */
-body {
-  font-family: "ff-dagny-web-pro";
-  color: #333333;
-  font-size: 145%;
-}
-/* line 12, ../sass/base.sass */
-body a {
-  color: #434cd3;
-}
-/* line 24, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
-body a:hover {
-  color: #636bd4;
-}
-/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
-body a:active {
-  color: #ba7f29;
-}
-
-/* line 15, ../sass/base.sass */
-h1, h2, h3, h4, h5, h6 {
-  font-family: "adelle";
-  color: #3d418f;
-}
-
-/* line 19, ../sass/base.sass */
-a {
-  text-decoration: none;
-  color: #1b98f8;
-}
-
-/* line 34, ../sass/base.sass */
-#top {
-  position: relative;
-  z-index: 2;
-}
-
-/* line 38, ../sass/base.sass */
-.top-nav {
-  -moz-box-shadow: inset 0 -12px 30px 0 rgba(23, 13, 38, 0.15);
-  -webkit-box-shadow: inset 0 -12px 30px 0 rgba(23, 13, 38, 0.15);
-  box-shadow: inset 0 -12px 30px 0 rgba(23, 13, 38, 0.15);
-  background: rgba(255, 255, 255, 0.9);
-  width: 100%;
-  letter-spacing: normal;
-  position: fixed;
-  border-bottom: 1px solid #411485;
-  border-bottom: 1px solid rgba(65, 20, 133, 0.3);
-}
-/* line 47, ../sass/base.sass */
-.top-nav .nav-wrap {
-  padding: 0 1.9em;
-}
-/* line 51, ../sass/base.sass */
-.top-nav header .logo {
-  margin: 0.61em 0;
-  height: 40px;
-  width: 111px;
-  background-image: url('../img/logo.png?1376272590');
-}
-@media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
-  /* line 51, ../sass/base.sass */
-  .top-nav header .logo {
-    background-image: url('../img/logo_hd.png?1376272590');
-    background-size: 111px 40px;
-  }
-}
-/* line 57, ../sass/base.sass */
-.top-nav nav {
-  margin-top: 13px;
-}
-/* line 59, ../sass/base.sass */
-.top-nav nav .menu {
-  text-align: right;
-  margin-right: 1em;
-}
-/* line 62, ../sass/base.sass */
-.top-nav nav .menu ul {
-  list-style-type: none;
-}
-/* line 6, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/lists/_inline-list.scss */
-.top-nav nav .menu ul, .top-nav nav .menu ul li {
-  margin: 0;
-  padding: 0;
-  display: inline;
-}
-/* line 64, ../sass/base.sass */
-.top-nav nav .menu ul li {
-  margin: 0 1.05em;
-}
-@media (max-width: 481px) {
-  /* line 67, ../sass/base.sass */
-  .top-nav nav .menu ul li.developers {
-    display: none;
-  }
-}
-@media (min-width: 769px) {
-  /* line 64, ../sass/base.sass */
-  .top-nav nav .menu ul li {
-    margin: 0 0 0 1.05em;
-  }
-  /* line 70, ../sass/base.sass */
-  .top-nav nav .menu ul li.toggle-sidebar {
-    display: none;
-  }
-}
-/* line 73, ../sass/base.sass */
-.top-nav nav .menu ul li a {
-  text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
-}
-/* line 74, ../sass/base.sass */
-.touch .top-nav nav .menu ul li a {
-  color: #171947;
-}
-/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
-.touch .top-nav nav .menu ul li a:active {
-  color: #ba7f29;
-}
-/* line 76, ../sass/base.sass */
-.no-touch .top-nav nav .menu ul li a {
-  color: #171947;
-}
-/* line 24, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
-.no-touch .top-nav nav .menu ul li a:hover {
-  color: #434cd3;
-}
-/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
-.no-touch .top-nav nav .menu ul li a:active {
-  color: #ba7f29;
-}
-/* line 80, ../sass/base.sass */
-.top-nav nav .menu ul li:first-child {
-  margin: 0 1.05em 0 0;
-}
-/* line 82, ../sass/base.sass */
-.top-nav nav .menu ul li:last-child {
-  margin: 0 0 0 1.05em;
-}
-/* line 84, ../sass/base.sass */
-.top-nav nav .menu ul li:only-child {
-  margin: 0;
-}
-/* line 86, ../sass/base.sass */
-.top-nav nav .menu ul li .settings {
-  background: rgba(39, 47, 165, 0.68);
-  color: white;
-  padding: 0.5em 1.2em;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  -moz-transition: background 0.3s ease-out 0;
-  -o-transition: background 0.3s ease-out 0;
-  -webkit-transition: background 0.3s ease-out;
-  -webkit-transition-delay: 0;
-  transition: background 0.3s ease-out 0;
-}
-/* line 94, ../sass/base.sass */
-.no-touch .top-nav nav .menu ul li .settings:hover {
-  background: rgba(48, 59, 207, 0.9);
-}
-/* line 96, ../sass/base.sass */
-.top-nav nav .menu ul li .settings:active {
-  background: rgba(172, 177, 236, 0.9);
-}
-/* line 98, ../sass/base.sass */
-.top-nav nav .menu ul li .settings .icon-cog {
-  font-size: 16px;
-}
-/* line 100, ../sass/base.sass */
-.top-nav nav .menu ul li .settings .text {
-  margin-left: 0.6em;
-  font-family: "ff-dagny-web-pro";
-}
-/* line 103, ../sass/base.sass */
-.top-nav nav .menu ul li .settings .icon-caret-down {
-  margin-left: 0.8em;
-}
-
-/* line 110, ../sass/base.sass */
-#full-layout {
-  position: relative;
-  padding-top: 58px;
-  z-index: 1;
-}
-
-/* line 115, ../sass/base.sass */
-.create-account {
-  margin-top: 1em;
-}
-/* line 117, ../sass/base.sass */
-.create-account a {
-  cursor: pointer;
-}
-
-@media (min-width: 769px) {
-  /* line 130, ../sass/base.sass */
-  #layout {
-    padding-left: 472px;
-    position: relative;
-    padding-top: 58px;
-    z-index: 1;
-  }
-
-  /* line 136, ../sass/base.sass */
-  #sidebar, #list {
-    position: fixed;
-    top: 58px;
-    bottom: 0;
-    overflow: auto;
-  }
-
-  /* line 142, ../sass/base.sass */
-  #sidebar {
-    margin-left: -472px;
-    width: 220px;
-    text-align: center;
-    padding: 2em 0;
-  }
-
-  /* line 148, ../sass/base.sass */
-  #list {
-    width: 252px;
-    border-right: 1px solid #dddddd;
-  }
-
-  /* line 152, ../sass/base.sass */
-  #content {
-    margin-left: -252px;
-  }
-
-  /* line 155, ../sass/base.sass */
-  #main {
-    margin-left: 252px;
-  }
-}
-/* line 162, ../sass/base.sass */
-#sidebar {
-  background: #252a3a;
-}
-@media (max-width: 768px) {
-  /* line 164, ../sass/base.sass */
-  #sidebar .nav-inner {
-    padding-top: 58px;
-  }
-}
-/* line 167, ../sass/base.sass */
-#sidebar .menu {
-  background: transparent;
-  border: none;
-  text-align: left;
-  list-style-type: none;
-  padding-left: 0;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-@media (min-width: 769px) {
-  /* line 167, ../sass/base.sass */
-  #sidebar .menu {
-    margin-left: -10px;
-  }
-}
-/* line 177, ../sass/base.sass */
-#sidebar .menu li {
-  cursor: pointer;
-  color: white;
-  color: rgba(255, 255, 255, 0.7);
-}
-@media (max-width: 768px) {
-  /* line 177, ../sass/base.sass */
-  #sidebar .menu li {
-    padding: 0.8em 2em;
-  }
-}
-@media (min-width: 769px) {
-  /* line 177, ../sass/base.sass */
-  #sidebar .menu li {
-    padding-top: 0.7em;
-    padding-bottom: 0.2em;
-  }
-}
-/* line 187, ../sass/base.sass */
-.no-touch #sidebar .menu li:hover, .no-touch #sidebar .menu li:focus {
-  background: #373c5a;
-  color: white;
-}
-/* line 190, ../sass/base.sass */
-#sidebar .menu li:active {
-  background: #3e4465;
-}
-@media (max-width: 768px) {
-  /* line 192, ../sass/base.sass */
-  #sidebar .menu li .title, #sidebar .menu li .icon {
-    display: inline-block;
-  }
-}
-/* line 195, ../sass/base.sass */
-#sidebar .menu li .title {
-  text-align: left;
-  padding-left: 0;
-}
-@media (max-width: 768px) {
-  /* line 195, ../sass/base.sass */
-  #sidebar .menu li .title {
-    font-size: 120%;
-    margin-top: 0.2em;
-  }
-}
-/* line 201, ../sass/base.sass */
-#sidebar .menu li .icon {
-  color: rgba(255, 255, 255, 0.8);
-  color: white;
-  text-align: center;
-}
-@media (max-width: 768px) {
-  /* line 201, ../sass/base.sass */
-  #sidebar .menu li .icon {
-    font-size: 150%;
-  }
-}
-@media (min-width: 769px) {
-  /* line 201, ../sass/base.sass */
-  #sidebar .menu li .icon {
-    font-size: 130%;
-  }
-}
-
-/* line 214, ../sass/base.sass */
-.white-popup {
-  position: relative;
-  background: white;
-  padding: 20px;
-  width: auto;
-  max-width: 500px;
-  margin: 20px auto;
-}
-/* line 221, ../sass/base.sass */
-.white-popup .create-button {
-  margin-bottom: 0;
-}
-/* line 223, ../sass/base.sass */
-.white-popup .title {
-  margin-top: 0.5em;
-  text-align: center;
-}
-/* line 226, ../sass/base.sass */
-.white-popup label.align-top {
-  margin-top: 0.4em;
-}
-/* line 228, ../sass/base.sass */
-.white-popup .web-toggle {
-  display: none;
-}
-/* line 230, ../sass/base.sass */
-.white-popup .btn-file {
-  position: relative;
-  overflow: hidden;
-}
-/* line 233, ../sass/base.sass */
-.white-popup .btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 999px;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  background: red;
-  cursor: inherit;
-  display: block;
-}
-/* line 246, ../sass/base.sass */
-.white-popup .form-control, .white-popup .tok3n-container .enter .otp, .tok3n-container .enter .white-popup .otp {
-  cursor: default;
-}
-
-/* line 250, ../sass/base.sass */
-.popover-content .title {
-  text-align: center;
-}
-
-@media (max-width: 481px) {
-  /* line 22, ../sass/_progress-track.sass */
-  .progress-meter {
-    margin: 20px auto 10px;
-    padding: 17px 0 17px;
-  }
-
-  /* line 25, ../sass/_progress-track.sass */
-  .inlined {
-    width: 100%;
-  }
-
-  /* line 27, ../sass/_progress-track.sass */
-  .progress-point {
-    width: 80px;
-    margin-left: -40px;
-  }
-
-  /* line 38, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(1) {
-    left: 15%;
-  }
-  /* line 38, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(2) {
-    left: 38.33%;
-  }
-  /* line 38, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(3) {
-    left: 61.67%;
-  }
-  /* line 38, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(4) {
-    left: 85%;
-  }
-
-  /* line 41, ../sass/_progress-track.sass */
-  .progress-meter .progress.step-1 {
-    width: 15%;
-  }
-
-  /* line 41, ../sass/_progress-track.sass */
-  .progress-meter .progress.step-2 {
-    width: 38.33%;
-  }
-
-  /* line 41, ../sass/_progress-track.sass */
-  .progress-meter .progress.step-3 {
-    width: 61.67%;
-  }
-
-  /* line 41, ../sass/_progress-track.sass */
-  .progress-meter .progress.step-4 {
-    width: 85%;
-  }
-}
-@media (min-width: 482px) {
-  /* line 22, ../sass/_progress-track.sass */
-  .progress-meter {
-    margin: 20px auto 15px;
-    padding: 45px 0 17px;
-  }
-
-  /* line 25, ../sass/_progress-track.sass */
-  .inlined {
-    width: 100%;
-  }
-
-  /* line 27, ../sass/_progress-track.sass */
-  .progress-point {
-    width: 100px;
-    margin-left: -50px;
-  }
-
-  /* line 38, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(1) {
-    left: 10%;
-  }
-  /* line 38, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(2) {
-    left: 36.67%;
-  }
-  /* line 38, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(3) {
-    left: 63.33%;
-  }
-  /* line 38, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(4) {
-    left: 90%;
-  }
-
-  /* line 41, ../sass/_progress-track.sass */
-  .progress-meter .progress.step-1 {
-    width: 10%;
-  }
-
-  /* line 41, ../sass/_progress-track.sass */
-  .progress-meter .progress.step-2 {
-    width: 36.67%;
-  }
-
-  /* line 41, ../sass/_progress-track.sass */
-  .progress-meter .progress.step-3 {
-    width: 63.33%;
-  }
-
-  /* line 41, ../sass/_progress-track.sass */
-  .progress-meter .progress.step-4 {
-    width: 90%;
-  }
-}
-/* line 51, ../sass/_progress-track.sass */
-.progress-track {
-  font-size: 14px;
-  text-align: center;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-/* line 57, ../sass/_progress-track.sass */
-.inliner {
-  height: 100%;
-}
-
-/* line 60, ../sass/_progress-track.sass */
-.inliner,
-.inliner + .inlined {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* line 65, ../sass/_progress-track.sass */
-.progress-meter {
-  counter-reset: point;
-}
-/* line 67, ../sass/_progress-track.sass */
-.progress-meter .progress-point:before {
-  -moz-transition: all 1s;
-  -o-transition: all 1s;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-  -moz-border-radius: 29px;
-  -webkit-border-radius: 29px;
-  border-radius: 29px;
-  -moz-box-shadow: 0 0 0 2px white;
-  -webkit-box-shadow: 0 0 0 2px white;
-  box-shadow: 0 0 0 2px white;
-  content: "\2713";
-  display: block;
-  width: 29px;
-  margin: 0 auto -61px;
-  padding-top: 3px;
-  border: 3.63px solid #e3e3e3;
-  text-align: center;
-  background-color: white;
-  color: white;
-}
-/* line 80, ../sass/_progress-track.sass */
-.progress-meter .track {
-  position: relative;
-  height: 3px;
-  background: #d6d6d6;
-}
-/* line 84, ../sass/_progress-track.sass */
-.progress-meter .progress {
-  -moz-transition: width 1s;
-  -o-transition: width 1s;
-  -webkit-transition: width 1s;
-  transition: width 1s;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 3px;
-  background: #9fdfae;
-}
-/* line 93, ../sass/_progress-track.sass */
-.progress-meter .progress-points {
-  position: relative;
-  margin: -17.5px 0 0;
-  padding: 0;
-  list-style: none;
-}
-/* line 98, ../sass/_progress-track.sass */
-.progress-meter .progress-point {
-  -moz-transition: color 1s;
-  -o-transition: color 1s;
-  -webkit-transition: color 1s;
-  transition: color 1s;
-  position: absolute;
-  display: block;
-  text-align: center;
-  color: #888888;
-}
-@media (max-width: 481px) {
-  /* line 106, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(1):before {
-    content: "1";
-  }
-  /* line 106, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(2):before {
-    content: "2";
-  }
-  /* line 106, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(3):before {
-    content: "3";
-  }
-  /* line 106, ../sass/_progress-track.sass */
-  .progress-meter .progress-point:nth-child(4):before {
-    content: "4";
-  }
-}
-/* line 110, ../sass/_progress-track.sass */
-.progress-meter .progress-point.completed, .progress-meter .progress-point.active {
-  color: #5cd678;
-}
-/* line 113, ../sass/_progress-track.sass */
-.progress-meter .progress-point.completed:before {
-  border-color: #5cd678;
-  background-color: #5cd678;
-}
-/* line 116, ../sass/_progress-track.sass */
-.progress-meter .progress-point.active:before {
-  -moz-transition-delay: 1s;
-  -o-transition-delay: 1s;
-  -webkit-transition-delay: 1s;
-  transition-delay: 1s;
-  border-color: #5cd678;
-}
-@media (max-width: 481px) {
-  /* line 116, ../sass/_progress-track.sass */
-  .progress-meter .progress-point.active:before {
-    background-color: #5cd678;
-  }
-}
-/* line 121, ../sass/_progress-track.sass */
-.progress-meter .progress-point .progress-label {
-  font-size: 85%;
-}
-@media (max-width: 481px) {
-  /* line 121, ../sass/_progress-track.sass */
-  .progress-meter .progress-point .progress-label {
-    display: none;
-  }
-}
-/* line 125, ../sass/_progress-track.sass */
-.progress-meter .progress-point .progress-label:before {
-  counter-increment: point;
-  content: counter(point) ". ";
-}
-@media (max-width: 481px) {
-  /* line 125, ../sass/_progress-track.sass */
-  .progress-meter .progress-point .progress-label:before {
-    display: none;
-  }
 }
 
 /* Generated by Font Squirrel (http://www.fontsquirrel.com) on June 10, 2013 */
@@ -10769,37 +10123,171 @@ a {
   font-weight: normal;
   font-style: normal;
 }
-/* line 4, ../sass/_login-v2-main.sass */
+@-moz-keyframes flash {
+  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  0% {
+    opacity: 1;
+  }
+
+  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  25% {
+    opacity: 0;
+  }
+
+  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  50% {
+    opacity: 1;
+  }
+
+  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  75% {
+    opacity: 0;
+  }
+
+  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes flash {
+  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  0% {
+    opacity: 1;
+  }
+
+  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  25% {
+    opacity: 0;
+  }
+
+  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  50% {
+    opacity: 1;
+  }
+
+  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  75% {
+    opacity: 0;
+  }
+
+  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flash {
+  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  0% {
+    opacity: 1;
+  }
+
+  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  25% {
+    opacity: 0;
+  }
+
+  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  50% {
+    opacity: 1;
+  }
+
+  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  75% {
+    opacity: 0;
+  }
+
+  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  100% {
+    opacity: 1;
+  }
+}
+/* line 6, ../sass/_login-v2-main.sass */
 .tok3n-container {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  position: absolute;
-  width: 339px;
-  padding: 0 30px;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
   user-select: none;
-  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.7) 0 10px 27px, inset 0 -1px 2px rgba(82, 93, 112, 0.4);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.7) 0 10px 27px, inset 0 -1px 2px rgba(82, 93, 112, 0.4);
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.7) 0 10px 27px, inset 0 -1px 2px rgba(82, 93, 112, 0.4);
-  background-color: #fafafa;
-  background-image: linear-gradient(#3a41b5 10%, #646ace 100%);
-  background-position: top;
-  background-repeat: repeat-x;
-  -moz-background-size: 80px auto;
-  -o-background-size: 80px auto;
-  -webkit-background-size: 80px auto;
-  background-size: 80px auto;
+}
+
+/* line 13, ../sass/_login-v2-main.sass */
+.tok3n-flipper {
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  position: relative;
+  -webkit-transition: all 0.5s ease-in-out !important;
+  -moz-transition: all 0.5s ease-in-out !important;
+  -ms-transition: all 0.5s ease-in-out !important;
+  -o-transition: all 0.5s ease-in-out !important;
+  transition: all 0.5s ease-in-out !important;
+}
+
+/* line 18, ../sass/_login-v2-main.sass */
+.tok3n-front, .tok3n-back {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.3) 0 10px 27px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.3) 0 10px 27px;
+}
+
+/* line 26, ../sass/_login-v2-main.sass */
+.tok3n-front, .tok3n-back, .tok3n-container {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
+  width: 339px;
+  background-color: #fafafa;
 }
-/* line 24, ../sass/_login-v2-main.sass */
-.tok3n-container header {
+
+/* line 31, ../sass/_login-v2-main.sass */
+.tok3n-front {
+  z-index: 2;
+}
+
+/* line 34, ../sass/_login-v2-main.sass */
+.tok3n-back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* line 37, ../sass/_login-v2-main.sass */
+.tok3n-flipped {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* line 46, ../sass/_login-v2-main.sass */
+.tok3n-header {
   height: 80px;
-  background-image: url('../img/logo.svg?1378581520');
+  padding: 0 30px;
+  background-image: linear-gradient(#3a41b5 10%, #646ace 100%);
+  background-position: top;
+  background-repeat: repeat-x;
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+/* line 55, ../sass/_login-v2-main.sass */
+.tok3n-header .tok3n-logo {
+  height: 80px;
+  background-image: url('//s3.amazonaws.com/static.tok3n.com/0.0.1/img/logo.svg?1378581520');
   -moz-background-size: 115px auto;
   -o-background-size: 115px auto;
   -webkit-background-size: 115px auto;
@@ -10808,117 +10296,184 @@ a {
   background-repeat: no-repeat;
   background-position: center;
 }
-/* line 32, ../sass/_login-v2-main.sass */
-.tok3n-container .lower-wrapper {
+
+/* line 63, ../sass/_login-v2-main.sass */
+.tok3n-lower-wrapper {
   margin: 25px 0 30px;
+  padding: 0 30px;
 }
-/* line 35, ../sass/_login-v2-main.sass */
-.tok3n-container .headline {
+
+/* line 67, ../sass/_login-v2-main.sass */
+.tok3n-login-alert {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-transition: all 0.3s ease !important;
+  -moz-transition: all 0.3s ease !important;
+  -ms-transition: all 0.3s ease !important;
+  -o-transition: all 0.3s ease !important;
+  transition: all 0.3s ease !important;
+  padding: 15px 30px;
+  margin: 0;
+}
+/* line 74, ../sass/_login-v2-main.sass */
+.tok3n-login-alert b {
+  margin-right: 0.5em;
+}
+
+/* line 76, ../sass/_login-v2-main.sass */
+.tok3n-login-alert-hidden {
+  max-height: 0;
+  padding: 0 30px;
+  border: 0;
+  overflow: hidden;
+}
+
+/* line 83, ../sass/_login-v2-main.sass */
+.tok3n-login-alert-active {
+  -moz-animation: flash;
+  -webkit-animation: flash;
+  animation: flash;
+  -moz-animation-duration: 0.7s;
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.7s;
+  -moz-animation-delay: 0.3s;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
+/* line 89, ../sass/_login-v2-main.sass */
+.tok3n-headline {
   color: #fafafa;
   font-weight: bold;
   text-shadow: rgba(0, 0, 0, 0.3) 0 1px 0;
   overflow: hidden;
 }
-/* line 41, ../sass/_login-v2-main.sass */
-.tok3n-container .placeholder, .tok3n-container .stripe {
+
+/* line 95, ../sass/_login-v2-main.sass */
+.tok3n-placeholder, .tok3n-button-stripe {
   font-family: "tok3n-icons";
 }
-/* line 44, ../sass/_login-v2-main.sass */
-.tok3n-container .enter {
-  margin: 10px auto 50px;
+
+/* line 99, ../sass/_login-v2-main.sass */
+.tok3n-enter-label label {
+  font-weight: normal;
+  font-size: 1.2em;
+  color: #888888;
 }
-/* line 47, ../sass/_login-v2-main.sass */
-.tok3n-container .enter .otp {
+
+/* line 103, ../sass/_login-v2-main.sass */
+.tok3n-fallbacks {
+  color: #777777;
+  margin-bottom: 2em;
+}
+
+/* line 107, ../sass/_login-v2-main.sass */
+.tok3n-enter {
+  margin: 10px auto 15px;
+}
+/* line 111, ../sass/_login-v2-main.sass */
+.tok3n-enter .tok3n-otp {
   height: 75px;
   padding-left: 20px;
   width: 100%;
   font-size: 36px;
 }
-/* line 54, ../sass/_login-v2-main.sass */
-.tok3n-container .enter .placeholder {
+/* line 118, ../sass/_login-v2-main.sass */
+.tok3n-enter .tok3n-placeholder {
   font-size: 2.9em;
   display: inline-block;
   position: absolute;
   margin-left: 225px;
   margin-top: -68px;
   color: #bbbbbb;
-  -moz-transition: color 0.3s ease-in;
-  -o-transition: color 0.3s ease-in;
-  -webkit-transition: color 0.3s ease-in;
-  transition: color 0.3s ease-in;
+  -webkit-transition: color 0.3s ease-in !important;
+  -moz-transition: color 0.3s ease-in !important;
+  -ms-transition: color 0.3s ease-in !important;
+  -o-transition: color 0.3s ease-in !important;
+  transition: color 0.3s ease-in !important;
 }
-/* line 62, ../sass/_login-v2-main.sass */
-.tok3n-container .enter .placeholder:hover {
+/* line 126, ../sass/_login-v2-main.sass */
+.tok3n-enter .tok3n-placeholder:hover {
   color: #85d2e6;
 }
-/* line 64, ../sass/_login-v2-main.sass */
-.tok3n-container .enter .placeholder:after, .tok3n-container .enter .placeholder:before {
+/* line 128, ../sass/_login-v2-main.sass */
+.tok3n-enter .tok3n-placeholder:after, .tok3n-enter .tok3n-placeholder:before {
   white-space: pre;
 }
-/* line 67, ../sass/_login-v2-main.sass */
-.tok3n-container .submit {
+
+/* line 131, ../sass/_login-v2-main.sass */
+.tok3n-submit {
   margin: 0 auto;
 }
-/* line 69, ../sass/_login-v2-main.sass */
-.tok3n-container .submit button {
+/* line 133, ../sass/_login-v2-main.sass */
+.tok3n-submit button {
   margin: 0 auto;
   color: rgba(255, 255, 255, 0.95);
   background-color: #646ace;
   border-color: rgba(0, 0, 0, 0.1);
 }
 /* line 411, ../components/bootstrap-sass/lib/_mixins.scss */
-.tok3n-container .submit button:hover, .tok3n-container .submit button:focus, .tok3n-container .submit button:active, .tok3n-container .submit button.active {
+.tok3n-submit button:hover, .tok3n-submit button:focus, .tok3n-submit button:active, .tok3n-submit button.active {
   color: rgba(255, 255, 255, 0.95);
   background-color: #454cc4;
   border-color: rgba(0, 0, 0, 0.1);
 }
 /* line 419, ../components/bootstrap-sass/lib/_mixins.scss */
-.open .tok3n-container .submit button.dropdown-toggle {
+.open .tok3n-submit button.dropdown-toggle {
   color: rgba(255, 255, 255, 0.95);
   background-color: #454cc4;
   border-color: rgba(0, 0, 0, 0.1);
 }
 /* line 424, ../components/bootstrap-sass/lib/_mixins.scss */
-.tok3n-container .submit button:active, .tok3n-container .submit button.active {
+.tok3n-submit button:active, .tok3n-submit button.active {
   background-image: none;
 }
 /* line 428, ../components/bootstrap-sass/lib/_mixins.scss */
-.open .tok3n-container .submit button.dropdown-toggle {
+.open .tok3n-submit button.dropdown-toggle {
   background-image: none;
 }
 /* line 434, ../components/bootstrap-sass/lib/_mixins.scss */
-.tok3n-container .submit button.disabled, .tok3n-container .submit button.disabled:hover, .tok3n-container .submit button.disabled:focus, .tok3n-container .submit button.disabled:active, .tok3n-container .submit button.disabled.active, .tok3n-container .submit button[disabled], .tok3n-container .submit button[disabled]:hover, .tok3n-container .submit button[disabled]:focus, .tok3n-container .submit button[disabled]:active, .tok3n-container .submit button[disabled].active, fieldset[disabled] .tok3n-container .submit button, fieldset[disabled] .tok3n-container .submit button:hover, fieldset[disabled] .tok3n-container .submit button:focus, fieldset[disabled] .tok3n-container .submit button:active, fieldset[disabled] .tok3n-container .submit button.active {
+.tok3n-submit button.disabled, .tok3n-submit button.disabled:hover, .tok3n-submit button.disabled:focus, .tok3n-submit button.disabled:active, .tok3n-submit button.disabled.active, .tok3n-submit button[disabled], .tok3n-submit button[disabled]:hover, .tok3n-submit button[disabled]:focus, .tok3n-submit button[disabled]:active, .tok3n-submit button[disabled].active, fieldset[disabled] .tok3n-submit button, fieldset[disabled] .tok3n-submit button:hover, fieldset[disabled] .tok3n-submit button:focus, fieldset[disabled] .tok3n-submit button:active, fieldset[disabled] .tok3n-submit button.active {
   background-color: #646ace;
   border-color: rgba(0, 0, 0, 0.1);
 }
-/* line 77, ../sass/_login-v2-main.sass */
-.tok3n-container .submit button .stripe {
+/* line 143, ../sass/_login-v2-main.sass */
+.tok3n-submit button .tok3n-button-stripe {
   font-size: 2.42em;
   position: absolute;
-  margin-top: -0.39em;
-  margin-left: -0.6em;
+  margin-top: -16px;
+  margin-left: -25px;
   color: #e05256;
   text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+  -webkit-transition: color 0.3s ease-in-out !important;
+  -moz-transition: color 0.3s ease-in-out !important;
+  -ms-transition: color 0.3s ease-in-out !important;
+  -o-transition: color 0.3s ease-in-out !important;
+  transition: color 0.3s ease-in-out !important;
 }
-/* line 84, ../sass/_login-v2-main.sass */
-.tok3n-container .submit button:hover .stripe, .tok3n-container .submit button:focus .stripe, .tok3n-container .submit button:active .stripe {
+/* line 151, ../sass/_login-v2-main.sass */
+.tok3n-submit button:hover .tok3n-button-stripe, .tok3n-submit button:focus .tok3n-button-stripe, .tok3n-submit button:active .tok3n-button-stripe {
   color: #d9262c;
 }
-/* line 89, ../sass/_login-v2-main.sass */
-.tok3n-container .submit button .text {
+/* line 156, ../sass/_login-v2-main.sass */
+.tok3n-submit button .tok3n-button-text {
   margin-left: 2em;
 }
-/* line 92, ../sass/_login-v2-main.sass */
-.tok3n-container .dont-have-phone, .tok3n-container .error, .tok3n-container .what-is-this {
-  width: 265px;
+
+/* line 159, ../sass/_login-v2-main.sass */
+.tok3n-dont-have-phone {
   margin: 0 0 10px;
-  text-align: left;
 }
-/* line 97, ../sass/_login-v2-main.sass */
-.tok3n-container .dont-have-phone small, .tok3n-container .error small, .tok3n-container .what-is-this small {
-  opacity: 0.6;
+
+/* line 162, ../sass/_login-v2-main.sass */
+.tok3n-dont-have-phone small {
+  opacity: 0.8;
 }
-/* line 100, ../sass/_login-v2-main.sass */
-.tok3n-container .dont-have-phone small:hover, .tok3n-container .error small:hover, .tok3n-container .what-is-this small:hover {
+/* line 165, ../sass/_login-v2-main.sass */
+.tok3n-dont-have-phone small:hover {
   opacity: 1;
 }

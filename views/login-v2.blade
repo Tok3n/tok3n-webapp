@@ -1,26 +1,45 @@
-include 'login-layout.blade'
+include 'login-v2-layout.blade'
 render title('Connect with Tok3n')
 
 append block body
   
-  #login.login
+  #tok3n-login.tok3n-login
     
     .tok3n-container
-      
-      header
-      
-      .lower-wrapper
-        .enter
-          input.otp#tok3n_otp(name='tok3n_otp', type='tel', autocomplete='off', dir='ltr', pattern='[0-9 ]*', autofocus, placeholder='• • • • • •')
-          .placeholder &#128241;
-          input#tok3n_session(type='hidden', name='tok3n_session')
-
-        .dont-have-phone
-          small
-            a(href='#') Don't have your phone?
-        
-        .submit
-          button.ladda-button#tok3n_otp(data-style='zoom-in')
-            .ladda-label
-              .stripe 3 
-              .text Verify with Tok3n
+      .tok3n-flipper
+        .tok3n-front
+          header.tok3n-header
+            .tok3n-logo
+          .tok3n-login-alert.tok3n-login-alert-hidden
+            b Error:
+            | The provided code was incorrect. Please try again.
+          .tok3n-lower-wrapper
+            .tok3n-enter-label
+              label Enter your offline code:
+            .tok3n-enter
+              input.tok3n-otp#tok3n_otp(name='tok3n_otp', type='tel', autocomplete='off', dir='ltr', pattern='[0-9 ]*', autofocus, placeholder='• • • • • •')
+              .tok3n-placeholder &#128241;
+              input#tok3n_session(type='hidden', name='tok3n_session')
+            .tok3n-fallbacks
+              small You can also authenticate via 
+                a(href='#') text message
+                |  or 
+                a(href='#') scanning a QR Code
+                | .
+            .tok3n-dont-have-phone
+              small
+                a(href='#') Don't have your phone?
+            .tok3n-submit
+              button#tok3n_otp
+                .ladda-label
+                  .tok3n-button-stripe 3 
+                  .tok3n-button-text Verify with Tok3n
+        .tok3n-back
+          header.tok3n-header
+            .tok3n-logo
+          .tok3n-login-alert.tok3n-login-alert-hidden
+            b Error:
+            | The provided code was incorrect. Please try again.
+          .tok3n-lower-wrapper
+            .tok3n-enter-label
+              label Scan with the Tok3n mobile app:
