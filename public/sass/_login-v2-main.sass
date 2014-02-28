@@ -9,11 +9,13 @@ $tok3n-purple: #2b3087
 	-webkit-tap-highlight-color: transparent
 	-webkit-touch-callout: none
 	+user-select(none)
+	// overflow: overlay
 
 .tok3n-flipper
 	+transform-style(preserve-3d)
 	position: relative
 	+single-transition(all, .5s, ease-in-out)
+	// +transition-transform(0.5s ease-out)
 
 .tok3n-front, .tok3n-back
 	+backface-visibility(hidden)
@@ -38,10 +40,38 @@ $tok3n-purple: #2b3087
 	+transform(rotateY(180deg))
 
 /////////////////////
-// Front & Back
+// Float labels
 /////////////////////
 
-// .tok3n-back
+$float-label-size: 1.2em
++float-label-animation($float-label-size)
+
+.tok3n-login-form
+	+float-label-size($float-label-size)
+	@extend %float-label
+	.tok3n-login-input > ol
+		list-style: none
+		padding: 0px
+		> li
+			position: relative
+			margin: 1.2em 0
+	.tok3n-login-input
+		margin-top: 2.5em
+	input
+		padding: 0.1em 0em
+		border: none
+		border-radius: 0px
+		border-bottom: 1px solid #ccc
+		outline: none
+		margin: 0px
+		background: none
+		width: 100%
+	label
+		font-weight: normal
+
+/////////////////////
+// Front & Back
+/////////////////////
 
 .tok3n-header
 	height: 80px
@@ -82,7 +112,7 @@ $tok3n-purple: #2b3087
 
 .tok3n-login-alert-active
 	+animation(flash)
-	+animation-duration(.7s)
+	+animation-duration(.5s)
 	+animation-delay(.3s)
 	+animation-iteration-count(1)
 

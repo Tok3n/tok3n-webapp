@@ -8,4 +8,7 @@ l.require(['//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'], funct
       $('.tok3n-back').css('z-index', '3');
     }, 500);
   });
+  $('.tok3n-header').click(function () {
+    $('.tok3n-login-alert').removeClass('tok3n-login-alert-hidden').addClass('tok3n-login-alert-active');
+  });
 });

@@ -13,5 +13,11 @@ l.require [
     ), 500
     return
   )
+  $('.tok3n-header').click(->
+    # $this = $(this)
+    # if $this 
+    $('.tok3n-login-alert').removeClass('tok3n-login-alert-hidden').addClass('tok3n-login-alert-active')
+    return
+  )
 
   return
