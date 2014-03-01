@@ -1,7 +1,7 @@
 l = new Loader()
 l.require [
   "//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"
-], ->
+], (->
   
   # Callback
   $('.tok3n-submit').click(->
@@ -14,10 +14,14 @@ l.require [
     return
   )
   $('.tok3n-header').click(->
-    # $this = $(this)
-    # if $this 
-    $('.tok3n-login-alert').removeClass('tok3n-login-alert-hidden').addClass('tok3n-login-alert-active')
+    alertElem = $('.tok3n-login-alert')
+    if alertElem.hasClass('tok3n-login-alert-active')
+      alertElem.removeClass('tok3n-login-alert-active')
+      setTimeout(-> alertElem.addClass('tok3n-login-alert-active'), 0)
+    else
+      alertElem.removeClass('tok3n-login-alert-hidden').addClass('tok3n-login-alert-active')
     return
   )
 
   return
+)

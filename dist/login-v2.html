@@ -22,21 +22,33 @@
             </header>
             <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided code was incorrect. Please try again.</div>
             <div class="tok3n-lower-wrapper">
+              <h3 class="tok3n-headline tok3n-headline-login tok3n-strike-through-headline">
+                <span>Log in</span>
+              </h3>
               <div class="tok3n-login-form">
                 <div class="tok3n-login-input">
                   <ol>
                     <li>
-                      <input name="email" id="email" />
-                      <label for="email">Email</label>
+                      <input name="email" spellcheck="false" type="email" autofocus="autofocus" id="email" />
+                      <label for="email">Email address</label>
                     </li>
                   </ol>
                 </div>
+              </div>
+              <div class="tok3n-create-an-account">
+                <p>Don't have an account?<a href="#"> Create one now</a>.</p>
+              </div>
+            </div>
+            <div class="tok3n-lower-lower-wrapper">
+              <div class="tok3n-dont-have-phone">
+                <small><a href="#">Having trouble?</a>
+                </small>
               </div>
               <div class="tok3n-submit">
                 <button id="tok3nLogin">
                   <div class="ladda-label">
                     <div class="tok3n-button-stripe">3</div>
-                    <div class="tok3n-button-text">Login with Tok3n</div>
+                    <div class="tok3n-button-text">Log in with Tok3n</div>
                   </div>
                 </button>
               </div>
@@ -47,18 +59,24 @@
               <div class="tok3n-logo"></div>
             </header>
             <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided code was incorrect. Please try again.</div>
-            <div class="tok3n-lower-wrapper">
-              <div class="tok3n-enter-label">
-                <label>Enter your offline code:</label>
+            <div class="pt-perspective">
+              <div class="pt-page-current pt-page-otp pt-page">
+                <div class="tok3n-lower-wrapper">
+                  <div class="tok3n-enter-label">
+                    <label>Enter your offline code:</label>
+                  </div>
+                  <div class="tok3n-enter">
+                    <input name="tok3n_otp" type="tel" autocomplete="off" dir="ltr" pattern="[0-9 ]*" placeholder="• • • • • •" spellcheck="false" id="tok3nOtpInput" class="tok3n-otp" />
+                    <div class="tok3n-placeholder">&#128241;</div>
+                    <input type="hidden" name="tok3n_session" id="tok3n_session" />
+                  </div>
+                  <div class="tok3n-fallbacks">
+                    <small>You can also authenticate via <a href="#">text message</a> or <a href="#">scanning a QR Code</a>.</small>
+                  </div>
+                </div>
               </div>
-              <div class="tok3n-enter">
-                <input name="tok3n_otp" type="tel" autocomplete="off" dir="ltr" pattern="[0-9 ]*" autofocus="autofocus" placeholder="• • • • • •" id="tok3nOtpInput" class="tok3n-otp" />
-                <div class="tok3n-placeholder">&#128241;</div>
-                <input type="hidden" name="tok3n_session" id="tok3n_session" />
-              </div>
-              <div class="tok3n-fallbacks">
-                <small>You can also authenticate via <a href="#">text message</a> or <a href="#">scanning a QR Code</a>.</small>
-              </div>
+            </div>
+            <div class="tok3n-lower-lower-wrapper">
               <div class="tok3n-dont-have-phone">
                 <small><a href="#">Don't have your phone?</a>
                 </small>

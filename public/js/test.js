@@ -9,6 +9,15 @@ l.require(['//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'], funct
     }, 500);
   });
   $('.tok3n-header').click(function () {
-    $('.tok3n-login-alert').removeClass('tok3n-login-alert-hidden').addClass('tok3n-login-alert-active');
+    var alertElem;
+    alertElem = $('.tok3n-login-alert');
+    if (alertElem.hasClass('tok3n-login-alert-active')) {
+      alertElem.removeClass('tok3n-login-alert-active');
+      setTimeout(function () {
+        return alertElem.addClass('tok3n-login-alert-active');
+      }, 0);
+    } else {
+      alertElem.removeClass('tok3n-login-alert-hidden').addClass('tok3n-login-alert-active');
+    }
   });
 });

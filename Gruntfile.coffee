@@ -66,6 +66,8 @@ module.exports = (grunt) ->
 		# There must be fancier ways, which I'll be glad to learn :D
 		# Please fork
 		shell:
+			sleep:
+				command: 'sleep 2s'
 			files: 
 				command: curlArray http_files
 			apps:
@@ -436,6 +438,6 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-sync'
 	@loadNpmTasks 'grunt-prettify'
 
-	@registerTask 'build', ['bower-install', 'shell:files', 'copy', 'license']
+	@registerTask 'build', ['bower-install', 'shell:sleep', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'cssmin:dist', 'sync:dist', 'copy:dart', 'shell:apps', 'prettify', 'replace:dist', 'imagemin:dist', 's3-sync']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'cssmin:dist', 'sync:dist', 'copy:dart', 'shell:sleep', 'shell:apps', 'prettify', 'replace:dist', 'imagemin:dist', 's3-sync']
