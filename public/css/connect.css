@@ -383,7 +383,7 @@ html {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.43;
+  line-height: 1.428571429;
   color: #333333;
   background-color: white;
 }
@@ -443,7 +443,7 @@ img {
 /* line 89, ../components/bootstrap-sass/lib/_scaffolding.scss */
 .img-thumbnail, .thumbnail {
   padding: 4px;
-  line-height: 1.43;
+  line-height: 1.428571429;
   background-color: white;
   border: 1px solid #dddddd;
   border-radius: 4px;
@@ -672,7 +672,7 @@ dl {
 /* line 134, ../components/bootstrap-sass/lib/_type.scss */
 dt,
 dd {
-  line-height: 1.43;
+  line-height: 1.428571429;
 }
 
 /* line 138, ../components/bootstrap-sass/lib/_type.scss */
@@ -744,7 +744,7 @@ blockquote p:last-child {
 /* line 194, ../components/bootstrap-sass/lib/_type.scss */
 blockquote small {
   display: block;
-  line-height: 1.43;
+  line-height: 1.428571429;
   color: #999999;
 }
 /* line 198, ../components/bootstrap-sass/lib/_type.scss */
@@ -785,7 +785,7 @@ address {
   display: block;
   margin-bottom: 20px;
   font-style: normal;
-  line-height: 1.43;
+  line-height: 1.428571429;
 }
 
 /* line 7, ../components/bootstrap-sass/lib/_code.scss */
@@ -810,7 +810,7 @@ pre {
   padding: 9.5px;
   margin: 0 0 10px;
   font-size: 13px;
-  line-height: 1.43;
+  line-height: 1.428571429;
   word-break: break-all;
   word-wrap: break-word;
   color: #333333;
@@ -946,12 +946,12 @@ pre code {
 
 /* line 95, ../components/bootstrap-sass/lib/_grid.scss */
 .col-xs-1 {
-  width: 8.33%;
+  width: 8.3333333333%;
 }
 
 /* line 96, ../components/bootstrap-sass/lib/_grid.scss */
 .col-xs-2 {
-  width: 16.67%;
+  width: 16.6666666667%;
 }
 
 /* line 97, ../components/bootstrap-sass/lib/_grid.scss */
@@ -961,12 +961,12 @@ pre code {
 
 /* line 98, ../components/bootstrap-sass/lib/_grid.scss */
 .col-xs-4 {
-  width: 33.33%;
+  width: 33.3333333333%;
 }
 
 /* line 99, ../components/bootstrap-sass/lib/_grid.scss */
 .col-xs-5 {
-  width: 41.67%;
+  width: 41.6666666667%;
 }
 
 /* line 100, ../components/bootstrap-sass/lib/_grid.scss */
@@ -976,12 +976,12 @@ pre code {
 
 /* line 101, ../components/bootstrap-sass/lib/_grid.scss */
 .col-xs-7 {
-  width: 58.33%;
+  width: 58.3333333333%;
 }
 
 /* line 102, ../components/bootstrap-sass/lib/_grid.scss */
 .col-xs-8 {
-  width: 66.67%;
+  width: 66.6666666667%;
 }
 
 /* line 103, ../components/bootstrap-sass/lib/_grid.scss */
@@ -991,12 +991,12 @@ pre code {
 
 /* line 104, ../components/bootstrap-sass/lib/_grid.scss */
 .col-xs-10 {
-  width: 83.33%;
+  width: 83.3333333333%;
 }
 
 /* line 105, ../components/bootstrap-sass/lib/_grid.scss */
 .col-xs-11 {
-  width: 91.67%;
+  width: 91.6666666667%;
 }
 
 /* line 106, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1027,12 +1027,12 @@ pre code {
 
   /* line 135, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-1 {
-    width: 8.33%;
+    width: 8.3333333333%;
   }
 
   /* line 136, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-2 {
-    width: 16.67%;
+    width: 16.6666666667%;
   }
 
   /* line 137, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1042,12 +1042,12 @@ pre code {
 
   /* line 138, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-4 {
-    width: 33.33%;
+    width: 33.3333333333%;
   }
 
   /* line 139, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-5 {
-    width: 41.67%;
+    width: 41.6666666667%;
   }
 
   /* line 140, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1057,12 +1057,12 @@ pre code {
 
   /* line 141, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-7 {
-    width: 58.33%;
+    width: 58.3333333333%;
   }
 
   /* line 142, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-8 {
-    width: 66.67%;
+    width: 66.6666666667%;
   }
 
   /* line 143, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1072,12 +1072,12 @@ pre code {
 
   /* line 144, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-10 {
-    width: 83.33%;
+    width: 83.3333333333%;
   }
 
   /* line 145, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-11 {
-    width: 91.67%;
+    width: 91.6666666667%;
   }
 
   /* line 146, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1087,12 +1087,12 @@ pre code {
 
   /* line 149, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-push-1 {
-    left: 8.33%;
+    left: 8.3333333333%;
   }
 
   /* line 150, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-push-2 {
-    left: 16.67%;
+    left: 16.6666666667%;
   }
 
   /* line 151, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1102,12 +1102,12 @@ pre code {
 
   /* line 152, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-push-4 {
-    left: 33.33%;
+    left: 33.3333333333%;
   }
 
   /* line 153, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-push-5 {
-    left: 41.67%;
+    left: 41.6666666667%;
   }
 
   /* line 154, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1117,12 +1117,12 @@ pre code {
 
   /* line 155, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-push-7 {
-    left: 58.33%;
+    left: 58.3333333333%;
   }
 
   /* line 156, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-push-8 {
-    left: 66.67%;
+    left: 66.6666666667%;
   }
 
   /* line 157, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1132,22 +1132,22 @@ pre code {
 
   /* line 158, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-push-10 {
-    left: 83.33%;
+    left: 83.3333333333%;
   }
 
   /* line 159, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-push-11 {
-    left: 91.67%;
+    left: 91.6666666667%;
   }
 
   /* line 161, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-pull-1 {
-    right: 8.33%;
+    right: 8.3333333333%;
   }
 
   /* line 162, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-pull-2 {
-    right: 16.67%;
+    right: 16.6666666667%;
   }
 
   /* line 163, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1157,12 +1157,12 @@ pre code {
 
   /* line 164, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-pull-4 {
-    right: 33.33%;
+    right: 33.3333333333%;
   }
 
   /* line 165, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-pull-5 {
-    right: 41.67%;
+    right: 41.6666666667%;
   }
 
   /* line 166, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1172,12 +1172,12 @@ pre code {
 
   /* line 167, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-pull-7 {
-    right: 58.33%;
+    right: 58.3333333333%;
   }
 
   /* line 168, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-pull-8 {
-    right: 66.67%;
+    right: 66.6666666667%;
   }
 
   /* line 169, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1187,22 +1187,22 @@ pre code {
 
   /* line 170, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-pull-10 {
-    right: 83.33%;
+    right: 83.3333333333%;
   }
 
   /* line 171, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-pull-11 {
-    right: 91.67%;
+    right: 91.6666666667%;
   }
 
   /* line 174, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-offset-1 {
-    margin-left: 8.33%;
+    margin-left: 8.3333333333%;
   }
 
   /* line 175, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-offset-2 {
-    margin-left: 16.67%;
+    margin-left: 16.6666666667%;
   }
 
   /* line 176, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1212,12 +1212,12 @@ pre code {
 
   /* line 177, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-offset-4 {
-    margin-left: 33.33%;
+    margin-left: 33.3333333333%;
   }
 
   /* line 178, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-offset-5 {
-    margin-left: 41.67%;
+    margin-left: 41.6666666667%;
   }
 
   /* line 179, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1227,12 +1227,12 @@ pre code {
 
   /* line 180, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-offset-7 {
-    margin-left: 58.33%;
+    margin-left: 58.3333333333%;
   }
 
   /* line 181, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-offset-8 {
-    margin-left: 66.67%;
+    margin-left: 66.6666666667%;
   }
 
   /* line 182, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1242,12 +1242,12 @@ pre code {
 
   /* line 183, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-offset-10 {
-    margin-left: 83.33%;
+    margin-left: 83.3333333333%;
   }
 
   /* line 184, ../components/bootstrap-sass/lib/_grid.scss */
   .col-sm-offset-11 {
-    margin-left: 91.67%;
+    margin-left: 91.6666666667%;
   }
 }
 @media (min-width: 992px) {
@@ -1273,12 +1273,12 @@ pre code {
 
   /* line 212, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-1 {
-    width: 8.33%;
+    width: 8.3333333333%;
   }
 
   /* line 213, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-2 {
-    width: 16.67%;
+    width: 16.6666666667%;
   }
 
   /* line 214, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1288,12 +1288,12 @@ pre code {
 
   /* line 215, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-4 {
-    width: 33.33%;
+    width: 33.3333333333%;
   }
 
   /* line 216, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-5 {
-    width: 41.67%;
+    width: 41.6666666667%;
   }
 
   /* line 217, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1303,12 +1303,12 @@ pre code {
 
   /* line 218, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-7 {
-    width: 58.33%;
+    width: 58.3333333333%;
   }
 
   /* line 219, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-8 {
-    width: 66.67%;
+    width: 66.6666666667%;
   }
 
   /* line 220, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1318,12 +1318,12 @@ pre code {
 
   /* line 221, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-10 {
-    width: 83.33%;
+    width: 83.3333333333%;
   }
 
   /* line 222, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-11 {
-    width: 91.67%;
+    width: 91.6666666667%;
   }
 
   /* line 223, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1338,12 +1338,12 @@ pre code {
 
   /* line 227, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-push-1 {
-    left: 8.33%;
+    left: 8.3333333333%;
   }
 
   /* line 228, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-push-2 {
-    left: 16.67%;
+    left: 16.6666666667%;
   }
 
   /* line 229, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1353,12 +1353,12 @@ pre code {
 
   /* line 230, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-push-4 {
-    left: 33.33%;
+    left: 33.3333333333%;
   }
 
   /* line 231, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-push-5 {
-    left: 41.67%;
+    left: 41.6666666667%;
   }
 
   /* line 232, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1368,12 +1368,12 @@ pre code {
 
   /* line 233, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-push-7 {
-    left: 58.33%;
+    left: 58.3333333333%;
   }
 
   /* line 234, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-push-8 {
-    left: 66.67%;
+    left: 66.6666666667%;
   }
 
   /* line 235, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1383,12 +1383,12 @@ pre code {
 
   /* line 236, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-push-10 {
-    left: 83.33%;
+    left: 83.3333333333%;
   }
 
   /* line 237, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-push-11 {
-    left: 91.67%;
+    left: 91.6666666667%;
   }
 
   /* line 239, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1398,12 +1398,12 @@ pre code {
 
   /* line 240, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-pull-1 {
-    right: 8.33%;
+    right: 8.3333333333%;
   }
 
   /* line 241, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-pull-2 {
-    right: 16.67%;
+    right: 16.6666666667%;
   }
 
   /* line 242, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1413,12 +1413,12 @@ pre code {
 
   /* line 243, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-pull-4 {
-    right: 33.33%;
+    right: 33.3333333333%;
   }
 
   /* line 244, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-pull-5 {
-    right: 41.67%;
+    right: 41.6666666667%;
   }
 
   /* line 245, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1428,12 +1428,12 @@ pre code {
 
   /* line 246, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-pull-7 {
-    right: 58.33%;
+    right: 58.3333333333%;
   }
 
   /* line 247, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-pull-8 {
-    right: 66.67%;
+    right: 66.6666666667%;
   }
 
   /* line 248, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1443,12 +1443,12 @@ pre code {
 
   /* line 249, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-pull-10 {
-    right: 83.33%;
+    right: 83.3333333333%;
   }
 
   /* line 250, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-pull-11 {
-    right: 91.67%;
+    right: 91.6666666667%;
   }
 
   /* line 253, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1458,12 +1458,12 @@ pre code {
 
   /* line 254, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-offset-1 {
-    margin-left: 8.33%;
+    margin-left: 8.3333333333%;
   }
 
   /* line 255, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-offset-2 {
-    margin-left: 16.67%;
+    margin-left: 16.6666666667%;
   }
 
   /* line 256, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1473,12 +1473,12 @@ pre code {
 
   /* line 257, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-offset-4 {
-    margin-left: 33.33%;
+    margin-left: 33.3333333333%;
   }
 
   /* line 258, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-offset-5 {
-    margin-left: 41.67%;
+    margin-left: 41.6666666667%;
   }
 
   /* line 259, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1488,12 +1488,12 @@ pre code {
 
   /* line 260, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-offset-7 {
-    margin-left: 58.33%;
+    margin-left: 58.3333333333%;
   }
 
   /* line 261, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-offset-8 {
-    margin-left: 66.67%;
+    margin-left: 66.6666666667%;
   }
 
   /* line 262, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1503,12 +1503,12 @@ pre code {
 
   /* line 263, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-offset-10 {
-    margin-left: 83.33%;
+    margin-left: 83.3333333333%;
   }
 
   /* line 264, ../components/bootstrap-sass/lib/_grid.scss */
   .col-md-offset-11 {
-    margin-left: 91.67%;
+    margin-left: 91.6666666667%;
   }
 }
 @media (min-width: 1200px) {
@@ -1534,12 +1534,12 @@ pre code {
 
   /* line 293, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-1 {
-    width: 8.33%;
+    width: 8.3333333333%;
   }
 
   /* line 294, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-2 {
-    width: 16.67%;
+    width: 16.6666666667%;
   }
 
   /* line 295, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1549,12 +1549,12 @@ pre code {
 
   /* line 296, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-4 {
-    width: 33.33%;
+    width: 33.3333333333%;
   }
 
   /* line 297, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-5 {
-    width: 41.67%;
+    width: 41.6666666667%;
   }
 
   /* line 298, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1564,12 +1564,12 @@ pre code {
 
   /* line 299, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-7 {
-    width: 58.33%;
+    width: 58.3333333333%;
   }
 
   /* line 300, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-8 {
-    width: 66.67%;
+    width: 66.6666666667%;
   }
 
   /* line 301, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1579,12 +1579,12 @@ pre code {
 
   /* line 302, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-10 {
-    width: 83.33%;
+    width: 83.3333333333%;
   }
 
   /* line 303, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-11 {
-    width: 91.67%;
+    width: 91.6666666667%;
   }
 
   /* line 304, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1599,12 +1599,12 @@ pre code {
 
   /* line 308, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-push-1 {
-    left: 8.33%;
+    left: 8.3333333333%;
   }
 
   /* line 309, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-push-2 {
-    left: 16.67%;
+    left: 16.6666666667%;
   }
 
   /* line 310, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1614,12 +1614,12 @@ pre code {
 
   /* line 311, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-push-4 {
-    left: 33.33%;
+    left: 33.3333333333%;
   }
 
   /* line 312, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-push-5 {
-    left: 41.67%;
+    left: 41.6666666667%;
   }
 
   /* line 313, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1629,12 +1629,12 @@ pre code {
 
   /* line 314, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-push-7 {
-    left: 58.33%;
+    left: 58.3333333333%;
   }
 
   /* line 315, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-push-8 {
-    left: 66.67%;
+    left: 66.6666666667%;
   }
 
   /* line 316, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1644,12 +1644,12 @@ pre code {
 
   /* line 317, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-push-10 {
-    left: 83.33%;
+    left: 83.3333333333%;
   }
 
   /* line 318, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-push-11 {
-    left: 91.67%;
+    left: 91.6666666667%;
   }
 
   /* line 320, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1659,12 +1659,12 @@ pre code {
 
   /* line 321, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-pull-1 {
-    right: 8.33%;
+    right: 8.3333333333%;
   }
 
   /* line 322, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-pull-2 {
-    right: 16.67%;
+    right: 16.6666666667%;
   }
 
   /* line 323, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1674,12 +1674,12 @@ pre code {
 
   /* line 324, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-pull-4 {
-    right: 33.33%;
+    right: 33.3333333333%;
   }
 
   /* line 325, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-pull-5 {
-    right: 41.67%;
+    right: 41.6666666667%;
   }
 
   /* line 326, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1689,12 +1689,12 @@ pre code {
 
   /* line 327, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-pull-7 {
-    right: 58.33%;
+    right: 58.3333333333%;
   }
 
   /* line 328, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-pull-8 {
-    right: 66.67%;
+    right: 66.6666666667%;
   }
 
   /* line 329, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1704,12 +1704,12 @@ pre code {
 
   /* line 330, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-pull-10 {
-    right: 83.33%;
+    right: 83.3333333333%;
   }
 
   /* line 331, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-pull-11 {
-    right: 91.67%;
+    right: 91.6666666667%;
   }
 
   /* line 334, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1719,12 +1719,12 @@ pre code {
 
   /* line 335, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-offset-1 {
-    margin-left: 8.33%;
+    margin-left: 8.3333333333%;
   }
 
   /* line 336, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-offset-2 {
-    margin-left: 16.67%;
+    margin-left: 16.6666666667%;
   }
 
   /* line 337, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1734,12 +1734,12 @@ pre code {
 
   /* line 338, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-offset-4 {
-    margin-left: 33.33%;
+    margin-left: 33.3333333333%;
   }
 
   /* line 339, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-offset-5 {
-    margin-left: 41.67%;
+    margin-left: 41.6666666667%;
   }
 
   /* line 340, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1749,12 +1749,12 @@ pre code {
 
   /* line 341, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-offset-7 {
-    margin-left: 58.33%;
+    margin-left: 58.3333333333%;
   }
 
   /* line 342, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-offset-8 {
-    margin-left: 66.67%;
+    margin-left: 66.6666666667%;
   }
 
   /* line 343, ../components/bootstrap-sass/lib/_grid.scss */
@@ -1764,12 +1764,12 @@ pre code {
 
   /* line 344, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-offset-10 {
-    margin-left: 83.33%;
+    margin-left: 83.3333333333%;
   }
 
   /* line 345, ../components/bootstrap-sass/lib/_grid.scss */
   .col-lg-offset-11 {
-    margin-left: 91.67%;
+    margin-left: 91.6666666667%;
   }
 }
 /* line 6, ../components/bootstrap-sass/lib/_tables.scss */
@@ -1796,7 +1796,7 @@ th {
 .table tfoot > tr > th,
 .table tfoot > tr > td {
   padding: 8px;
-  line-height: 1.43;
+  line-height: 1.428571429;
   vertical-align: top;
   border-top: 1px solid #dddddd;
 }
@@ -2110,14 +2110,14 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
-  line-height: 1.43;
+  line-height: 1.428571429;
   color: #555555;
   vertical-align: middle;
   background-color: white;
   border: 1px solid #cccccc;
   border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
@@ -2125,8 +2125,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(102, 175, 233, 0.6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(102, 175, 233, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 /* line 139, ../components/bootstrap-sass/lib/_forms.scss */
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
@@ -2273,14 +2273,14 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 /* line 669, ../components/bootstrap-sass/lib/_mixins.scss */
 .has-warning .form-control {
   border-color: #c09853;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 /* line 672, ../components/bootstrap-sass/lib/_mixins.scss */
 .has-warning .form-control:focus {
   border-color: #a47e3c;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #dbc59e;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #dbc59e;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #dbc59e;
 }
 /* line 679, ../components/bootstrap-sass/lib/_mixins.scss */
 .has-warning .input-group-addon {
@@ -2297,14 +2297,14 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 /* line 669, ../components/bootstrap-sass/lib/_mixins.scss */
 .has-error .form-control {
   border-color: #b94a48;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 /* line 672, ../components/bootstrap-sass/lib/_mixins.scss */
 .has-error .form-control:focus {
   border-color: #953b39;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #d59392;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #d59392;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392;
 }
 /* line 679, ../components/bootstrap-sass/lib/_mixins.scss */
 .has-error .input-group-addon {
@@ -2321,14 +2321,14 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 /* line 669, ../components/bootstrap-sass/lib/_mixins.scss */
 .has-success .form-control {
   border-color: #468847;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 /* line 672, ../components/bootstrap-sass/lib/_mixins.scss */
 .has-success .form-control:focus {
   border-color: #356635;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #7aba7b;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #7aba7b;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #7aba7b;
 }
 /* line 679, ../components/bootstrap-sass/lib/_mixins.scss */
 .has-success .input-group-addon {
@@ -2420,7 +2420,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.43;
+  line-height: 1.428571429;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -2448,8 +2448,8 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 .btn:active, .state-buttons a:active, .btn.active, .state-buttons a.active {
   outline: 0;
   background-image: none;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.13);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.13);
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 /* line 42, ../components/bootstrap-sass/lib/_buttons.scss */
 .btn.disabled, .state-buttons a.disabled, .btn[disabled], .state-buttons a[disabled], fieldset[disabled] .btn, fieldset[disabled] .state-buttons a, .state-buttons fieldset[disabled] a {
@@ -3815,8 +3815,8 @@ input[type="button"].btn-block,
   border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   background-clip: padding-box;
 }
 /* line 53, ../components/bootstrap-sass/lib/_dropdowns.scss */
@@ -3837,7 +3837,7 @@ input[type="button"].btn-block,
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
-  line-height: 1.43;
+  line-height: 1.428571429;
   color: #333333;
   white-space: nowrap;
 }
@@ -3885,7 +3885,7 @@ input[type="button"].btn-block,
   display: block;
   padding: 3px 20px;
   font-size: 12px;
-  line-height: 1.43;
+  line-height: 1.428571429;
   color: #999999;
 }
 
@@ -4084,8 +4084,8 @@ input[type="button"].btn-block,
 
 /* line 151, ../components/bootstrap-sass/lib/_button-groups.scss */
 .btn-group.open .dropdown-toggle {
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.13);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.13);
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
 /* line 157, ../components/bootstrap-sass/lib/_button-groups.scss */
@@ -4394,7 +4394,7 @@ input[type="button"].btn-block,
 /* line 79, ../components/bootstrap-sass/lib/_navs.scss */
 .nav-tabs > li > a {
   margin-right: 2px;
-  line-height: 1.43;
+  line-height: 1.428571429;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
 }
@@ -5107,7 +5107,7 @@ input[type="button"].btn-block,
   position: relative;
   float: left;
   padding: 6px 12px;
-  line-height: 1.43;
+  line-height: 1.428571429;
   text-decoration: none;
   background-color: white;
   border: 1px solid #dddddd;
@@ -5378,7 +5378,7 @@ a.list-group-item.active > .badge,
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
-  line-height: 2.14;
+  line-height: 2.1428571435;
   color: inherit;
   background-color: #eeeeee;
 }
@@ -6170,7 +6170,7 @@ body.modal-open {
 .modal-header {
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
-  min-height: 16.43px;
+  min-height: 16.428571429px;
 }
 
 /* line 91, ../components/bootstrap-sass/lib/_modals.scss */
@@ -6181,7 +6181,7 @@ body.modal-open {
 /* line 96, ../components/bootstrap-sass/lib/_modals.scss */
 .modal-title {
   margin: 0;
-  line-height: 1.43;
+  line-height: 1.428571429;
 }
 
 /* line 103, ../components/bootstrap-sass/lib/_modals.scss */
@@ -6580,10 +6580,10 @@ body.modal-open {
 }
 /* line 82, ../components/bootstrap-sass/lib/_carousel.scss */
 .carousel-control.left {
-  background-image: -webkit-gradient(linear, 0% top, 100% top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0)));
-  background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.5) 0%), color-stop(rgba(0, 0, 0, 0.0) 100%));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0) 100%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0) 100%);
+  background-image: -webkit-gradient(linear, 0% top, 100% top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
+  background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.5) 0%), color-stop(rgba(0, 0, 0, 0.0001) 100%));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
 }
@@ -6591,10 +6591,10 @@ body.modal-open {
 .carousel-control.right {
   left: auto;
   right: 0;
-  background-image: -webkit-gradient(linear, 0% top, 100% top, from(rgba(0, 0, 0, 0.0)), to(rgba(0, 0, 0, 0.5)));
-  background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0) 0%), color-stop(rgba(0, 0, 0, 0.5) 100%));
-  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.5) 100%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-image: -webkit-gradient(linear, 0% top, 100% top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));
+  background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0001) 0%), color-stop(rgba(0, 0, 0, 0.5) 100%));
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
 }
@@ -7519,7 +7519,7 @@ td.visible-print {
 /* makes the font 33% larger relative to the icon container */
 /* line 5, ../components/font-awesome/scss/_larger.scss */
 .fa-lg {
-  font-size: 1.33em;
+  font-size: 1.3333333333em;
   line-height: 0.75em;
   vertical-align: -15%;
 }
@@ -7546,14 +7546,14 @@ td.visible-print {
 
 /* line 3, ../components/font-awesome/scss/_fixed-width.scss */
 .fa-fw {
-  width: 1.29em;
+  width: 1.2857142857em;
   text-align: center;
 }
 
 /* line 4, ../components/font-awesome/scss/_list.scss */
 .fa-ul {
   padding-left: 0;
-  margin-left: 2.14em;
+  margin-left: 2.1428571429em;
   list-style-type: none;
 }
 /* line 8, ../components/font-awesome/scss/_list.scss */
@@ -7564,14 +7564,14 @@ td.visible-print {
 /* line 10, ../components/font-awesome/scss/_list.scss */
 .fa-li {
   position: absolute;
-  left: -2.14em;
-  width: 2.14em;
-  top: 0.14em;
+  left: -2.1428571429em;
+  width: 2.1428571429em;
+  top: 0.1428571429em;
   text-align: center;
 }
 /* line 16, ../components/font-awesome/scss/_list.scss */
 .fa-li.fa-lg {
-  left: -1.86em;
+  left: -1.8571428571em;
 }
 
 /* line 4, ../components/font-awesome/scss/_bordered-pulled.scss */
@@ -9701,12 +9701,12 @@ a {
   margin: 0.61em 0;
   height: 40px;
   width: 111px;
-  background-image: url('//s3.amazonaws.com/static.tok3n.com/0.0.1/img/logo.png?1376272590');
+  background-image: url('../img/logo.png?1376272590');
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
   /* line 51, ../sass/base.sass */
   .top-nav header .logo {
-    background-image: url('//s3.amazonaws.com/static.tok3n.com/0.0.1/img/logo_hd.png?1376272590');
+    background-image: url('../img/logo_hd.png?1376272590');
     background-size: 111px 40px;
   }
 }
@@ -10127,7 +10127,7 @@ ol.progress-meter li.done:before {
   height: 19px;
   width: 19px;
   line-height: 21.85px;
-  bottom: -25.73px;
+  bottom: -25.725px;
   border: none;
   border-radius: 19px;
 }
@@ -10139,7 +10139,7 @@ ol.progress-meter li.todo {
 ol.progress-meter li.todo:before {
   content: "\2B24";
   font-size: 17.1px;
-  bottom: -25.73px;
+  bottom: -25.725px;
   line-height: 18.05px;
 }
 /* line 25, ../sass/_connect-main.sass */

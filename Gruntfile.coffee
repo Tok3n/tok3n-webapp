@@ -138,7 +138,7 @@ module.exports = (grunt) ->
 		compass:
 			options:
 				outputStyle: 'expanded'
-				raw: 'preferred_syntax = :sass\nSass::Script::Number.precision = 2\n
+				raw: 'preferred_syntax = :sass\n::Sass::Script::Number.precision = [10, ::Sass::Script::Number.precision].max\n
 					sass_options = {:quiet => true}\n'
 				require: ['breakpoint-slicer', 'animate']
 				cssDir: css
