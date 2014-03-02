@@ -5,7 +5,7 @@ l.require(['//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'], funct
   $('.tok3n-submit').click(function () {
     setTimeout(function () {
       $('.tok3n-flipper').toggleClass('tok3n-flipped');
-      $('.tok3n-back').css('z-index', '3');
+      $('.tok3n-back').css('z-index', '999');
     }, 500);
   });
   $('.tok3n-header').click(function () {

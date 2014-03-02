@@ -7,7 +7,7 @@ append block body
     
     .tok3n-container
       .tok3n-flipper
-        .tok3n-back
+        .tok3n-front
           header.tok3n-header
             .tok3n-logo
           .tok3n-login-alert.tok3n-login-alert-hidden
@@ -35,16 +35,16 @@ append block body
                   //- | Continue
                   .tok3n-button-stripe 3 
                   .tok3n-button-text Log in with Tok3n
-        .tok3n-front
+        .tok3n-back
           header.tok3n-header
             .tok3n-logo
           .tok3n-radio-slider
             input#one(type="radio", name="group-1")
-            label.lbl(for="one") ONE
+            label.lbl(for="one") SMS
             input#two(type="radio", name="group-1")
-            label.lbl(for="two") TWO
+            label.lbl(for="two") QR
             input#three(type="radio", name="group-1")
-            label.lbl(for="three") THREE
+            label.lbl(for="three") OFFLINE
             .slider
           .tok3n-login-alert.tok3n-login-alert-hidden
             b Error:

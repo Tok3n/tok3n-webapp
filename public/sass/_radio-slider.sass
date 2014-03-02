@@ -1,4 +1,7 @@
+// Based on http://codepen.io/nickbottomley/pen/hkfeI by nickb1080
+
 @mixin radio-slider-number-of-options($number)
+  $no-selection-selector: ""
   @for $i from 1 through $number
     input:nth-of-type(#{$i}):checked ~ .slider
       left: ($i - 1) * (1 / $number) * 100.0%
@@ -6,7 +9,13 @@
       width: (1 / $number) * 100.0%
     & .slider
       width: (1 / $number) * 100.0%
-      width: (1 / $number) * -100.0%
+      left: (1 / $number) * -100.0%
+    $no-selection-selector: $no-selection-selector + "input:not(:checked) ~ "
+    
+  $no-selection-selector: $no-selection-selector + ".slider"
+  #{$no-selection-selector} 
+    transition: top .25s ease-in-out .25s, left .25s ease-in-out .5s
+
 
 %radio-slider
   font-size: 0
@@ -20,13 +29,13 @@
     position: relative
     z-index: 10
     cursor: pointer
-    +single-transition(color, .25s, ease, .1s)
+    transition: color .25s ease .1s
     
   & .slider
     position: absolute
-    +single-transition(left, .25s, ease)
+    //+transition(left .25s ease-in-out)
     height: 100%
-    top: -150%
+    top: -100%
 
   input[type="radio"]
     display: none
@@ -36,16 +45,11 @@
 
   input:checked ~ .slider
     top: 0
-    +single-transition(top, .25s, ease-in-out, .25s)
-    +single-transition(left, .25s, ease-in-out)
+    transition: top .25s ease-in-out .25s, left .25s ease-in-out
 
-  input:not(:checked) ~ input:not(:checked) ~ input:not(:checked) ~ input:not(:checked) ~ .slider
-    +single-transition(top, .25s, ease-in-out, .25s)
-    +single-transition(left, .25s, ease-in-out, .5s)
-
-///////////////////////
-// Example usage CSS //
-///////////////////////
+////////////////////////
+// Example usage SASS //
+////////////////////////
 
 // .tok3n-radio-slider
 //   +radio-slider-number-of-options(3)

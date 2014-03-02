@@ -8,7 +8,7 @@ l.require [
     setTimeout (->
       # Card flip
         $('.tok3n-flipper').toggleClass('tok3n-flipped')
-        $('.tok3n-back').css('z-index', '3')
+        $('.tok3n-back').css('z-index', '999')
         return
     ), 500
     return
