@@ -2087,24 +2087,24 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 }
 
 /* line 57, ../components/bootstrap-sass/lib/_mixins.scss */
-.form-control:-moz-placeholder, .tok3n-enter .tok3n-otp:-moz-placeholder {
+.form-control:-moz-placeholder, .tok3n-otp:-moz-placeholder {
   color: #999999;
 }
 /* line 58, ../components/bootstrap-sass/lib/_mixins.scss */
-.form-control::-moz-placeholder, .tok3n-enter .tok3n-otp::-moz-placeholder {
+.form-control::-moz-placeholder, .tok3n-otp::-moz-placeholder {
   color: #999999;
 }
 /* line 59, ../components/bootstrap-sass/lib/_mixins.scss */
-.form-control:-ms-input-placeholder, .tok3n-enter .tok3n-otp:-ms-input-placeholder {
+.form-control:-ms-input-placeholder, .tok3n-otp:-ms-input-placeholder {
   color: #999999;
 }
 /* line 60, ../components/bootstrap-sass/lib/_mixins.scss */
-.form-control::-webkit-input-placeholder, .tok3n-enter .tok3n-otp::-webkit-input-placeholder {
+.form-control::-webkit-input-placeholder, .tok3n-otp::-webkit-input-placeholder {
   color: #999999;
 }
 
 /* line 117, ../components/bootstrap-sass/lib/_forms.scss */
-.form-control, .tok3n-enter .tok3n-otp {
+.form-control, .tok3n-otp {
   display: block;
   width: 100%;
   height: 34px;
@@ -2122,20 +2122,20 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 /* line 701, ../components/bootstrap-sass/lib/_mixins.scss */
-.form-control:focus, .tok3n-enter .tok3n-otp:focus {
+.form-control:focus, .tok3n-otp:focus {
   border-color: #66afe9;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 /* line 139, ../components/bootstrap-sass/lib/_forms.scss */
-.form-control[disabled], .tok3n-enter [disabled].tok3n-otp, .form-control[readonly], .tok3n-enter [readonly].tok3n-otp, fieldset[disabled] .form-control, fieldset[disabled] .tok3n-enter .tok3n-otp, .tok3n-enter fieldset[disabled] .tok3n-otp {
+.form-control[disabled], [disabled].tok3n-otp, .form-control[readonly], [readonly].tok3n-otp, fieldset[disabled] .form-control, fieldset[disabled] .tok3n-otp {
   cursor: not-allowed;
   background-color: #eeeeee;
 }
 
 /* line 148, ../components/bootstrap-sass/lib/_forms.scss */
-textarea.form-control, .tok3n-enter textarea.tok3n-otp {
+textarea.form-control, textarea.tok3n-otp {
   height: auto;
 }
 
@@ -2212,7 +2212,7 @@ input[type="checkbox"],
 }
 
 /* line 715, ../components/bootstrap-sass/lib/_mixins.scss */
-.input-sm, .input-group-sm > .form-control, .tok3n-enter .input-group-sm > .tok3n-otp,
+.input-sm, .input-group-sm > .form-control, .input-group-sm > .tok3n-otp,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn,
 .tok3n-submit .input-group-sm > .input-group-btn > button {
@@ -2224,7 +2224,7 @@ input[type="checkbox"],
 }
 
 /* line 720, ../components/bootstrap-sass/lib/_mixins.scss */
-select.input-sm, .input-group-sm > select.form-control, .tok3n-enter .input-group-sm > select.tok3n-otp,
+select.input-sm, .input-group-sm > select.form-control, .input-group-sm > select.tok3n-otp,
 .input-group-sm > select.input-group-addon,
 .input-group-sm > .input-group-btn > select.btn {
   height: 30px;
@@ -2232,14 +2232,14 @@ select.input-sm, .input-group-sm > select.form-control, .tok3n-enter .input-grou
 }
 
 /* line 725, ../components/bootstrap-sass/lib/_mixins.scss */
-textarea.input-sm, .input-group-sm > textarea.form-control, .tok3n-enter .input-group-sm > textarea.tok3n-otp,
+textarea.input-sm, .input-group-sm > textarea.form-control, .input-group-sm > textarea.tok3n-otp,
 .input-group-sm > textarea.input-group-addon,
 .input-group-sm > .input-group-btn > textarea.btn {
   height: auto;
 }
 
 /* line 715, ../components/bootstrap-sass/lib/_mixins.scss */
-.input-lg, .input-group-lg > .form-control, .tok3n-enter .input-group-lg > .tok3n-otp,
+.input-lg, .input-group-lg > .form-control, .input-group-lg > .tok3n-otp,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn,
 .tok3n-submit .input-group-lg > .input-group-btn > button {
@@ -2251,7 +2251,7 @@ textarea.input-sm, .input-group-sm > textarea.form-control, .tok3n-enter .input-
 }
 
 /* line 720, ../components/bootstrap-sass/lib/_mixins.scss */
-select.input-lg, .input-group-lg > select.form-control, .tok3n-enter .input-group-lg > select.tok3n-otp,
+select.input-lg, .input-group-lg > select.form-control, .input-group-lg > select.tok3n-otp,
 .input-group-lg > select.input-group-addon,
 .input-group-lg > .input-group-btn > select.btn {
   height: 45px;
@@ -2259,7 +2259,7 @@ select.input-lg, .input-group-lg > select.form-control, .tok3n-enter .input-grou
 }
 
 /* line 725, ../components/bootstrap-sass/lib/_mixins.scss */
-textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-enter .input-group-lg > textarea.tok3n-otp,
+textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > textarea.tok3n-otp,
 .input-group-lg > textarea.input-group-addon,
 .input-group-lg > .input-group-btn > textarea.btn {
   height: auto;
@@ -2271,13 +2271,13 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-enter .input-
   color: #c09853;
 }
 /* line 669, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-warning .form-control, .has-warning .tok3n-enter .tok3n-otp, .tok3n-enter .has-warning .tok3n-otp {
+.has-warning .form-control, .has-warning .tok3n-otp {
   border-color: #c09853;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
 }
 /* line 672, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-warning .form-control:focus, .has-warning .tok3n-enter .tok3n-otp:focus, .tok3n-enter .has-warning .tok3n-otp:focus {
+.has-warning .form-control:focus, .has-warning .tok3n-otp:focus {
   border-color: #a47e3c;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #dbc59e;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #dbc59e;
@@ -2295,13 +2295,13 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-enter .input-
   color: #b94a48;
 }
 /* line 669, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-error .form-control, .has-error .tok3n-enter .tok3n-otp, .tok3n-enter .has-error .tok3n-otp {
+.has-error .form-control, .has-error .tok3n-otp {
   border-color: #b94a48;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
 }
 /* line 672, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-error .form-control:focus, .has-error .tok3n-enter .tok3n-otp:focus, .tok3n-enter .has-error .tok3n-otp:focus {
+.has-error .form-control:focus, .has-error .tok3n-otp:focus {
   border-color: #953b39;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #d59392;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #d59392;
@@ -2319,13 +2319,13 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-enter .input-
   color: #468847;
 }
 /* line 669, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-success .form-control, .has-success .tok3n-enter .tok3n-otp, .tok3n-enter .has-success .tok3n-otp {
+.has-success .form-control, .has-success .tok3n-otp {
   border-color: #468847;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
 }
 /* line 672, ../components/bootstrap-sass/lib/_mixins.scss */
-.has-success .form-control:focus, .has-success .tok3n-enter .tok3n-otp:focus, .tok3n-enter .has-success .tok3n-otp:focus {
+.has-success .form-control:focus, .has-success .tok3n-otp:focus {
   border-color: #356635;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #7aba7b;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 6px #7aba7b;
@@ -2359,7 +2359,7 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .tok3n-enter .input-
     vertical-align: middle;
   }
   /* line 298, ../components/bootstrap-sass/lib/_forms.scss */
-  .form-inline .form-control, .navbar-form .form-control, .form-inline .tok3n-enter .tok3n-otp, .tok3n-enter .form-inline .tok3n-otp, .navbar-form .tok3n-enter .tok3n-otp, .tok3n-enter .navbar-form .tok3n-otp {
+  .form-inline .form-control, .navbar-form .form-control, .form-inline .tok3n-otp, .navbar-form .tok3n-otp {
     display: inline-block;
   }
   /* line 305, ../components/bootstrap-sass/lib/_forms.scss */
@@ -4205,7 +4205,7 @@ input[type="button"].btn-block {
   padding-right: 0;
 }
 /* line 19, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group .form-control, .input-group .tok3n-enter .tok3n-otp, .tok3n-enter .input-group .tok3n-otp {
+.input-group .form-control, .input-group .tok3n-otp {
   width: 100%;
   margin-bottom: 0;
 }
@@ -4214,16 +4214,14 @@ input[type="button"].btn-block {
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control,
-.input-group .tok3n-enter .tok3n-otp,
-.tok3n-enter .input-group .tok3n-otp {
+.input-group .tok3n-otp {
   display: table-cell;
 }
 /* line 45, ../components/bootstrap-sass/lib/_input-groups.scss */
 .input-group-addon:not(:first-child):not(:last-child),
 .input-group-btn:not(:first-child):not(:last-child),
 .input-group .form-control:not(:first-child):not(:last-child),
-.input-group .tok3n-enter .tok3n-otp:not(:first-child):not(:last-child),
-.tok3n-enter .input-group .tok3n-otp:not(:first-child):not(:last-child) {
+.input-group .tok3n-otp:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
 
@@ -4271,7 +4269,7 @@ input[type="button"].btn-block {
 }
 
 /* line 89, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group .form-control:first-child, .input-group .tok3n-enter .tok3n-otp:first-child, .tok3n-enter .input-group .tok3n-otp:first-child,
+.input-group .form-control:first-child, .input-group .tok3n-otp:first-child,
 .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
 .tok3n-submit .input-group-btn:first-child > button,
@@ -4288,7 +4286,7 @@ input[type="button"].btn-block {
 }
 
 /* line 99, ../components/bootstrap-sass/lib/_input-groups.scss */
-.input-group .form-control:last-child, .input-group .tok3n-enter .tok3n-otp:last-child, .tok3n-enter .input-group .tok3n-otp:last-child,
+.input-group .form-control:last-child, .input-group .tok3n-otp:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
 .tok3n-submit .input-group-btn:last-child > button,
@@ -10149,6 +10147,117 @@ td.visible-print {
   animation: none;
 }
 
+/* line 1, ../sass/_radio-slider.sass */
+input[type="radio"] {
+  display: none;
+}
+
+/* line 3, ../sass/_radio-slider.sass */
+input:nth-of-type(1):checked ~ .slider {
+  left: 0;
+}
+
+/* line 5, ../sass/_radio-slider.sass */
+input:nth-of-type(2):checked ~ .slider {
+  left: 25%;
+}
+
+/* line 7, ../sass/_radio-slider.sass */
+input:nth-of-type(3):checked ~ .slider {
+  left: 50%;
+}
+
+/* line 9, ../sass/_radio-slider.sass */
+input:nth-of-type(4):checked ~ .slider {
+  left: 75%;
+}
+
+/* line 12, ../sass/_radio-slider.sass */
+input:checked + label {
+  cursor: default;
+  color: white;
+}
+
+/* line 16, ../sass/_radio-slider.sass */
+.label-wrapper {
+  background: #2c3e50;
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 0;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+/* line 30, ../sass/_radio-slider.sass */
+.label-wrapper label {
+  font-size: 1rem;
+  text-align: center;
+  display: inline-block;
+  width: 25%;
+  position: relative;
+  z-index: 10;
+  padding: 1rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.75);
+  -webkit-transition: color 0.25s ease 0.1s !important;
+  -moz-transition: color 0.25s ease 0.1s !important;
+  -ms-transition: color 0.25s ease 0.1s !important;
+  -o-transition: color 0.25s ease 0.1s !important;
+  transition: color 0.25s ease 0.1s !important;
+}
+/* line 41, ../sass/_radio-slider.sass */
+.label-wrapper label:not(:last-of-type) {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+/* line 43, ../sass/_radio-slider.sass */
+.label-wrapper .slider {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  left: -25%;
+  top: -150%;
+  -webkit-transition: left 0.25s ease !important;
+  -moz-transition: left 0.25s ease !important;
+  -ms-transition: left 0.25s ease !important;
+  -o-transition: left 0.25s ease !important;
+  transition: left 0.25s ease !important;
+  background: #27ae60;
+  -moz-border-radius: 0rem;
+  -webkit-border-radius: 0rem;
+  border-radius: 0rem;
+  -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
+}
+
+/* line 55, ../sass/_radio-slider.sass */
+input:checked ~ .slider {
+  top: 0;
+  -webkit-transition: top 0.25s ease-in-out 0.25s !important;
+  -moz-transition: top 0.25s ease-in-out 0.25s !important;
+  -ms-transition: top 0.25s ease-in-out 0.25s !important;
+  -o-transition: top 0.25s ease-in-out 0.25s !important;
+  transition: top 0.25s ease-in-out 0.25s !important;
+  -webkit-transition: left 0.25s ease-in-out !important;
+  -moz-transition: left 0.25s ease-in-out !important;
+  -ms-transition: left 0.25s ease-in-out !important;
+  -o-transition: left 0.25s ease-in-out !important;
+  transition: left 0.25s ease-in-out !important;
+}
+
+/* line 60, ../sass/_radio-slider.sass */
+input:not(:checked) ~ input:not(:checked) ~ input:not(:checked) ~ input:not(:checked) ~ .slider {
+  -webkit-transition: top 0.25s ease-in-out 0.25s !important;
+  -moz-transition: top 0.25s ease-in-out 0.25s !important;
+  -ms-transition: top 0.25s ease-in-out 0.25s !important;
+  -o-transition: top 0.25s ease-in-out 0.25s !important;
+  transition: top 0.25s ease-in-out 0.25s !important;
+  -webkit-transition: left 0.25s ease-in-out 0.5s !important;
+  -moz-transition: left 0.25s ease-in-out 0.5s !important;
+  -ms-transition: left 0.25s ease-in-out 0.5s !important;
+  -o-transition: left 0.25s ease-in-out 0.5s !important;
+  transition: left 0.25s ease-in-out 0.5s !important;
+}
+
 /* Generated by Font Squirrel (http://www.fontsquirrel.com) on June 10, 2013 */
 @font-face {
   font-family: 'tok3n-icons';
@@ -10238,36 +10347,266 @@ td.visible-print {
     opacity: 1;
   }
 }
-/* line 10, ../sass/_login-v2-main.sass */
+@-moz-keyframes fadeIn {
+  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes rotateCard {
+  /* line 23, ../sass/_login-v2-main.sass */
+  to {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@-webkit-keyframes rotateCard {
+  /* line 23, ../sass/_login-v2-main.sass */
+  to {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@keyframes rotateCard {
+  /* line 23, ../sass/_login-v2-main.sass */
+  to {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@-moz-keyframes rotateCardBack {
+  /* line 27, ../sass/_login-v2-main.sass */
+  from {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@-webkit-keyframes rotateCardBack {
+  /* line 27, ../sass/_login-v2-main.sass */
+  from {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@keyframes rotateCardBack {
+  /* line 27, ../sass/_login-v2-main.sass */
+  from {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@-moz-keyframes moveToLeft {
+  /* line 31, ../sass/_login-v2-main.sass */
+  to {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@-webkit-keyframes moveToLeft {
+  /* line 31, ../sass/_login-v2-main.sass */
+  to {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@keyframes moveToLeft {
+  /* line 31, ../sass/_login-v2-main.sass */
+  to {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@-moz-keyframes moveFromLeft {
+  /* line 35, ../sass/_login-v2-main.sass */
+  from {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@-webkit-keyframes moveFromLeft {
+  /* line 35, ../sass/_login-v2-main.sass */
+  from {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@keyframes moveFromLeft {
+  /* line 35, ../sass/_login-v2-main.sass */
+  from {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@-moz-keyframes moveToRight {
+  /* line 39, ../sass/_login-v2-main.sass */
+  to {
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@-webkit-keyframes moveToRight {
+  /* line 39, ../sass/_login-v2-main.sass */
+  to {
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@keyframes moveToRight {
+  /* line 39, ../sass/_login-v2-main.sass */
+  to {
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@-moz-keyframes moveFromRight {
+  /* line 43, ../sass/_login-v2-main.sass */
+  from {
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@-webkit-keyframes moveFromRight {
+  /* line 43, ../sass/_login-v2-main.sass */
+  from {
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@keyframes moveFromRight {
+  /* line 43, ../sass/_login-v2-main.sass */
+  from {
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+/* line 50, ../sass/_login-v2-main.sass */
 .tok3n-container {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
+  -moz-animation: fadeIn;
+  -webkit-animation: fadeIn;
+  animation: fadeIn;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.7s;
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.7s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
 }
 
-/* line 18, ../sass/_login-v2-main.sass */
+/* line 60, ../sass/_login-v2-main.sass */
+.tok3n-front, .tok3n-back, .tok3n-container, .tok3n-flipper {
+  height: 529px;
+  width: 339px;
+}
+
+/* line 64, ../sass/_login-v2-main.sass */
 .tok3n-flipper {
   -moz-transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   position: relative;
-  -webkit-transition: all 0.5s ease-in-out !important;
-  -moz-transition: all 0.5s ease-in-out !important;
-  -ms-transition: all 0.5s ease-in-out !important;
-  -o-transition: all 0.5s ease-in-out !important;
-  transition: all 0.5s ease-in-out !important;
+  -moz-animation: rotateCardBack;
+  -webkit-animation: rotateCardBack;
+  animation: rotateCardBack;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
 }
 
-/* line 24, ../sass/_login-v2-main.sass */
+/* line 74, ../sass/_login-v2-main.sass */
 .tok3n-front, .tok3n-back {
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -10276,56 +10615,61 @@ td.visible-print {
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.3) 0 10px 27px;
 }
 
-/* line 33, ../sass/_login-v2-main.sass */
+/* line 82, ../sass/_login-v2-main.sass */
 .tok3n-front, .tok3n-back, .tok3n-container {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
 
-/* line 36, ../sass/_login-v2-main.sass */
+/* line 85, ../sass/_login-v2-main.sass */
 .tok3n-front {
   z-index: 2;
 }
 
-/* line 39, ../sass/_login-v2-main.sass */
+/* line 88, ../sass/_login-v2-main.sass */
+.tok3n-flipped {
+  -moz-animation: rotateCard;
+  -webkit-animation: rotateCard;
+  animation: rotateCard;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+/* line 94, ../sass/_login-v2-main.sass */
 .tok3n-back {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-/* line 42, ../sass/_login-v2-main.sass */
-.tok3n-flipped {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -ms-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-}
-
-/* line 49, ../sass/_login-v2-main.sass */
-.tok3n-front, .tok3n-back, .tok3n-container {
-  height: 481px;
+/* line 102, ../sass/_login-v2-main.sass */
+.tok3n-pt-perspective, .tok3n-pt-page {
+  height: 410px;
   width: 339px;
 }
 
-/* line 52, ../sass/_login-v2-main.sass */
-.pt-perspective, .pt-page {
-  height: 401px;
-  width: 339px;
-}
-
-/* line 56, ../sass/_login-v2-main.sass */
-.pt-perspective {
+/* line 106, ../sass/_login-v2-main.sass */
+.tok3n-pt-perspective {
   position: relative;
   perspective: 1200px;
+  overflow: hidden;
 }
 
-/* line 60, ../sass/_login-v2-main.sass */
-.pt-page {
+/* line 111, ../sass/_login-v2-main.sass */
+.tok3n-pt-page {
   position: absolute;
   top: 0;
   left: 0;
@@ -10342,23 +10686,74 @@ td.visible-print {
   transform-style: preserve-3d;
 }
 
-/* line 70, ../sass/_login-v2-main.sass */
-.pt-page-current {
+/* line 124, ../sass/_login-v2-main.sass */
+.tok3n-pt-page-current {
   visibility: visible;
+  z-index: 3;
 }
 
-/* line 74, ../sass/_login-v2-main.sass */
-.no-js .pt-page {
-  visibility: visible;
-}
-/* line 76, ../sass/_login-v2-main.sass */
-.no-js body {
-  overflow: auto;
+/* line 128, ../sass/_login-v2-main.sass */
+.tok3n-move-from-left {
+  -moz-animation: moveFromLeft;
+  -webkit-animation: moveFromLeft;
+  animation: moveFromLeft;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
 }
 
-/* line 79, ../sass/_login-v2-main.sass */
-.pt-page-ontop {
-  z-index: 999;
+/* line 134, ../sass/_login-v2-main.sass */
+.tok3n-move-to-left {
+  -moz-animation: moveToLeft;
+  -webkit-animation: moveToLeft;
+  animation: moveToLeft;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+/* line 140, ../sass/_login-v2-main.sass */
+.tok3n-move-from-right {
+  -moz-animation: moveFromRight;
+  -webkit-animation: moveFromRight;
+  animation: moveFromRight;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+/* line 146, ../sass/_login-v2-main.sass */
+.tok3n-move-to-right {
+  -moz-animation: moveToRight;
+  -webkit-animation: moveToRight;
+  animation: moveToRight;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
 }
 
 @-moz-keyframes float-labels {
@@ -10465,21 +10860,7 @@ td.visible-print {
 .tok3n-login-form input.empty + label {
   font-size: 1.2em;
 }
-/* line 92, ../sass/_login-v2-main.sass */
-.tok3n-login-form .tok3n-login-input > ol {
-  list-style: none;
-  padding: 0px;
-}
-/* line 95, ../sass/_login-v2-main.sass */
-.tok3n-login-form .tok3n-login-input > ol > li {
-  position: relative;
-  margin: 1.2em 0;
-}
-/* line 98, ../sass/_login-v2-main.sass */
-.tok3n-login-form .tok3n-login-input {
-  margin-top: 1.5em;
-}
-/* line 100, ../sass/_login-v2-main.sass */
+/* line 177, ../sass/_login-v2-main.sass */
 .tok3n-login-form input {
   padding: 0.1em 0em;
   border: none;
@@ -10490,12 +10871,28 @@ td.visible-print {
   background: none;
   width: 100%;
 }
-/* line 109, ../sass/_login-v2-main.sass */
+/* line 186, ../sass/_login-v2-main.sass */
 .tok3n-login-form label {
   font-weight: normal;
 }
 
-/* line 116, ../sass/_login-v2-main.sass */
+/* line 189, ../sass/_login-v2-main.sass */
+.tok3n-login-input > ol {
+  list-style: none;
+  padding: 0px;
+}
+/* line 192, ../sass/_login-v2-main.sass */
+.tok3n-login-input > ol > li {
+  position: relative;
+  margin: 1.2em 0;
+}
+
+/* line 196, ../sass/_login-v2-main.sass */
+.tok3n-login-input {
+  margin-top: 1.5em;
+}
+
+/* line 203, ../sass/_login-v2-main.sass */
 .tok3n-header {
   height: 80px;
   padding: 0 30px;
@@ -10509,8 +10906,9 @@ td.visible-print {
   -webkit-border-top-right-radius: 10px;
   border-top-right-radius: 10px;
 }
-/* line 125, ../sass/_login-v2-main.sass */
-.tok3n-header .tok3n-logo {
+
+/* line 212, ../sass/_login-v2-main.sass */
+.tok3n-logo {
   height: 80px;
   background-image: url('//s3.amazonaws.com/static.tok3n.com/0.0.1/img/logo.svg?1378581520');
   -moz-background-size: 115px auto;
@@ -10522,21 +10920,28 @@ td.visible-print {
   background-position: center;
 }
 
-/* line 133, ../sass/_login-v2-main.sass */
-.tok3n-lower-wrapper, .tok3n-lower-lower-wrapper {
+/* line 220, ../sass/_login-v2-main.sass */
+.tok3n-lower-wrapper {
   margin: 25px 0 30px;
   padding: 0 30px;
 }
 
-/* line 137, ../sass/_login-v2-main.sass */
-.tok3n-lower-lower-wrapper {
+/* line 224, ../sass/_login-v2-main.sass */
+.tok3n-submit-wrapper {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 339px;
+  margin-bottom: 30px;
+  overflow: hidden;
 }
 
-/* line 147, ../sass/_login-v2-main.sass */
+/* line 232, ../sass/_login-v2-main.sass */
+.tok3n-submit, .tok3n-create-an-account {
+  padding: 0 30px;
+}
+
+/* line 239, ../sass/_login-v2-main.sass */
 .tok3n-login-alert {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -10549,12 +10954,12 @@ td.visible-print {
   padding: 15px 30px;
   margin: 0;
 }
-/* line 154, ../sass/_login-v2-main.sass */
+/* line 246, ../sass/_login-v2-main.sass */
 .tok3n-login-alert b {
   margin-right: 0.5em;
 }
 
-/* line 157, ../sass/_login-v2-main.sass */
+/* line 249, ../sass/_login-v2-main.sass */
 .tok3n-login-alert-hidden {
   max-height: 0;
   padding: 0 30px;
@@ -10562,7 +10967,7 @@ td.visible-print {
   overflow: hidden;
 }
 
-/* line 164, ../sass/_login-v2-main.sass */
+/* line 256, ../sass/_login-v2-main.sass */
 .tok3n-login-alert-active {
   -moz-animation: flash;
   -webkit-animation: flash;
@@ -10578,14 +10983,14 @@ td.visible-print {
   animation-iteration-count: 1;
 }
 
-/* line 176, ../sass/_login-v2-main.sass */
+/* line 266, ../sass/_login-v2-main.sass */
 .tok3n-headline {
   font-family: "Arvo", Arial, sans-serif;
   font-weight: 400;
   text-shadow: white 0 1px 0;
 }
 
-/* line 180, ../sass/_login-v2-main.sass */
+/* line 271, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline {
   display: inline-block;
   border-bottom: 1px solid #999999;
@@ -10593,17 +10998,17 @@ td.visible-print {
   margin: 10px 0 20px;
   width: 100%;
 }
-/* line 186, ../sass/_login-v2-main.sass */
+/* line 277, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline span {
   background: #fafafa;
   padding: 0 10px;
 }
-/* line 189, ../sass/_login-v2-main.sass */
+/* line 280, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline a {
   text-decoration: underline;
 }
 
-/* line 191, ../sass/_login-v2-main.sass */
+/* line 283, ../sass/_login-v2-main.sass */
 .tok3n-headline-login, .tok3n-headline-create-account {
   text-align: center;
   font-style: italic;
@@ -10611,7 +11016,7 @@ td.visible-print {
   margin-top: 1.8em;
 }
 
-/* line 196, ../sass/_login-v2-main.sass */
+/* line 289, ../sass/_login-v2-main.sass */
 .tok3n-headline-create-account {
   opacity: 0.4;
   -webkit-transition: opacity 0.3s !important;
@@ -10620,36 +11025,38 @@ td.visible-print {
   -o-transition: opacity 0.3s !important;
   transition: opacity 0.3s !important;
 }
-/* line 198, ../sass/_login-v2-main.sass */
+/* line 291, ../sass/_login-v2-main.sass */
 .tok3n-headline-create-account:hover {
   opacity: 1;
 }
 
-/* line 206, ../sass/_login-v2-main.sass */
+/* line 299, ../sass/_login-v2-main.sass */
 .tok3n-placeholder, .tok3n-button-stripe {
   font-family: "tok3n-icons";
 }
 
-/* line 210, ../sass/_login-v2-main.sass */
+/* line 303, ../sass/_login-v2-main.sass */
 .tok3n-enter-label label {
   font-weight: normal;
   font-size: 1.2em;
   color: #888888;
 }
 
-/* line 215, ../sass/_login-v2-main.sass */
+/* line 308, ../sass/_login-v2-main.sass */
 .tok3n-enter {
   margin: 10px auto 15px;
 }
-/* line 219, ../sass/_login-v2-main.sass */
-.tok3n-enter .tok3n-otp {
+
+/* line 312, ../sass/_login-v2-main.sass */
+.tok3n-otp {
   height: 75px;
   padding-left: 20px;
   width: 100%;
   font-size: 36px;
 }
-/* line 226, ../sass/_login-v2-main.sass */
-.tok3n-enter .tok3n-placeholder {
+
+/* line 319, ../sass/_login-v2-main.sass */
+.tok3n-placeholder {
   font-size: 2.9em;
   display: inline-block;
   position: absolute;
@@ -10662,20 +11069,34 @@ td.visible-print {
   -o-transition: color 0.3s ease-in !important;
   transition: color 0.3s ease-in !important;
 }
-/* line 234, ../sass/_login-v2-main.sass */
-.tok3n-enter .tok3n-placeholder:hover {
+/* line 327, ../sass/_login-v2-main.sass */
+.tok3n-placeholder:hover {
   color: #85d2e6;
 }
-/* line 236, ../sass/_login-v2-main.sass */
-.tok3n-enter .tok3n-placeholder:after, .tok3n-enter .tok3n-placeholder:before {
+/* line 329, ../sass/_login-v2-main.sass */
+.tok3n-placeholder:after, .tok3n-placeholder:before {
   white-space: pre;
 }
 
-/* line 243, ../sass/_login-v2-main.sass */
+/* line 332, ../sass/_login-v2-main.sass */
+.tok3n-qrcode {
+  background-image: url('//s3.amazonaws.com/static.tok3n.com/0.0.1/img/qrcode.png?1391982648');
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  -webkit-background-size: 100% auto;
+  background-size: 100% auto;
+  width: 279px;
+  height: 279px;
+  margin: 0 auto;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.3) 0 5px 27px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.3) 0 5px 27px;
+}
+
+/* line 346, ../sass/_login-v2-main.sass */
 .tok3n-submit {
   margin: 0 auto;
 }
-/* line 245, ../sass/_login-v2-main.sass */
+/* line 348, ../sass/_login-v2-main.sass */
 .tok3n-submit button {
   margin: 0 auto;
   color: rgba(255, 255, 255, 0.95);
@@ -10707,8 +11128,9 @@ td.visible-print {
   background-color: #646ace;
   border-color: rgba(0, 0, 0, 0.1);
 }
-/* line 255, ../sass/_login-v2-main.sass */
-.tok3n-submit button .tok3n-button-stripe {
+
+/* line 358, ../sass/_login-v2-main.sass */
+.tok3n-button-stripe {
   font-size: 2.42em;
   position: absolute;
   margin-top: -16px;
@@ -10721,29 +11143,30 @@ td.visible-print {
   -o-transition: color 0.3s ease-in-out !important;
   transition: color 0.3s ease-in-out !important;
 }
-/* line 263, ../sass/_login-v2-main.sass */
-.tok3n-submit button:hover .tok3n-button-stripe, .tok3n-submit button:focus .tok3n-button-stripe, .tok3n-submit button:active .tok3n-button-stripe {
+/* line 366, ../sass/_login-v2-main.sass */
+.tok3n-button-stripe:hover, .tok3n-button-stripe:focus, .tok3n-button-stripe:active {
   color: #d9262c;
 }
-/* line 268, ../sass/_login-v2-main.sass */
-.tok3n-submit button .tok3n-button-text {
+
+/* line 369, ../sass/_login-v2-main.sass */
+.tok3n-button-text {
   margin-left: 2em;
 }
 
-/* line 275, ../sass/_login-v2-main.sass */
-.tok3n-fallbacks, .tok3n-dont-have-phone {
+/* line 376, ../sass/_login-v2-main.sass */
+.tok3n-fallbacks, .tok3n-having-trouble, .tok3n-create-an-account {
   color: #777777;
 }
 
-/* line 281, ../sass/_login-v2-main.sass */
-.tok3n-dont-have-phone {
-  margin: 0 0 10px;
+/* line 379, ../sass/_login-v2-main.sass */
+.tok3n-having-trouble {
+  margin: 0 0 8px;
 }
-/* line 283, ../sass/_login-v2-main.sass */
-.tok3n-dont-have-phone small {
+/* line 381, ../sass/_login-v2-main.sass */
+.tok3n-having-trouble small {
   opacity: 0.8;
 }
-/* line 286, ../sass/_login-v2-main.sass */
-.tok3n-dont-have-phone small:hover {
+/* line 384, ../sass/_login-v2-main.sass */
+.tok3n-having-trouble small:hover {
   opacity: 1;
 }

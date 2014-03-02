@@ -16,11 +16,12 @@
     <div id="tok3n-login" class="tok3n-login">
       <div class="tok3n-container">
         <div class="tok3n-flipper">
-          <div class="tok3n-front">
+          <div class="tok3n-back">
             <header class="tok3n-header">
               <div class="tok3n-logo"></div>
             </header>
-            <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided code was incorrect. Please try again.</div>
+            <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided email doesn't have an account. Try again or<a href="#"> create an account.</a>
+            </div>
             <div class="tok3n-lower-wrapper">
               <h3 class="tok3n-headline tok3n-headline-login tok3n-strike-through-headline">
                 <span>Log in</span>
@@ -35,14 +36,10 @@
                   </ol>
                 </div>
               </div>
-              <div class="tok3n-create-an-account">
-                <p>Don't have an account?<a href="#"> Create one now</a>.</p>
-              </div>
             </div>
-            <div class="tok3n-lower-lower-wrapper">
-              <div class="tok3n-dont-have-phone">
-                <small><a href="#">Having trouble?</a>
-                </small>
+            <div class="tok3n-submit-wrapper">
+              <div class="tok3n-create-an-account">
+                <p>Don't have an account? <a href="#">Create one now</a>.</p>
               </div>
               <div class="tok3n-submit">
                 <button id="tok3nLogin">
@@ -54,13 +51,24 @@
               </div>
             </div>
           </div>
-          <div class="tok3n-back">
+          <div class="tok3n-front">
             <header class="tok3n-header">
               <div class="tok3n-logo"></div>
             </header>
+            <div class="label-wrapper">
+              <input type="radio" name="group-1" id="one" />
+              <label for="one" class="lbl">ONE</label>
+              <input type="radio" name="group-1" id="two" />
+              <label for="two" class="lbl">TWO</label>
+              <input type="radio" name="group-1" id="three" />
+              <label for="three" class="lbl">THREE</label>
+              <input type="radio" name="group-1" id="four" />
+              <label for="four" class="lbl">FOUR</label>
+              <div class="slider"></div>
+            </div>
             <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided code was incorrect. Please try again.</div>
-            <div class="pt-perspective">
-              <div class="pt-page-current pt-page-otp pt-page">
+            <div class="tok3n-pt-perspective">
+              <div class="tok3n-pt-page-otp tok3n-pt-page tok3n-pt-page-current">
                 <div class="tok3n-lower-wrapper">
                   <div class="tok3n-enter-label">
                     <label>Enter your offline code:</label>
@@ -70,17 +78,28 @@
                     <div class="tok3n-placeholder">&#128241;</div>
                     <input type="hidden" name="tok3n_session" id="tok3n_session" />
                   </div>
-                  <div class="tok3n-fallbacks">
-                    <small>You can also authenticate via <a href="#">text message</a> or <a href="#">scanning a QR Code</a>.</small>
+                  <div class="tok3n-having-trouble">
+                    <small><a href="#">Having trouble?</a>
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="tok3n-pt-page-qr tok3n-pt-page">
+                <div class="tok3n-lower-wrapper">
+                  <div class="tok3n-enter-label">
+                    <label>Scan with the Tok3n mobile app:</label>
+                  </div>
+                  <div class="tok3n-enter">
+                    <div class="tok3n-qrcode"></div>
+                  </div>
+                  <div class="tok3n-having-trouble">
+                    <small><a href="#">Having trouble?</a>
+                    </small>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="tok3n-lower-lower-wrapper">
-              <div class="tok3n-dont-have-phone">
-                <small><a href="#">Don't have your phone?</a>
-                </small>
-              </div>
+            <div class="tok3n-submit-wrapper">
               <div class="tok3n-submit">
                 <button id="tok3nOtpButton">
                   <div class="ladda-label">

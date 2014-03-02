@@ -1,0 +1,62 @@
+input[type="radio"]
+  display: none
+input:nth-of-type(1):checked ~ .slider
+  left: 0
+input:nth-of-type(2):checked ~ .slider
+  left: 25%
+input:nth-of-type(3):checked ~ .slider
+  left: 50%
+input:nth-of-type(4):checked ~ .slider
+  left: 75%
+
+input:checked + label
+  cursor: default
+  color: white
+
+.label-wrapper
+  // margin: 0 auto
+  // width: 80%
+  // border-radius: 10rem
+  background: #2c3e50
+  // border: .25rem solid #2c3e50
+  // +box-shadow(inset 0 0 .5rem rgba(0,0,0,.9), 0 2px 1px rgba(0,0,0,.5))
+  +box-shadow(inset 0 0 10px rgba(0,0,0,.5))
+
+  font-size: 0
+  position: relative
+  z-index: 0
+  overflow: hidden
+
+  & label
+    font-size: 1rem
+    text-align: center
+    display: inline-block
+    width: 25%
+    position: relative
+    z-index: 10
+    padding: 1rem
+    cursor: pointer
+    color: rgba(255,255,255,.75)
+    +single-transition(color, .25s, ease, .1s)
+    &:not(:last-of-type)
+      border-right: 1px solid rgba(0,0,0,.1)
+  & .slider
+    position: absolute
+    width: 25%
+    height: 100%
+    left: -25%
+    top: -150%
+    +single-transition(left, .25s, ease)
+    // background #2c3e50
+    background: #27ae60
+    +border-radius(0rem)
+    +box-shadow(0 0 .5rem rgba(0,0,0,.7))
+
+input:checked ~ .slider
+  top: 0
+  +single-transition(top, .25s, ease-in-out, .25s)
+  +single-transition(left, .25s, ease-in-out)
+
+input:not(:checked) ~ input:not(:checked) ~ input:not(:checked) ~ input:not(:checked) ~ .slider
+  +single-transition(top, .25s, ease-in-out, .25s)
+  +single-transition(left, .25s, ease-in-out, .5s)
