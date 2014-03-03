@@ -333,7 +333,7 @@ module.exports = (grunt) ->
 				files:[
 					{
 						cwd: 'public'
-						src: ['css/*-min.css', 'sass/**', 'js/*-min.js', 'svg/**', 'dart/**', 'img/*.svg']
+						src: ['css/*-min.css', 'css/fonts/**', 'sass/**', 'js/*-min.js', 'svg/**', 'dart/**', 'img/*.svg']
 						dest: dist
 					}
 				]
