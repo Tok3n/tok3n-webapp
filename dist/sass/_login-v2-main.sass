@@ -1,20 +1,20 @@
-/////////////////////
-// Variables
-/////////////////////
+///////////////
+// Variables //
+///////////////
 
 $tok3n-blue: #31B3D4
 $tok3n-purple: #2b3087
-$tok3n-radio-slider-height: 39px ///// HARDCODED
+$tok3n-radio-slider-height: 50px ///// HARDCODED
 $tok3n-login-header-height: 80px
 $tok3n-login-window-width: 339px
 // $tok3n-login-window-height: 481px
-$tok3n-login-window-height: 529px
+$tok3n-login-window-height: 535px
 $tok3n-usable-window-height: $tok3n-login-window-height - $tok3n-login-header-height - $tok3n-radio-slider-height
 $tok3n-login-background-color: #fafafa
 
-/////////////////////
-// Animations
-/////////////////////
+////////////////
+// Animations //
+////////////////
 
 @include animate-flash
 @include animate-fadeIn
@@ -43,14 +43,15 @@ $tok3n-login-background-color: #fafafa
 	from
 		+transform(translateX(100%))
 
-/////////////////////
-// Card flippin'
-/////////////////////
+///////////////////
+// Card flippin' //
+///////////////////
 
 .tok3n-container
 	font-family: $font-family-sans-serif
 	-webkit-tap-highlight-color: transparent
 	-webkit-touch-callout: none
+	-webkit-font-smoothing: antialiased
 	// +user-select(none)
 	+animation(fadeIn)
 	+animation-fill-mode(forwards)
@@ -78,6 +79,7 @@ $tok3n-login-background-color: #fafafa
 	background-color: $tok3n-login-background-color
 	// +box-shadow(rgba(0,0,0,0.2) 0 0 1px 1px, rgba(0,0,0,0.7) 0 10px 27px, inset 0 -1px 2px rgba(82,93,112,0.4))
 	+box-shadow(rgba(0,0,0,0.2) 0 0 1px 1px, rgba(0,0,0,0.3) 0 10px 27px)
+	+backface-visibility(hidden)
 
 .tok3n-front, .tok3n-back, .tok3n-container
 	+border-radius(10px)
@@ -85,19 +87,18 @@ $tok3n-login-background-color: #fafafa
 .tok3n-front
 	z-index: 2
 
+.tok3n-back
+	+transform(rotateY(180deg))
+
 .tok3n-flipped
 	+animation(rotateCard)
 	+animation-fill-mode(forwards)
 	+animation-duration(.5s)
 	+animation-timing-function(ease-in-out)
 
-.tok3n-back
-	+transform(rotateY(180deg))
-	+backface-visibility(hidden)
-
-/////////////////////
-// Page transitions
-/////////////////////
+//////////////////////
+// Page transitions //
+//////////////////////
 
 .tok3n-pt-perspective, .tok3n-pt-page
 	height: $tok3n-usable-window-height 
@@ -117,7 +118,7 @@ $tok3n-login-background-color: #fafafa
 	left: 0
 	visibility: hidden
 	overflow: hidden
-	backface-visibility: hidden
+	+backface-visibility(hidden)
 	+transform(translate3d(0, 0, 0))
 	+transform-style(preserve-3d)
 
@@ -154,19 +155,48 @@ $tok3n-login-background-color: #fafafa
 // 		visibility: visible
 // 	body
 // 		overflow: auto
-
 // .tok3n-pt-page-ontop
 // 	z-index: 999
 
-/////////////////////
-// Radio Slider
-/////////////////////
+//////////////////
+// Radio Slider //
+//////////////////
 
+// Don't forget to change $tok3n-radio-slider-height if you change the height of the slider
 
+.tok3n-radio-slider
+	+radio-slider-number-of-options(3)
+	@extend %radio-slider
+	// margin: 0 auto
+	// width: 80%
+	// border-radius: 10rem
+	// border: .25rem solid #2c3e50
+	// +box-shadow(inset 0 0 .5rem rgba(0,0,0,.9), 0 2px 1px rgba(0,0,0,.5))
+	background: $tok3n-purple
+	+box-shadow(inset 0 0 10px rgba(0,0,0,.5))
+	& label
+		// Don't use ems
+		font-size: 25px
+		vertical-align: top
+		padding: 12px 10px 0
+		line-height: 30px
+		color: rgba(255,255,255,.75)
+		&:not(:last-of-type)
+			border-right: 1px solid rgba(0,0,0,.1)
+	& .slider
+		background: $tok3n-blue
+		+box-shadow(0 0 .5rem rgba(0,0,0,.7))
+	input:checked + label
+		color: white
 
-/////////////////////
-// Float labels
-/////////////////////
+.icon-tok3n-bubble
+.icon-tok3n-qrcode
+	font-size: 110%
+.icon-tok3n-otp
+
+//////////////////
+// Float labels //
+//////////////////
 
 $float-label-size: 1.2em
 +float-label-animation($float-label-size)
@@ -196,9 +226,9 @@ $float-label-size: 1.2em
 .tok3n-login-input
 	margin-top: 1.5em
 
-/////////////////////
-// Front & Back Structure
-/////////////////////
+////////////////////////////
+// Front & Back Structure //
+////////////////////////////
 
 .tok3n-header
 	height: $tok3n-login-header-height
@@ -211,11 +241,15 @@ $float-label-size: 1.2em
 
 .tok3n-logo
 	height: $tok3n-login-header-height
-	background-image: image-url('logo.svg')
-	+background-size(115px auto)
 	color: white(.8)
-	background-repeat: no-repeat
-	background-position: center
+	text-align: center
+	font-size: 115px
+	line-height: 0
+
+.icon-tok3n-logo:before
+	position: absolute
+	left: 112px
+	top: -17px
 
 .tok3n-lower-wrapper
 	margin: 25px 0 30px
@@ -232,9 +266,9 @@ $float-label-size: 1.2em
 .tok3n-submit, .tok3n-create-an-account
 	padding: 0 30px
 
-/////////////////////
-// Alerts
-/////////////////////
+////////////
+// Alerts //
+////////////
 
 .tok3n-login-alert
 	@extend .alert
@@ -259,9 +293,9 @@ $float-label-size: 1.2em
 	+animation-delay(.3s)
 	+animation-iteration-count(1)
 
-/////////////////////
-// Headlines
-/////////////////////
+///////////////
+// Headlines //
+///////////////
 	
 .tok3n-headline
 	font-family: 'Arvo', Arial, sans-serif
@@ -292,12 +326,9 @@ $float-label-size: 1.2em
 		opacity: 1
 	+single-transition(opacity, 0.3s)
 
-/////////////////////
-// OTP, QR and Texts
-/////////////////////
-
-.tok3n-placeholder, .tok3n-button-stripe
-	font-family: 'tok3n-icons'
+///////////////////////
+// OTP, QR and Texts //
+///////////////////////
 
 .tok3n-enter-label
 	label
@@ -315,13 +346,13 @@ $float-label-size: 1.2em
 	padding-left: 20px
 	width: 100%
 	font-size: 36px
-	
-.tok3n-placeholder
-	font-size: 2.9em
+
+.icon-tok3n-phone
+	font-size: 2.7em
 	display: inline-block
 	position: absolute
-	margin-left: 225px
-	margin-top: -68px
+	margin-left: 226px
+	margin-top: -59px
 	color: #bbb
 	+single-transition(color, .3s, ease-in)
 	&:hover
@@ -339,9 +370,9 @@ $float-label-size: 1.2em
 	margin: 0 auto
 	+box-shadow(rgba(0,0,0,0.2) 0 0 1px 1px, rgba(0,0,0,0.3) 0 5px 27px)
 
-/////////////////////
-// Buttons
-/////////////////////
+/////////////
+// Buttons //
+/////////////
 		
 .tok3n-submit
 	margin: 0 auto
@@ -355,11 +386,11 @@ $float-label-size: 1.2em
 		//+sassy-button("simple", 5px, 1.3em, #3d44be, $tok3n-purple)
 		+button-variant(hsla(0, 0, 100%, .95), adjust-lightness($tok3n-purple, 25), black(.1))
 
-.tok3n-button-stripe
+.icon-tok3n-stripe
 	font-size: 2.42em
 	position: absolute
-	margin-top: -16px
-	margin-left: -25px
+	margin-top: -12px
+	margin-left: -23px
 	color: hsl(358, 70%, 60%)
 	+letterpress(black(.4))
 	+single-transition(color, .3s, ease-in-out)
@@ -368,10 +399,11 @@ $float-label-size: 1.2em
 
 .tok3n-button-text
 	margin-left: 2em
+	-webkit-font-smoothing: antialiased
 
-/////////////////////
-// Fallbacks
-/////////////////////
+///////////////
+// Fallbacks //
+///////////////
 
 .tok3n-fallbacks, .tok3n-having-trouble, .tok3n-create-an-account
 	color: #777

@@ -16,9 +16,11 @@
     <div id="tok3n-login" class="tok3n-login">
       <div class="tok3n-container">
         <div class="tok3n-flipper">
-          <div class="tok3n-back">
+          <div class="tok3n-front">
             <header class="tok3n-header">
-              <div class="tok3n-logo"></div>
+              <div class="tok3n-logo">
+                <div class="icon-tok3n-logo"></div>
+              </div>
             </header>
             <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided email doesn't have an account. Try again or<a href="#"> create an account.</a>
             </div>
@@ -44,26 +46,32 @@
               <div class="tok3n-submit">
                 <button id="tok3nLogin">
                   <div class="ladda-label">
-                    <div class="tok3n-button-stripe">3</div>
+                    <div class="icon-tok3n-stripe"></div>
                     <div class="tok3n-button-text">Log in with Tok3n</div>
                   </div>
                 </button>
               </div>
             </div>
           </div>
-          <div class="tok3n-front">
+          <div class="tok3n-back">
             <header class="tok3n-header">
-              <div class="tok3n-logo"></div>
+              <div class="tok3n-logo">
+                <div class="icon-tok3n-logo"></div>
+              </div>
             </header>
-            <div class="label-wrapper">
-              <input type="radio" name="group-1" id="one" />
-              <label for="one" class="lbl">ONE</label>
-              <input type="radio" name="group-1" id="two" />
-              <label for="two" class="lbl">TWO</label>
-              <input type="radio" name="group-1" id="three" />
-              <label for="three" class="lbl">THREE</label>
-              <input type="radio" name="group-1" id="four" />
-              <label for="four" class="lbl">FOUR</label>
+            <div class="tok3n-radio-slider">
+              <input type="radio" name="group-1" id="tok3nSMS" />
+              <label for="tok3nSMS" class="lbl">
+                <div class="icon-tok3n-bubble"></div>
+              </label>
+              <input type="radio" name="group-1" id="tok3nQR" />
+              <label for="tok3nQR" class="lbl">
+                <div class="icon-tok3n-qrcode"></div>
+              </label>
+              <input type="radio" name="group-1" id="tok3nOTP" />
+              <label for="tok3nOTP" class="lbl">
+                <div class="icon-tok3n-otp"></div>
+              </label>
               <div class="slider"></div>
             </div>
             <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided code was incorrect. Please try again.</div>
@@ -75,7 +83,7 @@
                   </div>
                   <div class="tok3n-enter">
                     <input name="tok3n_otp" type="tel" autocomplete="off" dir="ltr" pattern="[0-9 ]*" placeholder="• • • • • •" spellcheck="false" id="tok3nOtpInput" class="tok3n-otp" />
-                    <div class="tok3n-placeholder">&#128241;</div>
+                    <div class="icon-tok3n-phone"></div>
                     <input type="hidden" name="tok3n_session" id="tok3n_session" />
                   </div>
                   <div class="tok3n-having-trouble">
@@ -103,7 +111,7 @@
               <div class="tok3n-submit">
                 <button id="tok3nOtpButton">
                   <div class="ladda-label">
-                    <div class="tok3n-button-stripe">3</div>
+                    <div class="icon-tok3n-stripe"></div>
                     <div class="tok3n-button-text">Verify with Tok3n</div>
                   </div>
                 </button>

@@ -10,6 +10,7 @@ append block body
         .tok3n-front
           header.tok3n-header
             .tok3n-logo
+              .icon-tok3n-logo
           .tok3n-login-alert.tok3n-login-alert-hidden
             b Error:
             //- | The provided code was incorrect. Please try again.
@@ -33,18 +34,22 @@ append block body
               button#tok3nLogin
                 .ladda-label
                   //- | Continue
-                  .tok3n-button-stripe 3 
+                  .icon-tok3n-stripe
                   .tok3n-button-text Log in with Tok3n
         .tok3n-back
           header.tok3n-header
             .tok3n-logo
+              .icon-tok3n-logo
           .tok3n-radio-slider
-            input#one(type="radio", name="group-1")
-            label.lbl(for="one") SMS
-            input#two(type="radio", name="group-1")
-            label.lbl(for="two") QR
-            input#three(type="radio", name="group-1")
-            label.lbl(for="three") OFFLINE
+            input#tok3nSMS(type="radio", name="group-1")
+            label.lbl(for="tok3nSMS")
+              .icon-tok3n-bubble
+            input#tok3nQR(type="radio", name="group-1")
+            label.lbl(for="tok3nQR")
+              .icon-tok3n-qrcode
+            input#tok3nOTP(type="radio", name="group-1")
+            label.lbl(for="tok3nOTP")
+              .icon-tok3n-otp
             .slider
           .tok3n-login-alert.tok3n-login-alert-hidden
             b Error:
@@ -56,7 +61,7 @@ append block body
                   label Enter your offline code:
                 .tok3n-enter
                   input.tok3n-otp#tok3nOtpInput(name='tok3n_otp', type='tel', autocomplete='off', dir='ltr', pattern='[0-9 ]*', placeholder='• • • • • •', spellcheck='false')
-                  .tok3n-placeholder &#128241;
+                  .icon-tok3n-phone
                   input#tok3n_session(type='hidden', name='tok3n_session')
                 .tok3n-having-trouble
                   small
@@ -74,6 +79,6 @@ append block body
             .tok3n-submit
               button#tok3nOtpButton
                 .ladda-label
-                  .tok3n-button-stripe 3 
+                  .icon-tok3n-stripe
                   .tok3n-button-text Verify with Tok3n
 

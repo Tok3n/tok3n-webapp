@@ -54,25 +54,16 @@
     top: 0.1em
     +animation(none)
 
-///////////////////
-// Example usage //
-///////////////////
+///////////////////////
+// Example usage CSS //
+///////////////////////
 
 // $float-label-size: 1.2em
 // +float-label-animation($float-label-size)
 
-// .connect-form
-//   margin-bottom: 3em
+// .tok3n-login-form
 //   +float-label-size($float-label-size)
 //   @extend %float-label
-//   form > ol
-//     list-style: none
-//     padding: 0px
-//     > li
-//       position: relative
-//       margin: 1.2em 0
-//   form
-//     margin-top: 2.5em
 //   input
 //     padding: 0.1em 0em
 //     border: none
@@ -84,3 +75,24 @@
 //     width: 100%
 //   label
 //     font-weight: normal
+
+// .tok3n-login-input > ol
+//   list-style: none
+//   padding: 0px
+//   > li
+//     position: relative
+//     margin: 1.2em 0
+
+// .tok3n-login-input
+//   margin-top: 1.5em
+
+//////////////////////////
+// Example usage (Jade) //
+//////////////////////////
+
+// .tok3n-login-form
+//   .tok3n-login-input
+//     ol
+//       li
+//         input#email(name='email', spellcheck='false', type='email', autofocus)
+//         label(for='email') Email address

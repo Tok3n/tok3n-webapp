@@ -7494,2147 +7494,6 @@ td.visible-print {
   }
 }
 /*!
- *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
- *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */
-/* FONT PATH
- * -------------------------- */
-@font-face {
-  font-family: 'FontAwesome';
-  src: url("../../components/font-awesome/fontawesome-webfont.eot?v=4.0.3");
-  src: url("../../components/font-awesome/fontawesome-webfont.eot?#iefix&v=4.0.3") format("embedded-opentype"), url("../../components/font-awesome/fontawesome-webfont.woff?v=4.0.3") format("woff"), url("../../components/font-awesome/fontawesome-webfont.ttf?v=4.0.3") format("truetype"), url("../../components/font-awesome/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-/* line 4, ../components/font-awesome/scss/_core.scss */
-.fa {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* makes the font 33% larger relative to the icon container */
-/* line 5, ../components/font-awesome/scss/_larger.scss */
-.fa-lg {
-  font-size: 1.3333333333em;
-  line-height: 0.75em;
-  vertical-align: -15%;
-}
-
-/* line 10, ../components/font-awesome/scss/_larger.scss */
-.fa-2x {
-  font-size: 2em;
-}
-
-/* line 11, ../components/font-awesome/scss/_larger.scss */
-.fa-3x {
-  font-size: 3em;
-}
-
-/* line 12, ../components/font-awesome/scss/_larger.scss */
-.fa-4x {
-  font-size: 4em;
-}
-
-/* line 13, ../components/font-awesome/scss/_larger.scss */
-.fa-5x {
-  font-size: 5em;
-}
-
-/* line 3, ../components/font-awesome/scss/_fixed-width.scss */
-.fa-fw {
-  width: 1.2857142857em;
-  text-align: center;
-}
-
-/* line 4, ../components/font-awesome/scss/_list.scss */
-.fa-ul {
-  padding-left: 0;
-  margin-left: 2.1428571429em;
-  list-style-type: none;
-}
-/* line 8, ../components/font-awesome/scss/_list.scss */
-.fa-ul > li {
-  position: relative;
-}
-
-/* line 10, ../components/font-awesome/scss/_list.scss */
-.fa-li {
-  position: absolute;
-  left: -2.1428571429em;
-  width: 2.1428571429em;
-  top: 0.1428571429em;
-  text-align: center;
-}
-/* line 16, ../components/font-awesome/scss/_list.scss */
-.fa-li.fa-lg {
-  left: -1.8571428571em;
-}
-
-/* line 4, ../components/font-awesome/scss/_bordered-pulled.scss */
-.fa-border {
-  padding: .2em .25em .15em;
-  border: solid 0.08em #eeeeee;
-  border-radius: .1em;
-}
-
-/* line 10, ../components/font-awesome/scss/_bordered-pulled.scss */
-.pull-right {
-  float: right;
-}
-
-/* line 11, ../components/font-awesome/scss/_bordered-pulled.scss */
-.pull-left {
-  float: left;
-}
-
-/* line 14, ../components/font-awesome/scss/_bordered-pulled.scss */
-.fa.pull-left {
-  margin-right: .3em;
-}
-/* line 15, ../components/font-awesome/scss/_bordered-pulled.scss */
-.fa.pull-right {
-  margin-left: .3em;
-}
-
-/* line 4, ../components/font-awesome/scss/_spinning.scss */
-.fa-spin {
-  -webkit-animation: spin 2s infinite linear;
-  -moz-animation: spin 2s infinite linear;
-  -o-animation: spin 2s infinite linear;
-  animation: spin 2s infinite linear;
-}
-
-@-moz-keyframes spin {
-  /* line 12, ../components/font-awesome/scss/_spinning.scss */
-  0% {
-    -moz-transform: rotate(0deg);
-  }
-
-  /* line 13, ../components/font-awesome/scss/_spinning.scss */
-  100% {
-    -moz-transform: rotate(359deg);
-  }
-}
-@-webkit-keyframes spin {
-  /* line 16, ../components/font-awesome/scss/_spinning.scss */
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-
-  /* line 17, ../components/font-awesome/scss/_spinning.scss */
-  100% {
-    -webkit-transform: rotate(359deg);
-  }
-}
-@-o-keyframes spin {
-  /* line 20, ../components/font-awesome/scss/_spinning.scss */
-  0% {
-    -o-transform: rotate(0deg);
-  }
-
-  /* line 21, ../components/font-awesome/scss/_spinning.scss */
-  100% {
-    -o-transform: rotate(359deg);
-  }
-}
-@-ms-keyframes spin {
-  /* line 24, ../components/font-awesome/scss/_spinning.scss */
-  0% {
-    -ms-transform: rotate(0deg);
-  }
-
-  /* line 25, ../components/font-awesome/scss/_spinning.scss */
-  100% {
-    -ms-transform: rotate(359deg);
-  }
-}
-@keyframes spin {
-  /* line 28, ../components/font-awesome/scss/_spinning.scss */
-  0% {
-    transform: rotate(0deg);
-  }
-
-  /* line 29, ../components/font-awesome/scss/_spinning.scss */
-  100% {
-    transform: rotate(359deg);
-  }
-}
-/* line 4, ../components/font-awesome/scss/_rotated-flipped.scss */
-.fa-rotate-90 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=$rotation);
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-/* line 5, ../components/font-awesome/scss/_rotated-flipped.scss */
-.fa-rotate-180 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=$rotation);
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-/* line 6, ../components/font-awesome/scss/_rotated-flipped.scss */
-.fa-rotate-270 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=$rotation);
-  -webkit-transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  -o-transform: rotate(270deg);
-  transform: rotate(270deg);
-}
-
-/* line 8, ../components/font-awesome/scss/_rotated-flipped.scss */
-.fa-flip-horizontal {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=$rotation);
-  -webkit-transform: scale(-1, 1);
-  -moz-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  transform: scale(-1, 1);
-}
-
-/* line 9, ../components/font-awesome/scss/_rotated-flipped.scss */
-.fa-flip-vertical {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=$rotation);
-  -webkit-transform: scale(1, -1);
-  -moz-transform: scale(1, -1);
-  -ms-transform: scale(1, -1);
-  -o-transform: scale(1, -1);
-  transform: scale(1, -1);
-}
-
-/* line 4, ../components/font-awesome/scss/_stacked.scss */
-.fa-stack {
-  position: relative;
-  display: inline-block;
-  width: 2em;
-  height: 2em;
-  line-height: 2em;
-  vertical-align: middle;
-}
-
-/* line 12, ../components/font-awesome/scss/_stacked.scss */
-.fa-stack-1x, .fa-stack-2x {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  text-align: center;
-}
-
-/* line 18, ../components/font-awesome/scss/_stacked.scss */
-.fa-stack-1x {
-  line-height: inherit;
-}
-
-/* line 19, ../components/font-awesome/scss/_stacked.scss */
-.fa-stack-2x {
-  font-size: 2em;
-}
-
-/* line 20, ../components/font-awesome/scss/_stacked.scss */
-.fa-inverse {
-  color: white;
-}
-
-/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
-   readers do not read off random characters that represent icons */
-/* line 4, ../components/font-awesome/scss/_icons.scss */
-.fa-glass:before {
-  content: "\f000";
-}
-
-/* line 5, ../components/font-awesome/scss/_icons.scss */
-.fa-music:before {
-  content: "\f001";
-}
-
-/* line 6, ../components/font-awesome/scss/_icons.scss */
-.fa-search:before {
-  content: "\f002";
-}
-
-/* line 7, ../components/font-awesome/scss/_icons.scss */
-.fa-envelope-o:before {
-  content: "\f003";
-}
-
-/* line 8, ../components/font-awesome/scss/_icons.scss */
-.fa-heart:before {
-  content: "\f004";
-}
-
-/* line 9, ../components/font-awesome/scss/_icons.scss */
-.fa-star:before {
-  content: "\f005";
-}
-
-/* line 10, ../components/font-awesome/scss/_icons.scss */
-.fa-star-o:before {
-  content: "\f006";
-}
-
-/* line 11, ../components/font-awesome/scss/_icons.scss */
-.fa-user:before {
-  content: "\f007";
-}
-
-/* line 12, ../components/font-awesome/scss/_icons.scss */
-.fa-film:before {
-  content: "\f008";
-}
-
-/* line 13, ../components/font-awesome/scss/_icons.scss */
-.fa-th-large:before {
-  content: "\f009";
-}
-
-/* line 14, ../components/font-awesome/scss/_icons.scss */
-.fa-th:before {
-  content: "\f00a";
-}
-
-/* line 15, ../components/font-awesome/scss/_icons.scss */
-.fa-th-list:before {
-  content: "\f00b";
-}
-
-/* line 16, ../components/font-awesome/scss/_icons.scss */
-.fa-check:before {
-  content: "\f00c";
-}
-
-/* line 17, ../components/font-awesome/scss/_icons.scss */
-.fa-times:before {
-  content: "\f00d";
-}
-
-/* line 18, ../components/font-awesome/scss/_icons.scss */
-.fa-search-plus:before {
-  content: "\f00e";
-}
-
-/* line 19, ../components/font-awesome/scss/_icons.scss */
-.fa-search-minus:before {
-  content: "\f010";
-}
-
-/* line 20, ../components/font-awesome/scss/_icons.scss */
-.fa-power-off:before {
-  content: "\f011";
-}
-
-/* line 21, ../components/font-awesome/scss/_icons.scss */
-.fa-signal:before {
-  content: "\f012";
-}
-
-/* line 22, ../components/font-awesome/scss/_icons.scss */
-.fa-gear:before,
-.fa-cog:before {
-  content: "\f013";
-}
-
-/* line 24, ../components/font-awesome/scss/_icons.scss */
-.fa-trash-o:before {
-  content: "\f014";
-}
-
-/* line 25, ../components/font-awesome/scss/_icons.scss */
-.fa-home:before {
-  content: "\f015";
-}
-
-/* line 26, ../components/font-awesome/scss/_icons.scss */
-.fa-file-o:before {
-  content: "\f016";
-}
-
-/* line 27, ../components/font-awesome/scss/_icons.scss */
-.fa-clock-o:before {
-  content: "\f017";
-}
-
-/* line 28, ../components/font-awesome/scss/_icons.scss */
-.fa-road:before {
-  content: "\f018";
-}
-
-/* line 29, ../components/font-awesome/scss/_icons.scss */
-.fa-download:before {
-  content: "\f019";
-}
-
-/* line 30, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-circle-o-down:before {
-  content: "\f01a";
-}
-
-/* line 31, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-circle-o-up:before {
-  content: "\f01b";
-}
-
-/* line 32, ../components/font-awesome/scss/_icons.scss */
-.fa-inbox:before {
-  content: "\f01c";
-}
-
-/* line 33, ../components/font-awesome/scss/_icons.scss */
-.fa-play-circle-o:before {
-  content: "\f01d";
-}
-
-/* line 34, ../components/font-awesome/scss/_icons.scss */
-.fa-rotate-right:before,
-.fa-repeat:before {
-  content: "\f01e";
-}
-
-/* line 36, ../components/font-awesome/scss/_icons.scss */
-.fa-refresh:before {
-  content: "\f021";
-}
-
-/* line 37, ../components/font-awesome/scss/_icons.scss */
-.fa-list-alt:before {
-  content: "\f022";
-}
-
-/* line 38, ../components/font-awesome/scss/_icons.scss */
-.fa-lock:before {
-  content: "\f023";
-}
-
-/* line 39, ../components/font-awesome/scss/_icons.scss */
-.fa-flag:before {
-  content: "\f024";
-}
-
-/* line 40, ../components/font-awesome/scss/_icons.scss */
-.fa-headphones:before {
-  content: "\f025";
-}
-
-/* line 41, ../components/font-awesome/scss/_icons.scss */
-.fa-volume-off:before {
-  content: "\f026";
-}
-
-/* line 42, ../components/font-awesome/scss/_icons.scss */
-.fa-volume-down:before {
-  content: "\f027";
-}
-
-/* line 43, ../components/font-awesome/scss/_icons.scss */
-.fa-volume-up:before {
-  content: "\f028";
-}
-
-/* line 44, ../components/font-awesome/scss/_icons.scss */
-.fa-qrcode:before {
-  content: "\f029";
-}
-
-/* line 45, ../components/font-awesome/scss/_icons.scss */
-.fa-barcode:before {
-  content: "\f02a";
-}
-
-/* line 46, ../components/font-awesome/scss/_icons.scss */
-.fa-tag:before {
-  content: "\f02b";
-}
-
-/* line 47, ../components/font-awesome/scss/_icons.scss */
-.fa-tags:before {
-  content: "\f02c";
-}
-
-/* line 48, ../components/font-awesome/scss/_icons.scss */
-.fa-book:before {
-  content: "\f02d";
-}
-
-/* line 49, ../components/font-awesome/scss/_icons.scss */
-.fa-bookmark:before {
-  content: "\f02e";
-}
-
-/* line 50, ../components/font-awesome/scss/_icons.scss */
-.fa-print:before {
-  content: "\f02f";
-}
-
-/* line 51, ../components/font-awesome/scss/_icons.scss */
-.fa-camera:before {
-  content: "\f030";
-}
-
-/* line 52, ../components/font-awesome/scss/_icons.scss */
-.fa-font:before {
-  content: "\f031";
-}
-
-/* line 53, ../components/font-awesome/scss/_icons.scss */
-.fa-bold:before {
-  content: "\f032";
-}
-
-/* line 54, ../components/font-awesome/scss/_icons.scss */
-.fa-italic:before {
-  content: "\f033";
-}
-
-/* line 55, ../components/font-awesome/scss/_icons.scss */
-.fa-text-height:before {
-  content: "\f034";
-}
-
-/* line 56, ../components/font-awesome/scss/_icons.scss */
-.fa-text-width:before {
-  content: "\f035";
-}
-
-/* line 57, ../components/font-awesome/scss/_icons.scss */
-.fa-align-left:before {
-  content: "\f036";
-}
-
-/* line 58, ../components/font-awesome/scss/_icons.scss */
-.fa-align-center:before {
-  content: "\f037";
-}
-
-/* line 59, ../components/font-awesome/scss/_icons.scss */
-.fa-align-right:before {
-  content: "\f038";
-}
-
-/* line 60, ../components/font-awesome/scss/_icons.scss */
-.fa-align-justify:before {
-  content: "\f039";
-}
-
-/* line 61, ../components/font-awesome/scss/_icons.scss */
-.fa-list:before {
-  content: "\f03a";
-}
-
-/* line 62, ../components/font-awesome/scss/_icons.scss */
-.fa-dedent:before,
-.fa-outdent:before {
-  content: "\f03b";
-}
-
-/* line 64, ../components/font-awesome/scss/_icons.scss */
-.fa-indent:before {
-  content: "\f03c";
-}
-
-/* line 65, ../components/font-awesome/scss/_icons.scss */
-.fa-video-camera:before {
-  content: "\f03d";
-}
-
-/* line 66, ../components/font-awesome/scss/_icons.scss */
-.fa-picture-o:before {
-  content: "\f03e";
-}
-
-/* line 67, ../components/font-awesome/scss/_icons.scss */
-.fa-pencil:before {
-  content: "\f040";
-}
-
-/* line 68, ../components/font-awesome/scss/_icons.scss */
-.fa-map-marker:before {
-  content: "\f041";
-}
-
-/* line 69, ../components/font-awesome/scss/_icons.scss */
-.fa-adjust:before {
-  content: "\f042";
-}
-
-/* line 70, ../components/font-awesome/scss/_icons.scss */
-.fa-tint:before {
-  content: "\f043";
-}
-
-/* line 71, ../components/font-awesome/scss/_icons.scss */
-.fa-edit:before,
-.fa-pencil-square-o:before {
-  content: "\f044";
-}
-
-/* line 73, ../components/font-awesome/scss/_icons.scss */
-.fa-share-square-o:before {
-  content: "\f045";
-}
-
-/* line 74, ../components/font-awesome/scss/_icons.scss */
-.fa-check-square-o:before {
-  content: "\f046";
-}
-
-/* line 75, ../components/font-awesome/scss/_icons.scss */
-.fa-arrows:before {
-  content: "\f047";
-}
-
-/* line 76, ../components/font-awesome/scss/_icons.scss */
-.fa-step-backward:before {
-  content: "\f048";
-}
-
-/* line 77, ../components/font-awesome/scss/_icons.scss */
-.fa-fast-backward:before {
-  content: "\f049";
-}
-
-/* line 78, ../components/font-awesome/scss/_icons.scss */
-.fa-backward:before {
-  content: "\f04a";
-}
-
-/* line 79, ../components/font-awesome/scss/_icons.scss */
-.fa-play:before {
-  content: "\f04b";
-}
-
-/* line 80, ../components/font-awesome/scss/_icons.scss */
-.fa-pause:before {
-  content: "\f04c";
-}
-
-/* line 81, ../components/font-awesome/scss/_icons.scss */
-.fa-stop:before {
-  content: "\f04d";
-}
-
-/* line 82, ../components/font-awesome/scss/_icons.scss */
-.fa-forward:before {
-  content: "\f04e";
-}
-
-/* line 83, ../components/font-awesome/scss/_icons.scss */
-.fa-fast-forward:before {
-  content: "\f050";
-}
-
-/* line 84, ../components/font-awesome/scss/_icons.scss */
-.fa-step-forward:before {
-  content: "\f051";
-}
-
-/* line 85, ../components/font-awesome/scss/_icons.scss */
-.fa-eject:before {
-  content: "\f052";
-}
-
-/* line 86, ../components/font-awesome/scss/_icons.scss */
-.fa-chevron-left:before {
-  content: "\f053";
-}
-
-/* line 87, ../components/font-awesome/scss/_icons.scss */
-.fa-chevron-right:before {
-  content: "\f054";
-}
-
-/* line 88, ../components/font-awesome/scss/_icons.scss */
-.fa-plus-circle:before {
-  content: "\f055";
-}
-
-/* line 89, ../components/font-awesome/scss/_icons.scss */
-.fa-minus-circle:before {
-  content: "\f056";
-}
-
-/* line 90, ../components/font-awesome/scss/_icons.scss */
-.fa-times-circle:before {
-  content: "\f057";
-}
-
-/* line 91, ../components/font-awesome/scss/_icons.scss */
-.fa-check-circle:before {
-  content: "\f058";
-}
-
-/* line 92, ../components/font-awesome/scss/_icons.scss */
-.fa-question-circle:before {
-  content: "\f059";
-}
-
-/* line 93, ../components/font-awesome/scss/_icons.scss */
-.fa-info-circle:before {
-  content: "\f05a";
-}
-
-/* line 94, ../components/font-awesome/scss/_icons.scss */
-.fa-crosshairs:before {
-  content: "\f05b";
-}
-
-/* line 95, ../components/font-awesome/scss/_icons.scss */
-.fa-times-circle-o:before {
-  content: "\f05c";
-}
-
-/* line 96, ../components/font-awesome/scss/_icons.scss */
-.fa-check-circle-o:before {
-  content: "\f05d";
-}
-
-/* line 97, ../components/font-awesome/scss/_icons.scss */
-.fa-ban:before {
-  content: "\f05e";
-}
-
-/* line 98, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-left:before {
-  content: "\f060";
-}
-
-/* line 99, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-right:before {
-  content: "\f061";
-}
-
-/* line 100, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-up:before {
-  content: "\f062";
-}
-
-/* line 101, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-down:before {
-  content: "\f063";
-}
-
-/* line 102, ../components/font-awesome/scss/_icons.scss */
-.fa-mail-forward:before,
-.fa-share:before {
-  content: "\f064";
-}
-
-/* line 104, ../components/font-awesome/scss/_icons.scss */
-.fa-expand:before {
-  content: "\f065";
-}
-
-/* line 105, ../components/font-awesome/scss/_icons.scss */
-.fa-compress:before {
-  content: "\f066";
-}
-
-/* line 106, ../components/font-awesome/scss/_icons.scss */
-.fa-plus:before {
-  content: "\f067";
-}
-
-/* line 107, ../components/font-awesome/scss/_icons.scss */
-.fa-minus:before {
-  content: "\f068";
-}
-
-/* line 108, ../components/font-awesome/scss/_icons.scss */
-.fa-asterisk:before {
-  content: "\f069";
-}
-
-/* line 109, ../components/font-awesome/scss/_icons.scss */
-.fa-exclamation-circle:before {
-  content: "\f06a";
-}
-
-/* line 110, ../components/font-awesome/scss/_icons.scss */
-.fa-gift:before {
-  content: "\f06b";
-}
-
-/* line 111, ../components/font-awesome/scss/_icons.scss */
-.fa-leaf:before {
-  content: "\f06c";
-}
-
-/* line 112, ../components/font-awesome/scss/_icons.scss */
-.fa-fire:before {
-  content: "\f06d";
-}
-
-/* line 113, ../components/font-awesome/scss/_icons.scss */
-.fa-eye:before {
-  content: "\f06e";
-}
-
-/* line 114, ../components/font-awesome/scss/_icons.scss */
-.fa-eye-slash:before {
-  content: "\f070";
-}
-
-/* line 115, ../components/font-awesome/scss/_icons.scss */
-.fa-warning:before,
-.fa-exclamation-triangle:before {
-  content: "\f071";
-}
-
-/* line 117, ../components/font-awesome/scss/_icons.scss */
-.fa-plane:before {
-  content: "\f072";
-}
-
-/* line 118, ../components/font-awesome/scss/_icons.scss */
-.fa-calendar:before {
-  content: "\f073";
-}
-
-/* line 119, ../components/font-awesome/scss/_icons.scss */
-.fa-random:before {
-  content: "\f074";
-}
-
-/* line 120, ../components/font-awesome/scss/_icons.scss */
-.fa-comment:before {
-  content: "\f075";
-}
-
-/* line 121, ../components/font-awesome/scss/_icons.scss */
-.fa-magnet:before {
-  content: "\f076";
-}
-
-/* line 122, ../components/font-awesome/scss/_icons.scss */
-.fa-chevron-up:before {
-  content: "\f077";
-}
-
-/* line 123, ../components/font-awesome/scss/_icons.scss */
-.fa-chevron-down:before {
-  content: "\f078";
-}
-
-/* line 124, ../components/font-awesome/scss/_icons.scss */
-.fa-retweet:before {
-  content: "\f079";
-}
-
-/* line 125, ../components/font-awesome/scss/_icons.scss */
-.fa-shopping-cart:before {
-  content: "\f07a";
-}
-
-/* line 126, ../components/font-awesome/scss/_icons.scss */
-.fa-folder:before {
-  content: "\f07b";
-}
-
-/* line 127, ../components/font-awesome/scss/_icons.scss */
-.fa-folder-open:before {
-  content: "\f07c";
-}
-
-/* line 128, ../components/font-awesome/scss/_icons.scss */
-.fa-arrows-v:before {
-  content: "\f07d";
-}
-
-/* line 129, ../components/font-awesome/scss/_icons.scss */
-.fa-arrows-h:before {
-  content: "\f07e";
-}
-
-/* line 130, ../components/font-awesome/scss/_icons.scss */
-.fa-bar-chart-o:before {
-  content: "\f080";
-}
-
-/* line 131, ../components/font-awesome/scss/_icons.scss */
-.fa-twitter-square:before {
-  content: "\f081";
-}
-
-/* line 132, ../components/font-awesome/scss/_icons.scss */
-.fa-facebook-square:before {
-  content: "\f082";
-}
-
-/* line 133, ../components/font-awesome/scss/_icons.scss */
-.fa-camera-retro:before {
-  content: "\f083";
-}
-
-/* line 134, ../components/font-awesome/scss/_icons.scss */
-.fa-key:before {
-  content: "\f084";
-}
-
-/* line 135, ../components/font-awesome/scss/_icons.scss */
-.fa-gears:before,
-.fa-cogs:before {
-  content: "\f085";
-}
-
-/* line 137, ../components/font-awesome/scss/_icons.scss */
-.fa-comments:before {
-  content: "\f086";
-}
-
-/* line 138, ../components/font-awesome/scss/_icons.scss */
-.fa-thumbs-o-up:before {
-  content: "\f087";
-}
-
-/* line 139, ../components/font-awesome/scss/_icons.scss */
-.fa-thumbs-o-down:before {
-  content: "\f088";
-}
-
-/* line 140, ../components/font-awesome/scss/_icons.scss */
-.fa-star-half:before {
-  content: "\f089";
-}
-
-/* line 141, ../components/font-awesome/scss/_icons.scss */
-.fa-heart-o:before {
-  content: "\f08a";
-}
-
-/* line 142, ../components/font-awesome/scss/_icons.scss */
-.fa-sign-out:before {
-  content: "\f08b";
-}
-
-/* line 143, ../components/font-awesome/scss/_icons.scss */
-.fa-linkedin-square:before {
-  content: "\f08c";
-}
-
-/* line 144, ../components/font-awesome/scss/_icons.scss */
-.fa-thumb-tack:before {
-  content: "\f08d";
-}
-
-/* line 145, ../components/font-awesome/scss/_icons.scss */
-.fa-external-link:before {
-  content: "\f08e";
-}
-
-/* line 146, ../components/font-awesome/scss/_icons.scss */
-.fa-sign-in:before {
-  content: "\f090";
-}
-
-/* line 147, ../components/font-awesome/scss/_icons.scss */
-.fa-trophy:before {
-  content: "\f091";
-}
-
-/* line 148, ../components/font-awesome/scss/_icons.scss */
-.fa-github-square:before {
-  content: "\f092";
-}
-
-/* line 149, ../components/font-awesome/scss/_icons.scss */
-.fa-upload:before {
-  content: "\f093";
-}
-
-/* line 150, ../components/font-awesome/scss/_icons.scss */
-.fa-lemon-o:before {
-  content: "\f094";
-}
-
-/* line 151, ../components/font-awesome/scss/_icons.scss */
-.fa-phone:before {
-  content: "\f095";
-}
-
-/* line 152, ../components/font-awesome/scss/_icons.scss */
-.fa-square-o:before {
-  content: "\f096";
-}
-
-/* line 153, ../components/font-awesome/scss/_icons.scss */
-.fa-bookmark-o:before {
-  content: "\f097";
-}
-
-/* line 154, ../components/font-awesome/scss/_icons.scss */
-.fa-phone-square:before {
-  content: "\f098";
-}
-
-/* line 155, ../components/font-awesome/scss/_icons.scss */
-.fa-twitter:before {
-  content: "\f099";
-}
-
-/* line 156, ../components/font-awesome/scss/_icons.scss */
-.fa-facebook:before {
-  content: "\f09a";
-}
-
-/* line 157, ../components/font-awesome/scss/_icons.scss */
-.fa-github:before {
-  content: "\f09b";
-}
-
-/* line 158, ../components/font-awesome/scss/_icons.scss */
-.fa-unlock:before {
-  content: "\f09c";
-}
-
-/* line 159, ../components/font-awesome/scss/_icons.scss */
-.fa-credit-card:before {
-  content: "\f09d";
-}
-
-/* line 160, ../components/font-awesome/scss/_icons.scss */
-.fa-rss:before {
-  content: "\f09e";
-}
-
-/* line 161, ../components/font-awesome/scss/_icons.scss */
-.fa-hdd-o:before {
-  content: "\f0a0";
-}
-
-/* line 162, ../components/font-awesome/scss/_icons.scss */
-.fa-bullhorn:before {
-  content: "\f0a1";
-}
-
-/* line 163, ../components/font-awesome/scss/_icons.scss */
-.fa-bell:before {
-  content: "\f0f3";
-}
-
-/* line 164, ../components/font-awesome/scss/_icons.scss */
-.fa-certificate:before {
-  content: "\f0a3";
-}
-
-/* line 165, ../components/font-awesome/scss/_icons.scss */
-.fa-hand-o-right:before {
-  content: "\f0a4";
-}
-
-/* line 166, ../components/font-awesome/scss/_icons.scss */
-.fa-hand-o-left:before {
-  content: "\f0a5";
-}
-
-/* line 167, ../components/font-awesome/scss/_icons.scss */
-.fa-hand-o-up:before {
-  content: "\f0a6";
-}
-
-/* line 168, ../components/font-awesome/scss/_icons.scss */
-.fa-hand-o-down:before {
-  content: "\f0a7";
-}
-
-/* line 169, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-circle-left:before {
-  content: "\f0a8";
-}
-
-/* line 170, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-circle-right:before {
-  content: "\f0a9";
-}
-
-/* line 171, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-circle-up:before {
-  content: "\f0aa";
-}
-
-/* line 172, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-circle-down:before {
-  content: "\f0ab";
-}
-
-/* line 173, ../components/font-awesome/scss/_icons.scss */
-.fa-globe:before {
-  content: "\f0ac";
-}
-
-/* line 174, ../components/font-awesome/scss/_icons.scss */
-.fa-wrench:before {
-  content: "\f0ad";
-}
-
-/* line 175, ../components/font-awesome/scss/_icons.scss */
-.fa-tasks:before {
-  content: "\f0ae";
-}
-
-/* line 176, ../components/font-awesome/scss/_icons.scss */
-.fa-filter:before {
-  content: "\f0b0";
-}
-
-/* line 177, ../components/font-awesome/scss/_icons.scss */
-.fa-briefcase:before {
-  content: "\f0b1";
-}
-
-/* line 178, ../components/font-awesome/scss/_icons.scss */
-.fa-arrows-alt:before {
-  content: "\f0b2";
-}
-
-/* line 179, ../components/font-awesome/scss/_icons.scss */
-.fa-group:before,
-.fa-users:before {
-  content: "\f0c0";
-}
-
-/* line 181, ../components/font-awesome/scss/_icons.scss */
-.fa-chain:before,
-.fa-link:before {
-  content: "\f0c1";
-}
-
-/* line 183, ../components/font-awesome/scss/_icons.scss */
-.fa-cloud:before {
-  content: "\f0c2";
-}
-
-/* line 184, ../components/font-awesome/scss/_icons.scss */
-.fa-flask:before {
-  content: "\f0c3";
-}
-
-/* line 185, ../components/font-awesome/scss/_icons.scss */
-.fa-cut:before,
-.fa-scissors:before {
-  content: "\f0c4";
-}
-
-/* line 187, ../components/font-awesome/scss/_icons.scss */
-.fa-copy:before,
-.fa-files-o:before {
-  content: "\f0c5";
-}
-
-/* line 189, ../components/font-awesome/scss/_icons.scss */
-.fa-paperclip:before {
-  content: "\f0c6";
-}
-
-/* line 190, ../components/font-awesome/scss/_icons.scss */
-.fa-save:before,
-.fa-floppy-o:before {
-  content: "\f0c7";
-}
-
-/* line 192, ../components/font-awesome/scss/_icons.scss */
-.fa-square:before {
-  content: "\f0c8";
-}
-
-/* line 193, ../components/font-awesome/scss/_icons.scss */
-.fa-bars:before {
-  content: "\f0c9";
-}
-
-/* line 194, ../components/font-awesome/scss/_icons.scss */
-.fa-list-ul:before {
-  content: "\f0ca";
-}
-
-/* line 195, ../components/font-awesome/scss/_icons.scss */
-.fa-list-ol:before {
-  content: "\f0cb";
-}
-
-/* line 196, ../components/font-awesome/scss/_icons.scss */
-.fa-strikethrough:before {
-  content: "\f0cc";
-}
-
-/* line 197, ../components/font-awesome/scss/_icons.scss */
-.fa-underline:before {
-  content: "\f0cd";
-}
-
-/* line 198, ../components/font-awesome/scss/_icons.scss */
-.fa-table:before {
-  content: "\f0ce";
-}
-
-/* line 199, ../components/font-awesome/scss/_icons.scss */
-.fa-magic:before {
-  content: "\f0d0";
-}
-
-/* line 200, ../components/font-awesome/scss/_icons.scss */
-.fa-truck:before {
-  content: "\f0d1";
-}
-
-/* line 201, ../components/font-awesome/scss/_icons.scss */
-.fa-pinterest:before {
-  content: "\f0d2";
-}
-
-/* line 202, ../components/font-awesome/scss/_icons.scss */
-.fa-pinterest-square:before {
-  content: "\f0d3";
-}
-
-/* line 203, ../components/font-awesome/scss/_icons.scss */
-.fa-google-plus-square:before {
-  content: "\f0d4";
-}
-
-/* line 204, ../components/font-awesome/scss/_icons.scss */
-.fa-google-plus:before {
-  content: "\f0d5";
-}
-
-/* line 205, ../components/font-awesome/scss/_icons.scss */
-.fa-money:before {
-  content: "\f0d6";
-}
-
-/* line 206, ../components/font-awesome/scss/_icons.scss */
-.fa-caret-down:before {
-  content: "\f0d7";
-}
-
-/* line 207, ../components/font-awesome/scss/_icons.scss */
-.fa-caret-up:before {
-  content: "\f0d8";
-}
-
-/* line 208, ../components/font-awesome/scss/_icons.scss */
-.fa-caret-left:before {
-  content: "\f0d9";
-}
-
-/* line 209, ../components/font-awesome/scss/_icons.scss */
-.fa-caret-right:before {
-  content: "\f0da";
-}
-
-/* line 210, ../components/font-awesome/scss/_icons.scss */
-.fa-columns:before {
-  content: "\f0db";
-}
-
-/* line 211, ../components/font-awesome/scss/_icons.scss */
-.fa-unsorted:before,
-.fa-sort:before {
-  content: "\f0dc";
-}
-
-/* line 213, ../components/font-awesome/scss/_icons.scss */
-.fa-sort-down:before,
-.fa-sort-asc:before {
-  content: "\f0dd";
-}
-
-/* line 215, ../components/font-awesome/scss/_icons.scss */
-.fa-sort-up:before,
-.fa-sort-desc:before {
-  content: "\f0de";
-}
-
-/* line 217, ../components/font-awesome/scss/_icons.scss */
-.fa-envelope:before {
-  content: "\f0e0";
-}
-
-/* line 218, ../components/font-awesome/scss/_icons.scss */
-.fa-linkedin:before {
-  content: "\f0e1";
-}
-
-/* line 219, ../components/font-awesome/scss/_icons.scss */
-.fa-rotate-left:before,
-.fa-undo:before {
-  content: "\f0e2";
-}
-
-/* line 221, ../components/font-awesome/scss/_icons.scss */
-.fa-legal:before,
-.fa-gavel:before {
-  content: "\f0e3";
-}
-
-/* line 223, ../components/font-awesome/scss/_icons.scss */
-.fa-dashboard:before,
-.fa-tachometer:before {
-  content: "\f0e4";
-}
-
-/* line 225, ../components/font-awesome/scss/_icons.scss */
-.fa-comment-o:before {
-  content: "\f0e5";
-}
-
-/* line 226, ../components/font-awesome/scss/_icons.scss */
-.fa-comments-o:before {
-  content: "\f0e6";
-}
-
-/* line 227, ../components/font-awesome/scss/_icons.scss */
-.fa-flash:before,
-.fa-bolt:before {
-  content: "\f0e7";
-}
-
-/* line 229, ../components/font-awesome/scss/_icons.scss */
-.fa-sitemap:before {
-  content: "\f0e8";
-}
-
-/* line 230, ../components/font-awesome/scss/_icons.scss */
-.fa-umbrella:before {
-  content: "\f0e9";
-}
-
-/* line 231, ../components/font-awesome/scss/_icons.scss */
-.fa-paste:before,
-.fa-clipboard:before {
-  content: "\f0ea";
-}
-
-/* line 233, ../components/font-awesome/scss/_icons.scss */
-.fa-lightbulb-o:before {
-  content: "\f0eb";
-}
-
-/* line 234, ../components/font-awesome/scss/_icons.scss */
-.fa-exchange:before {
-  content: "\f0ec";
-}
-
-/* line 235, ../components/font-awesome/scss/_icons.scss */
-.fa-cloud-download:before {
-  content: "\f0ed";
-}
-
-/* line 236, ../components/font-awesome/scss/_icons.scss */
-.fa-cloud-upload:before {
-  content: "\f0ee";
-}
-
-/* line 237, ../components/font-awesome/scss/_icons.scss */
-.fa-user-md:before {
-  content: "\f0f0";
-}
-
-/* line 238, ../components/font-awesome/scss/_icons.scss */
-.fa-stethoscope:before {
-  content: "\f0f1";
-}
-
-/* line 239, ../components/font-awesome/scss/_icons.scss */
-.fa-suitcase:before {
-  content: "\f0f2";
-}
-
-/* line 240, ../components/font-awesome/scss/_icons.scss */
-.fa-bell-o:before {
-  content: "\f0a2";
-}
-
-/* line 241, ../components/font-awesome/scss/_icons.scss */
-.fa-coffee:before {
-  content: "\f0f4";
-}
-
-/* line 242, ../components/font-awesome/scss/_icons.scss */
-.fa-cutlery:before {
-  content: "\f0f5";
-}
-
-/* line 243, ../components/font-awesome/scss/_icons.scss */
-.fa-file-text-o:before {
-  content: "\f0f6";
-}
-
-/* line 244, ../components/font-awesome/scss/_icons.scss */
-.fa-building-o:before {
-  content: "\f0f7";
-}
-
-/* line 245, ../components/font-awesome/scss/_icons.scss */
-.fa-hospital-o:before {
-  content: "\f0f8";
-}
-
-/* line 246, ../components/font-awesome/scss/_icons.scss */
-.fa-ambulance:before {
-  content: "\f0f9";
-}
-
-/* line 247, ../components/font-awesome/scss/_icons.scss */
-.fa-medkit:before {
-  content: "\f0fa";
-}
-
-/* line 248, ../components/font-awesome/scss/_icons.scss */
-.fa-fighter-jet:before {
-  content: "\f0fb";
-}
-
-/* line 249, ../components/font-awesome/scss/_icons.scss */
-.fa-beer:before {
-  content: "\f0fc";
-}
-
-/* line 250, ../components/font-awesome/scss/_icons.scss */
-.fa-h-square:before {
-  content: "\f0fd";
-}
-
-/* line 251, ../components/font-awesome/scss/_icons.scss */
-.fa-plus-square:before {
-  content: "\f0fe";
-}
-
-/* line 252, ../components/font-awesome/scss/_icons.scss */
-.fa-angle-double-left:before {
-  content: "\f100";
-}
-
-/* line 253, ../components/font-awesome/scss/_icons.scss */
-.fa-angle-double-right:before {
-  content: "\f101";
-}
-
-/* line 254, ../components/font-awesome/scss/_icons.scss */
-.fa-angle-double-up:before {
-  content: "\f102";
-}
-
-/* line 255, ../components/font-awesome/scss/_icons.scss */
-.fa-angle-double-down:before {
-  content: "\f103";
-}
-
-/* line 256, ../components/font-awesome/scss/_icons.scss */
-.fa-angle-left:before {
-  content: "\f104";
-}
-
-/* line 257, ../components/font-awesome/scss/_icons.scss */
-.fa-angle-right:before {
-  content: "\f105";
-}
-
-/* line 258, ../components/font-awesome/scss/_icons.scss */
-.fa-angle-up:before {
-  content: "\f106";
-}
-
-/* line 259, ../components/font-awesome/scss/_icons.scss */
-.fa-angle-down:before {
-  content: "\f107";
-}
-
-/* line 260, ../components/font-awesome/scss/_icons.scss */
-.fa-desktop:before {
-  content: "\f108";
-}
-
-/* line 261, ../components/font-awesome/scss/_icons.scss */
-.fa-laptop:before {
-  content: "\f109";
-}
-
-/* line 262, ../components/font-awesome/scss/_icons.scss */
-.fa-tablet:before {
-  content: "\f10a";
-}
-
-/* line 263, ../components/font-awesome/scss/_icons.scss */
-.fa-mobile-phone:before,
-.fa-mobile:before {
-  content: "\f10b";
-}
-
-/* line 265, ../components/font-awesome/scss/_icons.scss */
-.fa-circle-o:before {
-  content: "\f10c";
-}
-
-/* line 266, ../components/font-awesome/scss/_icons.scss */
-.fa-quote-left:before {
-  content: "\f10d";
-}
-
-/* line 267, ../components/font-awesome/scss/_icons.scss */
-.fa-quote-right:before {
-  content: "\f10e";
-}
-
-/* line 268, ../components/font-awesome/scss/_icons.scss */
-.fa-spinner:before {
-  content: "\f110";
-}
-
-/* line 269, ../components/font-awesome/scss/_icons.scss */
-.fa-circle:before {
-  content: "\f111";
-}
-
-/* line 270, ../components/font-awesome/scss/_icons.scss */
-.fa-mail-reply:before,
-.fa-reply:before {
-  content: "\f112";
-}
-
-/* line 272, ../components/font-awesome/scss/_icons.scss */
-.fa-github-alt:before {
-  content: "\f113";
-}
-
-/* line 273, ../components/font-awesome/scss/_icons.scss */
-.fa-folder-o:before {
-  content: "\f114";
-}
-
-/* line 274, ../components/font-awesome/scss/_icons.scss */
-.fa-folder-open-o:before {
-  content: "\f115";
-}
-
-/* line 275, ../components/font-awesome/scss/_icons.scss */
-.fa-smile-o:before {
-  content: "\f118";
-}
-
-/* line 276, ../components/font-awesome/scss/_icons.scss */
-.fa-frown-o:before {
-  content: "\f119";
-}
-
-/* line 277, ../components/font-awesome/scss/_icons.scss */
-.fa-meh-o:before {
-  content: "\f11a";
-}
-
-/* line 278, ../components/font-awesome/scss/_icons.scss */
-.fa-gamepad:before {
-  content: "\f11b";
-}
-
-/* line 279, ../components/font-awesome/scss/_icons.scss */
-.fa-keyboard-o:before {
-  content: "\f11c";
-}
-
-/* line 280, ../components/font-awesome/scss/_icons.scss */
-.fa-flag-o:before {
-  content: "\f11d";
-}
-
-/* line 281, ../components/font-awesome/scss/_icons.scss */
-.fa-flag-checkered:before {
-  content: "\f11e";
-}
-
-/* line 282, ../components/font-awesome/scss/_icons.scss */
-.fa-terminal:before {
-  content: "\f120";
-}
-
-/* line 283, ../components/font-awesome/scss/_icons.scss */
-.fa-code:before {
-  content: "\f121";
-}
-
-/* line 284, ../components/font-awesome/scss/_icons.scss */
-.fa-reply-all:before {
-  content: "\f122";
-}
-
-/* line 285, ../components/font-awesome/scss/_icons.scss */
-.fa-mail-reply-all:before {
-  content: "\f122";
-}
-
-/* line 286, ../components/font-awesome/scss/_icons.scss */
-.fa-star-half-empty:before,
-.fa-star-half-full:before,
-.fa-star-half-o:before {
-  content: "\f123";
-}
-
-/* line 289, ../components/font-awesome/scss/_icons.scss */
-.fa-location-arrow:before {
-  content: "\f124";
-}
-
-/* line 290, ../components/font-awesome/scss/_icons.scss */
-.fa-crop:before {
-  content: "\f125";
-}
-
-/* line 291, ../components/font-awesome/scss/_icons.scss */
-.fa-code-fork:before {
-  content: "\f126";
-}
-
-/* line 292, ../components/font-awesome/scss/_icons.scss */
-.fa-unlink:before,
-.fa-chain-broken:before {
-  content: "\f127";
-}
-
-/* line 294, ../components/font-awesome/scss/_icons.scss */
-.fa-question:before {
-  content: "\f128";
-}
-
-/* line 295, ../components/font-awesome/scss/_icons.scss */
-.fa-info:before {
-  content: "\f129";
-}
-
-/* line 296, ../components/font-awesome/scss/_icons.scss */
-.fa-exclamation:before {
-  content: "\f12a";
-}
-
-/* line 297, ../components/font-awesome/scss/_icons.scss */
-.fa-superscript:before {
-  content: "\f12b";
-}
-
-/* line 298, ../components/font-awesome/scss/_icons.scss */
-.fa-subscript:before {
-  content: "\f12c";
-}
-
-/* line 299, ../components/font-awesome/scss/_icons.scss */
-.fa-eraser:before {
-  content: "\f12d";
-}
-
-/* line 300, ../components/font-awesome/scss/_icons.scss */
-.fa-puzzle-piece:before {
-  content: "\f12e";
-}
-
-/* line 301, ../components/font-awesome/scss/_icons.scss */
-.fa-microphone:before {
-  content: "\f130";
-}
-
-/* line 302, ../components/font-awesome/scss/_icons.scss */
-.fa-microphone-slash:before {
-  content: "\f131";
-}
-
-/* line 303, ../components/font-awesome/scss/_icons.scss */
-.fa-shield:before {
-  content: "\f132";
-}
-
-/* line 304, ../components/font-awesome/scss/_icons.scss */
-.fa-calendar-o:before {
-  content: "\f133";
-}
-
-/* line 305, ../components/font-awesome/scss/_icons.scss */
-.fa-fire-extinguisher:before {
-  content: "\f134";
-}
-
-/* line 306, ../components/font-awesome/scss/_icons.scss */
-.fa-rocket:before {
-  content: "\f135";
-}
-
-/* line 307, ../components/font-awesome/scss/_icons.scss */
-.fa-maxcdn:before {
-  content: "\f136";
-}
-
-/* line 308, ../components/font-awesome/scss/_icons.scss */
-.fa-chevron-circle-left:before {
-  content: "\f137";
-}
-
-/* line 309, ../components/font-awesome/scss/_icons.scss */
-.fa-chevron-circle-right:before {
-  content: "\f138";
-}
-
-/* line 310, ../components/font-awesome/scss/_icons.scss */
-.fa-chevron-circle-up:before {
-  content: "\f139";
-}
-
-/* line 311, ../components/font-awesome/scss/_icons.scss */
-.fa-chevron-circle-down:before {
-  content: "\f13a";
-}
-
-/* line 312, ../components/font-awesome/scss/_icons.scss */
-.fa-html5:before {
-  content: "\f13b";
-}
-
-/* line 313, ../components/font-awesome/scss/_icons.scss */
-.fa-css3:before {
-  content: "\f13c";
-}
-
-/* line 314, ../components/font-awesome/scss/_icons.scss */
-.fa-anchor:before {
-  content: "\f13d";
-}
-
-/* line 315, ../components/font-awesome/scss/_icons.scss */
-.fa-unlock-alt:before {
-  content: "\f13e";
-}
-
-/* line 316, ../components/font-awesome/scss/_icons.scss */
-.fa-bullseye:before {
-  content: "\f140";
-}
-
-/* line 317, ../components/font-awesome/scss/_icons.scss */
-.fa-ellipsis-h:before {
-  content: "\f141";
-}
-
-/* line 318, ../components/font-awesome/scss/_icons.scss */
-.fa-ellipsis-v:before {
-  content: "\f142";
-}
-
-/* line 319, ../components/font-awesome/scss/_icons.scss */
-.fa-rss-square:before {
-  content: "\f143";
-}
-
-/* line 320, ../components/font-awesome/scss/_icons.scss */
-.fa-play-circle:before {
-  content: "\f144";
-}
-
-/* line 321, ../components/font-awesome/scss/_icons.scss */
-.fa-ticket:before {
-  content: "\f145";
-}
-
-/* line 322, ../components/font-awesome/scss/_icons.scss */
-.fa-minus-square:before {
-  content: "\f146";
-}
-
-/* line 323, ../components/font-awesome/scss/_icons.scss */
-.fa-minus-square-o:before {
-  content: "\f147";
-}
-
-/* line 324, ../components/font-awesome/scss/_icons.scss */
-.fa-level-up:before {
-  content: "\f148";
-}
-
-/* line 325, ../components/font-awesome/scss/_icons.scss */
-.fa-level-down:before {
-  content: "\f149";
-}
-
-/* line 326, ../components/font-awesome/scss/_icons.scss */
-.fa-check-square:before {
-  content: "\f14a";
-}
-
-/* line 327, ../components/font-awesome/scss/_icons.scss */
-.fa-pencil-square:before {
-  content: "\f14b";
-}
-
-/* line 328, ../components/font-awesome/scss/_icons.scss */
-.fa-external-link-square:before {
-  content: "\f14c";
-}
-
-/* line 329, ../components/font-awesome/scss/_icons.scss */
-.fa-share-square:before {
-  content: "\f14d";
-}
-
-/* line 330, ../components/font-awesome/scss/_icons.scss */
-.fa-compass:before {
-  content: "\f14e";
-}
-
-/* line 331, ../components/font-awesome/scss/_icons.scss */
-.fa-toggle-down:before,
-.fa-caret-square-o-down:before {
-  content: "\f150";
-}
-
-/* line 333, ../components/font-awesome/scss/_icons.scss */
-.fa-toggle-up:before,
-.fa-caret-square-o-up:before {
-  content: "\f151";
-}
-
-/* line 335, ../components/font-awesome/scss/_icons.scss */
-.fa-toggle-right:before,
-.fa-caret-square-o-right:before {
-  content: "\f152";
-}
-
-/* line 337, ../components/font-awesome/scss/_icons.scss */
-.fa-euro:before,
-.fa-eur:before {
-  content: "\f153";
-}
-
-/* line 339, ../components/font-awesome/scss/_icons.scss */
-.fa-gbp:before {
-  content: "\f154";
-}
-
-/* line 340, ../components/font-awesome/scss/_icons.scss */
-.fa-dollar:before,
-.fa-usd:before {
-  content: "\f155";
-}
-
-/* line 342, ../components/font-awesome/scss/_icons.scss */
-.fa-rupee:before,
-.fa-inr:before {
-  content: "\f156";
-}
-
-/* line 344, ../components/font-awesome/scss/_icons.scss */
-.fa-cny:before,
-.fa-rmb:before,
-.fa-yen:before,
-.fa-jpy:before {
-  content: "\f157";
-}
-
-/* line 348, ../components/font-awesome/scss/_icons.scss */
-.fa-ruble:before,
-.fa-rouble:before,
-.fa-rub:before {
-  content: "\f158";
-}
-
-/* line 351, ../components/font-awesome/scss/_icons.scss */
-.fa-won:before,
-.fa-krw:before {
-  content: "\f159";
-}
-
-/* line 353, ../components/font-awesome/scss/_icons.scss */
-.fa-bitcoin:before,
-.fa-btc:before {
-  content: "\f15a";
-}
-
-/* line 355, ../components/font-awesome/scss/_icons.scss */
-.fa-file:before {
-  content: "\f15b";
-}
-
-/* line 356, ../components/font-awesome/scss/_icons.scss */
-.fa-file-text:before {
-  content: "\f15c";
-}
-
-/* line 357, ../components/font-awesome/scss/_icons.scss */
-.fa-sort-alpha-asc:before {
-  content: "\f15d";
-}
-
-/* line 358, ../components/font-awesome/scss/_icons.scss */
-.fa-sort-alpha-desc:before {
-  content: "\f15e";
-}
-
-/* line 359, ../components/font-awesome/scss/_icons.scss */
-.fa-sort-amount-asc:before {
-  content: "\f160";
-}
-
-/* line 360, ../components/font-awesome/scss/_icons.scss */
-.fa-sort-amount-desc:before {
-  content: "\f161";
-}
-
-/* line 361, ../components/font-awesome/scss/_icons.scss */
-.fa-sort-numeric-asc:before {
-  content: "\f162";
-}
-
-/* line 362, ../components/font-awesome/scss/_icons.scss */
-.fa-sort-numeric-desc:before {
-  content: "\f163";
-}
-
-/* line 363, ../components/font-awesome/scss/_icons.scss */
-.fa-thumbs-up:before {
-  content: "\f164";
-}
-
-/* line 364, ../components/font-awesome/scss/_icons.scss */
-.fa-thumbs-down:before {
-  content: "\f165";
-}
-
-/* line 365, ../components/font-awesome/scss/_icons.scss */
-.fa-youtube-square:before {
-  content: "\f166";
-}
-
-/* line 366, ../components/font-awesome/scss/_icons.scss */
-.fa-youtube:before {
-  content: "\f167";
-}
-
-/* line 367, ../components/font-awesome/scss/_icons.scss */
-.fa-xing:before {
-  content: "\f168";
-}
-
-/* line 368, ../components/font-awesome/scss/_icons.scss */
-.fa-xing-square:before {
-  content: "\f169";
-}
-
-/* line 369, ../components/font-awesome/scss/_icons.scss */
-.fa-youtube-play:before {
-  content: "\f16a";
-}
-
-/* line 370, ../components/font-awesome/scss/_icons.scss */
-.fa-dropbox:before {
-  content: "\f16b";
-}
-
-/* line 371, ../components/font-awesome/scss/_icons.scss */
-.fa-stack-overflow:before {
-  content: "\f16c";
-}
-
-/* line 372, ../components/font-awesome/scss/_icons.scss */
-.fa-instagram:before {
-  content: "\f16d";
-}
-
-/* line 373, ../components/font-awesome/scss/_icons.scss */
-.fa-flickr:before {
-  content: "\f16e";
-}
-
-/* line 374, ../components/font-awesome/scss/_icons.scss */
-.fa-adn:before {
-  content: "\f170";
-}
-
-/* line 375, ../components/font-awesome/scss/_icons.scss */
-.fa-bitbucket:before {
-  content: "\f171";
-}
-
-/* line 376, ../components/font-awesome/scss/_icons.scss */
-.fa-bitbucket-square:before {
-  content: "\f172";
-}
-
-/* line 377, ../components/font-awesome/scss/_icons.scss */
-.fa-tumblr:before {
-  content: "\f173";
-}
-
-/* line 378, ../components/font-awesome/scss/_icons.scss */
-.fa-tumblr-square:before {
-  content: "\f174";
-}
-
-/* line 379, ../components/font-awesome/scss/_icons.scss */
-.fa-long-arrow-down:before {
-  content: "\f175";
-}
-
-/* line 380, ../components/font-awesome/scss/_icons.scss */
-.fa-long-arrow-up:before {
-  content: "\f176";
-}
-
-/* line 381, ../components/font-awesome/scss/_icons.scss */
-.fa-long-arrow-left:before {
-  content: "\f177";
-}
-
-/* line 382, ../components/font-awesome/scss/_icons.scss */
-.fa-long-arrow-right:before {
-  content: "\f178";
-}
-
-/* line 383, ../components/font-awesome/scss/_icons.scss */
-.fa-apple:before {
-  content: "\f179";
-}
-
-/* line 384, ../components/font-awesome/scss/_icons.scss */
-.fa-windows:before {
-  content: "\f17a";
-}
-
-/* line 385, ../components/font-awesome/scss/_icons.scss */
-.fa-android:before {
-  content: "\f17b";
-}
-
-/* line 386, ../components/font-awesome/scss/_icons.scss */
-.fa-linux:before {
-  content: "\f17c";
-}
-
-/* line 387, ../components/font-awesome/scss/_icons.scss */
-.fa-dribbble:before {
-  content: "\f17d";
-}
-
-/* line 388, ../components/font-awesome/scss/_icons.scss */
-.fa-skype:before {
-  content: "\f17e";
-}
-
-/* line 389, ../components/font-awesome/scss/_icons.scss */
-.fa-foursquare:before {
-  content: "\f180";
-}
-
-/* line 390, ../components/font-awesome/scss/_icons.scss */
-.fa-trello:before {
-  content: "\f181";
-}
-
-/* line 391, ../components/font-awesome/scss/_icons.scss */
-.fa-female:before {
-  content: "\f182";
-}
-
-/* line 392, ../components/font-awesome/scss/_icons.scss */
-.fa-male:before {
-  content: "\f183";
-}
-
-/* line 393, ../components/font-awesome/scss/_icons.scss */
-.fa-gittip:before {
-  content: "\f184";
-}
-
-/* line 394, ../components/font-awesome/scss/_icons.scss */
-.fa-sun-o:before {
-  content: "\f185";
-}
-
-/* line 395, ../components/font-awesome/scss/_icons.scss */
-.fa-moon-o:before {
-  content: "\f186";
-}
-
-/* line 396, ../components/font-awesome/scss/_icons.scss */
-.fa-archive:before {
-  content: "\f187";
-}
-
-/* line 397, ../components/font-awesome/scss/_icons.scss */
-.fa-bug:before {
-  content: "\f188";
-}
-
-/* line 398, ../components/font-awesome/scss/_icons.scss */
-.fa-vk:before {
-  content: "\f189";
-}
-
-/* line 399, ../components/font-awesome/scss/_icons.scss */
-.fa-weibo:before {
-  content: "\f18a";
-}
-
-/* line 400, ../components/font-awesome/scss/_icons.scss */
-.fa-renren:before {
-  content: "\f18b";
-}
-
-/* line 401, ../components/font-awesome/scss/_icons.scss */
-.fa-pagelines:before {
-  content: "\f18c";
-}
-
-/* line 402, ../components/font-awesome/scss/_icons.scss */
-.fa-stack-exchange:before {
-  content: "\f18d";
-}
-
-/* line 403, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-circle-o-right:before {
-  content: "\f18e";
-}
-
-/* line 404, ../components/font-awesome/scss/_icons.scss */
-.fa-arrow-circle-o-left:before {
-  content: "\f190";
-}
-
-/* line 405, ../components/font-awesome/scss/_icons.scss */
-.fa-toggle-left:before,
-.fa-caret-square-o-left:before {
-  content: "\f191";
-}
-
-/* line 407, ../components/font-awesome/scss/_icons.scss */
-.fa-dot-circle-o:before {
-  content: "\f192";
-}
-
-/* line 408, ../components/font-awesome/scss/_icons.scss */
-.fa-wheelchair:before {
-  content: "\f193";
-}
-
-/* line 409, ../components/font-awesome/scss/_icons.scss */
-.fa-vimeo-square:before {
-  content: "\f194";
-}
-
-/* line 410, ../components/font-awesome/scss/_icons.scss */
-.fa-turkish-lira:before,
-.fa-try:before {
-  content: "\f195";
-}
-
-/* line 412, ../components/font-awesome/scss/_icons.scss */
-.fa-plus-square-o:before {
-  content: "\f196";
-}
-
-/*!
  * Ladda
  * http://lab.hakim.se/ladda
  * MIT licensed
@@ -10183,17 +8042,71 @@ td.visible-print {
   transition: top 0.25s ease-in-out 0.25s, left 0.25s ease-in-out;
 }
 
-/* Generated by Font Squirrel (http://www.fontsquirrel.com) on June 10, 2013 */
 @font-face {
-  font-family: 'tok3n-icons';
-  src: url("tok3nicons-webfont.eot");
-}
-@font-face {
-  font-family: 'tok3n-icons';
-  src: url(data:application/x-font-woff;charset=utf-8;base64,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) format("woff"), url("tok3nicons-webfont.ttf") format("truetype"), url("tok3nicons-webfont.svg#your_iconsregular") format("svg");
+  font-family: "tok3n-icons";
+  src: url("fonts/tok3n-icons.eot");
+  src: url("fonts/tok3n-icons.eot?#iefix") format("embedded-opentype"), url("fonts/tok3n-icons.woff") format("woff"), url("fonts/tok3n-icons.ttf") format("truetype"), url("fonts/tok3n-icons.svg#tok3n-icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+/* line 15, ../sass/_tok3n-font.scss */
+[data-icon]:before {
+  font-family: "tok3n-icons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 28, ../sass/_tok3n-font.scss */
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "tok3n-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 41, ../sass/_tok3n-font.scss */
+.icon-tok3n-qrcode:before {
+  content: "a";
+}
+
+/* line 44, ../sass/_tok3n-font.scss */
+.icon-tok3n-logo:before {
+  content: "b";
+}
+
+/* line 47, ../sass/_tok3n-font.scss */
+.icon-tok3n-otp:before {
+  content: "d";
+}
+
+/* line 50, ../sass/_tok3n-font.scss */
+.icon-tok3n-bubble:before {
+  content: "e";
+}
+
+/* line 53, ../sass/_tok3n-font.scss */
+.icon-tok3n-stripe:before {
+  content: "f";
+}
+
+/* line 56, ../sass/_tok3n-font.scss */
+.icon-tok3n-phone:before {
+  content: "g";
+}
+
 @-moz-keyframes flash {
   /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   0% {
@@ -10490,6 +8403,7 @@ td.visible-print {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+  -webkit-font-smoothing: antialiased;
   -moz-animation: fadeIn;
   -webkit-animation: fadeIn;
   animation: fadeIn;
@@ -10504,13 +8418,13 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 60, ../sass/_login-v2-main.sass */
+/* line 61, ../sass/_login-v2-main.sass */
 .tok3n-front, .tok3n-back, .tok3n-container, .tok3n-flipper {
-  height: 529px;
+  height: 535px;
   width: 339px;
 }
 
-/* line 64, ../sass/_login-v2-main.sass */
+/* line 65, ../sass/_login-v2-main.sass */
 .tok3n-flipper {
   -moz-transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
@@ -10530,7 +8444,7 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 74, ../sass/_login-v2-main.sass */
+/* line 75, ../sass/_login-v2-main.sass */
 .tok3n-front, .tok3n-back {
   position: absolute;
   top: 0;
@@ -10543,19 +8457,19 @@ td.visible-print {
   backface-visibility: hidden;
 }
 
-/* line 83, ../sass/_login-v2-main.sass */
+/* line 84, ../sass/_login-v2-main.sass */
 .tok3n-front, .tok3n-back, .tok3n-container {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
 
-/* line 86, ../sass/_login-v2-main.sass */
+/* line 87, ../sass/_login-v2-main.sass */
 .tok3n-front {
   z-index: 2;
 }
 
-/* line 89, ../sass/_login-v2-main.sass */
+/* line 90, ../sass/_login-v2-main.sass */
 .tok3n-back {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
@@ -10564,7 +8478,7 @@ td.visible-print {
   transform: rotateY(180deg);
 }
 
-/* line 92, ../sass/_login-v2-main.sass */
+/* line 93, ../sass/_login-v2-main.sass */
 .tok3n-flipped {
   -moz-animation: rotateCard;
   -webkit-animation: rotateCard;
@@ -10580,20 +8494,20 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 102, ../sass/_login-v2-main.sass */
+/* line 103, ../sass/_login-v2-main.sass */
 .tok3n-pt-perspective, .tok3n-pt-page {
-  height: 410px;
+  height: 405px;
   width: 339px;
 }
 
-/* line 106, ../sass/_login-v2-main.sass */
+/* line 107, ../sass/_login-v2-main.sass */
 .tok3n-pt-perspective {
   position: relative;
   perspective: 1200px;
   overflow: hidden;
 }
 
-/* line 111, ../sass/_login-v2-main.sass */
+/* line 112, ../sass/_login-v2-main.sass */
 .tok3n-pt-page {
   position: absolute;
   top: 0;
@@ -10613,13 +8527,13 @@ td.visible-print {
   transform-style: preserve-3d;
 }
 
-/* line 124, ../sass/_login-v2-main.sass */
+/* line 125, ../sass/_login-v2-main.sass */
 .tok3n-pt-page-current {
   visibility: visible;
   z-index: 3;
 }
 
-/* line 128, ../sass/_login-v2-main.sass */
+/* line 129, ../sass/_login-v2-main.sass */
 .tok3n-move-from-left {
   -moz-animation: moveFromLeft;
   -webkit-animation: moveFromLeft;
@@ -10635,7 +8549,7 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 134, ../sass/_login-v2-main.sass */
+/* line 135, ../sass/_login-v2-main.sass */
 .tok3n-move-to-left {
   -moz-animation: moveToLeft;
   -webkit-animation: moveToLeft;
@@ -10651,7 +8565,7 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 140, ../sass/_login-v2-main.sass */
+/* line 141, ../sass/_login-v2-main.sass */
 .tok3n-move-from-right {
   -moz-animation: moveFromRight;
   -webkit-animation: moveFromRight;
@@ -10667,7 +8581,7 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 146, ../sass/_login-v2-main.sass */
+/* line 147, ../sass/_login-v2-main.sass */
 .tok3n-move-to-right {
   -moz-animation: moveToRight;
   -webkit-animation: moveToRight;
@@ -10683,9 +8597,9 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 166, ../sass/_login-v2-main.sass */
+/* line 167, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider {
-  background: #2c3e50;
+  background: #2b3087;
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -10732,25 +8646,32 @@ td.visible-print {
 .tok3n-radio-slider input:not(:checked) ~ input:not(:checked) ~ input:not(:checked) ~ .slider {
   transition: top 0.25s ease-in-out 0.25s, left 0.25s ease-in-out 0.5s;
 }
-/* line 176, ../sass/_login-v2-main.sass */
+/* line 177, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider label {
-  font-size: 12px;
-  padding: 12px;
+  font-size: 25px;
+  vertical-align: top;
+  padding: 12px 10px 0;
+  line-height: 30px;
   color: rgba(255, 255, 255, 0.75);
 }
-/* line 181, ../sass/_login-v2-main.sass */
+/* line 184, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider label:not(:last-of-type) {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
-/* line 183, ../sass/_login-v2-main.sass */
+/* line 186, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider .slider {
-  background: #27ae60;
+  background: #31b3d4;
   -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
 }
-/* line 186, ../sass/_login-v2-main.sass */
+/* line 189, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider input:checked + label {
   color: white;
+}
+
+/* line 193, ../sass/_login-v2-main.sass */
+.icon-tok3n-qrcode {
+  font-size: 110%;
 }
 
 @-moz-keyframes float-labels {
@@ -10857,7 +8778,7 @@ td.visible-print {
 .tok3n-login-form input.empty + label {
   font-size: 1.2em;
 }
-/* line 199, ../sass/_login-v2-main.sass */
+/* line 207, ../sass/_login-v2-main.sass */
 .tok3n-login-form input {
   padding: 0.1em 0em;
   border: none;
@@ -10868,28 +8789,28 @@ td.visible-print {
   background: none;
   width: 100%;
 }
-/* line 208, ../sass/_login-v2-main.sass */
+/* line 216, ../sass/_login-v2-main.sass */
 .tok3n-login-form label {
   font-weight: normal;
 }
 
-/* line 211, ../sass/_login-v2-main.sass */
+/* line 219, ../sass/_login-v2-main.sass */
 .tok3n-login-input > ol {
   list-style: none;
   padding: 0px;
 }
-/* line 214, ../sass/_login-v2-main.sass */
+/* line 222, ../sass/_login-v2-main.sass */
 .tok3n-login-input > ol > li {
   position: relative;
   margin: 1.2em 0;
 }
 
-/* line 218, ../sass/_login-v2-main.sass */
+/* line 226, ../sass/_login-v2-main.sass */
 .tok3n-login-input {
   margin-top: 1.5em;
 }
 
-/* line 225, ../sass/_login-v2-main.sass */
+/* line 233, ../sass/_login-v2-main.sass */
 .tok3n-header {
   height: 80px;
   padding: 0 30px;
@@ -10904,26 +8825,29 @@ td.visible-print {
   border-top-right-radius: 10px;
 }
 
-/* line 234, ../sass/_login-v2-main.sass */
+/* line 242, ../sass/_login-v2-main.sass */
 .tok3n-logo {
   height: 80px;
-  background-image: url('../img/logo.svg?1378581520');
-  -moz-background-size: 115px auto;
-  -o-background-size: 115px auto;
-  -webkit-background-size: 115px auto;
-  background-size: 115px auto;
   color: rgba(255, 255, 255, 0.8);
-  background-repeat: no-repeat;
-  background-position: center;
+  text-align: center;
+  font-size: 115px;
+  line-height: 0;
 }
 
-/* line 242, ../sass/_login-v2-main.sass */
+/* line 249, ../sass/_login-v2-main.sass */
+.icon-tok3n-logo:before {
+  position: absolute;
+  left: 112px;
+  top: -17px;
+}
+
+/* line 254, ../sass/_login-v2-main.sass */
 .tok3n-lower-wrapper {
   margin: 25px 0 30px;
   padding: 0 30px;
 }
 
-/* line 246, ../sass/_login-v2-main.sass */
+/* line 258, ../sass/_login-v2-main.sass */
 .tok3n-submit-wrapper {
   position: absolute;
   bottom: 0;
@@ -10933,12 +8857,12 @@ td.visible-print {
   overflow: hidden;
 }
 
-/* line 254, ../sass/_login-v2-main.sass */
+/* line 266, ../sass/_login-v2-main.sass */
 .tok3n-submit, .tok3n-create-an-account {
   padding: 0 30px;
 }
 
-/* line 261, ../sass/_login-v2-main.sass */
+/* line 273, ../sass/_login-v2-main.sass */
 .tok3n-login-alert {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -10951,12 +8875,12 @@ td.visible-print {
   padding: 15px 30px;
   margin: 0;
 }
-/* line 268, ../sass/_login-v2-main.sass */
+/* line 280, ../sass/_login-v2-main.sass */
 .tok3n-login-alert b {
   margin-right: 0.5em;
 }
 
-/* line 271, ../sass/_login-v2-main.sass */
+/* line 283, ../sass/_login-v2-main.sass */
 .tok3n-login-alert-hidden {
   max-height: 0;
   padding: 0 30px;
@@ -10964,7 +8888,7 @@ td.visible-print {
   overflow: hidden;
 }
 
-/* line 278, ../sass/_login-v2-main.sass */
+/* line 290, ../sass/_login-v2-main.sass */
 .tok3n-login-alert-active {
   -moz-animation: flash;
   -webkit-animation: flash;
@@ -10980,14 +8904,14 @@ td.visible-print {
   animation-iteration-count: 1;
 }
 
-/* line 288, ../sass/_login-v2-main.sass */
+/* line 300, ../sass/_login-v2-main.sass */
 .tok3n-headline {
   font-family: "Arvo", Arial, sans-serif;
   font-weight: 400;
   text-shadow: white 0 1px 0;
 }
 
-/* line 293, ../sass/_login-v2-main.sass */
+/* line 305, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline {
   display: inline-block;
   border-bottom: 1px solid #999999;
@@ -10995,17 +8919,17 @@ td.visible-print {
   margin: 10px 0 20px;
   width: 100%;
 }
-/* line 299, ../sass/_login-v2-main.sass */
+/* line 311, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline span {
   background: #fafafa;
   padding: 0 10px;
 }
-/* line 302, ../sass/_login-v2-main.sass */
+/* line 314, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline a {
   text-decoration: underline;
 }
 
-/* line 305, ../sass/_login-v2-main.sass */
+/* line 317, ../sass/_login-v2-main.sass */
 .tok3n-headline-login, .tok3n-headline-create-account {
   text-align: center;
   font-style: italic;
@@ -11013,7 +8937,7 @@ td.visible-print {
   margin-top: 1.8em;
 }
 
-/* line 311, ../sass/_login-v2-main.sass */
+/* line 323, ../sass/_login-v2-main.sass */
 .tok3n-headline-create-account {
   opacity: 0.4;
   -webkit-transition: opacity 0.3s !important;
@@ -11022,29 +8946,24 @@ td.visible-print {
   -o-transition: opacity 0.3s !important;
   transition: opacity 0.3s !important;
 }
-/* line 313, ../sass/_login-v2-main.sass */
+/* line 325, ../sass/_login-v2-main.sass */
 .tok3n-headline-create-account:hover {
   opacity: 1;
 }
 
-/* line 321, ../sass/_login-v2-main.sass */
-.tok3n-placeholder, .tok3n-button-stripe {
-  font-family: "tok3n-icons";
-}
-
-/* line 325, ../sass/_login-v2-main.sass */
+/* line 334, ../sass/_login-v2-main.sass */
 .tok3n-enter-label label {
   font-weight: normal;
   font-size: 1.2em;
   color: #888888;
 }
 
-/* line 330, ../sass/_login-v2-main.sass */
+/* line 339, ../sass/_login-v2-main.sass */
 .tok3n-enter {
   margin: 10px auto 15px;
 }
 
-/* line 334, ../sass/_login-v2-main.sass */
+/* line 343, ../sass/_login-v2-main.sass */
 .tok3n-otp {
   height: 75px;
   padding-left: 20px;
@@ -11052,13 +8971,13 @@ td.visible-print {
   font-size: 36px;
 }
 
-/* line 341, ../sass/_login-v2-main.sass */
-.tok3n-placeholder {
-  font-size: 2.9em;
+/* line 350, ../sass/_login-v2-main.sass */
+.icon-tok3n-phone {
+  font-size: 2.7em;
   display: inline-block;
   position: absolute;
-  margin-left: 225px;
-  margin-top: -68px;
+  margin-left: 226px;
+  margin-top: -59px;
   color: #bbbbbb;
   -webkit-transition: color 0.3s ease-in !important;
   -moz-transition: color 0.3s ease-in !important;
@@ -11066,18 +8985,18 @@ td.visible-print {
   -o-transition: color 0.3s ease-in !important;
   transition: color 0.3s ease-in !important;
 }
-/* line 349, ../sass/_login-v2-main.sass */
-.tok3n-placeholder:hover {
+/* line 358, ../sass/_login-v2-main.sass */
+.icon-tok3n-phone:hover {
   color: #85d2e6;
 }
-/* line 351, ../sass/_login-v2-main.sass */
-.tok3n-placeholder:after, .tok3n-placeholder:before {
+/* line 360, ../sass/_login-v2-main.sass */
+.icon-tok3n-phone:after, .icon-tok3n-phone:before {
   white-space: pre;
 }
 
-/* line 354, ../sass/_login-v2-main.sass */
+/* line 363, ../sass/_login-v2-main.sass */
 .tok3n-qrcode {
-  background-image: url('../img/qrcode.png?1391982648');
+  background-image: url('//s3.amazonaws.com/static.tok3n.com/0.0.1/img/qrcode.png?1391982648');
   -moz-background-size: 100% auto;
   -o-background-size: 100% auto;
   -webkit-background-size: 100% auto;
@@ -11089,11 +9008,11 @@ td.visible-print {
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.3) 0 5px 27px;
 }
 
-/* line 368, ../sass/_login-v2-main.sass */
+/* line 377, ../sass/_login-v2-main.sass */
 .tok3n-submit {
   margin: 0 auto;
 }
-/* line 370, ../sass/_login-v2-main.sass */
+/* line 379, ../sass/_login-v2-main.sass */
 .tok3n-submit button {
   margin: 0 auto;
   color: rgba(255, 255, 255, 0.95);
@@ -11126,12 +9045,12 @@ td.visible-print {
   border-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 380, ../sass/_login-v2-main.sass */
-.tok3n-button-stripe {
+/* line 389, ../sass/_login-v2-main.sass */
+.icon-tok3n-stripe {
   font-size: 2.42em;
   position: absolute;
-  margin-top: -16px;
-  margin-left: -25px;
+  margin-top: -12px;
+  margin-left: -23px;
   color: #e05256;
   text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
   -webkit-transition: color 0.3s ease-in-out !important;
@@ -11140,30 +9059,31 @@ td.visible-print {
   -o-transition: color 0.3s ease-in-out !important;
   transition: color 0.3s ease-in-out !important;
 }
-/* line 388, ../sass/_login-v2-main.sass */
-.tok3n-button-stripe:hover, .tok3n-button-stripe:focus, .tok3n-button-stripe:active {
+/* line 397, ../sass/_login-v2-main.sass */
+.icon-tok3n-stripe:hover, .icon-tok3n-stripe:focus, .icon-tok3n-stripe:active {
   color: #d9262c;
 }
 
-/* line 391, ../sass/_login-v2-main.sass */
+/* line 400, ../sass/_login-v2-main.sass */
 .tok3n-button-text {
   margin-left: 2em;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* line 398, ../sass/_login-v2-main.sass */
+/* line 408, ../sass/_login-v2-main.sass */
 .tok3n-fallbacks, .tok3n-having-trouble, .tok3n-create-an-account {
   color: #777777;
 }
 
-/* line 401, ../sass/_login-v2-main.sass */
+/* line 411, ../sass/_login-v2-main.sass */
 .tok3n-having-trouble {
   margin: 0 0 8px;
 }
-/* line 403, ../sass/_login-v2-main.sass */
+/* line 413, ../sass/_login-v2-main.sass */
 .tok3n-having-trouble small {
   opacity: 0.8;
 }
-/* line 406, ../sass/_login-v2-main.sass */
+/* line 416, ../sass/_login-v2-main.sass */
 .tok3n-having-trouble small:hover {
   opacity: 1;
 }
