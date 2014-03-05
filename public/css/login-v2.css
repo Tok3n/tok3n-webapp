@@ -8479,6 +8479,11 @@ td.visible-print {
 }
 
 /* line 93, ../sass/_login-v2-main.sass */
+.tok3n-ontop {
+  z-index: 999;
+}
+
+/* line 96, ../sass/_login-v2-main.sass */
 .tok3n-flipped {
   -moz-animation: rotateCard;
   -webkit-animation: rotateCard;
@@ -8494,20 +8499,20 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 103, ../sass/_login-v2-main.sass */
+/* line 106, ../sass/_login-v2-main.sass */
 .tok3n-pt-perspective, .tok3n-pt-page {
   height: 405px;
   width: 339px;
 }
 
-/* line 107, ../sass/_login-v2-main.sass */
+/* line 110, ../sass/_login-v2-main.sass */
 .tok3n-pt-perspective {
   position: relative;
   perspective: 1200px;
   overflow: hidden;
 }
 
-/* line 112, ../sass/_login-v2-main.sass */
+/* line 115, ../sass/_login-v2-main.sass */
 .tok3n-pt-page {
   position: absolute;
   top: 0;
@@ -8527,13 +8532,13 @@ td.visible-print {
   transform-style: preserve-3d;
 }
 
-/* line 125, ../sass/_login-v2-main.sass */
+/* line 128, ../sass/_login-v2-main.sass */
 .tok3n-pt-page-current {
   visibility: visible;
   z-index: 3;
 }
 
-/* line 129, ../sass/_login-v2-main.sass */
+/* line 132, ../sass/_login-v2-main.sass */
 .tok3n-move-from-left {
   -moz-animation: moveFromLeft;
   -webkit-animation: moveFromLeft;
@@ -8549,7 +8554,7 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 135, ../sass/_login-v2-main.sass */
+/* line 138, ../sass/_login-v2-main.sass */
 .tok3n-move-to-left {
   -moz-animation: moveToLeft;
   -webkit-animation: moveToLeft;
@@ -8565,7 +8570,7 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 141, ../sass/_login-v2-main.sass */
+/* line 144, ../sass/_login-v2-main.sass */
 .tok3n-move-from-right {
   -moz-animation: moveFromRight;
   -webkit-animation: moveFromRight;
@@ -8581,7 +8586,7 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 147, ../sass/_login-v2-main.sass */
+/* line 150, ../sass/_login-v2-main.sass */
 .tok3n-move-to-right {
   -moz-animation: moveToRight;
   -webkit-animation: moveToRight;
@@ -8597,7 +8602,7 @@ td.visible-print {
   animation-timing-function: ease-in-out;
 }
 
-/* line 167, ../sass/_login-v2-main.sass */
+/* line 170, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider {
   background: #2b3087;
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
@@ -8646,7 +8651,7 @@ td.visible-print {
 .tok3n-radio-slider input:not(:checked) ~ input:not(:checked) ~ input:not(:checked) ~ .slider {
   transition: top 0.25s ease-in-out 0.25s, left 0.25s ease-in-out 0.5s;
 }
-/* line 177, ../sass/_login-v2-main.sass */
+/* line 180, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider label {
   font-size: 25px;
   vertical-align: top;
@@ -8654,22 +8659,22 @@ td.visible-print {
   line-height: 30px;
   color: rgba(255, 255, 255, 0.75);
 }
-/* line 184, ../sass/_login-v2-main.sass */
+/* line 187, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider label:not(:last-of-type) {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
-/* line 186, ../sass/_login-v2-main.sass */
+/* line 189, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider .slider {
   background: #31b3d4;
   -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
 }
-/* line 189, ../sass/_login-v2-main.sass */
+/* line 192, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider input:checked + label {
   color: white;
 }
 
-/* line 193, ../sass/_login-v2-main.sass */
+/* line 196, ../sass/_login-v2-main.sass */
 .icon-tok3n-qrcode {
   font-size: 110%;
 }
@@ -8778,7 +8783,7 @@ td.visible-print {
 .tok3n-login-form input.empty + label {
   font-size: 1.2em;
 }
-/* line 207, ../sass/_login-v2-main.sass */
+/* line 210, ../sass/_login-v2-main.sass */
 .tok3n-login-form input {
   padding: 0.1em 0em;
   border: none;
@@ -8789,28 +8794,28 @@ td.visible-print {
   background: none;
   width: 100%;
 }
-/* line 216, ../sass/_login-v2-main.sass */
+/* line 219, ../sass/_login-v2-main.sass */
 .tok3n-login-form label {
   font-weight: normal;
 }
 
-/* line 219, ../sass/_login-v2-main.sass */
+/* line 222, ../sass/_login-v2-main.sass */
 .tok3n-login-input > ol {
   list-style: none;
   padding: 0px;
 }
-/* line 222, ../sass/_login-v2-main.sass */
+/* line 225, ../sass/_login-v2-main.sass */
 .tok3n-login-input > ol > li {
   position: relative;
   margin: 1.2em 0;
 }
 
-/* line 226, ../sass/_login-v2-main.sass */
+/* line 229, ../sass/_login-v2-main.sass */
 .tok3n-login-input {
   margin-top: 1.5em;
 }
 
-/* line 233, ../sass/_login-v2-main.sass */
+/* line 236, ../sass/_login-v2-main.sass */
 .tok3n-header {
   height: 80px;
   padding: 0 30px;
@@ -8825,7 +8830,7 @@ td.visible-print {
   border-top-right-radius: 10px;
 }
 
-/* line 242, ../sass/_login-v2-main.sass */
+/* line 245, ../sass/_login-v2-main.sass */
 .tok3n-logo {
   height: 80px;
   color: rgba(255, 255, 255, 0.8);
@@ -8834,20 +8839,20 @@ td.visible-print {
   line-height: 0;
 }
 
-/* line 249, ../sass/_login-v2-main.sass */
+/* line 252, ../sass/_login-v2-main.sass */
 .icon-tok3n-logo:before {
   position: absolute;
   left: 112px;
   top: -17px;
 }
 
-/* line 254, ../sass/_login-v2-main.sass */
+/* line 257, ../sass/_login-v2-main.sass */
 .tok3n-lower-wrapper {
   margin: 25px 0 30px;
   padding: 0 30px;
 }
 
-/* line 258, ../sass/_login-v2-main.sass */
+/* line 261, ../sass/_login-v2-main.sass */
 .tok3n-submit-wrapper {
   position: absolute;
   bottom: 0;
@@ -8857,12 +8862,12 @@ td.visible-print {
   overflow: hidden;
 }
 
-/* line 266, ../sass/_login-v2-main.sass */
+/* line 269, ../sass/_login-v2-main.sass */
 .tok3n-submit, .tok3n-create-an-account {
   padding: 0 30px;
 }
 
-/* line 273, ../sass/_login-v2-main.sass */
+/* line 276, ../sass/_login-v2-main.sass */
 .tok3n-login-alert {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -8875,12 +8880,12 @@ td.visible-print {
   padding: 15px 30px;
   margin: 0;
 }
-/* line 280, ../sass/_login-v2-main.sass */
+/* line 283, ../sass/_login-v2-main.sass */
 .tok3n-login-alert b {
   margin-right: 0.5em;
 }
 
-/* line 283, ../sass/_login-v2-main.sass */
+/* line 286, ../sass/_login-v2-main.sass */
 .tok3n-login-alert-hidden {
   max-height: 0;
   padding: 0 30px;
@@ -8888,7 +8893,7 @@ td.visible-print {
   overflow: hidden;
 }
 
-/* line 290, ../sass/_login-v2-main.sass */
+/* line 293, ../sass/_login-v2-main.sass */
 .tok3n-login-alert-active {
   -moz-animation: flash;
   -webkit-animation: flash;
@@ -8904,14 +8909,14 @@ td.visible-print {
   animation-iteration-count: 1;
 }
 
-/* line 300, ../sass/_login-v2-main.sass */
+/* line 303, ../sass/_login-v2-main.sass */
 .tok3n-headline {
   font-family: "Arvo", Arial, sans-serif;
   font-weight: 400;
   text-shadow: white 0 1px 0;
 }
 
-/* line 305, ../sass/_login-v2-main.sass */
+/* line 308, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline {
   display: inline-block;
   border-bottom: 1px solid #999999;
@@ -8919,17 +8924,17 @@ td.visible-print {
   margin: 10px 0 20px;
   width: 100%;
 }
-/* line 311, ../sass/_login-v2-main.sass */
+/* line 314, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline span {
   background: #fafafa;
   padding: 0 10px;
 }
-/* line 314, ../sass/_login-v2-main.sass */
+/* line 317, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline a {
   text-decoration: underline;
 }
 
-/* line 317, ../sass/_login-v2-main.sass */
+/* line 320, ../sass/_login-v2-main.sass */
 .tok3n-headline-login, .tok3n-headline-create-account {
   text-align: center;
   font-style: italic;
@@ -8937,7 +8942,7 @@ td.visible-print {
   margin-top: 1.8em;
 }
 
-/* line 323, ../sass/_login-v2-main.sass */
+/* line 326, ../sass/_login-v2-main.sass */
 .tok3n-headline-create-account {
   opacity: 0.4;
   -webkit-transition: opacity 0.3s !important;
@@ -8946,24 +8951,24 @@ td.visible-print {
   -o-transition: opacity 0.3s !important;
   transition: opacity 0.3s !important;
 }
-/* line 325, ../sass/_login-v2-main.sass */
+/* line 328, ../sass/_login-v2-main.sass */
 .tok3n-headline-create-account:hover {
   opacity: 1;
 }
 
-/* line 334, ../sass/_login-v2-main.sass */
+/* line 337, ../sass/_login-v2-main.sass */
 .tok3n-enter-label label {
   font-weight: normal;
   font-size: 1.2em;
   color: #888888;
 }
 
-/* line 339, ../sass/_login-v2-main.sass */
+/* line 342, ../sass/_login-v2-main.sass */
 .tok3n-enter {
   margin: 10px auto 15px;
 }
 
-/* line 343, ../sass/_login-v2-main.sass */
+/* line 346, ../sass/_login-v2-main.sass */
 .tok3n-otp {
   height: 75px;
   padding-left: 20px;
@@ -8971,7 +8976,7 @@ td.visible-print {
   font-size: 36px;
 }
 
-/* line 350, ../sass/_login-v2-main.sass */
+/* line 353, ../sass/_login-v2-main.sass */
 .icon-tok3n-phone {
   font-size: 2.7em;
   display: inline-block;
@@ -8985,18 +8990,18 @@ td.visible-print {
   -o-transition: color 0.3s ease-in !important;
   transition: color 0.3s ease-in !important;
 }
-/* line 358, ../sass/_login-v2-main.sass */
+/* line 361, ../sass/_login-v2-main.sass */
 .icon-tok3n-phone:hover {
   color: #85d2e6;
 }
-/* line 360, ../sass/_login-v2-main.sass */
+/* line 363, ../sass/_login-v2-main.sass */
 .icon-tok3n-phone:after, .icon-tok3n-phone:before {
   white-space: pre;
 }
 
-/* line 363, ../sass/_login-v2-main.sass */
+/* line 366, ../sass/_login-v2-main.sass */
 .tok3n-qrcode {
-  background-image: url('//s3.amazonaws.com/static.tok3n.com/0.0.1/img/qrcode.png?1391982648');
+  background-image: url('../img/qrcode.png?1391982648');
   -moz-background-size: 100% auto;
   -o-background-size: 100% auto;
   -webkit-background-size: 100% auto;
@@ -9008,11 +9013,11 @@ td.visible-print {
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.3) 0 5px 27px;
 }
 
-/* line 377, ../sass/_login-v2-main.sass */
+/* line 380, ../sass/_login-v2-main.sass */
 .tok3n-submit {
   margin: 0 auto;
 }
-/* line 379, ../sass/_login-v2-main.sass */
+/* line 382, ../sass/_login-v2-main.sass */
 .tok3n-submit button {
   margin: 0 auto;
   color: rgba(255, 255, 255, 0.95);
@@ -9045,7 +9050,7 @@ td.visible-print {
   border-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 389, ../sass/_login-v2-main.sass */
+/* line 392, ../sass/_login-v2-main.sass */
 .icon-tok3n-stripe {
   font-size: 2.42em;
   position: absolute;
@@ -9059,31 +9064,31 @@ td.visible-print {
   -o-transition: color 0.3s ease-in-out !important;
   transition: color 0.3s ease-in-out !important;
 }
-/* line 397, ../sass/_login-v2-main.sass */
+/* line 400, ../sass/_login-v2-main.sass */
 .icon-tok3n-stripe:hover, .icon-tok3n-stripe:focus, .icon-tok3n-stripe:active {
   color: #d9262c;
 }
 
-/* line 400, ../sass/_login-v2-main.sass */
+/* line 403, ../sass/_login-v2-main.sass */
 .tok3n-button-text {
   margin-left: 2em;
   -webkit-font-smoothing: antialiased;
 }
 
-/* line 408, ../sass/_login-v2-main.sass */
+/* line 411, ../sass/_login-v2-main.sass */
 .tok3n-fallbacks, .tok3n-having-trouble, .tok3n-create-an-account {
   color: #777777;
 }
 
-/* line 411, ../sass/_login-v2-main.sass */
+/* line 414, ../sass/_login-v2-main.sass */
 .tok3n-having-trouble {
   margin: 0 0 8px;
 }
-/* line 413, ../sass/_login-v2-main.sass */
+/* line 416, ../sass/_login-v2-main.sass */
 .tok3n-having-trouble small {
   opacity: 0.8;
 }
-/* line 416, ../sass/_login-v2-main.sass */
+/* line 419, ../sass/_login-v2-main.sass */
 .tok3n-having-trouble small:hover {
   opacity: 1;
 }
