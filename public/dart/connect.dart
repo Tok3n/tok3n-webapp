@@ -58,6 +58,7 @@ void slideAuthenticator() {
       Element temp;
 
       var animationClasses = ['tok3n-move-from-left', 'tok3n-move-to-left', 'tok3n-move-from-right', 'tok3n-move-to-right'];
+      string
 
       if (childNodeIndex(nextOption) == childNodeIndex(currentOption)) {
 //        Do nothing 'cause it's the same one
