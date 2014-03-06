@@ -8546,9 +8546,9 @@ td.visible-print {
   -moz-animation-fill-mode: forwards;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -moz-animation-duration: 0.5s;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
+  -moz-animation-duration: 0.25s;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
   -moz-animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
@@ -8562,9 +8562,9 @@ td.visible-print {
   -moz-animation-fill-mode: forwards;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -moz-animation-duration: 0.5s;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
+  -moz-animation-duration: 0.25s;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
   -moz-animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
@@ -8578,9 +8578,9 @@ td.visible-print {
   -moz-animation-fill-mode: forwards;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -moz-animation-duration: 0.5s;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
+  -moz-animation-duration: 0.25s;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
   -moz-animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
@@ -8594,9 +8594,9 @@ td.visible-print {
   -moz-animation-fill-mode: forwards;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -moz-animation-duration: 0.5s;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
+  -moz-animation-duration: 0.25s;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
   -moz-animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
@@ -8977,7 +8977,7 @@ td.visible-print {
 }
 
 /* line 353, ../sass/_login-v2-main.sass */
-.icon-tok3n-phone {
+.icon-tok3n-phone, .tok3n-enter .icon-tok3n-bubble {
   font-size: 2.7em;
   display: inline-block;
   position: absolute;
@@ -8991,11 +8991,11 @@ td.visible-print {
   transition: color 0.3s ease-in !important;
 }
 /* line 361, ../sass/_login-v2-main.sass */
-.icon-tok3n-phone:hover {
+.icon-tok3n-phone:hover, .tok3n-enter .icon-tok3n-bubble:hover {
   color: #85d2e6;
 }
 /* line 363, ../sass/_login-v2-main.sass */
-.icon-tok3n-phone:after, .icon-tok3n-phone:before {
+.icon-tok3n-phone:after, .icon-tok3n-phone:before, .tok3n-enter .icon-tok3n-bubble:after, .tok3n-enter .icon-tok3n-bubble:before {
   white-space: pre;
 }
 

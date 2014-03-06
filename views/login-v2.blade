@@ -40,14 +40,14 @@ append block body
           header.tok3n-header
             .tok3n-logo
               .icon-tok3n-logo
-          .tok3n-radio-slider
-            input#tok3nSMS(type="radio", name="group-1")
+          .tok3n-radio-slider#tok3nRadioSlider
+            input#tok3nSMS(type="radio", name="auth", data-target='tok3nSmsPage')
             label.lbl(for="tok3nSMS")
               .icon-tok3n-bubble
-            input#tok3nQR(type="radio", name="group-1")
+            input#tok3nQR(type="radio", name="auth", data-target='tok3nQrPage')
             label.lbl(for="tok3nQR")
               .icon-tok3n-qrcode
-            input#tok3nOTP(type="radio", name="group-1")
+            input#tok3nOTP(type="radio", name="auth", data-target='tok3nOtpPage')
             label.lbl(for="tok3nOTP")
               .icon-tok3n-otp
             .slider
@@ -55,7 +55,7 @@ append block body
             b Error:
             | The provided code was incorrect. Please try again.
           .tok3n-pt-perspective
-            .tok3n-pt-page-otp.tok3n-pt-page.tok3n-pt-page-current
+            #tok3nOtpPage.tok3n-pt-page-otp.tok3n-pt-page
               .tok3n-lower-wrapper
                 .tok3n-enter-label
                   label Enter your offline code:
@@ -66,12 +66,23 @@ append block body
                 .tok3n-having-trouble
                   small
                     a(href='#') Having trouble?
-            .tok3n-pt-page-qr.tok3n-pt-page
+            #tok3nQrPage.tok3n-pt-page-qr.tok3n-pt-page
               .tok3n-lower-wrapper
                 .tok3n-enter-label
                   label Scan with the Tok3n mobile app:
                 .tok3n-enter
                   .tok3n-qrcode
+                .tok3n-having-trouble
+                  small
+                    a(href='#') Having trouble?
+            #tok3nSmsPage.tok3n-pt-page-qr.tok3n-pt-page
+              .tok3n-lower-wrapper
+                .tok3n-enter-label
+                  label Enter your SMS code:
+                .tok3n-enter
+                  input.tok3n-otp#tok3nOtpInput(name='tok3n_otp', type='tel', autocomplete='off', dir='ltr', pattern='[0-9 ]*', placeholder='• • • • • •', spellcheck='false')
+                  .icon-tok3n-bubble
+                  input#tok3n_session(type='hidden', name='tok3n_session')
                 .tok3n-having-trouble
                   small
                     a(href='#') Having trouble?
