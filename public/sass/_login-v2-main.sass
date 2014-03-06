@@ -126,8 +126,15 @@ $tok3n-login-background-color: #fafafa
 	+transform-style(preserve-3d)
 
 .tok3n-pt-page-current
-	visibility: visible
+	visibility: visible !important
 	z-index: 3
+
+.tok3n-submit-visible
+	visibility: visible !important
+	z-index: 999
+
+.tok3n-submit-wrapper
+	z-index: 999
 
 .tok3n-move-from-left
 	+animation(moveFromLeft)
@@ -265,6 +272,10 @@ $float-label-size: 1.2em
 	width: $tok3n-login-window-width
 	margin-bottom: 30px
 	overflow: hidden
+	visibility: hidden
+	+backface-visibility(hidden)
+	+transform(translate3d(0, 0, 0))
+	+transform-style(preserve-3d)
 
 .tok3n-submit, .tok3n-create-an-account
 	padding: 0 30px

@@ -26,16 +26,17 @@ append block body
                     input#email(name='email', spellcheck='false', type='email', autofocus)
                     label(for='email') Email address
           .tok3n-submit-wrapper
-            .tok3n-create-an-account
-              p Don't have an account? 
-                a(href='#') Create one now
-                | .
-            .tok3n-submit
-              button#tok3nLogin
-                .ladda-label
-                  //- | Continue
-                  .icon-tok3n-stripe
-                  .tok3n-button-text Log in with Tok3n
+            .tok3n-submit-inner-wrapper.tok3n-submit-visible
+              .tok3n-create-an-account
+                p Don't have an account? 
+                  a(href='#') Create one now
+                  | .
+              .tok3n-submit
+                button#tok3nLogin
+                  .ladda-label
+                    //- | Continue
+                    .icon-tok3n-stripe
+                    .tok3n-button-text Log in with Tok3n
         .tok3n-back
           header.tok3n-header
             .tok3n-logo
@@ -87,9 +88,10 @@ append block body
                   small
                     a(href='#') Having trouble?
           .tok3n-submit-wrapper
-            .tok3n-submit
-              button#tok3nOtpButton
-                .ladda-label
-                  .icon-tok3n-stripe
-                  .tok3n-button-text Verify with Tok3n
+            .tok3n-submit-inner-wrapper#tok3nVerifyWrapper
+              .tok3n-submit
+                button#tok3nVerify
+                  .ladda-label
+                    .icon-tok3n-stripe
+                    .tok3n-button-text Verify with Tok3n
 
