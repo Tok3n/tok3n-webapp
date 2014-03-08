@@ -1,14 +1,14 @@
 module.exports = (grunt) ->	
 
 	# Local paths
-	comp = 'public/components/'
-	css = 'public/css/'
-	sass = 'public/sass/'
-	js = 'public/js/'
-	img = 'public/img/'
-	font = 'public/font/'
-	coffee = 'public/coffee/'
-	dart = 'public/dart/'
+	comp = 'web/components/'
+	css = 'web/css/'
+	sass = 'web/sass/'
+	js = 'web/js/'
+	img = 'web/img/'
+	font = 'web/font/'
+	coffee = 'web/coffee/'
+	dart = 'web/dart/'
 	dist = 'dist/'
 
 	# Raw from github or cdn
@@ -61,7 +61,6 @@ module.exports = (grunt) ->
 		parsleyjs: grunt.file.readJSON comp + 'parsleyjs/bower.json'
 		popup: grunt.file.readJSON comp + 'magnific-popup/bower.json'
 		aws: grunt.file.readJSON '/Users/aficio/Dropbox/Development/Amazon/tok3n-aficio.json'
-		
 
 		# There must be fancier ways, which I'll be glad to learn :D
 		# Please fork
@@ -94,9 +93,6 @@ module.exports = (grunt) ->
 			jquery:
 				src: comp + 'jquery/jquery.js'
 				dest: js + 'jquery.js'
-			dart:
-				src: 'packages/browser/dart.js'
-				dest: dist + 'dart/dart.js'
 		
 		license:
 			parsley:
@@ -234,8 +230,12 @@ module.exports = (grunt) ->
 						to: cdnUrl + 'js/connect-min.js'
 					}
 					{
-						from: '<script src="dart/connect.dart.js"></script>'
-						to: '<script type="application/dart" src="' + cdnUrl + 'dart/connect.dart"></script>\n    <script src="' + cdnUrl + 'dart/dart.js"></script>'
+						from: '<script type="application/dart" src="dart/connect.dart"></script>'
+						to: '<script type="application/dart" src="' + cdnUrl + 'dart/connect.dart"></script>'
+					}
+					{
+						from: '<script src="dart/packages/browser/dart.js"></script>'
+						to: '<script src="' + cdnUrl + 'dart/packages/browser/dart.js"></script>'
 					}
 					{
 						from: /(['"])css\/([^\/\n"']*)\.css(['"])/g
@@ -246,12 +246,20 @@ module.exports = (grunt) ->
 						to: 'try{Typekit.load();}catch(e){}'
 					}
 					{
-						from: "background-image: url('../img/"
-						to: "background-image: url('" + cdnUrl + "img/"
+						from: "url('../img/"
+						to: "url('" + cdnUrl + "img/"
 					}
 					{
-						from: '<script src="http://localhost:35729/livereload.js"></script>'
-						to: "<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>"
+						from: "url('../fonts/"
+						to: "url('" + cdnUrl + "fonts/"
+					}
+					{
+						from: "url('fonts/"
+						to: "url('" + cdnUrl + "fonts/"
+					}
+					{
+						from: '\n    <script src="http://localhost:35729/livereload.js"></script>'
+						to: ''
 					}
 				]
 
@@ -332,8 +340,16 @@ module.exports = (grunt) ->
 			dist:
 				files:[
 					{
-						cwd: 'public'
-						src: ['css/*-min.css', 'css/fonts/**', 'sass/**', 'js/*-min.js', 'svg/**', 'dart/**', 'img/*.svg']
+						cwd: 'web'
+						src: ['css/*-min.css', 'css/fonts/**', 'sass/**', 'js/*-min.js', 'svg/**', 'img/*.svg']
+						dest: dist
+					}
+				]
+			dart:
+				files: [
+					{
+						cwd: 'build'
+						src: ['dart/**']
 						dest: dist
 					}
 				]
@@ -371,16 +387,16 @@ module.exports = (grunt) ->
 				key: '<%= aws.key %>'
 				secret: '<%= aws.secret %>'
 				bucket: 'static.tok3n.com'
-			gzipHeader:
-				headers:
-					'Content-Encoding': 'gzip'
-				files: [
-					{
-						root: dist
-						src: [dist + 'js/**', dist + 'css/**']
-						dest: '/<%= pkg.version %>/'
-					}
-				]
+			# gzipHeader:
+			# 	headers:
+			# 		'Content-Encoding': 'gzip'
+			# 	files: [
+			# 		{
+			# 			root: dist
+			# 			src: []
+			# 			dest: '/<%= pkg.version %>/'
+			# 		}
+			# 	]
 			nogzip:
 				files: [
 					{
@@ -394,7 +410,7 @@ module.exports = (grunt) ->
 				files: [
 					{
 						root: dist
-						src: [dist + 'sass/**', dist + '*.html', dist + 'dart/*.dart', dist + 'dart/*.js']
+						src: [dist + 'sass/**', dist + '*.html', dist + 'dart/**', dist + 'css/**', dist + 'js/**']
 						dest: '/<%= pkg.version %>/'
 					}
 				]
@@ -437,7 +453,8 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-s3-sync'
 	@loadNpmTasks 'grunt-sync'
 	@loadNpmTasks 'grunt-prettify'
+	@loadNpmTasks 'grunt-uncss'
 
 	@registerTask 'build', ['bower-install', 'shell:sleep', 'shell:files', 'copy', 'license']
 	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'cssmin:dist', 'sync:dist', 'copy:dart', 'shell:sleep', 'shell:apps', 'prettify', 'replace:dist', 'imagemin:dist', 's3-sync']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'cssmin:dist', 'sync', 'shell:sleep', 'shell:apps', 'prettify', 'replace:dist', 'imagemin:dist', 's3-sync']

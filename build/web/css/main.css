@@ -1,0 +1,354 @@
+/* line 1, ../sass/_extensions.sass */
+span.space {
+  margin: 0 0.5em;
+}
+
+/* line 4, ../sass/_extensions.sass */
+.action-button i {
+  margin-right: 0.5em;
+}
+
+/* line 4, ../sass/main.sass */
+#list .item {
+  padding: 0.9em 1.4em 0.9em 1.2em;
+  border-bottom: 1px solid #dddddd;
+}
+/* line 7, ../sass/main.sass */
+#list .item .info {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #999999;
+}
+/* line 11, ../sass/main.sass */
+#list .item, #list #new-integration {
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+/* line 15, ../sass/main.sass */
+.no-touch #list .item:hover, .no-touch #list .item:focus, .no-touch #list #new-integration:hover, .no-touch #list #new-integration:focus {
+  background-image: -moz-linear-gradient(top, #c7e9ff 0%, #cceaff 100%);
+  background-image: -o-linear-gradient(top, #c7e9ff 0%, #cceaff 100%);
+  background-image: -webkit-linear-gradient(top, #c7e9ff 0%, #cceaff 100%);
+  background-image: linear-gradient(to bottom, #c7e9ff 0%, #cceaff 100%);
+}
+/* line 17, ../sass/main.sass */
+.no-touch #list .item:hover .title, .no-touch #list .item:focus .title, .no-touch #list #new-integration:hover .title, .no-touch #list #new-integration:focus .title {
+  color: #444444;
+}
+/* line 19, ../sass/main.sass */
+.no-touch #list .item:hover .url, .no-touch #list .item:focus .url, .no-touch #list #new-integration:hover .url, .no-touch #list #new-integration:focus .url {
+  color: black;
+}
+/* line 21, ../sass/main.sass */
+#list .item:active, #list #new-integration:active {
+  background-image: -moz-linear-gradient(top, #94d8ff 0%, #99d8ff 100%);
+  background-image: -o-linear-gradient(top, #94d8ff 0%, #99d8ff 100%);
+  background-image: -webkit-linear-gradient(top, #94d8ff 0%, #99d8ff 100%);
+  background-image: linear-gradient(to bottom, #94d8ff 0%, #99d8ff 100%);
+}
+/* line 23, ../sass/main.sass */
+#list .new-item {
+  height: 40px;
+}
+/* line 25, ../sass/main.sass */
+#list .avatar {
+  margin-top: 0.1em;
+  margin-left: -15px;
+  margin-right: 15px;
+}
+/* line 29, ../sass/main.sass */
+#list .title, #list .url {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* line 34, ../sass/main.sass */
+#list .title {
+  color: #555555;
+}
+/* line 36, ../sass/main.sass */
+#list .url {
+  color: #999999;
+}
+/* line 38, ../sass/main.sass */
+#list .item-selected {
+  background-image: -moz-linear-gradient(top, #ece8f2 0%, #e7d6ff 100%);
+  background-image: -o-linear-gradient(top, #ece8f2 0%, #e7d6ff 100%);
+  background-image: -webkit-linear-gradient(top, #ece8f2 0%, #e7d6ff 100%);
+  background-image: linear-gradient(to bottom, #ece8f2 0%, #e7d6ff 100%);
+}
+/* line 41, ../sass/main.sass */
+.no-touch #list .item-selected:hover, .no-touch #list .item-selected:focus {
+  background-image: -moz-linear-gradient(top, #e4d9f2 0%, #e0c7ff 100%);
+  background-image: -o-linear-gradient(top, #e4d9f2 0%, #e0c7ff 100%);
+  background-image: -webkit-linear-gradient(top, #e4d9f2 0%, #e0c7ff 100%);
+  background-image: linear-gradient(to bottom, #e4d9f2 0%, #e0c7ff 100%);
+}
+/* line 43, ../sass/main.sass */
+#list .item-selected:active {
+  background-image: -moz-linear-gradient(top, #d2bfe8 0%, #d0a3ff 100%);
+  background-image: -o-linear-gradient(top, #d2bfe8 0%, #d0a3ff 100%);
+  background-image: -webkit-linear-gradient(top, #d2bfe8 0%, #d0a3ff 100%);
+  background-image: linear-gradient(to bottom, #d2bfe8 0%, #d0a3ff 100%);
+}
+/* line 46, ../sass/main.sass */
+#list #triggerNewIntegration .title {
+  font-style: italic;
+  font-weight: normal;
+  margin-top: 3px;
+}
+/* line 50, ../sass/main.sass */
+#list #triggerNewIntegration i {
+  font-size: 130%;
+  margin-left: -7px;
+  color: #0052a3;
+}
+
+/* line 56, ../sass/main.sass */
+#main .devel-content-header, #main .devel-content-body, #main .devel-content-footer {
+  padding: 1em 2em;
+}
+/* line 59, ../sass/main.sass */
+#main .devel-content-header {
+  border-bottom: 1px solid #dddddd;
+}
+/* line 61, ../sass/main.sass */
+#main .devel-content-header .title {
+  margin: 0.5em 0 0;
+}
+/* line 63, ../sass/main.sass */
+#main .devel-content-header .title span {
+  display: inline-block;
+}
+/* line 65, ../sass/main.sass */
+#main .devel-content-header .settings-menu {
+  margin-top: -0.8em;
+}
+/* line 67, ../sass/main.sass */
+#main .devel-content-header .specs {
+  margin-top: 2.5em;
+}
+/* line 69, ../sass/main.sass */
+#main .devel-content-header .specs td {
+  padding-right: 1.5em;
+  padding-bottom: 0.5em;
+}
+/* line 72, ../sass/main.sass */
+#main .devel-content-header .specs td.name {
+  font-weight: bolder;
+}
+/* line 74, ../sass/main.sass */
+#main .devel-content-header .specs a.action {
+  text-decoration: underline;
+  color: #e17714;
+}
+/* line 78, ../sass/main.sass */
+.no-touch #main .devel-content-header .specs a.action:hover, .no-touch #main .devel-content-header .specs a.action:focus {
+  color: #ff9633;
+}
+/* line 80, ../sass/main.sass */
+#main .devel-content-header .specs a.action:active {
+  color: #ffca99;
+}
+/* line 82, ../sass/main.sass */
+#main .devel-content-header .specs .secret {
+  display: none;
+}
+/* line 85, ../sass/main.sass */
+#main .devel-content-header .specs .status span.label, #main .devel-content-header .specs .status .action-button {
+  margin: 0 0.5em;
+}
+/* line 88, ../sass/main.sass */
+#main .devel-content-header .specs .status span.label:first-child, #main .devel-content-header .specs .status .action-button:first-child {
+  margin: 0 0.5em 0 0;
+}
+/* line 90, ../sass/main.sass */
+#main .devel-content-header .specs .status span.label:last-child, #main .devel-content-header .specs .status .action-button:last-child {
+  margin: 0 0 0 0.5em;
+}
+/* line 92, ../sass/main.sass */
+#main .devel-content-header .specs .status span.label:only-child, #main .devel-content-header .specs .status .action-button:only-child {
+  margin: 0;
+}
+/* line 94, ../sass/main.sass */
+#main .devel-content-header .specs .status span.label {
+  font-size: 0.9em;
+}
+
+/* line 97, ../sass/main.sass */
+#applications {
+  margin: 3em 2em 2em;
+}
+/* line 99, ../sass/main.sass */
+#applications #cards-container {
+  perspective: 1000;
+  margin-top: 2em;
+}
+/* line 33, ../sass/_helpers.sass */
+#applications #cards-container .grid-gutter {
+  width: 15px;
+}
+/* line 35, ../sass/_helpers.sass */
+#applications #cards-container .card {
+  width: 150px;
+}
+/* line 37, ../sass/_helpers.sass */
+#applications #cards-container .card, #applications #cards-container .front, #applications #cards-container .back {
+  height: 150px;
+}
+/* line 39, ../sass/_helpers.sass */
+#applications #cards-container .front {
+  width: 150px;
+}
+/* line 41, ../sass/_helpers.sass */
+#applications #cards-container .back {
+  width: 150px;
+}
+/* line 43, ../sass/_helpers.sass */
+#applications #cards-container .inner {
+  padding-top: 100%;
+}
+/* line 122, ../sass/main.sass */
+#applications #cards-container .card {
+  overflow: hidden;
+  margin-bottom: 2em;
+}
+/* line 125, ../sass/main.sass */
+#applications #cards-container .flipper {
+  -moz-transition: all 0.7s;
+  -o-transition: all 0.7s;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  position: relative;
+  height: 100%;
+}
+/* line 130, ../sass/main.sass */
+#applications #cards-container .front, #applications #cards-container .back {
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 135, ../sass/main.sass */
+#applications #cards-container .card, #applications #cards-container .front, #applications #cards-container .back {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 137, ../sass/main.sass */
+#applications #cards-container .front, #applications #cards-container .flip, #applications #cards-container .revoke {
+  cursor: pointer;
+}
+/* line 139, ../sass/main.sass */
+#applications #cards-container .front {
+  z-index: 2;
+  background: white;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+/* line 143, ../sass/main.sass */
+#applications #cards-container .back {
+  -moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  background: rgba(231, 214, 255, 0.2);
+  -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.8) inset;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.8) inset;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.8) inset;
+}
+/* line 147, ../sass/main.sass */
+#applications #cards-container .flipped {
+  -moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+/* line 149, ../sass/main.sass */
+#applications #cards-container .img-wrap {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  font: 0/0 serif;
+  text-shadow: none;
+  color: transparent;
+  background-size: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+/* line 160, ../sass/main.sass */
+#applications #cards-container .inner {
+  display: block;
+  height: 0;
+}
+/* line 163, ../sass/main.sass */
+#applications #cards-container .revoke, #applications #cards-container .flip, #applications #cards-container .text-container, #applications #cards-container .info {
+  width: inherit;
+}
+/* line 165, ../sass/main.sass */
+#applications #cards-container .flip {
+  margin: 0.8em 0 0;
+  padding: 0 1em;
+}
+/* line 168, ../sass/main.sass */
+#applications #cards-container .revoke {
+  margin: 1em 0;
+  padding: 0 1em;
+}
+/* line 171, ../sass/main.sass */
+#applications #cards-container .info {
+  padding: 0 4em 0 1em;
+  margin: -20px 0 1em 0;
+}
+/* line 174, ../sass/main.sass */
+#applications #cards-container .flip {
+  height: 20px;
+  text-align: right;
+  font-size: 130%;
+}
+/* line 178, ../sass/main.sass */
+#applications #cards-container .text-container, #applications #cards-container .revoke {
+  position: absolute;
+  bottom: 0;
+}
+/* line 181, ../sass/main.sass */
+#applications #cards-container .text-container {
+  padding: 1em;
+  background: rgba(255, 255, 255, 0.9);
+  font-weight: bold;
+  -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -moz-box-shadow: 0 -15px 15px -15px rgba(0, 0, 0, 0.8), 0 0 1px rgba(0, 0, 0, 0.8) inset;
+  -webkit-box-shadow: 0 -15px 15px -15px rgba(0, 0, 0, 0.8), 0 0 1px rgba(0, 0, 0, 0.8) inset;
+  box-shadow: 0 -15px 15px -15px rgba(0, 0, 0, 0.8), 0 0 1px rgba(0, 0, 0, 0.8) inset;
+}
+/* line 184, ../sass/main.sass */
+.no-touch #applications #cards-container .text-container {
+  visibility: hidden;
+}
+/* line 191, ../sass/main.sass */
+.no-touch #applications #cards-container .front:hover {
+  -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.8) inset;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.8) inset;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.8) inset;
+}
+/* line 193, ../sass/main.sass */
+.no-touch #applications #cards-container .front:hover .text-container {
+  visibility: visible;
+}

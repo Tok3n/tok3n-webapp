@@ -1,0 +1,19 @@
+{
+  "name": "enquire",
+  "description": "Awesome Media Queries in JavaScript",
+  "version": "2.1.0",
+  "main": [
+    "./dist/enquire.js"
+  ],
+  "homepage": "https://github.com/WickyNilliams/enquire.js",
+  "_release": "2.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.0",
+    "commit": "bf7b5fc8b71fc279fb55d74cc87f9621ce6ec2f3"
+  },
+  "_source": "git://github.com/WickyNilliams/enquire.js.git",
+  "_target": "~2.1.0",
+  "_originalSource": "enquire",
+  "_direct": true
+}

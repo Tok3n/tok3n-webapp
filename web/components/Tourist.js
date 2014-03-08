@@ -1,0 +1,1 @@
+/Users/aficio/.local/share/bower/links/Tourist.js

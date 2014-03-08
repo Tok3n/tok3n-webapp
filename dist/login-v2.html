@@ -22,7 +22,7 @@
                 <div class="icon-tok3n-logo"></div>
               </div>
             </header>
-            <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided email doesn't have an account. Try again or<a href="#"> create an account.</a>
+            <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided email doesn't have an account. Try again or <a href="#" id="tok3nCreateAccount">create an account.</a>
             </div>
             <div class="tok3n-lower-wrapper">
               <h3 class="tok3n-headline tok3n-headline-login tok3n-strike-through-headline">
@@ -40,16 +40,18 @@
               </div>
             </div>
             <div class="tok3n-submit-wrapper">
-              <div class="tok3n-create-an-account">
-                <p>Don't have an account? <a href="#">Create one now</a>.</p>
-              </div>
-              <div class="tok3n-submit">
-                <button id="tok3nLogin">
-                  <div class="ladda-label">
-                    <div class="icon-tok3n-stripe"></div>
-                    <div class="tok3n-button-text">Log in with Tok3n</div>
-                  </div>
-                </button>
+              <div class="tok3n-submit-inner-wrapper tok3n-submit-visible">
+                <div class="tok3n-create-an-account">
+                  <p>Don't have an account? <a href="#">Create one now</a>.</p>
+                </div>
+                <div class="tok3n-submit">
+                  <button id="tok3nLogin">
+                    <div class="ladda-label">
+                      <div class="icon-tok3n-stripe"></div>
+                      <div class="tok3n-button-text">Log in with Tok3n</div>
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -59,24 +61,25 @@
                 <div class="icon-tok3n-logo"></div>
               </div>
             </header>
-            <div class="tok3n-radio-slider">
-              <input type="radio" name="group-1" id="tok3nSMS" />
+            <div id="tok3nRadioSlider" class="tok3n-radio-slider">
+              <input type="radio" name="auth" data-target="tok3nSmsPage" id="tok3nSMS" />
               <label for="tok3nSMS" class="lbl">
                 <div class="icon-tok3n-bubble"></div>
               </label>
-              <input type="radio" name="group-1" id="tok3nQR" />
+              <input type="radio" name="auth" data-target="tok3nQrPage" id="tok3nQR" />
               <label for="tok3nQR" class="lbl">
                 <div class="icon-tok3n-qrcode"></div>
               </label>
-              <input type="radio" name="group-1" id="tok3nOTP" />
+              <input type="radio" name="auth" data-target="tok3nOtpPage" id="tok3nOTP" />
               <label for="tok3nOTP" class="lbl">
                 <div class="icon-tok3n-otp"></div>
               </label>
               <div class="slider"></div>
             </div>
-            <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided code was incorrect. Please try again.</div>
+            <div class="tok3n-login-alert tok3n-login-alert-hidden"><b>Error:</b>The provided code was incorrect. Please try again. <a href="#" id="TestTest">Test Test.</a>
+            </div>
             <div class="tok3n-pt-perspective">
-              <div class="tok3n-pt-page-otp tok3n-pt-page tok3n-pt-page-current">
+              <div id="tok3nOtpPage" class="tok3n-pt-page-otp tok3n-pt-page">
                 <div class="tok3n-lower-wrapper">
                   <div class="tok3n-enter-label">
                     <label>Enter your offline code:</label>
@@ -92,7 +95,7 @@
                   </div>
                 </div>
               </div>
-              <div class="tok3n-pt-page-qr tok3n-pt-page">
+              <div id="tok3nQrPage" class="tok3n-pt-page-qr tok3n-pt-page">
                 <div class="tok3n-lower-wrapper">
                   <div class="tok3n-enter-label">
                     <label>Scan with the Tok3n mobile app:</label>
@@ -106,15 +109,33 @@
                   </div>
                 </div>
               </div>
+              <div id="tok3nSmsPage" class="tok3n-pt-page-qr tok3n-pt-page">
+                <div class="tok3n-lower-wrapper">
+                  <div class="tok3n-enter-label">
+                    <label>Enter your SMS code:</label>
+                  </div>
+                  <div class="tok3n-enter">
+                    <input name="tok3n_otp" type="tel" autocomplete="off" dir="ltr" pattern="[0-9 ]*" placeholder="• • • • • •" spellcheck="false" id="tok3nSmsInput" class="tok3n-otp" />
+                    <div class="icon-tok3n-bubble"></div>
+                    <input type="hidden" name="tok3n_session" id="tok3n_session" />
+                  </div>
+                  <div class="tok3n-having-trouble">
+                    <small><a href="#">Having trouble?</a>
+                    </small>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="tok3n-submit-wrapper">
-              <div class="tok3n-submit">
-                <button id="tok3nOtpButton">
-                  <div class="ladda-label">
-                    <div class="icon-tok3n-stripe"></div>
-                    <div class="tok3n-button-text">Verify with Tok3n</div>
-                  </div>
-                </button>
+              <div id="tok3nVerifyWrapper" class="tok3n-submit-inner-wrapper">
+                <div class="tok3n-submit">
+                  <button id="tok3nVerify">
+                    <div class="ladda-label">
+                      <div class="icon-tok3n-stripe"></div>
+                      <div class="tok3n-button-text">Verify with Tok3n</div>
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -123,7 +144,6 @@
     </div>
     <script src="//s3.amazonaws.com/static.tok3n.com/0.0.1/js/connect-min.js"></script>
     <script type="application/dart" src="//s3.amazonaws.com/static.tok3n.com/0.0.1/dart/connect.dart"></script>
-    <script src="//s3.amazonaws.com/static.tok3n.com/0.0.1/dart/dart.js"></script>
-    <script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-39917560-2');ga('send','pageview');</script>
+    <script src="//s3.amazonaws.com/static.tok3n.com/0.0.1/dart/packages/browser/dart.js"></script>
   </body>
 </html>

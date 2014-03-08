@@ -1,0 +1,98 @@
+// In JS Browsers the .empty class is assigned to empty inputs -> label is rendered like a placeholder in the input field
+
+@mixin float-label-size($input-size)
+  input
+    font-size: $input-size
+    &:not(.empty):focus + label
+    &.empty + label
+      font-size: $input-size
+
+@mixin float-label-animation($input-size)
+  +keyframes(float-labels)
+    0%
+      opacity: 1
+      color: #aaa
+      top: 0.1em
+      font-size: $input-size
+    20%
+      font-size: $input-size
+      opacity: 0
+    30%
+      top: 0.1em
+    50%
+      opacity: 0
+      font-size: 0.85em
+    100%
+      top: -1em
+      opacity: 1
+
+// Original label position: top left and small
+
+// The animation is a bit more complex than what is achievable with simple transitions, because I do not want the label to fly over my input. The place-holder label should fade out first and then appear again above the input text
+
+%float-label form > ol
+  list-style: none
+  > li
+    position: relative
+
+%float-label label
+  position: absolute
+  top: -1em
+  left: 0.08em
+  color: #aaaaaa
+  z-index: -1
+  font-size: 0.85em
+  +animation(float-labels 300ms none ease-out)
+  // There is a bug sometimes pausing the animation. This avoids that.
+  +animation-play-state(running !important)
+
+// Label highlight effect also for non-JS browsers
+%float-label input
+  &:not(.empty):focus + label
+    color: #0099ff
+  &.empty + label
+    top: 0.1em
+    +animation(none)
+
+///////////////////////
+// Example usage CSS //
+///////////////////////
+
+// $float-label-size: 1.2em
+// +float-label-animation($float-label-size)
+
+// .tok3n-login-form
+//   +float-label-size($float-label-size)
+//   @extend %float-label
+//   input
+//     padding: 0.1em 0em
+//     border: none
+//     border-radius: 0px
+//     border-bottom: 1px solid #ccc
+//     outline: none
+//     margin: 0px
+//     background: none
+//     width: 100%
+//   label
+//     font-weight: normal
+
+// .tok3n-login-input > ol
+//   list-style: none
+//   padding: 0px
+//   > li
+//     position: relative
+//     margin: 1.2em 0
+
+// .tok3n-login-input
+//   margin-top: 1.5em
+
+//////////////////////////
+// Example usage (Jade) //
+//////////////////////////
+
+// .tok3n-login-form
+//   .tok3n-login-input
+//     ol
+//       li
+//         input#email(name='email', spellcheck='false', type='email', autofocus)
+//         label(for='email') Email address
