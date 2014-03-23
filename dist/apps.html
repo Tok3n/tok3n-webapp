@@ -30,7 +30,7 @@
                   <button href="#" class="btn btn-default">Log out</button>
                 </li>
                 <li class="toggle-sidebar">
-                  <button type="button" data-toggle="collapse" data-target="#sidebar .menu" class="btn btn-default"><i class="icon-reorder"></i>
+                  <button id="collapseSidebarButton" class="btn btn-default"><i class="icon-reorder"></i>
                   </button>
                 </li>
               </ul>
@@ -42,7 +42,7 @@
     <div id="layout">
       <div id="sidebar">
         <div class="nav-inner">
-          <ul class="menu collapse">
+          <ul id="sidebarMenu" class="menu collapsed">
             <li id="devicesTrigger" class="col-xs-12 col-sm-12 col-md-12">
               <div class="row">
                 <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-mobile-phone"></i>
@@ -54,7 +54,7 @@
               <div class="row">
                 <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-phone"></i>
                 </div>
-                <div class="title col-xs-10 col-sm-7 col-md-7">My phones</div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">My phone lines</div>
               </div>
             </li>
             <li id="myDomainsTrigger" class="col-xs-12 col-sm-12 col-md-12">
@@ -276,9 +276,7 @@
         </div>
       </div>
     </div>
-    <script src="//www.google.com/jsapi"></script>
     <script src="//s3.amazonaws.com/static.tok3n.com/0.0.1/js/jquery-pack-min.js"></script>
-    <script src="//use.typekit.net/nls8ikc.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="application/dart" src="dart/dashboard.dart"></script>
   </body>
 </html>

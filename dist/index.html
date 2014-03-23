@@ -30,7 +30,7 @@
                   <button href="#" class="btn btn-default">Log out</button>
                 </li>
                 <li class="toggle-sidebar">
-                  <button type="button" data-toggle="collapse" data-target="#sidebar .menu" class="btn btn-default"><i class="icon-reorder"></i>
+                  <button id="collapseSidebarButton" class="btn btn-default"><i class="icon-reorder"></i>
                   </button>
                 </li>
               </ul>
@@ -42,7 +42,7 @@
     <div id="layout">
       <div id="sidebar">
         <div class="nav-inner">
-          <ul class="menu collapse">
+          <ul id="sidebarMenu" class="menu collapsed">
             <li id="devicesTrigger" class="col-xs-12 col-sm-12 col-md-12">
               <div class="row">
                 <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-mobile-phone"></i>
@@ -54,7 +54,7 @@
               <div class="row">
                 <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-phone"></i>
                 </div>
-                <div class="title col-xs-10 col-sm-7 col-md-7">My phones</div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">My phone lines</div>
               </div>
             </li>
             <li id="myDomainsTrigger" class="col-xs-12 col-sm-12 col-md-12">
@@ -84,28 +84,28 @@
       <div id="content">
         <div id="list" class="col-md-12">
           <div class="item item-selected row">
-            <div class="avatar col-md-2">
-              <img alt="ttamayo's avatar" src="/img/common/tilo-avatar.png" height="32" width="32" />
+            <div class="avatar">
+              <img alt="ttamayo's avatar" src="http://permissiondenied.net/identicon/32/211c6cf66d30f9ce9145af7be010d3ab.png" height="32" width="32" />
             </div>
-            <div class="info col-md-10">
+            <div class="info">
               <h5 class="title">ttamayo.com</h5>
               <small class="url">http://ttamayo.com</small>
             </div>
           </div>
           <div class="item row">
-            <div class="avatar col-md-2">
-              <img alt="Offertame's avatar" src="/img/common/ericf-avatar.png" height="32" width="32" />
+            <div class="avatar">
+              <img alt="Offertame's avatar" src="http://permissiondenied.net/identicon/32/211c6cf66d30f9ce9145af7be010d3ab.png" height="32" width="32" />
             </div>
-            <div class="info col-md-10">
+            <div class="info">
               <h5 class="title">Offertame</h5>
               <small class="url">http://offerta.me/a/very/long/url/is/good/for/css/testing</small>
             </div>
           </div>
           <div id="triggerNewIntegration">
             <div class="item row">
-              <div class="col-md-2"><i class="icon-plus-sign"></i>
+              <div class="avatar"><i class="icon-plus-sign"></i>
               </div>
-              <div class="col-md-10">
+              <div class="info">
                 <h5 class="title">New integration</h5>
               </div>
             </div>
@@ -119,11 +119,7 @@
                   <h2>ttamayo.com</h2>
                 </span>
                 <span class="space"></span>
-                <span class="btn-group settings-menu">
-                  <button class="btn btn-sm btn-default action-button"><i class="icon-gear"></i>Settings</button>
-                  <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle">
-                    <span class="caret"></span>
-                  </button>
+                <span class="settings-menu dropdown"><a href="#" class="btn btn-sm btn-default action-button"><i class="icon-gear"></i>Settings</a>
                   <ul role="menu" class="dropdown-menu">
                     <li class="hidden"><a href="#">Stop</a>
                     </li>
@@ -285,9 +281,7 @@
     <div id="popup-upgrade" class="white-popup mfp-hide">
       <p>Popup content</p>
     </div>
-    <script src="//www.google.com/jsapi"></script>
     <script src="//s3.amazonaws.com/static.tok3n.com/0.0.1/js/jquery-pack-min.js"></script>
-    <script src="//use.typekit.net/nls8ikc.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="application/dart" src="dart/dashboard.dart"></script>
   </body>
 </html>

@@ -116,7 +116,6 @@ $nav-margin-top: 13px
   margin-top: 1em
   a
     cursor: pointer
-      
 
 /////////////////////////////
 // Three column propoportions
@@ -165,15 +164,21 @@ $nav-margin-top: 13px
     +to(2)
       padding-top: $top-nav-height
   .menu
+    margin: 0
     background: transparent
     border: none
     text-align: left
     list-style-type: none
     padding-left: 0
+    max-height: 800px
     +user-select(none)
+    +single-transition(max-height, .5s, ease-in-out, 0)
     +from(3)
       // Hack to align to logo left
       margin-left: -10px
+    &.collapsed
+      max-height: 0
+      overflow: hidden
     li
       cursor: pointer
       +to(2)
@@ -208,47 +213,54 @@ $nav-margin-top: 13px
           font-size: 130%
 
 ////////////////////
+// Dropdown
+////////////////////
+
+.dropdown-show
+  display: block
+
+////////////////////
 // Popups and extras
 ////////////////////
 
-.white-popup
-  position: relative
-  background: #FFF
-  padding: 20px
-  width: auto
-  max-width: 500px
-  margin: 20px auto
-  .create-button
-    margin-bottom: 0
-  .title
-    margin-top: .5em
-    text-align: center
-  label.align-top
-    margin-top: .4em
-  .web-toggle
-    display: none
-  .btn-file
-    position: relative
-    overflow: hidden
-    input[type=file]
-      position: absolute
-      top: 0
-      right: 0
-      min-width: 100%
-      min-height: 100%
-      font-size: 999px
-      text-align: right
-      filter: alpha(opacity = 0)
-      opacity: 0
-      background: red
-      cursor: inherit
-      display: block
-  .form-control
-    cursor: default
+// .white-popup
+//   position: relative
+//   background: #FFF
+//   padding: 20px
+//   width: auto
+//   max-width: 500px
+//   margin: 20px auto
+//   .create-button
+//     margin-bottom: 0
+//   .title
+//     margin-top: .5em
+//     text-align: center
+//   label.align-top
+//     margin-top: .4em
+//   .web-toggle
+//     display: none
+//   .btn-file
+//     position: relative
+//     overflow: hidden
+//     input[type=file]
+//       position: absolute
+//       top: 0
+//       right: 0
+//       min-width: 100%
+//       min-height: 100%
+//       font-size: 999px
+//       text-align: right
+//       filter: alpha(opacity = 0)
+//       opacity: 0
+//       background: red
+//       cursor: inherit
+//       display: block
+//   .form-control
+//     cursor: default
 
-.popover-content
-  .title
-    text-align: center
+// .popover-content
+//   .title
+//     text-align: center
 
 // +at(2)
 //   #list, #main
