@@ -33,7 +33,7 @@ html.no-js(lang='en')
                     li
                       button.btn.btn-default(href='#') Log out
                     li.toggle-sidebar
-                      button.btn.btn-default(type='button' data-toggle='collapse' data-target='#sidebar .menu')
+                      button#collapseSidebarButton.btn.btn-default
                         i.icon-reorder
     block layout
       #layout
@@ -41,7 +41,7 @@ html.no-js(lang='en')
           block nav
             #sidebar
               .nav-inner
-                ul.menu.collapse
+                ul.menu#sidebarMenu.collapsed
                   li#devicesTrigger.col-xs-12.col-sm-12.col-md-12
                     .row
                       .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
@@ -51,7 +51,7 @@ html.no-js(lang='en')
                     .row
                       .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
                         i.icon-phone
-                      .title.col-xs-10.col-sm-7.col-md-7 My phones
+                      .title.col-xs-10.col-sm-7.col-md-7 My phone lines
                   li#myDomainsTrigger.col-xs-12.col-sm-12.col-md-12
                     .row
                       .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
@@ -76,10 +76,9 @@ html.no-js(lang='en')
       //- :js
       //-   function downloadJSAtOnload(){var a=document.createElement("script");a.src='js/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '-pack.js',document.body.appendChild(a)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
 
-      script(src="//www.google.com/jsapi")
+      //- script(src="//www.google.com/jsapi")
       script(src="js/jquery-pack.js")
       script(src='js/test.js')
+      //- script(src="js/dashboard.dart.js")
+      script(type='application/dart', src='dart/dashboard.dart')
       script(src="http://localhost:35729/livereload.js")
-      script(src="//use.typekit.net/nls8ikc.js")
-      :js
-        try{Typekit.load();}catch(e){}

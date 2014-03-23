@@ -31,7 +31,8 @@
     "grunt-sync": "0.0.5",
     "grunt-prettify": "~0.3.4",
     "grunt-s3-sync": "~0.4.1",
-    "grunt-uncss": "~0.2.0"
+    "grunt-uncss": "~0.2.0",
+    "grunt-contrib-coffee": "~0.10.1"
   },
   "dependencies": {
     "blade": "~3.2.6",

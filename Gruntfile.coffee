@@ -11,21 +11,22 @@ module.exports = (grunt) ->
 	dart = 'web/dart/'
 	dist = 'dist/'
 
-	# Raw from github or cdn
-	masonry = 'http://masonry.desandro.com/'
+	# Remote paths
 	cdnUrl = '//s3.amazonaws.com/static.tok3n.com/<%= pkg.version %>/'
 
 	# Bower js files
 	misc = [
+		# js + 'buoy.js'
+		# js + 'drop.js'
 		js + 'masonry.pkgd.min.js'
-		comp + 'enquire/dist/enquire.js'
-		comp + 'modernizr/modernizr.js'
-		comp + 'eventEmitter/EventEmitter.js'
-		comp + 'bootstrap-sass/js/transition.js'
-		comp + 'bootstrap-sass/js/collapse.js'
-		comp + 'bootstrap-sass/js/dropdown.js'
-		comp + 'resizeend/lib/resizeend.js'
-		comp + 'jquery-mousewheel/jquery.mousewheel.js'
+		# comp + 'enquire/dist/enquire.js'
+		js + 'modernizr.js'
+		# comp + 'eventEmitter/EventEmitter.js'
+		# comp + 'bootstrap-sass/js/transition.js'
+		# comp + 'bootstrap-sass/js/collapse.js'
+		# comp + 'bootstrap-sass/js/dropdown.js'
+		# comp + 'resizeend/lib/resizeend.js'
+		# comp + 'jquery-mousewheel/jquery.mousewheel.js'
 	]
 	
 	# All unlicensed not added directly (main.js)
@@ -40,7 +41,9 @@ module.exports = (grunt) ->
 	
 	# Files to download with curl
 	http_files = [
-		{ url: masonry + 'masonry.pkgd.min.js', file: js + 'masonry.pkgd.min.js' }
+		{ url: 'http://masonry.desandro.com/masonry.pkgd.min.js', file: js + 'masonry.pkgd.min.js' }
+		{ url: 'https://raw.githubusercontent.com/cferdinandi/buoy/master/buoy.js', file: js + 'buoy.js' }
+		{ url: 'https://raw.githubusercontent.com/cferdinandi/drop/master/js/drop.js', file: js + 'drop.js'}
 	]
 		
 	# Regex
@@ -118,7 +121,7 @@ module.exports = (grunt) ->
 				expand: true
 				src   : ['<%= copy.popupjs.dest %>']
 
-		coffeeredux: 
+		coffee: 
 			options:
 				bare: true
 			main:
@@ -173,16 +176,16 @@ module.exports = (grunt) ->
 				separator: '\n'
 			jquery:
 				src: [
-					'<%= copy.jquery.dest %>'
+					# '<%= copy.jquery.dest %>'
 					misc...
 					unlicend...
-					'<%= coffeeredux.main.dest %>'
+					'<%= coffee.main.dest %>'
 				]
 				dest: js + 'jquery-pack.js'
 			connect:
 				src: [
 					connect...
-					'<%= coffeeredux.connect.dest %>'
+					'<%= coffee.connect.dest %>'
 				]
 				dest: js + 'connect.js'
 
@@ -376,7 +379,7 @@ module.exports = (grunt) ->
 				]
 			coffee:
 				files: coffee + '*'
-				tasks: ['coffeeredux', 'concat']
+				tasks: ['coffee', 'concat']
 			sass:
 				files: sass + '*'
 				tasks: ['compass:watch']
@@ -448,6 +451,7 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-contrib-cssmin'
 	@loadNpmTasks 'grunt-contrib-imagemin'
 	@loadNpmTasks 'grunt-coffee-redux'
+	@loadNpmTasks 'grunt-contrib-coffee'
 	@loadNpmTasks 'grunt-shell'
 	@loadNpmTasks 'grunt-text-replace'
 	@loadNpmTasks 'grunt-s3-sync'
@@ -456,5 +460,5 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-uncss'
 
 	@registerTask 'build', ['bower-install', 'shell:sleep', 'shell:files', 'copy', 'license']
-	@registerTask 'default', ['compass:dev', 'csslint', 'coffeeredux', 'concat']
-	@registerTask 'dist', ['compass:production', 'csslint', 'coffeeredux', 'concat', 'uglify', 'cssmin:dist', 'sync', 'shell:sleep', 'shell:apps', 'prettify', 'replace:dist', 'imagemin:dist', 's3-sync']
+	@registerTask 'default', ['compass:dev', 'csslint', 'coffee', 'concat']
+	@registerTask 'dist', ['compass:production', 'csslint', 'coffee', 'concat', 'uglify', 'cssmin:dist', 'sync', 'shell:sleep', 'shell:apps', 'prettify', 'replace:dist', 'imagemin:dist', 's3-sync']

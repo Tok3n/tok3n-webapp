@@ -8,22 +8,22 @@ append block body
   #content
     #list.col-md-12
       .item.item-selected.row
-        .avatar.col-md-2
-          img(alt='ttamayo\'s avatar', src='/img/common/tilo-avatar.png', height='32', width='32')
-        .info.col-md-10
+        .avatar
+          img(alt='ttamayo\'s avatar', src='http://permissiondenied.net/identicon/32/211c6cf66d30f9ce9145af7be010d3ab.png', height='32', width='32')
+        .info
           h5.title ttamayo.com
           small.url http://ttamayo.com
       .item.row
-        .avatar.col-md-2
-          img(alt='Offertame\'s avatar', src='/img/common/ericf-avatar.png', height='32', width='32')
-        .info.col-md-10
+        .avatar
+          img(alt='Offertame\'s avatar', src='http://permissiondenied.net/identicon/32/211c6cf66d30f9ce9145af7be010d3ab.png', height='32', width='32')
+        .info
           h5.title Offertame
           small.url http://offerta.me/a/very/long/url/is/good/for/css/testing
       #triggerNewIntegration
         .item.row
-          .col-md-2
+          .avatar
             i.icon-plus-sign
-          .col-md-10
+          .info
             h5.title New integration
     #main
       .devel-content-header
@@ -32,12 +32,10 @@ append block body
             span
               h2 ttamayo.com
             span.space
-            span.btn-group.settings-menu
-              button.btn.btn-sm.btn-default.action-button
+            span.settings-menu.dropdown
+              a.btn.btn-sm.btn-default.action-button(href='#')
                 i.icon-gear
                 | Settings
-              button.btn.btn-sm.btn-default.dropdown-toggle(data-toggle='dropdown')
-                span.caret
               ul.dropdown-menu(role='menu')
                 li.hidden
                   a(href='#') Stop
