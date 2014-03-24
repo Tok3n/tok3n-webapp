@@ -1,16 +1,14 @@
 # Google Analytics
-window._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']]
+root = exports ? this
+root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']]
 
 # Async loading
 # Add pollyfills: queryselector, matchmedia, classlist
 Modernizr.load([{
-  test: Modernizr.queryselector
-  nope: 'https://raw.githubusercontent.com/termi/CSS_selector_engine/master/__COMPILED/CSS_selector_engine.js'
-}, {
   test: Modernizr.mq
   nope: 'https://raw.githubusercontent.com/scottjehl/Respond/master/dest/respond.min.js'
 }, {
-  test: Modernizr.classlist
+  test: document.documentElement.classList
   nope: 'https://raw.githubusercontent.com/eligrey/classList.js/master/classList.min.js'
 }, {
   load: ((if "https:" is location.protocol then "//ssl" else "//www")) + ".google-analytics.com/ga.js"
@@ -79,7 +77,6 @@ main = () ->
         mq = window.matchMedia("(min-width: 769px)")
         mq.addListener WidthChange
         WidthChange mq
-      return
   )(document.querySelector '#sidebarMenu')
   
   # Prevent scroll past the central #list, doesn't work in old browsers

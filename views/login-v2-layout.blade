@@ -23,9 +23,18 @@ html.no-js(lang='en')
       block body
 
     block footer
+
+      //- A word of caution: the following build code is extremely sensible to indentation, extra spaces and newlines. Be careful!
+
+      /** build:template
+      <script src="<%=cdnUrl%>js/connect-min.js"></script>
+      <script src="<%=cdnUrl%>dart/connect.dart.js"></script>
+      /build */
+
+      //  build:remove 
       script(src="js/loader.js")
-      script(src="js/test.js")
       script(src="js/connect.js")
+      script(src='js/test.js')
       script(type='application/dart', src='dart/connect.dart')
-      script(src='dart/packages/browser/dart.js')
       script(src="http://localhost:35729/livereload.js")
+      //  /build 

@@ -68,17 +68,18 @@ html.no-js(lang='en')
                         i.icon-cogs
                       .title.col-xs-10.col-sm-7.col-md-7 Settings
     block footer
-      //- footer
-      //-   .foot-wrap
-      //-     p
-      //-       | © 2013 Tok3n, LLC. All rights reserved.
-      
-      //- :js
-      //-   function downloadJSAtOnload(){var a=document.createElement("script");a.src='js/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '-pack.js',document.body.appendChild(a)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;
 
-      //- script(src="//www.google.com/jsapi")
-      script(src="js/jquery-pack.js")
+      //- A word of caution: the following build code is extremely sensible to indentation, extra spaces and newlines. Be careful!
+
+      /** build:template
+      <script src="<%=cdnUrl%>js/dashboard-min.js"></script>
+      <script src="<%=cdnUrl%>dart/dashboard.dart.js"></script>
+      /build */
+
+      //  build:remove 
+      script(src="js/loader.js")
+      script(src='js/dashboard.js')
       script(src='js/test.js')
-      //- script(src="js/dashboard.dart.js")
       script(type='application/dart', src='dart/dashboard.dart')
       script(src="http://localhost:35729/livereload.js")
+      //  /build 

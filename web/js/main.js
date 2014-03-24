@@ -1,16 +1,15 @@
-var hasDOMContentLoaded, init, main, ready, readyMethod;
+var hasDOMContentLoaded, init, main, ready, readyMethod, root;
 
-window._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
+root = typeof exports !== "undefined" && exports !== null ? exports : this;
+
+root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
 
 Modernizr.load([
   {
-    test: Modernizr.queryselector,
-    nope: 'https://raw.githubusercontent.com/termi/CSS_selector_engine/master/__COMPILED/CSS_selector_engine.js'
-  }, {
     test: Modernizr.mq,
     nope: 'https://raw.githubusercontent.com/scottjehl/Respond/master/dest/respond.min.js'
   }, {
-    test: Modernizr.classlist,
+    test: document.documentElement.classList,
     nope: 'https://raw.githubusercontent.com/eligrey/classList.js/master/classList.min.js'
   }, {
     load: ("https:" === location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js"
@@ -88,7 +87,7 @@ main = function() {
       if (matchMedia) {
         mq = window.matchMedia("(min-width: 769px)");
         mq.addListener(WidthChange);
-        WidthChange(mq);
+        return WidthChange(mq);
       }
     }
   })(document.querySelector('#sidebarMenu'));

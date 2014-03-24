@@ -50,16 +50,19 @@ grunt dist
 
 To-do
 -
-* Make a/b tests
-* Inteligent loader with modernizr and yepnope
-* More stable progress tracker (don't depend on calc() or use a polyfill?)
 * Use @extend instead of bootstrap classes in html
-* Migrate icons to new font-awesome version and use @extend as well
+* Test in not-so-old browsers (>= IE8)
+* Figure out gzip compression
 
 Current milestones
 -
-* Finish connect
-
+* Remove a from dropdown button
+* Make span.label's cascade gracefully on mobile
+* Use only the neccesary icons with fontastic.me
+* Middle column active color change
+* Merge all dashboard screens into one
+* Finish dashboard
+* Style background login-v2
 
 [1]: http://git-scm.com/downloads
 [2]: http://nodejs.org/download/

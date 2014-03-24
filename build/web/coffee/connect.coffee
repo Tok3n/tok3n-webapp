@@ -15,7 +15,6 @@ WebFontConfig = google:
 
 # Ladda
 Ladda.bind '#tok3nLogin', {timeout: 5000}
-
 Ladda.bind '#tok3nVerify', {timeout: 5000}
 
 document.getElementById("tok3nOtpInput").oninput = ->
