@@ -59,6 +59,10 @@ app.get('/login-v2', function(req, res){
 	res.render("login-v2");
 });
 
+app.get('/dashboard', function(req, res){
+	res.render("dashboard");
+});
+
 // Heroku
 var port = process.env.PORT || 5000;
 app.listen(port, function() {

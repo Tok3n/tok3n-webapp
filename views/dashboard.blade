@@ -1,0 +1,107 @@
+include 'dashboard-layout.blade'
+render title('Tok3n | Developer')
+
+prepend block style
+  // [if lte IE 8]> <link rel="stylesheet" type="text/css" href="css/ie8-and-down.css" /> <![endif]
+
+append block body
+  #layout
+    #sidebar
+      .nav-inner
+        ul.menu#sidebarMenu.collapsed
+          li#devicesTrigger.col-xs-12.col-sm-12.col-md-12
+            .row
+              .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                i.icon-mobile-phone
+              .title.col-xs-10.col-sm-7.col-md-7 My devices
+          li.col-xs-12.col-sm-12.col-md-12
+            .row
+              .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                i.icon-phone
+              .title.col-xs-10.col-sm-7.col-md-7 My phone lines
+          li#myDomainsTrigger.col-xs-12.col-sm-12.col-md-12
+            .row
+              .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                i.icon-lock
+              .title.col-xs-10.col-sm-7.col-md-7 Authorized apps
+          li#integrationsTrigger.col-xs-12.col-sm-12.col-md-12
+            .row
+              .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                i.icon-code
+              .title.col-xs-10.col-sm-7.col-md-7 My integrations
+          li.col-xs-12.col-sm-12.col-md-12
+            .row
+              .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                i.icon-cogs
+              .title.col-xs-10.col-sm-7.col-md-7 Settings
+    .tok3n-pt-perspective
+      .tok3n-pt-page.tok3n-pt-page-current
+        #list.col-md-12
+          .item.item-selected.row
+            .avatar
+              img(alt='ttamayo\'s avatar', src='http://permissiondenied.net/identicon/32/211c6cf66d30f9ce9145af7be010d3ab.png', height='32', width='32')
+            .info
+              h5.title ttamayo.com
+              small.url http://ttamayo.com
+          .item.row
+            .avatar
+              img(alt='Offertame\'s avatar', src='http://permissiondenied.net/identicon/32/211c6cf66d30f9ce9145af7be010d3ab.png', height='32', width='32')
+            .info
+              h5.title Offertame
+              small.url http://offerta.me/a/very/long/url/is/good/for/css/testing
+          #triggerNewIntegration
+            .item.row
+              .avatar
+                i.icon-plus-sign
+              .info
+                h5.title New integration
+        .tok3n-main-content
+          .devel-content-header
+            .col-md-12
+              .title
+                span
+                  h2 ttamayo.com
+                span.space
+                span.settings-menu.dropdown
+                  a.btn.btn-sm.btn-default.action-button(href='#')
+                    i.icon-gear
+                    | Settings
+                  ul.dropdown-menu(role='menu')
+                    li.hidden
+                      a(href='#') Stop
+                    li
+                      a(href='#') Delete
+              table.specs
+                tr.status
+                  td.name Status:
+                  td
+                    span.label.label-success Active
+                    span.label.label-warning Halted
+                    span.label.label-danger Running out of users
+                tr
+                  td.name Plan:
+                  td
+                    a(href='#') Early Adopter
+                    |  &mdash;  
+                    a.action.trigger-upgrade upgrade
+                tr
+                  td.name API key:
+                  td e871df97-29c9-497b-87ae-040369737501
+                tr
+                  td.name Secret:
+                  td
+                    span.secret 8869c644-62a5-4a27-95f5-a44af2aaf03f
+                      |  &mdash;  
+                    a.action.toggle-secret(href='#') show
+                tr
+                  td.name URL:
+                  td
+                    span http://ttamayo.com/app
+                tr
+                  td.name Callback:
+                  td
+                    span http://ttamayo.com/callback
+
+        .devel-content-body
+
+prepend block footer

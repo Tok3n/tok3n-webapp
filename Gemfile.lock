@@ -50,7 +50,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  animate
+  animate (>= 0.2.beta.0)
   breakpoint-slicer
   compass (>= 1.0.0.alpha.17)
   foreman

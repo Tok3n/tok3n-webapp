@@ -119,73 +119,73 @@ span.space {
 }
 
 /* line 61, ../sass/main.sass */
-#main .devel-content-header, #main .devel-content-body, #main .devel-content-footer {
+.tok3n-main-content .devel-content-header, .tok3n-main-content .devel-content-body, .tok3n-main-content .devel-content-footer {
   padding: 1em 2em;
 }
 /* line 64, ../sass/main.sass */
-#main .devel-content-header {
+.tok3n-main-content .devel-content-header {
   border-bottom: 1px solid #dddddd;
 }
 /* line 66, ../sass/main.sass */
-#main .devel-content-header .title {
+.tok3n-main-content .devel-content-header .title {
   margin: 0.5em 0 0;
 }
 /* line 68, ../sass/main.sass */
-#main .devel-content-header .title span {
+.tok3n-main-content .devel-content-header .title span {
   display: inline-block;
 }
 /* line 70, ../sass/main.sass */
-#main .devel-content-header .settings-menu {
+.tok3n-main-content .devel-content-header .settings-menu {
   margin-top: -0.8em;
 }
 /* line 72, ../sass/main.sass */
-#main .devel-content-header .specs {
+.tok3n-main-content .devel-content-header .specs {
   margin-top: 2.5em;
 }
 /* line 74, ../sass/main.sass */
-#main .devel-content-header .specs td {
+.tok3n-main-content .devel-content-header .specs td {
   padding-right: 1.5em;
   padding-bottom: 0.5em;
 }
 /* line 77, ../sass/main.sass */
-#main .devel-content-header .specs td.name {
+.tok3n-main-content .devel-content-header .specs td.name {
   font-weight: bolder;
 }
 /* line 79, ../sass/main.sass */
-#main .devel-content-header .specs a.action {
+.tok3n-main-content .devel-content-header .specs a.action {
   text-decoration: underline;
   color: #e17714;
 }
 /* line 83, ../sass/main.sass */
-.no-touch #main .devel-content-header .specs a.action:hover, .no-touch #main .devel-content-header .specs a.action:focus {
+.no-touch .tok3n-main-content .devel-content-header .specs a.action:hover, .no-touch .tok3n-main-content .devel-content-header .specs a.action:focus {
   color: #ff9633;
 }
 /* line 85, ../sass/main.sass */
-#main .devel-content-header .specs a.action:active {
+.tok3n-main-content .devel-content-header .specs a.action:active {
   color: #ffca99;
 }
 /* line 87, ../sass/main.sass */
-#main .devel-content-header .specs .secret {
+.tok3n-main-content .devel-content-header .specs .secret {
   display: none;
 }
 /* line 90, ../sass/main.sass */
-#main .devel-content-header .specs .status span.label, #main .devel-content-header .specs .status .action-button {
+.tok3n-main-content .devel-content-header .specs .status span.label, .tok3n-main-content .devel-content-header .specs .status .action-button {
   margin: 0 0.5em;
 }
 /* line 93, ../sass/main.sass */
-#main .devel-content-header .specs .status span.label:first-child, #main .devel-content-header .specs .status .action-button:first-child {
+.tok3n-main-content .devel-content-header .specs .status span.label:first-child, .tok3n-main-content .devel-content-header .specs .status .action-button:first-child {
   margin: 0 0.5em 0 0;
 }
 /* line 95, ../sass/main.sass */
-#main .devel-content-header .specs .status span.label:last-child, #main .devel-content-header .specs .status .action-button:last-child {
+.tok3n-main-content .devel-content-header .specs .status span.label:last-child, .tok3n-main-content .devel-content-header .specs .status .action-button:last-child {
   margin: 0 0 0 0.5em;
 }
 /* line 97, ../sass/main.sass */
-#main .devel-content-header .specs .status span.label:only-child, #main .devel-content-header .specs .status .action-button:only-child {
+.tok3n-main-content .devel-content-header .specs .status span.label:only-child, .tok3n-main-content .devel-content-header .specs .status .action-button:only-child {
   margin: 0;
 }
 /* line 99, ../sass/main.sass */
-#main .devel-content-header .specs .status span.label {
+.tok3n-main-content .devel-content-header .specs .status span.label {
   font-size: 0.9em;
 }
 

@@ -103,62 +103,11 @@ $tok3n-login-background-color: #fafafa
 // Page transitions //
 //////////////////////
 
+@import 'page-transitions'
+
 .tok3n-pt-perspective, .tok3n-pt-page
 	height: $tok3n-usable-window-height 
 	width: $tok3n-login-window-width
-
-.tok3n-pt-perspective
-	position: relative
-	perspective: 1200px
-	overflow: hidden
-
-.tok3n-pt-page
-	// background-color: $tok3n-login-background-color
-	// width: 100%
-	// height: 100%
-	position: absolute
-	top: 0
-	left: 0
-	visibility: hidden
-	overflow: hidden
-	+backface-visibility(hidden)
-	+transform(translate3d(0, 0, 0))
-	+transform-style(preserve-3d)
-
-.tok3n-pt-page-current
-	visibility: visible !important
-	z-index: 3
-
-.tok3n-submit-visible
-	visibility: visible !important
-	z-index: 999
-
-.tok3n-submit-wrapper
-	z-index: 999
-
-.tok3n-move-from-left
-	+animation(moveFromLeft)
-	+animation-fill-mode(forwards)
-	+animation-duration(.25s)
-	+animation-timing-function(ease-in-out)
-
-.tok3n-move-to-left
-	+animation(moveToLeft)
-	+animation-fill-mode(forwards)
-	+animation-duration(.25s)
-	+animation-timing-function(ease-in-out)
-
-.tok3n-move-from-right
-	+animation(moveFromRight)
-	+animation-fill-mode(forwards)
-	+animation-duration(.25s)
-	+animation-timing-function(ease-in-out)
-
-.tok3n-move-to-right
-	+animation(moveToRight)
-	+animation-fill-mode(forwards)
-	+animation-duration(.25s)
-	+animation-timing-function(ease-in-out)
 
 // .no-js
 // 	.tok3n-pt-page

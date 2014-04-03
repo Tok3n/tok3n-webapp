@@ -45,6 +45,8 @@ Modernizr.load([{
         window.addEventListener "drawChartDataDonut", drawChartDataDonut, false
         window.addEventListener "drawChartDataRequestHistory", drawChartDataRequestHistory, false
         window.addEventListener "drawChartDataUsersHistory", drawChartDataUsersHistory, false
+        return
+    return
 }, {
   load: "//use.typekit.net/nls8ikc.js"
   complete: ->
@@ -53,6 +55,62 @@ Modernizr.load([{
       Typekit.load()
     return
 }])
+
+##################################################################
+
+# Variables
+currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current')  
+
+##################################################################
+
+# Functions
+getStyle = (oElm, strCssRule) ->
+  strValue = ""
+  if document.defaultView and document.defaultView.getComputedStyle
+    strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule)
+  else if oElm.currentStyle
+    strCssRule = strCssRule.replace(/\-(\w)/g, (strMatch, p1) ->
+      p1.toUpperCase()
+    )
+    strValue = oElm.currentStyle[strCssRule]
+  strValue
+
+windowHeight = () ->
+  $topHeight = null
+  # We asume that matchMedia is supported
+  if window.matchMedia("(min-width: 769px)").matches
+    # Desktop size (render just the hack padding)
+    $topHeight = parseInt(getStyle(document.querySelector('#layout'), 'padding-top'), 10)
+  else
+    # Mobile size (render actual size)
+    $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10)
+
+  return window.innerHeight - $topHeight
+
+contentHeight = () ->
+  $contentHeight = null
+  innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10)
+  listHeight = parseInt(getStyle(document.querySelector('#list'), 'height'), 10)
+  # We asume that matchMedia is supported
+  if window.matchMedia("(min-width: 769px)").matches
+    # Desktop size
+    $contentHeight = innerContentHeight
+  else
+    $contentHeight = innerContentHeight + listHeight
+  return $contentHeight
+
+resizeContent = () ->
+  # Set the height of .tok3n-pt-perspective to the window height minus the top bar height.
+  $windowHeight = windowHeight()
+  $contentHeight = contentHeight()
+  $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10)
+  if $windowHeight > $contentHeight
+    for el in currentContent
+      el.style.height = $windowHeight + "px"
+      # el.style.height = (window.innerHeight - $topHeight) + "px"
+  else
+    for el in currentContent
+      el.style.height = $contentHeight + "px"
 
 ##################################################################
 
@@ -68,6 +126,7 @@ main = () ->
           # Desktop size
           if el.classList.contains 'collapsed'
             el.classList.remove 'collapsed'
+          # Remove height
         else
           # Mobile size
           unless el.classList.contains 'collapsed'
@@ -118,11 +177,15 @@ main = () ->
         gutter: '.grid-gutter'
       })
   )(document.querySelector '#cards-container')
+
+  # Set content height first time
+  resizeContent()
+
   return
 
 ##################################################################
-
 # Vanilla $('document').ready() detection. Execute main() when it is.
+
 hasDOMContentLoaded = false
 ready = false
 readyMethod = null
@@ -143,4 +206,12 @@ document.onreadystatechange = ->
   return
 document.addEventListener "load", (event) ->
   init "load"
+  return
+
+##################################################################
+# Custom events
+
+# Keep resizing content onResize
+window.addEventListener "resize", (event) ->
+  resizeContent()
   return

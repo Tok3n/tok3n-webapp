@@ -1,4 +1,4 @@
-var hasDOMContentLoaded, init, main, ready, readyMethod, root;
+var contentHeight, currentContent, getStyle, hasDOMContentLoaded, init, main, ready, readyMethod, resizeContent, root, windowHeight;
 
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
@@ -16,7 +16,7 @@ Modernizr.load([
   }, {
     load: "//www.google.com/jsapi",
     complete: function() {
-      return google.load("visualization", "1", {
+      google.load("visualization", "1", {
         packages: ["corechart"],
         callback: function() {
           var drawChartDataDonut, drawChartDataRequestHistory, drawChartDataUsersHistory;
@@ -52,7 +52,7 @@ Modernizr.load([
           };
           window.addEventListener("drawChartDataDonut", drawChartDataDonut, false);
           window.addEventListener("drawChartDataRequestHistory", drawChartDataRequestHistory, false);
-          return window.addEventListener("drawChartDataUsersHistory", drawChartDataUsersHistory, false);
+          window.addEventListener("drawChartDataUsersHistory", drawChartDataUsersHistory, false);
         }
       });
     }
@@ -65,6 +65,68 @@ Modernizr.load([
     }
   }
 ]);
+
+currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current');
+
+getStyle = function(oElm, strCssRule) {
+  var strValue;
+  strValue = "";
+  if (document.defaultView && document.defaultView.getComputedStyle) {
+    strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+  } else if (oElm.currentStyle) {
+    strCssRule = strCssRule.replace(/\-(\w)/g, function(strMatch, p1) {
+      return p1.toUpperCase();
+    });
+    strValue = oElm.currentStyle[strCssRule];
+  }
+  return strValue;
+};
+
+windowHeight = function() {
+  var $topHeight;
+  $topHeight = null;
+  if (window.matchMedia("(min-width: 769px)").matches) {
+    $topHeight = parseInt(getStyle(document.querySelector('#layout'), 'padding-top'), 10);
+  } else {
+    $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10);
+  }
+  return window.innerHeight - $topHeight;
+};
+
+contentHeight = function() {
+  var $contentHeight, innerContentHeight, listHeight;
+  $contentHeight = null;
+  innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10);
+  listHeight = parseInt(getStyle(document.querySelector('#list'), 'height'), 10);
+  if (window.matchMedia("(min-width: 769px)").matches) {
+    $contentHeight = innerContentHeight;
+  } else {
+    $contentHeight = innerContentHeight + listHeight;
+  }
+  return $contentHeight;
+};
+
+resizeContent = function() {
+  var $contentHeight, $topHeight, $windowHeight, el, _i, _j, _len, _len1, _results, _results1;
+  $windowHeight = windowHeight();
+  $contentHeight = contentHeight();
+  $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10);
+  if ($windowHeight > $contentHeight) {
+    _results = [];
+    for (_i = 0, _len = currentContent.length; _i < _len; _i++) {
+      el = currentContent[_i];
+      _results.push(el.style.height = $windowHeight + "px");
+    }
+    return _results;
+  } else {
+    _results1 = [];
+    for (_j = 0, _len1 = currentContent.length; _j < _len1; _j++) {
+      el = currentContent[_j];
+      _results1.push(el.style.height = $contentHeight + "px");
+    }
+    return _results1;
+  }
+};
 
 main = function() {
   (function(el) {
@@ -146,6 +208,7 @@ main = function() {
       });
     }
   })(document.querySelector('#cards-container'));
+  resizeContent();
 };
 
 hasDOMContentLoaded = false;
@@ -173,4 +236,8 @@ document.onreadystatechange = function() {
 
 document.addEventListener("load", function(event) {
   init("load");
+});
+
+window.addEventListener("resize", function(event) {
+  resizeContent();
 });

@@ -1671,112 +1671,112 @@ address {
 }
 
 @-moz-keyframes flash {
-  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 16, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 19, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   25% {
     opacity: 0;
   }
 
-  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 22, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   50% {
     opacity: 1;
   }
 
-  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 25, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   75% {
     opacity: 0;
   }
 
-  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 28, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   100% {
     opacity: 1;
   }
 }
 @-webkit-keyframes flash {
-  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 16, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 19, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   25% {
     opacity: 0;
   }
 
-  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 22, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   50% {
     opacity: 1;
   }
 
-  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 25, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   75% {
     opacity: 0;
   }
 
-  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 28, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   100% {
     opacity: 1;
   }
 }
 @keyframes flash {
-  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 16, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 19, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   25% {
     opacity: 0;
   }
 
-  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 22, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   50% {
     opacity: 1;
   }
 
-  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 25, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   75% {
     opacity: 0;
   }
 
-  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 28, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   100% {
     opacity: 1;
   }
 }
 @-moz-keyframes fadeIn {
-  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 18, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   0% {
     opacity: 0;
   }
 
-  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 21, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   100% {
     opacity: 1;
   }
 }
 @-webkit-keyframes fadeIn {
-  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 18, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   0% {
     opacity: 0;
   }
 
-  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 21, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   100% {
     opacity: 1;
   }
 }
 @keyframes fadeIn {
-  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 18, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   0% {
     opacity: 0;
   }
 
-  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 21, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   100% {
     opacity: 1;
   }
@@ -2062,20 +2062,14 @@ address {
   animation-timing-function: ease-in-out;
 }
 
-/* line 106, ../sass/_login-v2-main.sass */
-.tok3n-pt-perspective, .tok3n-pt-page {
-  height: 405px;
-  width: 339px;
-}
-
-/* line 110, ../sass/_login-v2-main.sass */
+/* line 1, ../sass/_page-transitions.sass */
 .tok3n-pt-perspective {
   position: relative;
   perspective: 1200px;
   overflow: hidden;
 }
 
-/* line 115, ../sass/_login-v2-main.sass */
+/* line 6, ../sass/_page-transitions.sass */
 .tok3n-pt-page {
   position: absolute;
   top: 0;
@@ -2095,24 +2089,24 @@ address {
   transform-style: preserve-3d;
 }
 
-/* line 128, ../sass/_login-v2-main.sass */
+/* line 19, ../sass/_page-transitions.sass */
 .tok3n-pt-page-current {
   visibility: visible !important;
   z-index: 3;
 }
 
-/* line 132, ../sass/_login-v2-main.sass */
+/* line 23, ../sass/_page-transitions.sass */
 .tok3n-submit-visible {
   visibility: visible !important;
   z-index: 999;
 }
 
-/* line 136, ../sass/_login-v2-main.sass */
+/* line 27, ../sass/_page-transitions.sass */
 .tok3n-submit-wrapper {
   z-index: 999;
 }
 
-/* line 139, ../sass/_login-v2-main.sass */
+/* line 30, ../sass/_page-transitions.sass */
 .tok3n-move-from-left {
   -moz-animation: moveFromLeft;
   -webkit-animation: moveFromLeft;
@@ -2128,7 +2122,7 @@ address {
   animation-timing-function: ease-in-out;
 }
 
-/* line 145, ../sass/_login-v2-main.sass */
+/* line 36, ../sass/_page-transitions.sass */
 .tok3n-move-to-left {
   -moz-animation: moveToLeft;
   -webkit-animation: moveToLeft;
@@ -2144,7 +2138,7 @@ address {
   animation-timing-function: ease-in-out;
 }
 
-/* line 151, ../sass/_login-v2-main.sass */
+/* line 42, ../sass/_page-transitions.sass */
 .tok3n-move-from-right {
   -moz-animation: moveFromRight;
   -webkit-animation: moveFromRight;
@@ -2160,7 +2154,7 @@ address {
   animation-timing-function: ease-in-out;
 }
 
-/* line 157, ../sass/_login-v2-main.sass */
+/* line 48, ../sass/_page-transitions.sass */
 .tok3n-move-to-right {
   -moz-animation: moveToRight;
   -webkit-animation: moveToRight;
@@ -2176,7 +2170,13 @@ address {
   animation-timing-function: ease-in-out;
 }
 
-/* line 177, ../sass/_login-v2-main.sass */
+/* line 108, ../sass/_login-v2-main.sass */
+.tok3n-pt-perspective, .tok3n-pt-page {
+  height: 405px;
+  width: 339px;
+}
+
+/* line 126, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider {
   background: #2b3087;
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
@@ -2225,7 +2225,7 @@ address {
 .tok3n-radio-slider input:not(:checked) ~ input:not(:checked) ~ input:not(:checked) ~ .slider {
   transition: top 0.25s ease-in-out 0.25s, left 0.25s ease-in-out 0.5s;
 }
-/* line 187, ../sass/_login-v2-main.sass */
+/* line 136, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider label {
   font-size: 25px;
   vertical-align: top;
@@ -2233,22 +2233,22 @@ address {
   line-height: 30px;
   color: rgba(255, 255, 255, 0.75);
 }
-/* line 194, ../sass/_login-v2-main.sass */
+/* line 143, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider label:not(:last-of-type) {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
-/* line 196, ../sass/_login-v2-main.sass */
+/* line 145, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider .slider {
   background: #31b3d4;
   -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.7);
 }
-/* line 199, ../sass/_login-v2-main.sass */
+/* line 148, ../sass/_login-v2-main.sass */
 .tok3n-radio-slider input:checked + label {
   color: white;
 }
 
-/* line 203, ../sass/_login-v2-main.sass */
+/* line 152, ../sass/_login-v2-main.sass */
 .icon-tok3n-qrcode {
   font-size: 110%;
 }
@@ -2357,7 +2357,7 @@ address {
 .tok3n-login-form input.empty + label {
   font-size: 1.2em;
 }
-/* line 217, ../sass/_login-v2-main.sass */
+/* line 166, ../sass/_login-v2-main.sass */
 .tok3n-login-form input {
   padding: 0.1em 0em;
   border: none;
@@ -2368,28 +2368,28 @@ address {
   background: none;
   width: 100%;
 }
-/* line 226, ../sass/_login-v2-main.sass */
+/* line 175, ../sass/_login-v2-main.sass */
 .tok3n-login-form label {
   font-weight: normal;
 }
 
-/* line 229, ../sass/_login-v2-main.sass */
+/* line 178, ../sass/_login-v2-main.sass */
 .tok3n-login-input > ol {
   list-style: none;
   padding: 0px;
 }
-/* line 232, ../sass/_login-v2-main.sass */
+/* line 181, ../sass/_login-v2-main.sass */
 .tok3n-login-input > ol > li {
   position: relative;
   margin: 1.2em 0;
 }
 
-/* line 236, ../sass/_login-v2-main.sass */
+/* line 185, ../sass/_login-v2-main.sass */
 .tok3n-login-input {
   margin-top: 1.5em;
 }
 
-/* line 243, ../sass/_login-v2-main.sass */
+/* line 192, ../sass/_login-v2-main.sass */
 .tok3n-header {
   height: 80px;
   padding: 0 30px;
@@ -2404,7 +2404,7 @@ address {
   border-top-right-radius: 10px;
 }
 
-/* line 252, ../sass/_login-v2-main.sass */
+/* line 201, ../sass/_login-v2-main.sass */
 .tok3n-logo {
   height: 80px;
   color: rgba(255, 255, 255, 0.8);
@@ -2413,20 +2413,20 @@ address {
   line-height: 0;
 }
 
-/* line 259, ../sass/_login-v2-main.sass */
+/* line 208, ../sass/_login-v2-main.sass */
 .icon-tok3n-logo:before {
   position: absolute;
   left: 112px;
   top: -17px;
 }
 
-/* line 264, ../sass/_login-v2-main.sass */
+/* line 213, ../sass/_login-v2-main.sass */
 .tok3n-lower-wrapper {
   margin: 25px 0 30px;
   padding: 0 30px;
 }
 
-/* line 268, ../sass/_login-v2-main.sass */
+/* line 217, ../sass/_login-v2-main.sass */
 .tok3n-submit-wrapper {
   position: absolute;
   bottom: 0;
@@ -2448,12 +2448,12 @@ address {
   transform-style: preserve-3d;
 }
 
-/* line 280, ../sass/_login-v2-main.sass */
+/* line 229, ../sass/_login-v2-main.sass */
 .tok3n-submit, .tok3n-create-an-account {
   padding: 0 30px;
 }
 
-/* line 287, ../sass/_login-v2-main.sass */
+/* line 236, ../sass/_login-v2-main.sass */
 .tok3n-login-alert {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -2466,12 +2466,12 @@ address {
   padding: 15px 30px;
   margin: 0;
 }
-/* line 294, ../sass/_login-v2-main.sass */
+/* line 243, ../sass/_login-v2-main.sass */
 .tok3n-login-alert b {
   margin-right: 0.5em;
 }
 
-/* line 297, ../sass/_login-v2-main.sass */
+/* line 246, ../sass/_login-v2-main.sass */
 .tok3n-login-alert-hidden {
   max-height: 0;
   padding: 0 30px;
@@ -2479,7 +2479,7 @@ address {
   overflow: hidden;
 }
 
-/* line 304, ../sass/_login-v2-main.sass */
+/* line 253, ../sass/_login-v2-main.sass */
 .tok3n-login-alert-active {
   -moz-animation: flash;
   -webkit-animation: flash;
@@ -2495,14 +2495,14 @@ address {
   animation-iteration-count: 1;
 }
 
-/* line 314, ../sass/_login-v2-main.sass */
+/* line 263, ../sass/_login-v2-main.sass */
 .tok3n-headline {
   font-family: "Arvo", Arial, sans-serif;
   font-weight: 400;
   text-shadow: white 0 1px 0;
 }
 
-/* line 319, ../sass/_login-v2-main.sass */
+/* line 268, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline {
   display: inline-block;
   border-bottom: 1px solid #999999;
@@ -2510,17 +2510,17 @@ address {
   margin: 10px 0 20px;
   width: 100%;
 }
-/* line 325, ../sass/_login-v2-main.sass */
+/* line 274, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline span {
   background: #fafafa;
   padding: 0 10px;
 }
-/* line 328, ../sass/_login-v2-main.sass */
+/* line 277, ../sass/_login-v2-main.sass */
 .tok3n-strike-through-headline a {
   text-decoration: underline;
 }
 
-/* line 331, ../sass/_login-v2-main.sass */
+/* line 280, ../sass/_login-v2-main.sass */
 .tok3n-headline-login, .tok3n-headline-create-account {
   text-align: center;
   font-style: italic;
@@ -2528,7 +2528,7 @@ address {
   margin-top: 1.8em;
 }
 
-/* line 337, ../sass/_login-v2-main.sass */
+/* line 286, ../sass/_login-v2-main.sass */
 .tok3n-headline-create-account {
   opacity: 0.4;
   -webkit-transition: opacity 0.3s !important;
@@ -2537,24 +2537,24 @@ address {
   -o-transition: opacity 0.3s !important;
   transition: opacity 0.3s !important;
 }
-/* line 339, ../sass/_login-v2-main.sass */
+/* line 288, ../sass/_login-v2-main.sass */
 .tok3n-headline-create-account:hover {
   opacity: 1;
 }
 
-/* line 348, ../sass/_login-v2-main.sass */
+/* line 297, ../sass/_login-v2-main.sass */
 .tok3n-enter-label label {
   font-weight: normal;
   font-size: 1.2em;
   color: #888888;
 }
 
-/* line 353, ../sass/_login-v2-main.sass */
+/* line 302, ../sass/_login-v2-main.sass */
 .tok3n-enter {
   margin: 10px auto 15px;
 }
 
-/* line 357, ../sass/_login-v2-main.sass */
+/* line 306, ../sass/_login-v2-main.sass */
 .tok3n-otp {
   height: 75px;
   padding-left: 20px;
@@ -2562,7 +2562,7 @@ address {
   font-size: 36px;
 }
 
-/* line 364, ../sass/_login-v2-main.sass */
+/* line 313, ../sass/_login-v2-main.sass */
 .icon-tok3n-phone, .tok3n-enter .icon-tok3n-bubble {
   font-size: 2.7em;
   display: inline-block;
@@ -2576,18 +2576,18 @@ address {
   -o-transition: color 0.3s ease-in !important;
   transition: color 0.3s ease-in !important;
 }
-/* line 372, ../sass/_login-v2-main.sass */
+/* line 321, ../sass/_login-v2-main.sass */
 .icon-tok3n-phone:hover, .tok3n-enter .icon-tok3n-bubble:hover {
   color: #85d2e6;
 }
-/* line 374, ../sass/_login-v2-main.sass */
+/* line 323, ../sass/_login-v2-main.sass */
 .icon-tok3n-phone:after, .icon-tok3n-phone:before, .tok3n-enter .icon-tok3n-bubble:after, .tok3n-enter .icon-tok3n-bubble:before {
   white-space: pre;
 }
 
-/* line 377, ../sass/_login-v2-main.sass */
+/* line 326, ../sass/_login-v2-main.sass */
 .tok3n-qrcode {
-  background-image: url('//s3.amazonaws.com/static.tok3n.com/0.0.1/img/qrcode.png?1391982648');
+  background-image: url('../img/qrcode.png?1391982648');
   -moz-background-size: 100% auto;
   -o-background-size: 100% auto;
   -webkit-background-size: 100% auto;
@@ -2599,11 +2599,11 @@ address {
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.3) 0 5px 27px;
 }
 
-/* line 391, ../sass/_login-v2-main.sass */
+/* line 340, ../sass/_login-v2-main.sass */
 .tok3n-submit {
   margin: 0 auto;
 }
-/* line 393, ../sass/_login-v2-main.sass */
+/* line 342, ../sass/_login-v2-main.sass */
 .tok3n-submit button {
   margin: 0 auto;
   color: rgba(255, 255, 255, 0.95);
@@ -2636,7 +2636,7 @@ address {
   border-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 403, ../sass/_login-v2-main.sass */
+/* line 352, ../sass/_login-v2-main.sass */
 .icon-tok3n-stripe {
   font-size: 2.42em;
   position: absolute;
@@ -2650,31 +2650,31 @@ address {
   -o-transition: color 0.3s ease-in-out !important;
   transition: color 0.3s ease-in-out !important;
 }
-/* line 411, ../sass/_login-v2-main.sass */
+/* line 360, ../sass/_login-v2-main.sass */
 .icon-tok3n-stripe:hover, .icon-tok3n-stripe:focus, .icon-tok3n-stripe:active {
   color: #d9262c;
 }
 
-/* line 414, ../sass/_login-v2-main.sass */
+/* line 363, ../sass/_login-v2-main.sass */
 .tok3n-button-text {
   margin-left: 2em;
   -webkit-font-smoothing: antialiased;
 }
 
-/* line 422, ../sass/_login-v2-main.sass */
+/* line 371, ../sass/_login-v2-main.sass */
 .tok3n-fallbacks, .tok3n-having-trouble, .tok3n-create-an-account {
   color: #777777;
 }
 
-/* line 425, ../sass/_login-v2-main.sass */
+/* line 374, ../sass/_login-v2-main.sass */
 .tok3n-having-trouble {
   margin: 0 0 8px;
 }
-/* line 427, ../sass/_login-v2-main.sass */
+/* line 376, ../sass/_login-v2-main.sass */
 .tok3n-having-trouble small {
   opacity: 0.8;
 }
-/* line 430, ../sass/_login-v2-main.sass */
+/* line 379, ../sass/_login-v2-main.sass */
 .tok3n-having-trouble small:hover {
   opacity: 1;
 }
