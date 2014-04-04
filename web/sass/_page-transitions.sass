@@ -1,3 +1,27 @@
++keyframes(rotateCard)
+	to
+		+transform(rotateY(180deg))
+
++keyframes(rotateCardBack)
+	from
+		+transform(rotateY(180deg))
+
++keyframes(moveToLeft)
+	to
+		+transform(translateX(-100%))
+
++keyframes(moveFromLeft)
+	from
+		+transform(translateX(-100%))
+
++keyframes(moveToRight)
+	to
+		+transform(translateX(100%))
+
++keyframes(moveFromRight)
+	from
+		+transform(translateX(100%))
+
 .tok3n-pt-perspective
 	position: relative
 	perspective: 1200px

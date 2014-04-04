@@ -1,4 +1,4 @@
-var contentHeight, currentContent, getStyle, hasDOMContentLoaded, init, main, ready, readyMethod, resizeContent, root, windowHeight;
+var contentHeight, getStyle, hasDOMContentLoaded, init, main, ready, readyMethod, resizeContent, root, windowHeight;
 
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
@@ -66,8 +66,6 @@ Modernizr.load([
   }
 ]);
 
-currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current');
-
 getStyle = function(oElm, strCssRule) {
   var strValue;
   strValue = "";
@@ -107,26 +105,27 @@ contentHeight = function() {
 };
 
 resizeContent = function() {
-  var $contentHeight, $topHeight, $windowHeight, el, _i, _j, _len, _len1, _results, _results1;
+  var $contentHeight, $topHeight, $windowHeight, currentContent, el, _i, _j, _len, _len1;
+  currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current');
   $windowHeight = windowHeight();
   $contentHeight = contentHeight();
   $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10);
   if ($windowHeight > $contentHeight) {
-    _results = [];
     for (_i = 0, _len = currentContent.length; _i < _len; _i++) {
       el = currentContent[_i];
-      _results.push(el.style.height = $windowHeight + "px");
+      el.style.height = $windowHeight + "px";
     }
-    return _results;
   } else {
-    _results1 = [];
     for (_j = 0, _len1 = currentContent.length; _j < _len1; _j++) {
       el = currentContent[_j];
-      _results1.push(el.style.height = $contentHeight + "px");
+      el.style.height = $contentHeight + "px";
     }
-    return _results1;
   }
 };
+
+window.addEventListener("resize", function(event) {
+  resizeContent();
+});
 
 main = function() {
   (function(el) {
@@ -153,28 +152,6 @@ main = function() {
       }
     }
   })(document.querySelector('#sidebarMenu'));
-  (function(el) {
-    var preventScrollPastElem;
-    preventScrollPastElem = function(ev) {
-      var WidthChange, mq;
-      WidthChange = function(mq) {
-        if (mq.matches) {
-          ev.target.scrollTop -= ev.wheelDeltaY;
-          ev.preventDefault();
-        }
-      };
-      if (matchMedia) {
-        mq = window.matchMedia("(min-width: 769px)");
-        mq.addListener(WidthChange);
-        WidthChange(mq);
-      }
-    };
-    if (el) {
-      return el.addEventListener('mousewheel', function(event) {
-        return preventScrollPastElem(event);
-      }, false);
-    }
-  })(document.querySelector('#list'));
   (function(arr) {
     var el, _i, _len, _results;
     if (arr) {
@@ -208,7 +185,6 @@ main = function() {
       });
     }
   })(document.querySelector('#cards-container'));
-  resizeContent();
 };
 
 hasDOMContentLoaded = false;
@@ -236,8 +212,4 @@ document.onreadystatechange = function() {
 
 document.addEventListener("load", function(event) {
   init("load");
-});
-
-window.addEventListener("resize", function(event) {
-  resizeContent();
 });

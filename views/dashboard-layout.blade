@@ -44,7 +44,9 @@ html.no-js(lang='en')
 
       /** build:template
       <script src="<%=cdnUrl%>js/dashboard-min.js"></script>
-      <script src="<%=cdnUrl%>dart/dashboard.dart.js"></script>
+      <script type="application/dart" src="<%=cdnUrl%>dart/dashboard.dart"></script>
+      <script src="<%=cdnUrl%>dart/packages/browser/dart.js"></script>
+      <script src="<%=cdnUrl%>dart/packages/browser/interop.js"></script>
       /build */
 
       //  build:remove 
@@ -52,5 +54,7 @@ html.no-js(lang='en')
       script(src='js/dashboard.js')
       script(src='js/test.js')
       script(type='application/dart', src='dart/dashboard.dart')
+      script(src='dart/packages/browser/dart.js')
+      script(src='dart/packages/browser/interop.js')
       script(src="http://localhost:35729/livereload.js")
       //  /build 

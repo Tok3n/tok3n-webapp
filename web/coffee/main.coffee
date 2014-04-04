@@ -58,11 +58,6 @@ Modernizr.load([{
 
 ##################################################################
 
-# Variables
-currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current')  
-
-##################################################################
-
 # Functions
 getStyle = (oElm, strCssRule) ->
   strValue = ""
@@ -75,6 +70,9 @@ getStyle = (oElm, strCssRule) ->
     strValue = oElm.currentStyle[strCssRule]
   strValue
 
+##################################################################
+# Huge hack to allow parent content element in the layout to have the same height as the .tok3n-pt-page-current. Don't forget to resizeContent() after changing the current page.
+  
 windowHeight = () ->
   $topHeight = null
   # We asume that matchMedia is supported
@@ -84,7 +82,6 @@ windowHeight = () ->
   else
     # Mobile size (render actual size)
     $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10)
-
   return window.innerHeight - $topHeight
 
 contentHeight = () ->
@@ -101,16 +98,22 @@ contentHeight = () ->
 
 resizeContent = () ->
   # Set the height of .tok3n-pt-perspective to the window height minus the top bar height.
+  currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current')  
   $windowHeight = windowHeight()
   $contentHeight = contentHeight()
   $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10)
   if $windowHeight > $contentHeight
     for el in currentContent
       el.style.height = $windowHeight + "px"
-      # el.style.height = (window.innerHeight - $topHeight) + "px"
   else
     for el in currentContent
       el.style.height = $contentHeight + "px"
+  return
+
+# Keep resizing content onResize
+window.addEventListener "resize", (event) ->
+  resizeContent()
+  return
 
 ##################################################################
 
@@ -126,7 +129,6 @@ main = () ->
           # Desktop size
           if el.classList.contains 'collapsed'
             el.classList.remove 'collapsed'
-          # Remove height
         else
           # Mobile size
           unless el.classList.contains 'collapsed'
@@ -137,26 +139,6 @@ main = () ->
         mq.addListener WidthChange
         WidthChange mq
   )(document.querySelector '#sidebarMenu')
-  
-  # Prevent scroll past the central #list, doesn't work in old browsers
-  ((el) ->
-    preventScrollPastElem = (ev) ->
-      WidthChange = (mq) ->
-        if mq.matches
-          # Desktop size
-          ev.target.scrollTop -= ev.wheelDeltaY
-          ev.preventDefault()
-        return
-      if matchMedia
-        mq = window.matchMedia("(min-width: 769px)")
-        mq.addListener WidthChange
-        WidthChange mq
-      return
-    if el
-      el.addEventListener('mousewheel', (event) ->
-        preventScrollPastElem(event)
-      , false)
-  )(document.querySelector '#list')
 
   # Dropdown lists
   ((arr) ->
@@ -178,8 +160,7 @@ main = () ->
       })
   )(document.querySelector '#cards-container')
 
-  # Set content height first time
-  resizeContent()
+  # Set content height first time in Dart
 
   return
 
@@ -206,12 +187,4 @@ document.onreadystatechange = ->
   return
 document.addEventListener "load", (event) ->
   init "load"
-  return
-
-##################################################################
-# Custom events
-
-# Keep resizing content onResize
-window.addEventListener "resize", (event) ->
-  resizeContent()
   return
