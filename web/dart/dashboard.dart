@@ -97,6 +97,8 @@ void selectWindow() {
         if (nextOption().getAttribute("data-target") != null) {
           previousOption.classes.toggle('selected');
           nextOption().classes.toggle('selected');
+          // Flush content resizing
+          context.callMethod('resizeContent');
           previousOption = nextOption();
           previousTargetId = "#" + previousOption.getAttribute("data-target").toString();
           previousTarget = querySelector(previousTargetId);
