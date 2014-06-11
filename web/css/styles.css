@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "tok3n-dashboard";
+  src: url("fonts/tok3n-dashboard.eot");
+  src: url("fonts/tok3n-dashboard.eot?#iefix") format("embedded-opentype"), url("fonts/tok3n-dashboard.woff") format("woff"), url("fonts/tok3n-dashboard.ttf") format("truetype"), url("fonts/tok3n-dashboard.svg#tok3n-dashboard") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 15, ../sass/styles.scss */
+[data-icon]:before {
+  font-family: "tok3n-dashboard" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 28, ../sass/styles.scss */
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "tok3n-dashboard" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 41, ../sass/styles.scss */
+.icon-tok3nphone:before {
+  content: "a";
+}
+
+/* line 44, ../sass/styles.scss */
+.icon-fontawesome-webfont:before {
+  content: "b";
+}
+
+/* line 47, ../sass/styles.scss */
+.icon-fontawesome-webfont-1:before {
+  content: "c";
+}
+
+/* line 50, ../sass/styles.scss */
+.icon-fontawesome-webfont-2:before {
+  content: "d";
+}
+
+/* line 53, ../sass/styles.scss */
+.icon-fontawesome-webfont-3:before {
+  content: "e";
+}
+
+/* line 56, ../sass/styles.scss */
+.icon-fontawesome-webfont-4:before {
+  content: "f";
+}
+
+/* line 59, ../sass/styles.scss */
+.icon-glyphicons-halflings-regular:before {
+  content: "g";
+}
+
+/* line 62, ../sass/styles.scss */
+.icon-icon-phone:before {
+  content: "h";
+}

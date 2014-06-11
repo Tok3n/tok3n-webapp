@@ -1,6 +1,6 @@
 {
   "name": "tok3n-webapp",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Front-end for Tok3n Webapp",
   "main": "server.js",
   "scripts": {
@@ -40,7 +40,6 @@
   },
   "dependencies": {
     "blade": "~3.2.6",
-    "express": "~3.2.6",
-    "grunt-azure-cdn-deploy": "~0.1.0"
+    "express": "~3.2.6"
   }
 }

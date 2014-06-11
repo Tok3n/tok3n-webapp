@@ -28,7 +28,10 @@ Modernizr.load([
               pieHole: 0.4
             };
             chart = new google.visualization.PieChart(document.getElementById("donutChart"));
-            return chart.draw(data, options);
+            chart.draw(data, options);
+            return google.visualization.events.addListener(chart, "ready", function() {
+              return resizeContent();
+            });
           };
           drawChartDataRequestHistory = function(e) {
             var chart, data, options;
@@ -38,7 +41,10 @@ Modernizr.load([
               title: "Requests"
             };
             chart = new google.visualization.LineChart(document.getElementById("requestHistoryChart"));
-            return chart.draw(data, options);
+            chart.draw(data, options);
+            return google.visualization.events.addListener(chart, "ready", function() {
+              return resizeContent();
+            });
           };
           drawChartDataUsersHistory = function(e) {
             var chart, data, options;
@@ -48,7 +54,10 @@ Modernizr.load([
               title: "Users"
             };
             chart = new google.visualization.LineChart(document.getElementById("usersHistoryChart"));
-            return chart.draw(data, options);
+            chart.draw(data, options);
+            return google.visualization.events.addListener(chart, "ready", function() {
+              return resizeContent();
+            });
           };
           window.addEventListener("drawChartDataDonut", drawChartDataDonut, false);
           window.addEventListener("drawChartDataRequestHistory", drawChartDataRequestHistory, false);
@@ -84,9 +93,9 @@ windowHeight = function() {
   var $topHeight;
   $topHeight = null;
   if (window.matchMedia("(min-width: 769px)").matches) {
-    $topHeight = parseInt(getStyle(document.querySelector('#layout'), 'padding-top'), 10);
+    $topHeight = parseInt(getStyle(document.querySelector('#tok3nLayout'), 'padding-top'), 10);
   } else {
-    $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10);
+    $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10);
   }
   return window.innerHeight - $topHeight;
 };
@@ -95,7 +104,7 @@ contentHeight = function() {
   var $contentHeight, innerContentHeight, listHeight;
   $contentHeight = null;
   innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10);
-  listHeight = parseInt(getStyle(document.querySelector('#list'), 'height'), 10);
+  listHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-list'), 'height'), 10);
   if (window.matchMedia("(min-width: 769px)").matches) {
     $contentHeight = innerContentHeight;
   } else {
@@ -109,7 +118,7 @@ resizeContent = function() {
   currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current');
   $windowHeight = windowHeight();
   $contentHeight = contentHeight();
-  $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10);
+  $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10);
   if ($windowHeight > $contentHeight) {
     for (_i = 0, _len = currentContent.length; _i < _len; _i++) {
       el = currentContent[_i];
@@ -151,7 +160,7 @@ main = function() {
         return WidthChange(mq);
       }
     }
-  })(document.querySelector('#sidebarMenu'));
+  })(document.querySelector('#tok3nSidebarMenu'));
   (function(arr) {
     var el, _i, _len, _results;
     if (arr) {
@@ -184,7 +193,7 @@ main = function() {
         gutter: '.grid-gutter'
       });
     }
-  })(document.querySelector('#cards-container'));
+  })(document.querySelector('.tok3n-cards-container'));
 };
 
 hasDOMContentLoaded = false;

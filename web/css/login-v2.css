@@ -1,3 +1,88 @@
+@font-face {
+  font-family: "tok3n-dashboard";
+  src: url("fonts/tok3n-dashboard.eot");
+  src: url("fonts/tok3n-dashboard.eot?#iefix") format("embedded-opentype"), url("fonts/tok3n-dashboard.woff") format("woff"), url("fonts/tok3n-dashboard.ttf") format("truetype"), url("fonts/tok3n-dashboard.svg#tok3n-dashboard") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 15, ../sass/_tok3n-dashboard-font.scss */
+[data-icon]:before {
+  font-family: "tok3n-dashboard" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 28, ../sass/_tok3n-dashboard-font.scss */
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "tok3n-dashboard" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 41, ../sass/_tok3n-dashboard-font.scss */
+.icon-tok3n-otp-phone:before {
+  content: "a";
+}
+
+/* line 44, ../sass/_tok3n-dashboard-font.scss */
+.icon-tok3n-phone-line:before {
+  content: "b";
+}
+
+/* line 47, ../sass/_tok3n-dashboard-font.scss */
+.icon-tok3n-backup-code:before {
+  content: "c";
+}
+
+/* line 50, ../sass/_tok3n-dashboard-font.scss */
+.icon-tok3n-authorized-apps:before {
+  content: "d";
+}
+
+/* line 53, ../sass/_tok3n-dashboard-font.scss */
+.icon-tok3n-integrations:before {
+  content: "e";
+}
+
+/* line 56, ../sass/_tok3n-dashboard-font.scss */
+.icon-tok3n-settings:before {
+  content: "f";
+}
+
+/* line 59, ../sass/_tok3n-dashboard-font.scss */
+.icon-tok3n-landline:before {
+  content: "g";
+}
+
+/* line 62, ../sass/_tok3n-dashboard-font.scss */
+.icon-tok3n-cellphone:before {
+  content: "h";
+}
+
+/* line 65, ../sass/_tok3n-dashboard-font.scss */
+.icon-tok3n-plus-sign:before {
+  content: "i";
+}
+
+/* line 68, ../sass/_tok3n-dashboard-font.scss */
+.icon-tok3n-gear:before {
+  content: "j";
+}
+
 /* line 1, ../sass/_extensions.sass */
 span.space {
   margin: 0 0.5em;
@@ -1671,112 +1756,112 @@ address {
 }
 
 @-moz-keyframes flash {
-  /* line 16, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 19, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   25% {
     opacity: 0;
   }
 
-  /* line 22, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   50% {
     opacity: 1;
   }
 
-  /* line 25, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   75% {
     opacity: 0;
   }
 
-  /* line 28, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   100% {
     opacity: 1;
   }
 }
 @-webkit-keyframes flash {
-  /* line 16, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 19, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   25% {
     opacity: 0;
   }
 
-  /* line 22, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   50% {
     opacity: 1;
   }
 
-  /* line 25, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   75% {
     opacity: 0;
   }
 
-  /* line 28, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   100% {
     opacity: 1;
   }
 }
 @keyframes flash {
-  /* line 16, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 19, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   25% {
     opacity: 0;
   }
 
-  /* line 22, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   50% {
     opacity: 1;
   }
 
-  /* line 25, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   75% {
     opacity: 0;
   }
 
-  /* line 28, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   100% {
     opacity: 1;
   }
 }
 @-moz-keyframes fadeIn {
-  /* line 18, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   0% {
     opacity: 0;
   }
 
-  /* line 21, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   100% {
     opacity: 1;
   }
 }
 @-webkit-keyframes fadeIn {
-  /* line 18, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   0% {
     opacity: 0;
   }
 
-  /* line 21, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   100% {
     opacity: 1;
   }
 }
 @keyframes fadeIn {
-  /* line 18, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   0% {
     opacity: 0;
   }
 
-  /* line 21, ../../../../../.rvm/gems/ruby-2.1.0@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   100% {
     opacity: 1;
   }

@@ -1,4 +1,4 @@
-var hasDOMContentLoaded, init, main, ready, readyMethod, root;
+var contentHeight, getStyle, hasDOMContentLoaded, init, main, ready, readyMethod, resizeContent, root, windowHeight;
 
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
@@ -16,7 +16,7 @@ Modernizr.load([
   }, {
     load: "//www.google.com/jsapi",
     complete: function() {
-      return google.load("visualization", "1", {
+      google.load("visualization", "1", {
         packages: ["corechart"],
         callback: function() {
           var drawChartDataDonut, drawChartDataRequestHistory, drawChartDataUsersHistory;
@@ -52,7 +52,7 @@ Modernizr.load([
           };
           window.addEventListener("drawChartDataDonut", drawChartDataDonut, false);
           window.addEventListener("drawChartDataRequestHistory", drawChartDataRequestHistory, false);
-          return window.addEventListener("drawChartDataUsersHistory", drawChartDataUsersHistory, false);
+          window.addEventListener("drawChartDataUsersHistory", drawChartDataUsersHistory, false);
         }
       });
     }
@@ -65,6 +65,67 @@ Modernizr.load([
     }
   }
 ]);
+
+getStyle = function(oElm, strCssRule) {
+  var strValue;
+  strValue = "";
+  if (document.defaultView && document.defaultView.getComputedStyle) {
+    strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+  } else if (oElm.currentStyle) {
+    strCssRule = strCssRule.replace(/\-(\w)/g, function(strMatch, p1) {
+      return p1.toUpperCase();
+    });
+    strValue = oElm.currentStyle[strCssRule];
+  }
+  return strValue;
+};
+
+windowHeight = function() {
+  var $topHeight;
+  $topHeight = null;
+  if (window.matchMedia("(min-width: 769px)").matches) {
+    $topHeight = parseInt(getStyle(document.querySelector('#layout'), 'padding-top'), 10);
+  } else {
+    $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10);
+  }
+  return window.innerHeight - $topHeight;
+};
+
+contentHeight = function() {
+  var $contentHeight, innerContentHeight, listHeight;
+  $contentHeight = null;
+  innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10);
+  listHeight = parseInt(getStyle(document.querySelector('#list'), 'height'), 10);
+  if (window.matchMedia("(min-width: 769px)").matches) {
+    $contentHeight = innerContentHeight;
+  } else {
+    $contentHeight = innerContentHeight + listHeight;
+  }
+  return $contentHeight;
+};
+
+resizeContent = function() {
+  var $contentHeight, $topHeight, $windowHeight, currentContent, el, _i, _j, _len, _len1;
+  currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current');
+  $windowHeight = windowHeight();
+  $contentHeight = contentHeight();
+  $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10);
+  if ($windowHeight > $contentHeight) {
+    for (_i = 0, _len = currentContent.length; _i < _len; _i++) {
+      el = currentContent[_i];
+      el.style.height = $windowHeight + "px";
+    }
+  } else {
+    for (_j = 0, _len1 = currentContent.length; _j < _len1; _j++) {
+      el = currentContent[_j];
+      el.style.height = $contentHeight + "px";
+    }
+  }
+};
+
+window.addEventListener("resize", function(event) {
+  resizeContent();
+});
 
 main = function() {
   (function(el) {
@@ -91,28 +152,6 @@ main = function() {
       }
     }
   })(document.querySelector('#sidebarMenu'));
-  (function(el) {
-    var preventScrollPastElem;
-    preventScrollPastElem = function(ev) {
-      var WidthChange, mq;
-      WidthChange = function(mq) {
-        if (mq.matches) {
-          ev.target.scrollTop -= ev.wheelDeltaY;
-          ev.preventDefault();
-        }
-      };
-      if (matchMedia) {
-        mq = window.matchMedia("(min-width: 769px)");
-        mq.addListener(WidthChange);
-        WidthChange(mq);
-      }
-    };
-    if (el) {
-      return el.addEventListener('mousewheel', function(event) {
-        return preventScrollPastElem(event);
-      }, false);
-    }
-  })(document.querySelector('#list'));
   (function(arr) {
     var el, _i, _len, _results;
     if (arr) {

@@ -1,0 +1,45 @@
+.tok3n-integration
+  .tok3n-dashboard-segment.tok3n-dashboard-upper
+    .title
+      span
+        h2 ttamayo.com
+      span.space
+      span.settings-menu.dropdown
+        a.btn.btn-sm.btn-default.action-button(href='#')
+          i.icon-tok3n-gear
+          | Settings
+        ul.dropdown-menu(role='menu')
+          li
+            a(href='#') Change settings
+          li
+            a(href='#') Delete
+    table.specs
+      tr.status
+        td.name Status:
+        td
+          span.label.label-success Active
+          span.label.label-warning Halted
+          span.label.label-danger Running out of users
+      tr
+        td.name Plan:
+        td
+          a(href='#') Early Adopter
+          |  &mdash;  
+          a.action.trigger-upgrade upgrade
+      tr
+        td.name API key:
+        td e871df97-29c9-497b-87ae-040369737501
+      tr
+        td.name Secret:
+        td
+          span.secret.hidden 8869c644-62a5-4a27-95f5-a44af2aaf03f
+            |  &mdash;  
+          a.action.toggle-secret(href='#') show
+      tr
+        td.name URL:
+        td
+          span http://ttamayo.com/app
+      tr
+        td.name Callback:
+        td
+          span http://ttamayo.com/callback

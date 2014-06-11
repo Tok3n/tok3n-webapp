@@ -1,0 +1,46 @@
+.tok3n-dashboard-new-form.form-horizontal(role='form')
+  .form-group
+    .col-md-12
+      h3.title New integration
+  .form-group
+    label.align-top.col-md-4(for='newIntegrationSettingsNameField') Name
+    .col-md-8
+      input.form-control(type='text', placeholder='Tok3n')
+  .form-group.tok3n-new-integration-kind
+    label.align-top.col-md-4(for='newIntegrationKind') Kind
+    .col-md-8
+      label.radio-inline.tok3n-new-integration-kind-radio
+        input(type='radio', name='kind', value='general')
+        | General
+      label.radio-inline.tok3n-new-integration-kind-radio
+        input(type='radio', name='kind', value='web')
+        | Web
+      span.help-block Web integrations have a callback url which is called on certain user actions.
+        |  
+        a Learn more
+        | .
+  .form-group.tok3n-collapse.collapsed.tok3n-new-integration-callback-url
+    label.align-top.col-md-4(for='newIntegrationSettingsCallbackUrl') Callback Url
+    .col-md-8
+      input.form-control(type='text', placeholder='http://tok3n.me/por/aqui')
+  .form-group
+    label.align-top.col-md-4(for='newIntegrationSettingsAvatar') Icon
+    .input-group.col-md-8
+      span.input-group-btn
+        span.btn.btn-default.btn-file
+          | Change icon
+          input(type='file', multiple='')
+      input.avatar-path.form-control(type='text', readonly='')
+    span.help-block.col-md-8.col-md-offset-4
+      | Help the users to recognize your app by providing an icon (png, jpg). Max file size: 5 mb.
+  .form-group
+    .col-md-12
+      small
+      | By proceeding, you are acknowledging that you have read and understood the 
+      a(href='#') Terms and Conditions of Service for Tok3n 
+      | and that you agree to be legally bound by them.
+  .form-group.create-button
+    .col-md-6
+      button.btn.btn-default.btn-block Cancel
+    .col-md-6
+      button.btn.btn-primary.btn-block Create integration

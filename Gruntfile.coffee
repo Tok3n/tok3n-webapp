@@ -13,7 +13,7 @@ module.exports = (grunt) ->
 	build = 'build/'
 
 	# Remote paths
-	cdnUrl = '//s3.amazonaws.com/static.tok3n.com/<%= pkg.version %>/'
+	cdnUrl = '//s3.amazonaws.com/static.tok3n.com/<%= pkg.name %>/<%= pkg.version %>/'
 		
 	# Regex
 	css_file = /([^\/]+)\.css$/
@@ -62,12 +62,18 @@ module.exports = (grunt) ->
 			connect:
 				src: coffee + 'connect.coffee'
 				dest: js + 'connect.js'
+			jQueryDashboard:
+				src: coffee + 'jquery-dashboard.coffee'
+				dest: js + 'jquery-dashboard.js'
 		
 		compass:
 			options:
 				outputStyle: 'expanded'
-				raw: 'preferred_syntax = :sass\n::Sass::Script::Number.precision = [10, ::Sass::Script::Number.precision].max\n
-					sass_options = {:quiet => true}\n'
+				raw: """
+				preferred_syntax = :sass
+				::Sass::Script::Number.precision = [10, ::Sass::Script::Number.precision].max
+				sass_options = {:quiet => true}
+				"""
 				require: ['breakpoint-slicer', 'animate']
 				cssDir: css
 				sassDir: sass
@@ -108,6 +114,9 @@ module.exports = (grunt) ->
 					js + 'masonry.pkgd.min.js'
 					js + 'modernizr.js'
 					'<%= coffee.main.dest %>'
+					comp + 'jquery/dist/jquery.js'
+					comp + 'parsleyjs/dist/parsley.js'
+					'<%= coffee.jQueryDashboard.dest %>'
 				]
 				dest: js + 'dashboard.js'
 			connect:
@@ -207,36 +216,7 @@ module.exports = (grunt) ->
 			dist:
 				options:
 					report: 'gzip'
-					banner: [
-						'/*!'
-						' *  TTTTTTTTTTTTTTTTTTTTTTT              kkkkkkkk           333333333333333'
-						' *  T:::::::::::::::::::::T              k::::::k          3:::::::::::::::33'
-						' *  T:::::::::::::::::::::T              k::::::k          3::::::33333::::::3'
-						' *  T:::::TT:::::::TT:::::T              k::::::k          3333333     3:::::3'
-						' *  TTTTTT  T:::::T  TTTTTTooooooooooo    k:::::k    kkkkkkk           3:::::3nnnn  nnnnnnnn'
-						' *          T:::::T      oo:::::::::::oo  k:::::k   k:::::k            3:::::3n:::nn::::::::nn'
-						' *          T:::::T     o:::::::::::::::o k:::::k  k:::::k     33333333:::::3 n::::::::::::::nn'
-						' *          T:::::T     o:::::ooooo:::::o k:::::k k:::::k      3:::::::::::3  nn:::::::::::::::n'
-						' *          T:::::T     o::::o     o::::o k::::::k:::::k       33333333:::::3   n:::::nnnn:::::n'
-						' *          T:::::T     o::::o     o::::o k:::::::::::k                3:::::3  n::::n    n::::n'
-						' *          T:::::T     o::::o     o::::o k:::::::::::k                3:::::3  n::::n    n::::n'
-						' *          T:::::T     o::::o     o::::o k::::::k:::::k               3:::::3  n::::n    n::::n'
-						' *        TT:::::::TT   o:::::ooooo:::::ok::::::k k:::::k  3333333     3:::::3  n::::n    n::::n'
-						' *        T:::::::::T   o:::::::::::::::ok::::::k  k:::::k 3::::::33333::::::3  n::::n    n::::n'
-						' *        T:::::::::T    oo:::::::::::oo k::::::k   k:::::k3:::::::::::::::33   n::::n    n::::n'
-						' *        TTTTTTTTTTT      ooooooooooo   kkkkkkkk    kkkkkkk333333333333333     nnnnnn    nnnnnn'
-						' *'
-						' * <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>'
-						' * <%= pkg.description %>'
-						' * Copyright <%= grunt.template.today("yyyy") %> Token Soluciones Tecnologicas, SAPI de CV. All rights reserved.'
-						' * Licensed under the MIT License'
-						' * https://github.com/Tok3n/tok3n-webapp/blob/master/LICENSE'
-						' *'
-						' * Thanks for stopping by!'
-						' * please refer to the full SASS in (../sass/<filename>.sass) for complete code.'
-						' *'
-						' */'
-					].join '\n'
+					banner: grunt.file.read('banner.txt')
 				files: [
 					{
 						expand: true
@@ -307,7 +287,7 @@ module.exports = (grunt) ->
 					{
 						root: dist
 						src: [dist + 'css/**', dist + 'js/**', dist + 'img/**', dist + 'svg/**', dist + '*.html', dist + 'sass/**', dist + 'dart/**']
-						dest: '/<%= pkg.version %>/'
+						dest: '/<%= pkg.name %>/<%= pkg.version %>/'
 					}
 				]
 	

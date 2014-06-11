@@ -45,6 +45,8 @@ Modernizr.load([{
         window.addEventListener "drawChartDataDonut", drawChartDataDonut, false
         window.addEventListener "drawChartDataRequestHistory", drawChartDataRequestHistory, false
         window.addEventListener "drawChartDataUsersHistory", drawChartDataUsersHistory, false
+        return
+    return
 }, {
   load: "//use.typekit.net/nls8ikc.js"
   complete: ->
@@ -53,6 +55,65 @@ Modernizr.load([{
       Typekit.load()
     return
 }])
+
+##################################################################
+
+# Functions
+getStyle = (oElm, strCssRule) ->
+  strValue = ""
+  if document.defaultView and document.defaultView.getComputedStyle
+    strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule)
+  else if oElm.currentStyle
+    strCssRule = strCssRule.replace(/\-(\w)/g, (strMatch, p1) ->
+      p1.toUpperCase()
+    )
+    strValue = oElm.currentStyle[strCssRule]
+  strValue
+
+##################################################################
+# Huge hack to allow parent content element in the layout to have the same height as the .tok3n-pt-page-current. Don't forget to resizeContent() after changing the current page.
+  
+windowHeight = () ->
+  $topHeight = null
+  # We asume that matchMedia is supported
+  if window.matchMedia("(min-width: 769px)").matches
+    # Desktop size (render just the hack padding)
+    $topHeight = parseInt(getStyle(document.querySelector('#layout'), 'padding-top'), 10)
+  else
+    # Mobile size (render actual size)
+    $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10)
+  return window.innerHeight - $topHeight
+
+contentHeight = () ->
+  $contentHeight = null
+  innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10)
+  listHeight = parseInt(getStyle(document.querySelector('#list'), 'height'), 10)
+  # We asume that matchMedia is supported
+  if window.matchMedia("(min-width: 769px)").matches
+    # Desktop size
+    $contentHeight = innerContentHeight
+  else
+    $contentHeight = innerContentHeight + listHeight
+  return $contentHeight
+
+resizeContent = () ->
+  # Set the height of .tok3n-pt-perspective to the window height minus the top bar height.
+  currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current')  
+  $windowHeight = windowHeight()
+  $contentHeight = contentHeight()
+  $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10)
+  if $windowHeight > $contentHeight
+    for el in currentContent
+      el.style.height = $windowHeight + "px"
+  else
+    for el in currentContent
+      el.style.height = $contentHeight + "px"
+  return
+
+# Keep resizing content onResize
+window.addEventListener "resize", (event) ->
+  resizeContent()
+  return
 
 ##################################################################
 
@@ -78,26 +139,6 @@ main = () ->
         mq.addListener WidthChange
         WidthChange mq
   )(document.querySelector '#sidebarMenu')
-  
-  # Prevent scroll past the central #list, doesn't work in old browsers
-  ((el) ->
-    preventScrollPastElem = (ev) ->
-      WidthChange = (mq) ->
-        if mq.matches
-          # Desktop size
-          ev.target.scrollTop -= ev.wheelDeltaY
-          ev.preventDefault()
-        return
-      if matchMedia
-        mq = window.matchMedia("(min-width: 769px)")
-        mq.addListener WidthChange
-        WidthChange mq
-      return
-    if el
-      el.addEventListener('mousewheel', (event) ->
-        preventScrollPastElem(event)
-      , false)
-  )(document.querySelector '#list')
 
   # Dropdown lists
   ((arr) ->
@@ -118,11 +159,14 @@ main = () ->
         gutter: '.grid-gutter'
       })
   )(document.querySelector '#cards-container')
+
+  # Set content height first time in Dart
+
   return
 
 ##################################################################
-
 # Vanilla $('document').ready() detection. Execute main() when it is.
+
 hasDOMContentLoaded = false
 ready = false
 readyMethod = null

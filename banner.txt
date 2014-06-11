@@ -1,0 +1,28 @@
+/*!
+ *  TTTTTTTTTTTTTTTTTTTTTTT              kkkkkkkk           333333333333333
+ *  T:::::::::::::::::::::T              k::::::k          3:::::::::::::::33
+ *  T:::::::::::::::::::::T              k::::::k          3::::::33333::::::3
+ *  T:::::TT:::::::TT:::::T              k::::::k          3333333     3:::::3
+ *  TTTTTT  T:::::T  TTTTTTooooooooooo    k:::::k    kkkkkkk           3:::::3nnnn  nnnnnnnn
+ *          T:::::T      oo:::::::::::oo  k:::::k   k:::::k            3:::::3n:::nn::::::::nn
+ *          T:::::T     o:::::::::::::::o k:::::k  k:::::k     33333333:::::3 n::::::::::::::nn
+ *          T:::::T     o:::::ooooo:::::o k:::::k k:::::k      3:::::::::::3  nn:::::::::::::::n
+ *          T:::::T     o::::o     o::::o k::::::k:::::k       33333333:::::3   n:::::nnnn:::::n
+ *          T:::::T     o::::o     o::::o k:::::::::::k                3:::::3  n::::n    n::::n
+ *          T:::::T     o::::o     o::::o k:::::::::::k                3:::::3  n::::n    n::::n
+ *          T:::::T     o::::o     o::::o k::::::k:::::k               3:::::3  n::::n    n::::n
+ *        TT:::::::TT   o:::::ooooo:::::ok::::::k k:::::k  3333333     3:::::3  n::::n    n::::n
+ *        T:::::::::T   o:::::::::::::::ok::::::k  k:::::k 3::::::33333::::::3  n::::n    n::::n
+ *        T:::::::::T    oo:::::::::::oo k::::::k   k:::::k3:::::::::::::::33   n::::n    n::::n
+ *        TTTTTTTTTTT      ooooooooooo   kkkkkkkk    kkkkkkk333333333333333     nnnnnn    nnnnnn
+ *
+ * <%= pkg.name %> v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>
+ * <%= pkg.description %>
+ * Copyright <%= grunt.template.today("yyyy") %> Token Soluciones Tecnologicas, SAPI de CV. All rights reserved.
+ * Licensed under the MIT License
+ * https://github.com/Tok3n/<%= pkg.name %>/blob/master/LICENSE
+ *
+ * Thanks for stopping by!
+ * please refer to the full SASS in (../sass/<filename>.sass) for complete code.
+ *
+ */

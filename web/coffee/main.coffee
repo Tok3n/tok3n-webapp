@@ -30,18 +30,24 @@ Modernizr.load([{
             pieHole: 0.4
           chart = new google.visualization.PieChart(document.getElementById("donutChart"))
           chart.draw data, options
+          google.visualization.events.addListener chart, "ready", ->
+            resizeContent()
         drawChartDataRequestHistory = (e) ->
           data = google.visualization.arrayToDataTable(eval_(e.detail))
           console.log data
           options = title: "Requests"
           chart = new google.visualization.LineChart(document.getElementById("requestHistoryChart"))
           chart.draw data, options
+          google.visualization.events.addListener chart, "ready", ->
+            resizeContent()
         drawChartDataUsersHistory = (e) ->
           data = google.visualization.arrayToDataTable(eval_(e.detail))
           console.log data
           options = title: "Users"
           chart = new google.visualization.LineChart(document.getElementById("usersHistoryChart"))
           chart.draw data, options
+          google.visualization.events.addListener chart, "ready", ->
+            resizeContent()
         window.addEventListener "drawChartDataDonut", drawChartDataDonut, false
         window.addEventListener "drawChartDataRequestHistory", drawChartDataRequestHistory, false
         window.addEventListener "drawChartDataUsersHistory", drawChartDataUsersHistory, false
@@ -78,16 +84,16 @@ windowHeight = () ->
   # We asume that matchMedia is supported
   if window.matchMedia("(min-width: 769px)").matches
     # Desktop size (render just the hack padding)
-    $topHeight = parseInt(getStyle(document.querySelector('#layout'), 'padding-top'), 10)
+    $topHeight = parseInt(getStyle(document.querySelector('#tok3nLayout'), 'padding-top'), 10)
   else
     # Mobile size (render actual size)
-    $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10)
+    $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10)
   return window.innerHeight - $topHeight
 
 contentHeight = () ->
   $contentHeight = null
   innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10)
-  listHeight = parseInt(getStyle(document.querySelector('#list'), 'height'), 10)
+  listHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-list'), 'height'), 10)
   # We asume that matchMedia is supported
   if window.matchMedia("(min-width: 769px)").matches
     # Desktop size
@@ -101,7 +107,7 @@ resizeContent = () ->
   currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current')  
   $windowHeight = windowHeight()
   $contentHeight = contentHeight()
-  $topHeight = parseInt(getStyle(document.querySelector('#top'), 'height'), 10)
+  $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10)
   if $windowHeight > $contentHeight
     for el in currentContent
       el.style.height = $windowHeight + "px"
@@ -138,7 +144,7 @@ main = () ->
         mq = window.matchMedia("(min-width: 769px)")
         mq.addListener WidthChange
         WidthChange mq
-  )(document.querySelector '#sidebarMenu')
+  )(document.querySelector '#tok3nSidebarMenu')
 
   # Dropdown lists
   ((arr) ->
@@ -158,7 +164,7 @@ main = () ->
         itemSelector: '.card'
         gutter: '.grid-gutter'
       })
-  )(document.querySelector '#cards-container')
+  )(document.querySelector '.tok3n-cards-container')
 
   # Set content height first time in Dart
 

@@ -1,0 +1,92 @@
+!!! 5
+// [if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]
+// [if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]
+// [if IE 8]><html class="no-js lt-ie9"><![endif]
+// [if gt IE 8]><!
+html.no-js(lang='en')
+  // <![endif]
+  
+  head
+    meta(charset='utf-8')
+    block title(pageTitle)
+      title=pageTitle
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    
+    block style
+    link(rel='stylesheet', href='css/style.css')
+
+  body
+    block upper
+      .tok3n-top#tok3nTop
+        .tok3n-top-nav#tok3nTopNav
+          .nav-wrap.row
+            header.col-md-4.col-sm-4.col-xs-4
+              .logo(alt='Tok3n')
+            nav.col-md-8.col-sm-8.col-xs-8
+              .menu
+                block navlist
+                  ul
+                    li.developers
+                      a(href='#') Developers
+                    li
+                      button.btn.btn-default(href='#') Log out
+                    li.toggle-sidebar
+                      button#collapseSidebarButton.btn.btn-default
+                        i.icon-reorder
+    block layout
+      .tok3n-layout#tok3nLayout
+        block body
+          #tok3nSidebar.tok3n-sidebar
+            .nav-inner
+              ul.menu#tok3nSidebarMenu.collapsed
+                li.tok3n-sidebar-selected.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nDevices')
+                  .row
+                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                      i.icon-tok3n-otp-phone
+                    .title.col-xs-10.col-sm-7.col-md-7 My devices
+                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nPhoneLines')
+                  .row
+                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                      i.icon-tok3n-phone-line
+                    .title.col-xs-10.col-sm-7.col-md-7 My phone lines
+                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nApplications')
+                  .row
+                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                      i.icon-tok3n-authorized-apps
+                    .title.col-xs-10.col-sm-7.col-md-7 Authorized apps
+                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nIntegrations')
+                  .row
+                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                      i.icon-tok3n-integrations
+                    .title.col-xs-10.col-sm-7.col-md-7 My integrations
+                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nBackupCodes')
+                  .row
+                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                      i.icon-tok3n-backup-code
+                    .title.col-xs-10.col-sm-7.col-md-7 Backup Codes
+                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nSettings')
+                  .row
+                    .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
+                      i.icon-tok3n-settings
+                    .title.col-xs-10.col-sm-7.col-md-7 Settings
+
+    block footer
+
+      //- A word of caution: the following build code is extremely sensible to indentation, extra spaces and newlines. Be careful!
+
+      /** build:template
+      <script src="<%=cdnUrl%>js/dashboard-min.js"></script>
+      <script src="<%=cdnUrl%>dart/dashboard.dart.js"></script>
+      <script src="<%=cdnUrl%>dart/packages/browser/interop.js"></script>
+      /build */
+
+      //  build:remove 
+      script(src="js/loader.js")
+      script(src='js/dashboard.js')
+      script(src='js/test.js')
+      script(type='application/dart', src='dart/dashboard.dart')
+      script(src='dart/packages/browser/dart.js')
+      script(src='dart/packages/browser/interop.js')
+      script(src="http://localhost:35729/livereload.js")
+      //  /build 

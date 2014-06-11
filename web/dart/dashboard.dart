@@ -3,23 +3,55 @@ import 'dart:js';
 import 'dart:async';
 
 void main() {
-  querySelectorAll('#cards-container .front').forEach((Element e) {
-    e.onClick.listen((ev) {
+  // Initialize page. Set current window, call resizeContent (that's on the vanilla side),
+  // and listen for window switching on the left menu.
+  // querySelector('#tok3nIntegrations').classes.add('tok3n-pt-page-current');
+  context.callMethod('resizeContent');
+  selectWindow();
+
+  // Flip cards
+  querySelectorAll('.tok3n-cards-container .front').forEach((Element e) {
+    e.onClick.listen((Event ev) {
       findClosestAncestor(e, 'flipper').classes.toggle('flipped');
       e.parent.children.where((f) => f.classes.contains('back')).forEach((Element g) {
         g.style.zIndex = "3";
       });
     });
   });
-  querySelectorAll('#cards-container .flip').forEach((Element e) {
+  querySelectorAll('.tok3n-cards-container .flip').forEach((Element e) {
     e.onClick.listen((ev) {
       findClosestAncestor(e, 'flipper').classes.toggle('flipped');
     });
   });
-  querySelector('#tok3nIntegrations').classes.add('tok3n-pt-page-current');
-  context.callMethod('resizeContent');
 
-  selectWindow();
+  // Toggle show/hide secret
+  ElementList toggleSecretShow = querySelectorAll('.toggle-secret');
+  if (toggleSecretShow != null) {
+    toggleSecretShow.forEach((Element el) {
+      el.onClick.listen((Event ev) {
+        el.parent.children.where((f) => f.classes.contains('secret')).forEach((Element g) {
+          g.classes.toggle('hidden');
+        });
+      });
+    });
+  }
+  querySelectorAll('.tok3n-new-integration-kind .tok3n-new-integration-kind-radio').forEach((Element el) {
+    el.onClick.listen((Event ev) {
+      Element implementationSelected = el.querySelector('input[type="radio"]:checked');
+      if (implementationSelected != null) {
+        String implementationKind = implementationSelected.getAttribute('value');
+        Element callbackUrl = findClosestAncestor(implementationSelected, 'tok3n-integration-new-form').querySelector('.tok3n-new-integration-callback-url');
+        if (implementationKind == 'web' && callbackUrl.classes.contains('collapsed')) {
+          callbackUrl.classes.remove('collapsed');
+          new Timer(new Duration(milliseconds:500), () {resizeContent();});
+        } else if (implementationKind == 'general' && callbackUrl.classes.contains('collapsed') == false) {
+          callbackUrl.classes.add('collapsed');
+        }
+      }
+    });
+  });
+
+
 }
 
 Element findClosestAncestor(Element element, String ancestorTagName) {
@@ -45,62 +77,82 @@ int childNodeIndex(Element e) {
   return child_index;
 }
 
+// Resize parent height if the content changes
+void resizeContent() {
+  context.callMethod('resizeContent');
+}
+
 void selectWindow() {
-  ElementList options = querySelectorAll('#sidebarMenu li');
+  // Change these values depending on your html layout and css.
+  ElementList options = querySelectorAll('#tok3nSidebarMenu li');
+  String menuItemAnchorClass = 'tok3n-menu-item';
+  String menuItemSelectedClass = 'tok3n-sidebar-selected';
+  Element previousOption = querySelector('#tok3nSidebarMenu li.' + menuItemSelectedClass);
+  // Change these values depending on your css animations.
+//  Duration cssAnimationDuration = new Duration(milliseconds:250);
+  String currentVisibleAnchorClass = 'tok3n-pt-page-current';
+  String fromCssAnimClassPrefix = 'tok3n-move-from-';
+  String toCssAnimClassPrefix = 'tok3n-move-to-';
+  String originCssAnimClass = 'left';
+  String destCssAnimClass = 'right';
+  List<String> animationClasses = [fromCssAnimClassPrefix + originCssAnimClass,
+                                   fromCssAnimClassPrefix + destCssAnimClass,
+                                   toCssAnimClassPrefix + originCssAnimClass,
+                                   toCssAnimClassPrefix + destCssAnimClass,];
+  // Dynamic vars
   int optionCount = options.length;
-  Element previousOption = querySelector('#sidebarMenu li.selected');
-  String previousTargetId = "#" + previousOption.getAttribute("data-target").toString();
+  // These vars are set after the first iteration, they will be null on the first execution
+  // (refer to the last 4 lines of selectWindow())
+  String previousTargetId = previousOption.getAttribute("data-target").toString();
   Element previousTarget = querySelector(previousTargetId);
 
-  options.forEach((Element e){
-    e.onClick.listen((ev) {
-
+  // Each time the menu is clicked
+  options.forEach((Element option){
+    option.onClick.listen((ev) {
+      // Get the menu item that was clicked
       Element nextOption() {
         Element el;
-        if (ev.target.classes.contains('tok3n-menu-item')) {
+        if (ev.target.classes.contains(menuItemAnchorClass)) {
           el = ev.target;
         } else {
-          el = findClosestAncestor(ev.target, 'tok3n-menu-item');
+          el = findClosestAncestor(ev.target, menuItemAnchorClass);
         }
         return el;
       }
-
-      if (nextOption().classes != null && nextOption().classes.isNotEmpty) {
-        String nextTargetId = "#" + nextOption().getAttribute("data-target").toString();
+      // If the target exists
+      if (querySelector(nextOption().getAttribute("data-target")) != null) {
+        String nextTargetId = nextOption().getAttribute("data-target").toString();
         Element nextTarget = querySelector(nextTargetId);
-        Element temp;
-
-        var animationClasses = ['tok3n-move-from-left', 'tok3n-move-to-left', 'tok3n-move-from-right', 'tok3n-move-to-right'];
-
-        String animationSide(String option) {
+        // Which side we should move the content, depending on the previous item
+        String animationSide(String side) {
           String str;
           if (childNodeIndex(nextOption()) < childNodeIndex(previousOption)) {
-            if (option == 'previous') { str = 'left'; } else if (option == 'next') { str = 'right'; }
+            if (side == 'previous') { str = originCssAnimClass; }
+            else if (side == 'next') { str = destCssAnimClass; }
           } else if (childNodeIndex(nextOption()) > childNodeIndex(previousOption)) {
-            if (option == 'previous') { str = 'right'; } else if (option == 'next') { str = 'left'; }
+            if (side == 'previous') { str = destCssAnimClass; }
+            else if (side == 'next') { str = originCssAnimClass; }
           }
           return str;
         }
-
+        // Slide content if the element we clicked is different than the current selected one
         if ((childNodeIndex(nextOption()) == childNodeIndex(previousOption)) == false) {
-          // Slide button
+          // Remove any previous and add new animation classes
           previousTarget.classes
             ..removeAll(animationClasses)
-            ..add('tok3n-move-to-' + animationSide('previous'));
-          temp = previousTarget;
-          new Timer(new Duration(milliseconds:250), () {temp.classes.remove('tok3n-pt-page-previous');});
+            ..add(toCssAnimClassPrefix + animationSide('previous'));
           nextTarget.classes
             ..removeAll(animationClasses)
-            ..add('tok3n-pt-page-current')
-            ..add('tok3n-move-from-' + animationSide('next'));
-        }
-        if (nextOption().getAttribute("data-target") != null) {
-          previousOption.classes.toggle('selected');
-          nextOption().classes.toggle('selected');
+            ..add(currentVisibleAnchorClass)
+            ..add(fromCssAnimClassPrefix + animationSide('next'));
+          // Select menu item for user feedback
+          previousOption.classes.toggle(menuItemSelectedClass);
+          nextOption().classes.toggle(menuItemSelectedClass);
           // Flush content resizing
-          context.callMethod('resizeContent');
+          resizeContent();
+          // Prepare for next iteration
           previousOption = nextOption();
-          previousTargetId = "#" + previousOption.getAttribute("data-target").toString();
+          previousTargetId = previousOption.getAttribute("data-target").toString();
           previousTarget = querySelector(previousTargetId);
         }
       }
