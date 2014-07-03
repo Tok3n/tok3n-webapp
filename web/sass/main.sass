@@ -1,11 +1,48 @@
 @import 'imports'
 
+$tok3n-blue: #31B3D4
+$tok3n-purple: #2b3087
+
+////////////////
+// Animations //
+////////////////
+
+@include animate-flash
+@include animate-fadeIn
+
+////////////
+// Alerts //
+////////////
+
+.tok3n-login-alert
+  +single-transition(all, .3s, ease)
+  padding: 15px 30px
+  b
+    margin-right: .5em
+
+.tok3n-login-alert-hidden
+  max-height: 0
+  padding: 0 30px
+  border: 0
+  margin: 0
+  // color: transparent
+  overflow: hidden
+
+.tok3n-login-alert-active
+  +animation(flash)
+  +animation-duration(.5s)
+  +animation-delay(.3s)
+  +animation-iteration-count(1)
+
 ////////////////////
 // Layouts
 ////////////////////
 
 .tok3n-full-layout
-  margin: 3em 2em 2em
+  +to(2)
+    margin: 3em 2em 2em
+  +from(3)
+    margin: 3em 3em 2em 4em
 
 ////////////////////
 // Main list
@@ -70,7 +107,7 @@
       color: hsla(210, 100%, 32%, 1)
 
 ////////////////////
-// Dashboard lists, Integrations
+// Dashboard components
 ////////////////////
 
 .tok3n-dashboard-segment
@@ -128,6 +165,7 @@
   margin: 20px auto
   .create-button
     margin-bottom: 0
+    margin-top: 2em
     button
       margin-bottom: 15px
   .title
@@ -156,20 +194,123 @@
   .form-control
     cursor: default
 
-.tok3n-new-integration-callback-url
-  @extend %tok3n-collapse
-  max-height: 490px
+////////////////////
+// Devices
+////////////////////
 
-// .popover-content
-//   .title
-//     text-align: center
+
+.tok3n-app-icon, .tok3n-qr-code
+  width: 256px
+  height: 256px
+  margin: 0 auto 37px
+  +background-size(100% auto)
+  +box-shadow(rgba(0,0,0,0.2) 0 0 1px 1px, rgba(0,0,0,0.3) 0 5px 27px)
+
+.tok3n-app-icon
+  +hr-image("app-icon.png", "app-icon-hd.png")
+  +border-radius(17.544%)
+
+.tok3n-qr-code
+  background-image: image-url('qrcode.png')
+
+ol.tok3n-step-list
+  list-style-type: none
+  margin: 0
+  margin-left: 3em
+  padding: 0
+  counter-reset: li-counter
+
+  & > li
+    position: relative
+    margin-bottom: 20px
+    padding-left: 0.5em
+    min-height: 3em
+    border-left: 2px solid #CCCCCC
+
+  & > li:before
+    position: absolute
+    top: 0
+    left: -1em
+    width: 0.8em
+    font-size: 3em
+    line-height: 1
+    font-weight: bold
+    text-align: right
+    color: $tok3n-purple
+    content: counter(li-counter)
+    counter-increment: li-counter
+
+  & li:last-child
+    margin-bottom: 0
+
+
+
+////////////////////
+// Phone lines
+////////////////////
+
+.tok3n-sending-progress
+  margin-top: 3em
+  margin-bottom: 3em
+  +single-transition(all, .3s, ease)
+
+.tok3n-sending-progress-hidden
+  max-height: 0
+  margin: 0
+  overflow: hidden
+
+.tok3n-progress
+  @extend %progress
+  font-size: 20px
+  margin: 0
+
+.tok3n-progress-wrapper
+  margin: 0 auto
+  width: 100px
+
+.tok3n-sending-message
+  text-align: center
+
+.tok3n-sending-progress
+  margin-top: 1.5 em
+
+.tok3n-enter-code-screen p
+  text-align: center
+
+.tok3n-enter
+  margin: 10px auto 15px
+  width: 225px
+  // @extend .has-error
+
+.tok3n-otp
+  height: 75px
+  padding-left: 20px
+  width: 100%
+  font-size: 36px
+
+.icon-tok3n-cellphone, .icon-tok3n-text-bubble
+  font-size: 1.8em
+  display: inline-block
+  position: absolute
+  margin-left: 170px
+  margin-top: -52px
+  color: #bbb
+  +single-transition(color, .3s, ease-in)
+  &:hover
+    color: adjust-lightness($tok3n-blue, 20)
+  &:after, &:before
+    white-space: pre
+
+.tok3n-phoneline-name
+  margin-bottom: 5em
+
 
 ////////////////////
 // Applications
 ////////////////////
 
-.tok3n-applications
-  padding: 0 15px
+// .tok3n-applications
+//   padding: 0 15px
 
 .tok3n-cards-container
   perspective: 1000
@@ -248,3 +389,19 @@
       +box-shadow(0 0 1px black(.8) inset)
       .text-container
         visibility: visible
+
+////////////////////
+// Integrations
+////////////////////
+
+.tok3n-new-integration-callback-url
+  @extend %tok3n-collapse
+  max-height: 490px
+
+////////////////////
+// Backup codes
+////////////////////
+
+////////////////////
+// Settings
+////////////////////

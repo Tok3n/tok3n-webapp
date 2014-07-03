@@ -1,4 +1,20 @@
-var contentHeight, getStyle, hasDOMContentLoaded, init, main, ready, readyMethod, resizeContent, root, windowHeight;
+var contentHeight, each, gebi, getStyle, hasDOMContentLoaded, indexOf, init, main, qs, qsa, querySelectorAll, ready, readyMethod, resizeContent, root, slice, windowHeight;
+
+each = Function.prototype.call.bind([].forEach);
+
+indexOf = Function.prototype.call.bind([].indexOf);
+
+slice = Function.prototype.call.bind([].slice);
+
+qs = document.querySelector.bind(document);
+
+qsa = document.querySelectorAll.bind(document);
+
+gebi = document.getElementById.bind(document);
+
+querySelectorAll = function(selector) {
+  return slice(document.querySelectorAll(selector));
+};
 
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
@@ -101,10 +117,15 @@ windowHeight = function() {
 };
 
 contentHeight = function() {
-  var $contentHeight, innerContentHeight, listHeight;
+  var $contentHeight, elemList, innerContentHeight, listHeight;
   $contentHeight = null;
   innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10);
-  listHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-list'), 'height'), 10);
+  elemList = document.querySelector('.tok3n-pt-page-current .tok3n-main-list');
+  if (elemList != null) {
+    listHeight = parseInt(getStyle(elemList, 'height'), 10);
+  } else {
+    listHeight = 0;
+  }
   if (window.matchMedia("(min-width: 769px)").matches) {
     $contentHeight = innerContentHeight;
   } else {
@@ -138,11 +159,19 @@ window.addEventListener("resize", function(event) {
 
 main = function() {
   (function(el) {
-    var WidthChange, mq;
+    var WidthChange, menuItems, mq;
     if (el) {
       document.querySelector('#collapseSidebarButton').addEventListener('click', function() {
         return el.classList.toggle('collapsed');
       }, false);
+      menuItems = querySelectorAll('.tok3n-menu-item');
+      menuItems.forEach(function(item) {
+        return item.addEventListener('click', function() {
+          if (window.matchMedia("(max-width: 768px)").matches) {
+            return el.classList.toggle('collapsed');
+          }
+        }, false);
+      });
       WidthChange = function(mq) {
         if (mq.matches) {
           if (el.classList.contains('collapsed')) {

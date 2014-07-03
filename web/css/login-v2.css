@@ -5,7 +5,7 @@
   font-weight: normal;
   font-style: normal;
 }
-/* line 15, ../sass/_tok3n-dashboard-font.scss */
+/* line 15, ../sass/_tok3n-font.scss */
 [data-icon]:before {
   font-family: "tok3n-dashboard" !important;
   content: attr(data-icon);
@@ -19,7 +19,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 28, ../sass/_tok3n-dashboard-font.scss */
+/* line 28, ../sass/_tok3n-font.scss */
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: "tok3n-dashboard" !important;
@@ -33,54 +33,94 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 41, ../sass/_tok3n-dashboard-font.scss */
-.icon-tok3n-otp-phone:before {
-  content: "a";
-}
-
-/* line 44, ../sass/_tok3n-dashboard-font.scss */
+/* line 41, ../sass/_tok3n-font.scss */
 .icon-tok3n-phone-line:before {
   content: "b";
 }
 
-/* line 47, ../sass/_tok3n-dashboard-font.scss */
+/* line 44, ../sass/_tok3n-font.scss */
 .icon-tok3n-backup-code:before {
   content: "c";
 }
 
-/* line 50, ../sass/_tok3n-dashboard-font.scss */
+/* line 47, ../sass/_tok3n-font.scss */
 .icon-tok3n-authorized-apps:before {
   content: "d";
 }
 
-/* line 53, ../sass/_tok3n-dashboard-font.scss */
+/* line 50, ../sass/_tok3n-font.scss */
 .icon-tok3n-integrations:before {
   content: "e";
 }
 
-/* line 56, ../sass/_tok3n-dashboard-font.scss */
+/* line 53, ../sass/_tok3n-font.scss */
 .icon-tok3n-settings:before {
   content: "f";
 }
 
-/* line 59, ../sass/_tok3n-dashboard-font.scss */
+/* line 56, ../sass/_tok3n-font.scss */
 .icon-tok3n-landline:before {
   content: "g";
 }
 
-/* line 62, ../sass/_tok3n-dashboard-font.scss */
+/* line 59, ../sass/_tok3n-font.scss */
 .icon-tok3n-cellphone:before {
   content: "h";
 }
 
-/* line 65, ../sass/_tok3n-dashboard-font.scss */
-.icon-tok3n-plus-sign:before {
+/* line 62, ../sass/_tok3n-font.scss */
+.icon-tok3n-gear:before {
+  content: "j";
+}
+
+/* line 65, ../sass/_tok3n-font.scss */
+.icon-tok3n-text-bubble:before {
+  content: "k";
+}
+
+/* line 68, ../sass/_tok3n-font.scss */
+.icon-tok3n-arrow:before {
   content: "i";
 }
 
-/* line 68, ../sass/_tok3n-dashboard-font.scss */
-.icon-tok3n-gear:before {
-  content: "j";
+/* line 71, ../sass/_tok3n-font.scss */
+.icon-tok3n-qrcode:before {
+  content: "l";
+}
+
+/* line 74, ../sass/_tok3n-font.scss */
+.icon-tok3n-logo:before {
+  content: "m";
+}
+
+/* line 77, ../sass/_tok3n-font.scss */
+.icon-tok3n-otp:before {
+  content: "n";
+}
+
+/* line 80, ../sass/_tok3n-font.scss */
+.icon-tok3n-bubble:before {
+  content: "o";
+}
+
+/* line 83, ../sass/_tok3n-font.scss */
+.icon-tok3n-stripe:before {
+  content: "p";
+}
+
+/* line 86, ../sass/_tok3n-font.scss */
+.icon-tok3n-phone:before {
+  content: "q";
+}
+
+/* line 89, ../sass/_tok3n-font.scss */
+.icon-tok3n-menu:before {
+  content: "a";
+}
+
+/* line 92, ../sass/_tok3n-font.scss */
+.icon-tok3n-flip:before {
+  content: "r";
 }
 
 /* line 1, ../sass/_extensions.sass */
@@ -93,6 +133,276 @@ span.space {
   margin-right: 0.5em;
 }
 
+@-moz-keyframes rotateCard {
+  /* line 2, ../sass/_page-transitions.sass */
+  to {
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@-webkit-keyframes rotateCard {
+  /* line 2, ../sass/_page-transitions.sass */
+  to {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@keyframes rotateCard {
+  /* line 2, ../sass/_page-transitions.sass */
+  to {
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@-moz-keyframes rotateCardBack {
+  /* line 6, ../sass/_page-transitions.sass */
+  from {
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@-webkit-keyframes rotateCardBack {
+  /* line 6, ../sass/_page-transitions.sass */
+  from {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@keyframes rotateCardBack {
+  /* line 6, ../sass/_page-transitions.sass */
+  from {
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+}
+@-moz-keyframes moveToLeft {
+  /* line 10, ../sass/_page-transitions.sass */
+  to {
+    -moz-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@-webkit-keyframes moveToLeft {
+  /* line 10, ../sass/_page-transitions.sass */
+  to {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@keyframes moveToLeft {
+  /* line 10, ../sass/_page-transitions.sass */
+  to {
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@-moz-keyframes moveFromLeft {
+  /* line 14, ../sass/_page-transitions.sass */
+  from {
+    -moz-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@-webkit-keyframes moveFromLeft {
+  /* line 14, ../sass/_page-transitions.sass */
+  from {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@keyframes moveFromLeft {
+  /* line 14, ../sass/_page-transitions.sass */
+  from {
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@-moz-keyframes moveToRight {
+  /* line 18, ../sass/_page-transitions.sass */
+  to {
+    -moz-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@-webkit-keyframes moveToRight {
+  /* line 18, ../sass/_page-transitions.sass */
+  to {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@keyframes moveToRight {
+  /* line 18, ../sass/_page-transitions.sass */
+  to {
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@-moz-keyframes moveFromRight {
+  /* line 22, ../sass/_page-transitions.sass */
+  from {
+    -moz-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@-webkit-keyframes moveFromRight {
+  /* line 22, ../sass/_page-transitions.sass */
+  from {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@keyframes moveFromRight {
+  /* line 22, ../sass/_page-transitions.sass */
+  from {
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+/* line 25, ../sass/_page-transitions.sass */
+.tok3n-pt-perspective {
+  position: relative;
+  perspective: 1200px;
+  overflow: hidden;
+}
+
+/* line 30, ../sass/_page-transitions.sass */
+.tok3n-pt-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  overflow: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* line 43, ../sass/_page-transitions.sass */
+.tok3n-pt-page-current {
+  visibility: visible !important;
+  z-index: 3;
+}
+
+/* line 47, ../sass/_page-transitions.sass */
+.tok3n-submit-visible {
+  visibility: visible !important;
+  z-index: 999;
+}
+
+/* line 51, ../sass/_page-transitions.sass */
+.tok3n-submit-wrapper {
+  z-index: 999;
+}
+
+/* line 54, ../sass/_page-transitions.sass */
+.tok3n-move-from-left {
+  -moz-animation: moveFromLeft;
+  -webkit-animation: moveFromLeft;
+  animation: moveFromLeft;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.25s;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+/* line 60, ../sass/_page-transitions.sass */
+.tok3n-move-to-left {
+  -moz-animation: moveToLeft;
+  -webkit-animation: moveToLeft;
+  animation: moveToLeft;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.25s;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+/* line 66, ../sass/_page-transitions.sass */
+.tok3n-move-from-right {
+  -moz-animation: moveFromRight;
+  -webkit-animation: moveFromRight;
+  animation: moveFromRight;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.25s;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+/* line 72, ../sass/_page-transitions.sass */
+.tok3n-move-to-right {
+  -moz-animation: moveToRight;
+  -webkit-animation: moveToRight;
+  animation: moveToRight;
+  -moz-animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -moz-animation-duration: 0.25s;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+  -moz-animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+@-moz-keyframes spin {
+  /* line 4, ../sass/_css-spinner.sass */
+  to {
+    transform: rotate(1turn);
+  }
+}
+@-webkit-keyframes spin {
+  /* line 4, ../sass/_css-spinner.sass */
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes spin {
+  /* line 4, ../sass/_css-spinner.sass */
+  to {
+    transform: rotate(1turn);
+  }
+}
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -1691,15 +2001,15 @@ address {
 }
 
 @font-face {
-  font-family: "tok3n-icons";
-  src: url("fonts/tok3n-icons.eot");
-  src: url("fonts/tok3n-icons.eot?#iefix") format("embedded-opentype"), url("fonts/tok3n-icons.woff") format("woff"), url("fonts/tok3n-icons.ttf") format("truetype"), url("fonts/tok3n-icons.svg#tok3n-icons") format("svg");
+  font-family: "tok3n-dashboard";
+  src: url("fonts/tok3n-dashboard.eot");
+  src: url("fonts/tok3n-dashboard.eot?#iefix") format("embedded-opentype"), url("fonts/tok3n-dashboard.woff") format("woff"), url("fonts/tok3n-dashboard.ttf") format("truetype"), url("fonts/tok3n-dashboard.svg#tok3n-dashboard") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 /* line 15, ../sass/_tok3n-font.scss */
 [data-icon]:before {
-  font-family: "tok3n-icons" !important;
+  font-family: "tok3n-dashboard" !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -1714,7 +2024,7 @@ address {
 /* line 28, ../sass/_tok3n-font.scss */
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
-  font-family: "tok3n-icons" !important;
+  font-family: "tok3n-dashboard" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -1726,33 +2036,93 @@ address {
 }
 
 /* line 41, ../sass/_tok3n-font.scss */
-.icon-tok3n-qrcode:before {
-  content: "a";
-}
-
-/* line 44, ../sass/_tok3n-font.scss */
-.icon-tok3n-logo:before {
+.icon-tok3n-phone-line:before {
   content: "b";
 }
 
+/* line 44, ../sass/_tok3n-font.scss */
+.icon-tok3n-backup-code:before {
+  content: "c";
+}
+
 /* line 47, ../sass/_tok3n-font.scss */
-.icon-tok3n-otp:before {
+.icon-tok3n-authorized-apps:before {
   content: "d";
 }
 
 /* line 50, ../sass/_tok3n-font.scss */
-.icon-tok3n-bubble:before {
+.icon-tok3n-integrations:before {
   content: "e";
 }
 
 /* line 53, ../sass/_tok3n-font.scss */
-.icon-tok3n-stripe:before {
+.icon-tok3n-settings:before {
   content: "f";
 }
 
 /* line 56, ../sass/_tok3n-font.scss */
-.icon-tok3n-phone:before {
+.icon-tok3n-landline:before {
   content: "g";
+}
+
+/* line 59, ../sass/_tok3n-font.scss */
+.icon-tok3n-cellphone:before {
+  content: "h";
+}
+
+/* line 62, ../sass/_tok3n-font.scss */
+.icon-tok3n-gear:before {
+  content: "j";
+}
+
+/* line 65, ../sass/_tok3n-font.scss */
+.icon-tok3n-text-bubble:before {
+  content: "k";
+}
+
+/* line 68, ../sass/_tok3n-font.scss */
+.icon-tok3n-arrow:before {
+  content: "i";
+}
+
+/* line 71, ../sass/_tok3n-font.scss */
+.icon-tok3n-qrcode:before {
+  content: "l";
+}
+
+/* line 74, ../sass/_tok3n-font.scss */
+.icon-tok3n-logo:before {
+  content: "m";
+}
+
+/* line 77, ../sass/_tok3n-font.scss */
+.icon-tok3n-otp:before {
+  content: "n";
+}
+
+/* line 80, ../sass/_tok3n-font.scss */
+.icon-tok3n-bubble:before {
+  content: "o";
+}
+
+/* line 83, ../sass/_tok3n-font.scss */
+.icon-tok3n-stripe:before {
+  content: "p";
+}
+
+/* line 86, ../sass/_tok3n-font.scss */
+.icon-tok3n-phone:before {
+  content: "q";
+}
+
+/* line 89, ../sass/_tok3n-font.scss */
+.icon-tok3n-menu:before {
+  content: "a";
+}
+
+/* line 92, ../sass/_tok3n-font.scss */
+.icon-tok3n-flip:before {
+  content: "r";
 }
 
 @-moz-keyframes flash {

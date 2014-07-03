@@ -46,7 +46,11 @@ $nav-margin-top: 13px
     position: fixed
   
   .nav-wrap
-    padding: 0 1.9em
+    margin: 0 !important
+    +to(2)
+      padding: 0 0.8em
+    +from(3)
+      padding: 0 1.9em
   
   header
     .logo
@@ -59,7 +63,7 @@ $nav-margin-top: 13px
     margin-top: $nav-margin-top
     .menu
       text-align: right
-      margin-right: 1em
+      // margin-right: 1em
       ul
         +inline-list
         li

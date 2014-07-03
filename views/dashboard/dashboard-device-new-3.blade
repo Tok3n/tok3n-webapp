@@ -1,0 +1,18 @@
+.tok3n-phonelines
+  .tok3n-dashboard-new-form.form-horizontal(role='form')
+    .form-group
+      .col-md-12
+        h3.title Success!
+    fieldset
+      .form-group
+        .tok3n-login-alert.alert.alert-danger.tok3n-login-alert-hidden
+          b Error:
+          | The provided name is incorrect, please try again.
+      .form-group.tok3n-phoneline-name
+        .col-md-8.col-md-offset-2
+          label(for="phoneLineName") Choose a name for your device
+          input#phoneLineName.form-control.input-md(name='phoneLineName', type="text", placeholder="e.g. Victor's phone")
+
+      .form-group.create-button
+        .col-md-6.col-md-offset-3
+          button.btn.btn-primary.btn-block Finish

@@ -1,3 +1,15 @@
+# easy refs for various things
+each = Function.prototype.call.bind [].forEach 
+indexOf = Function.prototype.call.bind [].indexOf 
+slice = Function.prototype.call.bind [].slice
+
+qs = document.querySelector.bind document 
+qsa = document.querySelectorAll.bind document 
+gebi = document.getElementById.bind document
+
+querySelectorAll = ( selector ) ->
+  slice document.querySelectorAll selector
+
 # Google Analytics
 root = exports ? this
 root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']]
@@ -93,7 +105,11 @@ windowHeight = () ->
 contentHeight = () ->
   $contentHeight = null
   innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10)
-  listHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-list'), 'height'), 10)
+  elemList = document.querySelector('.tok3n-pt-page-current .tok3n-main-list')
+  if elemList?
+    listHeight = parseInt(getStyle(elemList, 'height'), 10)
+  else
+    listHeight = 0
   # We asume that matchMedia is supported
   if window.matchMedia("(min-width: 769px)").matches
     # Desktop size
@@ -130,6 +146,14 @@ main = () ->
       document.querySelector('#collapseSidebarButton').addEventListener('click', () ->
         el.classList.toggle 'collapsed'
       , false)
+      
+      menuItems = querySelectorAll('.tok3n-menu-item')
+      menuItems.forEach (item) ->
+        item.addEventListener 'click', ->
+          if window.matchMedia("(max-width: 768px)").matches
+            el.classList.toggle 'collapsed'
+        , false
+
       WidthChange = (mq) ->
         if mq.matches
           # Desktop size

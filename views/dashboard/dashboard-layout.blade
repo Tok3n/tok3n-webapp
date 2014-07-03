@@ -33,17 +33,17 @@ html.no-js(lang='en')
                       button.btn.btn-default(href='#') Log out
                     li.toggle-sidebar
                       button#collapseSidebarButton.btn.btn-default
-                        i.icon-reorder
+                        i.icon-tok3n-menu
     block layout
       .tok3n-layout#tok3nLayout
         block body
           #tok3nSidebar.tok3n-sidebar
             .nav-inner
               ul.menu#tok3nSidebarMenu.collapsed
-                li.tok3n-sidebar-selected.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nDevices')
+                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nDevices')
                   .row
                     .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
-                      i.icon-tok3n-otp-phone
+                      i.icon-tok3n-phone
                     .title.col-xs-10.col-sm-7.col-md-7 My devices
                 li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nPhoneLines')
                   .row
@@ -65,7 +65,7 @@ html.no-js(lang='en')
                     .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
                       i.icon-tok3n-backup-code
                     .title.col-xs-10.col-sm-7.col-md-7 Backup Codes
-                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nSettings')
+                li.tok3n-sidebar-selected.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='#tok3nSettings')
                   .row
                     .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
                       i.icon-tok3n-settings

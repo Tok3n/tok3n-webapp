@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: "tok3n-icons";
-  src:url("fonts/tok3n-icons.eot");
-  src:url("fonts/tok3n-icons.eot?#iefix") format("embedded-opentype"),
-    url("fonts/tok3n-icons.woff") format("woff"),
-    url("fonts/tok3n-icons.ttf") format("truetype"),
-    url("fonts/tok3n-icons.svg#tok3n-icons") format("svg");
+  font-family: "tok3n-dashboard";
+  src:url("fonts/tok3n-dashboard.eot");
+  src:url("fonts/tok3n-dashboard.eot?#iefix") format("embedded-opentype"),
+    url("fonts/tok3n-dashboard.woff") format("woff"),
+    url("fonts/tok3n-dashboard.ttf") format("truetype"),
+    url("fonts/tok3n-dashboard.svg#tok3n-dashboard") format("svg");
   font-weight: normal;
   font-style: normal;
 
 }
 
 [data-icon]:before {
-  font-family: "tok3n-icons" !important;
+  font-family: "tok3n-dashboard" !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -27,7 +27,7 @@
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
-  font-family: "tok3n-icons" !important;
+  font-family: "tok3n-dashboard" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -38,21 +38,57 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-tok3n-qrcode:before {
-  content: "a";
-}
-.icon-tok3n-logo:before {
+.icon-tok3n-phone-line:before {
   content: "b";
 }
-.icon-tok3n-otp:before {
+.icon-tok3n-backup-code:before {
+  content: "c";
+}
+.icon-tok3n-authorized-apps:before {
   content: "d";
 }
-.icon-tok3n-bubble:before {
+.icon-tok3n-integrations:before {
   content: "e";
 }
-.icon-tok3n-stripe:before {
+.icon-tok3n-settings:before {
   content: "f";
 }
-.icon-tok3n-phone:before {
+.icon-tok3n-landline:before {
   content: "g";
+}
+.icon-tok3n-cellphone:before {
+  content: "h";
+}
+.icon-tok3n-gear:before {
+  content: "j";
+}
+.icon-tok3n-text-bubble:before {
+  content: "k";
+}
+.icon-tok3n-arrow:before {
+  content: "i";
+}
+.icon-tok3n-qrcode:before {
+  content: "l";
+}
+.icon-tok3n-logo:before {
+  content: "m";
+}
+.icon-tok3n-otp:before {
+  content: "n";
+}
+.icon-tok3n-bubble:before {
+  content: "o";
+}
+.icon-tok3n-stripe:before {
+  content: "p";
+}
+.icon-tok3n-phone:before {
+  content: "q";
+}
+.icon-tok3n-menu:before {
+  content: "a";
+}
+.icon-tok3n-flip:before {
+  content: "r";
 }
