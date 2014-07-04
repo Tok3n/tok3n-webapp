@@ -130,8 +130,8 @@ module.exports = (grunt) ->
 				dest: js + 'utils.js'
 			dashboard:
 				src: [
-					'<%= coffee.main.dest %>'
 					'<%= coffee.jQueryDashboard.dest %>'
+					'<%= coffee.main.dest %>'
 				]
 				dest: js + 'dashboard.js'
 

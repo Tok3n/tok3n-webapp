@@ -11,6 +11,7 @@ do ->
       initCurrentWindow()
     return
 
+
   ####################################################
   # Sitewide
   ####################################################
@@ -56,6 +57,7 @@ do ->
           , false)
     )(document.querySelectorAll '.dropdown')
 
+
   ####################################################
   # Selective window behavior
   ####################################################
@@ -65,21 +67,16 @@ do ->
     setTimeout ->
       unless currentWindow.id is 'tok3nDevices'
         false
-      
-      else unless currentWindow.id is 'tok3nPhonelines'
+      unless currentWindow.id is 'tok3nPhonelines'
         false
-      
-      else unless currentWindow.id is 'tok3nApplications'
+      unless currentWindow.id is 'tok3nApplications'
         if Tok3nDashboard.masonry
           Tok3nDashboard.masonry.destroy()
-      
-      else unless currentWindow.id is 'tok3nIntegrations'
+      unless currentWindow.id is 'tok3nIntegrations'
         false
-      
-      else unless currentWindow.id is 'tok3nBackupCodes'
+      unless currentWindow.id is 'tok3nBackupCodes'
         false
-      
-      else unless currentWindow.id is 'tok3nBackupSettings'
+      unless currentWindow.id is 'tok3nBackupSettings'
         false
     , 250
 
@@ -88,6 +85,7 @@ do ->
     arr.forEach (screen) ->
       screenClass = ".tok3n-" + screen.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([a-zA-Z]+)([0-9]+)/g, '$1-$2').toLowerCase();
       func(screen)
+
 
   initCurrentWindow = ->
     currentWindow = Tok3nDashboard.nextTarget
@@ -129,6 +127,7 @@ do ->
       else
         false
 
+
   ####################################################
   # Authorized apps
   ####################################################
@@ -142,6 +141,7 @@ do ->
           gutter: '.grid-gutter'
         })
     )(document.querySelector '.tok3n-cards-container')
+
 
   ####################################################
   # Vanilla $('document').ready() detection. Execute main() when it is.

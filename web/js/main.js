@@ -70,18 +70,23 @@
     currentWindow = Tok3nDashboard.nextTarget;
     return setTimeout(function() {
       if (currentWindow.id !== 'tok3nDevices') {
-        return false;
-      } else if (currentWindow.id !== 'tok3nPhonelines') {
-        return false;
-      } else if (currentWindow.id !== 'tok3nApplications') {
+        false;
+      }
+      if (currentWindow.id !== 'tok3nPhonelines') {
+        false;
+      }
+      if (currentWindow.id !== 'tok3nApplications') {
         if (Tok3nDashboard.masonry) {
-          return Tok3nDashboard.masonry.destroy();
+          Tok3nDashboard.masonry.destroy();
         }
-      } else if (currentWindow.id !== 'tok3nIntegrations') {
-        return false;
-      } else if (currentWindow.id !== 'tok3nBackupCodes') {
-        return false;
-      } else if (currentWindow.id !== 'tok3nBackupSettings') {
+      }
+      if (currentWindow.id !== 'tok3nIntegrations') {
+        false;
+      }
+      if (currentWindow.id !== 'tok3nBackupCodes') {
+        false;
+      }
+      if (currentWindow.id !== 'tok3nBackupSettings') {
         return false;
       }
     }, 250);
