@@ -1,15 +1,5 @@
 (function() {
-  var animationClasses, childNodeIndex, each, findClosestAncestor, gebi, indexOf, qs, qsa, querySelectorAll, removeAnimationClasses, slice, slider;
-  window.Tok3nDashboard || (window.Tok3nDashboard = {});
-  each = Function.prototype.call.bind([].forEach);
-  indexOf = Function.prototype.call.bind([].indexOf);
-  slice = Function.prototype.call.bind([].slice);
-  qs = document.querySelector.bind(document);
-  qsa = document.querySelectorAll.bind(document);
-  gebi = document.getElementById.bind(document);
-  querySelectorAll = function(selector) {
-    return slice(document.querySelectorAll(selector));
-  };
+  var animationClasses, childNodeIndex, findClosestAncestor, removeAnimationClasses, slider;
   animationClasses = ['tok3n-move-from-left', 'tok3n-move-to-left', 'tok3n-move-from-right', 'tok3n-move-to-right'];
   removeAnimationClasses = function(el) {
     return each(animationClasses, function(cl) {
@@ -68,11 +58,15 @@
         };
         if (childNodeIndex(nextOption) !== childNodeIndex(previousOption)) {
           removeAnimationClasses(previousTarget);
+          Tok3nDashboard.nextTarget = nextTarget;
+          Tok3nDashboard.previousTarget = previousTarget;
+          ee.emitEvent('tok3nSlideBeforeAnimation');
           previousTarget.classList.add("tok3n-move-to-" + (animationSlide('previous')));
           temp = previousTarget;
           setTimeout(function() {
             temp.classList.remove("tok3n-pt-page-previous");
-            return temp.classList.remove("tok3n-pt-page-current");
+            temp.classList.remove("tok3n-pt-page-current");
+            return ee.emitEvent('tok3nSlideAfterAnimation');
           }, 250);
           removeAnimationClasses(nextTarget);
           nextTarget.classList.add("tok3n-pt-page-current");

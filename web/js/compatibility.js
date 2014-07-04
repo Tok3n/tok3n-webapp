@@ -1,16 +1,15 @@
 (function() {
   var compatibilityLayout, contentHeight, getStyle, resizeContent, windowHeight;
-  window.Tok3nDashboard || (window.Tok3nDashboard = {});
   compatibilityLayout = function() {
     var pagesWrapper;
-    window.addEventListener("resize", function(event) {
-      resizeContent();
-    });
     pagesWrapper = qs(".tok3n-pages-wrapper");
     while (pagesWrapper.firstChild) {
       pagesWrapper.parentNode.insertBefore(pagesWrapper.firstChild, pagesWrapper);
     }
     pagesWrapper.parentNode.removeChild(pagesWrapper);
+    window.addEventListener("resize", function(event) {
+      resizeContent();
+    });
     return resizeContent();
   };
   getStyle = function(oElm, strCssRule) {
@@ -71,5 +70,6 @@
       }
     }
   };
-  return Tok3nDashboard.compatibilityLayout = compatibilityLayout;
+  Tok3nDashboard.compatibilityLayout = compatibilityLayout;
+  return Tok3nDashboard.resizeContent = resizeContent;
 })();

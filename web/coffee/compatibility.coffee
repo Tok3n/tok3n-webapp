@@ -1,17 +1,18 @@
 do ->
-  window.Tok3nDashboard or= {}
 
   compatibilityLayout = ->
-    # Keep resizing content onResize
-    window.addEventListener "resize", (event) ->
-      resizeContent()
-      return
-
+    # $.unwrap .tok3n-pages-wrapper
     pagesWrapper = qs ".tok3n-pages-wrapper"
     while pagesWrapper.firstChild
       pagesWrapper.parentNode.insertBefore pagesWrapper.firstChild, pagesWrapper
     pagesWrapper.parentNode.removeChild pagesWrapper
 
+    # Keep resizing content onResize
+    window.addEventListener "resize", (event) ->
+      resizeContent()
+      return
+
+    # Init first resize
     resizeContent()
 
   #####################################################
@@ -74,3 +75,4 @@ do ->
     return
 
   Tok3nDashboard.compatibilityLayout = compatibilityLayout
+  Tok3nDashboard.resizeContent = resizeContent

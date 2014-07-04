@@ -1,20 +1,21 @@
 do ->
-  window.Tok3nDashboard or= {}
 
-  # easy refs for various things
-  each = Function.prototype.call.bind [].forEach 
-  indexOf = Function.prototype.call.bind [].indexOf 
-  slice = Function.prototype.call.bind [].slice
-
-  qs = document.querySelector.bind document 
-  qsa = document.querySelectorAll.bind document 
-  gebi = document.getElementById.bind document
-
-  querySelectorAll = ( selector ) ->
-    slice document.querySelectorAll selector
-
+  ####################################################
+  # Main
+  ####################################################
 
   main = () ->
+    sitewide()
+    Tok3nDashboard.slider()
+    ee.addListener 'tok3nSlideBeforeAnimation', ->
+      initCurrentWindow()
+    return
+
+  ####################################################
+  # Sitewide
+  ####################################################
+
+  sitewide = ->
     # Sidebar show/hide
     ((el) ->
       if el
@@ -28,7 +29,6 @@ do ->
             if window.matchMedia("(max-width: 768px)").matches
               el.classList.toggle 'collapsed'
           , false
-
         WidthChange = (mq) ->
           if mq.matches
             # Desktop size
@@ -56,21 +56,96 @@ do ->
           , false)
     )(document.querySelectorAll '.dropdown')
 
+  ####################################################
+  # Selective window behavior
+  ####################################################
+
+  destroyActiveWindowJs = ->
+    currentWindow = Tok3nDashboard.nextTarget
+    setTimeout ->
+      unless currentWindow.id is 'tok3nDevices'
+        false
+      
+      else unless currentWindow.id is 'tok3nPhonelines'
+        false
+      
+      else unless currentWindow.id is 'tok3nApplications'
+        if Tok3nDashboard.masonry
+          Tok3nDashboard.masonry.destroy()
+      
+      else unless currentWindow.id is 'tok3nIntegrations'
+        false
+      
+      else unless currentWindow.id is 'tok3nBackupCodes'
+        false
+      
+      else unless currentWindow.id is 'tok3nBackupSettings'
+        false
+    , 250
+
+
+  camelCaseSwitcher = (arr, func) ->
+    arr.forEach (screen) ->
+      screenClass = ".tok3n-" + screen.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([a-zA-Z]+)([0-9]+)/g, '$1-$2').toLowerCase();
+      func(screen)
+
+  initCurrentWindow = ->
+    currentWindow = Tok3nDashboard.nextTarget
+  
+    # Don't render what we won't use
+    destroyActiveWindowJs()
+
+    switch currentWindow.id
+      # Change this!
+      when "tok3n-signup"
+        signupScreens = ['signupEnable', 'signupCreate1', 'signupCreate2', 'signupDevice1', 'signupDevice2', 'signupPhoneline1', 'signupPhoneline2']
+        camelCaseSwitcher signupScreens, (currentWindow) ->
+          switch currentWindow
+            when 'signupEnable'
+              false
+            when 'signupCreate1'
+              false
+            when 'signupCreate2'
+              false
+            when 'signupPhoneline1'
+              false
+            when 'signupPhoneline2'
+              false
+            else
+              false
+
+      when "tok3ndDevices"
+        false
+      when "tok3nPhonelines"
+        false
+      when "tok3nApplications"
+        authorizedApps()
+      when "tok3nIntegrations"
+        false
+      when "tok3nBackupCodes"
+        false
+      when "tok3nSettings"
+        false
+      else
+        false
+
+  ####################################################
+  # Authorized apps
+  ####################################################
+
+  authorizedApps = () ->
     # Masonry apps container
     ((el) ->
       if el
-        msnry = new Masonry(el, {
+         Tok3nDashboard.masonry = new Masonry(el, {
           itemSelector: '.card'
           gutter: '.grid-gutter'
         })
     )(document.querySelector '.tok3n-cards-container')
 
-    Tok3nDashboard.slider()
-
-    return
-
-  ##################################################################
+  ####################################################
   # Vanilla $('document').ready() detection. Execute main() when it is.
+  ####################################################
 
   hasDOMContentLoaded = false
   ready = false

@@ -1,17 +1,4 @@
 do ->
-  window.Tok3nDashboard or= {}
-  
-  # easy refs for various things
-  each = Function.prototype.call.bind [].forEach 
-  indexOf = Function.prototype.call.bind [].indexOf 
-  slice = Function.prototype.call.bind [].slice
-
-  qs = document.querySelector.bind document 
-  qsa = document.querySelectorAll.bind document 
-  gebi = document.getElementById.bind document
-
-  querySelectorAll = ( selector ) ->
-    slice document.querySelectorAll selector
 
   ######################
   # Sliding login window
@@ -39,7 +26,6 @@ do ->
     previousTargetId = previousOption.getAttribute( "data-target" ).toString()
     previousTarget = gebi previousTargetId
 
-    # L59
     options.forEach ( el ) ->
       el.addEventListener "click", ( evt ) ->
         nextOption = if evt.target.classList.contains menuItemAnchorClass then evt.target else findClosestAncestor evt.target, menuItemAnchorClass
@@ -50,7 +36,6 @@ do ->
         nextTarget = gebi nextTargetId
         temp = undefined
 
-        # L67
         # We need to be careful handling output from this. 
         # Returning empty strings & concating them to other stuff produces
         # CSS class names we're not handling currently.
@@ -64,10 +49,14 @@ do ->
           else
             return false
 
-        # L78
-        # if not childNodeIndex( nextOption ) and not childNodeIndex( previousOption )
+        # If the clicked option is different than the currently selected
         if childNodeIndex( nextOption ) isnt childNodeIndex( previousOption )
           removeAnimationClasses( previousTarget )
+
+          Tok3nDashboard.nextTarget = nextTarget
+          Tok3nDashboard.previousTarget = previousTarget
+
+          ee.emitEvent 'tok3nSlideBeforeAnimation'
 
           previousTarget.classList.add( "tok3n-move-to-#{ animationSlide( 'previous' ) }" )
           temp = previousTarget
@@ -75,7 +64,7 @@ do ->
           setTimeout ->
             temp.classList.remove "tok3n-pt-page-previous"
             temp.classList.remove "tok3n-pt-page-current"
-            # setVerifyButtonState()
+            ee.emitEvent 'tok3nSlideAfterAnimation'
           , 250
 
           removeAnimationClasses( nextTarget )

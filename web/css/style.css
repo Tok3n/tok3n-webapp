@@ -301,12 +301,9 @@ span.space {
 .tok3n-pt-perspective {
   position: relative;
   perspective: 1200px;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
-/* line 32, ../sass/_page-transitions.sass */
+/* line 29, ../sass/_page-transitions.sass */
 .tok3n-pt-page {
   position: absolute;
   top: 0;
@@ -326,24 +323,24 @@ span.space {
   transform-style: preserve-3d;
 }
 
-/* line 45, ../sass/_page-transitions.sass */
+/* line 42, ../sass/_page-transitions.sass */
 .tok3n-pt-page-current {
   visibility: visible !important;
   z-index: 3;
 }
 
-/* line 49, ../sass/_page-transitions.sass */
+/* line 46, ../sass/_page-transitions.sass */
 .tok3n-submit-visible {
   visibility: visible !important;
   z-index: 999;
 }
 
-/* line 53, ../sass/_page-transitions.sass */
+/* line 50, ../sass/_page-transitions.sass */
 .tok3n-submit-wrapper {
   z-index: 999;
 }
 
-/* line 56, ../sass/_page-transitions.sass */
+/* line 53, ../sass/_page-transitions.sass */
 .tok3n-move-from-left {
   -moz-animation: moveFromLeft;
   -webkit-animation: moveFromLeft;
@@ -359,7 +356,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 62, ../sass/_page-transitions.sass */
+/* line 59, ../sass/_page-transitions.sass */
 .tok3n-move-to-left {
   -moz-animation: moveToLeft;
   -webkit-animation: moveToLeft;
@@ -375,7 +372,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 68, ../sass/_page-transitions.sass */
+/* line 65, ../sass/_page-transitions.sass */
 .tok3n-move-from-right {
   -moz-animation: moveFromRight;
   -webkit-animation: moveFromRight;
@@ -391,7 +388,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 74, ../sass/_page-transitions.sass */
+/* line 71, ../sass/_page-transitions.sass */
 .tok3n-move-to-right {
   -moz-animation: moveToRight;
   -webkit-animation: moveToRight;
@@ -618,12 +615,9 @@ span.space {
 .tok3n-pt-perspective {
   position: relative;
   perspective: 1200px;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
-/* line 32, ../sass/_page-transitions.sass */
+/* line 29, ../sass/_page-transitions.sass */
 .tok3n-pt-page {
   position: absolute;
   top: 0;
@@ -643,24 +637,24 @@ span.space {
   transform-style: preserve-3d;
 }
 
-/* line 45, ../sass/_page-transitions.sass */
+/* line 42, ../sass/_page-transitions.sass */
 .tok3n-pt-page-current {
   visibility: visible !important;
   z-index: 3;
 }
 
-/* line 49, ../sass/_page-transitions.sass */
+/* line 46, ../sass/_page-transitions.sass */
 .tok3n-submit-visible {
   visibility: visible !important;
   z-index: 999;
 }
 
-/* line 53, ../sass/_page-transitions.sass */
+/* line 50, ../sass/_page-transitions.sass */
 .tok3n-submit-wrapper {
   z-index: 999;
 }
 
-/* line 56, ../sass/_page-transitions.sass */
+/* line 53, ../sass/_page-transitions.sass */
 .tok3n-move-from-left {
   -moz-animation: moveFromLeft;
   -webkit-animation: moveFromLeft;
@@ -676,7 +670,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 62, ../sass/_page-transitions.sass */
+/* line 59, ../sass/_page-transitions.sass */
 .tok3n-move-to-left {
   -moz-animation: moveToLeft;
   -webkit-animation: moveToLeft;
@@ -692,7 +686,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 68, ../sass/_page-transitions.sass */
+/* line 65, ../sass/_page-transitions.sass */
 .tok3n-move-from-right {
   -moz-animation: moveFromRight;
   -webkit-animation: moveFromRight;
@@ -708,7 +702,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 74, ../sass/_page-transitions.sass */
+/* line 71, ../sass/_page-transitions.sass */
 .tok3n-move-to-right {
   -moz-animation: moveToRight;
   -webkit-animation: moveToRight;
@@ -8181,60 +8175,25 @@ td.visible-print {
     display: none !important;
   }
 }
-/* line 13, ../sass/_old-layout.sass */
-.no-flexbox .tok3n-top {
-  position: relative;
-  z-index: 1000;
-}
-/* line 17, ../sass/_old-layout.sass */
-.no-flexbox .tok3n-top-nav {
-  width: 100%;
-}
 @media (min-width: 769px) {
-  /* line 17, ../sass/_old-layout.sass */
-  .no-flexbox .tok3n-top-nav {
-    position: fixed;
-  }
-}
-/* line 22, ../sass/_old-layout.sass */
-.no-flexbox .tok3n-top-nav .nav-wrap {
-  margin: 0 !important;
-}
-@media (max-width: 768px) {
-  /* line 22, ../sass/_old-layout.sass */
-  .no-flexbox .tok3n-top-nav .nav-wrap {
-    padding: 0 0.8em;
-  }
-}
-@media (min-width: 769px) {
-  /* line 22, ../sass/_old-layout.sass */
-  .no-flexbox .tok3n-top-nav .nav-wrap {
-    padding: 0 1.9em;
-  }
-}
-/* line 29, ../sass/_old-layout.sass */
-.no-flexbox .tok3n-top-nav nav {
-  margin-top: 13px;
-}
-@media (min-width: 769px) {
-  /* line 41, ../sass/_old-layout.sass */
+  /* line 10, ../sass/_old-layout.sass */
   .no-flexbox .tok3n-layout {
     padding-left: 472px;
     position: relative;
     padding-top: 58px;
     z-index: 1;
   }
-  /* line 47, ../sass/_old-layout.sass */
+  /* line 16, ../sass/_old-layout.sass */
   .no-flexbox .tok3n-sidebar, .no-flexbox .tok3n-main-list {
     position: fixed;
     bottom: 0;
     overflow: auto;
   }
-  /* line 52, ../sass/_old-layout.sass */
+  /* line 21, ../sass/_old-layout.sass */
   .no-flexbox .tok3n-main-list {
     top: 0;
   }
-  /* line 55, ../sass/_old-layout.sass */
+  /* line 24, ../sass/_old-layout.sass */
   .no-flexbox .tok3n-sidebar {
     margin-left: -472px;
     width: 220px;
@@ -8242,118 +8201,103 @@ td.visible-print {
     text-align: center;
     padding: 2em 0;
   }
-  /* line 62, ../sass/_old-layout.sass */
+  /* line 31, ../sass/_old-layout.sass */
   .no-flexbox .tok3n-main-list {
     width: 252px;
     border-right: 1px solid #dddddd;
   }
-  /* line 66, ../sass/_old-layout.sass */
+  /* line 35, ../sass/_old-layout.sass */
   .no-flexbox .tok3n-pt-perspective {
     margin-left: -252px;
+    overflow: auto;
   }
-  /* line 69, ../sass/_old-layout.sass */
+  /* line 39, ../sass/_old-layout.sass */
   .no-flexbox .tok3n-main-content {
     margin-left: 252px;
   }
 }
-/* line 72, ../sass/_old-layout.sass */
-.no-flexbox .tok3n-main-content {
-  padding-bottom: 15px;
-}
-/* line 81, ../sass/_old-layout.sass */
+/* line 48, ../sass/_old-layout.sass */
 .no-flexbox .tok3n-pt-page {
   width: 100%;
   height: 100%;
 }
 
-/* line 13, ../sass/_new-layout.sass */
-.flexbox .tok3n-top {
-  position: relative;
-  z-index: 1000;
+/* line 7, ../sass/_new-layout.sass */
+.flexbox .tok3n-layout {
+  position: absolute;
+  top: 58px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  display: -webkit-flex;
+  display: flex;
 }
-/* line 17, ../sass/_new-layout.sass */
-.flexbox .tok3n-top-nav {
+/* line 16, ../sass/_new-layout.sass */
+.flexbox .tok3n-pages-wrapper {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+/* line 21, ../sass/_new-layout.sass */
+.flexbox .tok3n-pt-perspective {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  display: -webkit-flex;
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/* line 27, ../sass/_new-layout.sass */
+.flexbox .tok3n-pt-page {
+  display: -webkit-flex;
+  display: flex;
+  min-height: -webkit-fill-available;
+  min-height: -moz-available;
+}
+/* line 31, ../sass/_new-layout.sass */
+.flexbox .tok3n-pt-page:not(.tok3n-pt-page-current) {
+  height: -webkit-calc(100vh - 58px);
+  height: -moz-calc(100vh - 58px);
+  height: -ms-calc(100vh - 58px);
+  height: -o-calc(100vh - 58px);
+  height: calc(100vh - 58px);
+}
+/* line 34, ../sass/_new-layout.sass */
+.flexbox .tok3n-pt-page {
   width: 100%;
 }
-@media (min-width: 769px) {
-  /* line 17, ../sass/_new-layout.sass */
-  .flexbox .tok3n-top-nav {
-    position: fixed;
-  }
-}
-/* line 23, ../sass/_new-layout.sass */
-.flexbox .tok3n-top-nav .nav-wrap {
-  margin: 0 !important;
-}
 @media (max-width: 768px) {
-  /* line 23, ../sass/_new-layout.sass */
-  .flexbox .tok3n-top-nav .nav-wrap {
-    padding: 0 0.8em;
-  }
-}
-@media (min-width: 769px) {
-  /* line 23, ../sass/_new-layout.sass */
-  .flexbox .tok3n-top-nav .nav-wrap {
-    padding: 0 1.9em;
-  }
-}
-/* line 30, ../sass/_new-layout.sass */
-.flexbox .tok3n-top-nav nav {
-  margin-top: 13px;
-}
-@media (min-width: 769px) {
-  /* line 41, ../sass/_new-layout.sass */
+  /* line 39, ../sass/_new-layout.sass */
   .flexbox .tok3n-layout {
-    position: absolute;
-    top: 58px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    display: -webkit-flex;
-    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
   }
-  /* line 50, ../sass/_new-layout.sass */
+  /* line 42, ../sass/_new-layout.sass */
+  .flexbox .tok3n-pt-page {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  /* line 45, ../sass/_new-layout.sass */
+  .flexbox .tok3n-main-content {
+    min-width: -webkit-fill-available;
+    min-width: -moz-available;
+  }
+}
+@media (min-width: 769px) {
+  /* line 51, ../sass/_new-layout.sass */
   .flexbox .tok3n-sidebar {
     width: 220px;
   }
-  /* line 53, ../sass/_new-layout.sass */
+  /* line 54, ../sass/_new-layout.sass */
   .flexbox .tok3n-main-list {
     width: 252px;
     border-right: 1px solid #dddddd;
   }
-  /* line 57, ../sass/_new-layout.sass */
-  .flexbox .tok3n-pages-wrapper {
-    -webkit-flex-grow: 1;
-    flex-grow: 1;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-  }
-  /* line 62, ../sass/_new-layout.sass */
-  .flexbox .tok3n-pt-perspective {
-    -webkit-flex-grow: 1;
-    flex-grow: 1;
-    display: -webkit-flex;
-    display: flex;
-  }
-  /* line 66, ../sass/_new-layout.sass */
-  .flexbox .tok3n-pt-page {
-    display: -webkit-flex;
-    display: flex;
-    min-height: -webkit-fill-available;
-    min-height: -moz-available;
-  }
-  /* line 70, ../sass/_new-layout.sass */
-  .flexbox .tok3n-pt-page:not(.tok3n-pt-page-current) {
-    height: -webkit-calc(100vh - 58px);
-    height: -moz-calc(100vh - 58px);
-    height: -ms-calc(100vh - 58px);
-    height: -o-calc(100vh - 58px);
-    height: calc(100vh - 58px);
-  }
-  /* line 73, ../sass/_new-layout.sass */
+  /* line 58, ../sass/_new-layout.sass */
   .flexbox .tok3n-main-content {
     width: -webkit-calc(100% - 252px);
     width: -moz-calc(100% - 252px);
@@ -8361,19 +8305,11 @@ td.visible-print {
     width: -o-calc(100% - 252px);
     width: calc(100% - 252px);
   }
-  /* line 75, ../sass/_new-layout.sass */
+  /* line 60, ../sass/_new-layout.sass */
   .flexbox .tok3n-main-content.tok3n-full-layout {
     min-width: -webkit-fill-available;
     min-width: -moz-available;
   }
-}
-/* line 79, ../sass/_new-layout.sass */
-.flexbox .tok3n-main-content {
-  padding-bottom: 15px;
-}
-/* line 86, ../sass/_new-layout.sass */
-.flexbox .tok3n-pt-page {
-  width: 100%;
 }
 
 @font-face {
@@ -8679,12 +8615,9 @@ span.space {
 .tok3n-pt-perspective {
   position: relative;
   perspective: 1200px;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
-/* line 32, ../sass/_page-transitions.sass */
+/* line 29, ../sass/_page-transitions.sass */
 .tok3n-pt-page {
   position: absolute;
   top: 0;
@@ -8704,24 +8637,24 @@ span.space {
   transform-style: preserve-3d;
 }
 
-/* line 45, ../sass/_page-transitions.sass */
+/* line 42, ../sass/_page-transitions.sass */
 .tok3n-pt-page-current {
   visibility: visible !important;
   z-index: 3;
 }
 
-/* line 49, ../sass/_page-transitions.sass */
+/* line 46, ../sass/_page-transitions.sass */
 .tok3n-submit-visible {
   visibility: visible !important;
   z-index: 999;
 }
 
-/* line 53, ../sass/_page-transitions.sass */
+/* line 50, ../sass/_page-transitions.sass */
 .tok3n-submit-wrapper {
   z-index: 999;
 }
 
-/* line 56, ../sass/_page-transitions.sass */
+/* line 53, ../sass/_page-transitions.sass */
 .tok3n-move-from-left {
   -moz-animation: moveFromLeft;
   -webkit-animation: moveFromLeft;
@@ -8737,7 +8670,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 62, ../sass/_page-transitions.sass */
+/* line 59, ../sass/_page-transitions.sass */
 .tok3n-move-to-left {
   -moz-animation: moveToLeft;
   -webkit-animation: moveToLeft;
@@ -8753,7 +8686,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 68, ../sass/_page-transitions.sass */
+/* line 65, ../sass/_page-transitions.sass */
 .tok3n-move-from-right {
   -moz-animation: moveFromRight;
   -webkit-animation: moveFromRight;
@@ -8769,7 +8702,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 74, ../sass/_page-transitions.sass */
+/* line 71, ../sass/_page-transitions.sass */
 .tok3n-move-to-right {
   -moz-animation: moveToRight;
   -webkit-animation: moveToRight;
@@ -8996,12 +8929,9 @@ span.space {
 .tok3n-pt-perspective {
   position: relative;
   perspective: 1200px;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
-/* line 32, ../sass/_page-transitions.sass */
+/* line 29, ../sass/_page-transitions.sass */
 .tok3n-pt-page {
   position: absolute;
   top: 0;
@@ -9021,24 +8951,24 @@ span.space {
   transform-style: preserve-3d;
 }
 
-/* line 45, ../sass/_page-transitions.sass */
+/* line 42, ../sass/_page-transitions.sass */
 .tok3n-pt-page-current {
   visibility: visible !important;
   z-index: 3;
 }
 
-/* line 49, ../sass/_page-transitions.sass */
+/* line 46, ../sass/_page-transitions.sass */
 .tok3n-submit-visible {
   visibility: visible !important;
   z-index: 999;
 }
 
-/* line 53, ../sass/_page-transitions.sass */
+/* line 50, ../sass/_page-transitions.sass */
 .tok3n-submit-wrapper {
   z-index: 999;
 }
 
-/* line 56, ../sass/_page-transitions.sass */
+/* line 53, ../sass/_page-transitions.sass */
 .tok3n-move-from-left {
   -moz-animation: moveFromLeft;
   -webkit-animation: moveFromLeft;
@@ -9054,7 +8984,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 62, ../sass/_page-transitions.sass */
+/* line 59, ../sass/_page-transitions.sass */
 .tok3n-move-to-left {
   -moz-animation: moveToLeft;
   -webkit-animation: moveToLeft;
@@ -9070,7 +9000,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 68, ../sass/_page-transitions.sass */
+/* line 65, ../sass/_page-transitions.sass */
 .tok3n-move-from-right {
   -moz-animation: moveFromRight;
   -webkit-animation: moveFromRight;
@@ -9086,7 +9016,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 74, ../sass/_page-transitions.sass */
+/* line 71, ../sass/_page-transitions.sass */
 .tok3n-move-to-right {
   -moz-animation: moveToRight;
   -webkit-animation: moveToRight;
@@ -9102,13 +9032,13 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 9, ../sass/base.sass */
+/* line 7, ../sass/base.sass */
 body {
   font-family: "ff-dagny-web-pro";
   color: #333333;
   font-size: 145%;
 }
-/* line 14, ../sass/base.sass */
+/* line 12, ../sass/base.sass */
 body a {
   color: #434cd3;
 }
@@ -9121,20 +9051,27 @@ body a:active {
   color: #ba7f29;
 }
 
-/* line 17, ../sass/base.sass */
+/* line 15, ../sass/base.sass */
 h1, h2, h3, h4, h5, h6 {
   font-family: "adelle";
   color: #3d418f;
 }
 
-/* line 21, ../sass/base.sass */
+/* line 19, ../sass/base.sass */
 a {
   text-decoration: none;
   color: #1b98f8;
 }
 
-/* line 26, ../sass/base.sass */
+/* line 30, ../sass/base.sass */
+.tok3n-top {
+  position: relative;
+  z-index: 1000;
+}
+
+/* line 34, ../sass/base.sass */
 .tok3n-top-nav {
+  width: 100%;
   -moz-box-shadow: inset 0 -12px 30px 0 rgba(23, 13, 38, 0.15);
   -webkit-box-shadow: inset 0 -12px 30px 0 rgba(23, 13, 38, 0.15);
   box-shadow: inset 0 -12px 30px 0 rgba(23, 13, 38, 0.15);
@@ -9143,7 +9080,29 @@ a {
   border-bottom: 1px solid #411485;
   border-bottom: 1px solid rgba(65, 20, 133, 0.3);
 }
-/* line 34, ../sass/base.sass */
+@media (min-width: 769px) {
+  /* line 34, ../sass/base.sass */
+  .tok3n-top-nav {
+    position: fixed;
+  }
+}
+/* line 45, ../sass/base.sass */
+.tok3n-top-nav .nav-wrap {
+  margin: 0 !important;
+}
+@media (max-width: 768px) {
+  /* line 45, ../sass/base.sass */
+  .tok3n-top-nav .nav-wrap {
+    padding: 0 0.8em;
+  }
+}
+@media (min-width: 769px) {
+  /* line 45, ../sass/base.sass */
+  .tok3n-top-nav .nav-wrap {
+    padding: 0 1.9em;
+  }
+}
+/* line 53, ../sass/base.sass */
 .tok3n-top-nav header .logo {
   margin: 0.61em 0;
   height: 40px;
@@ -9151,22 +9110,26 @@ a {
   background-image: url('../img/logo.png?1376272590');
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
-  /* line 34, ../sass/base.sass */
+  /* line 53, ../sass/base.sass */
   .tok3n-top-nav header .logo {
     background-image: url('../img/logo_hd.png?1376272590');
     background-size: 111px 40px;
   }
 }
-/* line 41, ../sass/base.sass */
+/* line 59, ../sass/base.sass */
+.tok3n-top-nav nav {
+  margin-top: 13px;
+}
+/* line 61, ../sass/base.sass */
 .tok3n-top-nav nav .menu {
   text-align: right;
 }
-/* line 44, ../sass/base.sass */
+/* line 64, ../sass/base.sass */
 .tok3n-top-nav nav .menu .toggle-sidebar .icon-tok3n-menu:before {
   vertical-align: middle;
   line-height: 1.4;
 }
-/* line 47, ../sass/base.sass */
+/* line 67, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul {
   list-style-type: none;
 }
@@ -9176,43 +9139,43 @@ a {
   padding: 0;
   display: inline;
 }
-/* line 49, ../sass/base.sass */
+/* line 69, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul li {
   margin: 0 1.05em;
 }
 @media (max-width: 481px) {
-  /* line 52, ../sass/base.sass */
+  /* line 72, ../sass/base.sass */
   .tok3n-top-nav nav .menu ul li.developers {
     display: none;
   }
 }
 @media (min-width: 769px) {
-  /* line 49, ../sass/base.sass */
+  /* line 69, ../sass/base.sass */
   .tok3n-top-nav nav .menu ul li {
     margin: 0 0 0 1.05em;
   }
-  /* line 55, ../sass/base.sass */
+  /* line 75, ../sass/base.sass */
   .tok3n-top-nav nav .menu ul li.toggle-sidebar {
     display: none;
   }
 }
-/* line 58, ../sass/base.sass */
+/* line 78, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul li:first-child {
   margin: 0 1.05em 0 0;
 }
-/* line 60, ../sass/base.sass */
+/* line 80, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul li:last-child {
   margin: 0 0 0 1.05em;
 }
-/* line 62, ../sass/base.sass */
+/* line 82, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul li:only-child {
   margin: 0;
 }
-/* line 64, ../sass/base.sass */
+/* line 84, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul li a {
   text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
 }
-/* line 65, ../sass/base.sass */
+/* line 85, ../sass/base.sass */
 .touch .tok3n-top-nav nav .menu ul li a {
   color: #171947;
 }
@@ -9220,7 +9183,7 @@ a {
 .touch .tok3n-top-nav nav .menu ul li a:active {
   color: #ba7f29;
 }
-/* line 67, ../sass/base.sass */
+/* line 87, ../sass/base.sass */
 .no-touch .tok3n-top-nav nav .menu ul li a {
   color: #171947;
 }
@@ -9232,7 +9195,7 @@ a {
 .no-touch .tok3n-top-nav nav .menu ul li a:active {
   color: #ba7f29;
 }
-/* line 71, ../sass/base.sass */
+/* line 91, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul li .settings {
   background: rgba(39, 47, 165, 0.68);
   color: white;
@@ -9247,45 +9210,46 @@ a {
   -webkit-transition-delay: 0;
   transition: background 0.3s ease-out 0;
 }
-/* line 79, ../sass/base.sass */
+/* line 99, ../sass/base.sass */
 .no-touch .tok3n-top-nav nav .menu ul li .settings:hover {
   background: rgba(48, 59, 207, 0.9);
 }
-/* line 81, ../sass/base.sass */
+/* line 101, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul li .settings:active {
   background: rgba(172, 177, 236, 0.9);
 }
-/* line 83, ../sass/base.sass */
+/* line 103, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul li .settings .icon-cog {
   font-size: 16px;
 }
-/* line 85, ../sass/base.sass */
+/* line 105, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul li .settings .text {
   margin-left: 0.6em;
   font-family: "ff-dagny-web-pro";
 }
-/* line 88, ../sass/base.sass */
+/* line 108, ../sass/base.sass */
 .tok3n-top-nav nav .menu ul li .settings .icon-caret-down {
   margin-left: 0.8em;
 }
 
-/* line 97, ../sass/base.sass */
-.tok3n-pt-page {
-  width: 100%;
+@media (min-width: 769px) {
+  /* line 116, ../sass/base.sass */
+  .tok3n-main-content {
+    padding-bottom: 15px;
+  }
 }
-
-/* line 104, ../sass/base.sass */
+/* line 123, ../sass/base.sass */
 .tok3n-sidebar {
   background: #252a3a;
 }
 @media (min-width: 769px) {
-  /* line 104, ../sass/base.sass */
+  /* line 123, ../sass/base.sass */
   .tok3n-sidebar {
     text-align: center;
     padding: 2em 0;
   }
 }
-/* line 109, ../sass/base.sass */
+/* line 128, ../sass/base.sass */
 .tok3n-sidebar .menu {
   margin: 0;
   background: transparent;
@@ -9300,81 +9264,81 @@ a {
   user-select: none;
 }
 @media (min-width: 769px) {
-  /* line 109, ../sass/base.sass */
+  /* line 128, ../sass/base.sass */
   .tok3n-sidebar .menu {
     margin-left: -10px;
   }
 }
-/* line 122, ../sass/base.sass */
+/* line 141, ../sass/base.sass */
 .tok3n-sidebar .menu li {
   cursor: pointer;
   color: white;
   color: rgba(255, 255, 255, 0.7);
 }
 @media (max-width: 768px) {
-  /* line 122, ../sass/base.sass */
+  /* line 141, ../sass/base.sass */
   .tok3n-sidebar .menu li {
     padding: 0.8em 2em;
   }
 }
 @media (min-width: 769px) {
-  /* line 122, ../sass/base.sass */
+  /* line 141, ../sass/base.sass */
   .tok3n-sidebar .menu li {
     padding-top: 0.7em;
     padding-bottom: 0.2em;
   }
 }
-/* line 132, ../sass/base.sass */
+/* line 151, ../sass/base.sass */
 .no-touch .tok3n-sidebar .menu li:hover, .no-touch .tok3n-sidebar .menu li:focus {
   background: #373c5a;
   color: white;
 }
-/* line 136, ../sass/base.sass */
+/* line 155, ../sass/base.sass */
 .no-touch .tok3n-sidebar .menu li.tok3n-sidebar-selected:hover, .no-touch .tok3n-sidebar .menu li.tok3n-sidebar-selected:focus {
   background: #3e4465;
 }
-/* line 138, ../sass/base.sass */
+/* line 157, ../sass/base.sass */
 .tok3n-sidebar .menu li.tok3n-sidebar-selected {
   background: #3e4465;
 }
 @media (max-width: 768px) {
-  /* line 140, ../sass/base.sass */
+  /* line 159, ../sass/base.sass */
   .tok3n-sidebar .menu li .title, .tok3n-sidebar .menu li .icon {
     display: inline-block;
   }
 }
-/* line 143, ../sass/base.sass */
+/* line 162, ../sass/base.sass */
 .tok3n-sidebar .menu li .title {
   text-align: left;
   padding-left: 0;
 }
 @media (max-width: 768px) {
-  /* line 143, ../sass/base.sass */
+  /* line 162, ../sass/base.sass */
   .tok3n-sidebar .menu li .title {
     font-size: 120%;
     margin-top: 0.2em;
   }
 }
-/* line 149, ../sass/base.sass */
+/* line 168, ../sass/base.sass */
 .tok3n-sidebar .menu li .icon {
   color: rgba(255, 255, 255, 0.8);
   color: white;
   text-align: center;
 }
 @media (max-width: 768px) {
-  /* line 149, ../sass/base.sass */
+  /* line 168, ../sass/base.sass */
   .tok3n-sidebar .menu li .icon {
     font-size: 150%;
   }
 }
 @media (min-width: 769px) {
-  /* line 149, ../sass/base.sass */
+  /* line 168, ../sass/base.sass */
   .tok3n-sidebar .menu li .icon {
     font-size: 130%;
   }
 }
 
-/* line 162, ../sass/base.sass */
+/* line 181, ../sass/base.sass */
 .dropdown-show {
   display: block;
 }
@@ -9682,12 +9646,9 @@ span.space {
 .tok3n-pt-perspective {
   position: relative;
   perspective: 1200px;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
-/* line 32, ../sass/_page-transitions.sass */
+/* line 29, ../sass/_page-transitions.sass */
 .tok3n-pt-page {
   position: absolute;
   top: 0;
@@ -9707,24 +9668,24 @@ span.space {
   transform-style: preserve-3d;
 }
 
-/* line 45, ../sass/_page-transitions.sass */
+/* line 42, ../sass/_page-transitions.sass */
 .tok3n-pt-page-current {
   visibility: visible !important;
   z-index: 3;
 }
 
-/* line 49, ../sass/_page-transitions.sass */
+/* line 46, ../sass/_page-transitions.sass */
 .tok3n-submit-visible {
   visibility: visible !important;
   z-index: 999;
 }
 
-/* line 53, ../sass/_page-transitions.sass */
+/* line 50, ../sass/_page-transitions.sass */
 .tok3n-submit-wrapper {
   z-index: 999;
 }
 
-/* line 56, ../sass/_page-transitions.sass */
+/* line 53, ../sass/_page-transitions.sass */
 .tok3n-move-from-left {
   -moz-animation: moveFromLeft;
   -webkit-animation: moveFromLeft;
@@ -9740,7 +9701,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 62, ../sass/_page-transitions.sass */
+/* line 59, ../sass/_page-transitions.sass */
 .tok3n-move-to-left {
   -moz-animation: moveToLeft;
   -webkit-animation: moveToLeft;
@@ -9756,7 +9717,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 68, ../sass/_page-transitions.sass */
+/* line 65, ../sass/_page-transitions.sass */
 .tok3n-move-from-right {
   -moz-animation: moveFromRight;
   -webkit-animation: moveFromRight;
@@ -9772,7 +9733,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 74, ../sass/_page-transitions.sass */
+/* line 71, ../sass/_page-transitions.sass */
 .tok3n-move-to-right {
   -moz-animation: moveToRight;
   -webkit-animation: moveToRight;
@@ -9999,12 +9960,9 @@ span.space {
 .tok3n-pt-perspective {
   position: relative;
   perspective: 1200px;
-  overflow: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
-/* line 32, ../sass/_page-transitions.sass */
+/* line 29, ../sass/_page-transitions.sass */
 .tok3n-pt-page {
   position: absolute;
   top: 0;
@@ -10024,24 +9982,24 @@ span.space {
   transform-style: preserve-3d;
 }
 
-/* line 45, ../sass/_page-transitions.sass */
+/* line 42, ../sass/_page-transitions.sass */
 .tok3n-pt-page-current {
   visibility: visible !important;
   z-index: 3;
 }
 
-/* line 49, ../sass/_page-transitions.sass */
+/* line 46, ../sass/_page-transitions.sass */
 .tok3n-submit-visible {
   visibility: visible !important;
   z-index: 999;
 }
 
-/* line 53, ../sass/_page-transitions.sass */
+/* line 50, ../sass/_page-transitions.sass */
 .tok3n-submit-wrapper {
   z-index: 999;
 }
 
-/* line 56, ../sass/_page-transitions.sass */
+/* line 53, ../sass/_page-transitions.sass */
 .tok3n-move-from-left {
   -moz-animation: moveFromLeft;
   -webkit-animation: moveFromLeft;
@@ -10057,7 +10015,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 62, ../sass/_page-transitions.sass */
+/* line 59, ../sass/_page-transitions.sass */
 .tok3n-move-to-left {
   -moz-animation: moveToLeft;
   -webkit-animation: moveToLeft;
@@ -10073,7 +10031,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 68, ../sass/_page-transitions.sass */
+/* line 65, ../sass/_page-transitions.sass */
 .tok3n-move-from-right {
   -moz-animation: moveFromRight;
   -webkit-animation: moveFromRight;
@@ -10089,7 +10047,7 @@ span.space {
   animation-timing-function: ease-in-out;
 }
 
-/* line 74, ../sass/_page-transitions.sass */
+/* line 71, ../sass/_page-transitions.sass */
 .tok3n-move-to-right {
   -moz-animation: moveToRight;
   -webkit-animation: moveToRight;
@@ -10257,7 +10215,7 @@ span.space {
 @media (max-width: 768px) {
   /* line 41, ../sass/main.sass */
   .tok3n-full-layout {
-    margin: 3em 2em 2em;
+    margin: 1em 2em;
   }
 }
 @media (min-width: 769px) {

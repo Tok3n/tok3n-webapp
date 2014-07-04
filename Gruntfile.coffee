@@ -53,6 +53,9 @@ module.exports = (grunt) ->
 		coffee: 
 			options:
 				bare: true
+			utils:
+				src: coffee + 'utils.coffee'
+				dest: js + 'utils.js'
 			main:
 				src: coffee + 'main.coffee'
 				dest: js + 'main.js'
@@ -121,6 +124,8 @@ module.exports = (grunt) ->
 					js + 'modernizr.js'
 					comp + 'jquery/dist/jquery.js'
 					comp + 'parsleyjs/dist/parsley.js'
+					comp + 'eventEmitter/EventEmitter.js'
+					'<%= coffee.utils.dest %>'
 				]				
 				dest: js + 'utils.js'
 			dashboard:

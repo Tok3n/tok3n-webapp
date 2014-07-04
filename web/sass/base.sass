@@ -1,7 +1,5 @@
 @import 'imports'
 
-$nav-separation: 2.1em
-
 ////////////////////
 // Sitewide
 ////////////////////
@@ -22,13 +20,34 @@ a
   text-decoration: none
   color: #1b98f8
 
+////////////////////
+// Top nav
+////////////////////
+
+$nav-margin-top: 13px
+$nav-separation: 2.1em
+
+.tok3n-top
+  position: relative
+  z-index: 1000
 
 .tok3n-top-nav
+  width: 100%
+  // The height is inherited from .logo in the base.sass file, we hardcoded the computed px value into the $top-nav-height variable.
+  +from(3)
+    position: fixed
   +single-box-shadow(0,-12px,30px,0,hsla(264,50,10,.15),true)
   background: white(.9)
   letter-spacing: normal
   border-bottom: 1px solid #411485
   border-bottom: 1px solid hsla(264,74,30,.3)
+
+  .nav-wrap
+    margin: 0 !important
+    +to(2)
+      padding: 0 0.8em
+    +from(3)
+      padding: 0 1.9em
   
   header
     .logo
@@ -38,6 +57,7 @@ a
       +hr-image("logo.png", "logo_hd.png")
   
   nav
+    margin-top: $nav-margin-top
     .menu
       text-align: right
       .toggle-sidebar .icon-tok3n-menu
@@ -89,13 +109,12 @@ a
               margin-left: .8em
 
 ////////////////////
-// Page transitions
+// Layout
 ////////////////////
 
-.tok3n-pt-perspective
-  // The height of this element must be set with js. BTW this all this 3 pane setup is a huge hack, which should be done using flex-box.
-.tok3n-pt-page
-  width: 100%
++from(3)
+  .tok3n-main-content
+    padding-bottom: 15px
 
 ////////////////////
 // Sidebar
