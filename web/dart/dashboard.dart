@@ -6,8 +6,8 @@ void main() {
   // Initialize page. Set current window, call resizeContent (that's on the vanilla side),
   // and listen for window switching on the left menu.
   // querySelector('#tok3nIntegrations').classes.add('tok3n-pt-page-current');
-  context.callMethod('resizeContent');
-  selectWindow();
+//  context.callMethod('resizeContent');
+//  selectWindow();
 
   // Flip cards
   querySelectorAll('.tok3n-cards-container .front').forEach((Element e) {
@@ -82,80 +82,84 @@ void resizeContent() {
   context.callMethod('resizeContent');
 }
 
-void selectWindow() {
-  // Change these values depending on your html layout and css.
-  ElementList options = querySelectorAll('#tok3nSidebarMenu li');
-  String menuItemAnchorClass = 'tok3n-menu-item';
-  String menuItemSelectedClass = 'tok3n-sidebar-selected';
-  Element previousOption = querySelector('#tok3nSidebarMenu li.' + menuItemSelectedClass);
-  // Change these values depending on your css animations.
-//  Duration cssAnimationDuration = new Duration(milliseconds:250);
-  String currentVisibleAnchorClass = 'tok3n-pt-page-current';
-  String fromCssAnimClassPrefix = 'tok3n-move-from-';
-  String toCssAnimClassPrefix = 'tok3n-move-to-';
-  String originCssAnimClass = 'left';
-  String destCssAnimClass = 'right';
-  List<String> animationClasses = [fromCssAnimClassPrefix + originCssAnimClass,
-                                   fromCssAnimClassPrefix + destCssAnimClass,
-                                   toCssAnimClassPrefix + originCssAnimClass,
-                                   toCssAnimClassPrefix + destCssAnimClass,];
-  // Dynamic vars
-  int optionCount = options.length;
-  // These vars are set after the first iteration, they will be null on the first execution
-  // (refer to the last 4 lines of selectWindow())
-  String previousTargetId = previousOption.getAttribute("data-target").toString();
-  Element previousTarget = querySelector(previousTargetId);
-
-  // Each time the menu is clicked
-  options.forEach((Element option){
-    option.onClick.listen((ev) {
-      // Get the menu item that was clicked
-      Element nextOption() {
-        Element el;
-        if (ev.target.classes.contains(menuItemAnchorClass)) {
-          el = ev.target;
-        } else {
-          el = findClosestAncestor(ev.target, menuItemAnchorClass);
-        }
-        return el;
-      }
-      // If the target exists
-      if (querySelector(nextOption().getAttribute("data-target")) != null) {
-        String nextTargetId = nextOption().getAttribute("data-target").toString();
-        Element nextTarget = querySelector(nextTargetId);
-        // Which side we should move the content, depending on the previous item
-        String animationSide(String side) {
-          String str;
-          if (childNodeIndex(nextOption()) < childNodeIndex(previousOption)) {
-            if (side == 'previous') { str = originCssAnimClass; }
-            else if (side == 'next') { str = destCssAnimClass; }
-          } else if (childNodeIndex(nextOption()) > childNodeIndex(previousOption)) {
-            if (side == 'previous') { str = destCssAnimClass; }
-            else if (side == 'next') { str = originCssAnimClass; }
-          }
-          return str;
-        }
-        // Slide content if the element we clicked is different than the current selected one
-        if ((childNodeIndex(nextOption()) == childNodeIndex(previousOption)) == false) {
-          // Remove any previous and add new animation classes
-          previousTarget.classes
-            ..removeAll(animationClasses)
-            ..add(toCssAnimClassPrefix + animationSide('previous'));
-          nextTarget.classes
-            ..removeAll(animationClasses)
-            ..add(currentVisibleAnchorClass)
-            ..add(fromCssAnimClassPrefix + animationSide('next'));
-          // Select menu item for user feedback
-          previousOption.classes.toggle(menuItemSelectedClass);
-          nextOption().classes.toggle(menuItemSelectedClass);
-          // Flush content resizing
-          resizeContent();
-          // Prepare for next iteration
-          previousOption = nextOption();
-          previousTargetId = previousOption.getAttribute("data-target").toString();
-          previousTarget = querySelector(previousTargetId);
-        }
-      }
-    });
-  });
-}
+//void selectWindow() {
+//  // Change these values depending on your html layout and css.
+//  ElementList options = querySelectorAll('#tok3nSidebarMenu li');
+//  String menuItemAnchorClass = 'tok3n-menu-item';
+//  String menuItemSelectedClass = 'tok3n-sidebar-selected';
+//  Element previousOption = querySelector('#tok3nSidebarMenu li.' + menuItemSelectedClass);
+//  // Change these values depending on your css animations.
+////  Duration cssAnimationDuration = new Duration(milliseconds:250);
+//  String currentVisibleAnchorClass = 'tok3n-pt-page-current';
+//  String fromCssAnimClassPrefix = 'tok3n-move-from-';
+//  String toCssAnimClassPrefix = 'tok3n-move-to-';
+//  String originCssAnimClass = 'left';
+//  String destCssAnimClass = 'right';
+//  List<String> animationClasses = [fromCssAnimClassPrefix + originCssAnimClass,
+//                                   fromCssAnimClassPrefix + destCssAnimClass,
+//                                   toCssAnimClassPrefix + originCssAnimClass,
+//                                   toCssAnimClassPrefix + destCssAnimClass,];
+//  // Dynamic vars
+//  int optionCount = options.length;
+//  // These vars are set after the first iteration, they will be null on the first execution
+//  // (refer to the last 4 lines of selectWindow())
+//  String previousTargetId = previousOption.getAttribute("data-target").toString();
+//  Element previousTarget = querySelector(previousTargetId);
+//
+//  // Each time the menu is clicked
+//  options.forEach((Element option){
+//    option.onClick.listen((ev) {
+//      // Get the menu item that was clicked
+//      Element nextOption() {
+//        Element el;
+//        if (ev.target.classes.contains(menuItemAnchorClass)) {
+//          el = ev.target;
+//        } else {
+//          el = findClosestAncestor(ev.target, menuItemAnchorClass);
+//        }
+//        return el;
+//      }
+//      // If the target exists
+//      if (querySelector(nextOption().getAttribute("data-target")) != null) {
+//        String nextTargetId = nextOption().getAttribute("data-target").toString();
+//        Element nextTarget = querySelector(nextTargetId);
+//        // Which side we should move the content, depending on the previous item
+//        String animationSide(String side) {
+//          String str;
+//          if (childNodeIndex(nextOption()) < childNodeIndex(previousOption)) {
+//            if (side == 'previous') { str = originCssAnimClass; }
+//            else if (side == 'next') { str = destCssAnimClass; }
+//          } else if (childNodeIndex(nextOption()) > childNodeIndex(previousOption)) {
+//            if (side == 'previous') { str = destCssAnimClass; }
+//            else if (side == 'next') { str = originCssAnimClass; }
+//          }
+//          return str;
+//        }
+//        // Slide content if the element we clicked is different than the current selected one
+//        if ((childNodeIndex(nextOption()) == childNodeIndex(previousOption)) == false) {
+//          // Remove any previous and add new animation classes
+//          previousTarget.classes
+//            ..removeAll(animationClasses)
+//            ..remove(currentVisibleAnchorClass)
+//            ..add(toCssAnimClassPrefix + animationSide('previous'));
+////          new Timer(new Duration(milliseconds:250), () {
+////            previousTarget.classes.remove(currentVisibleAnchorClass);
+////          });
+//          nextTarget.classes
+//            ..removeAll(animationClasses)
+//            ..add(currentVisibleAnchorClass)
+//            ..add(fromCssAnimClassPrefix + animationSide('next'));
+//          // Select menu item for user feedback
+//          previousOption.classes.toggle(menuItemSelectedClass);
+//          nextOption().classes.toggle(menuItemSelectedClass);
+//          // Flush content resizing
+//          resizeContent();
+//          // Prepare for next iteration
+//          previousOption = nextOption();
+//          previousTargetId = previousOption.getAttribute("data-target").toString();
+//          previousTarget = querySelector(previousTargetId);
+//        }
+//      }
+//    });
+//  });
+//}

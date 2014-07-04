@@ -1,0 +1,87 @@
+.flexbox
+
+  //////////////////////
+  // Top nav proportions
+  //////////////////////
+
+  $top-nav-height: 58px //- hardcoded!!
+  $logo-width: 100px
+  $logo-proportion: .36
+  $button-separation: .5em
+  $nav-margin-top: 13px
+
+  .tok3n-top
+    position: relative
+    z-index: 1000
+
+  .tok3n-top-nav
+    width: 100%
+    // The height is inherited from .logo in the base.sass file, we hardcoded the computed px value into the $top-nav-height variable.
+    +from(3)
+      position: fixed
+    
+    .nav-wrap
+      margin: 0 !important
+      +to(2)
+        padding: 0 0.8em
+      +from(3)
+        padding: 0 1.9em
+    
+    nav
+      margin-top: $nav-margin-top 
+
+  /////////////////////////////
+  // Three column propoportions
+  /////////////////////////////
+
+  +from(3)
+    $menu-width: 220px
+    $apps-width: 252px
+
+    .tok3n-layout
+      position: absolute
+      top: $top-nav-height
+      right: 0
+      bottom: 0
+      left: 0
+      z-index: 1
+      +display-flex(flex)
+
+    .tok3n-sidebar
+      width: $menu-width
+
+    .tok3n-main-list
+      width: $apps-width
+      border-right: 1px solid #ddd
+
+    .tok3n-pages-wrapper
+      +flex-grow(1)
+      +display-flex(flex)
+      +flex-direction(column)
+
+    .tok3n-pt-perspective
+      +flex-grow(1)
+      +display-flex(flex)
+
+    .tok3n-pt-page
+      +display-flex(flex)
+      min-height: -webkit-fill-available
+      min-height: -moz-available
+      &:not(.tok3n-pt-page-current)
+        +experimental-value(height, calc(100vh - #{$top-nav-height}))
+
+    .tok3n-main-content
+      +experimental-value(width, calc(100% - #{$apps-width}))
+      &.tok3n-full-layout
+        min-width: -webkit-fill-available
+        min-width: -moz-available
+    
+  .tok3n-main-content
+    padding-bottom: 15px
+
+  ////////////////////
+  // Page transitions
+  ////////////////////
+
+  .tok3n-pt-page
+    width: 100%

@@ -1,5 +1,7 @@
 @import 'imports'
 
+$nav-separation: 2.1em
+
 ////////////////////
 // Sitewide
 ////////////////////
@@ -20,37 +22,13 @@ a
   text-decoration: none
   color: #1b98f8
 
-//////////////////////
-// Top nav proportions
-//////////////////////
-
-$top-nav-height: 58px //- hardcoded!!
-$logo-width: 100px
-$logo-proportion: .36
-$nav-separation: 2.1em
-$button-separation: .5em
-$nav-margin-top: 13px
-
-.tok3n-top
-  position: relative
-  z-index: 1000
 
 .tok3n-top-nav
   +single-box-shadow(0,-12px,30px,0,hsla(264,50,10,.15),true)
   background: white(.9)
-  width: 100%
   letter-spacing: normal
   border-bottom: 1px solid #411485
   border-bottom: 1px solid hsla(264,74,30,.3)
-  +from(3)
-    position: fixed
-  
-  .nav-wrap
-    margin: 0 !important
-    +to(2)
-      padding: 0 0.8em
-    +from(3)
-      padding: 0 1.9em
   
   header
     .logo
@@ -60,10 +38,12 @@ $nav-margin-top: 13px
       +hr-image("logo.png", "logo_hd.png")
   
   nav
-    margin-top: $nav-margin-top
     .menu
       text-align: right
-      // margin-right: 1em
+      .toggle-sidebar .icon-tok3n-menu
+        &:before
+          vertical-align: middle
+          line-height: 1.4
       ul
         +inline-list
         li
@@ -75,6 +55,12 @@ $nav-margin-top: 13px
             &.toggle-sidebar
               display: none
             margin: 0 0 0 $nav-separation/2
+          &:first-child
+            margin: 0 $nav-separation/2 0 0
+          &:last-child
+            margin: 0 0 0 $nav-separation/2
+          &:only-child
+            margin: 0
           a
             .touch &
               +link-colors($normal: #171947, $active: #ba7f29)
@@ -82,12 +68,6 @@ $nav-margin-top: 13px
               +link-colors(#171947, #434cd3, #ba7f29)
             +letterpress(white(.7))
             // font-weight: bolder
-          &:first-child
-            margin: 0 $nav-separation/2 0 0
-          &:last-child
-            margin: 0 0 0 $nav-separation/2
-          &:only-child
-            margin: 0
           .settings
             background: hsla(236, 62%, 40%, 0.68)
             color: #fff
@@ -108,51 +88,9 @@ $nav-margin-top: 13px
             .icon-caret-down
               margin-left: .8em
 
-/////////////////////////////
-// Three column propoportions
-/////////////////////////////
-
-+from(3)
-  $menu-width: 220px
-  $apps-width: 252px
-  $left-width: $menu-width + $apps-width
-
-  .tok3n-layout
-    padding-left: $left-width
-    position: relative
-    padding-top: $top-nav-height
-    z-index: 1
-
-  .tok3n-sidebar, .tok3n-main-list
-    position: fixed
-    bottom: 0
-    overflow: auto
-
-  .tok3n-main-list
-    top: 0
-
-  .tok3n-sidebar
-    margin-left: $left-width * -1
-    width: $menu-width
-    top: $top-nav-height
-    text-align: center
-    padding: 2em 0
-
-  .tok3n-main-list
-    width: $apps-width
-    border-right: 1px solid #ddd
-
-  .tok3n-pt-perspective
-    margin-left: $apps-width * -1
-
-  .tok3n-main-content
-    margin-left: $apps-width
-
 ////////////////////
 // Page transitions
 ////////////////////
-
-@import 'page-transitions'
 
 .tok3n-pt-perspective
   // The height of this element must be set with js. BTW this all this 3 pane setup is a huge hack, which should be done using flex-box.
@@ -165,6 +103,9 @@ $nav-margin-top: 13px
 
 .tok3n-sidebar
   background: rgb(37, 42, 58)
+  +from(3)
+    text-align: center
+    padding: 2em 0
   .menu
     margin: 0
     background: transparent

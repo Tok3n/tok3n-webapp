@@ -2,15 +2,16 @@ include 'dashboard/dashboard-layout.blade'
 render title('Tok3n | Developer')
 
 prepend block style
-  // [if lte IE 8]> <link rel="stylesheet" type="text/css" href="css/ie8-and-down.css" /> <![endif]
+	// [if lte IE 8]> <link rel="stylesheet" type="text/css" href="css/ie8-and-down.css" /> <![endif]
 
 append block body
-  .tok3n-pt-perspective
-    include 'dashboard/dashboard-devices.blade'
-    include 'dashboard/dashboard-phonelines.blade'
-    include 'dashboard/dashboard-applications.blade'
-    include 'dashboard/dashboard-integrations.blade'
-    include 'dashboard/dashboard-backupcodes.blade'
-    include 'dashboard/dashboard-settings.blade'
-    
+	.tok3n-pages-wrapper
+		.tok3n-pt-perspective
+			include 'dashboard/dashboard-devices.blade'
+			include 'dashboard/dashboard-phonelines.blade'
+			include 'dashboard/dashboard-applications.blade'
+			include 'dashboard/dashboard-integrations.blade'
+			include 'dashboard/dashboard-backupcodes.blade'
+			include 'dashboard/dashboard-settings.blade'
+		
 prepend block footer

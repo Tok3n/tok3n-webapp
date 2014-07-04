@@ -72,11 +72,14 @@ $tok3n-purple: #2b3087
   .new-item
     height: 40px
   .avatar
-    margin-top: 0.1em
+    margin-top: 5px
     margin-right: 15px
     width: 35px
   .avatar, .info
     float: left
+  +to(2)
+    .info
+      width: calc(100% - 50px)
   +from(3)
     .info
       width: 163px
@@ -100,7 +103,7 @@ $tok3n-purple: #2b3087
     .title
       font-style: italic
       font-weight: normal
-      margin-top: 3px
+      margin-top: 8px
     i
       font-size: 130%
       margin-left: 7px
