@@ -1,21 +1,14 @@
 (function() {
-  var animationClasses, childNodeIndex, findClosestAncestor, removeAnimationClasses, slider;
+
+  /*
+  Sliding login window
+   */
+  var animationClasses, removeAnimationClasses, slider;
   animationClasses = ['tok3n-move-from-left', 'tok3n-move-to-left', 'tok3n-move-from-right', 'tok3n-move-to-right'];
   removeAnimationClasses = function(el) {
     return each(animationClasses, function(cl) {
       return el.classList.remove(cl);
     });
-  };
-  childNodeIndex = function(el) {
-    return indexOf(el.parentNode.children, el);
-  };
-  findClosestAncestor = function(el, ancestorTag) {
-    var parentEl;
-    parentEl = el.parentElement;
-    while (!parentEl.classList.contains(ancestorTag)) {
-      parentEl = parentEl.parentElement;
-    }
-    return parentEl;
   };
   slider = function() {
     var menuItemAnchorClass, menuItemSelectedClass, options, previousOption, previousTarget, previousTargetId;

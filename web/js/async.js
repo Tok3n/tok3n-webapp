@@ -1,7 +1,4 @@
 (function() {
-  var root;
-  root = typeof exports !== "undefined" && exports !== null ? exports : this;
-  root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
   return Modernizr.load([
     {
       test: Modernizr.mq,
@@ -9,6 +6,23 @@
     }, {
       test: document.documentElement.classList,
       nope: 'https://raw.githubusercontent.com/eligrey/classList.js/master/classList.min.js'
+    }, {
+      test: document.querySelector,
+      nope: 'https://gist.githubusercontent.com/chrisjlee/8960575/raw/53c2a101030437f02fe774f43733673f99a13a0a/querySelector.polyfill.js'
+    }, {
+      test: CSS.supports,
+      nope: 'https://raw.githubusercontent.com/termi/CSS.supports/master/__COMPILED/CSS.supports.js'
+    }, {
+      test: CSS.supports('width', 'calc(10px)') || CSS.supports('width', '-webkit-calc(10px)') || CSS.supports('width', '-moz-calc(10px)'),
+      nope: 'https://raw.githubusercontent.com/closingtag/calc-polyfill/master/calc.min.js'
+    }, {
+      test: CSS.supports('min-height', '-webkit-fill-available') || CSS.supports('min-height', '-moz-available'),
+      nope: function() {
+        Tok3nDashboard.compatibilityLayout();
+        return window.setInterval(function() {
+          return Tok3nDashboard.resizeContent();
+        }, 1000);
+      }
     }, {
       test: String.prototype.contains,
       nope: function() {
@@ -42,18 +56,41 @@
         };
       }
     }, {
-      test: document.querySelector,
-      nope: 'https://gist.githubusercontent.com/chrisjlee/8960575/raw/53c2a101030437f02fe774f43733673f99a13a0a/querySelector.polyfill.js'
-    }, {
-      test: Modernizr.flexbox,
+      test: Array.prototype.filter,
       nope: function() {
-        Tok3nDashboard.compatibilityLayout();
-        return window.setInterval(function() {
-          return Tok3nDashboard.resizeContent();
-        }, 1000);
+        return Array.prototype.filter = function(fun) {
+          "use strict";
+          var i, len, res, t, thisArg, val;
+          if (this === void 0 || this === null) {
+            throw new TypeError();
+          }
+          t = Object(this);
+          len = t.length >>> 0;
+          if (typeof fun !== "function") {
+            throw new TypeError();
+          }
+          res = [];
+          thisArg = (arguments_.length >= 2 ? arguments_[1] : void 0);
+          i = 0;
+          while (i < len) {
+            if (i in t) {
+              val = t[i];
+              if (fun.call(thisArg, val, i, t)) {
+                res.push(val);
+              }
+            }
+            i++;
+          }
+          return res;
+        };
       }
     }, {
-      load: ("https:" === location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js"
+      load: "//use.typekit.net/nls8ikc.js",
+      complete: function() {
+        try {
+          Typekit.load();
+        } catch (_error) {}
+      }
     }, {
       load: "//www.google.com/jsapi",
       complete: function() {
@@ -107,12 +144,7 @@
         });
       }
     }, {
-      load: "//use.typekit.net/nls8ikc.js",
-      complete: function() {
-        try {
-          Typekit.load();
-        } catch (_error) {}
-      }
+      load: ("https:" === location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js"
     }
   ]);
 })();

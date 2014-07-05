@@ -1,22 +1,13 @@
 do ->
 
-  ######################
-  # Sliding login window
-  ######################
+  ###
+  Sliding login window
+  ###
 
   animationClasses = ['tok3n-move-from-left', 'tok3n-move-to-left', 'tok3n-move-from-right', 'tok3n-move-to-right']
   removeAnimationClasses = ( el ) ->
     each animationClasses, ( cl ) ->
       el.classList.remove( cl )
-
-  childNodeIndex = ( el ) ->
-    indexOf el.parentNode.children, el
-
-  findClosestAncestor = ( el, ancestorTag ) ->
-    parentEl = el.parentElement
-    until parentEl.classList.contains ancestorTag
-      parentEl = parentEl.parentElement
-    parentEl
 
   slider = ->
     options = querySelectorAll "#tok3nSidebarMenu li"
@@ -36,7 +27,7 @@ do ->
         nextTarget = gebi nextTargetId
         temp = undefined
 
-        # We need to be careful handling output from this. 
+        # We need to be careful handling output from this.
         # Returning empty strings & concating them to other stuff produces
         # CSS class names we're not handling currently.
         # this returns false if indexes are equal

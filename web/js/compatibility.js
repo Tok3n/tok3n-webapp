@@ -10,7 +10,15 @@
     window.addEventListener("resize", function(event) {
       resizeContent();
     });
-    return resizeContent();
+    resizeContent();
+    return ee.addListener('tok3nSlideBAfterAnimation', function() {
+      resizeContent();
+      if (Tok3nDashboard.masonry != null) {
+        return Tok3nDashboard.masonry.on('layoutComplete', function() {
+          return resizeContent();
+        });
+      }
+    });
   };
   getStyle = function(oElm, strCssRule) {
     var strValue;

@@ -1,5 +1,9 @@
 (function() {
-  var authorizedApps, camelCaseSwitcher, destroyActiveWindowJs, hasDOMContentLoaded, init, initCurrentWindow, main, ready, readyMethod, sitewide;
+
+  /*
+  Main
+   */
+  var authorizedApps, camelCaseSwitcher, destroyActiveWindowJs, hasDOMContentLoaded, init, initCurrentWindow, main, ready, readyMethod, sitewide, toggleSecret;
   main = function() {
     sitewide();
     Tok3nDashboard.slider();
@@ -7,6 +11,10 @@
       return initCurrentWindow();
     });
   };
+
+  /*
+  Sitewide
+   */
   sitewide = function() {
     (function(el) {
       var WidthChange, menuItems, mq;
@@ -65,6 +73,10 @@
       }
     })(document.querySelectorAll('.dropdown'));
   };
+
+  /*
+  Selective window behavior
+   */
   destroyActiveWindowJs = function() {
     var currentWindow;
     currentWindow = Tok3nDashboard.nextTarget;
@@ -76,7 +88,7 @@
         false;
       }
       if (currentWindow.id !== 'tok3nApplications') {
-        if (Tok3nDashboard.masonry) {
+        if (Tok3nDashboard.masonry != null) {
           Tok3nDashboard.masonry.destroy();
         }
       }
@@ -128,7 +140,7 @@
       case "tok3nApplications":
         return authorizedApps();
       case "tok3nIntegrations":
-        return false;
+        return toggleSecret();
       case "tok3nBackupCodes":
         return false;
       case "tok3nSettings":
@@ -137,16 +149,64 @@
         return false;
     }
   };
+
+  /*
+  Authorized apps
+   */
   authorizedApps = function() {
-    return (function(el) {
-      if (el) {
-        return Tok3nDashboard.masonry = new Masonry(el, {
-          itemSelector: '.card',
-          gutter: '.grid-gutter'
+    var cardsContainer;
+    cardsContainer = qs('.tok3n-cards-container');
+    if (cardsContainer) {
+      Tok3nDashboard.masonry = new Masonry(cardsContainer, {
+        itemSelector: '.card',
+        gutter: '.grid-gutter'
+      });
+    }
+    forEach(cardsContainer.querySelectorAll('.front'), function(el) {
+      return el.addEventListener('click', function() {
+        var card;
+        findClosestAncestor(el, 'flipper').classList.add('flipped');
+        card = [].filter.call(el.parentNode.children, function(gl) {
+          return gl.classList.contains('back');
         });
-      }
-    })(document.querySelector('.tok3n-cards-container'));
+        return forEach(card, function(fl) {
+          return fl.style.zIndex = 3;
+        });
+      }, false);
+    });
+    return forEach(cardsContainer.querySelectorAll('.flip'), function(el) {
+      return el.addEventListener('click', function() {
+        return findClosestAncestor(el, 'flipper').classList.remove('flipped');
+      }, false);
+    });
   };
+
+  /*
+  My integrations
+   */
+  toggleSecret = function() {
+    var toggleEl;
+    toggleEl = qsa('.toggle-secret');
+    if (toggleEl != null) {
+      return forEach(toggleEl, function(el) {
+        return el.addEventListener('click', function() {
+          var hiddenEl;
+          hiddenEl = [].filter.call(el.parentNode.children, function(gl) {
+            return gl.classList.contains('secret');
+          });
+          if (hiddenEl != null) {
+            return forEach(hiddenEl, function(fl) {
+              return fl.classList.toggle('hidden');
+            });
+          }
+        }, false);
+      });
+    }
+  };
+
+  /*
+  Vanilla $('document').ready() detection. Execute main() when it is.
+   */
   hasDOMContentLoaded = false;
   ready = false;
   readyMethod = null;

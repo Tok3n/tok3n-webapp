@@ -1,8 +1,8 @@
 do ->
 
-  ####################################################
-  # Main
-  ####################################################
+  ###
+  Main
+  ###
 
   main = () ->
     sitewide()
@@ -12,9 +12,9 @@ do ->
     return
 
 
-  ####################################################
-  # Sitewide
-  ####################################################
+  ###
+  Sitewide
+  ###
 
   sitewide = ->
     # Sidebar show/hide
@@ -58,9 +58,9 @@ do ->
     )(document.querySelectorAll '.dropdown')
 
 
-  ####################################################
-  # Selective window behavior
-  ####################################################
+  ###
+  Selective window behavior
+  ###
 
   destroyActiveWindowJs = ->
     currentWindow = Tok3nDashboard.nextTarget
@@ -70,7 +70,7 @@ do ->
       unless currentWindow.id is 'tok3nPhonelines'
         false
       unless currentWindow.id is 'tok3nApplications'
-        if Tok3nDashboard.masonry
+        if Tok3nDashboard.masonry?
           Tok3nDashboard.masonry.destroy()
       unless currentWindow.id is 'tok3nIntegrations'
         false
@@ -83,7 +83,7 @@ do ->
 
   camelCaseSwitcher = (arr, func) ->
     arr.forEach (screen) ->
-      screenClass = ".tok3n-" + screen.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([a-zA-Z]+)([0-9]+)/g, '$1-$2').toLowerCase();
+      screenClass = ".tok3n-" + screen.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([a-zA-Z]+)([0-9]+)/g, '$1-$2').toLowerCase()
       func(screen)
 
 
@@ -119,7 +119,7 @@ do ->
       when "tok3nApplications"
         authorizedApps()
       when "tok3nIntegrations"
-        false
+        toggleSecret()
       when "tok3nBackupCodes"
         false
       when "tok3nSettings"
@@ -128,24 +128,56 @@ do ->
         false
 
 
-  ####################################################
-  # Authorized apps
-  ####################################################
+  ###
+  Authorized apps
+  ###
 
   authorizedApps = () ->
+    cardsContainer = qs '.tok3n-cards-container'
+
     # Masonry apps container
-    ((el) ->
-      if el
-         Tok3nDashboard.masonry = new Masonry(el, {
-          itemSelector: '.card'
-          gutter: '.grid-gutter'
-        })
-    )(document.querySelector '.tok3n-cards-container')
+    if cardsContainer
+      Tok3nDashboard.masonry = new Masonry cardsContainer,
+        itemSelector: '.card'
+        gutter: '.grid-gutter'
+
+    # Flip cards to the back
+    forEach cardsContainer.querySelectorAll('.front'), (el) ->
+      el.addEventListener 'click', ->
+        findClosestAncestor(el, 'flipper').classList.add 'flipped'
+        card = [].filter.call el.parentNode.children, (gl) ->
+          gl.classList.contains('back')
+        forEach card, (fl) ->
+          fl.style.zIndex = 3
+      , false
+
+    # Flip cards to the front
+    forEach cardsContainer.querySelectorAll('.flip'), (el) ->
+      el.addEventListener 'click', ->
+        findClosestAncestor(el, 'flipper').classList.remove 'flipped'
+      , false
 
 
-  ####################################################
-  # Vanilla $('document').ready() detection. Execute main() when it is.
-  ####################################################
+  ###
+  My integrations
+  ###
+
+  toggleSecret = ->
+    toggleEl = qsa '.toggle-secret'
+    if toggleEl?
+      forEach toggleEl, (el) ->
+        el.addEventListener 'click', ->
+          hiddenEl = [].filter.call el.parentNode.children, (gl) ->
+            gl.classList.contains('secret')
+          if hiddenEl?
+            forEach hiddenEl, (fl) ->
+              fl.classList.toggle 'hidden'
+        , false
+
+
+  ###
+  Vanilla $('document').ready() detection. Execute main() when it is.
+  ###
 
   hasDOMContentLoaded = false
   ready = false

@@ -12583,3 +12583,547 @@ root = typeof exports !== "undefined" && exports !== null ? exports : this;
 root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
 
 ee = new EventEmitter();
+
+(function() {
+  return Modernizr.load([
+    {
+      test: Modernizr.mq,
+      nope: 'https://raw.githubusercontent.com/scottjehl/Respond/master/dest/respond.min.js'
+    }, {
+      test: document.documentElement.classList,
+      nope: 'https://raw.githubusercontent.com/eligrey/classList.js/master/classList.min.js'
+    }, {
+      test: document.querySelector,
+      nope: 'https://gist.githubusercontent.com/chrisjlee/8960575/raw/53c2a101030437f02fe774f43733673f99a13a0a/querySelector.polyfill.js'
+    }, {
+      test: CSS.supports,
+      nope: 'https://raw.githubusercontent.com/termi/CSS.supports/master/__COMPILED/CSS.supports.js'
+    }, {
+      test: CSS.supports('width', 'calc(10px)') || CSS.supports('width', '-webkit-calc(10px)') || CSS.supports('width', '-moz-calc(10px)'),
+      nope: 'https://raw.githubusercontent.com/closingtag/calc-polyfill/master/calc.min.js'
+    }, {
+      test: CSS.supports('min-height', '-webkit-fill-available') || CSS.supports('min-height', '-moz-available'),
+      nope: function() {
+        Tok3nDashboard.compatibilityLayout();
+        return window.setInterval(function() {
+          return Tok3nDashboard.resizeContent();
+        }, 1000);
+      }
+    }, {
+      test: String.prototype.contains,
+      nope: function() {
+        return String.prototype.contains = function() {
+          return String.prototype.indexOf.apply(this, arguments) !== -1;
+        };
+      }
+    }, {
+      test: Array.prototype.some,
+      nope: function() {
+        return Array.prototype.some = function(fun, thisArg) {
+          "use strict";
+          var i, len, t;
+          if (this === void 0 || this === null) {
+            throw new TypeError();
+          }
+          t = Object(this);
+          len = t.length >>> 0;
+          if (typeof fun !== "function") {
+            throw new TypeError();
+          }
+          thisArg = arguments.length >= 2 ? arguments[1] : void 0;
+          i = 0;
+          while (i < len) {
+            if (i in t && fun.call(thisArg, t[i], i, t)) {
+              return true;
+            }
+            i++;
+          }
+          return false;
+        };
+      }
+    }, {
+      test: Array.prototype.filter,
+      nope: function() {
+        return Array.prototype.filter = function(fun) {
+          "use strict";
+          var i, len, res, t, thisArg, val;
+          if (this === void 0 || this === null) {
+            throw new TypeError();
+          }
+          t = Object(this);
+          len = t.length >>> 0;
+          if (typeof fun !== "function") {
+            throw new TypeError();
+          }
+          res = [];
+          thisArg = (arguments_.length >= 2 ? arguments_[1] : void 0);
+          i = 0;
+          while (i < len) {
+            if (i in t) {
+              val = t[i];
+              if (fun.call(thisArg, val, i, t)) {
+                res.push(val);
+              }
+            }
+            i++;
+          }
+          return res;
+        };
+      }
+    }, {
+      load: "//use.typekit.net/nls8ikc.js",
+      complete: function() {
+        try {
+          Typekit.load();
+        } catch (_error) {}
+      }
+    }, {
+      load: "//www.google.com/jsapi",
+      complete: function() {
+        google.load("visualization", "1", {
+          packages: ["corechart"],
+          callback: function() {
+            var drawChartDataDonut, drawChartDataRequestHistory, drawChartDataUsersHistory;
+            drawChartDataDonut = function(e) {
+              var chart, data, options;
+              data = google.visualization.arrayToDataTable([["Task", "Requests"], ["Valid", e.detail.ValidRequests], ["Invalid", e.detail.InvalidRequests], ["Pending", e.detail.IssuedRequests]]);
+              options = {
+                title: "Request types",
+                pieHole: 0.4
+              };
+              chart = new google.visualization.PieChart(document.getElementById("donutChart"));
+              chart.draw(data, options);
+              return google.visualization.events.addListener(chart, "ready", function() {
+                return resizeContent();
+              });
+            };
+            drawChartDataRequestHistory = function(e) {
+              var chart, data, options;
+              data = google.visualization.arrayToDataTable(eval_(e.detail));
+              console.log(data);
+              options = {
+                title: "Requests"
+              };
+              chart = new google.visualization.LineChart(document.getElementById("requestHistoryChart"));
+              chart.draw(data, options);
+              return google.visualization.events.addListener(chart, "ready", function() {
+                return resizeContent();
+              });
+            };
+            drawChartDataUsersHistory = function(e) {
+              var chart, data, options;
+              data = google.visualization.arrayToDataTable(eval_(e.detail));
+              console.log(data);
+              options = {
+                title: "Users"
+              };
+              chart = new google.visualization.LineChart(document.getElementById("usersHistoryChart"));
+              chart.draw(data, options);
+              return google.visualization.events.addListener(chart, "ready", function() {
+                return resizeContent();
+              });
+            };
+            window.addEventListener("drawChartDataDonut", drawChartDataDonut, false);
+            window.addEventListener("drawChartDataRequestHistory", drawChartDataRequestHistory, false);
+            window.addEventListener("drawChartDataUsersHistory", drawChartDataUsersHistory, false);
+          }
+        });
+      }
+    }, {
+      load: ("https:" === location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js"
+    }
+  ]);
+})();
+
+(function() {
+  var compatibilityLayout, contentHeight, getStyle, resizeContent, windowHeight;
+  compatibilityLayout = function() {
+    var pagesWrapper;
+    pagesWrapper = qs(".tok3n-pages-wrapper");
+    while (pagesWrapper.firstChild) {
+      pagesWrapper.parentNode.insertBefore(pagesWrapper.firstChild, pagesWrapper);
+    }
+    pagesWrapper.parentNode.removeChild(pagesWrapper);
+    window.addEventListener("resize", function(event) {
+      resizeContent();
+    });
+    resizeContent();
+    return ee.addListener('tok3nSlideBAfterAnimation', function() {
+      resizeContent();
+      if (Tok3nDashboard.masonry != null) {
+        return Tok3nDashboard.masonry.on('layoutComplete', function() {
+          return resizeContent();
+        });
+      }
+    });
+  };
+  getStyle = function(oElm, strCssRule) {
+    var strValue;
+    strValue = "";
+    if (document.defaultView && document.defaultView.getComputedStyle) {
+      strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+    } else if (oElm.currentStyle) {
+      strCssRule = strCssRule.replace(/\-(\w)/g, function(strMatch, p1) {
+        return p1.toUpperCase();
+      });
+      strValue = oElm.currentStyle[strCssRule];
+    }
+    return strValue;
+  };
+  windowHeight = function() {
+    var $topHeight;
+    $topHeight = null;
+    if (window.matchMedia("(min-width: 769px)").matches) {
+      $topHeight = parseInt(getStyle(document.querySelector('#tok3nLayout'), 'padding-top'), 10);
+    } else {
+      $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10);
+    }
+    return window.innerHeight - $topHeight;
+  };
+  contentHeight = function() {
+    var $contentHeight, elemList, innerContentHeight, listHeight;
+    $contentHeight = null;
+    innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10);
+    elemList = document.querySelector('.tok3n-pt-page-current .tok3n-main-list');
+    if (elemList != null) {
+      listHeight = parseInt(getStyle(elemList, 'height'), 10);
+    } else {
+      listHeight = 0;
+    }
+    if (window.matchMedia("(min-width: 769px)").matches) {
+      $contentHeight = innerContentHeight;
+    } else {
+      $contentHeight = innerContentHeight + listHeight;
+    }
+    return $contentHeight;
+  };
+  resizeContent = function() {
+    var $contentHeight, $topHeight, $windowHeight, currentContent, el, _i, _j, _len, _len1;
+    currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current');
+    $windowHeight = windowHeight();
+    $contentHeight = contentHeight();
+    $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10);
+    if ($windowHeight > $contentHeight) {
+      for (_i = 0, _len = currentContent.length; _i < _len; _i++) {
+        el = currentContent[_i];
+        el.style.height = $windowHeight + "px";
+      }
+    } else {
+      for (_j = 0, _len1 = currentContent.length; _j < _len1; _j++) {
+        el = currentContent[_j];
+        el.style.height = $contentHeight + "px";
+      }
+    }
+  };
+  Tok3nDashboard.compatibilityLayout = compatibilityLayout;
+  return Tok3nDashboard.resizeContent = resizeContent;
+})();
+
+
+
+(function() {
+
+  /*
+  Sliding login window
+   */
+  var animationClasses, removeAnimationClasses, slider;
+  animationClasses = ['tok3n-move-from-left', 'tok3n-move-to-left', 'tok3n-move-from-right', 'tok3n-move-to-right'];
+  removeAnimationClasses = function(el) {
+    return each(animationClasses, function(cl) {
+      return el.classList.remove(cl);
+    });
+  };
+  slider = function() {
+    var menuItemAnchorClass, menuItemSelectedClass, options, previousOption, previousTarget, previousTargetId;
+    options = querySelectorAll("#tok3nSidebarMenu li");
+    menuItemAnchorClass = "tok3n-menu-item";
+    menuItemSelectedClass = "tok3n-sidebar-selected";
+    previousOption = qs("#tok3nSidebarMenu li." + menuItemSelectedClass);
+    previousTargetId = previousOption.getAttribute("data-target").toString();
+    previousTarget = gebi(previousTargetId);
+    options.forEach(function(el) {
+      el.addEventListener("click", function(evt) {
+        var animationSlide, nextOption, nextTarget, nextTargetId, temp;
+        nextOption = evt.target.classList.contains(menuItemAnchorClass) ? evt.target : findClosestAncestor(evt.target, menuItemAnchorClass);
+        if (previousOption !== nextOption) {
+          previousOption.classList.remove(menuItemSelectedClass);
+          nextOption.classList.add(menuItemSelectedClass);
+        }
+        nextTargetId = nextOption.getAttribute("data-target").toString();
+        nextTarget = gebi(nextTargetId);
+        temp = void 0;
+        animationSlide = function(option) {
+          if (option !== "previous" && option !== "next") {
+            return;
+          }
+          if (childNodeIndex(nextOption) < childNodeIndex(previousOption)) {
+            if (option === "previous") {
+              return "left";
+            } else {
+              return "right";
+            }
+          } else if (childNodeIndex(nextOption) > childNodeIndex(previousOption)) {
+            if (option === "previous") {
+              return "right";
+            } else {
+              return "left";
+            }
+          } else {
+            return false;
+          }
+        };
+        if (childNodeIndex(nextOption) !== childNodeIndex(previousOption)) {
+          removeAnimationClasses(previousTarget);
+          Tok3nDashboard.nextTarget = nextTarget;
+          Tok3nDashboard.previousTarget = previousTarget;
+          ee.emitEvent('tok3nSlideBeforeAnimation');
+          previousTarget.classList.add("tok3n-move-to-" + (animationSlide('previous')));
+          temp = previousTarget;
+          setTimeout(function() {
+            temp.classList.remove("tok3n-pt-page-previous");
+            temp.classList.remove("tok3n-pt-page-current");
+            return ee.emitEvent('tok3nSlideAfterAnimation');
+          }, 250);
+          removeAnimationClasses(nextTarget);
+          nextTarget.classList.add("tok3n-pt-page-current");
+          nextTarget.classList.add("tok3n-move-from-" + (animationSlide('next')));
+        }
+        previousOption = nextOption;
+        previousTargetId = previousOption.getAttribute("data-target").toString();
+        return previousTarget = gebi(previousTargetId);
+      });
+    });
+  };
+  return Tok3nDashboard.slider = slider;
+})();
+
+(function() {
+
+  /*
+  Main
+   */
+  var authorizedApps, camelCaseSwitcher, destroyActiveWindowJs, hasDOMContentLoaded, init, initCurrentWindow, main, ready, readyMethod, sitewide, toggleSecret;
+  main = function() {
+    sitewide();
+    Tok3nDashboard.slider();
+    ee.addListener('tok3nSlideBeforeAnimation', function() {
+      return initCurrentWindow();
+    });
+  };
+
+  /*
+  Sitewide
+   */
+  sitewide = function() {
+    (function(el) {
+      var WidthChange, menuItems, mq;
+      if (el) {
+        document.querySelector('#collapseSidebarButton').addEventListener('click', function() {
+          return el.classList.toggle('collapsed');
+        }, false);
+        menuItems = querySelectorAll('.tok3n-menu-item');
+        menuItems.forEach(function(item) {
+          return item.addEventListener('click', function() {
+            if (window.matchMedia("(max-width: 768px)").matches) {
+              return el.classList.toggle('collapsed');
+            }
+          }, false);
+        });
+        WidthChange = function(mq) {
+          if (mq.matches) {
+            if (el.classList.contains('collapsed')) {
+              el.classList.remove('collapsed');
+            }
+          } else {
+            if (!el.classList.contains('collapsed')) {
+              el.classList.add('collapsed');
+            }
+          }
+        };
+        if (matchMedia) {
+          mq = window.matchMedia("(min-width: 769px)");
+          mq.addListener(WidthChange);
+          return WidthChange(mq);
+        }
+      }
+    })(document.querySelector('#tok3nSidebarMenu'));
+    return (function(arr) {
+      var el, _i, _len, _results;
+      if (arr) {
+        _results = [];
+        for (_i = 0, _len = arr.length; _i < _len; _i++) {
+          el = arr[_i];
+          _results.push(el.addEventListener('click', function() {
+            var child, _j, _len1, _ref, _results1;
+            _ref = el.children;
+            _results1 = [];
+            for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
+              child = _ref[_j];
+              if (child.classList.contains('dropdown-menu')) {
+                _results1.push(child.classList.toggle('dropdown-show'));
+              } else {
+                _results1.push(void 0);
+              }
+            }
+            return _results1;
+          }, false));
+        }
+        return _results;
+      }
+    })(document.querySelectorAll('.dropdown'));
+  };
+
+  /*
+  Selective window behavior
+   */
+  destroyActiveWindowJs = function() {
+    var currentWindow;
+    currentWindow = Tok3nDashboard.nextTarget;
+    return setTimeout(function() {
+      if (currentWindow.id !== 'tok3nDevices') {
+        false;
+      }
+      if (currentWindow.id !== 'tok3nPhonelines') {
+        false;
+      }
+      if (currentWindow.id !== 'tok3nApplications') {
+        if (Tok3nDashboard.masonry != null) {
+          Tok3nDashboard.masonry.destroy();
+        }
+      }
+      if (currentWindow.id !== 'tok3nIntegrations') {
+        false;
+      }
+      if (currentWindow.id !== 'tok3nBackupCodes') {
+        false;
+      }
+      if (currentWindow.id !== 'tok3nBackupSettings') {
+        return false;
+      }
+    }, 250);
+  };
+  camelCaseSwitcher = function(arr, func) {
+    return arr.forEach(function(screen) {
+      var screenClass;
+      screenClass = ".tok3n-" + screen.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([a-zA-Z]+)([0-9]+)/g, '$1-$2').toLowerCase();
+      return func(screen);
+    });
+  };
+  initCurrentWindow = function() {
+    var currentWindow, signupScreens;
+    currentWindow = Tok3nDashboard.nextTarget;
+    destroyActiveWindowJs();
+    switch (currentWindow.id) {
+      case "tok3n-signup":
+        signupScreens = ['signupEnable', 'signupCreate1', 'signupCreate2', 'signupDevice1', 'signupDevice2', 'signupPhoneline1', 'signupPhoneline2'];
+        return camelCaseSwitcher(signupScreens, function(currentWindow) {
+          switch (currentWindow) {
+            case 'signupEnable':
+              return false;
+            case 'signupCreate1':
+              return false;
+            case 'signupCreate2':
+              return false;
+            case 'signupPhoneline1':
+              return false;
+            case 'signupPhoneline2':
+              return false;
+            default:
+              return false;
+          }
+        });
+      case "tok3ndDevices":
+        return false;
+      case "tok3nPhonelines":
+        return false;
+      case "tok3nApplications":
+        return authorizedApps();
+      case "tok3nIntegrations":
+        return toggleSecret();
+      case "tok3nBackupCodes":
+        return false;
+      case "tok3nSettings":
+        return false;
+      default:
+        return false;
+    }
+  };
+
+  /*
+  Authorized apps
+   */
+  authorizedApps = function() {
+    var cardsContainer;
+    cardsContainer = qs('.tok3n-cards-container');
+    if (cardsContainer) {
+      Tok3nDashboard.masonry = new Masonry(cardsContainer, {
+        itemSelector: '.card',
+        gutter: '.grid-gutter'
+      });
+    }
+    forEach(cardsContainer.querySelectorAll('.front'), function(el) {
+      return el.addEventListener('click', function() {
+        var card;
+        findClosestAncestor(el, 'flipper').classList.add('flipped');
+        card = [].filter.call(el.parentNode.children, function(gl) {
+          return gl.classList.contains('back');
+        });
+        return forEach(card, function(fl) {
+          return fl.style.zIndex = 3;
+        });
+      }, false);
+    });
+    return forEach(cardsContainer.querySelectorAll('.flip'), function(el) {
+      return el.addEventListener('click', function() {
+        return findClosestAncestor(el, 'flipper').classList.remove('flipped');
+      }, false);
+    });
+  };
+
+  /*
+  My integrations
+   */
+  toggleSecret = function() {
+    var toggleEl;
+    toggleEl = qsa('.toggle-secret');
+    if (toggleEl != null) {
+      return forEach(toggleEl, function(el) {
+        return el.addEventListener('click', function() {
+          var hiddenEl;
+          hiddenEl = [].filter.call(el.parentNode.children, function(gl) {
+            return gl.classList.contains('secret');
+          });
+          if (hiddenEl != null) {
+            return forEach(hiddenEl, function(fl) {
+              return fl.classList.toggle('hidden');
+            });
+          }
+        }, false);
+      });
+    }
+  };
+
+  /*
+  Vanilla $('document').ready() detection. Execute main() when it is.
+   */
+  hasDOMContentLoaded = false;
+  ready = false;
+  readyMethod = null;
+  init = function(method) {
+    if (!ready) {
+      ready = true;
+      readyMethod = method;
+      main();
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function(event) {
+    hasDOMContentLoaded = true;
+    init("DOMContentLoaded");
+  });
+  document.onreadystatechange = function() {
+    init("onreadystatechange");
+  };
+  return document.addEventListener("load", function(event) {
+    init("load");
+  });
+})();

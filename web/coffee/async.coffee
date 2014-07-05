@@ -1,15 +1,35 @@
 do ->
-  # Google Analytics
-  root = exports ? this
-  root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']]
-
+  
   Modernizr.load([{
+  
+  # CSS & JS Polyfills
     test: Modernizr.mq
     nope: 'https://raw.githubusercontent.com/scottjehl/Respond/master/dest/respond.min.js'
   }, {
     test: document.documentElement.classList
     nope: 'https://raw.githubusercontent.com/eligrey/classList.js/master/classList.min.js'
   }, {
+    test: document.querySelector
+    nope: 'https://gist.githubusercontent.com/chrisjlee/8960575/raw/53c2a101030437f02fe774f43733673f99a13a0a/querySelector.polyfill.js'
+  }, {
+    test: CSS.supports
+    nope: 'https://raw.githubusercontent.com/termi/CSS.supports/master/__COMPILED/CSS.supports.js'
+  }, {
+    test: CSS.supports('width', 'calc(10px)') or CSS.supports('width', '-webkit-calc(10px)') or CSS.supports('width', '-moz-calc(10px)')
+    nope: 'https://raw.githubusercontent.com/closingtag/calc-polyfill/master/calc.min.js'
+  }, {
+  
+  # Compatibility layout
+    test: CSS.supports('min-height', '-webkit-fill-available') or CSS.supports('min-height', '-moz-available')
+    nope: ->
+      Tok3nDashboard.compatibilityLayout()
+      # Horrible solution for old browsers: keep resizing and setting the height manually in case the content changes. Sorry IE!
+      window.setInterval ->
+        Tok3nDashboard.resizeContent()
+      , 1000
+  }, {
+  
+  # JS Polyfills
     test: String::contains
     nope: ->
       String::contains = ->
@@ -30,21 +50,34 @@ do ->
           i++
         return false
   }, {
-    test: document.querySelector
-    nope: 'https://gist.githubusercontent.com/chrisjlee/8960575/raw/53c2a101030437f02fe774f43733673f99a13a0a/querySelector.polyfill.js'
-  }, {
-    test: Modernizr.flexbox
+    test: Array::filter
     nope: ->
-      # Chances are they don't support all the other css3 features needed for the new-layout, fallback to the old-layout with the js behavior needed.
-      Tok3nDashboard.compatibilityLayout()
-      # Horrible solution for old browsers: keep resizing in case the content changes. Sorry IE!
-      window.setInterval ->
-        Tok3nDashboard.resizeContent()
-      , 1000
+      Array::filter = (fun) ->
+        "use strict"
+        throw new TypeError()  if this is undefined or this is null
+        t = Object(this)
+        len = t.length >>> 0
+        throw new TypeError()  if typeof fun isnt "function"
+        res = []
+        thisArg = (if arguments_.length >= 2 then arguments_[1] else undefined)
+        i = 0
+        while i < len
+          if i of t
+            val = t[i]
+            res.push val  if fun.call(thisArg, val, i, t)
+          i++
+        res
   }, {
 
-    load: ((if "https:" is location.protocol then "//ssl" else "//www")) + ".google-analytics.com/ga.js"
+  # Typekit
+    load: "//use.typekit.net/nls8ikc.js"
+    complete: ->
+      try
+        Typekit.load()
+      return
   }, {
+  
+  # Google Charts
     load: "//www.google.com/jsapi"
     complete: ->
       google.load "visualization", "1",
@@ -86,10 +119,7 @@ do ->
           return
       return
   }, {
-    load: "//use.typekit.net/nls8ikc.js"
-    complete: ->
-      # console.log('typekit loading complete')
-      try
-        Typekit.load()
-      return
+  
+  # Google Analytics
+    load: ((if "https:" is location.protocol then "//ssl" else "//www")) + ".google-analytics.com/ga.js"
   }])

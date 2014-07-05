@@ -15,6 +15,14 @@ do ->
     # Init first resize
     resizeContent()
 
+    # Resize after the window slide animation
+    ee.addListener 'tok3nSlideBAfterAnimation', ->
+      resizeContent()
+      # Masonry Layout Complete
+      if Tok3nDashboard.masonry?
+        Tok3nDashboard.masonry.on 'layoutComplete', ->
+          resizeContent()
+
   #####################################################
 
   # Functions
@@ -62,7 +70,7 @@ do ->
   resizeContent = () ->
     # Set the height of .tok3n-pt-perspective to the window height minus the top bar height.
 
-    currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current')  
+    currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current')
     $windowHeight = windowHeight()
     $contentHeight = contentHeight()
     $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10)
