@@ -171,7 +171,12 @@ do ->
             gl.classList.contains('secret')
           if hiddenEl?
             forEach hiddenEl, (fl) ->
-              fl.classList.toggle 'hidden'
+              if fl.classList.contains 'hidden'
+                el.innerHTML = 'hide'
+                fl.classList.remove 'hidden'
+              else unless fl.classList.contains 'hidden'
+                el.innerHTML = 'show'
+                fl.classList.add 'hidden'
         , false
 
 

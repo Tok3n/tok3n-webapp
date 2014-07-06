@@ -274,7 +274,13 @@
           });
           if (hiddenEl != null) {
             return forEach(hiddenEl, function(fl) {
-              return fl.classList.toggle('hidden');
+              if (fl.classList.contains('hidden')) {
+                el.innerHTML = 'hide';
+                return fl.classList.remove('hidden');
+              } else if (!fl.classList.contains('hidden')) {
+                el.innerHTML = 'show';
+                return fl.classList.add('hidden');
+              }
             });
           }
         }, false);
