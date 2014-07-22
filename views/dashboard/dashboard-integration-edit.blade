@@ -1,27 +1,29 @@
-.tok3n-dashboard-new-form.form-horizontal(role='form')
-  .form-group
-    .col-md-12
-      h3.title Change settings
-  .form-group
-    label.align-top.col-md-4(for='implementationSettingsNameField') Name
-    .col-md-8
-      input.form-control#implementationSettingsNameField(type='text', value='ttamayo.com')
-  .form-group
-    label.align-top.col-md-4(for='implementationSettingsCallbackUrl') Callback Url
-    .col-md-8
-      input.form-control#implementationSettingsCallbackUrl(type='text', value='http://tok3n.me/por/aqui')
-  .form-group
-    label.align-top.col-md-4(for='implementationSettingsAvatar') Avatar
-    .input-group.col-md-8
-      span.input-group-btn
-        span.btn.btn-default.btn-file
-          | Change avatar
-          input#implementationSettingsAvatar(type='file', multiple='')
-      input.avatar-path.form-control(type='text', readonly='')
-    span.help-block.col-md-8.col-md-offset-4
-      | Leave unchanged if you don't want to change your avatar. Max file size: 5 mb (png, jpg)
-  .form-group.create-button
-    .col-md-6
-      button.btn.btn-default.btn-block Cancel
-    .col-md-6
-      button.btn.btn-primary.btn-block Save settings
+.tok3n-integration-edit
+  .tok3n-dashboard-new-form.form-horizontal(role='form')
+    .tok3n-dashboard-form-lower-wrapper
+      .form-group
+        .col-md-12
+          h3.title Change settings
+      .form-group
+        label.align-top.col-md-4(for='implementationSettingsNameField') Name
+        .col-md-8
+          input.form-control#implementationSettingsNameField(type='text', value='ttamayo.com')
+      .form-group
+        label.align-top.col-md-4(for='implementationSettingsCallbackUrl') Callback Url
+        .col-md-8
+          input.form-control#implementationSettingsCallbackUrl(type='text', value='http://tok3n.me/por/aqui')
+      .form-group
+        label.align-top.col-md-4(for='implementationSettingsAvatar') Avatar
+        .input-group.col-md-8
+          span.input-group-btn
+            span.btn.btn-default.btn-file
+              | Change avatar
+              input#implementationSettingsAvatar(type='file', multiple='')
+          input.avatar-path.form-control(type='text', readonly='')
+        span.help-block.col-md-8.col-md-offset-4
+          | Leave unchanged if you don't want to change your avatar. Max file size: 5 mb (png, jpg)
+    .tok3n-buttons-wrapper
+      .col-md-6.tok3n-single-button
+        a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-secondary-button(href='#') Cancel
+      .col-md-6.tok3n-single-button
+        a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Save settings

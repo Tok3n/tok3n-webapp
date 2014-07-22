@@ -1,31 +1,32 @@
-.tok3n-phonelines
+.tok3n-phoneline-new-2
   .tok3n-dashboard-new-form.form-horizontal(role='form')
-    .form-group
-      .col-md-12
-        h3.title Enter the code you received
-    fieldset.tok3n-enter-code-screen
+    .tok3n-dashboard-form-lower-wrapper
       .form-group
-        .tok3n-login-alert.alert.alert-danger.tok3n-login-alert-hidden
-          b Error:
-          //- | The provided code was incorrect. Please try again.
-          | The code is incorrect, please try again.
-      .form-group
-        p You will receive a code in the next 3 minutes.
-      .form-group
-        .tok3n-enter
-          input.tok3n-otp.form-control#tok3nOtpInput(name='tok3n_otp', type='tel', autocomplete='off', dir='ltr', pattern='[0-9 ]*', placeholder='• • • • • •', spellcheck='false')
-          .icon-tok3n-text-bubble
-          input#tok3n_session(type='hidden', name='tok3n_session')
-      .form-group
-        p
-          i Didn't receive the code?
-          br
-          a(href="#") Edit your number 
-          | or 
-          a(href="#") resend the code.
+        .col-md-12
+          h3.title Enter the code you received
+      fieldset.tok3n-enter-code-screen.tok3n-dashboard-form-lower-wrapper
+        .form-group
+          .tok3n-login-alert.alert.alert-danger.tok3n-login-alert-hidden
+            b Error:
+            //- | The provided code was incorrect. Please try again.
+            | The code is incorrect, please try again.
+        .form-group
+          p You will receive a code in the next 3 minutes.
+        .form-group
+          .tok3n-enter
+            input.tok3n-otp.form-control#tok3nOtpInput(name='tok3n_otp', type='tel', autocomplete='off', dir='ltr', pattern='[0-9 ]*', placeholder='• • • • • •', spellcheck='false')
+            .icon-tok3n-text-bubble
+            input#tok3n_session(type='hidden', name='tok3n_session')
+        .form-group
+          p
+            i Didn't receive the code?
+            br
+            a(href="#") Edit your number 
+            | or 
+            a(href="#") resend the code.
 
-      .form-group.create-button
-        .col-md-6
-          button.btn.btn-default.btn-block Back
-        .col-md-6
-          button.btn.btn-primary.btn-block Verify
+    .tok3n-buttons-wrapper
+      .col-md-6.tok3n-single-button
+        a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-secondary-button(href='#') Previous
+      .col-md-6.tok3n-single-button
+        a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(disabled='true', href='#') Verify

@@ -14,7 +14,7 @@ html.no-js(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     
     block style
-    link(rel='stylesheet', href='css/style.css')
+      link(rel='stylesheet', href='css/style.css')
 
   body
     block upper
@@ -38,32 +38,32 @@ html.no-js(lang='en')
           #tok3nSidebar.tok3n-sidebar
             .nav-inner
               ul.menu#tok3nSidebarMenu.collapsed
-                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nDevices')
+                li#tok3nDevicesMenuButton.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nDevices')
                   .row
                     .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
                       i.icon-tok3n-phone
                     .title.col-xs-10.col-sm-7.col-md-7 My devices
-                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nPhonelines')
+                li#tok3nPhonelinesMenuButton.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nPhonelines')
                   .row
                     .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
                       i.icon-tok3n-phone-line
                     .title.col-xs-10.col-sm-7.col-md-7 My phone lines
-                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nApplications')
+                li#tok3nApplicationsMenuButton.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nApplications')
                   .row
                     .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
                       i.icon-tok3n-authorized-apps
                     .title.col-xs-10.col-sm-7.col-md-7 Authorized apps
-                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nIntegrations')
+                li#tok3nIntegrationsMenuButton.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nIntegrations')
                   .row
                     .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
                       i.icon-tok3n-integrations
                     .title.col-xs-10.col-sm-7.col-md-7 My integrations
-                li.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nBackupCodes')
+                li#tok3nBackupCodesMenuButton.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nBackupCodes')
                   .row
                     .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
                       i.icon-tok3n-backup-code
                     .title.col-xs-10.col-sm-7.col-md-7 Backup codes
-                li.tok3n-sidebar-selected.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nSettings')
+                li#tok3nSettingsMenuButton.tok3n-menu-item.col-xs-12.col-sm-12.col-md-12(data-target='tok3nSettings')
                   .row
                     .icon.col-xs-2.col-sm-3.col-sm-offset-1.col-md-3.col-md-offset-1
                       i.icon-tok3n-settings
@@ -72,16 +72,30 @@ html.no-js(lang='en')
     block footer
 
       //- A word of caution: the following build code is extremely sensible to indentation, extra spaces and newlines. Be careful!
+      
+      :coffeescript
+        window.Tok3nDashboard or= {}
+        Tok3nDashboard.initWindow = "BackupCodes"
 
       /** build:template
       <script src="<%=cdnUrl%>js/dashboard-min.js"></script>
       /build */
 
       //  build:remove 
+      :coffeescript
+        window.Tok3nDashboard or= {}
+        Tok3nDashboard.Environment or= {}
+        Tok3nDashboard.Environment.isDevelopment = true
       script(src='js/utils.js')
       script(src='js/async.js')
       script(src='js/compatibility.js')
+      script(src='js/screens.js')
       script(src='js/dashboard.js')
       script(src='js/test.js')
       script(src="http://localhost:35729/livereload.js")
+      //- script(src='js/samebug-notifier-1.0.2.min.js')
+      //- :coffeescript
+      //-   Samebug.init('9010ab59-19df-4d7a-b11e-eb6d6f20adbf')
+      //- script(type='text/javascript', src='//d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js', data-token='d3031bab8af249708450ef3873def30f')
+
       //  /build 

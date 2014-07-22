@@ -1,3 +1,32 @@
-#tok3nSettings.tok3n-settings.tok3n-pt-page.tok3n-pt-page-current
-	.tok3n-full-layout.tok3n-main-content
-		h2 Settings
+#tok3nSettings.tok3n-settings.tok3n-pt-page
+  .tok3n-full-layout.tok3n-main-content
+    h2.tok3n-full-layout-title Settings
+    form.form-horizontal.tok3n-dashboard-new-form
+      .tok3n-dashboard-form-lower-wrapper
+        .form-group
+          label.col-sm-4.control-label(for='tok3nUserFirstName') First name
+          .col-sm-8
+            input#tok3nUserFirstName.form-control(type='text')
+        .form-group
+          label.col-sm-4.control-label(for='tok3nUserLastName') Last name
+          .col-sm-8
+            input#tok3nUserLastName.form-control(type='text')
+        .form-group
+          label.col-sm-4.control-label(for='tok3nUserEmail') Email
+          .col-sm-8
+            input#tok3nUserEmail.form-control(type='email')
+        .form-group
+          label.col-sm-4.control-label(for='tok3nUserPassword') Password
+          .col-sm-8
+            input#tok3nUserPassword.tok3n-user-password.form-control(type='password', placeholder='')
+          .col-sm-8.col-sm-offset-4
+            span.help-block If you don't want to change your password leave this field blank.
+        .form-group.tok3n-user-verify-password.collapsed
+          label.col-sm-4.control-label(for='tok3nUserVerifyPassword') Verify password
+          .col-sm-8
+            input#tok3nUserVerifyPassword.form-control(type='password')
+      .tok3n-buttons-wrapper
+        .col-sm-6.tok3n-single-button
+          a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-secondary-button(href='#') Cancel
+        .col-sm-6.tok3n-single-button
+          a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Save changes

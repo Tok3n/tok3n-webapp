@@ -3,75 +3,14 @@
   /*
   Main
    */
-  var authorizedApps, camelCaseSwitcher, destroyActiveWindowJs, hasDOMContentLoaded, init, initCurrentWindow, main, ready, readyMethod, sitewide, toggleSecret;
+  var destroyActiveWindowJs, executeIfExists, hasDOMContentLoaded, init, initCurrentWindow, main, ready, readyMethod, toCamelCase;
   main = function() {
-    sitewide();
+    Tok3nDashboard.Screens.sitewide();
     Tok3nDashboard.slider();
     ee.addListener('tok3nSlideBeforeAnimation', function() {
       return initCurrentWindow();
     });
-  };
-
-  /*
-  Sitewide
-   */
-  sitewide = function() {
-    (function(el) {
-      var WidthChange, menuItems, mq;
-      if (el) {
-        document.querySelector('#collapseSidebarButton').addEventListener('click', function() {
-          return el.classList.toggle('collapsed');
-        }, false);
-        menuItems = querySelectorAll('.tok3n-menu-item');
-        menuItems.forEach(function(item) {
-          return item.addEventListener('click', function() {
-            if (window.matchMedia("(max-width: 768px)").matches) {
-              return el.classList.toggle('collapsed');
-            }
-          }, false);
-        });
-        WidthChange = function(mq) {
-          if (mq.matches) {
-            if (el.classList.contains('collapsed')) {
-              el.classList.remove('collapsed');
-            }
-          } else {
-            if (!el.classList.contains('collapsed')) {
-              el.classList.add('collapsed');
-            }
-          }
-        };
-        if (matchMedia) {
-          mq = window.matchMedia("(min-width: 769px)");
-          mq.addListener(WidthChange);
-          return WidthChange(mq);
-        }
-      }
-    })(document.querySelector('#tok3nSidebarMenu'));
-    return (function(arr) {
-      var el, _i, _len, _results;
-      if (arr) {
-        _results = [];
-        for (_i = 0, _len = arr.length; _i < _len; _i++) {
-          el = arr[_i];
-          _results.push(el.addEventListener('click', function() {
-            var child, _j, _len1, _ref, _results1;
-            _ref = el.children;
-            _results1 = [];
-            for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
-              child = _ref[_j];
-              if (child.classList.contains('dropdown-menu')) {
-                _results1.push(child.classList.toggle('dropdown-show'));
-              } else {
-                _results1.push(void 0);
-              }
-            }
-            return _results1;
-          }, false));
-        }
-        return _results;
-      }
-    })(document.querySelectorAll('.dropdown'));
+    initCurrentWindow();
   };
 
   /*
@@ -79,134 +18,83 @@
    */
   destroyActiveWindowJs = function() {
     var currentWindow;
-    currentWindow = Tok3nDashboard.nextTarget;
+    currentWindow = function() {
+      if (Tok3nDashboard.nextTarget !== void 0) {
+        return Tok3nDashboard.nextTarget;
+      } else {
+        return document.querySelector('.tok3n-pt-page-current');
+      }
+    };
     return setTimeout(function() {
-      if (currentWindow.id !== 'tok3nDevices') {
+      if (currentWindow().id !== 'tok3nDevices') {
         false;
       }
-      if (currentWindow.id !== 'tok3nPhonelines') {
+      if (currentWindow().id !== 'tok3nPhonelines') {
         false;
       }
-      if (currentWindow.id !== 'tok3nApplications') {
+      if (currentWindow().id !== 'tok3nApplications') {
         if (Tok3nDashboard.masonry != null) {
           Tok3nDashboard.masonry.destroy();
         }
       }
-      if (currentWindow.id !== 'tok3nIntegrations') {
+      if (currentWindow().id !== 'tok3nIntegrations') {
         false;
       }
-      if (currentWindow.id !== 'tok3nBackupCodes') {
+      if (currentWindow().id !== 'tok3nBackupCodes') {
         false;
       }
-      if (currentWindow.id !== 'tok3nBackupSettings') {
+      if (currentWindow().id !== 'tok3nSettings') {
         return false;
       }
     }, 250);
   };
-  camelCaseSwitcher = function(arr, func) {
+  toCamelCase = function(s) {
+    s = s.replace(/([^a-zA-Z0-9_\- ])|^[_0-9]+/g, "").trim().toLowerCase();
+    s = s.replace(/([ -]+)([a-zA-Z0-9])/g, function(a, b, c) {
+      return c.toUpperCase();
+    });
+    s = s.replace(/([0-9]+)([a-zA-Z])/g, function(a, b, c) {
+      return b + c.toUpperCase();
+    });
+    return s;
+  };
+  executeIfExists = function(arr) {
     return arr.forEach(function(screen) {
-      var screenClass;
-      screenClass = ".tok3n-" + screen.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([a-zA-Z]+)([0-9]+)/g, '$1-$2').toLowerCase();
-      return func(screen);
+      if (document.querySelector(".tok3n-" + screen)) {
+        if (Tok3nDashboard.Environment.isDevelopment) {
+          console.log(toCamelCase(screen));
+        }
+        if (typeof Tok3nDashboard.Screens[toCamelCase(screen)] === 'function') {
+          return Tok3nDashboard.Screens[toCamelCase(screen)]();
+        }
+      }
     });
   };
   initCurrentWindow = function() {
-    var currentWindow, signupScreens;
-    currentWindow = Tok3nDashboard.nextTarget;
+    var currentWindow;
+    currentWindow = function() {
+      if (Tok3nDashboard.nextTarget !== void 0) {
+        return Tok3nDashboard.nextTarget;
+      } else {
+        return document.querySelector('.tok3n-pt-page-current');
+      }
+    };
     destroyActiveWindowJs();
-    switch (currentWindow.id) {
-      case "tok3n-signup":
-        signupScreens = ['signupEnable', 'signupCreate1', 'signupCreate2', 'signupDevice1', 'signupDevice2', 'signupPhoneline1', 'signupPhoneline2'];
-        return camelCaseSwitcher(signupScreens, function(currentWindow) {
-          switch (currentWindow) {
-            case 'signupEnable':
-              return false;
-            case 'signupCreate1':
-              return false;
-            case 'signupCreate2':
-              return false;
-            case 'signupPhoneline1':
-              return false;
-            case 'signupPhoneline2':
-              return false;
-            default:
-              return false;
-          }
-        });
-      case "tok3ndDevices":
-        return false;
+    switch (currentWindow().id) {
+      case "tok3nDevices":
+        return executeIfExists(['device-view', 'device-new-1', 'device-new-2', 'device-new-3']);
       case "tok3nPhonelines":
-        return false;
+        return executeIfExists(['phoneline-view-cellphone', 'phoneline-view-landline', 'phoneline-new-1', 'phoneline-new-2', 'phoneline-new-3']);
       case "tok3nApplications":
-        return authorizedApps();
+        return Tok3nDashboard.Screens.applications();
       case "tok3nIntegrations":
-        return toggleSecret();
+        return executeIfExists(['integration-view', 'integration-new', 'integration-edit']);
       case "tok3nBackupCodes":
         return false;
       case "tok3nSettings":
-        return false;
+        return Tok3nDashboard.Screens.settings();
       default:
         return false;
-    }
-  };
-
-  /*
-  Authorized apps
-   */
-  authorizedApps = function() {
-    var cardsContainer;
-    cardsContainer = qs('.tok3n-cards-container');
-    if (cardsContainer) {
-      Tok3nDashboard.masonry = new Masonry(cardsContainer, {
-        itemSelector: '.card',
-        gutter: '.grid-gutter'
-      });
-    }
-    forEach(cardsContainer.querySelectorAll('.front'), function(el) {
-      return el.addEventListener('click', function() {
-        var card;
-        findClosestAncestor(el, 'flipper').classList.add('flipped');
-        card = [].filter.call(el.parentNode.children, function(gl) {
-          return gl.classList.contains('back');
-        });
-        return forEach(card, function(fl) {
-          return fl.style.zIndex = 3;
-        });
-      }, false);
-    });
-    return forEach(cardsContainer.querySelectorAll('.flip'), function(el) {
-      return el.addEventListener('click', function() {
-        return findClosestAncestor(el, 'flipper').classList.remove('flipped');
-      }, false);
-    });
-  };
-
-  /*
-  My integrations
-   */
-  toggleSecret = function() {
-    var toggleEl;
-    toggleEl = qsa('.toggle-secret');
-    if (toggleEl != null) {
-      return forEach(toggleEl, function(el) {
-        return el.addEventListener('click', function() {
-          var hiddenEl;
-          hiddenEl = [].filter.call(el.parentNode.children, function(gl) {
-            return gl.classList.contains('secret');
-          });
-          if (hiddenEl != null) {
-            return forEach(hiddenEl, function(fl) {
-              if (fl.classList.contains('hidden')) {
-                el.innerHTML = 'hide';
-                return fl.classList.remove('hidden');
-              } else if (!fl.classList.contains('hidden')) {
-                el.innerHTML = 'show';
-                return fl.classList.add('hidden');
-              }
-            });
-          }
-        }, false);
-      });
     }
   };
 

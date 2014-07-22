@@ -1,16 +1,25 @@
-.tok3n-dashboard-new-form.form-horizontal(role='form')
-  .form-group
-    .col-md-12
-      h3.title Install the Tok3n app
-  .form-group
-    .tok3n-app-icon
-    .col-md-12
-      ol.tok3n-step-list
-        li Open the App Store in your iPhone or the Play Store in your Android phone.
-        li Search for the "Tok3n" app.
-        li Install the app.
-  .form-group.create-button
-    .col-md-6
-      button.btn.btn-default.btn-block Cancel
-    .col-md-6
-      button.btn.btn-primary.btn-block I have completed the steps
+.tok3n-device-new-1
+  .tok3n-dashboard-new-form.form-horizontal(role='form')
+    .tok3n-dashboard-lower-wrapper
+      h3.tok3n-dashboard-title Install the Tok3n app
+      .form-group
+        .tok3n-app-icons-wrapper.row
+          .col-md-6
+            .tok3n-app-icon
+          .col-md-6
+            .tok3n-stores-container
+              a(href="#")
+                .tok3n-app-store-icon
+              a(href="#")
+                .tok3n-play-store-icon
+      .form-group
+        .col-md-12
+          ol.tok3n-step-list
+            li Open the App Store in your iPhone or the Play Store in your Android phone.
+            li Search for "Tok3n" and install the app.
+
+    .tok3n-buttons-wrapper
+      .col-md-6.tok3n-single-button
+        a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-secondary-button(href='#') Previous
+      .col-md-6.tok3n-single-button
+        a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Next

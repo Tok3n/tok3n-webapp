@@ -35,32 +35,12 @@ app.get('/', function(req, res){
 	res.render("index");
 });
 
-app.get('/apps', function(req, res){
-	res.render("apps");
-});
-
-app.get('/login', function(req, res){
-	res.render("login");
-});
-
-app.get('/connect-login', function(req, res){
-	res.render("connect-login");
-});
-
-app.get('/connect-create', function(req, res){
-	res.render("connect-create");
-});
-
-app.get('/connect-install', function(req, res){
-	res.render("connect-install");
-});
-
-app.get('/login-v2', function(req, res){
-	res.render("login-v2");
-});
-
 app.get('/dashboard', function(req, res){
 	res.render("dashboard");
+});
+
+app.get('/backup-codes', function(req, res){
+	res.render("backup-codes");
 });
 
 // Heroku

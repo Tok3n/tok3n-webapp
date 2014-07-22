@@ -12541,9 +12541,18 @@ if ('undefined' !== typeof window.ParsleyValidator)
 	}
 }.call(this));
 
-var childNodeIndex, each, ee, findClosestAncestor, forEach, gebi, indexOf, qs, qsa, querySelectorAll, root, slice;
+var childNodeIndex, closest, each, ee, findClosestAncestor, forEach, gebi, hasFormValidation, indexOf, isEmptyOrDefault, namespace, qs, qsa, querySelectorAll, root, slice,
+  __slice = [].slice;
 
 window.Tok3nDashboard || (window.Tok3nDashboard = {});
+
+Tok3nDashboard.Environment || (Tok3nDashboard.Environment = {});
+
+if (!Tok3nDashboard.Environment.isDevelopment) {
+  Tok3nDashboard.Environment.isProduction = true;
+} else {
+  Tok3nDashboard.Environment.isProduction = false;
+}
 
 each = Function.prototype.call.bind([].forEach);
 
@@ -12578,8 +12587,49 @@ findClosestAncestor = function(el, ancestorTag) {
   return parentEl;
 };
 
+namespace = function(target, name, block) {
+  var item, top, _i, _len, _ref, _ref1;
+  if (arguments.length < 3) {
+    _ref = [(typeof exports !== 'undefined' ? exports : window)].concat(__slice.call(arguments)), target = _ref[0], name = _ref[1], block = _ref[2];
+  }
+  top = target;
+  _ref1 = name.split('.');
+  for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+    item = _ref1[_i];
+    target = target[item] || (target[item] = {});
+  }
+  return block(target, top);
+};
+
+closest = function(elem, selector) {
+  var matchesSelector;
+  matchesSelector = elem.matches || elem.webkitMatchesSelector || elem.mozMatchesSelector || elem.msMatchesSelector;
+  while (elem) {
+    if (matchesSelector.bind(elem)(selector)) {
+      return elem;
+    } else {
+      elem = elem.parentElement;
+    }
+  }
+  return false;
+};
+
+isEmptyOrDefault = function(el) {
+  if (el.value === "" || el.value === el.defaultValue) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+hasFormValidation = function() {
+  return typeof document.createElement("input").checkValidity === "function";
+};
+
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
 root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
+
+Tok3nDashboard.typekit = 'nls8ikc';
 
 ee = new EventEmitter();

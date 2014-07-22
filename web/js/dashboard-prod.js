@@ -12582,6 +12582,8 @@ root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
 root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
 
+Tok3nDashboard.typekit = 'nls8ikc';
+
 ee = new EventEmitter();
 
 (function() {
@@ -12671,7 +12673,7 @@ ee = new EventEmitter();
         };
       }
     }, {
-      load: "//use.typekit.net/nls8ikc.js",
+      load: "//use.typekit.net/" + Tok3nDashboard.typekit + ".js",
       complete: function() {
         try {
           Typekit.load();
@@ -12902,13 +12904,14 @@ ee = new EventEmitter();
   /*
   Main
    */
-  var authorizedApps, camelCaseSwitcher, destroyActiveWindowJs, hasDOMContentLoaded, init, initCurrentWindow, main, ready, readyMethod, sitewide, toggleSecret;
+  var authorizedApps, camelCaseSwitcher, destroyActiveWindowJs, hasDOMContentLoaded, init, initCurrentWindow, main, ready, readyMethod, settingsPage, sitewide, toggleSecret, toggleVerifyPassword;
   main = function() {
     sitewide();
     Tok3nDashboard.slider();
     ee.addListener('tok3nSlideBeforeAnimation', function() {
       return initCurrentWindow();
     });
+    initCurrentWindow();
   };
 
   /*
@@ -12978,26 +12981,32 @@ ee = new EventEmitter();
    */
   destroyActiveWindowJs = function() {
     var currentWindow;
-    currentWindow = Tok3nDashboard.nextTarget;
+    currentWindow = function() {
+      if (Tok3nDashboard.nextTarget !== void 0) {
+        return Tok3nDashboard.nextTarget;
+      } else {
+        return document.querySelector('.tok3n-pt-page-current');
+      }
+    };
     return setTimeout(function() {
-      if (currentWindow.id !== 'tok3nDevices') {
+      if (currentWindow().id !== 'tok3nDevices') {
         false;
       }
-      if (currentWindow.id !== 'tok3nPhonelines') {
+      if (currentWindow().id !== 'tok3nPhonelines') {
         false;
       }
-      if (currentWindow.id !== 'tok3nApplications') {
+      if (currentWindow().id !== 'tok3nApplications') {
         if (Tok3nDashboard.masonry != null) {
           Tok3nDashboard.masonry.destroy();
         }
       }
-      if (currentWindow.id !== 'tok3nIntegrations') {
+      if (currentWindow().id !== 'tok3nIntegrations') {
         false;
       }
-      if (currentWindow.id !== 'tok3nBackupCodes') {
+      if (currentWindow().id !== 'tok3nBackupCodes') {
         false;
       }
-      if (currentWindow.id !== 'tok3nBackupSettings') {
+      if (currentWindow().id !== 'tok3nSettings') {
         return false;
       }
     }, 250);
@@ -13011,13 +13020,19 @@ ee = new EventEmitter();
   };
   initCurrentWindow = function() {
     var currentWindow, signupScreens;
-    currentWindow = Tok3nDashboard.nextTarget;
+    currentWindow = function() {
+      if (Tok3nDashboard.nextTarget !== void 0) {
+        return Tok3nDashboard.nextTarget;
+      } else {
+        return document.querySelector('.tok3n-pt-page-current');
+      }
+    };
     destroyActiveWindowJs();
-    switch (currentWindow.id) {
+    switch (currentWindow().id) {
       case "tok3n-signup":
         signupScreens = ['signupEnable', 'signupCreate1', 'signupCreate2', 'signupDevice1', 'signupDevice2', 'signupPhoneline1', 'signupPhoneline2'];
         return camelCaseSwitcher(signupScreens, function(currentWindow) {
-          switch (currentWindow) {
+          switch (currentWindow()) {
             case 'signupEnable':
               return false;
             case 'signupCreate1':
@@ -13032,7 +13047,7 @@ ee = new EventEmitter();
               return false;
           }
         });
-      case "tok3ndDevices":
+      case "tok3nDevices":
         return false;
       case "tok3nPhonelines":
         return false;
@@ -13043,7 +13058,7 @@ ee = new EventEmitter();
       case "tok3nBackupCodes":
         return false;
       case "tok3nSettings":
-        return false;
+        return settingsPage();
       default:
         return false;
     }
@@ -13106,6 +13121,28 @@ ee = new EventEmitter();
           }
         }, false);
       });
+    }
+  };
+
+  /*
+  Settings
+   */
+  settingsPage = function() {
+    toggleVerifyPassword();
+    return document.querySelector('.tok3n-user-password').addEventListener('keyup', function(event) {
+      return toggleVerifyPassword();
+    }, false);
+  };
+  toggleVerifyPassword = function() {
+    var passwordField, verifyPassword;
+    passwordField = qs("input.tok3n-user-password");
+    verifyPassword = qs('.tok3n-user-verify-password');
+    if (passwordField) {
+      if (passwordField.value) {
+        return verifyPassword.classList.remove("collapsed");
+      } else {
+        return verifyPassword.classList.add("collapsed");
+      }
     }
   };
 

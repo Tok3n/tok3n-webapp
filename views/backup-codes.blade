@@ -1,0 +1,26 @@
+!!! 5
+html(lang='en')
+  
+  head
+    meta(charset='utf-8')
+    block title(pageTitle)
+      title=pageTitle
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    
+    block style
+    link(rel='stylesheet', href='css/backup-codes.css')
+
+  body
+    block layout
+      .tok3n-layout#tok3nLayout
+        block body
+          include 'backup-codes/backup-codes-main.blade'
+
+    block footer
+
+      //- A word of caution: the following build code is extremely sensible to indentation, extra spaces and newlines. Be careful!
+
+      //  build:remove 
+      script(src="http://localhost:35729/livereload.js")
+      //  /build 

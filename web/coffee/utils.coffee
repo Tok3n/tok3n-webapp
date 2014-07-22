@@ -1,4 +1,9 @@
 window.Tok3nDashboard or= {}
+Tok3nDashboard.Environment or= {}
+unless Tok3nDashboard.Environment.isDevelopment
+  Tok3nDashboard.Environment.isProduction = true
+else
+  Tok3nDashboard.Environment.isProduction = false
 
 # easy refs for various things
 each = Function.prototype.call.bind [].forEach
@@ -21,10 +26,33 @@ findClosestAncestor = ( el, ancestorTag ) ->
   until parentEl.classList.contains ancestorTag
     parentEl = parentEl.parentElement
   parentEl
+namespace = (target, name, block) ->
+  [target, name, block] = [(if typeof exports isnt 'undefined' then exports else window), arguments...] if arguments.length < 3
+  top    = target
+  target = target[item] or= {} for item in name.split '.'
+  block target, top
+closest = (elem, selector) ->
+  matchesSelector = elem.matches or elem.webkitMatchesSelector or elem.mozMatchesSelector or elem.msMatchesSelector
+  while elem
+    if matchesSelector.bind(elem)(selector)
+      return elem
+    else
+      elem = elem.parentElement
+  false
+isEmptyOrDefault = ( el ) ->
+  if el.value is "" or el.value is el.defaultValue
+    true
+  else
+    false
+hasFormValidation = ->
+  typeof document.createElement("input").checkValidity is "function"
 
 # Google Analytics
 root = exports ? this
 root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']]
+
+# Typekit
+Tok3nDashboard.typekit = 'nls8ikc'
 
 # Libs
 ee = new EventEmitter()

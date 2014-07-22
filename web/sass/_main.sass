@@ -113,6 +113,9 @@ $tok3n-purple: #2b3087
 // Dashboard components
 ////////////////////
 
+.tok3n-full-layout-title
+  text-align: center
+
 .tok3n-dashboard-segment
   padding: 1em 3em
   .title
@@ -121,6 +124,12 @@ $tok3n-purple: #2b3087
       display: inline-block
   .settings-menu
     margin-top: -.8em
+    .action-button
+      vertical-align: bottom
+      padding: 5px 10px 4px
+      .icon-tok3n-gear
+        &:before
+          vertical-align: -2px
   .specs
     margin-top: 2.5em
     margin-bottom: 1.5em
@@ -163,6 +172,8 @@ $tok3n-purple: #2b3087
   position: relative
   background: #FFF
   padding: 20px
+  .tok3n-full-layout &
+    padding: 20px 0
   width: auto
   max-width: 500px
   margin: 20px auto
@@ -197,21 +208,100 @@ $tok3n-purple: #2b3087
   .form-control
     cursor: default
 
+.tok3n-dashboard-title
+  text-align: center
+  margin-bottom: 1em
+
+.tok3n-dashboard-form-lower-wrapper
+  @extend .col-md-12
+
+.tok3n-dashboard-button
+  display: block
+  margin: 0 auto (30px * .62)
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-weight: 600
+  -webkit-font-smoothing: antialiased
+  &:last-child
+    margin-bottom: 0
+  @extend %btn
+  // @extend %btn-md
+  +user-select(none)
+
+.tok3n-dashboard-block-button
+  @extend %btn-block
+  margin-bottom: 10px
+.tok3n-dashboard-main-button
+  +button-variant(hsla(0, 0, 100%, .95), adjust-lightness($tok3n-blue, 0), black(.1))
+.tok3n-dashboard-secondary-button
+  @extend %btn-default
+.tok3n-single-button
+  margin-bottom: 10px
+  &:last-child
+    margin-bottom: 0
+
+.tok3n-buttons-wrapper
+  margin-top: 2em
+  overflow: hidden
+
 ////////////////////
 // Devices
 ////////////////////
 
+.tok3n-app-icons-wrapper
+  .tok3n-device-new-1 &
+    margin: 40px auto 0
 
-.tok3n-app-icon, .tok3n-qr-code
-  width: 256px
-  height: 256px
-  margin: 0 auto 37px
+.tok3n-app-icon, .tok3n-qr-code, .tok3n-integration-icon
   +background-size(100% auto)
+  background-position: center center
   +box-shadow(rgba(0,0,0,0.2) 0 0 1px 1px, rgba(0,0,0,0.3) 0 5px 27px)
+
+.tok3n-app-icon, .tok3n-integration-icon
+  +border-radius(17.544%)
+  .tok3n-device-new-1 &
+    +to(2)
+      width: 256px
+      height: 256px
+    +from(3)
+      width: 128px
+      height: 128px
+    margin: 0 auto 30px
 
 .tok3n-app-icon
   +hr-image("app-icon.png", "app-icon-hd.png")
-  +border-radius(17.544%)
+
+.tok3n-qr-code
+  +to(2)
+    width: 256px
+    height: 256px
+  +from(3)
+    width: 256px * .8
+    height: 256px * .8
+  margin: 0 auto 37px
+
+.tok3n-app-store-icon, .tok3n-play-store-icon
+  +to(2)
+    width: 195px
+    height: 72px
+  +to(3)
+    margin: 0 auto 13px
+  +from(3)
+    width: 195px * .8
+    height: 72px * .8
+  +from(4)
+    margin: 0 0 13px
+  +background-size(100% auto)
+
++to(3)
+  .tok3n-stores-container
+    margin: 4em 0 2em
+
+
+.tok3n-app-store-icon
+  background-image: image-url('app-store.png')
+
+.tok3n-play-store-icon
+  background-image: image-url('google-play.png')
 
 .tok3n-qr-code
   background-image: image-url('qrcode.png')
@@ -291,18 +381,19 @@ ol.tok3n-step-list
   width: 100%
   font-size: 36px
 
-.icon-tok3n-cellphone, .icon-tok3n-text-bubble
-  font-size: 1.8em
-  display: inline-block
-  position: absolute
-  margin-left: 170px
-  margin-top: -52px
-  color: #bbb
-  +single-transition(color, .3s, ease-in)
-  &:hover
-    color: adjust-lightness($tok3n-blue, 20)
-  &:after, &:before
-    white-space: pre
+.tok3n-phoneline-new-2
+  .icon-tok3n-phone, .icon-tok3n-text-bubble
+    font-size: 1.8em
+    display: inline-block
+    position: absolute
+    margin-left: 170px
+    margin-top: -52px
+    color: #bbb
+    +single-transition(color, .3s, ease-in)
+    &:hover
+      color: adjust-lightness($tok3n-blue, 20)
+    &:after, &:before
+      white-space: pre
 
 .tok3n-phoneline-name
   margin-bottom: 5em
@@ -399,12 +490,28 @@ ol.tok3n-step-list
 
 .tok3n-new-integration-callback-url
   @extend %tok3n-collapse
-  max-height: 490px
+  +to(3)
+    max-height: 65px // Hardcoded
+  +from(4)
+    max-height: 34px // Hardcoded
 
 ////////////////////
 // Backup codes
 ////////////////////
 
+
+
 ////////////////////
 // Settings
 ////////////////////
+
+.tok3n-settings
+  .create-button
+    margin-top: 3em
+
+.tok3n-user-verify-password
+  @extend %tok3n-collapse
+  +to(2)
+    max-height: 62px // Hardcoded
+  +from(3)
+    max-height: 34px // Hardcoded

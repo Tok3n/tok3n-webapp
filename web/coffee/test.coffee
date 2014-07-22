@@ -1,9 +1,3 @@
-# l = new Loader()
-# l.require [
-#   "//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"
-# ], (->
-
-#   # $('.tok3n-flipper').toggleClass('tok3n-flipped')
-
-#   return
-# )
+# current = 'Devices'
+# $("#tok3n#{current}").addClass 'tok3n-pt-page-current'
+# $("#tok3n#{current}MenuButton").addClass 'tok3n-sidebar-selected'

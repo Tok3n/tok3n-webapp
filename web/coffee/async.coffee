@@ -70,7 +70,7 @@ do ->
   }, {
 
   # Typekit
-    load: "//use.typekit.net/nls8ikc.js"
+    load: "//use.typekit.net/#{Tok3nDashboard.typekit}.js"
     complete: ->
       try
         Typekit.load()

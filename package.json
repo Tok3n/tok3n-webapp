@@ -37,7 +37,8 @@
     "grunt-curl": "~1.4.0",
     "leveldown": "~0.10.2",
     "levelup": "~0.18.2",
-    "grunt-coffeelint": "0.0.10"
+    "grunt-coffeelint": "0.0.10",
+    "grunt-concurrent": "~0.5.0"
   },
   "dependencies": {
     "blade": "~3.2.6",

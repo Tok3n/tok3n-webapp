@@ -5,57 +5,12 @@ do ->
   ###
 
   main = () ->
-    sitewide()
+    Tok3nDashboard.Screens.sitewide()
     Tok3nDashboard.slider()
     ee.addListener 'tok3nSlideBeforeAnimation', ->
       initCurrentWindow()
+    initCurrentWindow()
     return
-
-
-  ###
-  Sitewide
-  ###
-
-  sitewide = ->
-    # Sidebar show/hide
-    ((el) ->
-      if el
-        document.querySelector('#collapseSidebarButton').addEventListener('click', () ->
-          el.classList.toggle 'collapsed'
-        , false)
-        
-        menuItems = querySelectorAll('.tok3n-menu-item')
-        menuItems.forEach (item) ->
-          item.addEventListener 'click', ->
-            if window.matchMedia("(max-width: 768px)").matches
-              el.classList.toggle 'collapsed'
-          , false
-        WidthChange = (mq) ->
-          if mq.matches
-            # Desktop size
-            if el.classList.contains 'collapsed'
-              el.classList.remove 'collapsed'
-          else
-            # Mobile size
-            unless el.classList.contains 'collapsed'
-              el.classList.add 'collapsed'
-          return
-        if matchMedia
-          mq = window.matchMedia("(min-width: 769px)")
-          mq.addListener WidthChange
-          WidthChange mq
-    )(document.querySelector '#tok3nSidebarMenu')
-
-    # Dropdown lists
-    ((arr) ->
-      if arr
-        for el in arr
-          el.addEventListener('click', () ->
-            for child in el.children
-              if child.classList.contains 'dropdown-menu'
-                child.classList.toggle 'dropdown-show'
-          , false)
-    )(document.querySelectorAll '.dropdown')
 
 
   ###
@@ -63,122 +18,90 @@ do ->
   ###
 
   destroyActiveWindowJs = ->
-    currentWindow = Tok3nDashboard.nextTarget
+    currentWindow = ->
+      if Tok3nDashboard.nextTarget isnt undefined
+        Tok3nDashboard.nextTarget
+      else
+        document.querySelector '.tok3n-pt-page-current'
     setTimeout ->
-      unless currentWindow.id is 'tok3nDevices'
+      unless currentWindow().id is 'tok3nDevices'
         false
-      unless currentWindow.id is 'tok3nPhonelines'
+      unless currentWindow().id is 'tok3nPhonelines'
         false
-      unless currentWindow.id is 'tok3nApplications'
+      unless currentWindow().id is 'tok3nApplications'
         if Tok3nDashboard.masonry?
           Tok3nDashboard.masonry.destroy()
-      unless currentWindow.id is 'tok3nIntegrations'
+      unless currentWindow().id is 'tok3nIntegrations'
         false
-      unless currentWindow.id is 'tok3nBackupCodes'
+      unless currentWindow().id is 'tok3nBackupCodes'
         false
-      unless currentWindow.id is 'tok3nBackupSettings'
+      unless currentWindow().id is 'tok3nSettings'
         false
     , 250
 
 
-  camelCaseSwitcher = (arr, func) ->
+  toCamelCase = (s) ->
+    # http://valschuman.blogspot.mx/2012/08/javascript-camelcase-function.html
+    s = s.replace(/([^a-zA-Z0-9_\- ])|^[_0-9]+/g, "").trim().toLowerCase()
+    s = s.replace(/([ -]+)([a-zA-Z0-9])/g, (a, b, c) ->
+      c.toUpperCase()
+    )
+    s = s.replace(/([0-9]+)([a-zA-Z])/g, (a, b, c) ->
+      b + c.toUpperCase()
+    )
+    s
+
+
+  executeIfExists = (arr) ->
     arr.forEach (screen) ->
-      screenClass = ".tok3n-" + screen.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([a-zA-Z]+)([0-9]+)/g, '$1-$2').toLowerCase()
-      func(screen)
+      if document.querySelector ".tok3n-#{screen}"
+        if Tok3nDashboard.Environment.isDevelopment
+          console.log toCamelCase(screen)
+        if typeof Tok3nDashboard.Screens[toCamelCase(screen)] is 'function'
+          Tok3nDashboard.Screens[toCamelCase(screen)]()
 
 
   initCurrentWindow = ->
-    currentWindow = Tok3nDashboard.nextTarget
+    currentWindow = ->
+      if Tok3nDashboard.nextTarget isnt undefined
+        Tok3nDashboard.nextTarget
+      else
+        document.querySelector '.tok3n-pt-page-current'
   
     # Don't render what we won't use
     destroyActiveWindowJs()
 
-    switch currentWindow.id
+    switch currentWindow().id
       # Change this!
-      when "tok3n-signup"
-        signupScreens = ['signupEnable', 'signupCreate1', 'signupCreate2', 'signupDevice1', 'signupDevice2', 'signupPhoneline1', 'signupPhoneline2']
-        camelCaseSwitcher signupScreens, (currentWindow) ->
-          switch currentWindow
-            when 'signupEnable'
-              false
-            when 'signupCreate1'
-              false
-            when 'signupCreate2'
-              false
-            when 'signupPhoneline1'
-              false
-            when 'signupPhoneline2'
-              false
-            else
-              false
-
-      when "tok3ndDevices"
-        false
+      when "tok3nDevices"
+        executeIfExists [
+          'device-view'
+          'device-new-1'
+          'device-new-2'
+          'device-new-3'
+        ]
       when "tok3nPhonelines"
-        false
+        executeIfExists [
+          'phoneline-view-cellphone'
+          'phoneline-view-landline'
+          'phoneline-new-1'
+          'phoneline-new-2'
+          'phoneline-new-3'
+        ]
       when "tok3nApplications"
-        authorizedApps()
+        Tok3nDashboard.Screens.applications()
       when "tok3nIntegrations"
-        toggleSecret()
+        executeIfExists [
+          'integration-view'
+          'integration-new'
+          'integration-edit'
+        ]
       when "tok3nBackupCodes"
         false
       when "tok3nSettings"
-        false
+        Tok3nDashboard.Screens.settings()
       else
         false
-
-
-  ###
-  Authorized apps
-  ###
-
-  authorizedApps = () ->
-    cardsContainer = qs '.tok3n-cards-container'
-
-    # Masonry apps container
-    if cardsContainer
-      Tok3nDashboard.masonry = new Masonry cardsContainer,
-        itemSelector: '.card'
-        gutter: '.grid-gutter'
-
-    # Flip cards to the back
-    forEach cardsContainer.querySelectorAll('.front'), (el) ->
-      el.addEventListener 'click', ->
-        findClosestAncestor(el, 'flipper').classList.add 'flipped'
-        card = [].filter.call el.parentNode.children, (gl) ->
-          gl.classList.contains('back')
-        forEach card, (fl) ->
-          fl.style.zIndex = 3
-      , false
-
-    # Flip cards to the front
-    forEach cardsContainer.querySelectorAll('.flip'), (el) ->
-      el.addEventListener 'click', ->
-        findClosestAncestor(el, 'flipper').classList.remove 'flipped'
-      , false
-
-
-  ###
-  My integrations
-  ###
-
-  toggleSecret = ->
-    toggleEl = qsa '.toggle-secret'
-    if toggleEl?
-      forEach toggleEl, (el) ->
-        el.addEventListener 'click', ->
-          hiddenEl = [].filter.call el.parentNode.children, (gl) ->
-            gl.classList.contains('secret')
-          if hiddenEl?
-            forEach hiddenEl, (fl) ->
-              if fl.classList.contains 'hidden'
-                el.innerHTML = 'hide'
-                fl.classList.remove 'hidden'
-              else unless fl.classList.contains 'hidden'
-                el.innerHTML = 'show'
-                fl.classList.add 'hidden'
-        , false
-
 
   ###
   Vanilla $('document').ready() detection. Execute main() when it is.

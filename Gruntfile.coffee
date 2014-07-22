@@ -24,9 +24,11 @@ module.exports = (grunt) ->
 		pkg: grunt.file.readJSON 'package.json'
 		aws: grunt.file.readJSON '/Users/aficio/Dropbox/Development/Amazon/tok3n-aficio.json'
 
+
 		shell:
 			sleep:
 				command: 'sleep 3s'
+
 
 		curl:
 			dashboard:
@@ -38,11 +40,15 @@ module.exports = (grunt) ->
 			buoy:
 				dest: js + 'buoy.js'
 				src: 'https://raw.githubusercontent.com/cferdinandi/buoy/master/buoy.js'
-		
+			# We need to find a way to do this programatically
+
+
+
 		copy:
 			jquery:
 				src: comp + 'jquery/jquery.js'
 				dest: js + 'jquery.js'
+
 
 		compass:
 			options:
@@ -74,7 +80,8 @@ module.exports = (grunt) ->
 					httpStylesheetsPath: cdnUrl + 'css'
 					httpImagesPath: cdnUrl + 'img'
 					httpFontsPath: cdnUrl + 'font'
-		
+
+
 		csslint:
 			options:
 				csslintrc: '.csslintrc'
@@ -84,38 +91,44 @@ module.exports = (grunt) ->
 					css + 'main.css'
 				]
 
+
+		cssmin:
+			dist:
+				options:
+					report: 'gzip'
+					banner: grunt.file.read('banner.txt')
+				files: [
+					{
+						expand: true
+						replace: true
+						cwd: css
+						src: ['*.css', '!*-min.css']
+						dest: css
+						ext: '-min.css'
+					}
+				]
+
+
+		coffee: 
+			options:
+				bare: true
+			glob:
+				expand: true
+				flatten: true
+				cwd: 'web/coffee'
+				src: ['*.coffee']
+				dest: js
+				ext: '.js'
+
+
 		coffeelint:
 			app:
 				files:
 					src: [coffee + '*.coffee']
 				options:
 					configFile: 'coffeelint.json'
-				
-		coffee: 
-			options:
-				bare: true
-			utils:
-				src: coffee + 'utils.coffee'
-				dest: js + 'utils.js'
-			main:
-				src: coffee + 'main.coffee'
-				dest: js + 'main.js'
-			slider:
-				src: coffee + 'slider.coffee'
-				dest: js + 'slider.js'
-			async:
-				src: coffee + 'async.coffee'
-				dest: js + 'async.js'
-			compatibility:
-				src: coffee + 'compatibility.coffee'
-				dest: js + 'compatibility.js'
-			test:
-				src: coffee + 'test.coffee'
-				dest: js + 'test.js'
-			jQueryDashboard:
-				src: coffee + 'jquery-dashboard.coffee'
-				dest: js + 'jquery-dashboard.js'
-		
+
+
 		concat:
 			options:
 				separator: '\n'
@@ -126,24 +139,26 @@ module.exports = (grunt) ->
 					comp + 'jquery/dist/jquery.js'
 					comp + 'parsleyjs/dist/parsley.js'
 					comp + 'eventEmitter/EventEmitter.js'
-					'<%= coffee.utils.dest %>'
+					js + 'utils.js'
 				]				
 				dest: js + 'utils.js'
 			dashboard:
 				src: [
-					'<%= coffee.jQueryDashboard.dest %>'
-					'<%= coffee.slider.dest %>'
-					'<%= coffee.main.dest %>'
+					js + 'jquery-dashboard.js'
+					js + 'slider.js'
+					js + 'main.js'
 				]
 				dest: js + 'dashboard.js'
 			dashboardProd:
 				src: [
-					'<%= concat.utils.dest %>'
-					'<%= coffee.async.dest %>'
-					'<%= coffee.compatibility.dest %>'
+					js + 'utils.js'
+					js + 'async.js'
+					js + 'screens.js'
+					js + 'compatibility.js'
 					'<%= concat.dashboard.dest %>'
 				]
 				dest: js + 'dashboard-prod.js'
+
 
 		uglify:
 			options:
@@ -161,7 +176,8 @@ module.exports = (grunt) ->
 			dashboard:
 				src: '<%= concat.dashboardProd.dest %>'
 				dest: js + 'dashboard-min.js'
-		
+
+
 		replace:
 			dist:
 				src: dist + '*.html'
@@ -202,6 +218,7 @@ module.exports = (grunt) ->
 					to: ',\n/*!'
 				]
 
+
 		processhtml:
 			options:
 				data:
@@ -210,6 +227,7 @@ module.exports = (grunt) ->
 			dashboard:
 				src: dist + 'dashboard.html'
 				dest: dist + 'dashboard.html'
+
 
 		prettify:
 			html:
@@ -221,21 +239,6 @@ module.exports = (grunt) ->
 				src: ['*.html']
 				dest: dist
 
-		cssmin:
-			dist:
-				options:
-					report: 'gzip'
-					banner: grunt.file.read('banner.txt')
-				files: [
-					{
-						expand: true
-						replace: true
-						cwd: css
-						src: ['*.css', '!*-min.css']
-						dest: css
-						ext: '-min.css'
-					}
-				]
 
 		sync:
 			dist:
@@ -255,6 +258,7 @@ module.exports = (grunt) ->
 					}
 				]
 
+
 		imagemin:
 			dist:
 				options:
@@ -268,15 +272,17 @@ module.exports = (grunt) ->
 					}
 				]
 
+
 		watch:
 			options:
 				livereload: true
 			coffee:
 				files: coffee + '*'
-				tasks: ['coffeelint', 'coffee', 'concat']
+				tasks: ['watch-coffee-tasks']
 			sass:
 				files: sass + '*'
 				tasks: ['compass:watch']
+
 
 		's3-sync':
 			options:
@@ -344,6 +350,13 @@ module.exports = (grunt) ->
 		'replace:dist'
 		'prettify'
 		'processhtml'
+	]
+
+	@registerTask 'watch-coffee-tasks', [
+		'coffeelint'
+		'coffee'
+		'concat:utils'
+		'concat:dashboard'
 	]
 
 	@registerTask 'default', [
