@@ -9,6 +9,8 @@ unless Tok3nDashboard.Environment.isDevelopment
 else
   Tok3nDashboard.Environment.isProduction = false
 
+Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp'
+
 # easy refs for various things
 each = Function.prototype.call.bind [].forEach
 indexOf = Function.prototype.call.bind [].indexOf

@@ -177,6 +177,11 @@ module.exports = (grunt) ->
 			dashboard:
 				src: '<%= concat.dashboardProd.dest %>'
 				dest: js + 'dashboard-min.js'
+			polyfills:
+				expand: true
+				cwd: js + 'polyfills'
+				src: '*.js'
+				dest: js + 'polyfills/min/'
 
 
 		replace:
@@ -301,7 +306,15 @@ module.exports = (grunt) ->
 						dest: '/<%= pkg.name %>/<%= pkg.version %>/'
 					}
 				]
-	
+			polyfills:
+				files: [
+					{
+						src: js + 'polyfills/**'
+						dest: '/polyfills/'
+					}
+				]
+
+
 	@registerTask 'bower-install', 'Installs Bower dependencies.', ->
 		bower = require 'bower'
 		done = this.async()

@@ -12655,6 +12655,8 @@ if (!Tok3nDashboard.Environment.isDevelopment) {
   Tok3nDashboard.Environment.isProduction = false;
 }
 
+Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp';
+
 each = Function.prototype.call.bind([].forEach);
 
 indexOf = Function.prototype.call.bind([].indexOf);
