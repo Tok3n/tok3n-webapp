@@ -85,6 +85,30 @@
         };
       }
     }, {
+      test: window.MutationObserver,
+      nope: "https://raw.githubusercontent.com/Polymer/MutationObservers/master/MutationObserver.js"
+    }, {
+      test: window.Promise,
+      nope: 'http://s3.amazonaws.com/es6-promises/promise-1.0.0.min.js'
+    }, {
+      test: window.CustomEvent,
+      nope: function() {
+        var CustomEvent;
+        CustomEvent = function(event, params) {
+          var evt;
+          params = params || {
+            bubbles: false,
+            cancelable: false,
+            detail: void 0
+          };
+          evt = document.createEvent("CustomEvent");
+          evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+          return evt;
+        };
+        CustomEvent.prototype = window.Event.prototype;
+        window.CustomEvent = CustomEvent;
+      }
+    }, {
       load: "//use.typekit.net/" + Tok3nDashboard.typekit + ".js",
       complete: function() {
         try {
@@ -94,54 +118,15 @@
     }, {
       load: "//www.google.com/jsapi",
       complete: function() {
-        google.load("visualization", "1", {
-          packages: ["corechart"],
-          callback: function() {
-            var drawChartDataDonut, drawChartDataRequestHistory, drawChartDataUsersHistory;
-            drawChartDataDonut = function(e) {
-              var chart, data, options;
-              data = google.visualization.arrayToDataTable([["Task", "Requests"], ["Valid", e.detail.ValidRequests], ["Invalid", e.detail.InvalidRequests], ["Pending", e.detail.IssuedRequests]]);
-              options = {
-                title: "Request types",
-                pieHole: 0.4
-              };
-              chart = new google.visualization.PieChart(document.getElementById("donutChart"));
-              chart.draw(data, options);
-              return google.visualization.events.addListener(chart, "ready", function() {
-                return resizeContent();
-              });
-            };
-            drawChartDataRequestHistory = function(e) {
-              var chart, data, options;
-              data = google.visualization.arrayToDataTable(eval_(e.detail));
-              console.log(data);
-              options = {
-                title: "Requests"
-              };
-              chart = new google.visualization.LineChart(document.getElementById("requestHistoryChart"));
-              chart.draw(data, options);
-              return google.visualization.events.addListener(chart, "ready", function() {
-                return resizeContent();
-              });
-            };
-            drawChartDataUsersHistory = function(e) {
-              var chart, data, options;
-              data = google.visualization.arrayToDataTable(eval_(e.detail));
-              console.log(data);
-              options = {
-                title: "Users"
-              };
-              chart = new google.visualization.LineChart(document.getElementById("usersHistoryChart"));
-              chart.draw(data, options);
-              return google.visualization.events.addListener(chart, "ready", function() {
-                return resizeContent();
-              });
-            };
-            window.addEventListener("drawChartDataDonut", drawChartDataDonut, false);
-            window.addEventListener("drawChartDataRequestHistory", drawChartDataRequestHistory, false);
-            window.addEventListener("drawChartDataUsersHistory", drawChartDataUsersHistory, false);
-          }
+        Tok3nDashboard.Jsapi.isLoaded = new Promise(function(resolve, reject) {
+          return google.load("visualization", "1", {
+            packages: ["corechart"],
+            callback: function() {
+              return resolve();
+            }
+          });
         });
+        ee.emitEvent('tok3nJsapiPromiseCreated');
       }
     }, {
       load: ("https:" === location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js"

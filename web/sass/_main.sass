@@ -14,21 +14,22 @@ $tok3n-purple: #2b3087
 // Alerts //
 ////////////
 
-.tok3n-login-alert
+.tok3n-dashboard-alert
   +single-transition(all, .3s, ease)
   padding: 15px 30px
+  overflow: hidden
+  margin-bottom: 20px
+  max-height: 120px
   b
     margin-right: .5em
 
-.tok3n-login-alert-hidden
+.tok3n-dashboard-alert-hidden
   max-height: 0
   padding: 0 30px
   border: 0
-  margin: 0
-  // color: transparent
-  overflow: hidden
+  margin-bottom: 0
 
-.tok3n-login-alert-active
+.tok3n-dashboard-alert-active
   +animation(flash)
   +animation-duration(.5s)
   +animation-delay(.3s)
@@ -512,6 +513,6 @@ ol.tok3n-step-list
 .tok3n-user-verify-password
   @extend %tok3n-collapse
   +to(2)
-    max-height: 62px // Hardcoded
+    max-height: 80px // Hardcoded
   +from(3)
-    max-height: 34px // Hardcoded
+    max-height: 52px // Hardcoded

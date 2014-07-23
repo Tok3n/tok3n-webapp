@@ -1,43 +1,74 @@
 .tok3n-integration-new
-  .tok3n-dashboard-new-form.form-horizontal(role='form')
+  form#tok3nIntegrationNewForm.tok3n-dashboard-new-form.form-horizontal(role='form')
     .tok3n-dashboard-form-lower-wrapper
       .form-group
         .col-md-12
           h3.title New integration
       .form-group
-        .tok3n-login-alert.alert.alert-danger.tok3n-login-alert-hidden
-          b Error:
-          //- | The provided code was incorrect. Please try again.
-          | The provided XXX was incorrect, please XXX and try again.
+        .col-md-12
+          .tok3n-dashboard-alert.alert.alert-danger.tok3n-dashboard-alert-hidden
+            b Error:
+            //- | The provided code was incorrect. Please try again.
+            | The provided name is already in use, please try another.
       .form-group
-        label.align-top.col-md-4(for='newIntegrationSettingsNameField') Name
+        label.align-top.col-md-4(for='newIntegrationName') Name
         .col-md-8
-          input.form-control(type='text', placeholder='Tok3n')
+          input#newIntegrationName.form-control(
+            type='text'
+            placeholder='Tok3n'
+            data-parsley-required="true"
+            )
       .form-group.tok3n-new-integration-kind
         label.align-top.col-md-4(for='newIntegrationKind') Kind
         .col-md-8
           label.radio-inline.tok3n-new-integration-kind-radio.tok3n-new-integration-kind-radio-general
-            input#newIntegrationKindGeneral(type='radio', name='kind', value='general')
+            input#newIntegrationKindGeneral(
+              type='radio'
+              name='newIntegrationKind'
+              value='general'
+              data-parsley-required="true"
+              data-parsley-ui-enabled='false'
+              )
             | General
           label.radio-inline.tok3n-new-integration-kind-radio.tok3n-new-integration-kind-radio-web
-            input#newIntegrationKindWeb(type='radio', name='kind', value='web')
+            input#newIntegrationKindWeb(
+              type='radio'
+              name='newIntegrationKind'
+              value='web'
+              data-parsley-required="true"
+              data-parsley-ui-enabled='false'
+              )
             | Web
           span.help-block Web integrations have a callback url which is called on certain user actions.
             |  
             a Learn more
             | .
       .form-group.tok3n-collapse.collapsed.tok3n-new-integration-callback-url
-        label.align-top.col-md-4(for='newIntegrationSettingsCallbackUrl') Callback Url
+        label.align-top.col-md-4(for='tokenIntegrationCallbackUrl') Callback Url
         .col-md-8
-          input.form-control(type='text', placeholder='http://tok3n.me/por/aqui')
+          input#tokenIntegrationCallbackUrl.form-control(
+            type='text'
+            placeholder='http://tok3n.me/por/aqui'
+            data-parsley-type="url"
+            )
       .form-group
         label.align-top.col-md-4(for='newIntegrationSettingsAvatar') Icon
         .input-group.col-md-8
           span.input-group-btn
             span.btn.btn-default.btn-file
-              | Change icon
-              input(type='file', multiple='')
-          input.avatar-path.form-control(type='text', readonly='')
+              | Browse
+              input(
+                type='file'
+                multiple=''
+                data-parsley-ui-enabled='false'
+                data-parsley-required="false"
+                )
+          input.avatar-path.form-control(
+            type='text'
+            readonly=''
+            data-parsley-ui-enabled='false'
+            data-parsley-required="false"
+            )
         span.help-block.col-md-8.col-md-offset-4
           | Help the users to recognize your app by providing an icon (png, jpg). Max file size: 5 mb.
       .form-group
@@ -48,6 +79,6 @@
           | and that you agree to be legally bound by them.
     .tok3n-buttons-wrapper
       .col-md-6.tok3n-single-button
-        a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-secondary-button(href='#') Cancel
+        a#tok3nIntegrationNewCancel.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-secondary-button(href='#') Cancel
       .col-md-6.tok3n-single-button
-        a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Create integration
+        a#tok3nIntegrationNewSubmit.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Create integration

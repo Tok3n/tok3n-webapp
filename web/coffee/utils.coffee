@@ -1,5 +1,9 @@
 window.Tok3nDashboard or= {}
 Tok3nDashboard.Environment or= {}
+Tok3nDashboard.Jsapi or= {}
+Tok3nDashboard.Charts or= {}
+Tok3nDashboard.ValidatedForms or= []
+
 unless Tok3nDashboard.Environment.isDevelopment
   Tok3nDashboard.Environment.isProduction = true
 else
@@ -46,6 +50,8 @@ isEmptyOrDefault = ( el ) ->
     false
 hasFormValidation = ->
   typeof document.createElement("input").checkValidity is "function"
+capitaliseFirstLetter = (string) ->
+  string.charAt(0).toUpperCase() + string.slice(1)
 
 # Google Analytics
 root = exports ? this

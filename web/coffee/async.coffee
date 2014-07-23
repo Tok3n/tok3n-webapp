@@ -68,6 +68,28 @@ do ->
           i++
         res
   }, {
+    test: window.MutationObserver
+    nope: "https://raw.githubusercontent.com/Polymer/MutationObservers/master/MutationObserver.js"
+  }, {
+    test: window.Promise
+    nope: 'http://s3.amazonaws.com/es6-promises/promise-1.0.0.min.js'
+  }, {
+    test: window.CustomEvent
+    nope: ->
+      CustomEvent = (event, params) ->
+        params = params or
+          bubbles: false
+          cancelable: false
+          detail: undefined
+
+        evt = document.createEvent("CustomEvent")
+        evt.initCustomEvent event, params.bubbles, params.cancelable, params.detail
+        evt
+      CustomEvent:: = window.Event::
+      window.CustomEvent = CustomEvent
+      return
+  }, {
+
 
   # Typekit
     load: "//use.typekit.net/#{Tok3nDashboard.typekit}.js"
@@ -80,43 +102,12 @@ do ->
   # Google Charts
     load: "//www.google.com/jsapi"
     complete: ->
-      google.load "visualization", "1",
-        packages: ["corechart"]
-        callback: ->
-          drawChartDataDonut = (e) ->
-            data = google.visualization.arrayToDataTable([
-              ["Task", "Requests"]
-              ["Valid", e.detail.ValidRequests]
-              ["Invalid", e.detail.InvalidRequests]
-              ["Pending", e.detail.IssuedRequests]
-            ])
-            options =
-              title: "Request types"
-              pieHole: 0.4
-            chart = new google.visualization.PieChart(document.getElementById("donutChart"))
-            chart.draw data, options
-            google.visualization.events.addListener chart, "ready", ->
-              resizeContent()
-          drawChartDataRequestHistory = (e) ->
-            data = google.visualization.arrayToDataTable(eval_(e.detail))
-            console.log data
-            options = title: "Requests"
-            chart = new google.visualization.LineChart(document.getElementById("requestHistoryChart"))
-            chart.draw data, options
-            google.visualization.events.addListener chart, "ready", ->
-              resizeContent()
-          drawChartDataUsersHistory = (e) ->
-            data = google.visualization.arrayToDataTable(eval_(e.detail))
-            console.log data
-            options = title: "Users"
-            chart = new google.visualization.LineChart(document.getElementById("usersHistoryChart"))
-            chart.draw data, options
-            google.visualization.events.addListener chart, "ready", ->
-              resizeContent()
-          window.addEventListener "drawChartDataDonut", drawChartDataDonut, false
-          window.addEventListener "drawChartDataRequestHistory", drawChartDataRequestHistory, false
-          window.addEventListener "drawChartDataUsersHistory", drawChartDataUsersHistory, false
-          return
+      Tok3nDashboard.Jsapi.isLoaded = new Promise (resolve, reject) ->
+        google.load "visualization", "1",
+          packages: ["corechart"]
+          callback: ->
+            resolve()
+      ee.emitEvent 'tok3nJsapiPromiseCreated'
       return
   }, {
   

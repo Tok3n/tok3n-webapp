@@ -6,12 +6,17 @@
     /*
     Sitewide
      */
-    var countryCode, countrySelect, limitToSixChar, phoneNumber, selectCountryCode, toggleNextButton, toggleNextButtonOtp, toggleVerifyPassword;
+    var addNewParsleyForm, countryCode, countrySelect, limitToSixChar, phoneNumber, selectCountryCode, toggleNextButton, toggleNextButtonOtp, toggleVerifyPassword;
     exports.sitewide = function() {
       var current;
-      current = Tok3nDashboard.initWindow;
+      current = capitaliseFirstLetter(Tok3nDashboard.initWindow);
       document.getElementById("tok3n" + current).classList.add('tok3n-pt-page-current');
       document.getElementById("tok3n" + current + "MenuButton").classList.add('tok3n-sidebar-selected');
+      querySelectorAll('a[href="#"]').forEach(function(el) {
+        return el.addEventListener('click', function(evt) {
+          return evt.preventDefault();
+        }, false);
+      });
       return (function(el) {
         var WidthChange, menuItems, mq;
         if (el) {
@@ -44,6 +49,28 @@
           }
         }
       })(document.querySelector('#tok3nSidebarMenu'));
+    };
+    addNewParsleyForm = function(formElement, submitForm, clsHandler) {
+      var form, submit;
+      form = $(formElement);
+      form.parsley({
+        classHandler: clsHandler
+      });
+      Tok3nDashboard.ValidatedForms.push(form);
+      submit = qs(submitForm);
+      return submit.addEventListener('click', function(evt) {
+        form.parsley().validate();
+        if (Tok3nDashboard.Environment.isDevelopment) {
+          return console.log(form.parsley().isValid());
+        }
+      }, false);
+    };
+
+    /*
+    My devices
+     */
+    exports.deviceNew3 = function() {
+      return addNewParsleyForm('#tok3nDeviceNew3Form', '#tok3nDeviceNew3Submit', '#tok3nDeviceNew3Form');
     };
 
     /*
@@ -107,6 +134,9 @@
       });
       return signupOtpInput.addEventListener("input", limitToSixChar);
     };
+    exports.phonelineNew3 = function() {
+      return addNewParsleyForm('#tok3nPhonelineNew3Form', '#tok3nPhonelineNew3Submit', '#tok3nPhonelineNew3Form');
+    };
 
     /*
     My applications
@@ -142,8 +172,69 @@
     /*
     My integrations
      */
+    exports.integrationsCharts = function() {
+      var attachChartFunctions;
+      attachChartFunctions = function() {
+        return Tok3nDashboard.Jsapi.isLoaded.then(function() {
+          var chartEvent, drawChartDataDonut, drawChartDataRequestHistory, drawChartDataUsersHistory;
+          drawChartDataDonut = function(e) {
+            var chart, data, options;
+            data = google.visualization.arrayToDataTable([["Task", "Requests"], ["Valid", e.detail.ValidRequests], ["Invalid", e.detail.InvalidRequests], ["Pending", e.detail.IssuedRequests]]);
+            options = {
+              title: "Request types",
+              pieHole: 0.4
+            };
+            chart = new google.visualization.PieChart(document.getElementById("donutChart"));
+            chart.draw(data, options);
+            return google.visualization.events.addListener(chart, "ready", function() {
+              return resizeContent();
+            });
+          };
+          drawChartDataRequestHistory = function(e) {
+            var chart, data, options;
+            data = google.visualization.arrayToDataTable(eval_(e.detail));
+            console.log(data);
+            options = {
+              title: "Requests"
+            };
+            chart = new google.visualization.LineChart(document.getElementById("requestHistoryChart"));
+            chart.draw(data, options);
+            return google.visualization.events.addListener(chart, "ready", function() {
+              return resizeContent();
+            });
+          };
+          drawChartDataUsersHistory = function(e) {
+            var chart, data, options;
+            data = google.visualization.arrayToDataTable(eval_(e.detail));
+            console.log(data);
+            options = {
+              title: "Users"
+            };
+            chart = new google.visualization.LineChart(document.getElementById("usersHistoryChart"));
+            chart.draw(data, options);
+            return google.visualization.events.addListener(chart, "ready", function() {
+              return resizeContent();
+            });
+          };
+          window.addEventListener("drawChartDataDonut", drawChartDataDonut, false);
+          window.addEventListener("drawChartDataRequestHistory", drawChartDataRequestHistory, false);
+          window.addEventListener("drawChartDataUsersHistory", drawChartDataUsersHistory, false);
+          Tok3nDashboard.Charts.areLoaded = true;
+          if (Tok3nDashboard.Environment.isDevelopment) {
+            console.log('Chart functions attached successfully.');
+          }
+          chartEvent = new CustomEvent('chartFunctionsLoaded');
+          window.dispatchEvent(chartEvent);
+        });
+      };
+      if (Tok3nDashboard.Jsapi.isLoaded) {
+        return attachChartFunctions();
+      } else {
+        return ee.addListener('tok3nJsapiPromiseCreated', attachChartFunctions);
+      }
+    };
     exports.integrationView = function() {
-      var toggleEl;
+      var dropdowns, toggleEl;
       toggleEl = qsa('.toggle-secret');
       if (toggleEl != null) {
         forEach(toggleEl, function(el) {
@@ -167,77 +258,89 @@
           }, false);
         });
       }
-      return (function(arr) {
-        var el, _i, _len, _results;
-        if (arr) {
-          _results = [];
-          for (_i = 0, _len = arr.length; _i < _len; _i++) {
-            el = arr[_i];
-            _results.push(el.addEventListener('click', function() {
-              var child, _j, _len1, _ref, _results1;
-              _ref = el.children;
-              _results1 = [];
-              for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
-                child = _ref[_j];
-                if (child.classList.contains('dropdown-menu')) {
-                  _results1.push(child.classList.toggle('dropdown-show'));
-                } else {
-                  _results1.push(void 0);
-                }
+      dropdowns = querySelectorAll('.dropdown');
+      if (dropdowns) {
+        return dropdowns.forEach(function(el) {
+          return el.addEventListener('click', function() {
+            var child, _i, _len, _ref, _results;
+            _ref = el.children;
+            _results = [];
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              child = _ref[_i];
+              if (child.classList.contains('dropdown-menu')) {
+                _results.push(child.classList.toggle('dropdown-show'));
+              } else {
+                _results.push(void 0);
               }
-              return _results1;
-            }, false));
-          }
-          return _results;
-        }
-      })(document.querySelectorAll('.dropdown'));
+            }
+            return _results;
+          }, false);
+        });
+      }
     };
     exports.integrationNew = function() {
-      var callbackField, newIntegrationRadio;
+      var callbackField, callbackInput, hideCallback, newIntegrationRadio, showCallback;
       newIntegrationRadio = querySelectorAll('.tok3n-new-integration-kind-radio, .tok3n-new-integration-kind-radio input');
       callbackField = qs('.tok3n-new-integration-callback-url');
-      return newIntegrationRadio.forEach(function(el) {
+      callbackInput = gebi('tokenIntegrationCallbackUrl');
+      showCallback = function() {
+        callbackField.classList.remove('collapsed');
+        return callbackInput.setAttribute('data-parsley-required', 'true');
+      };
+      hideCallback = function() {
+        callbackField.classList.add('collapsed');
+        return callbackInput.setAttribute('data-parsley-required', 'false');
+      };
+      newIntegrationRadio.forEach(function(el) {
         return el.addEventListener('click', function(evt) {
           evt.stopPropagation();
           if (evt.target.classList.contains('tok3n-new-integration-kind-radio-web')) {
             evt.preventDefault();
             evt.target.querySelector('input').checked = true;
-            return callbackField.classList.remove('collapsed');
+            return showCallback();
           } else if (evt.target.classList.contains('tok3n-new-integration-kind-radio-general')) {
             evt.preventDefault();
             evt.target.querySelector('input').checked = true;
-            return callbackField.classList.add('collapsed');
+            return hideCallback();
           } else {
             if (evt.target.id === 'newIntegrationKindWeb') {
-              return callbackField.classList.remove('collapsed');
+              return showCallback();
             } else if (evt.target.id === 'newIntegrationKindGeneral') {
-              return callbackField.classList.add('collapsed');
+              return hideCallback();
             }
           }
         }, false);
       });
+      return addNewParsleyForm('#tok3nIntegrationNewForm', '#tok3nIntegrationNewSubmit', '#tok3nIntegrationNewForm');
+    };
+    exports.integrationEdit = function() {
+      return addNewParsleyForm('#tok3nIntegrationEditForm', '#tok3nIntegrationEditSubmit', '#tok3nIntegrationEditForm');
     };
 
     /*
     Settings
      */
     toggleVerifyPassword = function() {
-      var passwordField, verifyPassword;
+      var passwordField, verifyPassword, verifyPasswordField;
       passwordField = qs("input.tok3n-user-password");
       verifyPassword = qs('.tok3n-user-verify-password');
+      verifyPasswordField = gebi('tok3nUserVerifyPassword');
       if (passwordField) {
         if (passwordField.value) {
-          return verifyPassword.classList.remove("collapsed");
+          verifyPassword.classList.remove("collapsed");
+          return verifyPasswordField.setAttribute('data-parsley-required', 'true');
         } else {
-          return verifyPassword.classList.add("collapsed");
+          verifyPassword.classList.add("collapsed");
+          return verifyPasswordField.setAttribute('data-parsley-required', 'false');
         }
       }
     };
     return exports.settings = function() {
       toggleVerifyPassword();
-      return document.querySelector('.tok3n-user-password').addEventListener('keyup', function(event) {
+      document.querySelector('.tok3n-user-password').addEventListener('keyup', function(event) {
         return toggleVerifyPassword();
       }, false);
+      return addNewParsleyForm('#tok3nSettingsForm', '#tok3nSettingsSubmit', '#tok3nSettingsForm');
     };
   });
 })();

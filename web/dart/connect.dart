@@ -151,13 +151,13 @@ void toggleAnimationClass(Element e, String addCls, String removCls){
 
 // Of course this should be only used after the corresponding text is added.
 void alertTextAppear() {
-  querySelectorAll('.tok3n-login-alert').forEach((Element f){
-    toggleAnimationClass(f, 'tok3n-login-alert-active', 'tok3n-login-alert-hidden');
+  querySelectorAll('.tok3n-dashboard-alert').forEach((Element f){
+    toggleAnimationClass(f, 'tok3n-dashboard-alert-active', 'tok3n-dashboard-alert-hidden');
   });
 }
 
 void alertTextRemove() {
-  querySelectorAll('.tok3n-login-alert').forEach((Element f){
-    toggleAnimationClass(f, 'tok3n-login-alert-hidden', 'tok3n-login-alert-active');
+  querySelectorAll('.tok3n-dashboard-alert').forEach((Element f){
+    toggleAnimationClass(f, 'tok3n-dashboard-alert-hidden', 'tok3n-dashboard-alert-active');
   });
 }

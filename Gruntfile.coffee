@@ -139,6 +139,7 @@ module.exports = (grunt) ->
 					comp + 'jquery/dist/jquery.js'
 					comp + 'parsleyjs/dist/parsley.js'
 					comp + 'eventEmitter/EventEmitter.js'
+					js + 'regex-weburl.js'
 					js + 'utils.js'
 				]				
 				dest: js + 'utils.js'

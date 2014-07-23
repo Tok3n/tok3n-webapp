@@ -1,19 +1,25 @@
 .tok3n-phoneline-new-3
-  .tok3n-dashboard-new-form.form-horizontal(role='form')
+  form#tok3nPhonelineNew3Form.tok3n-dashboard-new-form.form-horizontal(role='form')
     .tok3n-dashboard-form-lower-wrapper
       .form-group
         .col-md-12
           h3.title You are almost finished!
       fieldset
         .form-group
-          .tok3n-login-alert.alert.alert-danger.tok3n-login-alert-hidden
-            b Error:
-            | The provided name is incorrect, please try again.
+          .col-md-12
+            .tok3n-dashboard-alert.alert.alert-danger.tok3n-dashboard-alert-hidden
+              b Error:
+              | The provided name is already in use, please try another.
         .form-group.tok3n-phoneline-name
           .col-md-8.col-md-offset-2
             label(for="phoneLineName") Choose a name for your phone line
-            input#phoneLineName.form-control.input-md(name='phoneLineName', type="text", placeholder="e.g. Home")
+            input#phoneLineName.form-control.input-md(
+              name='phoneLineName'
+              type="text"
+              placeholder="e.g. Home"
+              data-parsley-required="true"
+              )
 
         .form-group
           .col-md-8.col-md-offset-2
-            a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Finish
+            a#tok3nPhonelineNew3Submit.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Finish

@@ -1,19 +1,24 @@
 .tok3n-device-new-3
-  .tok3n-dashboard-new-form.form-horizontal(role='form')
+  form#tok3nDeviceNew3Form.tok3n-dashboard-new-form.form-horizontal(role='form')
     .tok3n-dashboard-form-lower-wrapper
       .form-group
         .col-md-12
           h3.title You are almost finished!
       fieldset
         .form-group
-          .tok3n-login-alert.alert.alert-danger.tok3n-login-alert-hidden
-            b Error:
-            | The provided name is incorrect, please try again.
+          .col-md-12
+            .tok3n-dashboard-alert.alert.alert-danger.tok3n-dashboard-alert-hidden
+              b Error:
+              | The provided name is already in use, please try another.
         .form-group.tok3n-phoneline-name
           .col-md-8.col-md-offset-2
             label(for="deviceName") Choose a name for your device
-            input#deviceName.form-control.input-md(name='deviceName', type="text", placeholder="e.g. Victor's phone")
+            input#deviceName.form-control.input-md(name='deviceName'
+              type="text"
+              placeholder="e.g. Victor's phone"
+              data-parsley-required="true"
+              )
 
         .form-group
           .col-md-8.col-md-offset-2
-            a.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Finish
+            a#tok3nDeviceNew3Submit.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Finish

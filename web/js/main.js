@@ -3,7 +3,7 @@
   /*
   Main
    */
-  var destroyActiveWindowJs, executeIfExists, hasDOMContentLoaded, init, initCurrentWindow, main, ready, readyMethod, toCamelCase;
+  var destroyActiveWindowJs, destroyMasonry, destroyValidatedForms, executeIfExists, hasDOMContentLoaded, init, initCurrentWindow, main, observePageChanges, ready, readyMethod, toCamelCase;
   main = function() {
     Tok3nDashboard.Screens.sitewide();
     Tok3nDashboard.slider();
@@ -11,11 +11,58 @@
       return initCurrentWindow();
     });
     initCurrentWindow();
+    querySelectorAll('.tok3n-main-content').forEach(function(el) {
+      return observePageChanges(el);
+    });
+    if (Tok3nDashboard.Environment.isDevelopment) {
+      window.addEventListener("keyup", function(event) {
+        if (event.keyCode === 49) {
+          return querySelectorAll('.tok3n-dashboard-alert').forEach(function(el) {
+            return el.classList.toggle('tok3n-dashboard-alert-hidden');
+          });
+        }
+      });
+      window.addEventListener("keyup", function(event) {
+        if (event.keyCode === 50) {
+          return querySelectorAll('.tok3n-dashboard-alert').forEach(function(el) {
+            el.classList.remove('tok3n-dashboard-alert-active');
+            return setTimeout(function() {
+              return el.classList.add('tok3n-dashboard-alert-active');
+            }, 0);
+          });
+        }
+      });
+    }
   };
 
   /*
   Selective window behavior
    */
+  destroyMasonry = function() {
+    if (Tok3nDashboard.masonry) {
+      if (Tok3nDashboard.masonry.isResizeBound) {
+        Tok3nDashboard.masonry.destroy();
+        if (Tok3nDashboard.Environment.isDevelopment) {
+          return console.log('Destroyed masonry.');
+        }
+      }
+    }
+  };
+  destroyValidatedForms = function() {
+    if (Tok3nDashboard.ValidatedForms.length) {
+      Tok3nDashboard.ValidatedForms.forEach(function(el) {
+        el.parsley().destroy();
+        if (Tok3nDashboard.Environment.isDevelopment) {
+          if (el.attr('id')) {
+            return console.log("Destroyed Validated form #" + (el.attr('id')));
+          } else {
+            return console.log('Destroyed validated form with no id.');
+          }
+        }
+      });
+      return Tok3nDashboard.ValidatedForms = [];
+    }
+  };
   destroyActiveWindowJs = function() {
     var currentWindow;
     currentWindow = function() {
@@ -25,6 +72,7 @@
         return document.querySelector('.tok3n-pt-page-current');
       }
     };
+    destroyValidatedForms();
     return setTimeout(function() {
       if (currentWindow().id !== 'tok3nDevices') {
         false;
@@ -33,9 +81,7 @@
         false;
       }
       if (currentWindow().id !== 'tok3nApplications') {
-        if (Tok3nDashboard.masonry != null) {
-          Tok3nDashboard.masonry.destroy();
-        }
+        destroyMasonry();
       }
       if (currentWindow().id !== 'tok3nIntegrations') {
         false;
@@ -62,7 +108,7 @@
     return arr.forEach(function(screen) {
       if (document.querySelector(".tok3n-" + screen)) {
         if (Tok3nDashboard.Environment.isDevelopment) {
-          console.log(toCamelCase(screen));
+          console.log(toCamelCase(screen) + " is the current screen");
         }
         if (typeof Tok3nDashboard.Screens[toCamelCase(screen)] === 'function') {
           return Tok3nDashboard.Screens[toCamelCase(screen)]();
@@ -82,20 +128,38 @@
     destroyActiveWindowJs();
     switch (currentWindow().id) {
       case "tok3nDevices":
-        return executeIfExists(['device-view', 'device-new-1', 'device-new-2', 'device-new-3']);
+        return executeIfExists(['devices', 'device-view', 'device-new-1', 'device-new-2', 'device-new-3']);
       case "tok3nPhonelines":
-        return executeIfExists(['phoneline-view-cellphone', 'phoneline-view-landline', 'phoneline-new-1', 'phoneline-new-2', 'phoneline-new-3']);
+        return executeIfExists(['phonelines', 'phoneline-view-cellphone', 'phoneline-view-landline', 'phoneline-new-1', 'phoneline-new-2', 'phoneline-new-3']);
       case "tok3nApplications":
-        return Tok3nDashboard.Screens.applications();
+        return executeIfExists(['applications']);
       case "tok3nIntegrations":
-        return executeIfExists(['integration-view', 'integration-new', 'integration-edit']);
+        if (!Tok3nDashboard.Charts.areLoaded) {
+          Tok3nDashboard.Screens.integrationsCharts();
+        }
+        return executeIfExists(['integrations', 'integration-view', 'integration-new', 'integration-edit']);
       case "tok3nBackupCodes":
-        return false;
+        return executeIfExists(['backup-codes']);
       case "tok3nSettings":
-        return Tok3nDashboard.Screens.settings();
+        return executeIfExists(['settings']);
       default:
         return false;
     }
+  };
+  observePageChanges = function(el) {
+    var observer;
+    observer = new MutationObserver(function(mutations) {
+      return mutations.forEach(function(mutation) {
+        if (Tok3nDashboard.Environment.isDevelopment) {
+          console.log("Partial screen change detected.");
+        }
+        false;
+        return initCurrentWindow();
+      });
+    });
+    return observer.observe(el, {
+      childList: true
+    });
   };
 
   /*
