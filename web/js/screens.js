@@ -6,7 +6,7 @@
     /*
     Sitewide
      */
-    var addNewParsleyForm, countryCode, countrySelect, limitToSixChar, phoneNumber, selectCountryCode, toggleNextButton, toggleNextButtonOtp, toggleVerifyPassword;
+    var addNewParsleyForm, buttonFilePathCompletion, countryCode, countrySelect, limitToSixChar, phoneNumber, selectCountryCode, toggleNextButton, toggleNextButtonOtp, toggleVerifyPassword;
     exports.sitewide = function() {
       var current;
       current = capitaliseFirstLetter(Tok3nDashboard.initWindow);
@@ -278,6 +278,28 @@
         });
       }
     };
+    buttonFilePathCompletion = function() {
+      $(document).on("change", ".btn-file :file", function() {
+        var input, label, numFiles, pattern;
+        input = $(this);
+        numFiles = (input.get(0).files ? input.get(0).files.length : 1);
+        pattern = /\\/g;
+        label = input.val().replace(pattern, "/").replace(/.*\//, "");
+        input.trigger("fileselect", [numFiles, label]);
+      });
+      return $(".btn-file :file").on("fileselect", function(event, numFiles, label) {
+        var input, log;
+        input = $(this).parents(".input-group").find(":text");
+        log = (numFiles > 1 ? numFiles + " files selected" : label);
+        if (input.length) {
+          input.val(log);
+        } else {
+          if (log) {
+            alert(log);
+          }
+        }
+      });
+    };
     exports.integrationNew = function() {
       var callbackField, callbackInput, hideCallback, newIntegrationRadio, showCallback;
       newIntegrationRadio = querySelectorAll('.tok3n-new-integration-kind-radio, .tok3n-new-integration-kind-radio input');
@@ -311,10 +333,12 @@
           }
         }, false);
       });
+      buttonFilePathCompletion();
       return addNewParsleyForm('#tok3nIntegrationNewForm', '#tok3nIntegrationNewSubmit', '#tok3nIntegrationNewForm');
     };
     exports.integrationEdit = function() {
-      return addNewParsleyForm('#tok3nIntegrationEditForm', '#tok3nIntegrationEditSubmit', '#tok3nIntegrationEditForm');
+      addNewParsleyForm('#tok3nIntegrationEditForm', '#tok3nIntegrationEditSubmit', '#tok3nIntegrationEditForm');
+      return buttonFilePathCompletion();
     };
 
     /*

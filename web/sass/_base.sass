@@ -27,6 +27,52 @@ a
 $nav-margin-top: 13px
 $nav-separation: 2.1em
 
++keyframes(slideDown)
+  0%, 100%
+    +transform(translateY(-50px))
+  10%, 90%
+    +transform(translateY(0px))
++keyframes(slideDownMobile)
+  0%, 100%
+    +transform(translateY(-50px))
+  10%, 90%
+    +transform(translateY(58px))
+
+.tok3n-top-notification
+  position: absolute
+  +to(2)
+    z-index: 999
+  +from(3)
+    margin: 0 200px
+    z-index: 1001
+    +border-bottom-left-radius(5px)
+    +border-bottom-right-radius(5px)
+  top: 0
+  left: 0
+  right: 0
+  background: #fde073
+  text-align: center
+  line-height: 2.5
+  overflow: hidden
+  +single-box-shadow(0,0,15px,0,hsla(0,0,0,.3),false)
+  +transform(translateY(-50px))
+
+.tok3n-top-notification-active
+  .cssanimations.csstransforms &
+    +to(2)
+      +animation(slideDownMobile)
+      +animation-fill-mode(forwards)
+      +animation-duration(3s)
+      +animation-delay(1s)
+      +animation-timing-function(ease)
+    +from(3)
+      +animation(slideDown)
+      +animation-fill-mode(forwards)
+      +animation-duration(2.5s)
+      +animation-delay(1s)
+      +animation-timing-function(ease)
+  
+
 .tok3n-top
   position: relative
   z-index: 1000

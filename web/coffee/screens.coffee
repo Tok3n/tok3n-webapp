@@ -260,6 +260,29 @@ do ->
           , false
 
 
+    buttonFilePathCompletion = ->
+      $(document).on "change", ".btn-file :file", ->
+        input = $(this)
+        numFiles = (if input.get(0).files then input.get(0).files.length else 1)
+        pattern = ///
+          \\
+        ///g
+        label = input.val().replace(pattern, "/").replace(/.*\//, "")
+        input.trigger "fileselect", [
+          numFiles
+          label
+        ]
+        return
+      $(".btn-file :file").on "fileselect", (event, numFiles, label) ->
+        input = $(this).parents(".input-group").find(":text")
+        log = (if numFiles > 1 then numFiles + " files selected" else label)
+        if input.length
+          input.val log
+        else
+          alert log  if log
+        return
+
+
     exports.integrationNew = ->
       newIntegrationRadio = querySelectorAll '.tok3n-new-integration-kind-radio, .tok3n-new-integration-kind-radio input'
       callbackField = qs '.tok3n-new-integration-callback-url'
@@ -289,11 +312,15 @@ do ->
               hideCallback()
         , false
 
+      buttonFilePathCompletion()
+
       addNewParsleyForm('#tok3nIntegrationNewForm', '#tok3nIntegrationNewSubmit', '#tok3nIntegrationNewForm')
 
 
     exports.integrationEdit = ->
       addNewParsleyForm('#tok3nIntegrationEditForm', '#tok3nIntegrationEditSubmit', '#tok3nIntegrationEditForm')
+
+      buttonFilePathCompletion()
 
 
     ###
