@@ -63,44 +63,35 @@ do ->
     arr.forEach (screen) ->
       currentScreen = document.querySelector ".tok3n-#{screen}"
       if currentScreen
-        if typeof Tok3nDashboard.Screens[toCamelCase(screen)] is 'function'
+        funcName = toCamelCase(screen)
+        if typeof Tok3nDashboard.Screens[funcName] is 'function'
           Tok3nDashboard.CurrentScreens.push(currentScreen)
-          Tok3nDashboard.Screens[toCamelCase(screen)]()
-        if Tok3nDashboard.Environment.isDevelopment
-          console.log toCamelCase(screen) + " is the current screen."
+          devConsoleLog "Inited #{funcName}"
+          Tok3nDashboard.Screens[funcName]()
 
 
-  destroyCurrentIfExists = ->
-    Tok3nDashboard.CurrentScreens.forEach (screen) ->
-      destroyName = ->
-        # If it's a .tok3n-pt-page
-        if screen.id.indexOf 'tok3n' isnt -1
-          lowercaseFirstLetter screen.id.replace('tok3n', '')
-        # If it's a partial
-        else
-          toCamelCase screen.classList[0].replace('tok3n-', '')
-      if typeof Tok3nDashboard.Screens[destroyName()] is 'function'
-        Tok3nDashboard.Screens['destroy' + capitaliseFirstLetter destroyName()]()
-        if Tok3nDashboard.Environment.isDevelopment
-          console.log "Destroyed #{destroyName()}"
-    Tok3nDashboard.CurrentScreens = []
+  destroyPrevious = ->
+    setTimeout ->
+      if Tok3nDashboard.PreviousScreens.length
+        Tok3nDashboard.PreviousScreens.forEach (screen) ->
+          commonName = ->
+            # If it's a .tok3n-pt-page
+            if screen.id.indexOf 'tok3n' isnt -1
+              lowercaseFirstLetter screen.id.replace('tok3n', '')
+            # If it's a partial
+            else
+              toCamelCase screen.classList[0].replace('tok3n-', '')
+          destroyName = 'destroy' + capitaliseFirstLetter commonName()
+          if typeof Tok3nDashboard.Screens[destroyName] is 'function'
+            Tok3nDashboard.Screens[destroyName]()
+            devConsoleLog "Destroyed #{commonName()}"
+      Tok3nDashboard.PreviousScreens = Tok3nDashboard.CurrentScreens
+      Tok3nDashboard.CurrentScreens = []
+    , Tok3nDashboard.slidingAnimationDuration
 
 
-  initCurrentWindow = ->
-    currentWindow = ->
-      if Tok3nDashboard.nextTarget isnt undefined
-        Tok3nDashboard.nextTarget
-      else
-        document.querySelector '.tok3n-pt-page-current'
-
-    if Tok3nDashboard.Environment.isDevelopment
-      console.log 'Started initing js.'
-
-    # Destroy current view or partial js
-    destroyCurrentIfExists()
-
+  switchWindow = ->
     switch currentWindow().id
-      # Change this!
       when "tok3nDevices"
         initIfExists [
           'devices'
@@ -142,24 +133,28 @@ do ->
       else
         false
 
-    if Tok3nDashboard.Environment.isDevelopment
-      console.log 'Finished initing js.'
+  initCurrentWindow = ->
+    # devConsoleLog 'Started initing js.'
+    Tok3nDashboard.Screens.initEveryTime()
+    switchWindow()
+    destroyPrevious()
+    Tok3nDashboard.Screens.destroyEveryTime()
+    # devConsoleLog 'Finished initing js.'
 
 
   observePageChanges = (el) ->
     observer = new MutationObserver (mutations) ->
       mutations.forEach (mutation) ->
-        if Tok3nDashboard.Environment.isDevelopment
-          console.log "Partial screen change detected."
+        devConsoleLog "Partial screen change detected."
         initCurrentWindow()
     observer.observe el,
       childList: true
 
+
   compatibilityObserver = (el) ->
     observer = new MutationObserver (mutations) ->
       mutations.forEach (mutation) ->
-        if Tok3nDashboard.Environment.isDevelopment
-          console.log "Partial screen change detected."
+        devConsoleLog "Partial screen change detected."
         destroyCurrentIfExists()
         Tok3nDashboard.resizeContent()
     observer.observe el,
@@ -172,6 +167,7 @@ do ->
   ###
   Testing functions
   ###
+  
   testAlerts = ->
     # Press key "1" to test alerts, "2" to activate alert
     window.addEventListener "keyup", ( event ) ->
@@ -185,6 +181,8 @@ do ->
           setTimeout ->
             el.classList.add('tok3n-dashboard-alert-active')
           , 0
+  
+
   testFormEvents = ->
     window.addEventListener 'submitValidatedForm', (evt) ->
       console.log evt

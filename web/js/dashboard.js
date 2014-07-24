@@ -61,7 +61,7 @@
             temp.classList.remove("tok3n-pt-page-current");
             Tok3nDashboard.tempPreviousTarget = temp;
             return ee.emitEvent('tok3nSlideAfterAnimation');
-          }, 250);
+          }, Tok3nDashboard.slidingAnimationDuration);
           removeAnimationClasses(nextTarget);
           nextTarget.classList.add("tok3n-pt-page-current");
           nextTarget.classList.add("tok3n-move-from-" + (animationSlide('next')));
@@ -80,7 +80,7 @@
   /*
   Main
    */
-  var compatibilityObserver, currentWindow, destroyCurrentIfExists, hasDOMContentLoaded, init, initCurrentWindow, initIfExists, main, observePageChanges, ready, readyMethod, testAlerts, testFormEvents, toCamelCase, toTok3nCssClass;
+  var compatibilityObserver, currentWindow, destroyPrevious, hasDOMContentLoaded, init, initCurrentWindow, initIfExists, main, observePageChanges, ready, readyMethod, switchWindow, testAlerts, testFormEvents, toCamelCase, toTok3nCssClass;
   main = function() {
     Tok3nDashboard.Screens.sitewide();
     Tok3nDashboard.slider();
@@ -130,86 +130,73 @@
   };
   initIfExists = function(arr) {
     return arr.forEach(function(screen) {
-      var currentScreen;
+      var currentScreen, funcName;
       currentScreen = document.querySelector(".tok3n-" + screen);
       if (currentScreen) {
-        if (typeof Tok3nDashboard.Screens[toCamelCase(screen)] === 'function') {
+        funcName = toCamelCase(screen);
+        if (typeof Tok3nDashboard.Screens[funcName] === 'function') {
           Tok3nDashboard.CurrentScreens.push(currentScreen);
-          Tok3nDashboard.Screens[toCamelCase(screen)]();
-        }
-        if (Tok3nDashboard.Environment.isDevelopment) {
-          return console.log(toCamelCase(screen) + " is the current screen.");
+          devConsoleLog("Inited " + funcName);
+          return Tok3nDashboard.Screens[funcName]();
         }
       }
     });
   };
-  destroyCurrentIfExists = function() {
-    Tok3nDashboard.CurrentScreens.forEach(function(screen) {
-      var destroyName;
-      destroyName = function() {
-        if (screen.id.indexOf('tok3n' !== -1)) {
-          return lowercaseFirstLetter(screen.id.replace('tok3n', ''));
-        } else {
-          return toCamelCase(screen.classList[0].replace('tok3n-', ''));
-        }
-      };
-      if (typeof Tok3nDashboard.Screens[destroyName()] === 'function') {
-        Tok3nDashboard.Screens['destroy' + capitaliseFirstLetter(destroyName())]();
-        if (Tok3nDashboard.Environment.isDevelopment) {
-          return console.log("Destroyed " + (destroyName()));
-        }
+  destroyPrevious = function() {
+    return setTimeout(function() {
+      if (Tok3nDashboard.PreviousScreens.length) {
+        Tok3nDashboard.PreviousScreens.forEach(function(screen) {
+          var commonName, destroyName;
+          commonName = function() {
+            if (screen.id.indexOf('tok3n' !== -1)) {
+              return lowercaseFirstLetter(screen.id.replace('tok3n', ''));
+            } else {
+              return toCamelCase(screen.classList[0].replace('tok3n-', ''));
+            }
+          };
+          destroyName = 'destroy' + capitaliseFirstLetter(commonName());
+          if (typeof Tok3nDashboard.Screens[destroyName] === 'function') {
+            Tok3nDashboard.Screens[destroyName]();
+            return devConsoleLog("Destroyed " + (commonName()));
+          }
+        });
       }
-    });
-    return Tok3nDashboard.CurrentScreens = [];
+      Tok3nDashboard.PreviousScreens = Tok3nDashboard.CurrentScreens;
+      return Tok3nDashboard.CurrentScreens = [];
+    }, Tok3nDashboard.slidingAnimationDuration);
   };
-  initCurrentWindow = function() {
-    currentWindow = function() {
-      if (Tok3nDashboard.nextTarget !== void 0) {
-        return Tok3nDashboard.nextTarget;
-      } else {
-        return document.querySelector('.tok3n-pt-page-current');
-      }
-    };
-    if (Tok3nDashboard.Environment.isDevelopment) {
-      console.log('Started initing js.');
-    }
-    destroyCurrentIfExists();
+  switchWindow = function() {
     switch (currentWindow().id) {
       case "tok3nDevices":
-        initIfExists(['devices', 'device-view', 'device-new-1', 'device-new-2', 'device-new-3']);
-        break;
+        return initIfExists(['devices', 'device-view', 'device-new-1', 'device-new-2', 'device-new-3']);
       case "tok3nPhonelines":
-        initIfExists(['phonelines', 'phoneline-view-cellphone', 'phoneline-view-landline', 'phoneline-new-1', 'phoneline-new-2', 'phoneline-new-3']);
-        break;
+        return initIfExists(['phonelines', 'phoneline-view-cellphone', 'phoneline-view-landline', 'phoneline-new-1', 'phoneline-new-2', 'phoneline-new-3']);
       case "tok3nApplications":
-        initIfExists(['applications']);
-        break;
+        return initIfExists(['applications']);
       case "tok3nIntegrations":
         if (!Tok3nDashboard.Charts.areLoaded) {
           Tok3nDashboard.Screens.integrationsCharts();
         }
-        initIfExists(['integrations', 'integration-view', 'integration-new', 'integration-edit']);
-        break;
+        return initIfExists(['integrations', 'integration-view', 'integration-new', 'integration-edit']);
       case "tok3nBackupCodes":
-        initIfExists(['backup-codes']);
-        break;
+        return initIfExists(['backup-codes']);
       case "tok3nSettings":
-        initIfExists(['settings']);
-        break;
+        return initIfExists(['settings']);
       default:
-        false;
+        return false;
     }
-    if (Tok3nDashboard.Environment.isDevelopment) {
-      return console.log('Finished initing js.');
-    }
+  };
+  initCurrentWindow = function() {
+    Tok3nDashboard.Screens.initEveryTime();
+    switchWindow();
+    destroyPrevious();
+    return Tok3nDashboard.Screens.destroyEveryTime();
   };
   observePageChanges = function(el) {
     var observer;
     observer = new MutationObserver(function(mutations) {
       return mutations.forEach(function(mutation) {
-        if (Tok3nDashboard.Environment.isDevelopment) {
-          console.log("Partial screen change detected.");
-        }
+        devConsoleLog("Partial screen change detected.");
         return initCurrentWindow();
       });
     });
@@ -221,9 +208,7 @@
     var observer;
     observer = new MutationObserver(function(mutations) {
       return mutations.forEach(function(mutation) {
-        if (Tok3nDashboard.Environment.isDevelopment) {
-          console.log("Partial screen change detected.");
-        }
+        devConsoleLog("Partial screen change detected.");
         destroyCurrentIfExists();
         return Tok3nDashboard.resizeContent();
       });

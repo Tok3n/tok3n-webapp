@@ -2,51 +2,30 @@
   return namespace('Tok3nDashboard.Screens', function(exports) {
 
     /*
-    Sitewide
+    Sitewide utils
      */
-    var addNewParsleyForm, buttonFilePathCompletion, cardsContainer, countryCode, countrySelect, destroyButtonFilePathCompletion, destroyMasonry, destroyParsleyForm, dropdownList, flipCardToBack, flipCardToFront, limitToSixChar, newIntegrationRadio, passwordField, phoneNumber, selectCountryCode, showHideCallback, toggleNextButton, toggleNextButtonOtp, toggleSecret, toggleVerifyPassword, verifyPassword, verifyPasswordField;
-    exports.sitewide = function() {
-      var current;
-      current = capitaliseFirstLetter(Tok3nDashboard.initWindow);
-      document.getElementById("tok3n" + current).classList.add('tok3n-pt-page-current');
-      document.getElementById("tok3n" + current + "MenuButton").classList.add('tok3n-sidebar-selected');
+    var addNewParsleyForm, buttonFilePathCompletion, cardsContainer, countryCode, countrySelect, destroyButtonFilePathCompletion, destroyMasonry, destroyParsleyForm, destroyPreventedLinks, dropdownList, evtPreventDefault, flipCardToBack, flipCardToFront, initPreventedLinks, limitToSixChar, newIntegrationRadio, passwordField, phoneNumber, selectCountryCode, showHideCallback, toggleNextButton, toggleNextButtonOtp, toggleSecret, toggleVerifyPassword, verifyPassword, verifyPasswordField;
+    evtPreventDefault = function(evt) {
+      return evt.preventDefault();
+    };
+    initPreventedLinks = function() {
       querySelectorAll('a[href="#"]').forEach(function(el) {
-        return el.addEventListener('click', function(evt) {
-          return evt.preventDefault();
-        });
+        el.addEventListener('click', evtPreventDefault);
+        return Tok3nDashboard.CurrentPreventedLinks.push(el);
       });
-      return (function(el) {
-        var WidthChange, menuItems, mq;
-        if (el) {
-          document.querySelector('#collapseSidebarButton').addEventListener('click', function() {
-            return el.classList.toggle('collapsed');
+      return devConsoleLog("Inited current prevented links");
+    };
+    destroyPreventedLinks = function() {
+      return setTimeout(function() {
+        if (Tok3nDashboard.PreviousPreventedLinks.length) {
+          Tok3nDashboard.PreviousPreventedLinks.forEach(function(el) {
+            return el.removeEventListener('click', evtPreventDefault);
           });
-          menuItems = querySelectorAll('.tok3n-menu-item');
-          menuItems.forEach(function(item) {
-            return item.addEventListener('click', function() {
-              if (window.matchMedia("(max-width: 768px)").matches) {
-                return el.classList.toggle('collapsed');
-              }
-            }, false);
-          });
-          WidthChange = function(mq) {
-            if (mq.matches) {
-              if (el.classList.contains('collapsed')) {
-                el.classList.remove('collapsed');
-              }
-            } else {
-              if (!el.classList.contains('collapsed')) {
-                el.classList.add('collapsed');
-              }
-            }
-          };
-          if (matchMedia) {
-            mq = window.matchMedia("(min-width: 769px)");
-            mq.addListener(WidthChange);
-            return WidthChange(mq);
-          }
+          devConsoleLog("Destroyed previous prevented links");
         }
-      })(document.querySelector('#tok3nSidebarMenu'));
+        Tok3nDashboard.PreviousPreventedLinks = Tok3nDashboard.CurrentPreventedLinks;
+        return Tok3nDashboard.CurrentPreventedLinks = [];
+      }, Tok3nDashboard.slidingAnimationDuration);
     };
     addNewParsleyForm = function(formElement, submitForm, clsHandler) {
       var form, submit;
@@ -80,6 +59,54 @@
       if (Tok3nDashboard.Environment.isDevelopment) {
         return console.log("Destroyed validated form " + formElement);
       }
+    };
+
+    /*
+    Sitewide
+     */
+    exports.sitewide = function() {
+      var current;
+      current = capitaliseFirstLetter(Tok3nDashboard.initWindow);
+      document.getElementById("tok3n" + current).classList.add('tok3n-pt-page-current');
+      document.getElementById("tok3n" + current + "MenuButton").classList.add('tok3n-sidebar-selected');
+      return (function(el) {
+        var WidthChange, menuItems, mq;
+        if (el) {
+          document.querySelector('#collapseSidebarButton').addEventListener('click', function() {
+            return el.classList.toggle('collapsed');
+          });
+          menuItems = querySelectorAll('.tok3n-menu-item');
+          menuItems.forEach(function(item) {
+            return item.addEventListener('click', function() {
+              if (window.matchMedia("(max-width: 768px)").matches) {
+                return el.classList.toggle('collapsed');
+              }
+            }, false);
+          });
+          WidthChange = function(mq) {
+            if (mq.matches) {
+              if (el.classList.contains('collapsed')) {
+                el.classList.remove('collapsed');
+              }
+            } else {
+              if (!el.classList.contains('collapsed')) {
+                el.classList.add('collapsed');
+              }
+            }
+          };
+          if (matchMedia) {
+            mq = window.matchMedia("(min-width: 769px)");
+            mq.addListener(WidthChange);
+            return WidthChange(mq);
+          }
+        }
+      })(document.querySelector('#tok3nSidebarMenu'));
+    };
+    exports.initEveryTime = function() {
+      return initPreventedLinks();
+    };
+    exports.destroyEveryTime = function() {
+      return destroyPreventedLinks();
     };
 
     /*

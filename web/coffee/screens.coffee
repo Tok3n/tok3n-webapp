@@ -3,6 +3,63 @@ do ->
   namespace 'Tok3nDashboard.Screens', (exports) ->
 
     ###
+    Sitewide utils
+    ###
+
+    evtPreventDefault = (evt) ->
+      evt.preventDefault()
+
+    initPreventedLinks = ->
+      # Avoid the browser going to # for each a element
+      querySelectorAll('a[href="#"]').forEach (el) ->
+        el.addEventListener 'click', evtPreventDefault
+        Tok3nDashboard.CurrentPreventedLinks.push el
+      devConsoleLog "Inited current prevented links"
+      
+    destroyPreventedLinks = ->
+      setTimeout ->
+        if Tok3nDashboard.PreviousPreventedLinks.length
+          Tok3nDashboard.PreviousPreventedLinks.forEach (el) ->
+            el.removeEventListener 'click', evtPreventDefault
+          devConsoleLog "Destroyed previous prevented links"
+        Tok3nDashboard.PreviousPreventedLinks = Tok3nDashboard.CurrentPreventedLinks
+        Tok3nDashboard.CurrentPreventedLinks = []
+      , Tok3nDashboard.slidingAnimationDuration
+
+
+    addNewParsleyForm = (formElement, submitForm, clsHandler) ->
+      form = $(formElement)
+      submit = qs submitForm
+      # Init form
+      form.parsley
+        classHandler: clsHandler
+      # Create or redefine the handler
+      Tok3nDashboard.formEventHandler = (evt) ->
+        form.parsley().validate()
+        formEvent = new CustomEvent 'submitValidatedForm',
+          detail:
+            validatedForm: form[0]
+            isValid: form.parsley().isValid()
+        window.dispatchEvent formEvent
+      # Attach event
+      submit.addEventListener 'click', Tok3nDashboard.formEventHandler
+      # Log result
+      if Tok3nDashboard.Environment.isDevelopment
+        console.log "Added validated form #{formElement}"
+
+    destroyParsleyForm = (formElement, submitForm, clsHandler) ->
+      form = $(formElement)
+      submit = qs submitForm
+      # Destroy form
+      form.parsley().destroy()
+      # Deattach event
+      submit.removeEventListener 'click', Tok3nDashboard.formEventHandler
+      # Log result
+      if Tok3nDashboard.Environment.isDevelopment
+        console.log "Destroyed validated form #{formElement}"
+
+
+    ###
     Sitewide
     ###
 
@@ -11,11 +68,6 @@ do ->
       current = capitaliseFirstLetter Tok3nDashboard.initWindow
       document.getElementById("tok3n#{current}").classList.add 'tok3n-pt-page-current'
       document.getElementById("tok3n#{current}MenuButton").classList.add 'tok3n-sidebar-selected'
-
-      # Avoid the browser going to # for each a element
-      querySelectorAll('a[href="#"]').forEach (el) ->
-        el.addEventListener 'click', (evt) ->
-          evt.preventDefault()
 
       # Sidebar show/hide
       ((el) ->
@@ -46,37 +98,12 @@ do ->
       )(document.querySelector '#tok3nSidebarMenu')
 
 
-    addNewParsleyForm = (formElement, submitForm, clsHandler) ->
-      form = $(formElement)
-      submit = qs submitForm
-      # Init form
-      form.parsley
-        classHandler: clsHandler
-      # Create or redefine the handler
-      Tok3nDashboard.formEventHandler = (evt) ->
-        form.parsley().validate()
-        formEvent = new CustomEvent 'submitValidatedForm',
-          detail:
-            validatedForm: form[0]
-            isValid: form.parsley().isValid()
-        window.dispatchEvent formEvent
-      # Attach event
-      submit.addEventListener 'click', Tok3nDashboard.formEventHandler
-      # Log result
-      if Tok3nDashboard.Environment.isDevelopment
-        console.log "Added validated form #{formElement}"
+    exports.initEveryTime = ->
+      initPreventedLinks()
 
 
-    destroyParsleyForm = (formElement, submitForm, clsHandler) ->
-      form = $(formElement)
-      submit = qs submitForm
-      # Destroy form
-      form.parsley().destroy()
-      # Deattach event
-      submit.removeEventListener 'click', Tok3nDashboard.formEventHandler
-      # Log result
-      if Tok3nDashboard.Environment.isDevelopment
-        console.log "Destroyed validated form #{formElement}"
+    exports.destroyEveryTime = ->
+      destroyPreventedLinks()
 
 
     ###
@@ -85,7 +112,6 @@ do ->
 
     exports.deviceNew3 = ->
       addNewParsleyForm('#deviceNew3Form', '#deviceNew3Submit', '#deviceNew3Form')
-
 
     exports.destroyDeviceNew3 = ->
       destroyParsleyForm('#deviceNew3Form', '#deviceNew3Submit', '#deviceNew3Form')

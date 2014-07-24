@@ -4,8 +4,12 @@ Tok3nDashboard.Jsapi or= {}
 Tok3nDashboard.Charts or= {}
 Tok3nDashboard.Screens or= {}
 Tok3nDashboard.CurrentScreens or= []
+Tok3nDashboard.PreviousScreens or= []
+Tok3nDashboard.PreviousPreventedLinks or= []
+Tok3nDashboard.CurrentPreventedLinks or= []
 Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp'
 Tok3nDashboard.initWindow or= 'Devices'
+Tok3nDashboard.slidingAnimationDuration = 250
 
 unless Tok3nDashboard.Environment.isDevelopment
   Tok3nDashboard.Environment.isProduction = true
@@ -89,6 +93,9 @@ functionName = (fun) ->
   ret = ret.substr("function ".length)
   ret = ret.substr(0, ret.indexOf("("))
   ret
+devConsoleLog = (log) ->
+  if Tok3nDashboard.Environment.isDevelopment
+    console.log log
 
 # Google Analytics
 root = exports ? this

@@ -61,7 +61,7 @@
             temp.classList.remove("tok3n-pt-page-current");
             Tok3nDashboard.tempPreviousTarget = temp;
             return ee.emitEvent('tok3nSlideAfterAnimation');
-          }, 250);
+          }, Tok3nDashboard.slidingAnimationDuration);
           removeAnimationClasses(nextTarget);
           nextTarget.classList.add("tok3n-pt-page-current");
           nextTarget.classList.add("tok3n-move-from-" + (animationSlide('next')));

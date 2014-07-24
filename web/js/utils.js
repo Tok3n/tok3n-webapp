@@ -12541,7 +12541,7 @@ if ('undefined' !== typeof window.ParsleyValidator)
 	}
 }.call(this));
 
-var capitaliseFirstLetter, childNodeIndex, closest, detectIE, each, ee, findClosestAncestor, forEach, functionName, gebi, hasFormValidation, indexOf, isEmptyOrDefault, lowercaseFirstLetter, namespace, namespaceExists, qs, qsa, querySelectorAll, root, slice,
+var capitaliseFirstLetter, childNodeIndex, closest, detectIE, devConsoleLog, each, ee, findClosestAncestor, forEach, functionName, gebi, hasFormValidation, indexOf, isEmptyOrDefault, lowercaseFirstLetter, namespace, namespaceExists, qs, qsa, querySelectorAll, root, slice,
   __slice = [].slice;
 
 window.Tok3nDashboard || (window.Tok3nDashboard = {});
@@ -12556,9 +12556,17 @@ Tok3nDashboard.Screens || (Tok3nDashboard.Screens = {});
 
 Tok3nDashboard.CurrentScreens || (Tok3nDashboard.CurrentScreens = []);
 
+Tok3nDashboard.PreviousScreens || (Tok3nDashboard.PreviousScreens = []);
+
+Tok3nDashboard.PreviousPreventedLinks || (Tok3nDashboard.PreviousPreventedLinks = []);
+
+Tok3nDashboard.CurrentPreventedLinks || (Tok3nDashboard.CurrentPreventedLinks = []);
+
 Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp';
 
 Tok3nDashboard.initWindow || (Tok3nDashboard.initWindow = 'Devices');
+
+Tok3nDashboard.slidingAnimationDuration = 250;
 
 if (!Tok3nDashboard.Environment.isDevelopment) {
   Tok3nDashboard.Environment.isProduction = true;
@@ -12684,6 +12692,12 @@ functionName = function(fun) {
   ret = ret.substr("function ".length);
   ret = ret.substr(0, ret.indexOf("("));
   return ret;
+};
+
+devConsoleLog = function(log) {
+  if (Tok3nDashboard.Environment.isDevelopment) {
+    return console.log(log);
+  }
 };
 
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
