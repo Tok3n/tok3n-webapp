@@ -49,3 +49,8 @@
   min-height: 1px
   padding-left: 15px
   padding-right: 15px
+
+@mixin calc($property, $expression)
+  #{$property}: -moz-calc(#{$expression})
+  #{$property}: -webkit-calc(#{$expression})
+  #{$property}: calc(#{$expression})

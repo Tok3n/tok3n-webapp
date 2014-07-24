@@ -31,16 +31,50 @@ app.configure(function(){
 	app.use(app.router);
 });
 
-app.get('/', function(req, res){
-	res.render("index");
-});
-
+// Main views
 app.get('/dashboard', function(req, res){
 	res.render("dashboard");
 });
-
 app.get('/backup-codes', function(req, res){
 	res.render("backup-codes");
+});
+
+// Partials
+app.get('/devices/device-view', function(req, res){
+	res.render("dashboard/devices/device-view");
+});
+app.get('/devices/device-new-1', function(req, res){
+	res.render("dashboard/devices/device-new-1");
+});
+app.get('/devices/device-new-2', function(req, res){
+	res.render("dashboard/devices/device-new-2");
+});
+app.get('/devices/device-new-3', function(req, res){
+	res.render("dashboard/devices/device-new-3");
+});
+app.get('/phonelines/phoneline-view-cellphone', function(req, res){
+	res.render("dashboard/phonelines/phoneline-view-cellphone");
+});
+app.get('/phonelines/phoneline-view-landline', function(req, res){
+	res.render("dashboard/phonelines/phoneline-view-landline");
+});
+app.get('/phonelines/phoneline-new-1', function(req, res){
+	res.render("dashboard/phonelines/phoneline-new-1");
+});
+app.get('/phonelines/phoneline-new-2', function(req, res){
+	res.render("dashboard/phonelines/phoneline-new-2");
+});
+app.get('/phonelines/phoneline-new-3', function(req, res){
+	res.render("dashboard/phonelines/phoneline-new-3");
+});
+app.get('/integrations/integration-view', function(req, res){
+	res.render("dashboard/integrations/integration-view");
+});
+app.get('/integrations/integration-new', function(req, res){
+	res.render("dashboard/integrations/integration-new");
+});
+app.get('/integrations/integration-edit', function(req, res){
+	res.render("dashboard/integrations/integration-edit");
 });
 
 // Heroku

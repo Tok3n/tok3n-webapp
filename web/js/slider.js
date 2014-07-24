@@ -59,6 +59,7 @@
           setTimeout(function() {
             temp.classList.remove("tok3n-pt-page-previous");
             temp.classList.remove("tok3n-pt-page-current");
+            Tok3nDashboard.tempPreviousTarget = temp;
             return ee.emitEvent('tok3nSlideAfterAnimation');
           }, 250);
           removeAnimationClasses(nextTarget);

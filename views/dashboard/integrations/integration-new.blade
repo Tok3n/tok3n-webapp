@@ -1,0 +1,84 @@
+.tok3n-integration-new
+  form#integrationNewForm.tok3n-dashboard-new-form.form-horizontal.tok3n-validated-form(role='form')
+    .tok3n-dashboard-form-lower-wrapper
+      .form-group
+        .col-md-12
+          h3.title New integration
+      .form-group
+        .col-md-12
+          .tok3n-dashboard-alert.alert.alert-danger.tok3n-dashboard-alert-hidden
+            b Error:
+            //- | The provided code was incorrect. Please try again.
+            | The provided name is already in use, please try another.
+      .form-group
+        label.align-top.col-md-4(for='integrationNewName') Name
+        .col-md-8
+          input#integrationNewName.form-control(
+            type='text'
+            placeholder='Tok3n'
+            data-parsley-required="true"
+            )
+      .form-group.tok3n-new-integration-kind
+        label.align-top.col-md-4(for='integrationNewKind') Kind
+        .col-md-8
+          label.radio-inline.tok3n-new-integration-kind-radio.tok3n-new-integration-kind-radio-general
+            input#integrationNewKindGeneral(
+              type='radio'
+              name='integrationNewKind'
+              value='general'
+              data-parsley-required="true"
+              data-parsley-ui-enabled='false'
+              )
+            | General
+          label.radio-inline.tok3n-new-integration-kind-radio.tok3n-new-integration-kind-radio-web
+            input#integrationNewKindWeb(
+              type='radio'
+              name='integrationNewKind'
+              value='web'
+              data-parsley-required="true"
+              data-parsley-ui-enabled='false'
+              )
+            | Web
+          span.help-block Web integrations have a callback url which is called on certain user actions.
+            |  
+            a Learn more
+            | .
+      .form-group.tok3n-collapse.collapsed.tok3n-new-integration-callback-url
+        label.align-top.col-md-4(for='integrationNewCallbackUrl') Callback Url
+        .col-md-8
+          input#integrationNewCallbackUrl.form-control(
+            type='text'
+            placeholder='http://tok3n.me/por/aqui'
+            data-parsley-type="url"
+            )
+      .form-group
+        label.align-top.col-md-4(for='newIntegrationSettingsAvatar') Icon
+        .input-group.col-md-8
+          span.input-group-btn
+            span.btn.btn-default.btn-file
+              | Browse
+              input(
+                type='file'
+                multiple=''
+                data-parsley-ui-enabled='false'
+                data-parsley-required="false"
+                )
+          input.avatar-path.form-control(
+            type='text'
+            readonly=''
+            data-parsley-ui-enabled='false'
+            data-parsley-required="false"
+            )
+        span.help-block.col-md-8.col-md-offset-4
+          | Help the users to recognize your app by providing an icon (png, jpg). Max file size: 5 mb.
+      .form-group
+        .col-md-12
+          small
+          | By proceeding, you are acknowledging that you have read and understood the 
+          a(href='#') Terms and Conditions of Service for Tok3n 
+          | and that you agree to be legally bound by them.
+    .tok3n-buttons-wrapper
+      .col-md-6.tok3n-single-button
+        a#integrationNewCancel.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-secondary-button(href='#') Cancel
+      .col-md-6.tok3n-single-button
+        a#integrationNewSubmit.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Create integration

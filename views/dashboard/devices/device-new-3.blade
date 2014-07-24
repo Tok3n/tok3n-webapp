@@ -1,0 +1,24 @@
+.tok3n-device-new-3
+  form#deviceNew3Form.tok3n-dashboard-new-form.form-horizontal.tok3n-validated-form(role='form')
+    .tok3n-dashboard-form-lower-wrapper
+      .form-group
+        .col-md-12
+          h3.title You are almost finished!
+      fieldset
+        .form-group
+          .col-md-12
+            .tok3n-dashboard-alert.alert.alert-danger.tok3n-dashboard-alert-hidden
+              b Error:
+              | The provided name is already in use, please try another.
+        .form-group.tok3n-phoneline-name
+          .col-md-8.col-md-offset-2
+            label(for="deviceNew3DeviceName") Choose a name for your device
+            input#deviceNew3DeviceName.form-control.input-md(name='deviceNew3DeviceName'
+              type="text"
+              placeholder="e.g. Victor's phone"
+              data-parsley-required="true"
+              )
+
+        .form-group
+          .col-md-8.col-md-offset-2
+            a#deviceNew3Submit.tok3n-dashboard-block-button.tok3n-dashboard-button.tok3n-dashboard-main-button(href='#') Finish

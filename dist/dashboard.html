@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title>Tok3n | Developer</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/css/style-min.css" />
+  </head>
+  <body>
+    <div class="tok3n-top-notification">Saved changes</div>
+    <div id="tok3nTop" class="tok3n-top">
+      <div id="tok3nTopNav" class="tok3n-top-nav">
+        <div class="nav-wrap row">
+          <header class="col-md-4 col-sm-4 col-xs-4">
+            <div alt="Tok3n" class="logo"></div>
+          </header>
+          <nav class="col-md-8 col-sm-8 col-xs-8">
+            <div class="menu">
+              <ul>
+                <li>
+                  <button href="#" class="btn btn-default">Log out</button>
+                </li>
+                <li class="toggle-sidebar">
+                  <button id="collapseSidebarButton" class="btn btn-default"><i class="icon-tok3n-menu"></i>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="tok3nLayout" class="tok3n-layout">
+      <div id="tok3nSidebar" class="tok3n-sidebar">
+        <div class="nav-inner">
+          <ul id="tok3nSidebarMenu" class="menu collapsed">
+            <li data-target="tok3nDevices" id="tok3nDevicesMenuButton" class="tok3n-menu-item col-xs-12 col-sm-12 col-md-12">
+              <div class="row">
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-tok3n-phone"></i>
+                </div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">My devices</div>
+              </div>
+            </li>
+            <li data-target="tok3nPhonelines" id="tok3nPhonelinesMenuButton" class="tok3n-menu-item col-xs-12 col-sm-12 col-md-12">
+              <div class="row">
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-tok3n-phone-line"></i>
+                </div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">My phone lines</div>
+              </div>
+            </li>
+            <li data-target="tok3nApplications" id="tok3nApplicationsMenuButton" class="tok3n-menu-item col-xs-12 col-sm-12 col-md-12">
+              <div class="row">
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-tok3n-authorized-apps"></i>
+                </div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">Authorized apps</div>
+              </div>
+            </li>
+            <li data-target="tok3nIntegrations" id="tok3nIntegrationsMenuButton" class="tok3n-menu-item col-xs-12 col-sm-12 col-md-12">
+              <div class="row">
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-tok3n-integrations"></i>
+                </div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">My integrations</div>
+              </div>
+            </li>
+            <li data-target="tok3nBackupCodes" id="tok3nBackupCodesMenuButton" class="tok3n-menu-item col-xs-12 col-sm-12 col-md-12">
+              <div class="row">
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-tok3n-backup-code"></i>
+                </div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">Backup codes</div>
+              </div>
+            </li>
+            <li data-target="tok3nSettings" id="tok3nSettingsMenuButton" class="tok3n-menu-item col-xs-12 col-sm-12 col-md-12">
+              <div class="row">
+                <div class="icon col-xs-2 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1"><i class="icon-tok3n-settings"></i>
+                </div>
+                <div class="title col-xs-10 col-sm-7 col-md-7">Settings</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="tok3n-pages-wrapper">
+        <div class="tok3n-pt-perspective">
+          <div id="tok3nDevices" class="tok3n-devices tok3n-pt-page">
+            <div class="tok3n-main-list">
+              <div class="item item-selected row">
+                <div class="avatar">
+                  <img alt="ttamayo's avatar" src="http://permissiondenied.net/identicon/32/cd1a0ff5c80213e2b66dba30a06ec926.png" height="32" width="32" />
+                </div>
+                <div class="info">
+                  <h5 class="title">Victor's Nexus</h5>
+                  <small class="description">Nexus 5 - Android Kit Kat</small>
+                </div>
+              </div>
+              <div class="item row">
+                <div class="avatar">
+                  <img alt="Offertame's avatar" src="http://permissiondenied.net/identicon/32/1e1456128549de49d86482de97396c90.png" height="32" width="32" />
+                </div>
+                <div class="info">
+                  <h5 class="title">Victor's iPhone</h5>
+                  <small class="description">iPhone 5 - iOS 7</small>
+                </div>
+              </div>
+              <div id="triggerNewDevice" class="tok3n-new-list-button">
+                <div class="item row">
+                  <div class="avatar"><i class="icon-tok3n-plus-circle"></i>
+                  </div>
+                  <div class="info">
+                    <h5 class="title">Add new device</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tok3n-main-content">
+              <!--INSERT CONTENT HERE-->
+            </div>
+          </div>
+          <div id="tok3nPhonelines" class="tok3n-phonelines tok3n-pt-page">
+            <div class="tok3n-main-list">
+              <div class="item item-selected row">
+                <div class="avatar">
+                  <img alt="Victor Telefonica's avatar" src="http://permissiondenied.net/identicon/32/cd1a0ff5c80213e2b66dba30a06ec926.png" height="32" width="32" />
+                </div>
+                <div class="info">
+                  <h5 class="title">Victor Telefónica</h5>
+                  <small class="description">+52 1 (55) 6423 2193</small>
+                </div>
+              </div>
+              <div class="item row">
+                <div class="avatar">
+                  <img alt="Office's avatar" src="http://permissiondenied.net/identicon/32/1e1456128549de49d86482de97396c90.png" height="32" width="32" />
+                </div>
+                <div class="info">
+                  <h5 class="title">Office</h5>
+                  <small class="description">+52 (55) 6269-8369</small>
+                </div>
+              </div>
+              <div id="triggerNewPhoneline" class="tok3n-new-list-button">
+                <div class="item row">
+                  <div class="avatar"><i class="icon-tok3n-plus-circle"></i>
+                  </div>
+                  <div class="info">
+                    <h5 class="title">Add new phoneline</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tok3n-main-content">
+              <!--INSERT CONTENT HERE-->
+            </div>
+          </div>
+          <div id="tok3nApplications" class="tok3n-applications tok3n-pt-page">
+            <div class="tok3n-full-layout tok3n-main-content">
+              <h2>Authorized applications</h2>
+              <div class="tok3n-cards-container">
+                <div class="grid-gutter"></div>
+                <div class="card">
+                  <div class="flipper">
+                    <div class="front">
+                      <span style="background-image: url('http://lorempixel.com/150/150/cats/1')" aria-label="Application name" role="img" class="img-wrap">
+                        <span class="inner"></span>
+                      </span>
+                      <div class="text-container">
+                        <span>About.me</span>
+                      </div>
+                    </div>
+                    <div class="back">
+                      <div class="flip"><i class="icon-tok3n-flip"></i>
+                      </div>
+                      <div class="info">
+                        <h4>Date added</h4>
+                        <p>04/31/2013</p>
+                      </div>
+                      <div class="revoke">
+                        <button class="btn btn-danger btn-block">Revoke</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="flipper">
+                    <div class="front">
+                      <span style="background-image: url('http://lorempixel.com/150/150/cats/2')" aria-label="Application name" role="img" class="img-wrap">
+                        <span class="inner"></span>
+                      </span>
+                      <div class="text-container">
+                        <span>Skype</span>
+                      </div>
+                    </div>
+                    <div class="back">
+                      <div class="flip"><i class="icon-tok3n-flip"></i>
+                      </div>
+                      <div class="info">
+                        <h4>Date added</h4>
+                        <p>04/31/2013</p>
+                      </div>
+                      <div class="revoke">
+                        <button class="btn btn-danger btn-block">Revoke</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="flipper">
+                    <div class="front">
+                      <span style="background-image: url('http://lorempixel.com/150/150/cats/3')" aria-label="Application name" role="img" class="img-wrap">
+                        <span class="inner"></span>
+                      </span>
+                      <div class="text-container">
+                        <span>Books</span>
+                      </div>
+                    </div>
+                    <div class="back">
+                      <div class="flip"><i class="icon-tok3n-flip"></i>
+                      </div>
+                      <div class="info">
+                        <h4>Date added</h4>
+                        <p>04/31/2013</p>
+                      </div>
+                      <div class="revoke">
+                        <button class="btn btn-danger btn-block">Revoke</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="flipper">
+                    <div class="front">
+                      <span style="background-image: url('http://lorempixel.com/150/150/cats/4')" aria-label="Application name" role="img" class="img-wrap">
+                        <span class="inner"></span>
+                      </span>
+                      <div class="text-container">
+                        <span>Beer</span>
+                      </div>
+                    </div>
+                    <div class="back">
+                      <div class="flip"><i class="icon-tok3n-flip"></i>
+                      </div>
+                      <div class="info">
+                        <h4>Date added</h4>
+                        <p>04/31/2013</p>
+                      </div>
+                      <div class="revoke">
+                        <button class="btn btn-danger btn-block">Revoke</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="flipper">
+                    <div class="front">
+                      <span style="background-image: url('http://lorempixel.com/150/150/cats/5')" aria-label="Application name" role="img" class="img-wrap">
+                        <span class="inner"></span>
+                      </span>
+                      <div class="text-container">
+                        <span>Chrome</span>
+                      </div>
+                    </div>
+                    <div class="back">
+                      <div class="flip"><i class="icon-tok3n-flip"></i>
+                      </div>
+                      <div class="info">
+                        <h4>Date added</h4>
+                        <p>04/31/2013</p>
+                      </div>
+                      <div class="revoke">
+                        <button class="btn btn-danger btn-block">Revoke</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="flipper">
+                    <div class="front">
+                      <span style="background-image: url('http://lorempixel.com/150/150/cats/6')" aria-label="Application name" role="img" class="img-wrap">
+                        <span class="inner"></span>
+                      </span>
+                      <div class="text-container">
+                        <span>Instagram</span>
+                      </div>
+                    </div>
+                    <div class="back">
+                      <div class="flip"><i class="icon-tok3n-flip"></i>
+                      </div>
+                      <div class="info">
+                        <h4>Date added</h4>
+                        <p>04/31/2013</p>
+                      </div>
+                      <div class="revoke">
+                        <button class="btn btn-danger btn-block">Revoke</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="flipper">
+                    <div class="front">
+                      <span style="background-image: url('http://lorempixel.com/150/150/cats/7')" aria-label="Application name" role="img" class="img-wrap">
+                        <span class="inner"></span>
+                      </span>
+                      <div class="text-container">
+                        <span>iTunes</span>
+                      </div>
+                    </div>
+                    <div class="back">
+                      <div class="flip"><i class="icon-tok3n-flip"></i>
+                      </div>
+                      <div class="info">
+                        <h4>Date added</h4>
+                        <p>04/31/2013</p>
+                      </div>
+                      <div class="revoke">
+                        <button class="btn btn-danger btn-block">Revoke</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="flipper">
+                    <div class="front">
+                      <span style="background-image: url('http://lorempixel.com/150/150/cats/8')" aria-label="Application name" role="img" class="img-wrap">
+                        <span class="inner"></span>
+                      </span>
+                      <div class="text-container">
+                        <span>About.me</span>
+                      </div>
+                    </div>
+                    <div class="back">
+                      <div class="flip"><i class="icon-tok3n-flip"></i>
+                      </div>
+                      <div class="info">
+                        <h4>Date added</h4>
+                        <p>04/31/2013</p>
+                      </div>
+                      <div class="revoke">
+                        <button class="btn btn-danger btn-block">Revoke</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="tok3nIntegrations" class="tok3n-integrations tok3n-pt-page">
+            <div class="tok3n-main-list">
+              <div class="item item-selected row">
+                <div class="avatar">
+                  <img alt="ttamayo's avatar" src="http://permissiondenied.net/identicon/32/211c6cf66d30f9ce9145af7be010d3ab.png" height="32" width="32" />
+                </div>
+                <div class="info">
+                  <h5 class="title">ttamayo.com</h5>
+                  <small class="url">http://ttamayo.com</small>
+                </div>
+              </div>
+              <div class="item row">
+                <div class="avatar">
+                  <img alt="Offertame's avatar" src="http://permissiondenied.net/identicon/32/211c6cf66d30f9ce9145af7be010d3ab.png" height="32" width="32" />
+                </div>
+                <div class="info">
+                  <h5 class="title">Offertame</h5>
+                  <small class="url">http://offerta.me/a/very/long/url/is/good/for/css/testing</small>
+                </div>
+              </div>
+              <div id="triggerNewIntegration" class="tok3n-new-list-button">
+                <div class="item row">
+                  <div class="avatar"><i class="icon-tok3n-plus-circle"></i>
+                  </div>
+                  <div class="info">
+                    <h5 class="title">New integration</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tok3n-main-content">
+              <!--INSERT CONTENT HERE-->
+            </div>
+          </div>
+          <div id="tok3nBackupCodes" class="tok3n-backup-codes tok3n-pt-page">
+            <div class="tok3n-full-layout tok3n-main-content">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <h2 class="tok3n-full-layout-title">Backup codes</h2>
+                </div>
+              </div>
+              <form class="form-horizontal tok3n-dashboard-new-form">
+                <div class="tok3n-dashboard-form-lower-wrapper">
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <p>Backup codes are especially useful for people who travel, have problems receiving SMS or voice calls, or cannot use the Tok3n smartphone app.</p>
+                      <p><b>Recommendation: </b>You should print or download backup codes.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tok3n-buttons-wrapper">
+                  <div class="col-sm-6 tok3n-single-button"><a href="#" class="tok3n-dashboard-block-button tok3n-dashboard-button tok3n-dashboard-main-button">View existing codes</a>
+                  </div>
+                  <div class="col-sm-6 tok3n-single-button"><a href="#" class="tok3n-dashboard-block-button tok3n-dashboard-button tok3n-dashboard-main-button">Generate new codes</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div id="tok3nSettings" class="tok3n-settings tok3n-pt-page">
+            <div class="tok3n-full-layout tok3n-main-content">
+              <h2 class="tok3n-full-layout-title">Settings</h2>
+              <form role="form" id="tok3nSettingsForm" class="form-horizontal tok3n-dashboard-new-form tok3n-validated-form">
+                <div class="tok3n-dashboard-form-lower-wrapper">
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="tok3n-dashboard-alert alert alert-danger tok3n-dashboard-alert-hidden"><b>Error:</b>The XX you provided is incorrect. Please try again.</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="tok3nUserFirstName" class="col-sm-4 control-label">First name</label>
+                    <div class="col-sm-8">
+                      <input type="text" data-parsley-required="true" id="tok3nUserFirstName" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="tok3nUserLastName" class="col-sm-4 control-label">Last name</label>
+                    <div class="col-sm-8">
+                      <input type="text" data-parsley-required="true" id="tok3nUserLastName" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="tok3nUserEmail" class="col-sm-4 control-label">Email</label>
+                    <div class="col-sm-8">
+                      <input type="email" data-parsley-required="true" data-parsley-type="email" id="tok3nUserEmail" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="tok3nUserPassword" class="col-sm-4 control-label">Password</label>
+                    <div class="col-sm-8">
+                      <input type="password" placeholder="" id="tok3nUserPassword" class="tok3n-user-password form-control" />
+                    </div>
+                    <div class="col-sm-8 col-sm-offset-4">
+                      <span class="help-block">If you don't want to change your password leave this field blank.</span>
+                    </div>
+                  </div>
+                  <div class="form-group tok3n-user-verify-password collapsed">
+                    <label for="tok3nUserVerifyPassword" class="col-sm-4 control-label">Verify password</label>
+                    <div class="col-sm-8">
+                      <input type="password" data-parsley-equalto="#tok3nUserPassword" data-parsley-equalto-message="The password should be the same." id="tok3nUserVerifyPassword" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="tok3n-buttons-wrapper">
+                  <div class="col-sm-6 tok3n-single-button"><a href="#" class="tok3n-dashboard-block-button tok3n-dashboard-button tok3n-dashboard-secondary-button">Cancel</a>
+                  </div>
+                  <div class="col-sm-6 tok3n-single-button"><a href="#" id="tok3nSettingsSubmit" class="tok3n-dashboard-block-button tok3n-dashboard-button tok3n-dashboard-main-button">Save changes</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    (function()
+    {
+      window.Tok3nDashboard || (window.Tok3nDashboard = {});
+      Tok3nDashboard.initWindow = "integrations";
+    }).call(this);
+    </script>
+    <script src="//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/js/dashboard-min.js"></script>
+  </body>
+</html>

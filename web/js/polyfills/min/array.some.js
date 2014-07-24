@@ -1,0 +1,1 @@
+Array.prototype.some=function(a,b){"use strict";var c,d,e;if(void 0===this||null===this)throw new TypeError;if(e=Object(this),d=e.length>>>0,"function"!=typeof a)throw new TypeError;for(b=arguments.length>=2?arguments[1]:void 0,c=0;d>c;){if(c in e&&a.call(b,e[c],c,e))return!0;c++}return!1};

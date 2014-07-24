@@ -8696,11 +8696,11 @@ body {
 body a {
   color: #434cd3;
 }
-/* line 24, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
 body a:hover {
   color: #636bd4;
 }
-/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
 body a:active {
   color: #ba7f29;
 }
@@ -8938,12 +8938,12 @@ a {
   margin: 0.61em 0;
   height: 40px;
   width: 111px;
-  background-image: url('../img/logo.png?1376272590');
+  background-image: url('//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/img/logo.png?1376272590');
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
   /* line 104, ../sass/_base.sass */
   .tok3n-top-nav header .logo {
-    background-image: url('../img/logo_hd.png?1376272590');
+    background-image: url('//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/img/logo_hd.png?1376272590');
     background-size: 111px 40px;
   }
 }
@@ -8964,7 +8964,7 @@ a {
 .tok3n-top-nav nav .menu ul {
   list-style-type: none;
 }
-/* line 6, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/lists/_inline-list.scss */
+/* line 6, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/lists/_inline-list.scss */
 .tok3n-top-nav nav .menu ul, .tok3n-top-nav nav .menu ul li {
   margin: 0;
   padding: 0;
@@ -9010,7 +9010,7 @@ a {
 .touch .tok3n-top-nav nav .menu ul li a {
   color: #171947;
 }
-/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
 .touch .tok3n-top-nav nav .menu ul li a:active {
   color: #ba7f29;
 }
@@ -9018,11 +9018,11 @@ a {
 .no-touch .tok3n-top-nav nav .menu ul li a {
   color: #171947;
 }
-/* line 24, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
 .no-touch .tok3n-top-nav nav .menu ul li a:hover {
   color: #434cd3;
 }
-/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-core-1.0.0.alpha.16/stylesheets/compass/typography/links/_link-colors.scss */
 .no-touch .tok3n-top-nav nav .menu ul li a:active {
   color: #ba7f29;
 }
@@ -9674,112 +9674,112 @@ input.parsley-error, select.parsley-error, textarea.parsley-error {
 }
 
 @-moz-keyframes flash {
-  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   25% {
     opacity: 0;
   }
 
-  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   50% {
     opacity: 1;
   }
 
-  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   75% {
     opacity: 0;
   }
 
-  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   100% {
     opacity: 1;
   }
 }
 @-webkit-keyframes flash {
-  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   25% {
     opacity: 0;
   }
 
-  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   50% {
     opacity: 1;
   }
 
-  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   75% {
     opacity: 0;
   }
 
-  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   100% {
     opacity: 1;
   }
 }
 @keyframes flash {
-  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 16, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   0% {
     opacity: 1;
   }
 
-  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 19, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   25% {
     opacity: 0;
   }
 
-  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 22, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   50% {
     opacity: 1;
   }
 
-  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 25, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   75% {
     opacity: 0;
   }
 
-  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
+  /* line 28, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/attention/_flash.scss */
   100% {
     opacity: 1;
   }
 }
 @-moz-keyframes fadeIn {
-  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   0% {
     opacity: 0;
   }
 
-  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   100% {
     opacity: 1;
   }
 }
 @-webkit-keyframes fadeIn {
-  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   0% {
     opacity: 0;
   }
 
-  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   100% {
     opacity: 1;
   }
 }
 @keyframes fadeIn {
-  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   0% {
     opacity: 0;
   }
 
-  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247@tok3n-webapp/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
+  /* line 21, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/animate-0.2.beta.0/stylesheets/animate/fade/_fadeIn.scss */
   100% {
     opacity: 1;
   }
@@ -10227,12 +10227,12 @@ input.parsley-error, select.parsley-error, textarea.parsley-error {
 
 /* line 271, ../sass/_main.sass */
 .tok3n-app-icon {
-  background-image: url('../img/app-icon.png?1402604376');
+  background-image: url('//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/img/app-icon.png?1402604376');
 }
 @media print, (-webkit-min-device-pixel-ratio: 1.25), (-o-min-device-pixel-ratio: 5 / 4), (min-resolution: 120dpi) {
   /* line 271, ../sass/_main.sass */
   .tok3n-app-icon {
-    background-image: url('../img/app-icon-hd.png?1366861301');
+    background-image: url('//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/img/app-icon-hd.png?1366861301');
     background-size: 256px 256px;
   }
 }
@@ -10298,17 +10298,17 @@ input.parsley-error, select.parsley-error, textarea.parsley-error {
 }
 /* line 301, ../sass/_main.sass */
 .tok3n-app-store-icon {
-  background-image: url('../img/app-store.png?1384643848');
+  background-image: url('//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/img/app-store.png?1384643848');
 }
 
 /* line 304, ../sass/_main.sass */
 .tok3n-play-store-icon {
-  background-image: url('../img/google-play.png?1384643744');
+  background-image: url('//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/img/google-play.png?1384643744');
 }
 
 /* line 307, ../sass/_main.sass */
 .tok3n-qr-code {
-  background-image: url('../img/qrcode.png?1391982648');
+  background-image: url('//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/img/qrcode.png?1391982648');
 }
 
 /* line 310, ../sass/_main.sass */

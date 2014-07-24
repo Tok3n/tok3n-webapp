@@ -13,32 +13,19 @@ do ->
     test: document.querySelector
     nope: polyfillsUrl + '/querySelector.polyfill.js'
   }, {
-    test: CSS.supports
-    nope: polyfillsUrl + '/CSS.supports.js'
-  }, {
-    test: CSS.supports('width', 'calc(10px)') or CSS.supports('width', '-webkit-calc(10px)') or CSS.supports('width', '-moz-calc(10px)')
+    test: Modernizr.csscalc
     nope: polyfillsUrl + '/calc.min.js'
   }, {
 
 
   # Compatibility layout
-    test: CSS.supports('min-height', '-webkit-fill-available') or CSS.supports('min-height', '-moz-available')
-    nope: ->
-      Tok3nDashboard.compatibilityLayout()
-      # Horrible solution for old browsers: keep resizing and setting the height manually in case the content changes. Sorry IE!
-      window.setInterval ->
-        Tok3nDashboard.resizeContent()
-      , 1000
+    test: Modernizr.extrinsicsizing
+    nope: Tok3nDashboard.cdnUrl + '/compatibility.js'
+    callback: ->
+      if Tok3nDashboard.compatibilityLayout
+        Tok3nDashboard.compatibilityLayout()
   }, {
 
-  # Typekit
-    load: "//use.typekit.net/#{Tok3nDashboard.typekit}.js"
-    complete: ->
-      try
-        Typekit.load()
-      return
-  }, {
-  
 
   # JS Polyfills
     test: String::contains
@@ -60,21 +47,34 @@ do ->
   }, {
     test: window.CustomEvent
     nope: polyfillsUrl + '/customevent.js'
-  }, {
-
-
-  # Google Charts
-    load: "//www.google.com/jsapi"
-    complete: ->
-      Tok3nDashboard.Jsapi.isLoaded = new Promise (resolve, reject) ->
-        google.load "visualization", "1",
-          packages: ["corechart"]
-          callback: ->
-            resolve()
-      ee.emitEvent 'tok3nJsapiPromiseCreated'
-      return
-  }, {
-  
-  # Google Analytics
-    load: ((if "https:" is location.protocol then "//ssl" else "//www")) + ".google-analytics.com/ga.js"
   }])
+
+
+  # Load external libs, after DOMContenLoaded (on main)
+  lastLoader = ->
+    Modernizr.load([{
+    # Typekit
+      load: "//use.typekit.net/#{Tok3nDashboard.typekit}.js"
+      complete: ->
+        try
+          Typekit.load()
+        return
+    }, {
+
+    # Google Charts
+      load: "//www.google.com/jsapi"
+      complete: ->
+        Tok3nDashboard.Jsapi.isLoaded = new Promise (resolve, reject) ->
+          google.load "visualization", "1",
+            packages: ["corechart"]
+            callback: ->
+              resolve()
+        ee.emitEvent 'tok3nJsapiPromiseCreated'
+        return
+    }, {
+    
+    # Google Analytics
+      load: ((if "https:" is location.protocol then "//ssl" else "//www")) + ".google-analytics.com/ga.js"
+    }])
+
+  Tok3nDashboard.lastLoader = lastLoader

@@ -1,0 +1,63 @@
+.flexbox
+  @media only screen
+
+    $top-nav-height: 58px //- hardcoded!!
+    $menu-width: 220px
+    $apps-width: 252px
+
+    .tok3n-layout
+      position: absolute
+      top: $top-nav-height
+      right: 0
+      bottom: 0
+      left: 0
+      z-index: 1
+      +display-flex(flex)
+
+    .tok3n-pages-wrapper
+      +flex-grow(1)
+      +display-flex(flex)
+      +flex-direction(column)
+
+    .tok3n-pt-perspective
+      +flex-grow(1)
+      +display-flex(flex)
+      overflow-x: hidden
+      overflow-y: auto
+
+    .tok3n-pt-page
+      +display-flex(flex)
+      min-height: -webkit-fill-available
+      min-height: -moz-available
+      &:not(.tok3n-pt-page-current)
+        +experimental-value(height, calc(100vh - #{$top-nav-height}))
+
+    .tok3n-pt-page
+      width: 100%
+
+    +to(2)
+
+      .tok3n-layout
+        +flex-direction(column)
+      
+      .tok3n-pt-page
+        +flex-direction(column)
+
+      .tok3n-main-content
+        min-width: -webkit-fill-available
+        min-width: -moz-available
+
+    +from(3)
+
+      .tok3n-sidebar
+        width: $menu-width
+
+      .tok3n-main-list
+        width: $apps-width
+        border-right: 1px solid #ddd
+
+      .tok3n-main-content
+        +experimental-value(width, calc(100% - #{$apps-width}))
+        &.tok3n-full-layout
+          min-width: -webkit-fill-available
+          min-width: -moz-available

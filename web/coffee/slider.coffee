@@ -55,6 +55,7 @@ do ->
           setTimeout ->
             temp.classList.remove "tok3n-pt-page-previous"
             temp.classList.remove "tok3n-pt-page-current"
+            Tok3nDashboard.tempPreviousTarget = temp
             ee.emitEvent 'tok3nSlideAfterAnimation'
           , 250
 

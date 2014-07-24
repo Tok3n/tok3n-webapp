@@ -12541,102 +12541,7 @@ if ('undefined' !== typeof window.ParsleyValidator)
 	}
 }.call(this));
 
-//
-// Regular Expression for URL validation
-//
-// Author: Diego Perini
-// Updated: 2010/12/05
-// License: MIT
-//
-// Copyright (c) 2010-2013 Diego Perini (http://www.iport.it)
-//
-// Permission is hereby granted, free of charge, to any person
-// obtaining a copy of this software and associated documentation
-// files (the "Software"), to deal in the Software without
-// restriction, including without limitation the rights to use,
-// copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the
-// Software is furnished to do so, subject to the following
-// conditions:
-//
-// The above copyright notice and this permission notice shall be
-// included in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-// OTHER DEALINGS IN THE SOFTWARE.
-//
-// the regular expression composed & commented
-// could be easily tweaked for RFC compliance,
-// it was expressly modified to fit & satisfy
-// these test for an URL shortener:
-//
-//   http://mathiasbynens.be/demo/url-regex
-//
-// Notes on possible differences from a standard/generic validation:
-//
-// - utf-8 char class take in consideration the full Unicode range
-// - TLDs have been made mandatory so single names like "localhost" fails
-// - protocols have been restricted to ftp, http and https only as requested
-//
-// Changes:
-//
-// - IP address dotted notation validation, range: 1.0.0.0 - 223.255.255.255
-//   first and last IP address of each class is considered invalid
-//   (since they are broadcast/network addresses)
-//
-// - Added exclusion of private, reserved and/or local networks ranges
-//
-// Compressed one-line versions:
-//
-// Javascript version
-//
-// /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/i
-//
-// PHP version
-//
-// _^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}-\x{ffff}0-9]-*)*[a-z\x{00a1}-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}-\x{ffff}0-9]-*)*[a-z\x{00a1}-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}-\x{ffff}]{2,})))(?::\d{2,5})?(?:/\S*)?$_iuS
-//
-var re_weburl = new RegExp(
-  "^" +
-    // protocol identifier
-    "(?:(?:https?|ftp)://)" +
-    // user:pass authentication
-    "(?:\\S+(?::\\S*)?@)?" +
-    "(?:" +
-      // IP address exclusion
-      // private & local networks
-      "(?!(?:10|127)(?:\\.\\d{1,3}){3})" +
-      "(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})" +
-      "(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})" +
-      // IP address dotted notation octets
-      // excludes loopback network 0.0.0.0
-      // excludes reserved space >= 224.0.0.0
-      // excludes network & broacast addresses
-      // (first & last IP address of each class)
-      "(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])" +
-      "(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}" +
-      "(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))" +
-    "|" +
-      // host name
-      "(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)" +
-      // domain name
-      "(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*" +
-      // TLD identifier
-      "(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))" +
-    ")" +
-    // port number
-    "(?::\\d{2,5})?" +
-    // resource path
-    "(?:/\\S*)?" +
-  "$", "i"
-);
-var capitaliseFirstLetter, childNodeIndex, closest, each, ee, findClosestAncestor, forEach, gebi, hasFormValidation, indexOf, isEmptyOrDefault, namespace, qs, qsa, querySelectorAll, root, slice,
+var capitaliseFirstLetter, childNodeIndex, closest, detectIE, each, ee, findClosestAncestor, forEach, functionName, gebi, hasFormValidation, indexOf, isEmptyOrDefault, lowercaseFirstLetter, namespace, namespaceExists, qs, qsa, querySelectorAll, root, slice,
   __slice = [].slice;
 
 window.Tok3nDashboard || (window.Tok3nDashboard = {});
@@ -12647,15 +12552,19 @@ Tok3nDashboard.Jsapi || (Tok3nDashboard.Jsapi = {});
 
 Tok3nDashboard.Charts || (Tok3nDashboard.Charts = {});
 
-Tok3nDashboard.ValidatedForms || (Tok3nDashboard.ValidatedForms = []);
+Tok3nDashboard.Screens || (Tok3nDashboard.Screens = {});
+
+Tok3nDashboard.CurrentScreens || (Tok3nDashboard.CurrentScreens = []);
+
+Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp';
+
+Tok3nDashboard.initWindow || (Tok3nDashboard.initWindow = 'Devices');
 
 if (!Tok3nDashboard.Environment.isDevelopment) {
   Tok3nDashboard.Environment.isProduction = true;
 } else {
   Tok3nDashboard.Environment.isProduction = false;
 }
-
-Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp';
 
 each = Function.prototype.call.bind([].forEach);
 
@@ -12733,6 +12642,50 @@ capitaliseFirstLetter = function(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
+lowercaseFirstLetter = function(string) {
+  return string.charAt(0).toLowerCase() + string.slice(1);
+};
+
+namespaceExists = function(obj, path) {
+  var i, part, parts, root;
+  parts = path.split(".");
+  root = obj;
+  i = 0;
+  while (i < parts.length) {
+    part = parts[i];
+    if (root[part] && root.hasOwnProperty(part)) {
+      root = root[part];
+    } else {
+      return false;
+    }
+    i++;
+  }
+  return true;
+};
+
+detectIE = function() {
+  var msie, rv, trident, ua;
+  ua = window.navigator.userAgent;
+  msie = ua.indexOf("MSIE ");
+  trident = ua.indexOf("Trident/");
+  if (msie > 0) {
+    return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+  }
+  if (trident > 0) {
+    rv = ua.indexOf("rv:");
+    return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+  }
+  return false;
+};
+
+functionName = function(fun) {
+  var ret;
+  ret = fun.toString();
+  ret = ret.substr("function ".length);
+  ret = ret.substr(0, ret.indexOf("("));
+  return ret;
+};
+
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
 root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
@@ -12740,3 +12693,21 @@ root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
 Tok3nDashboard.typekit = 'nls8ikc';
 
 ee = new EventEmitter();
+
+Modernizr.addTest("extrinsicsizing", function() {
+  var el, prop, value;
+  prop = "width:";
+  value = "min-content;";
+  el = document.createElement("div");
+  el.style.cssText = prop + Modernizr._prefixes.join(value + prop);
+  return !!el.style.length;
+});
+
+Modernizr.addTest("csscalc", function() {
+  var el, prop, value;
+  prop = "width:";
+  value = "calc(10px);";
+  el = document.createElement("div");
+  el.style.cssText = prop + Modernizr._prefixes.join(value + prop);
+  return !!el.style.length;
+});

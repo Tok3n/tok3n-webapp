@@ -1,0 +1,518 @@
+@import 'imports'
+
+$tok3n-blue: #31B3D4
+$tok3n-purple: #2b3087
+
+////////////////
+// Animations //
+////////////////
+
+@include animate-flash
+@include animate-fadeIn
+
+////////////
+// Alerts //
+////////////
+
+.tok3n-dashboard-alert
+  +single-transition(all, .3s, ease)
+  padding: 15px 30px
+  overflow: hidden
+  margin-bottom: 20px
+  max-height: 120px
+  b
+    margin-right: .5em
+
+.tok3n-dashboard-alert-hidden
+  max-height: 0
+  padding: 0 30px
+  border: 0
+  margin-bottom: 0
+
+.tok3n-dashboard-alert-active
+  +animation(flash)
+  +animation-duration(.5s)
+  +animation-delay(.3s)
+  +animation-iteration-count(1)
+
+////////////////////
+// Layouts
+////////////////////
+
+.tok3n-full-layout
+  +to(2)
+    margin: 1em 2em
+  +from(3)
+    margin: 3em 3em 2em 4em
+
+////////////////////
+// Main list
+////////////////////
+
+.tok3n-main-list
+  padding: 0 15px
+  .item
+    padding: 0.9em 1.4em 0.9em 1.2em
+    border-bottom: 1px solid #ddd
+    .info
+      overflow: hidden
+      text-overflow: ellipsis
+      color: #999
+  .item, #new-integration
+    +user-select(none)
+    cursor: pointer
+    .no-touch &
+      &:hover, &:focus
+        +background-image(linear-gradient(top, hsla(204, 100%, 89%, 1) 0%,hsla(205, 100%, 90%, 1) 100%))
+        .title
+          color: #444
+        .url, .description
+          color: #000
+    &:active
+      +background-image(linear-gradient(top, hsla(202, 100%, 79%, 1) 0%,hsla(203, 100%, 80%, 1) 100%))
+  .new-item
+    height: 40px
+  .avatar
+    margin-top: 5px
+    margin-right: 15px
+    width: 35px
+  .avatar, .info
+    float: left
+  +to(2)
+    .info
+      width: calc(100% - 50px)
+  +from(3)
+    .info
+      width: 163px
+  .title, .url, .description
+    margin: 0
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+  .title
+    color: #555
+  .url, .description
+    color: #999
+  .item-selected
+    +background-image(linear-gradient(top, hsla(264, 29%, 93%, 1) 0%,hsla(265, 100%, 92%, 1) 100%))
+    .no-touch &
+      &:hover, &:focus
+        +background-image(linear-gradient(top, hsla(266, 48%, 90%, 1) 0%,hsla(267, 100%, 89%, 1) 100%))
+    &:active
+      +background-image(linear-gradient(top, hsla(268, 48%, 83%, 1) 0%,hsla(269, 100%, 82%, 1) 100%))
+  .tok3n-new-list-button
+    .title
+      font-style: italic
+      font-weight: normal
+      margin-top: 8px
+    i
+      font-size: 130%
+      margin-left: 7px
+      color: hsla(210, 100%, 32%, 1)
+
+////////////////////
+// Dashboard components
+////////////////////
+
+.tok3n-full-layout-title
+  text-align: center
+
+.tok3n-dashboard-segment
+  padding: 1em 3em
+  .title
+    margin: 0.5em 0 0
+    span
+      display: inline-block
+  .settings-menu
+    margin-top: -.8em
+    .action-button
+      vertical-align: bottom
+      padding: 5px 10px 4px
+      .icon-tok3n-gear
+        &:before
+          vertical-align: -2px
+  .specs
+    margin-top: 2.5em
+    margin-bottom: 1.5em
+    td
+      padding-right: 1.5em
+      padding-bottom: .5em
+    td.name
+      font-weight: bolder
+    a.action
+      text-decoration: underline
+      color: hsla(29, 84%, 48%, 1)
+      .no-touch &
+        &:hover, &:focus
+          color: hsla(29, 100%, 60%, 1)
+      &:active
+        color: hsla(29, 100%, 80%, 1)
+    .status
+      span.label, .action-button
+        $button-separation: 1em
+        margin: 0 $button-separation/2
+        &:first-child
+          margin: 0 $button-separation/2 0 0
+        &:last-child
+          margin: 0 0 0 $button-separation/2
+        &:only-child
+          margin: 0
+      span.label
+        font-size: .9em
+
+.tok3n-dashboard-upper
+  border-bottom: 1px solid #ddd
+
+.tok3n-dashboard-welcome-title
+  text-align: center
+  font-style: italic
+  font-weight: normal
+  margin-bottom: 1em
+
+.tok3n-dashboard-new-form
+  position: relative
+  background: #FFF
+  padding: 20px
+  .tok3n-full-layout &
+    padding: 20px 0
+  width: auto
+  max-width: 500px
+  margin: 20px auto
+  .create-button
+    margin-bottom: 0
+    margin-top: 2em
+    button
+      margin-bottom: 15px
+  .title
+    margin-top: .5em
+    text-align: center
+  label.align-top
+    margin-top: .4em
+  .web-toggle
+    display: none
+  .btn-file
+    position: relative
+    overflow: hidden
+    input[type=file]
+      position: absolute
+      top: 0
+      right: 0
+      min-width: 100%
+      min-height: 100%
+      font-size: 999px
+      text-align: right
+      filter: alpha(opacity = 0)
+      opacity: 0
+      background: red
+      cursor: inherit
+      display: block
+  .form-control
+    cursor: default
+
+.tok3n-dashboard-title
+  text-align: center
+  margin-bottom: 1em
+
+.tok3n-dashboard-form-lower-wrapper
+  @extend .col-md-12
+
+.tok3n-dashboard-button
+  display: block
+  margin: 0 auto (30px * .62)
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-weight: 600
+  -webkit-font-smoothing: antialiased
+  &:last-child
+    margin-bottom: 0
+  @extend %btn
+  // @extend %btn-md
+  +user-select(none)
+
+.tok3n-dashboard-block-button
+  @extend %btn-block
+  margin-bottom: 10px
+.tok3n-dashboard-main-button
+  +button-variant(hsla(0, 0, 100%, .95), adjust-lightness($tok3n-blue, 0), black(.1))
+.tok3n-dashboard-secondary-button
+  @extend %btn-default
+.tok3n-single-button
+  margin-bottom: 10px
+  &:last-child
+    margin-bottom: 0
+
+.tok3n-buttons-wrapper
+  margin-top: 2em
+  overflow: hidden
+
+////////////////////
+// Devices
+////////////////////
+
+.tok3n-app-icons-wrapper
+  .tok3n-device-new-1 &
+    margin: 40px auto 0
+
+.tok3n-app-icon, .tok3n-qr-code, .tok3n-integration-icon
+  +background-size(100% auto)
+  background-position: center center
+  +box-shadow(rgba(0,0,0,0.2) 0 0 1px 1px, rgba(0,0,0,0.3) 0 5px 27px)
+
+.tok3n-app-icon, .tok3n-integration-icon
+  +border-radius(17.544%)
+  .tok3n-device-new-1 &
+    +to(2)
+      width: 256px
+      height: 256px
+    +from(3)
+      width: 128px
+      height: 128px
+    margin: 0 auto 30px
+
+.tok3n-app-icon
+  +hr-image("app-icon.png", "app-icon-hd.png")
+
+.tok3n-qr-code
+  +to(2)
+    width: 256px
+    height: 256px
+  +from(3)
+    width: 256px * .8
+    height: 256px * .8
+  margin: 0 auto 37px
+
+.tok3n-app-store-icon, .tok3n-play-store-icon
+  +to(2)
+    width: 195px
+    height: 72px
+  +to(3)
+    margin: 0 auto 13px
+  +from(3)
+    width: 195px * .8
+    height: 72px * .8
+  +from(4)
+    margin: 0 0 13px
+  +background-size(100% auto)
+
++to(3)
+  .tok3n-stores-container
+    margin: 4em 0 2em
+
+
+.tok3n-app-store-icon
+  background-image: image-url('app-store.png')
+
+.tok3n-play-store-icon
+  background-image: image-url('google-play.png')
+
+.tok3n-qr-code
+  background-image: image-url('qrcode.png')
+
+ol.tok3n-step-list
+  list-style-type: none
+  margin: 0
+  margin-left: 3em
+  padding: 0
+  counter-reset: li-counter
+
+  & > li
+    position: relative
+    margin-bottom: 20px
+    padding-left: 0.5em
+    min-height: 3em
+    border-left: 2px solid #CCCCCC
+
+  & > li:before
+    position: absolute
+    top: 0
+    left: -1em
+    width: 0.8em
+    font-size: 3em
+    line-height: 1
+    font-weight: bold
+    text-align: right
+    color: $tok3n-purple
+    content: counter(li-counter)
+    counter-increment: li-counter
+
+  & li:last-child
+    margin-bottom: 0
+
+
+
+////////////////////
+// Phone lines
+////////////////////
+
+.tok3n-sending-progress
+  margin-top: 3em
+  margin-bottom: 3em
+  +single-transition(all, .3s, ease)
+
+.tok3n-sending-progress-hidden
+  max-height: 0
+  margin: 0
+  overflow: hidden
+
+.tok3n-progress
+  @extend %progress
+  font-size: 20px
+  margin: 0
+
+.tok3n-progress-wrapper
+  margin: 0 auto
+  width: 100px
+
+.tok3n-sending-message
+  text-align: center
+
+.tok3n-sending-progress
+  margin-top: 1.5 em
+
+.tok3n-enter-code-screen p
+  text-align: center
+
+.tok3n-enter
+  margin: 10px auto 15px
+  width: 225px
+  // @extend .has-error
+
+.tok3n-otp
+  height: 75px
+  padding-left: 20px
+  width: 100%
+  font-size: 36px
+
+.tok3n-phoneline-new-2
+  .icon-tok3n-phone, .icon-tok3n-text-bubble
+    font-size: 1.8em
+    display: inline-block
+    position: absolute
+    margin-left: 170px
+    margin-top: -52px
+    color: #bbb
+    +single-transition(color, .3s, ease-in)
+    &:hover
+      color: adjust-lightness($tok3n-blue, 20)
+    &:after, &:before
+      white-space: pre
+
+.tok3n-phoneline-name
+  margin-bottom: 5em
+
+
+////////////////////
+// Applications
+////////////////////
+
+// .tok3n-applications
+//   padding: 0 15px
+
+.tok3n-cards-container
+  perspective: 1000
+  margin-top: 2em
+  +nr-app-size(150,150, 15px)
+  .card
+    overflow: hidden
+    margin-bottom: 2em
+  .flipper
+    +single-transition(all, 0.7s)
+    +transform-style(preserve-3d)
+    position: relative
+    height: 100%      
+  .front, .back
+    +backface-visibility(hidden)
+    position: absolute
+    top: 0
+    left: 0
+  .card, .front, .back
+    +border-radius(4px)
+  .front, .flip, .revoke
+    cursor: pointer
+  .front
+    z-index: 2
+    background: #fff
+    +single-transition(all, .3s)
+  .back
+    +rotateY(180deg)
+    background: hsla(265, 100%, 92%, .2)
+    +box-shadow(0 0 1px black(.8) inset)
+  .flipped
+    +rotateY(180deg)
+  .img-wrap
+    +border-radius(4px)
+    width: 100%
+    display: inline-block
+    vertical-align: middle
+    font: 0/0 serif
+    text-shadow: none
+    color: transparent
+    background-size: 100%
+    background-position: 50% 50%
+    background-repeat: no-repeat
+  .inner
+    display: block
+    height: 0
+  .revoke, .flip, .text-container, .info
+    width: inherit
+  .flip
+    margin: .8em 0 0
+    padding: 0 1em
+  .revoke
+    margin: 1em 0
+    padding: 0 1em
+  .info
+    padding: 0 4em 0 1em
+    margin: -20px 0 1em 0
+  .flip
+    height: 20px
+    text-align: right
+    font-size: 130%
+  .text-container, .revoke
+    position: absolute
+    bottom: 0
+  .text-container
+    padding: 1em
+    background: white(.9)
+    .no-touch &
+      visibility: hidden
+    font-weight: bold
+    +border-bottom-left-radius(3px)
+    +border-bottom-right-radius(3px)
+    +box-shadow(0 -15px 15px -15px black(.8), 0 0 1px black(.8) inset)
+  .front:hover
+    .no-touch &
+      +box-shadow(0 0 1px black(.8) inset)
+      .text-container
+        visibility: visible
+
+////////////////////
+// Integrations
+////////////////////
+
+.tok3n-new-integration-callback-url
+  @extend %tok3n-collapse
+  +to(3)
+    max-height: 83px // Hardcoded
+  +from(4)
+    max-height: 52px // Hardcoded
+
+////////////////////
+// Backup codes
+////////////////////
+
+
+
+////////////////////
+// Settings
+////////////////////
+
+.tok3n-settings
+  .create-button
+    margin-top: 3em
+
+.tok3n-user-verify-password
+  @extend %tok3n-collapse
+  +to(2)
+    max-height: 80px // Hardcoded
+  +from(3)
+    max-height: 52px // Hardcoded

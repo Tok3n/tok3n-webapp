@@ -1,6 +1,6 @@
 {
   "name": "tok3n-webapp",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "Front-end for Tok3n Webapp",
   "main": "server.js",
   "scripts": {
@@ -30,7 +30,6 @@
     "grunt-contrib-imagemin": "~0.3.0",
     "grunt-sync": "0.0.5",
     "grunt-prettify": "~0.3.4",
-    "grunt-s3-sync": "~0.4.1",
     "grunt-uncss": "~0.2.0",
     "grunt-contrib-coffee": "~0.10.1",
     "grunt-processhtml": "~0.3.0",
@@ -38,7 +37,8 @@
     "leveldown": "~0.10.2",
     "levelup": "~0.18.2",
     "grunt-coffeelint": "0.0.10",
-    "grunt-concurrent": "~0.5.0"
+    "grunt-concurrent": "~0.5.0",
+    "grunt-s3": "~0.2.0-alpha.3"
   },
   "dependencies": {
     "blade": "~3.2.6",

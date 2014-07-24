@@ -1,8 +1,5 @@
 do ->
 
-  Tok3nDashboard.Screens or= {}
-  Tok3nDashboard.initWindow or= 'Devices'
-
   namespace 'Tok3nDashboard.Screens', (exports) ->
 
     ###
@@ -19,14 +16,12 @@ do ->
       querySelectorAll('a[href="#"]').forEach (el) ->
         el.addEventListener 'click', (evt) ->
           evt.preventDefault()
-        , false
 
       # Sidebar show/hide
       ((el) ->
         if el
-          document.querySelector('#collapseSidebarButton').addEventListener('click', () ->
+          document.querySelector('#collapseSidebarButton').addEventListener 'click', () ->
             el.classList.toggle 'collapsed'
-          , false)
           
           menuItems = querySelectorAll('.tok3n-menu-item')
           menuItems.forEach (item) ->
@@ -53,16 +48,35 @@ do ->
 
     addNewParsleyForm = (formElement, submitForm, clsHandler) ->
       form = $(formElement)
+      submit = qs submitForm
+      # Init form
       form.parsley
         classHandler: clsHandler
-      Tok3nDashboard.ValidatedForms.push form
-      
-      submit = qs submitForm
-      submit.addEventListener 'click', (evt) ->
+      # Create or redefine the handler
+      Tok3nDashboard.formEventHandler = (evt) ->
         form.parsley().validate()
-        if Tok3nDashboard.Environment.isDevelopment
-          console.log form.parsley().isValid()
-      , false
+        formEvent = new CustomEvent 'submitValidatedForm',
+          detail:
+            validatedForm: form[0]
+            isValid: form.parsley().isValid()
+        window.dispatchEvent formEvent
+      # Attach event
+      submit.addEventListener 'click', Tok3nDashboard.formEventHandler
+      # Log result
+      if Tok3nDashboard.Environment.isDevelopment
+        console.log "Added validated form #{formElement}"
+
+
+    destroyParsleyForm = (formElement, submitForm, clsHandler) ->
+      form = $(formElement)
+      submit = qs submitForm
+      # Destroy form
+      form.parsley().destroy()
+      # Deattach event
+      submit.removeEventListener 'click', Tok3nDashboard.formEventHandler
+      # Log result
+      if Tok3nDashboard.Environment.isDevelopment
+        console.log "Destroyed validated form #{formElement}"
 
 
     ###
@@ -70,23 +84,29 @@ do ->
     ###
 
     exports.deviceNew3 = ->
-      addNewParsleyForm('#tok3nDeviceNew3Form', '#tok3nDeviceNew3Submit', '#tok3nDeviceNew3Form')
+      addNewParsleyForm('#deviceNew3Form', '#deviceNew3Submit', '#deviceNew3Form')
+
+
+    exports.destroyDeviceNew3 = ->
+      destroyParsleyForm('#deviceNew3Form', '#deviceNew3Submit', '#deviceNew3Form')
 
 
     ###
     My phonelines
     ###
 
-    countrySelect = gebi "countrySelect"
-    countryCode = gebi "countryCode"
-    phoneNumber = gebi 'phoneNumber'
+    countrySelect = gebi "phonelineNew1CountrySelect"
+    countryCode = gebi "phonelineNew1CountryCode"
+    phoneNumber = gebi 'phonelineNew1PhoneNumber'
 
-    selectCountryCode = ( el ) ->
+    selectCountryCode = ( evt ) ->
+      el = evt.target
       countryCodeValue = el.options[el.selectedIndex].value
       countryCode.innerHTML = "+#{countryCodeValue}"
 
 
-    toggleNextButton = ( el ) ->
+    toggleNextButton = ( evt ) ->
+      el = evt.target
       parentEl = findClosestAncestor el, "tok3n-dashboard-form-lower-wrapper"
       button = parentEl.nextSibling.querySelector('.tok3n-dashboard-main-button')
       if el.checkValidity() or !isEmptyOrDefault el
@@ -95,7 +115,8 @@ do ->
         button.disabled = true
 
 
-    toggleNextButtonOtp = ( el ) ->
+    toggleNextButtonOtp = ( evt ) ->
+      el = evt.target
       parentEl = findClosestAncestor el, "tok3n-dashboard-new-form"
       button = parentEl.querySelector('.tok3n-dashboard-main-button')
       if hasFormValidation()
@@ -118,55 +139,82 @@ do ->
     exports.phonelineNew1 = ->
       # Init country code selector
       selectCountryCode(countrySelect)
-
       # Enable phone number next button
-      phoneNumber.addEventListener "keyup", (evt) ->
-        toggleNextButton(evt.target)
-
+      phoneNumber.addEventListener "keyup", toggleNextButton
       # Change country code on country change
-      countrySelect.addEventListener 'change', (evt) ->
-        selectCountryCode(evt.target)
+      countrySelect.addEventListener 'change', selectCountryCode
+
+    exports.destroyPhonelineNew1 = ->
+      phoneNumber.removeEventListener "keyup", toggleNextButton
+      countrySelect.addEventListener 'change', selectCountryCode
 
 
     exports.phonelineNew2 = ->
-      signupOtpInput = gebi 'tok3nOtpInput'
-      signupOtpInput.addEventListener 'keyup', (evt) ->
-        toggleNextButtonOtp(evt.target)
+      signupOtpInput = gebi 'phonelineNew2OtpInput'
+      signupOtpInput.addEventListener 'keyup', toggleNextButtonOtp
       signupOtpInput.addEventListener "input", limitToSixChar
+
+    exports.destroyPhonelineNew2 = ->
+      signupOtpInput.removeEventListener 'keyup', toggleNextButtonOtp
 
 
     exports.phonelineNew3 = ->
       addNewParsleyForm('#tok3nPhonelineNew3Form', '#tok3nPhonelineNew3Submit', '#tok3nPhonelineNew3Form')
+    
+    exports.destroyPhonelineNew3 = ->
+      destroyParsleyForm('#tok3nPhonelineNew3Form', '#tok3nPhonelineNew3Submit', '#tok3nPhonelineNew3Form')
 
 
     ###
     My applications
     ###
 
-    exports.applications = ->
-      cardsContainer = qs '.tok3n-cards-container'
+    cardsContainer = qs '.tok3n-cards-container'
 
+
+    flipCardToBack = (evt) ->
+      el = evt.target
+      findClosestAncestor(el, 'flipper').classList.add 'flipped'
+      card = [].filter.call el.parentNode.children, (gl) ->
+        gl.classList.contains('back')
+      forEach card, (fl) ->
+        fl.style.zIndex = 3
+
+
+    flipCardToFront = (evt) ->
+      findClosestAncestor(evt.target, 'flipper').classList.remove 'flipped'
+
+
+    exports.applications = ->
       # Masonry apps container
       if cardsContainer
         Tok3nDashboard.masonry = new Masonry cardsContainer,
           itemSelector: '.card'
           gutter: '.grid-gutter'
-
       # Flip cards to the back
       forEach cardsContainer.querySelectorAll('.front'), (el) ->
-        el.addEventListener 'click', ->
-          findClosestAncestor(el, 'flipper').classList.add 'flipped'
-          card = [].filter.call el.parentNode.children, (gl) ->
-            gl.classList.contains('back')
-          forEach card, (fl) ->
-            fl.style.zIndex = 3
-        , false
-
+        el.addEventListener 'click', flipCardToBack
       # Flip cards to the front
       forEach cardsContainer.querySelectorAll('.flip'), (el) ->
-        el.addEventListener 'click', ->
-          findClosestAncestor(el, 'flipper').classList.remove 'flipped'
-        , false
+        el.addEventListener 'click', flipCardToFront
+
+
+    destroyMasonry = ->
+      if Tok3nDashboard.masonry
+        if Tok3nDashboard.masonry.isResizeBound
+          Tok3nDashboard.masonry.destroy()
+          if Tok3nDashboard.Environment.isDevelopment
+            console.log 'Destroyed masonry.'
+
+
+    exports.destroyApplications = ->
+      destroyMasonry()
+      # Flip cards to the back
+      forEach cardsContainer.querySelectorAll('.front'), (el) ->
+        el.removeEventListener 'click', flipCardToBack
+      # Flip cards to the front
+      forEach cardsContainer.querySelectorAll('.flip'), (el) ->
+        el.removeEventListener 'click', flipCardToFront
 
 
     ###
@@ -184,29 +232,27 @@ do ->
               ["Invalid", e.detail.InvalidRequests]
               ["Pending", e.detail.IssuedRequests]
             ])
+            if Tok3nDashboard.Environment.isDevelopment
+              console.log data
             options =
               title: "Request types"
               pieHole: 0.4
             chart = new google.visualization.PieChart(document.getElementById("donutChart"))
             chart.draw data, options
-            google.visualization.events.addListener chart, "ready", ->
-              resizeContent()
           drawChartDataRequestHistory = (e) ->
             data = google.visualization.arrayToDataTable(eval_(e.detail))
-            console.log data
+            if Tok3nDashboard.Environment.isDevelopment
+              console.log data
             options = title: "Requests"
             chart = new google.visualization.LineChart(document.getElementById("requestHistoryChart"))
             chart.draw data, options
-            google.visualization.events.addListener chart, "ready", ->
-              resizeContent()
           drawChartDataUsersHistory = (e) ->
             data = google.visualization.arrayToDataTable(eval_(e.detail))
-            console.log data
+            if Tok3nDashboard.Environment.isDevelopment
+              console.log data
             options = title: "Users"
             chart = new google.visualization.LineChart(document.getElementById("usersHistoryChart"))
             chart.draw data, options
-            google.visualization.events.addListener chart, "ready", ->
-              resizeContent()
           window.addEventListener "drawChartDataDonut", drawChartDataDonut, false
           window.addEventListener "drawChartDataRequestHistory", drawChartDataRequestHistory, false
           window.addEventListener "drawChartDataUsersHistory", drawChartDataUsersHistory, false
@@ -222,6 +268,11 @@ do ->
           window.dispatchEvent chartEvent
           return
 
+          if namespaceExists(google, 'visualization')
+            google.visualization.events.addListener chart, "ready", ->
+              if Tok3nDashboard.compatibilityLayout
+                Tok3nDashboard.resizeContent()
+
       # If the promise exists and charts
       if Tok3nDashboard.Jsapi.isLoaded
         attachChartFunctions()
@@ -230,34 +281,51 @@ do ->
         ee.addListener('tok3nJsapiPromiseCreated', attachChartFunctions)
 
 
+    toggleSecret = (ev) ->
+      el = ev.target
+      ev.preventDefault()
+      hiddenEl = [].filter.call el.parentNode.children, (gl) ->
+        gl.classList.contains('secret')
+      if hiddenEl?
+        forEach hiddenEl, (fl) ->
+          if fl.classList.contains 'hidden'
+            el.innerHTML = 'hide'
+            fl.classList.remove 'hidden'
+          else unless fl.classList.contains 'hidden'
+            el.innerHTML = 'show'
+            fl.classList.add 'hidden'
+
+
+    dropdownList = (ev) ->
+      for child in ev.target.children
+        if child.classList.contains 'dropdown-menu'
+          child.classList.toggle 'dropdown-show'
+
+
     exports.integrationView = ->
       # Toggle secrets
-      toggleEl = qsa '.toggle-secret'
-      if toggleEl?
-        forEach toggleEl, (el) ->
-          el.addEventListener 'click', (ev) ->
-            ev.preventDefault()
-            hiddenEl = [].filter.call el.parentNode.children, (gl) ->
-              gl.classList.contains('secret')
-            if hiddenEl?
-              forEach hiddenEl, (fl) ->
-                if fl.classList.contains 'hidden'
-                  el.innerHTML = 'hide'
-                  fl.classList.remove 'hidden'
-                else unless fl.classList.contains 'hidden'
-                  el.innerHTML = 'show'
-                  fl.classList.add 'hidden'
-          , false
-
+      toggleEl = querySelectorAll '.toggle-secret'
+      if toggleEl
+        toggleEl.forEach (el) ->
+          el.addEventListener 'click', toggleSecret
       # Dropdown lists
       dropdowns = querySelectorAll '.dropdown'
       if dropdowns
         dropdowns.forEach (el) ->
-          el.addEventListener 'click', () ->
-            for child in el.children
-              if child.classList.contains 'dropdown-menu'
-                child.classList.toggle 'dropdown-show'
-          , false
+          el.addEventListener 'click', dropdownList
+
+
+    exports.destroyIntegrationView = ->
+      # Toggle secrets
+      toggleEl = querySelectorAll '.toggle-secret'
+      if toggleEl
+        toggleEl.forEach (el) ->
+          el.removeEventListener 'click', toggleSecret
+      # Dropdown lists
+      dropdowns = querySelectorAll '.dropdown'
+      if dropdowns
+        dropdowns.forEach (el) ->
+          el.removeEventListener 'click', dropdownList
 
 
     buttonFilePathCompletion = ->
@@ -283,54 +351,73 @@ do ->
         return
 
 
-    exports.integrationNew = ->
-      newIntegrationRadio = querySelectorAll '.tok3n-new-integration-kind-radio, .tok3n-new-integration-kind-radio input'
+    destroyButtonFilePathCompletion = ->
+      $(document).off "change", ".btn-file :file"
+      $(".btn-file :file").off "fileselect"
+
+
+    showHideCallback = (evt) ->
       callbackField = qs '.tok3n-new-integration-callback-url'
-      callbackInput = gebi 'tokenIntegrationCallbackUrl'
+      callbackInput = gebi 'integrationNewCallbackUrl'
       showCallback = ->
         callbackField.classList.remove 'collapsed'
         callbackInput.setAttribute 'data-parsley-required', 'true'
       hideCallback = ->
         callbackField.classList.add 'collapsed'
         callbackInput.setAttribute 'data-parsley-required', 'false'
-      
+      evt.stopPropagation()
+      if evt.target.classList.contains 'tok3n-new-integration-kind-radio-web'
+        evt.preventDefault()
+        evt.target.querySelector('input').checked = true
+        showCallback()
+      else if evt.target.classList.contains 'tok3n-new-integration-kind-radio-general'
+        evt.preventDefault()
+        evt.target.querySelector('input').checked = true
+        hideCallback()
+      else
+        if evt.target.id is 'integrationNewKindWeb'
+          showCallback()
+        else if evt.target.id is 'integrationNewKindGeneral'
+          hideCallback()
+
+
+    newIntegrationRadio = querySelectorAll '.tok3n-new-integration-kind-radio, .tok3n-new-integration-kind-radio input'
+
+
+    exports.integrationNew = ->
       newIntegrationRadio.forEach (el) ->
-        el.addEventListener 'click', (evt) ->
-          evt.stopPropagation()
-          if evt.target.classList.contains 'tok3n-new-integration-kind-radio-web'
-            evt.preventDefault()
-            evt.target.querySelector('input').checked = true
-            showCallback()
-          else if evt.target.classList.contains 'tok3n-new-integration-kind-radio-general'
-            evt.preventDefault()
-            evt.target.querySelector('input').checked = true
-            hideCallback()
-          else
-            if evt.target.id is 'newIntegrationKindWeb'
-              showCallback()
-            else if evt.target.id is 'newIntegrationKindGeneral'
-              hideCallback()
-        , false
-
+        el.addEventListener 'click', showHideCallback
       buttonFilePathCompletion()
+      addNewParsleyForm('#integrationNewForm', '#integrationNewSubmit', '#integrationNewForm')
 
-      addNewParsleyForm('#tok3nIntegrationNewForm', '#tok3nIntegrationNewSubmit', '#tok3nIntegrationNewForm')
+
+    exports.destroyIntegrationNew = ->
+      newIntegrationRadio.forEach (el) ->
+        el.removeEventListener 'click', showHideCallback
+      destroyButtonFilePathCompletion()
+      destrayParsleyForm('#integrationNewForm', '#integrationNewSubmit', '#integrationNewForm')
 
 
     exports.integrationEdit = ->
-      addNewParsleyForm('#tok3nIntegrationEditForm', '#tok3nIntegrationEditSubmit', '#tok3nIntegrationEditForm')
-
+      addNewParsleyForm('#integrationEditForm', '#integrationEditSubmit', '#integrationEditForm')
       buttonFilePathCompletion()
+
+
+    exports.destroyIntegrationEdit = ->
+      destroyParsleyForm('#integrationEditForm', '#integrationEditSubmit', '#integrationEditForm')
+      destroyButtonFilePathCompletion()
 
 
     ###
     Settings
     ###
 
+    passwordField = gebi 'tok3nUserPassword'
+    verifyPassword = qs '.tok3n-user-verify-password'
+    verifyPasswordField = gebi 'tok3nUserVerifyPassword'
+
+
     toggleVerifyPassword = ->
-      passwordField = qs "input.tok3n-user-password"
-      verifyPassword = qs '.tok3n-user-verify-password'
-      verifyPasswordField = gebi 'tok3nUserVerifyPassword'
       if passwordField
         if passwordField.value
           verifyPassword.classList.remove "collapsed"
@@ -342,9 +429,10 @@ do ->
 
     exports.settings = ->
       toggleVerifyPassword()
-      
-      document.querySelector('.tok3n-user-password').addEventListener 'keyup', ( event ) ->
-        toggleVerifyPassword()
-      , false
-
+      passwordField.addEventListener 'keyup', toggleVerifyPassword
       addNewParsleyForm('#tok3nSettingsForm', '#tok3nSettingsSubmit', '#tok3nSettingsForm')
+
+
+    exports.destroySettings = ->
+      passwordField.removeEventListener 'keyup', toggleVerifyPassword
+      destroyParsleyForm('#tok3nSettingsForm', '#tok3nSettingsSubmit', '#tok3nSettingsForm')

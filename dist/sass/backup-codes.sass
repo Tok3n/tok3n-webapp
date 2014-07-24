@@ -1,0 +1,58 @@
+@import 'imports'
+@import 'pure-backup-codes'
+@import 'print'
+
+@media print
+	*
+		-webkit-print-color-adjust: exact
+	.tok3n-backup-codes-show
+		margin-top: 10pt !important
+		a
+			&[href]:after
+				content: "" !important
+		abbr[title]:after
+			content: "" !important
+
+body
+	background: white
+	font-size: 12pt
+	line-height: 1.5
+
+.tok3n-backup-codes-show
+	margin: 20pt 30pt
+
+.tok3n-backup-codes-box
+	width: 220pt
+	margin-bottom: 20pt
+	padding: 20pt
+	border: 1px solid lightgray
+
+.tok3n-logo-img
+	margin: 0 auto 13pt
+	text-align: center
+
+.tok3n-backup-codes-title
+	text-align: center
+
+.tok3n-backup-codes-list
+	font-size: 14pt
+	ol
+		padding: 10pt
+		margin: 0
+		display: inline-block
+		li
+			list-style: none
+			&:before
+				content: '☐ '
+
+ul.tok3n-backup-codes-tips
+	padding-left: 25pt
+	padding-right: 10pt
+
+.tok3n-backup-codes-explanation-block
+	margin-bottom: 20pt
+
+.pure-button
+	border: 1px solid lightgray
+	margin-right: 10pt
+	font-size: 85%

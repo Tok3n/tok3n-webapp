@@ -9,79 +9,39 @@ do ->
     Tok3nDashboard.Screens.sitewide()
     Tok3nDashboard.slider()
     
-    # Change current window js on slide
+    # Change current window js on slide and init first time
     ee.addListener 'tok3nSlideBeforeAnimation', ->
       initCurrentWindow()
-    
     initCurrentWindow()
     
     # React to DOM changes (partial views insertion/removal)
     querySelectorAll('.tok3n-main-content').forEach (el) ->
-      observePageChanges el
+      if Tok3nDashboard.compatibilityLayout
+        compatibilityObserver el
+      else
+        observePageChanges el
+
+    ee.addListener 'tok3nSlideAfterAnimation', ->
+      false
     
-    # Press key "1" to test alerts, "2" to activate alert
+    # Load google charts, analytics and typekit
+    Tok3nDashboard.lastLoader()
+
+    # Testing funcs
     if Tok3nDashboard.Environment.isDevelopment
-      window.addEventListener "keyup", ( event ) ->
-        if event.keyCode is 49
-          querySelectorAll('.tok3n-dashboard-alert').forEach (el) ->
-            el.classList.toggle('tok3n-dashboard-alert-hidden')
-      window.addEventListener "keyup", ( event ) ->
-        if event.keyCode is 50
-          querySelectorAll('.tok3n-dashboard-alert').forEach (el) ->
-            el.classList.remove('tok3n-dashboard-alert-active')
-            setTimeout ->
-              el.classList.add('tok3n-dashboard-alert-active')
-            , 0
-    return
+      testAlerts()
+      testFormEvents()
 
 
   ###
   Selective window behavior
   ###
 
-  destroyMasonry = ->
-    if Tok3nDashboard.masonry
-      if Tok3nDashboard.masonry.isResizeBound
-        Tok3nDashboard.masonry.destroy()
-        if Tok3nDashboard.Environment.isDevelopment
-          console.log 'Destroyed masonry.'
-
-  destroyValidatedForms = ->
-    if Tok3nDashboard.ValidatedForms.length
-      Tok3nDashboard.ValidatedForms.forEach (el) ->
-        el.parsley().destroy()
-        if Tok3nDashboard.Environment.isDevelopment
-          if el.attr 'id'
-            console.log "Destroyed Validated form ##{el.attr 'id'}"
-          else
-            console.log 'Destroyed validated form with no id.'
-      Tok3nDashboard.ValidatedForms = []
-
-  destroyActiveWindowJs = ->
-    currentWindow = ->
-      if Tok3nDashboard.nextTarget isnt undefined
-        Tok3nDashboard.nextTarget
-      else
-        document.querySelector '.tok3n-pt-page-current'
-    
-    # Page independant, in the future it should destroy forms selectively, in order to do it after the transition
-    destroyValidatedForms()
-
-    # This function is problematic, it should use a promise to avoid unintended behavior.
-    setTimeout ->
-      unless currentWindow().id is 'tok3nDevices'
-        false
-      unless currentWindow().id is 'tok3nPhonelines'
-        false
-      unless currentWindow().id is 'tok3nApplications'
-        destroyMasonry()
-      unless currentWindow().id is 'tok3nIntegrations'
-        false
-      unless currentWindow().id is 'tok3nBackupCodes'
-        false
-      unless currentWindow().id is 'tok3nSettings'
-        false
-    , 250
+  currentWindow = ->
+    if Tok3nDashboard.nextTarget isnt undefined
+      Tok3nDashboard.nextTarget
+    else
+      document.querySelector '.tok3n-pt-page-current'
       
 
   toCamelCase = (s) ->
@@ -95,14 +55,35 @@ do ->
     )
     s
 
+  toTok3nCssClass = (camel) ->
+    "tok3n-" + camel.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([a-zA-Z]+)([0-9]+)/g, '$1-$2').toLowerCase()
 
-  executeIfExists = (arr) ->
+
+  initIfExists = (arr) ->
     arr.forEach (screen) ->
-      if document.querySelector ".tok3n-#{screen}"
-        if Tok3nDashboard.Environment.isDevelopment
-          console.log toCamelCase(screen) + " is the current screen"
+      currentScreen = document.querySelector ".tok3n-#{screen}"
+      if currentScreen
         if typeof Tok3nDashboard.Screens[toCamelCase(screen)] is 'function'
+          Tok3nDashboard.CurrentScreens.push(currentScreen)
           Tok3nDashboard.Screens[toCamelCase(screen)]()
+        if Tok3nDashboard.Environment.isDevelopment
+          console.log toCamelCase(screen) + " is the current screen."
+
+
+  destroyCurrentIfExists = ->
+    Tok3nDashboard.CurrentScreens.forEach (screen) ->
+      destroyName = ->
+        # If it's a .tok3n-pt-page
+        if screen.id.indexOf 'tok3n' isnt -1
+          lowercaseFirstLetter screen.id.replace('tok3n', '')
+        # If it's a partial
+        else
+          toCamelCase screen.classList[0].replace('tok3n-', '')
+      if typeof Tok3nDashboard.Screens[destroyName()] is 'function'
+        Tok3nDashboard.Screens['destroy' + capitaliseFirstLetter destroyName()]()
+        if Tok3nDashboard.Environment.isDevelopment
+          console.log "Destroyed #{destroyName()}"
+    Tok3nDashboard.CurrentScreens = []
 
 
   initCurrentWindow = ->
@@ -111,14 +92,17 @@ do ->
         Tok3nDashboard.nextTarget
       else
         document.querySelector '.tok3n-pt-page-current'
-  
-    # Don't render what we won't use
-    destroyActiveWindowJs()
+
+    if Tok3nDashboard.Environment.isDevelopment
+      console.log 'Started initing js.'
+
+    # Destroy current view or partial js
+    destroyCurrentIfExists()
 
     switch currentWindow().id
       # Change this!
       when "tok3nDevices"
-        executeIfExists [
+        initIfExists [
           'devices'
           'device-view'
           'device-new-1'
@@ -126,7 +110,7 @@ do ->
           'device-new-3'
         ]
       when "tok3nPhonelines"
-        executeIfExists [
+        initIfExists [
           'phonelines'
           'phoneline-view-cellphone'
           'phoneline-view-landline'
@@ -135,28 +119,31 @@ do ->
           'phoneline-new-3'
         ]
       when "tok3nApplications"
-        executeIfExists [
+        initIfExists [
           'applications'
         ]
       when "tok3nIntegrations"
         unless Tok3nDashboard.Charts.areLoaded
           Tok3nDashboard.Screens.integrationsCharts()
-        executeIfExists [
+        initIfExists [
           'integrations'
           'integration-view'
           'integration-new'
           'integration-edit'
         ]
       when "tok3nBackupCodes"
-        executeIfExists [
+        initIfExists [
           'backup-codes'
         ]
       when "tok3nSettings"
-        executeIfExists [
+        initIfExists [
           'settings'
         ]
       else
         false
+
+    if Tok3nDashboard.Environment.isDevelopment
+      console.log 'Finished initing js.'
 
 
   observePageChanges = (el) ->
@@ -164,13 +151,44 @@ do ->
       mutations.forEach (mutation) ->
         if Tok3nDashboard.Environment.isDevelopment
           console.log "Partial screen change detected."
-        false
         initCurrentWindow()
     observer.observe el,
       childList: true
-      # characterData: true
-      # subtree: true
 
+  compatibilityObserver = (el) ->
+    observer = new MutationObserver (mutations) ->
+      mutations.forEach (mutation) ->
+        if Tok3nDashboard.Environment.isDevelopment
+          console.log "Partial screen change detected."
+        destroyCurrentIfExists()
+        Tok3nDashboard.resizeContent()
+    observer.observe el,
+      childList: true
+      # characterData: true
+      subtree: true
+      # attributes: true
+
+
+  ###
+  Testing functions
+  ###
+  testAlerts = ->
+    # Press key "1" to test alerts, "2" to activate alert
+    window.addEventListener "keyup", ( event ) ->
+      if event.keyCode is 49
+        querySelectorAll('.tok3n-dashboard-alert').forEach (el) ->
+          el.classList.toggle('tok3n-dashboard-alert-hidden')
+    window.addEventListener "keyup", ( event ) ->
+      if event.keyCode is 50
+        querySelectorAll('.tok3n-dashboard-alert').forEach (el) ->
+          el.classList.remove('tok3n-dashboard-alert-active')
+          setTimeout ->
+            el.classList.add('tok3n-dashboard-alert-active')
+          , 0
+  testFormEvents = ->
+    window.addEventListener 'submitValidatedForm', (evt) ->
+      console.log evt
+    , false
 
   ###
   Vanilla $('document').ready() detection. Execute main() when it is.

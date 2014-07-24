@@ -12541,9 +12541,30 @@ if ('undefined' !== typeof window.ParsleyValidator)
 	}
 }.call(this));
 
-var childNodeIndex, each, ee, findClosestAncestor, forEach, gebi, indexOf, qs, qsa, querySelectorAll, root, slice;
+var capitaliseFirstLetter, childNodeIndex, closest, detectIE, each, ee, findClosestAncestor, forEach, functionName, gebi, hasFormValidation, indexOf, isEmptyOrDefault, lowercaseFirstLetter, namespace, namespaceExists, qs, qsa, querySelectorAll, root, slice,
+  __slice = [].slice;
 
 window.Tok3nDashboard || (window.Tok3nDashboard = {});
+
+Tok3nDashboard.Environment || (Tok3nDashboard.Environment = {});
+
+Tok3nDashboard.Jsapi || (Tok3nDashboard.Jsapi = {});
+
+Tok3nDashboard.Charts || (Tok3nDashboard.Charts = {});
+
+Tok3nDashboard.Screens || (Tok3nDashboard.Screens = {});
+
+Tok3nDashboard.CurrentScreens || (Tok3nDashboard.CurrentScreens = []);
+
+Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp';
+
+Tok3nDashboard.initWindow || (Tok3nDashboard.initWindow = 'Devices');
+
+if (!Tok3nDashboard.Environment.isDevelopment) {
+  Tok3nDashboard.Environment.isProduction = true;
+} else {
+  Tok3nDashboard.Environment.isProduction = false;
+}
 
 each = Function.prototype.call.bind([].forEach);
 
@@ -12578,6 +12599,93 @@ findClosestAncestor = function(el, ancestorTag) {
   return parentEl;
 };
 
+namespace = function(target, name, block) {
+  var item, top, _i, _len, _ref, _ref1;
+  if (arguments.length < 3) {
+    _ref = [(typeof exports !== 'undefined' ? exports : window)].concat(__slice.call(arguments)), target = _ref[0], name = _ref[1], block = _ref[2];
+  }
+  top = target;
+  _ref1 = name.split('.');
+  for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+    item = _ref1[_i];
+    target = target[item] || (target[item] = {});
+  }
+  return block(target, top);
+};
+
+closest = function(elem, selector) {
+  var matchesSelector;
+  matchesSelector = elem.matches || elem.webkitMatchesSelector || elem.mozMatchesSelector || elem.msMatchesSelector;
+  while (elem) {
+    if (matchesSelector.bind(elem)(selector)) {
+      return elem;
+    } else {
+      elem = elem.parentElement;
+    }
+  }
+  return false;
+};
+
+isEmptyOrDefault = function(el) {
+  if (el.value === "" || el.value === el.defaultValue) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+hasFormValidation = function() {
+  return typeof document.createElement("input").checkValidity === "function";
+};
+
+capitaliseFirstLetter = function(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+lowercaseFirstLetter = function(string) {
+  return string.charAt(0).toLowerCase() + string.slice(1);
+};
+
+namespaceExists = function(obj, path) {
+  var i, part, parts, root;
+  parts = path.split(".");
+  root = obj;
+  i = 0;
+  while (i < parts.length) {
+    part = parts[i];
+    if (root[part] && root.hasOwnProperty(part)) {
+      root = root[part];
+    } else {
+      return false;
+    }
+    i++;
+  }
+  return true;
+};
+
+detectIE = function() {
+  var msie, rv, trident, ua;
+  ua = window.navigator.userAgent;
+  msie = ua.indexOf("MSIE ");
+  trident = ua.indexOf("Trident/");
+  if (msie > 0) {
+    return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+  }
+  if (trident > 0) {
+    rv = ua.indexOf("rv:");
+    return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+  }
+  return false;
+};
+
+functionName = function(fun) {
+  var ret;
+  ret = fun.toString();
+  ret = ret.substr("function ".length);
+  ret = ret.substr(0, ret.indexOf("("));
+  return ret;
+};
+
 root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
 root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
@@ -12586,30 +12694,47 @@ Tok3nDashboard.typekit = 'nls8ikc';
 
 ee = new EventEmitter();
 
+Modernizr.addTest("extrinsicsizing", function() {
+  var el, prop, value;
+  prop = "width:";
+  value = "min-content;";
+  el = document.createElement("div");
+  el.style.cssText = prop + Modernizr._prefixes.join(value + prop);
+  return !!el.style.length;
+});
+
+Modernizr.addTest("csscalc", function() {
+  var el, prop, value;
+  prop = "width:";
+  value = "calc(10px);";
+  el = document.createElement("div");
+  el.style.cssText = prop + Modernizr._prefixes.join(value + prop);
+  return !!el.style.length;
+});
+
 (function() {
-  return Modernizr.load([
+  var lastLoader, polyfillsUrl;
+  polyfillsUrl = Tok3nDashboard.cdnUrl + '/polyfills/min';
+  Modernizr.load([
     {
       test: Modernizr.mq,
-      nope: 'https://raw.githubusercontent.com/scottjehl/Respond/master/dest/respond.min.js'
+      nope: polyfillsUrl + '/respond.min.js'
     }, {
       test: document.documentElement.classList,
-      nope: 'https://raw.githubusercontent.com/eligrey/classList.js/master/classList.min.js'
+      nope: polyfillsUrl + '/classList.min.js'
     }, {
       test: document.querySelector,
-      nope: 'https://gist.githubusercontent.com/chrisjlee/8960575/raw/53c2a101030437f02fe774f43733673f99a13a0a/querySelector.polyfill.js'
+      nope: polyfillsUrl + '/querySelector.polyfill.js'
     }, {
-      test: CSS.supports,
-      nope: 'https://raw.githubusercontent.com/termi/CSS.supports/master/__COMPILED/CSS.supports.js'
+      test: Modernizr.csscalc,
+      nope: polyfillsUrl + '/calc.min.js'
     }, {
-      test: CSS.supports('width', 'calc(10px)') || CSS.supports('width', '-webkit-calc(10px)') || CSS.supports('width', '-moz-calc(10px)'),
-      nope: 'https://raw.githubusercontent.com/closingtag/calc-polyfill/master/calc.min.js'
-    }, {
-      test: CSS.supports('min-height', '-webkit-fill-available') || CSS.supports('min-height', '-moz-available'),
-      nope: function() {
-        Tok3nDashboard.compatibilityLayout();
-        return window.setInterval(function() {
-          return Tok3nDashboard.resizeContent();
-        }, 1000);
+      test: Modernizr.extrinsicsizing,
+      nope: Tok3nDashboard.cdnUrl + '/compatibility.js',
+      callback: function() {
+        if (Tok3nDashboard.compatibilityLayout) {
+          return Tok3nDashboard.compatibilityLayout();
+        }
       }
     }, {
       test: String.prototype.contains,
@@ -12620,208 +12745,509 @@ ee = new EventEmitter();
       }
     }, {
       test: Array.prototype.some,
-      nope: function() {
-        return Array.prototype.some = function(fun, thisArg) {
-          "use strict";
-          var i, len, t;
-          if (this === void 0 || this === null) {
-            throw new TypeError();
-          }
-          t = Object(this);
-          len = t.length >>> 0;
-          if (typeof fun !== "function") {
-            throw new TypeError();
-          }
-          thisArg = arguments.length >= 2 ? arguments[1] : void 0;
-          i = 0;
-          while (i < len) {
-            if (i in t && fun.call(thisArg, t[i], i, t)) {
-              return true;
-            }
-            i++;
-          }
-          return false;
-        };
-      }
+      nope: polyfillsUrl + '/array.some.js'
     }, {
       test: Array.prototype.filter,
-      nope: function() {
-        return Array.prototype.filter = function(fun) {
-          "use strict";
-          var i, len, res, t, thisArg, val;
-          if (this === void 0 || this === null) {
-            throw new TypeError();
-          }
-          t = Object(this);
-          len = t.length >>> 0;
-          if (typeof fun !== "function") {
-            throw new TypeError();
-          }
-          res = [];
-          thisArg = (arguments_.length >= 2 ? arguments_[1] : void 0);
-          i = 0;
-          while (i < len) {
-            if (i in t) {
-              val = t[i];
-              if (fun.call(thisArg, val, i, t)) {
-                res.push(val);
-              }
-            }
-            i++;
-          }
-          return res;
-        };
-      }
+      nope: polyfillsUrl + '/array.filter.js'
     }, {
-      load: "//use.typekit.net/" + Tok3nDashboard.typekit + ".js",
-      complete: function() {
-        try {
-          Typekit.load();
-        } catch (_error) {}
-      }
+      test: window.MutationObserver,
+      nope: polyfillsUrl + '/MutationObserver.js'
     }, {
-      load: "//www.google.com/jsapi",
-      complete: function() {
-        google.load("visualization", "1", {
-          packages: ["corechart"],
-          callback: function() {
-            var drawChartDataDonut, drawChartDataRequestHistory, drawChartDataUsersHistory;
-            drawChartDataDonut = function(e) {
-              var chart, data, options;
-              data = google.visualization.arrayToDataTable([["Task", "Requests"], ["Valid", e.detail.ValidRequests], ["Invalid", e.detail.InvalidRequests], ["Pending", e.detail.IssuedRequests]]);
-              options = {
-                title: "Request types",
-                pieHole: 0.4
-              };
-              chart = new google.visualization.PieChart(document.getElementById("donutChart"));
-              chart.draw(data, options);
-              return google.visualization.events.addListener(chart, "ready", function() {
-                return resizeContent();
-              });
-            };
-            drawChartDataRequestHistory = function(e) {
-              var chart, data, options;
-              data = google.visualization.arrayToDataTable(eval_(e.detail));
-              console.log(data);
-              options = {
-                title: "Requests"
-              };
-              chart = new google.visualization.LineChart(document.getElementById("requestHistoryChart"));
-              chart.draw(data, options);
-              return google.visualization.events.addListener(chart, "ready", function() {
-                return resizeContent();
-              });
-            };
-            drawChartDataUsersHistory = function(e) {
-              var chart, data, options;
-              data = google.visualization.arrayToDataTable(eval_(e.detail));
-              console.log(data);
-              options = {
-                title: "Users"
-              };
-              chart = new google.visualization.LineChart(document.getElementById("usersHistoryChart"));
-              chart.draw(data, options);
-              return google.visualization.events.addListener(chart, "ready", function() {
-                return resizeContent();
-              });
-            };
-            window.addEventListener("drawChartDataDonut", drawChartDataDonut, false);
-            window.addEventListener("drawChartDataRequestHistory", drawChartDataRequestHistory, false);
-            window.addEventListener("drawChartDataUsersHistory", drawChartDataUsersHistory, false);
-          }
-        });
-      }
+      test: window.Promise,
+      nope: polyfillsUrl + '/promise-1.0.0.min.js'
     }, {
-      load: ("https:" === location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js"
+      test: window.CustomEvent,
+      nope: polyfillsUrl + '/customevent.js'
     }
   ]);
+  lastLoader = function() {
+    return Modernizr.load([
+      {
+        load: "//use.typekit.net/" + Tok3nDashboard.typekit + ".js",
+        complete: function() {
+          try {
+            Typekit.load();
+          } catch (_error) {}
+        }
+      }, {
+        load: "//www.google.com/jsapi",
+        complete: function() {
+          Tok3nDashboard.Jsapi.isLoaded = new Promise(function(resolve, reject) {
+            return google.load("visualization", "1", {
+              packages: ["corechart"],
+              callback: function() {
+                return resolve();
+              }
+            });
+          });
+          ee.emitEvent('tok3nJsapiPromiseCreated');
+        }
+      }, {
+        load: ("https:" === location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js"
+      }
+    ]);
+  };
+  return Tok3nDashboard.lastLoader = lastLoader;
 })();
 
 (function() {
-  var compatibilityLayout, contentHeight, getStyle, resizeContent, windowHeight;
-  compatibilityLayout = function() {
-    var pagesWrapper;
-    pagesWrapper = qs(".tok3n-pages-wrapper");
-    while (pagesWrapper.firstChild) {
-      pagesWrapper.parentNode.insertBefore(pagesWrapper.firstChild, pagesWrapper);
-    }
-    pagesWrapper.parentNode.removeChild(pagesWrapper);
-    window.addEventListener("resize", function(event) {
-      resizeContent();
-    });
-    resizeContent();
-    return ee.addListener('tok3nSlideBAfterAnimation', function() {
-      resizeContent();
-      if (Tok3nDashboard.masonry != null) {
-        return Tok3nDashboard.masonry.on('layoutComplete', function() {
-          return resizeContent();
+  return namespace('Tok3nDashboard.Screens', function(exports) {
+
+    /*
+    Sitewide
+     */
+    var addNewParsleyForm, buttonFilePathCompletion, cardsContainer, countryCode, countrySelect, destroyButtonFilePathCompletion, destroyMasonry, destroyParsleyForm, dropdownList, flipCardToBack, flipCardToFront, limitToSixChar, newIntegrationRadio, passwordField, phoneNumber, selectCountryCode, showHideCallback, toggleNextButton, toggleNextButtonOtp, toggleSecret, toggleVerifyPassword, verifyPassword, verifyPasswordField;
+    exports.sitewide = function() {
+      var current;
+      current = capitaliseFirstLetter(Tok3nDashboard.initWindow);
+      document.getElementById("tok3n" + current).classList.add('tok3n-pt-page-current');
+      document.getElementById("tok3n" + current + "MenuButton").classList.add('tok3n-sidebar-selected');
+      querySelectorAll('a[href="#"]').forEach(function(el) {
+        return el.addEventListener('click', function(evt) {
+          return evt.preventDefault();
+        });
+      });
+      return (function(el) {
+        var WidthChange, menuItems, mq;
+        if (el) {
+          document.querySelector('#collapseSidebarButton').addEventListener('click', function() {
+            return el.classList.toggle('collapsed');
+          });
+          menuItems = querySelectorAll('.tok3n-menu-item');
+          menuItems.forEach(function(item) {
+            return item.addEventListener('click', function() {
+              if (window.matchMedia("(max-width: 768px)").matches) {
+                return el.classList.toggle('collapsed');
+              }
+            }, false);
+          });
+          WidthChange = function(mq) {
+            if (mq.matches) {
+              if (el.classList.contains('collapsed')) {
+                el.classList.remove('collapsed');
+              }
+            } else {
+              if (!el.classList.contains('collapsed')) {
+                el.classList.add('collapsed');
+              }
+            }
+          };
+          if (matchMedia) {
+            mq = window.matchMedia("(min-width: 769px)");
+            mq.addListener(WidthChange);
+            return WidthChange(mq);
+          }
+        }
+      })(document.querySelector('#tok3nSidebarMenu'));
+    };
+    addNewParsleyForm = function(formElement, submitForm, clsHandler) {
+      var form, submit;
+      form = $(formElement);
+      submit = qs(submitForm);
+      form.parsley({
+        classHandler: clsHandler
+      });
+      Tok3nDashboard.formEventHandler = function(evt) {
+        var formEvent;
+        form.parsley().validate();
+        formEvent = new CustomEvent('submitValidatedForm', {
+          detail: {
+            validatedForm: form[0],
+            isValid: form.parsley().isValid()
+          }
+        });
+        return window.dispatchEvent(formEvent);
+      };
+      submit.addEventListener('click', Tok3nDashboard.formEventHandler);
+      if (Tok3nDashboard.Environment.isDevelopment) {
+        return console.log("Added validated form " + formElement);
+      }
+    };
+    destroyParsleyForm = function(formElement, submitForm, clsHandler) {
+      var form, submit;
+      form = $(formElement);
+      submit = qs(submitForm);
+      form.parsley().destroy();
+      submit.removeEventListener('click', Tok3nDashboard.formEventHandler);
+      if (Tok3nDashboard.Environment.isDevelopment) {
+        return console.log("Destroyed validated form " + formElement);
+      }
+    };
+
+    /*
+    My devices
+     */
+    exports.deviceNew3 = function() {
+      return addNewParsleyForm('#deviceNew3Form', '#deviceNew3Submit', '#deviceNew3Form');
+    };
+    exports.destroyDeviceNew3 = function() {
+      return destroyParsleyForm('#deviceNew3Form', '#deviceNew3Submit', '#deviceNew3Form');
+    };
+
+    /*
+    My phonelines
+     */
+    countrySelect = gebi("phonelineNew1CountrySelect");
+    countryCode = gebi("phonelineNew1CountryCode");
+    phoneNumber = gebi('phonelineNew1PhoneNumber');
+    selectCountryCode = function(evt) {
+      var countryCodeValue, el;
+      el = evt.target;
+      countryCodeValue = el.options[el.selectedIndex].value;
+      return countryCode.innerHTML = "+" + countryCodeValue;
+    };
+    toggleNextButton = function(evt) {
+      var button, el, parentEl;
+      el = evt.target;
+      parentEl = findClosestAncestor(el, "tok3n-dashboard-form-lower-wrapper");
+      button = parentEl.nextSibling.querySelector('.tok3n-dashboard-main-button');
+      if (el.checkValidity() || !isEmptyOrDefault(el)) {
+        return button.disabled = false;
+      } else {
+        return button.disabled = true;
+      }
+    };
+    toggleNextButtonOtp = function(evt) {
+      var button, el, parentEl;
+      el = evt.target;
+      parentEl = findClosestAncestor(el, "tok3n-dashboard-new-form");
+      button = parentEl.querySelector('.tok3n-dashboard-main-button');
+      if (hasFormValidation()) {
+        if (el.checkValidity() && el.value.length === 6) {
+          return button.disabled = false;
+        } else {
+          return button.disabled = true;
+        }
+      } else {
+        if (el.value.length === 6) {
+          return button.disabled = false;
+        } else {
+          return button.disabled = true;
+        }
+      }
+    };
+    limitToSixChar = function() {
+      if (this.value.length > 6) {
+        return this.value = this.value.slice(0, 6);
+      }
+    };
+    exports.phonelineNew1 = function() {
+      selectCountryCode(countrySelect);
+      phoneNumber.addEventListener("keyup", toggleNextButton);
+      return countrySelect.addEventListener('change', selectCountryCode);
+    };
+    exports.destroyPhonelineNew1 = function() {
+      phoneNumber.removeEventListener("keyup", toggleNextButton);
+      return countrySelect.addEventListener('change', selectCountryCode);
+    };
+    exports.phonelineNew2 = function() {
+      var signupOtpInput;
+      signupOtpInput = gebi('phonelineNew2OtpInput');
+      signupOtpInput.addEventListener('keyup', toggleNextButtonOtp);
+      return signupOtpInput.addEventListener("input", limitToSixChar);
+    };
+    exports.destroyPhonelineNew2 = function() {
+      return signupOtpInput.removeEventListener('keyup', toggleNextButtonOtp);
+    };
+    exports.phonelineNew3 = function() {
+      return addNewParsleyForm('#tok3nPhonelineNew3Form', '#tok3nPhonelineNew3Submit', '#tok3nPhonelineNew3Form');
+    };
+    exports.destroyPhonelineNew3 = function() {
+      return destroyParsleyForm('#tok3nPhonelineNew3Form', '#tok3nPhonelineNew3Submit', '#tok3nPhonelineNew3Form');
+    };
+
+    /*
+    My applications
+     */
+    cardsContainer = qs('.tok3n-cards-container');
+    flipCardToBack = function(evt) {
+      var card, el;
+      el = evt.target;
+      findClosestAncestor(el, 'flipper').classList.add('flipped');
+      card = [].filter.call(el.parentNode.children, function(gl) {
+        return gl.classList.contains('back');
+      });
+      return forEach(card, function(fl) {
+        return fl.style.zIndex = 3;
+      });
+    };
+    flipCardToFront = function(evt) {
+      return findClosestAncestor(evt.target, 'flipper').classList.remove('flipped');
+    };
+    exports.applications = function() {
+      if (cardsContainer) {
+        Tok3nDashboard.masonry = new Masonry(cardsContainer, {
+          itemSelector: '.card',
+          gutter: '.grid-gutter'
         });
       }
-    });
-  };
-  getStyle = function(oElm, strCssRule) {
-    var strValue;
-    strValue = "";
-    if (document.defaultView && document.defaultView.getComputedStyle) {
-      strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
-    } else if (oElm.currentStyle) {
-      strCssRule = strCssRule.replace(/\-(\w)/g, function(strMatch, p1) {
-        return p1.toUpperCase();
+      forEach(cardsContainer.querySelectorAll('.front'), function(el) {
+        return el.addEventListener('click', flipCardToBack);
       });
-      strValue = oElm.currentStyle[strCssRule];
-    }
-    return strValue;
-  };
-  windowHeight = function() {
-    var $topHeight;
-    $topHeight = null;
-    if (window.matchMedia("(min-width: 769px)").matches) {
-      $topHeight = parseInt(getStyle(document.querySelector('#tok3nLayout'), 'padding-top'), 10);
-    } else {
-      $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10);
-    }
-    return window.innerHeight - $topHeight;
-  };
-  contentHeight = function() {
-    var $contentHeight, elemList, innerContentHeight, listHeight;
-    $contentHeight = null;
-    innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10);
-    elemList = document.querySelector('.tok3n-pt-page-current .tok3n-main-list');
-    if (elemList != null) {
-      listHeight = parseInt(getStyle(elemList, 'height'), 10);
-    } else {
-      listHeight = 0;
-    }
-    if (window.matchMedia("(min-width: 769px)").matches) {
-      $contentHeight = innerContentHeight;
-    } else {
-      $contentHeight = innerContentHeight + listHeight;
-    }
-    return $contentHeight;
-  };
-  resizeContent = function() {
-    var $contentHeight, $topHeight, $windowHeight, currentContent, el, _i, _j, _len, _len1;
-    currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current');
-    $windowHeight = windowHeight();
-    $contentHeight = contentHeight();
-    $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10);
-    if ($windowHeight > $contentHeight) {
-      for (_i = 0, _len = currentContent.length; _i < _len; _i++) {
-        el = currentContent[_i];
-        el.style.height = $windowHeight + "px";
+      return forEach(cardsContainer.querySelectorAll('.flip'), function(el) {
+        return el.addEventListener('click', flipCardToFront);
+      });
+    };
+    destroyMasonry = function() {
+      if (Tok3nDashboard.masonry) {
+        if (Tok3nDashboard.masonry.isResizeBound) {
+          Tok3nDashboard.masonry.destroy();
+          if (Tok3nDashboard.Environment.isDevelopment) {
+            return console.log('Destroyed masonry.');
+          }
+        }
       }
-    } else {
-      for (_j = 0, _len1 = currentContent.length; _j < _len1; _j++) {
-        el = currentContent[_j];
-        el.style.height = $contentHeight + "px";
+    };
+    exports.destroyApplications = function() {
+      destroyMasonry();
+      forEach(cardsContainer.querySelectorAll('.front'), function(el) {
+        return el.removeEventListener('click', flipCardToBack);
+      });
+      return forEach(cardsContainer.querySelectorAll('.flip'), function(el) {
+        return el.removeEventListener('click', flipCardToFront);
+      });
+    };
+
+    /*
+    My integrations
+     */
+    exports.integrationsCharts = function() {
+      var attachChartFunctions;
+      attachChartFunctions = function() {
+        return Tok3nDashboard.Jsapi.isLoaded.then(function() {
+          var chartEvent, drawChartDataDonut, drawChartDataRequestHistory, drawChartDataUsersHistory;
+          drawChartDataDonut = function(e) {
+            var chart, data, options;
+            data = google.visualization.arrayToDataTable([["Task", "Requests"], ["Valid", e.detail.ValidRequests], ["Invalid", e.detail.InvalidRequests], ["Pending", e.detail.IssuedRequests]]);
+            if (Tok3nDashboard.Environment.isDevelopment) {
+              console.log(data);
+            }
+            options = {
+              title: "Request types",
+              pieHole: 0.4
+            };
+            chart = new google.visualization.PieChart(document.getElementById("donutChart"));
+            return chart.draw(data, options);
+          };
+          drawChartDataRequestHistory = function(e) {
+            var chart, data, options;
+            data = google.visualization.arrayToDataTable(eval_(e.detail));
+            if (Tok3nDashboard.Environment.isDevelopment) {
+              console.log(data);
+            }
+            options = {
+              title: "Requests"
+            };
+            chart = new google.visualization.LineChart(document.getElementById("requestHistoryChart"));
+            return chart.draw(data, options);
+          };
+          drawChartDataUsersHistory = function(e) {
+            var chart, data, options;
+            data = google.visualization.arrayToDataTable(eval_(e.detail));
+            if (Tok3nDashboard.Environment.isDevelopment) {
+              console.log(data);
+            }
+            options = {
+              title: "Users"
+            };
+            chart = new google.visualization.LineChart(document.getElementById("usersHistoryChart"));
+            return chart.draw(data, options);
+          };
+          window.addEventListener("drawChartDataDonut", drawChartDataDonut, false);
+          window.addEventListener("drawChartDataRequestHistory", drawChartDataRequestHistory, false);
+          window.addEventListener("drawChartDataUsersHistory", drawChartDataUsersHistory, false);
+          Tok3nDashboard.Charts.areLoaded = true;
+          if (Tok3nDashboard.Environment.isDevelopment) {
+            console.log('Chart functions attached successfully.');
+          }
+          chartEvent = new CustomEvent('chartFunctionsLoaded');
+          window.dispatchEvent(chartEvent);
+          return;
+          if (namespaceExists(google, 'visualization')) {
+            return google.visualization.events.addListener(chart, "ready", function() {
+              if (Tok3nDashboard.compatibilityLayout) {
+                return Tok3nDashboard.resizeContent();
+              }
+            });
+          }
+        });
+      };
+      if (Tok3nDashboard.Jsapi.isLoaded) {
+        return attachChartFunctions();
+      } else {
+        return ee.addListener('tok3nJsapiPromiseCreated', attachChartFunctions);
       }
-    }
-  };
-  Tok3nDashboard.compatibilityLayout = compatibilityLayout;
-  return Tok3nDashboard.resizeContent = resizeContent;
+    };
+    toggleSecret = function(ev) {
+      var el, hiddenEl;
+      el = ev.target;
+      ev.preventDefault();
+      hiddenEl = [].filter.call(el.parentNode.children, function(gl) {
+        return gl.classList.contains('secret');
+      });
+      if (hiddenEl != null) {
+        return forEach(hiddenEl, function(fl) {
+          if (fl.classList.contains('hidden')) {
+            el.innerHTML = 'hide';
+            return fl.classList.remove('hidden');
+          } else if (!fl.classList.contains('hidden')) {
+            el.innerHTML = 'show';
+            return fl.classList.add('hidden');
+          }
+        });
+      }
+    };
+    dropdownList = function(ev) {
+      var child, _i, _len, _ref, _results;
+      _ref = ev.target.children;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        child = _ref[_i];
+        if (child.classList.contains('dropdown-menu')) {
+          _results.push(child.classList.toggle('dropdown-show'));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
+    };
+    exports.integrationView = function() {
+      var dropdowns, toggleEl;
+      toggleEl = querySelectorAll('.toggle-secret');
+      if (toggleEl) {
+        toggleEl.forEach(function(el) {
+          return el.addEventListener('click', toggleSecret);
+        });
+      }
+      dropdowns = querySelectorAll('.dropdown');
+      if (dropdowns) {
+        return dropdowns.forEach(function(el) {
+          return el.addEventListener('click', dropdownList);
+        });
+      }
+    };
+    exports.destroyIntegrationView = function() {
+      var dropdowns, toggleEl;
+      toggleEl = querySelectorAll('.toggle-secret');
+      if (toggleEl) {
+        toggleEl.forEach(function(el) {
+          return el.removeEventListener('click', toggleSecret);
+        });
+      }
+      dropdowns = querySelectorAll('.dropdown');
+      if (dropdowns) {
+        return dropdowns.forEach(function(el) {
+          return el.removeEventListener('click', dropdownList);
+        });
+      }
+    };
+    buttonFilePathCompletion = function() {
+      $(document).on("change", ".btn-file :file", function() {
+        var input, label, numFiles, pattern;
+        input = $(this);
+        numFiles = (input.get(0).files ? input.get(0).files.length : 1);
+        pattern = /\\/g;
+        label = input.val().replace(pattern, "/").replace(/.*\//, "");
+        input.trigger("fileselect", [numFiles, label]);
+      });
+      return $(".btn-file :file").on("fileselect", function(event, numFiles, label) {
+        var input, log;
+        input = $(this).parents(".input-group").find(":text");
+        log = (numFiles > 1 ? numFiles + " files selected" : label);
+        if (input.length) {
+          input.val(log);
+        } else {
+          if (log) {
+            alert(log);
+          }
+        }
+      });
+    };
+    destroyButtonFilePathCompletion = function() {
+      $(document).off("change", ".btn-file :file");
+      return $(".btn-file :file").off("fileselect");
+    };
+    showHideCallback = function(evt) {
+      var callbackField, callbackInput, hideCallback, showCallback;
+      callbackField = qs('.tok3n-new-integration-callback-url');
+      callbackInput = gebi('integrationNewCallbackUrl');
+      showCallback = function() {
+        callbackField.classList.remove('collapsed');
+        return callbackInput.setAttribute('data-parsley-required', 'true');
+      };
+      hideCallback = function() {
+        callbackField.classList.add('collapsed');
+        return callbackInput.setAttribute('data-parsley-required', 'false');
+      };
+      evt.stopPropagation();
+      if (evt.target.classList.contains('tok3n-new-integration-kind-radio-web')) {
+        evt.preventDefault();
+        evt.target.querySelector('input').checked = true;
+        return showCallback();
+      } else if (evt.target.classList.contains('tok3n-new-integration-kind-radio-general')) {
+        evt.preventDefault();
+        evt.target.querySelector('input').checked = true;
+        return hideCallback();
+      } else {
+        if (evt.target.id === 'integrationNewKindWeb') {
+          return showCallback();
+        } else if (evt.target.id === 'integrationNewKindGeneral') {
+          return hideCallback();
+        }
+      }
+    };
+    newIntegrationRadio = querySelectorAll('.tok3n-new-integration-kind-radio, .tok3n-new-integration-kind-radio input');
+    exports.integrationNew = function() {
+      newIntegrationRadio.forEach(function(el) {
+        return el.addEventListener('click', showHideCallback);
+      });
+      buttonFilePathCompletion();
+      return addNewParsleyForm('#integrationNewForm', '#integrationNewSubmit', '#integrationNewForm');
+    };
+    exports.destroyIntegrationNew = function() {
+      newIntegrationRadio.forEach(function(el) {
+        return el.removeEventListener('click', showHideCallback);
+      });
+      destroyButtonFilePathCompletion();
+      return destrayParsleyForm('#integrationNewForm', '#integrationNewSubmit', '#integrationNewForm');
+    };
+    exports.integrationEdit = function() {
+      addNewParsleyForm('#integrationEditForm', '#integrationEditSubmit', '#integrationEditForm');
+      return buttonFilePathCompletion();
+    };
+    exports.destroyIntegrationEdit = function() {
+      destroyParsleyForm('#integrationEditForm', '#integrationEditSubmit', '#integrationEditForm');
+      return destroyButtonFilePathCompletion();
+    };
+
+    /*
+    Settings
+     */
+    passwordField = gebi('tok3nUserPassword');
+    verifyPassword = qs('.tok3n-user-verify-password');
+    verifyPasswordField = gebi('tok3nUserVerifyPassword');
+    toggleVerifyPassword = function() {
+      if (passwordField) {
+        if (passwordField.value) {
+          verifyPassword.classList.remove("collapsed");
+          return verifyPasswordField.setAttribute('data-parsley-required', 'true');
+        } else {
+          verifyPassword.classList.add("collapsed");
+          return verifyPasswordField.setAttribute('data-parsley-required', 'false');
+        }
+      }
+    };
+    exports.settings = function() {
+      toggleVerifyPassword();
+      passwordField.addEventListener('keyup', toggleVerifyPassword);
+      return addNewParsleyForm('#tok3nSettingsForm', '#tok3nSettingsSubmit', '#tok3nSettingsForm');
+    };
+    return exports.destroySettings = function() {
+      passwordField.removeEventListener('keyup', toggleVerifyPassword);
+      return destroyParsleyForm('#tok3nSettingsForm', '#tok3nSettingsSubmit', '#tok3nSettingsForm');
+    };
+  });
 })();
-
-
 
 (function() {
 
@@ -12884,6 +13310,7 @@ ee = new EventEmitter();
           setTimeout(function() {
             temp.classList.remove("tok3n-pt-page-previous");
             temp.classList.remove("tok3n-pt-page-current");
+            Tok3nDashboard.tempPreviousTarget = temp;
             return ee.emitEvent('tok3nSlideAfterAnimation');
           }, 250);
           removeAnimationClasses(nextTarget);
@@ -12904,122 +13331,89 @@ ee = new EventEmitter();
   /*
   Main
    */
-  var authorizedApps, camelCaseSwitcher, destroyActiveWindowJs, hasDOMContentLoaded, init, initCurrentWindow, main, ready, readyMethod, settingsPage, sitewide, toggleSecret, toggleVerifyPassword;
+  var compatibilityObserver, currentWindow, destroyCurrentIfExists, hasDOMContentLoaded, init, initCurrentWindow, initIfExists, main, observePageChanges, ready, readyMethod, testAlerts, testFormEvents, toCamelCase, toTok3nCssClass;
   main = function() {
-    sitewide();
+    Tok3nDashboard.Screens.sitewide();
     Tok3nDashboard.slider();
     ee.addListener('tok3nSlideBeforeAnimation', function() {
       return initCurrentWindow();
     });
     initCurrentWindow();
-  };
-
-  /*
-  Sitewide
-   */
-  sitewide = function() {
-    (function(el) {
-      var WidthChange, menuItems, mq;
-      if (el) {
-        document.querySelector('#collapseSidebarButton').addEventListener('click', function() {
-          return el.classList.toggle('collapsed');
-        }, false);
-        menuItems = querySelectorAll('.tok3n-menu-item');
-        menuItems.forEach(function(item) {
-          return item.addEventListener('click', function() {
-            if (window.matchMedia("(max-width: 768px)").matches) {
-              return el.classList.toggle('collapsed');
-            }
-          }, false);
-        });
-        WidthChange = function(mq) {
-          if (mq.matches) {
-            if (el.classList.contains('collapsed')) {
-              el.classList.remove('collapsed');
-            }
-          } else {
-            if (!el.classList.contains('collapsed')) {
-              el.classList.add('collapsed');
-            }
-          }
-        };
-        if (matchMedia) {
-          mq = window.matchMedia("(min-width: 769px)");
-          mq.addListener(WidthChange);
-          return WidthChange(mq);
-        }
+    querySelectorAll('.tok3n-main-content').forEach(function(el) {
+      if (Tok3nDashboard.compatibilityLayout) {
+        return compatibilityObserver(el);
+      } else {
+        return observePageChanges(el);
       }
-    })(document.querySelector('#tok3nSidebarMenu'));
-    return (function(arr) {
-      var el, _i, _len, _results;
-      if (arr) {
-        _results = [];
-        for (_i = 0, _len = arr.length; _i < _len; _i++) {
-          el = arr[_i];
-          _results.push(el.addEventListener('click', function() {
-            var child, _j, _len1, _ref, _results1;
-            _ref = el.children;
-            _results1 = [];
-            for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
-              child = _ref[_j];
-              if (child.classList.contains('dropdown-menu')) {
-                _results1.push(child.classList.toggle('dropdown-show'));
-              } else {
-                _results1.push(void 0);
-              }
-            }
-            return _results1;
-          }, false));
-        }
-        return _results;
-      }
-    })(document.querySelectorAll('.dropdown'));
+    });
+    ee.addListener('tok3nSlideAfterAnimation', function() {
+      return false;
+    });
+    Tok3nDashboard.lastLoader();
+    if (Tok3nDashboard.Environment.isDevelopment) {
+      testAlerts();
+      return testFormEvents();
+    }
   };
 
   /*
   Selective window behavior
    */
-  destroyActiveWindowJs = function() {
-    var currentWindow;
-    currentWindow = function() {
-      if (Tok3nDashboard.nextTarget !== void 0) {
-        return Tok3nDashboard.nextTarget;
-      } else {
-        return document.querySelector('.tok3n-pt-page-current');
-      }
-    };
-    return setTimeout(function() {
-      if (currentWindow().id !== 'tok3nDevices') {
-        false;
-      }
-      if (currentWindow().id !== 'tok3nPhonelines') {
-        false;
-      }
-      if (currentWindow().id !== 'tok3nApplications') {
-        if (Tok3nDashboard.masonry != null) {
-          Tok3nDashboard.masonry.destroy();
+  currentWindow = function() {
+    if (Tok3nDashboard.nextTarget !== void 0) {
+      return Tok3nDashboard.nextTarget;
+    } else {
+      return document.querySelector('.tok3n-pt-page-current');
+    }
+  };
+  toCamelCase = function(s) {
+    s = s.replace(/([^a-zA-Z0-9_\- ])|^[_0-9]+/g, "").trim().toLowerCase();
+    s = s.replace(/([ -]+)([a-zA-Z0-9])/g, function(a, b, c) {
+      return c.toUpperCase();
+    });
+    s = s.replace(/([0-9]+)([a-zA-Z])/g, function(a, b, c) {
+      return b + c.toUpperCase();
+    });
+    return s;
+  };
+  toTok3nCssClass = function(camel) {
+    return "tok3n-" + camel.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([a-zA-Z]+)([0-9]+)/g, '$1-$2').toLowerCase();
+  };
+  initIfExists = function(arr) {
+    return arr.forEach(function(screen) {
+      var currentScreen;
+      currentScreen = document.querySelector(".tok3n-" + screen);
+      if (currentScreen) {
+        if (typeof Tok3nDashboard.Screens[toCamelCase(screen)] === 'function') {
+          Tok3nDashboard.CurrentScreens.push(currentScreen);
+          Tok3nDashboard.Screens[toCamelCase(screen)]();
+        }
+        if (Tok3nDashboard.Environment.isDevelopment) {
+          return console.log(toCamelCase(screen) + " is the current screen.");
         }
       }
-      if (currentWindow().id !== 'tok3nIntegrations') {
-        false;
-      }
-      if (currentWindow().id !== 'tok3nBackupCodes') {
-        false;
-      }
-      if (currentWindow().id !== 'tok3nSettings') {
-        return false;
-      }
-    }, 250);
-  };
-  camelCaseSwitcher = function(arr, func) {
-    return arr.forEach(function(screen) {
-      var screenClass;
-      screenClass = ".tok3n-" + screen.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/([a-zA-Z]+)([0-9]+)/g, '$1-$2').toLowerCase();
-      return func(screen);
     });
   };
+  destroyCurrentIfExists = function() {
+    Tok3nDashboard.CurrentScreens.forEach(function(screen) {
+      var destroyName;
+      destroyName = function() {
+        if (screen.id.indexOf('tok3n' !== -1)) {
+          return lowercaseFirstLetter(screen.id.replace('tok3n', ''));
+        } else {
+          return toCamelCase(screen.classList[0].replace('tok3n-', ''));
+        }
+      };
+      if (typeof Tok3nDashboard.Screens[destroyName()] === 'function') {
+        Tok3nDashboard.Screens['destroy' + capitaliseFirstLetter(destroyName())]();
+        if (Tok3nDashboard.Environment.isDevelopment) {
+          return console.log("Destroyed " + (destroyName()));
+        }
+      }
+    });
+    return Tok3nDashboard.CurrentScreens = [];
+  };
   initCurrentWindow = function() {
-    var currentWindow, signupScreens;
     currentWindow = function() {
       if (Tok3nDashboard.nextTarget !== void 0) {
         return Tok3nDashboard.nextTarget;
@@ -13027,123 +13421,96 @@ ee = new EventEmitter();
         return document.querySelector('.tok3n-pt-page-current');
       }
     };
-    destroyActiveWindowJs();
+    if (Tok3nDashboard.Environment.isDevelopment) {
+      console.log('Started initing js.');
+    }
+    destroyCurrentIfExists();
     switch (currentWindow().id) {
-      case "tok3n-signup":
-        signupScreens = ['signupEnable', 'signupCreate1', 'signupCreate2', 'signupDevice1', 'signupDevice2', 'signupPhoneline1', 'signupPhoneline2'];
-        return camelCaseSwitcher(signupScreens, function(currentWindow) {
-          switch (currentWindow()) {
-            case 'signupEnable':
-              return false;
-            case 'signupCreate1':
-              return false;
-            case 'signupCreate2':
-              return false;
-            case 'signupPhoneline1':
-              return false;
-            case 'signupPhoneline2':
-              return false;
-            default:
-              return false;
-          }
-        });
       case "tok3nDevices":
-        return false;
+        initIfExists(['devices', 'device-view', 'device-new-1', 'device-new-2', 'device-new-3']);
+        break;
       case "tok3nPhonelines":
-        return false;
+        initIfExists(['phonelines', 'phoneline-view-cellphone', 'phoneline-view-landline', 'phoneline-new-1', 'phoneline-new-2', 'phoneline-new-3']);
+        break;
       case "tok3nApplications":
-        return authorizedApps();
+        initIfExists(['applications']);
+        break;
       case "tok3nIntegrations":
-        return toggleSecret();
+        if (!Tok3nDashboard.Charts.areLoaded) {
+          Tok3nDashboard.Screens.integrationsCharts();
+        }
+        initIfExists(['integrations', 'integration-view', 'integration-new', 'integration-edit']);
+        break;
       case "tok3nBackupCodes":
-        return false;
+        initIfExists(['backup-codes']);
+        break;
       case "tok3nSettings":
-        return settingsPage();
+        initIfExists(['settings']);
+        break;
       default:
-        return false;
+        false;
+    }
+    if (Tok3nDashboard.Environment.isDevelopment) {
+      return console.log('Finished initing js.');
     }
   };
-
-  /*
-  Authorized apps
-   */
-  authorizedApps = function() {
-    var cardsContainer;
-    cardsContainer = qs('.tok3n-cards-container');
-    if (cardsContainer) {
-      Tok3nDashboard.masonry = new Masonry(cardsContainer, {
-        itemSelector: '.card',
-        gutter: '.grid-gutter'
+  observePageChanges = function(el) {
+    var observer;
+    observer = new MutationObserver(function(mutations) {
+      return mutations.forEach(function(mutation) {
+        if (Tok3nDashboard.Environment.isDevelopment) {
+          console.log("Partial screen change detected.");
+        }
+        return initCurrentWindow();
       });
-    }
-    forEach(cardsContainer.querySelectorAll('.front'), function(el) {
-      return el.addEventListener('click', function() {
-        var card;
-        findClosestAncestor(el, 'flipper').classList.add('flipped');
-        card = [].filter.call(el.parentNode.children, function(gl) {
-          return gl.classList.contains('back');
-        });
-        return forEach(card, function(fl) {
-          return fl.style.zIndex = 3;
-        });
-      }, false);
     });
-    return forEach(cardsContainer.querySelectorAll('.flip'), function(el) {
-      return el.addEventListener('click', function() {
-        return findClosestAncestor(el, 'flipper').classList.remove('flipped');
-      }, false);
+    return observer.observe(el, {
+      childList: true
     });
   };
-
-  /*
-  My integrations
-   */
-  toggleSecret = function() {
-    var toggleEl;
-    toggleEl = qsa('.toggle-secret');
-    if (toggleEl != null) {
-      return forEach(toggleEl, function(el) {
-        return el.addEventListener('click', function() {
-          var hiddenEl;
-          hiddenEl = [].filter.call(el.parentNode.children, function(gl) {
-            return gl.classList.contains('secret');
-          });
-          if (hiddenEl != null) {
-            return forEach(hiddenEl, function(fl) {
-              if (fl.classList.contains('hidden')) {
-                el.innerHTML = 'hide';
-                return fl.classList.remove('hidden');
-              } else if (!fl.classList.contains('hidden')) {
-                el.innerHTML = 'show';
-                return fl.classList.add('hidden');
-              }
-            });
-          }
-        }, false);
+  compatibilityObserver = function(el) {
+    var observer;
+    observer = new MutationObserver(function(mutations) {
+      return mutations.forEach(function(mutation) {
+        if (Tok3nDashboard.Environment.isDevelopment) {
+          console.log("Partial screen change detected.");
+        }
+        destroyCurrentIfExists();
+        return Tok3nDashboard.resizeContent();
       });
-    }
+    });
+    return observer.observe(el, {
+      childList: true,
+      subtree: true
+    });
   };
 
   /*
-  Settings
+  Testing functions
    */
-  settingsPage = function() {
-    toggleVerifyPassword();
-    return document.querySelector('.tok3n-user-password').addEventListener('keyup', function(event) {
-      return toggleVerifyPassword();
-    }, false);
-  };
-  toggleVerifyPassword = function() {
-    var passwordField, verifyPassword;
-    passwordField = qs("input.tok3n-user-password");
-    verifyPassword = qs('.tok3n-user-verify-password');
-    if (passwordField) {
-      if (passwordField.value) {
-        return verifyPassword.classList.remove("collapsed");
-      } else {
-        return verifyPassword.classList.add("collapsed");
+  testAlerts = function() {
+    window.addEventListener("keyup", function(event) {
+      if (event.keyCode === 49) {
+        return querySelectorAll('.tok3n-dashboard-alert').forEach(function(el) {
+          return el.classList.toggle('tok3n-dashboard-alert-hidden');
+        });
       }
-    }
+    });
+    return window.addEventListener("keyup", function(event) {
+      if (event.keyCode === 50) {
+        return querySelectorAll('.tok3n-dashboard-alert').forEach(function(el) {
+          el.classList.remove('tok3n-dashboard-alert-active');
+          return setTimeout(function() {
+            return el.classList.add('tok3n-dashboard-alert-active');
+          }, 0);
+        });
+      }
+    });
+  };
+  testFormEvents = function() {
+    return window.addEventListener('submitValidatedForm', function(evt) {
+      return console.log(evt);
+    }, false);
   };
 
   /*

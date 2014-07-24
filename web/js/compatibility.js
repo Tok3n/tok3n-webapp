@@ -1,5 +1,8 @@
 (function() {
   var compatibilityLayout, contentHeight, getStyle, resizeContent, windowHeight;
+  if (Tok3nDashboard.Environment.isDevelopment) {
+    console.log('Loaded compatibility layout.');
+  }
   compatibilityLayout = function() {
     var pagesWrapper;
     pagesWrapper = qs(".tok3n-pages-wrapper");
@@ -34,18 +37,18 @@
     return strValue;
   };
   windowHeight = function() {
-    var $topHeight;
-    $topHeight = null;
+    var topHeight;
+    topHeight = null;
     if (window.matchMedia("(min-width: 769px)").matches) {
-      $topHeight = parseInt(getStyle(document.querySelector('#tok3nLayout'), 'padding-top'), 10);
+      topHeight = parseInt(getStyle(document.querySelector('#tok3nLayout'), 'padding-top'), 10);
     } else {
-      $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10);
+      topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10);
     }
-    return window.innerHeight - $topHeight;
+    return window.innerHeight - topHeight;
   };
   contentHeight = function() {
-    var $contentHeight, elemList, innerContentHeight, listHeight;
-    $contentHeight = null;
+    var elemList, innerContentHeight, listHeight;
+    contentHeight = null;
     innerContentHeight = parseInt(getStyle(document.querySelector('.tok3n-pt-page-current .tok3n-main-content'), 'height'), 10);
     elemList = document.querySelector('.tok3n-pt-page-current .tok3n-main-list');
     if (elemList != null) {
@@ -54,28 +57,32 @@
       listHeight = 0;
     }
     if (window.matchMedia("(min-width: 769px)").matches) {
-      $contentHeight = innerContentHeight;
+      contentHeight = innerContentHeight;
     } else {
-      $contentHeight = innerContentHeight + listHeight;
+      contentHeight = innerContentHeight + listHeight;
     }
-    return $contentHeight;
+    return contentHeight;
   };
   resizeContent = function() {
-    var $contentHeight, $topHeight, $windowHeight, currentContent, el, _i, _j, _len, _len1;
+    var currentContent, el, topHeight, _i, _j, _len, _len1;
     currentContent = document.querySelectorAll('.tok3n-pt-perspective, .tok3n-pt-page-current');
-    $windowHeight = windowHeight();
-    $contentHeight = contentHeight();
-    $topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10);
-    if ($windowHeight > $contentHeight) {
+    windowHeight = windowHeight();
+    contentHeight = contentHeight();
+    topHeight = parseInt(getStyle(document.querySelector('#tok3nTop'), 'height'), 10);
+    if (windowHeight > contentHeight) {
       for (_i = 0, _len = currentContent.length; _i < _len; _i++) {
         el = currentContent[_i];
-        el.style.height = $windowHeight + "px";
+        el.style.height = windowHeight + "px";
       }
     } else {
       for (_j = 0, _len1 = currentContent.length; _j < _len1; _j++) {
         el = currentContent[_j];
-        el.style.height = $contentHeight + "px";
+        el.style.height = contentHeight + "px";
       }
+    }
+    return;
+    if (Tok3nDashboard.Environment.isDevelopment) {
+      return console.log('Resized content.');
     }
   };
   Tok3nDashboard.compatibilityLayout = compatibilityLayout;
