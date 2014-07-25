@@ -69,18 +69,20 @@
     return setTimeout(function() {
       if (Tok3nDashboard.PreviousScreens.length) {
         Tok3nDashboard.PreviousScreens.forEach(function(screen) {
-          var commonName, destroyName;
-          commonName = function() {
-            if (screen.id.indexOf('tok3n' !== -1)) {
-              return lowercaseFirstLetter(screen.id.replace('tok3n', ''));
-            } else {
-              return toCamelCase(screen.classList[0].replace('tok3n-', ''));
-            }
-          };
-          destroyName = 'destroy' + capitaliseFirstLetter(commonName());
+          var commonName, destroyName, screenKind;
+          commonName = void 0;
+          screenKind = void 0;
+          if (!screen.id.indexOf('tok3n' === -1)) {
+            commonName = lowercaseFirstLetter(screen.id.replace('tok3n', ''));
+            screenKind = 'main page';
+          } else {
+            commonName = toCamelCase(screen.classList[0].replace('tok3n-', ''));
+            screenKind = 'partial';
+          }
+          destroyName = 'destroy' + capitaliseFirstLetter(commonName);
           if (typeof Tok3nDashboard.Screens[destroyName] === 'function') {
             Tok3nDashboard.Screens[destroyName]();
-            return devConsoleLog("Destroyed " + (commonName()));
+            return devConsoleLog("Destroyed " + screenKind + " " + commonName);
           }
         });
       }

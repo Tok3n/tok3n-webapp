@@ -72,30 +72,33 @@ html.no-js(lang='en')
 
     block footer
 
-      //- A word of caution: the following build code is extremely sensible to indentation, extra spaces and newlines. Be careful!
       
+      // Remove for production
       :coffeescript
         window.Tok3nDashboard or= {}
-        Tok3nDashboard.initWindow = "integrations"
-
-      /** build:template
-      <script src="<%=cdnUrl%>js/dashboard-min.js"></script>
-      /build */
-
-      //  build:remove 
-      :coffeescript
-        window.Tok3nDashboard or= {}
+        Tok3nDashboard.initWindow = "devices"
         Tok3nDashboard.Environment or= {}
         Tok3nDashboard.Environment.isDevelopment = true
+
+      // Use the following scripts for development, remove for production
+      /** build:template
+      <script src="<%=cdnUrl%>js/utils.js"></script>
+      <script src="<%=cdnUrl%>js/async.js"></script>
+      <script src="<%=cdnUrl%>js/screens.js"></script>
+      <script src="<%=cdnUrl%>js/dashboard.js"></script>
+      /build */
+
+      // Uncomment next script for production
+      // build:template
+      ! <!--<script src="<%=cdnUrl%>js/dashboard-min.js"></script>-->
+      // /build
+
+      //- A word of caution: the following build code is extremely sensible to indentation, extra spaces and newlines. Be careful!
+      //  build:remove 
       script(src='js/utils.js')
       script(src='js/async.js')
       script(src='js/screens.js')
       script(src='js/dashboard.js')
       script(src='js/test.js')
       script(src="http://localhost:35729/livereload.js")
-      //- script(src='js/samebug-notifier-1.0.2.min.js')
-      //- :coffeescript
-      //-   Samebug.init('9010ab59-19df-4d7a-b11e-eb6d6f20adbf')
-      //- script(type='text/javascript', src='//d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js', data-token='d3031bab8af249708450ef3873def30f')
-
       //  /build 

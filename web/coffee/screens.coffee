@@ -21,7 +21,7 @@ do ->
         if Tok3nDashboard.PreviousPreventedLinks.length
           Tok3nDashboard.PreviousPreventedLinks.forEach (el) ->
             el.removeEventListener 'click', evtPreventDefault
-          devConsoleLog "Destroyed previous prevented links"
+          devConsoleLog "Destroyed prevented links"
         Tok3nDashboard.PreviousPreventedLinks = Tok3nDashboard.CurrentPreventedLinks
         Tok3nDashboard.CurrentPreventedLinks = []
       , Tok3nDashboard.slidingAnimationDuration
@@ -124,9 +124,10 @@ do ->
     countrySelect = gebi "phonelineNew1CountrySelect"
     countryCode = gebi "phonelineNew1CountryCode"
     phoneNumber = gebi 'phonelineNew1PhoneNumber'
+    phonelineOtpInput = gebi 'phonelineNew2OtpInput'
 
     selectCountryCode = ( evt ) ->
-      el = evt.target
+      el = countrySelect
       countryCodeValue = el.options[el.selectedIndex].value
       countryCode.innerHTML = "+#{countryCodeValue}"
 
@@ -136,25 +137,27 @@ do ->
       parentEl = findClosestAncestor el, "tok3n-dashboard-form-lower-wrapper"
       button = parentEl.nextSibling.querySelector('.tok3n-dashboard-main-button')
       if el.checkValidity() or !isEmptyOrDefault el
-        button.disabled = false
+        button.removeAttribute 'disabled'
       else
-        button.disabled = true
+        button.setAttribute 'disabled', ''
 
 
     toggleNextButtonOtp = ( evt ) ->
       el = evt.target
       parentEl = findClosestAncestor el, "tok3n-dashboard-new-form"
       button = parentEl.querySelector('.tok3n-dashboard-main-button')
-      if hasFormValidation()
-        if el.checkValidity() and el.value.length is 6
-          button.disabled = false
+      setTimeout ->
+        if hasFormValidation()
+          if el.checkValidity() and (el.value.length is 6)
+            button.removeAttribute 'disabled'
+          else
+            button.setAttribute 'disabled', ''
         else
-          button.disabled = true
-      else
-        if el.value.length is 6
-          button.disabled = false
-        else
-          button.disabled = true
+          if el.value.length is 6
+            button.removeAttribute 'disabled'
+          else
+            button.setAttribute 'disabled', ''
+      , 0
 
 
     limitToSixChar = ->
@@ -164,7 +167,7 @@ do ->
 
     exports.phonelineNew1 = ->
       # Init country code selector
-      selectCountryCode(countrySelect)
+      selectCountryCode()
       # Enable phone number next button
       phoneNumber.addEventListener "keyup", toggleNextButton
       # Change country code on country change
@@ -174,14 +177,13 @@ do ->
       phoneNumber.removeEventListener "keyup", toggleNextButton
       countrySelect.addEventListener 'change', selectCountryCode
 
-
     exports.phonelineNew2 = ->
-      signupOtpInput = gebi 'phonelineNew2OtpInput'
-      signupOtpInput.addEventListener 'keyup', toggleNextButtonOtp
-      signupOtpInput.addEventListener "input", limitToSixChar
+      phonelineOtpInput.addEventListener 'input', toggleNextButtonOtp
+      phonelineOtpInput.addEventListener "input", limitToSixChar
 
     exports.destroyPhonelineNew2 = ->
-      signupOtpInput.removeEventListener 'keyup', toggleNextButtonOtp
+      phonelineOtpInput.removeEventListener 'input', toggleNextButtonOtp
+      phonelineOtpInput.removeEventListener "input", limitToSixChar
 
 
     exports.phonelineNew3 = ->

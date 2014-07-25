@@ -39,11 +39,12 @@
         <div class="input-group col-md-8">
           <span class="input-group-btn">
             <span class="btn btn-default btn-file">Browse
-              <input type="file" multiple="" data-parsley-ui-enabled="false" data-parsley-required="false" />
+              <input type="file" multiple="" data-parsley-required="true" data-parsley-errors-container="#integrationNewInputFileError" />
             </span>
           </span>
           <input type="text" readonly="" data-parsley-ui-enabled="false" data-parsley-required="false" class="avatar-path form-control" />
         </div>
+        <div id="integrationNewInputFileError" class="col-md-8 col-md-offset-4"></div>
         <span class="help-block col-md-8 col-md-offset-4">Help the users to recognize your app by providing an icon (png, jpg). Max file size: 5 mb.</span>
       </div>
       <div class="form-group">

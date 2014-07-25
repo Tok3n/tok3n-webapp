@@ -462,13 +462,22 @@
         </div>
       </div>
     </div>
+    <!--Remove for production-->
     <script type="text/javascript">
     (function()
     {
       window.Tok3nDashboard || (window.Tok3nDashboard = {});
-      Tok3nDashboard.initWindow = "integrations";
+      Tok3nDashboard.initWindow = "devices";
+      Tok3nDashboard.Environment || (Tok3nDashboard.Environment = {});
+      Tok3nDashboard.Environment.isDevelopment = true;
     }).call(this);
     </script>
-    <script src="//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/js/dashboard-min.js"></script>
+    <!--Use the following scripts for development, remove for production-->
+    <script src="//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/js/utils.js"></script>
+    <script src="//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/js/async.js"></script>
+    <script src="//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/js/screens.js"></script>
+    <script src="//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/js/dashboard.js"></script>
+    <!--Uncomment next script for production-->
+    <!--<script src="//s3.amazonaws.com/static.tok3n.com/tok3n-webapp/0.1.7/js/dashboard-min.js"></script>-->
   </body>
 </html>

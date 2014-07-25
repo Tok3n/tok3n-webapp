@@ -287,6 +287,19 @@ module.exports = (grunt) ->
 					from: ',/*!'
 					to: ',\n/*!'
 				]
+			distHtmlHack:
+				src: dist + 'dashboard.html'
+				dest: dist + 'dashboard.html'
+				replacements: [
+					{
+						from: '\n    <!--build:template-->'
+						to: ''
+					}
+					{
+						from: '\n    <!--/build-->'
+						to: ''
+					}
+				]
 
 
 		processhtml:
@@ -318,7 +331,7 @@ module.exports = (grunt) ->
 				files:[
 					{
 						cwd: 'web'
-						src: ['css/*-min.css', 'css/fonts/**', 'js/*-min.js', 'svg/**', 'img/**', 'sass/**']
+						src: ['css/*-min.css', 'css/fonts/**', 'js/*-min.js', 'svg/**', 'img/**', 'sass/**', 'js/utils.js', 'js/async.js', 'js/screens.js', 'js/dashboard.js']
 						dest: dist
 					}
 				]
@@ -460,6 +473,7 @@ module.exports = (grunt) ->
 		'replace:dist'
 		'prettify'
 		'processhtml'
+		'replace:distHtmlHack'
 	]
 
 	@registerTask 'watch-coffee-tasks', [

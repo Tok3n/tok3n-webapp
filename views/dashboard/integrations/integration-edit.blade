@@ -36,11 +36,16 @@
               input#integrationEditAvatar(
                 type='file'
                 multiple=''
+                data-parsley-required="false"
+                data-parsley-errors-container='#integrationEditInputFileError'
                 )
           input.avatar-path.form-control(
             type='text'
             readonly=''
+            data-parsley-ui-enabled='false'
+            data-parsley-required="false"
             )
+        #integrationEditInputFileError.col-md-8.col-md-offset-4
         span.help-block.col-md-8.col-md-offset-4
           | Leave unchanged if you don't want to change your avatar. Max file size: 5 mb (png, jpg)
     .tok3n-buttons-wrapper

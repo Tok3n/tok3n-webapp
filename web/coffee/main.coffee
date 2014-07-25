@@ -74,17 +74,20 @@ do ->
     setTimeout ->
       if Tok3nDashboard.PreviousScreens.length
         Tok3nDashboard.PreviousScreens.forEach (screen) ->
-          commonName = ->
-            # If it's a .tok3n-pt-page
-            if screen.id.indexOf 'tok3n' isnt -1
-              lowercaseFirstLetter screen.id.replace('tok3n', '')
-            # If it's a partial
-            else
-              toCamelCase screen.classList[0].replace('tok3n-', '')
-          destroyName = 'destroy' + capitaliseFirstLetter commonName()
+          commonName = undefined
+          screenKind = undefined
+          # If it's a .tok3n-pt-page
+          unless screen.id.indexOf 'tok3n' is -1
+            commonName = lowercaseFirstLetter screen.id.replace('tok3n', '')
+            screenKind = 'main page'
+          # If it's a partial
+          else
+            commonName = toCamelCase screen.classList[0].replace('tok3n-', '')
+            screenKind = 'partial'
+          destroyName = 'destroy' + capitaliseFirstLetter commonName
           if typeof Tok3nDashboard.Screens[destroyName] is 'function'
             Tok3nDashboard.Screens[destroyName]()
-            devConsoleLog "Destroyed #{commonName()}"
+            devConsoleLog "Destroyed #{screenKind} #{commonName}"
       Tok3nDashboard.PreviousScreens = Tok3nDashboard.CurrentScreens
       Tok3nDashboard.CurrentScreens = []
     , Tok3nDashboard.slidingAnimationDuration

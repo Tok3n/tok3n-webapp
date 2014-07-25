@@ -28,11 +28,12 @@
         <div class="input-group col-md-8">
           <span class="input-group-btn">
             <span class="btn btn-default btn-file">Change avatar
-              <input type="file" multiple="" id="integrationEditAvatar" />
+              <input type="file" multiple="" data-parsley-required="false" data-parsley-errors-container="#integrationEditInputFileError" id="integrationEditAvatar" />
             </span>
           </span>
-          <input type="text" readonly="" class="avatar-path form-control" />
+          <input type="text" readonly="" data-parsley-ui-enabled="false" data-parsley-required="false" class="avatar-path form-control" />
         </div>
+        <div id="integrationEditInputFileError" class="col-md-8 col-md-offset-4"></div>
         <span class="help-block col-md-8 col-md-offset-4">Leave unchanged if you don't want to change your avatar. Max file size: 5 mb (png, jpg)</span>
       </div>
     </div>
