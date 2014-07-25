@@ -13142,7 +13142,7 @@ Modernizr.addTest("csscalc", function() {
     };
     dropdownList = function(ev) {
       var child, _i, _len, _ref, _results;
-      _ref = ev.target.children;
+      _ref = ev.target.parentNode.children;
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         child = _ref[_i];
@@ -13388,9 +13388,6 @@ Modernizr.addTest("csscalc", function() {
       } else {
         return observePageChanges(el);
       }
-    });
-    ee.addListener('tok3nSlideAfterAnimation', function() {
-      return false;
     });
     Tok3nDashboard.lastLoader();
     if (Tok3nDashboard.Environment.isDevelopment) {

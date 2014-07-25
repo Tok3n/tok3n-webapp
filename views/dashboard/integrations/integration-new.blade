@@ -27,7 +27,8 @@
               name='integrationNewKind'
               value='general'
               data-parsley-required="true"
-              data-parsley-ui-enabled='false'
+              data-parsley-errors-container='#integrationNewInputRadioError'
+              data-parsley-mincheck="1"
               )
             | General
           label.radio-inline.tok3n-new-integration-kind-radio.tok3n-new-integration-kind-radio-web
@@ -35,14 +36,13 @@
               type='radio'
               name='integrationNewKind'
               value='web'
-              data-parsley-required="true"
-              data-parsley-ui-enabled='false'
               )
             | Web
           span.help-block Web integrations have a callback url which is called on certain user actions.
             |  
             a Learn more
             | .
+        #integrationNewInputRadioError.col-md-8.col-md-offset-4
       .form-group.tok3n-collapse.collapsed.tok3n-new-integration-callback-url
         label.align-top.col-md-4(for='integrationNewCallbackUrl') Callback Url
         .col-md-8

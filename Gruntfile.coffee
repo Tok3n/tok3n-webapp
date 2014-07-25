@@ -54,6 +54,14 @@ module.exports = (grunt) ->
 				src: localhost + 'backup-codes'
 				dest: dist + 'backup-codes.html'
 
+			'backup-codes/backup-code-not-generated':
+				src: localhost + 'backup-codes'
+				dest: dist + 'partials/' + 'backup-codes/backup-code-not-generated' + '.html'
+
+			'backup-codes/backup-code-generated':
+				src: localhost + 'backup-codes'
+				dest: dist + 'partials/' + 'backup-codes/backup-code-generated' + '.html'
+
 			'devices/device-view':
 				src: localhost + 'devices/device-view'
 				dest:  dist + 'partials/' + 'devices/device-view' + '.html'
@@ -331,7 +339,7 @@ module.exports = (grunt) ->
 				files:[
 					{
 						cwd: 'web'
-						src: ['css/*-min.css', 'css/fonts/**', 'js/*-min.js', 'svg/**', 'img/**', 'sass/**', 'js/utils.js', 'js/async.js', 'js/screens.js', 'js/dashboard.js']
+						src: ['css/*-min.css', 'css/fonts/**', 'js/*-min.js', 'svg/**', 'img/**', 'sass/**', 'js/utils.js', 'js/async.js', 'js/compatibility.js', 'js/screens.js', 'js/dashboard.js']
 						dest: dist
 					}
 				]
@@ -448,6 +456,9 @@ module.exports = (grunt) ->
 	@registerTask 'curlAll', [
 		'curl:dashboard'
 		'curl:backup-codes'
+
+		'curl:backup-codes/backup-code-generated'
+		'curl:backup-codes/backup-code-not-generated'
 
 		'curl:devices/device-view'
 		'curl:devices/device-new-1'

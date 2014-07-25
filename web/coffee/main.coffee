@@ -21,8 +21,8 @@ do ->
       else
         observePageChanges el
 
-    ee.addListener 'tok3nSlideAfterAnimation', ->
-      false
+    # ee.addListener 'tok3nSlideAfterAnimation', ->
+    #   false
     
     # Load google charts, analytics and typekit
     Tok3nDashboard.lastLoader()

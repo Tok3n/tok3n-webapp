@@ -10614,19 +10614,32 @@ ol.tok3n-step-list li:last-child {
   }
 }
 
-/* line 510, ../sass/_main.sass */
+/* line 503, ../sass/_main.sass */
+.tok3n-backup-codes-status {
+  font-size: 140%;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2em;
+}
+
+/* line 508, ../sass/_main.sass */
+.tok3n-backup-codes-date {
+  text-align: center;
+}
+
+/* line 516, ../sass/_main.sass */
 .tok3n-settings .create-button {
   margin-top: 3em;
 }
 
 @media (max-width: 768px) {
-  /* line 513, ../sass/_main.sass */
+  /* line 519, ../sass/_main.sass */
   .tok3n-user-verify-password {
     max-height: 80px;
   }
 }
 @media (min-width: 769px) {
-  /* line 513, ../sass/_main.sass */
+  /* line 519, ../sass/_main.sass */
   .tok3n-user-verify-password {
     max-height: 52px;
   }

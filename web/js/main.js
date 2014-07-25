@@ -18,9 +18,6 @@
         return observePageChanges(el);
       }
     });
-    ee.addListener('tok3nSlideAfterAnimation', function() {
-      return false;
-    });
     Tok3nDashboard.lastLoader();
     if (Tok3nDashboard.Environment.isDevelopment) {
       testAlerts();

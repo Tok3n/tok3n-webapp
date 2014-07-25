@@ -76,6 +76,12 @@ app.get('/integrations/integration-new', function(req, res){
 app.get('/integrations/integration-edit', function(req, res){
 	res.render("dashboard/integrations/integration-edit");
 });
+app.get('/backup-codes/backup-code-generated', function(req, res){
+	res.render("dashboard/backup-codes/backup-code-generated");
+});
+app.get('/backup-codes/backup-code-not-generated', function(req, res){
+	res.render("dashboard/backup-codes/backup-code-not-generated");
+});
 
 // Heroku
 var port = process.env.PORT || 5000;

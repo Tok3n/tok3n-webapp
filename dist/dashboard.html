@@ -119,6 +119,39 @@
             </div>
             <div class="tok3n-main-content">
               <!--INSERT CONTENT HERE-->
+              <div class="tok3n-device-view">
+                <div class="tok3n-dashboard-segment">
+                  <div class="title">
+                    <span>
+                      <h2>
+                        <span class="icon-tok3n-phone"></span>
+                        <span class="space"></span>Victor's Nexus</h2>
+                    </span>
+                  </div>
+                  <table class="specs">
+                    <tr>
+                      <td class="name">Model:</td>
+                      <td>Nexus 5</td>
+                    </tr>
+                    <tr>
+                      <td class="name">Software version</td>
+                      <td>Android Kit Kat</td>
+                    </tr>
+                    <tr>
+                      <td class="name">Date added:</td>
+                      <td>June 10th, 2014</td>
+                    </tr>
+                    <tr>
+                      <td class="name">Last used:</td>
+                      <td>June 11th, 2014</td>
+                    </tr>
+                    <tr>
+                      <td class="name">MAC Address:</td>
+                      <td>0b:4f:64:9d:45</td>
+                    </tr>
+                  </table><a href="#" class="btn btn-danger">Revoke</a>
+                </div>
+              </div>
             </div>
           </div>
           <div id="tok3nPhonelines" class="tok3n-phonelines tok3n-pt-page">
@@ -153,6 +186,35 @@
             </div>
             <div class="tok3n-main-content">
               <!--INSERT CONTENT HERE-->
+              <div class="tok3n-phoneline-view-cellphone">
+                <div class="tok3n-dashboard-segment">
+                  <div class="title">
+                    <span>
+                      <h2>
+                        <span class="icon-tok3n-cellphone"></span>
+                        <span class="space"></span>Victor Telefónica</h2>
+                    </span>
+                  </div>
+                  <table class="specs">
+                    <tr>
+                      <td class="name">Type:</td>
+                      <td>Cellphone</td>
+                    </tr>
+                    <tr>
+                      <td class="name">Date added:</td>
+                      <td>June 10th, 2014</td>
+                    </tr>
+                    <tr>
+                      <td class="name">Last used:</td>
+                      <td>June 11th, 2014</td>
+                    </tr>
+                    <tr>
+                      <td class="name">Number:</td>
+                      <td>+52 1 (55) 6423 2193</td>
+                    </tr>
+                  </table><a href="#" class="btn btn-danger">Revoke</a>
+                </div>
+              </div>
             </div>
           </div>
           <div id="tok3nApplications" class="tok3n-applications tok3n-pt-page">
@@ -379,21 +441,81 @@
             </div>
             <div class="tok3n-main-content">
               <!--INSERT CONTENT HERE-->
+              <div class="tok3n-integration-view">
+                <div class="tok3n-dashboard-segment tok3n-dashboard-upper">
+                  <div class="title">
+                    <span>
+                      <h2>ttamayo.com</h2>
+                    </span>
+                    <span class="space"></span>
+                    <span class="settings-menu dropdown"><a href="#" class="btn btn-sm btn-default action-button"><i class="icon-tok3n-gear"></i>Settings</a>
+                      <ul role="menu" class="dropdown-menu">
+                        <li><a href="#">Change settings</a>
+                        </li>
+                        <li><a href="#">Delete</a>
+                        </li>
+                      </ul>
+                    </span>
+                  </div>
+                  <table class="specs">
+                    <tr class="status">
+                      <td class="name">Status:</td>
+                      <td>
+                        <span class="label label-success">Active</span>
+                        <span class="label label-warning">Halted</span>
+                        <span class="label label-danger">Running out of users</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="name">Plan:</td>
+                      <td><a href="#">Early Adopter</a> &mdash; <a href="#" class="action trigger-upgrade">upgrade</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="name">API key:</td>
+                      <td>e871df97-29c9-497b-87ae-040369737501</td>
+                    </tr>
+                    <tr>
+                      <td class="name">Secret:</td>
+                      <td>
+                        <span class="secret hidden">8869c644-62a5-4a27-95f5-a44af2aaf03f &mdash;</span><a href="#" class="action toggle-secret">show</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="name">URL:</td>
+                      <td>
+                        <span>http://ttamayo.com/app</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="name">Callback:</td>
+                      <td>
+                        <span>http://ttamayo.com/callback</span>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
           <div id="tok3nBackupCodes" class="tok3n-backup-codes tok3n-pt-page">
             <div class="tok3n-full-layout tok3n-main-content">
+              <!--INSERT CONTENT HERE-->
               <div class="form-group">
                 <div class="col-sm-12">
                   <h2 class="tok3n-full-layout-title">Backup codes</h2>
                 </div>
               </div>
-              <form class="form-horizontal tok3n-dashboard-new-form">
+              <form id="backupCodesForm" class="form-horizontal tok3n-dashboard-new-form">
                 <div class="tok3n-dashboard-form-lower-wrapper">
                   <div class="form-group">
                     <div class="col-sm-12">
                       <p>Backup codes are especially useful for people who travel, have problems receiving SMS or voice calls, or cannot use the Tok3n smartphone app.</p>
                       <p><b>Recommendation: </b>You should print or download backup codes.</p>
+                      <p class="tok3n-backup-codes-status">You have
+                        <span id="backupCodesUnusedNumber">10</span>
+                        unused codes.</p>
+                      <p class="tok3n-backup-codes-date">Generated on July 17th, 2014.</p>
                     </div>
                   </div>
                 </div>

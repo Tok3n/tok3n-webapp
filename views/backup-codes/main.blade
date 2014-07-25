@@ -4,6 +4,7 @@
 			img(src='../img/logo.png')
 		.tok3n-backup-codes-title
 			h2 Backup codes
+			p#backupCodesEmail.tok3n-backup-codes-email victtorglez@gmail.com
 		.tok3n-backup-codes-list
 			ol.tok3n-backup-codes-list-left
 				li 1234 5678
@@ -24,10 +25,9 @@
 		p Keep them someplace accessible, like your wallet. Each code can be used only once.
 		button.pure-button(onclick='window.print()') Print
 		span
-			a#tok3nDownloadBackupCodes.pure-button(href='#', download) Save to text file
+			a#backupCodesDownload.pure-button(href='#', download) Save to text file
 	.tok3n-backup-codes-explanation-block
 		p Running out of backup codes? Generate new ones at: 
 			a(href='https://secure.tok3n.com/') https://secure.tok3n.com/
 			br
 			| Only the latest set of backup codes will work.
-		button#tok3nGenerateBackupCodes.pure-button Generate new codes

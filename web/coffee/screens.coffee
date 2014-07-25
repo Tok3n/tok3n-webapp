@@ -325,7 +325,7 @@ do ->
 
 
     dropdownList = (ev) ->
-      for child in ev.target.children
+      for child in ev.target.parentNode.children
         if child.classList.contains 'dropdown-menu'
           child.classList.toggle 'dropdown-show'
 
