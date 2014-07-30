@@ -1,4 +1,4 @@
-var capitaliseFirstLetter, childNodeIndex, closest, detectIE, devConsoleLog, each, ee, findClosestAncestor, forEach, functionName, gebi, hasFormValidation, indexOf, isEmptyOrDefault, lowercaseFirstLetter, namespace, namespaceExists, qs, qsa, querySelectorAll, root, slice,
+var capitaliseFirstLetter, childNodeIndex, closest, detectIE, devConsoleLog, each, ee, findClosestAncestor, forEach, functionName, gebi, getLoadingProtocol, hasFormValidation, indexOf, isEmptyOrDefault, lowercaseFirstLetter, namespace, namespaceExists, qs, qsa, querySelectorAll, root, slice,
   __slice = [].slice;
 
 window.Tok3nDashboard || (window.Tok3nDashboard = {});
@@ -19,13 +19,21 @@ Tok3nDashboard.PreviousPreventedLinks || (Tok3nDashboard.PreviousPreventedLinks 
 
 Tok3nDashboard.CurrentPreventedLinks || (Tok3nDashboard.CurrentPreventedLinks = []);
 
-Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp';
-
-Tok3nDashboard.initWindow || (Tok3nDashboard.initWindow = 'Devices');
-
 Tok3nDashboard.slidingAnimationDuration = 250;
 
-if (!Tok3nDashboard.Environment.isDevelopment) {
+Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp';
+
+Tok3nDashboard.initWindow || (Tok3nDashboard.initWindow = 'devices');
+
+Tok3nDashboard.loadExternalFiles || (Tok3nDashboard.loadExternalFiles = true);
+
+root = typeof exports !== "undefined" && exports !== null ? exports : this;
+
+root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
+
+Tok3nDashboard.typekit = 'nls8ikc';
+
+if (Tok3nDashboard.Environment.isDevelopment == null) {
   Tok3nDashboard.Environment.isProduction = true;
 } else {
   Tok3nDashboard.Environment.isProduction = false;
@@ -112,7 +120,7 @@ lowercaseFirstLetter = function(string) {
 };
 
 namespaceExists = function(obj, path) {
-  var i, part, parts, root;
+  var i, part, parts;
   parts = path.split(".");
   root = obj;
   i = 0;
@@ -157,11 +165,16 @@ devConsoleLog = function(log) {
   }
 };
 
-root = typeof exports !== "undefined" && exports !== null ? exports : this;
-
-root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
-
-Tok3nDashboard.typekit = 'nls8ikc';
+getLoadingProtocol = function() {
+  if (location.protocol === 'file:') {
+    return 'http:';
+  } else if (location.protocol === 'http:') {
+    console.log("%cWARNING: content is being loaded via unencrypted protocol http.", 'color: red');
+    return '';
+  } else if (location.protocol === 'https:') {
+    return '';
+  }
+};
 
 ee = new EventEmitter();
 

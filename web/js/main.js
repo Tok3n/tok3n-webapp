@@ -18,7 +18,9 @@
         return observePageChanges(el);
       }
     });
-    Tok3nDashboard.lastLoader();
+    if (Tok3nDashboard.loadExternalFiles !== false) {
+      Tok3nDashboard.lastLoader();
+    }
     if (Tok3nDashboard.Environment.isDevelopment) {
       testAlerts();
       return testFormEvents();
@@ -109,10 +111,10 @@
     }
   };
   initCurrentWindow = function() {
-    Tok3nDashboard.Screens.initEveryTime();
+    Tok3nDashboard.Screens.destroyEveryTime();
     switchWindow();
     destroyPrevious();
-    return Tok3nDashboard.Screens.destroyEveryTime();
+    return Tok3nDashboard.Screens.initEveryTime();
   };
   observePageChanges = function(el) {
     var observer;

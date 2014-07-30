@@ -25,7 +25,8 @@ do ->
     #   false
     
     # Load google charts, analytics and typekit
-    Tok3nDashboard.lastLoader()
+    unless Tok3nDashboard.loadExternalFiles is false
+      Tok3nDashboard.lastLoader()
 
     # Testing funcs
     if Tok3nDashboard.Environment.isDevelopment
@@ -138,10 +139,10 @@ do ->
 
   initCurrentWindow = ->
     # devConsoleLog 'Started initing js.'
-    Tok3nDashboard.Screens.initEveryTime()
+    Tok3nDashboard.Screens.destroyEveryTime()
     switchWindow()
     destroyPrevious()
-    Tok3nDashboard.Screens.destroyEveryTime()
+    Tok3nDashboard.Screens.initEveryTime()
     # devConsoleLog 'Finished initing js.'
 
 

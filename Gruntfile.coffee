@@ -208,6 +208,7 @@ module.exports = (grunt) ->
 					comp + 'jquery/dist/jquery.js'
 					comp + 'parsleyjs/dist/parsley.js'
 					comp + 'eventEmitter/EventEmitter.js'
+					comp + 'angular/angular.js'
 					js + 'utils-pre.js'
 				]				
 				dest: js + 'utils.js'
@@ -256,10 +257,10 @@ module.exports = (grunt) ->
 				src: dist + '*.html'
 				overwrite: true
 				replacements: [
-					{
-						from: /(['"])css\/([^\/\n"']*)\.css(['"])/g
-						to: "$1#{cdnUrl}css/$2-min.css$3"
-					}
+					# {
+					# 	from: /(['"])css\/([^\/\n"']*)\.css(['"])/g
+					# 	to: "$1#{cdnUrl}css/$2-min.css$3"
+					# }
 					{
 						from: "url('../img/"
 						to: "url('#{cdnUrl}img/"
@@ -339,7 +340,7 @@ module.exports = (grunt) ->
 				files:[
 					{
 						cwd: 'web'
-						src: ['css/*-min.css', 'css/fonts/**', 'js/*-min.js', 'svg/**', 'img/**', 'sass/**', 'js/utils.js', 'js/async.js', 'js/compatibility.js', 'js/screens.js', 'js/dashboard.js']
+						src: ['css/*-min.css', 'css/fonts/**', 'js/*-min.js', 'svg/**', 'img/**', 'sass/**', 'js/utils.js', 'js/async.js', 'js/compatibility.js', 'js/screens.js', 'js/dashboard.js', 'css/style.css', 'css/backup-codes.css']
 						dest: dist
 					}
 				]
@@ -414,6 +415,17 @@ module.exports = (grunt) ->
 					}
 				]
 
+		compress:
+			localDist:
+				options:
+					archive: 'dist.zip'
+				files: [
+					{
+						src: [dist + '**']
+						dest: '.'
+					}
+				]
+
 
 	@registerTask 'bower-install', 'Installs Bower dependencies.', ->
 		bower = require 'bower'
@@ -445,11 +457,11 @@ module.exports = (grunt) ->
 	@loadNpmTasks 'grunt-curl'
 	@loadNpmTasks 'grunt-coffeelint'
 	@loadNpmTasks 'grunt-s3'
+	@loadNpmTasks 'grunt-contrib-compress'
 
 	@registerTask 'build', [
 		'bower-install'
 		'shell:sleep'
-		'shell:files'
 		'copy'
 	]
 
@@ -474,14 +486,13 @@ module.exports = (grunt) ->
 		'curl:integrations/integration-view'
 		'curl:integrations/integration-new'
 		'curl:integrations/integration-edit'
-
 	]
 
-	@registerTask 'distBuildHtml', [
+	@registerTask 'build-html', [
 		'sync'
 		'shell:sleep'
 		'curlAll'
-		'replace:dist'
+		# 'replace:dist'
 		'prettify'
 		'processhtml'
 		'replace:distHtmlHack'
@@ -502,7 +513,7 @@ module.exports = (grunt) ->
 		'concat'
 	]
 
-	@registerTask 'dist-test', [
+	@registerTask 'production', [
 		'compass:production'
 		'csslint'
 		'coffeelint'
@@ -510,11 +521,22 @@ module.exports = (grunt) ->
 		'concat:dashboardProd'
 		'uglify'
 		'cssmin:dist'
-		'distBuildHtml'
 		'imagemin:dist'
 	]
 
+	@registerTask 'dist-local', [
+		'default'
+		'build-html'
+		'compress:localDist'
+	]
+
+	@registerTask 'dist-remote', [
+		'production'
+		'build-html'
+	]
+
 	@registerTask 'dist', [
-		'dist-test'
+		'dist-remote'
 		's3'
+		'dist-local'
 	]

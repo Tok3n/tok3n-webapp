@@ -7,14 +7,22 @@ Tok3nDashboard.CurrentScreens or= []
 Tok3nDashboard.PreviousScreens or= []
 Tok3nDashboard.PreviousPreventedLinks or= []
 Tok3nDashboard.CurrentPreventedLinks or= []
-Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp'
-Tok3nDashboard.initWindow or= 'Devices'
 Tok3nDashboard.slidingAnimationDuration = 250
+Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp'
+Tok3nDashboard.initWindow or= 'devices'
+Tok3nDashboard.loadExternalFiles or= true
 
-unless Tok3nDashboard.Environment.isDevelopment
+# Google Analytics
+root = exports ? this
+root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']]
+# Typekit
+Tok3nDashboard.typekit = 'nls8ikc'
+
+unless Tok3nDashboard.Environment.isDevelopment?
   Tok3nDashboard.Environment.isProduction = true
 else
   Tok3nDashboard.Environment.isProduction = false
+
 
 # Easy function references
 each = Function.prototype.call.bind [].forEach
@@ -96,13 +104,15 @@ functionName = (fun) ->
 devConsoleLog = (log) ->
   if Tok3nDashboard.Environment.isDevelopment
     console.log log
+getLoadingProtocol = ->
+  if location.protocol is 'file:'
+    'http:'
+  else if location.protocol is 'http:'
+    console.log "%cWARNING: content is being loaded via unencrypted protocol http.", 'color: red'
+    ''
+  else if location.protocol is 'https:'
+    ''
 
-# Google Analytics
-root = exports ? this
-root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']]
-
-# Typekit
-Tok3nDashboard.typekit = 'nls8ikc'
 
 # Libs
 ee = new EventEmitter()
