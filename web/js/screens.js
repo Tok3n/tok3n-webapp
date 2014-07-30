@@ -16,16 +16,14 @@
       return devConsoleLog("Inited current prevented links");
     };
     destroyPreventedLinks = function() {
-      return setTimeout(function() {
-        if (Tok3nDashboard.PreviousPreventedLinks.length) {
-          Tok3nDashboard.PreviousPreventedLinks.forEach(function(el) {
-            return el.removeEventListener('click', evtPreventDefault);
-          });
-          devConsoleLog("Destroyed prevented links");
-        }
-        Tok3nDashboard.PreviousPreventedLinks = Tok3nDashboard.CurrentPreventedLinks;
-        return Tok3nDashboard.CurrentPreventedLinks = [];
-      }, Tok3nDashboard.slidingAnimationDuration);
+      if (Tok3nDashboard.PreviousPreventedLinks.length) {
+        Tok3nDashboard.PreviousPreventedLinks.forEach(function(el) {
+          return el.removeEventListener('click', evtPreventDefault);
+        });
+        devConsoleLog("Destroyed prevented links");
+      }
+      Tok3nDashboard.PreviousPreventedLinks = Tok3nDashboard.CurrentPreventedLinks;
+      return Tok3nDashboard.CurrentPreventedLinks = [];
     };
     addNewParsleyForm = function(formElement, submitForm, clsHandler) {
       var form, submit;

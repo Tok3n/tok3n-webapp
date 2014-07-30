@@ -17,15 +17,12 @@ do ->
       devConsoleLog "Inited current prevented links"
       
     destroyPreventedLinks = ->
-      setTimeout ->
-        if Tok3nDashboard.PreviousPreventedLinks.length
-          Tok3nDashboard.PreviousPreventedLinks.forEach (el) ->
-            el.removeEventListener 'click', evtPreventDefault
-          devConsoleLog "Destroyed prevented links"
-        Tok3nDashboard.PreviousPreventedLinks = Tok3nDashboard.CurrentPreventedLinks
-        Tok3nDashboard.CurrentPreventedLinks = []
-      , Tok3nDashboard.slidingAnimationDuration
-
+      if Tok3nDashboard.PreviousPreventedLinks.length
+        Tok3nDashboard.PreviousPreventedLinks.forEach (el) ->
+          el.removeEventListener 'click', evtPreventDefault
+        devConsoleLog "Destroyed prevented links"
+      Tok3nDashboard.PreviousPreventedLinks = Tok3nDashboard.CurrentPreventedLinks
+      Tok3nDashboard.CurrentPreventedLinks = []
 
     addNewParsleyForm = (formElement, submitForm, clsHandler) ->
       form = $(formElement)

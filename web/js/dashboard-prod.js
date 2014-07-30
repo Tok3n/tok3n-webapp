@@ -12541,7 +12541,7 @@ if ('undefined' !== typeof window.ParsleyValidator)
 	}
 }.call(this));
 
-var capitaliseFirstLetter, childNodeIndex, closest, detectIE, devConsoleLog, each, ee, findClosestAncestor, forEach, functionName, gebi, hasFormValidation, indexOf, isEmptyOrDefault, lowercaseFirstLetter, namespace, namespaceExists, qs, qsa, querySelectorAll, root, slice,
+var capitaliseFirstLetter, childNodeIndex, closest, detectIE, devConsoleLog, each, ee, findClosestAncestor, forEach, functionName, gebi, getLoadingProtocol, hasFormValidation, indexOf, isEmptyOrDefault, lowercaseFirstLetter, namespace, namespaceExists, qs, qsa, querySelectorAll, root, slice,
   __slice = [].slice;
 
 window.Tok3nDashboard || (window.Tok3nDashboard = {});
@@ -12562,13 +12562,21 @@ Tok3nDashboard.PreviousPreventedLinks || (Tok3nDashboard.PreviousPreventedLinks 
 
 Tok3nDashboard.CurrentPreventedLinks || (Tok3nDashboard.CurrentPreventedLinks = []);
 
-Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp';
-
-Tok3nDashboard.initWindow || (Tok3nDashboard.initWindow = 'Devices');
-
 Tok3nDashboard.slidingAnimationDuration = 250;
 
-if (!Tok3nDashboard.Environment.isDevelopment) {
+Tok3nDashboard.cdnUrl = '//s3.amazonaws.com/static.tok3n.com/tok3n-webapp';
+
+Tok3nDashboard.initWindow || (Tok3nDashboard.initWindow = 'devices');
+
+Tok3nDashboard.loadExternalFiles || (Tok3nDashboard.loadExternalFiles = true);
+
+root = typeof exports !== "undefined" && exports !== null ? exports : this;
+
+root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
+
+Tok3nDashboard.typekit = 'nls8ikc';
+
+if (Tok3nDashboard.Environment.isDevelopment == null) {
   Tok3nDashboard.Environment.isProduction = true;
 } else {
   Tok3nDashboard.Environment.isProduction = false;
@@ -12655,7 +12663,7 @@ lowercaseFirstLetter = function(string) {
 };
 
 namespaceExists = function(obj, path) {
-  var i, part, parts, root;
+  var i, part, parts;
   parts = path.split(".");
   root = obj;
   i = 0;
@@ -12700,11 +12708,16 @@ devConsoleLog = function(log) {
   }
 };
 
-root = typeof exports !== "undefined" && exports !== null ? exports : this;
-
-root._gaq = [['_setAccount', 'UA-39917560-2'], ['_trackPageview']];
-
-Tok3nDashboard.typekit = 'nls8ikc';
+getLoadingProtocol = function() {
+  if (location.protocol === 'file:') {
+    return 'http:';
+  } else if (location.protocol === 'http:') {
+    console.log("%cWARNING: content is being loaded via unencrypted protocol http.", 'color: red');
+    return '';
+  } else if (location.protocol === 'https:') {
+    return '';
+  }
+};
 
 ee = new EventEmitter();
 
@@ -12727,64 +12740,60 @@ Modernizr.addTest("csscalc", function() {
 });
 
 (function() {
-  var lastLoader, polyfillsUrl;
+  var lastLoader, loadingProtocol, polyfillsUrl;
+  loadingProtocol = getLoadingProtocol();
   polyfillsUrl = Tok3nDashboard.cdnUrl + '/polyfills/min';
-  Modernizr.load([
-    {
-      test: Modernizr.mq,
-      nope: polyfillsUrl + '/respond.min.js'
-    }, {
-      test: document.documentElement.classList,
-      nope: polyfillsUrl + '/classList.min.js'
-    }, {
-      test: document.querySelector,
-      nope: polyfillsUrl + '/querySelector.polyfill.js'
-    }, {
-      test: Modernizr.csscalc,
-      nope: polyfillsUrl + '/calc.min.js'
-    }, {
-      test: Modernizr.extrinsicsizing,
-      nope: Tok3nDashboard.cdnUrl + '/compatibility.js',
-      callback: function() {
-        if (Tok3nDashboard.compatibilityLayout) {
-          return Tok3nDashboard.compatibilityLayout();
-        }
-      }
-    }, {
-      test: String.prototype.contains,
-      nope: function() {
-        return String.prototype.contains = function() {
-          return String.prototype.indexOf.apply(this, arguments) !== -1;
-        };
-      }
-    }, {
-      test: Array.prototype.some,
-      nope: polyfillsUrl + '/array.some.js'
-    }, {
-      test: Array.prototype.filter,
-      nope: polyfillsUrl + '/array.filter.js'
-    }, {
-      test: window.MutationObserver,
-      nope: polyfillsUrl + '/MutationObserver.js'
-    }, {
-      test: window.Promise,
-      nope: polyfillsUrl + '/promise-1.0.0.min.js'
-    }, {
-      test: window.CustomEvent,
-      nope: polyfillsUrl + '/customevent.js'
-    }
-  ]);
-  lastLoader = function() {
-    return Modernizr.load([
+  if (location.protocol !== "file:") {
+    Modernizr.load([
       {
-        load: "//use.typekit.net/" + Tok3nDashboard.typekit + ".js",
-        complete: function() {
-          try {
-            Typekit.load();
-          } catch (_error) {}
+        test: Modernizr.mq,
+        nope: polyfillsUrl + '/respond.min.js'
+      }, {
+        test: document.documentElement.classList,
+        nope: polyfillsUrl + '/classList.min.js'
+      }, {
+        test: document.querySelector,
+        nope: polyfillsUrl + '/querySelector.polyfill.js'
+      }, {
+        test: Modernizr.csscalc,
+        nope: polyfillsUrl + '/calc.min.js'
+      }, {
+        test: Modernizr.extrinsicsizing,
+        nope: Tok3nDashboard.cdnUrl + '/compatibility.js',
+        callback: function() {
+          if (Tok3nDashboard.compatibilityLayout) {
+            return Tok3nDashboard.compatibilityLayout();
+          }
         }
       }, {
-        load: "//www.google.com/jsapi",
+        test: String.prototype.contains,
+        nope: function() {
+          return String.prototype.contains = function() {
+            return String.prototype.indexOf.apply(this, arguments) !== -1;
+          };
+        }
+      }, {
+        test: Array.prototype.some,
+        nope: polyfillsUrl + '/array.some.js'
+      }, {
+        test: Array.prototype.filter,
+        nope: polyfillsUrl + '/array.filter.js'
+      }, {
+        test: window.MutationObserver,
+        nope: polyfillsUrl + '/MutationObserver.js'
+      }, {
+        test: window.Promise,
+        nope: polyfillsUrl + '/promise-1.0.0.min.js'
+      }, {
+        test: window.CustomEvent,
+        nope: polyfillsUrl + '/customevent.js'
+      }
+    ]);
+  }
+  lastLoader = function() {
+    Modernizr.load([
+      {
+        load: "" + loadingProtocol + "//www.google.com/jsapi",
         complete: function() {
           Tok3nDashboard.Jsapi.isLoaded = new Promise(function(resolve, reject) {
             return google.load("visualization", "1", {
@@ -12794,12 +12803,29 @@ Modernizr.addTest("csscalc", function() {
               }
             });
           });
-          ee.emitEvent('tok3nJsapiPromiseCreated');
+          return ee.emitEvent('tok3nJsapiPromiseCreated');
         }
-      }, {
-        load: ("https:" === location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js"
       }
     ]);
+    if (location.protocol !== "file:") {
+      Modernizr.load([
+        {
+          load: "//use.typekit.net/" + Tok3nDashboard.typekit + ".js",
+          complete: function() {
+            try {
+              Typekit.load();
+            } catch (_error) {}
+          }
+        }
+      ]);
+      if (!Tok3nDashboard.Environment.isDevelopment) {
+        return Modernizr.load([
+          {
+            load: ("https:" === location.protocol ? "//ssl" : "//www") + ".google-analytics.com/ga.js"
+          }
+        ]);
+      }
+    }
   };
   return Tok3nDashboard.lastLoader = lastLoader;
 })();
@@ -12822,16 +12848,14 @@ Modernizr.addTest("csscalc", function() {
       return devConsoleLog("Inited current prevented links");
     };
     destroyPreventedLinks = function() {
-      return setTimeout(function() {
-        if (Tok3nDashboard.PreviousPreventedLinks.length) {
-          Tok3nDashboard.PreviousPreventedLinks.forEach(function(el) {
-            return el.removeEventListener('click', evtPreventDefault);
-          });
-          devConsoleLog("Destroyed prevented links");
-        }
-        Tok3nDashboard.PreviousPreventedLinks = Tok3nDashboard.CurrentPreventedLinks;
-        return Tok3nDashboard.CurrentPreventedLinks = [];
-      }, Tok3nDashboard.slidingAnimationDuration);
+      if (Tok3nDashboard.PreviousPreventedLinks.length) {
+        Tok3nDashboard.PreviousPreventedLinks.forEach(function(el) {
+          return el.removeEventListener('click', evtPreventDefault);
+        });
+        devConsoleLog("Destroyed prevented links");
+      }
+      Tok3nDashboard.PreviousPreventedLinks = Tok3nDashboard.CurrentPreventedLinks;
+      return Tok3nDashboard.CurrentPreventedLinks = [];
     };
     addNewParsleyForm = function(formElement, submitForm, clsHandler) {
       var form, submit;
@@ -13389,7 +13413,9 @@ Modernizr.addTest("csscalc", function() {
         return observePageChanges(el);
       }
     });
-    Tok3nDashboard.lastLoader();
+    if (Tok3nDashboard.loadExternalFiles !== false) {
+      Tok3nDashboard.lastLoader();
+    }
     if (Tok3nDashboard.Environment.isDevelopment) {
       testAlerts();
       return testFormEvents();
@@ -13480,10 +13506,10 @@ Modernizr.addTest("csscalc", function() {
     }
   };
   initCurrentWindow = function() {
-    Tok3nDashboard.Screens.initEveryTime();
+    Tok3nDashboard.Screens.destroyEveryTime();
     switchWindow();
     destroyPrevious();
-    return Tok3nDashboard.Screens.destroyEveryTime();
+    return Tok3nDashboard.Screens.initEveryTime();
   };
   observePageChanges = function(el) {
     var observer;

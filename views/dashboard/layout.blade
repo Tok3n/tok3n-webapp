@@ -14,7 +14,12 @@ html.no-js(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     
     block style
+      // Remove for production
       link(rel='stylesheet', href='css/style.css')
+      // Uncomment for production
+      // build:template
+      ! <!--<link rel="stylesheet" href="<%=cdnUrl%>css/style-min.css" />-->
+      // /build
 
   body
     block upper
@@ -76,17 +81,16 @@ html.no-js(lang='en')
       // Remove for production
       :coffeescript
         window.Tok3nDashboard or= {}
-        Tok3nDashboard.initWindow = "devices"
         Tok3nDashboard.Environment or= {}
+        Tok3nDashboard.initWindow = "devices"
         Tok3nDashboard.Environment.isDevelopment = true
+        Tok3nDashboard.loadExternalFiles = true
 
-      // Use the following scripts for development, remove for production
-      /** build:template
-      <script src="<%=cdnUrl%>js/utils.js"></script>
-      <script src="<%=cdnUrl%>js/async.js"></script>
-      <script src="<%=cdnUrl%>js/screens.js"></script>
-      <script src="<%=cdnUrl%>js/dashboard.js"></script>
-      /build */
+      // Remove for production
+      script(src='js/utils.js')
+      script(src='js/async.js')
+      script(src='js/screens.js')
+      script(src='js/dashboard.js')
 
       // Uncomment next script for production
       // build:template
@@ -95,10 +99,5 @@ html.no-js(lang='en')
 
       //- A word of caution: the following build code is extremely sensible to indentation, extra spaces and newlines. Be careful!
       //  build:remove 
-      script(src='js/utils.js')
-      script(src='js/async.js')
-      script(src='js/screens.js')
-      script(src='js/dashboard.js')
-      script(src='js/test.js')
       script(src="http://localhost:35729/livereload.js")
       //  /build 

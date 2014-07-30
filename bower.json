@@ -25,6 +25,7 @@
     "resizeend": "~1.1.2",
     "jquery.breakpoints": "*",
     "enquire": "~2.1.0",
-    "parsleyjs": "~2.0.0-rc5"
+    "parsleyjs": "~2.0.0-rc5",
+    "angular": "1.3"
   }
 }
